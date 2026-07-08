@@ -55,7 +55,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--end-ms", type=int, default=None)
     parser.add_argument("--raw-root", default="storage/raw")
     parser.add_argument("--duckdb-path", default="storage/duckdb/m0.duckdb")
-    parser.add_argument("--report-path", default="reports/m0/M0_DATA_RUN_REPORT.md")
+    parser.add_argument("--report-path", default="reports/m0/M0_PUBLIC_RUN_REPORT.md")
     parser.add_argument("--spot-base-url", default="https://api.binance.com")
     parser.add_argument("--futures-base-url", default="https://fapi.binance.com")
     parser.add_argument("--timeout-sec", type=int, default=20)
@@ -269,7 +269,7 @@ def _summarize_kline(dataset: str, interval: str, envelope: RawEnvelope) -> Data
         reason_counts: dict[str, int] = {}
         for anomaly in anomalies:
             reason_counts[anomaly.reason] = reason_counts.get(anomaly.reason, 0) + 1
-        unexplained.append(f"kline anomalies detected: {reason_counts}")
+        unexplained.append(f"kline anomalies pending review: {reason_counts}")
     return DatasetRun(
         name=dataset,
         interval=interval,

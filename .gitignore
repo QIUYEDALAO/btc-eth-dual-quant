@@ -6,6 +6,7 @@
 *api_key*
 *apikey*
 *secret*
+!scripts/m0_secret_scan.py
 
 # Local dependencies and virtualenvs
 .deps/
@@ -31,3 +32,4 @@ storage/logs/
 
 # Generated report snapshots; keep canonical M0 reports tracked explicitly.
 reports/m0/M0_DATA_RUN_REPORT_*.md
+reports/m0/M0_PRIVATE_SMOKE_REPORT.local.md
