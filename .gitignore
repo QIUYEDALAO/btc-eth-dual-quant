@@ -1,0 +1,33 @@
+# Secrets and credentials
+.env
+.env.*
+*.pem
+*.key
+*api_key*
+*apikey*
+*secret*
+
+# Local dependencies and virtualenvs
+.deps/
+.venv/
+venv/
+.learnings/
+
+# Python/cache artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# OS/editor noise
+.DS_Store
+
+# M0 generated data and local runtime state
+storage/raw/
+storage/db/
+storage/duckdb/
+storage/*.duckdb
+storage/*.db
+storage/logs/
+
+# Generated report snapshots; keep canonical M0 reports tracked explicitly.
+reports/m0/M0_DATA_RUN_REPORT_*.md

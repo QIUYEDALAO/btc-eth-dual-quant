@@ -1,0 +1,14 @@
+[project]
+name = "btc-eth-dual-quant"
+version = "0.1.0"
+description = "M0 read-only data engineering layer for BTC/ETH dual-strategy research."
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.0",
+  "duckdb>=1.0",
+  "PyYAML>=6.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
