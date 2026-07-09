@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T17:30:48Z"
+last_updated_utc: "2026-07-09T17:53:53Z"
 current_phase: post-M1B review
-current_status: m1b_failed_validation_recorded
+current_status: no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -22,10 +22,10 @@ completed_milestones:
     evidence: reports/m1/M1B_FINAL_DECISION.md
     tag: m1b-funding-failed-validation-v0.5.0
 open_work:
-  - id: POST-M1B
+  - id: POST-M1B-REVIEW
     phase: post-M1B review
-    status: pending
-    blocker: "No strategy is currently eligible for M2. Future work requires explicit approval."
+    status: pending_decision
+    blocker: "No strategy is eligible for M2; next work must be diagnostics or design review only."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -38,9 +38,15 @@ active_decisions:
   - id: LIVE-GATE
     decision: Live trading and paper trading with real API are not allowed.
     status: active
+  - id: ADR-0005
+    decision: No strategy is eligible for M2 after M1B.
+    status: active
+    evidence: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
 allowed_next_work:
   - Review M1B failed_validation result.
   - Decide whether to stop, run diagnostics, or design external arbitrage coordinator.
+  - Diagnostics must not change validation outcome.
+  - Design review must not implement execution.
   - Do not enter M2.
   - Do not use API keys.
   - Do not run live or paper trading.
@@ -89,6 +95,12 @@ latest_reports:
   - path: reports/m1/M1B_FINAL_DECISION.md
     phase: M1B
     status: failed_validation
+  - path: reports/m1/POST_M1B_REVIEW.md
+    phase: post-M1B
+    status: under_review
+  - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
+    phase: post-M1B
+    status: accepted
 latest_tags:
   - m0-data-run-accepted-v0.1.4
   - m1a-trend-failed-validation-v0.2.0

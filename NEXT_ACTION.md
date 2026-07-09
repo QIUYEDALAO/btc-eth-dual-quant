@@ -1,12 +1,17 @@
 # Next Action
 
-Review M1B failed_validation result and decide whether to stop, run diagnostics, or design an external arbitrage coordinator.
+Review `reports/m1/POST_M1B_REVIEW.md` and choose one path:
 
-- No strategy is currently eligible for M2.
+- Option A: stop strategy development for now
+- Option B: M1B diagnostics only
+- Option C: external arbitrage coordinator design review only
+
+Rules:
+
+- No strategy is eligible for M2.
 - Do not enter M2.
 - Do not run live trading.
 - Do not run paper trading with real API.
 - Do not request, read, or use API keys.
-- Do not run private smoke.
 - Do not implement execution/live.
 - Do not place or cancel orders.

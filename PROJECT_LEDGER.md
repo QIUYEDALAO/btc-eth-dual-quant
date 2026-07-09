@@ -167,3 +167,23 @@ private exchange responses here.
 - Decision: M1B funding-rate-arbitrage is not eligible for M2 because complete cycles 15 < 20.
 - Blockers: No strategy is currently eligible for M2. Future work requires explicit approval.
 - Next action: Post-M1B review only.
+
+## 2026-07-09 - Post-M1B Review Started
+
+- Date UTC: 2026-07-09T17:53:53Z
+- Task ID: POST-M1B-REVIEW-STARTED
+- Phase: post-M1B review
+- Branch: post-m1b-review-and-next-decision
+- PR: pending
+- Completed:
+  - M0/M1A/M1F/M1B statuses summarized
+  - no-strategy-eligible-for-M2 decision drafted
+- Not completed:
+  - no diagnostics yet
+  - no coordinator design yet
+  - no M2
+  - no live/paper/API/trading
+- Decision:
+  - next work must be either diagnostics or design review only
+- Next action:
+  - review POST_M1B_REVIEW.md and choose Option A/B/C
