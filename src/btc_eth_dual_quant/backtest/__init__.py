@@ -1,1 +1,1 @@
-"""Minimal backtest primitives used by M0 time-semantics tests."""
+"""Offline backtest primitives and M1A validation modules."""
