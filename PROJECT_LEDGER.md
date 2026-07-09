@@ -376,3 +376,20 @@ private exchange responses here.
 - Blockers: Historical spot source revisions remain, and official futures REST is unavailable from both compliant execution nodes.
 - Next action: Review PR #13 checks and evidence. Any future unblock requires official source clarification or a compliant public network, not weaker validation.
 - Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M0 Proxy-Assisted Official Audit Evidence Completed
+
+- Date UTC: 2026-07-09T23:12:00Z
+- Task ID: M0-DUAL-SOURCE-PROXY-EVIDENCE
+- Phase: M0 audit revalidation
+- Branch: codex/m0-dual-source-audit-unblock
+- Commit: ce6b226f8ffb06cc9cc11e1a515cade74603d6ad
+- PR: #13 open
+- Transport: official REST through an explicit unauthenticated loopback HTTPS proxy; official Binance Vision monthly/daily ZIP direct; proxy disclosed as transport, not a data source.
+- Completed: Futures REST connectivity, full BTCUSDT/ETHUSDT 1h comparison for UM/mark/index/premium, supplemental official daily ZIP recovery, payload-bundle hashes, daily HTTP outcomes, strict classification, and regenerated sanitized reports.
+- Archive result: 936 monthly-archive omissions were recovered exactly from 41 successful official daily ZIP requests. Six required `2026-06-29` mark/index/premium daily ZIP requests returned HTTP 404 and remain timestamp mismatches.
+- Source-revision result: BTCUSDT/ETHUSDT UM monthly and daily ZIPs agree with each other but differ from REST at `2024-10-28T20:00Z` and `2024-10-28T21:00Z`. Historical spot revisions and ZIP-only timestamps remain unchanged.
+- Validation: 101 tests passed; M0 validation PASS=6 FAIL=0; Project validation PASS=7 FAIL=0; secret, no-trading, execution/live, artifact, and diff checks passed.
+- Decision: Connectivity is no longer the active futures blocker, but M0 audit remains `audit_revalidation_required` because official-source differences and unavailable daily archives remain. No result is reclassified or hidden.
+- Next action: Seek Binance source-owner clarification and recheck the missing daily archives after official publication; do not weaken the dual-source gate.
+- Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.

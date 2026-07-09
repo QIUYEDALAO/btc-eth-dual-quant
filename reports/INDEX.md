@@ -3,8 +3,8 @@
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
 | `reports/m0/M0_FINAL_ACCEPTANCE.md` | M0 | accepted / audit_revalidation_required | Read-only infrastructure remains accepted; funding cadence fallback and ZIP/REST evidence require revalidation before new strategy approval. | no |
-| `reports/m0/M0_AUDIT_REVALIDATION_REPORT.md` | M0 | blocked / audit_revalidation_required | Decision-facing summary of the multi-network exact audit; historical spot source revisions and unavailable official futures REST evidence keep approval blocked. | no |
-| `reports/m0/M0_DUAL_SOURCE_AUDIT_DIAGNOSTICS.md` | M0 | blocked / audit_revalidation_required | Multi-network exact field evidence: most selected spot scopes match, two historical spot windows contain real source revisions, and official futures REST remains unreachable from both compliant nodes although official ZIP data is available. | no |
+| `reports/m0/M0_AUDIT_REVALIDATION_REPORT.md` | M0 | blocked / audit_revalidation_required | Decision-facing exact audit summary. Approved proxy transport completed official futures REST; remaining blockers are official spot/UM source revisions and a 2026-06-29 reference-price archive omission with daily ZIP HTTP 404. | no |
+| `reports/m0/M0_DUAL_SOURCE_AUDIT_DIAGNOSTICS.md` | M0 | blocked / audit_revalidation_required | Field-level direct/proxy evidence with payload hashes and daily ZIP outcomes. Official daily ZIPs recover monthly omissions when exact, but never replace conflicting monthly rows. | no |
 | `reports/m1/M1A_REVIEW_DECISION.md` | M1A | failed_validation | Trend leg failed validation and is not eligible for M2; affected numerical evidence is superseded by the revalidation notice. | no |
 | `reports/m1/M1A_REVALIDATION_NOTICE.md` | M1A | superseded_pending_revalidation | UTC alignment and delete-best-three methodology defects make affected historical metrics ineligible for future approval. | no |
 | `reports/m1/M1F_FINAL_ACCEPTANCE.md` | M1F | accepted_as_feasibility_lab | Freqtrade Lab accepted only as research/backtest/WebUI candidate. | no |
