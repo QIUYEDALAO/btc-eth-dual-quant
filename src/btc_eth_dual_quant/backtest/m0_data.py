@@ -25,6 +25,12 @@ class M0DataIndexError(RuntimeError):
     pass
 
 
+INTERVAL_MS = {
+    "1h": 3_600_000,
+    "1d": 86_400_000,
+}
+
+
 def _normalize_kline(row: Any, symbol: str) -> TrendBar | None:
     try:
         if isinstance(row, dict):
@@ -139,7 +145,16 @@ def load_kline_bars(
     bars = [bars_by_time[key] for key in sorted(bars_by_time)]
     if not bars:
         raise M0DataUnavailableError(f"missing M0 {dataset} data for {symbol}; run M0 public backfill first")
-    validate_bars(bars)
+    expected_interval_ms = INTERVAL_MS.get(interval)
+    if expected_interval_ms is None:
+        raise ValueError(f"unsupported local M0 backtest interval: {interval}")
+    # M0 quality reports own gap acceptance. The loader validates ordering and
+    # OHLC while preserving observed 1h gaps for explicit downstream evidence.
+    validate_bars(
+        bars,
+        expected_interval_ms=expected_interval_ms,
+        require_contiguous=interval == "1d",
+    )
     return bars
 
 

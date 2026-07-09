@@ -36,6 +36,13 @@ bash scripts/ft_research.sh recursive-analysis --help
 bash scripts/ft_research.sh webserver
 ```
 
+The public futures-leg cross-check remains a single-leg capability probe and
+must not be used as spot-long plus perpetual-short portfolio evidence:
+
+```bash
+bash scripts/ft_futures_probe.sh
+```
+
 Normal pull-request CI is static and does not access public market data. The
 manual public-data smoke workflow uses no secrets and uploads no runtime data.
 

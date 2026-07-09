@@ -84,6 +84,7 @@ required_files() {
   test -f freqtrade_lab/scripts/ft_webui_stop.sh &&
   test -f freqtrade_lab/runtime-manifest.json &&
   test -f freqtrade_lab/scripts/ft_research.sh &&
+  test -f freqtrade_lab/scripts/ft_futures_probe.sh &&
   test -f freqtrade_lab/scripts/ft_verify_runtime.sh &&
   test -f scripts/freqtrade_runtime_manifest.py &&
   test -f scripts/freqtrade_data_provenance.py &&
@@ -99,6 +100,8 @@ research_entry_guard() {
   done
   grep -q 'ft_research\.sh backtesting' freqtrade_lab/scripts/ft_backtest_m1a_trend.sh &&
   grep -q 'ft_research\.sh download-data' freqtrade_lab/scripts/ft_download_spot_data.sh &&
+  grep -q 'ft_research\.sh download-data' freqtrade_lab/scripts/ft_futures_probe.sh &&
+  grep -q 'ft_research\.sh backtesting' freqtrade_lab/scripts/ft_futures_probe.sh &&
   grep -q 'ft_research\.sh webserver' freqtrade_lab/scripts/ft_webui_local.sh
 }
 

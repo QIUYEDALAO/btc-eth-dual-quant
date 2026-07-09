@@ -41,6 +41,13 @@ jobs:
           bash scripts/ft_recursive_m1a.sh
           bash scripts/ft_research.sh webserver --help
 
+      - name: Run public futures-leg cross-check
+        env:
+          FT_FUTURES_TIMERANGE: 20240101-20240201
+        run: |
+          cd freqtrade_lab
+          bash scripts/ft_futures_probe.sh
+
       - name: Confirm runtime artifacts remain untracked
         run: |
           test -z "$(git status --short --untracked-files=all | grep -E 'freqtrade_lab/user_data/(data|logs|backtest_results)|\.sqlite' || true)"

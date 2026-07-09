@@ -41,6 +41,14 @@ class FreqtradeRuntimeTests(unittest.TestCase):
         forbidden = "freqtrade " + "tr" + "ade"
         self.assertNotIn(forbidden, source)
 
+    def test_futures_probe_uses_public_research_commands_only(self) -> None:
+        source = (ROOT / "freqtrade_lab" / "scripts" / "ft_futures_probe.sh").read_text(encoding="utf-8")
+        for command in ("download-data", "list-data", "backtesting"):
+            self.assertIn(f"ft_research.sh {command}", source)
+        self.assertIn("M1BFuturesFundingProbeStrategy", source)
+        self.assertNotIn("freqtrade " + "tr" + "ade", source)
+        self.assertNotIn("API_KEY", source)
+
 
 class FreqtradeProvenanceTests(unittest.TestCase):
     def test_matching_public_json_and_m0_raw_pass(self) -> None:
