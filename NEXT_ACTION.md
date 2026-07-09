@@ -7,7 +7,7 @@ Implement the approved Freqtrade-first hardening sequence:
 3. Pin and validate Freqtrade as the primary research framework.
 4. Revalidate M1B with strict 1-hour event-time semantics.
 
-Immediate action: run the manual no-secret `M0 Public Audit` workflow after the M0 correctness branch is published, review the sanitized 1h REST/ZIP evidence, and keep M0 `audit_revalidation_required` unless every required audit check passes.
+Immediate action: review and merge the M0 correctness code as a truthful hardening artifact while keeping M0 `audit_revalidation_required`. Re-run the manual no-secret `M0 Public Audit` only from a compliant network that can access futures REST, and investigate the recorded spot ZIP/REST differences; do not restore audit pass until every required check passes.
 
 Rules:
 

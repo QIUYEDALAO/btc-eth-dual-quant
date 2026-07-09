@@ -1,7 +1,6 @@
 name: M0 Public Audit
 
 on:
-  pull_request:
   workflow_dispatch:
     inputs:
       start_date:

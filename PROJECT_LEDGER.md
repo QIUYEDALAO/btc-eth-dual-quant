@@ -233,3 +233,19 @@ private exchange responses here.
 - Blockers: Production Binance REST is unreachable from local and VPS networks; run the manual no-secret GitHub public audit workflow after publishing this branch.
 - Next action: Publish the branch, run `M0 Public Audit`, inspect the report artifact, and restore M0 audit pass only if every check passes.
 - Guardrails: No private smoke, API keys, M2, live/paper trading, order operations, or execution/live.
+
+## 2026-07-09 - M0 Public Audit Revalidation Blocked Truthfully
+
+- Date UTC: 2026-07-09T20:04:18Z
+- Task ID: M0-PUBLIC-AUDIT-REAL-RUN
+- Phase: M0 audit revalidation
+- Branch: codex/m0-audit-correctness-hardening
+- Commit: 379d552
+- PR: #9 open
+- Workflow: M0 Public Audit run 29046010878
+- Completed: BTCUSDT/ETHUSDT 1h public profile ran from 2019-09-01 through 2026-07-08; spot REST/ZIP scope covered first, middle, latest complete, anomaly, and gap months; funding histories retained 7,119 inferred event intervals per symbol.
+- Validation result: M0 audit remains blocked. Funding interval evidence normalized to data-derived 8h for this history, but spot has 6/7 field differences and one timestamp-set difference for BTC/ETH; futures REST returned HTTP 451, so futures ZIP/REST evidence is unavailable.
+- Decision: Do not reinterpret ZIP-only fallback as dual-source pass and do not restore M0 audit status.
+- Blockers: A compliant network is required for futures REST comparison, and spot differences require source-level investigation.
+- Next action: Merge the correctness hardening only after CI passes, then continue Freqtrade primary-framework hardening while all strategy approval and M2 gates remain blocked.
+- Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
