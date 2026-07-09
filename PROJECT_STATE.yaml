@@ -35,7 +35,7 @@ open_work:
     branch: codex/m1b-event-time-revalidation
     pr: 11
     initial_sha: 795724d
-    blocker: "Strict 1h revalidation remains failed_validation at 13 complete cycles; M0 public audit evidence is also still blocked. PR review and CI are pending."
+    blocker: "Strict 1h revalidation remains failed_validation at 13 complete cycles; M0 public audit and the Freqtrade futures probe are blocked by source differences/HTTP 451. PR review and CI are pending."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.

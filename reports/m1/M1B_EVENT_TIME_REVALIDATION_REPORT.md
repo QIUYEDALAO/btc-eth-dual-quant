@@ -17,6 +17,8 @@
 - Required profile: BTCUSDT and ETHUSDT 1h spot, UM perpetual, mark, index, premium, plus funding history
 - M0 audit status: audit_revalidation_required; source-level ZIP/REST blockers remain separate
 - Freqtrade role: futures short/funding framework smoke only; not the two-leg portfolio truth
+- Freqtrade futures-leg probe: blocked_network (GitHub run 29049892500; Binance exchangeInfo returned HTTP 451)
+- No Freqtrade futures backtest result or funding-fee output is claimed from the blocked run.
 - Portfolio range: 2020-01-01 00:00:00 UTC -> 2024-12-31 23:59:59 UTC
 - BTCUSDT range: 2020-01-01 00:00:00 UTC -> 2024-12-31 23:59:59 UTC
 - ETHUSDT range: 2020-01-01 00:00:00 UTC -> 2024-12-31 23:59:59 UTC
@@ -217,6 +219,7 @@
 
 - Freqtrade 2026.6 remains the primary single-leg research framework.
 - A futures-only short/funding smoke may cross-check the perpetual leg.
+- The prepared public futures probe passed local schema/static validation but its hosted run was blocked by Binance HTTP 451 before market data loaded.
 - Freqtrade does not provide the native combined spot-long plus perpetual-short portfolio truth.
 - No two-bot workaround is treated as proof because leg synchronization and reconciliation remain external.
 
@@ -250,3 +253,4 @@
 - Public market data cannot model real two-leg fill synchronization, margin failures, or reconciliation incidents.
 - M0 audit source discrepancies remain unresolved independently of this accounting correction.
 - Freqtrade futures output is a single-leg smoke and is not substituted for two-leg accounting.
+- The current hosted environment produced no futures-leg backtest output because public market metadata was region-blocked.

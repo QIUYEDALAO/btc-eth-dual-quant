@@ -305,6 +305,7 @@ private exchange responses here.
 - Completed so far: The existing M1B engine now uses next-1h-open entries/exits, excludes triggering funding, credits held funding before exit, derives every event interval from M0 history, uses settlement mark notional, charges actual fill notionals, separates incomplete end positions and OOS carry-in, and joins BTC/ETH by UTC.
 - Public run: Local M0 public ZIP fallback covered 2020-01-01 through 2024-12-31. Invalid close-boundary bars and observed gaps remain explicit diagnostics; raw data and DuckDB stay ignored.
 - Validation result: M1B remains failed_validation with 13 complete cycles and 2 incomplete end positions. The complete-cycle gate fails; M0 audit status also remains revalidation_required.
+- Freqtrade cross-check: Futures probe schema validation passed after replacing an invalid empty placeholder, but GitHub run 29049892500 was blocked by Binance `exchangeInfo` HTTP 451 before data download/backtest. No futures result is claimed.
 - Decision: The historical report remains unchanged. The new report cannot approve M2 even if numerical gates pass.
 - Next action: Run full validation, publish the independent PR, and merge only after checks pass.
 - Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.

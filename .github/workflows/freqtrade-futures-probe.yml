@@ -1,0 +1,31 @@
+name: Freqtrade Futures Probe
+
+on:
+  workflow_dispatch:
+
+jobs:
+  futures-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Pull and verify pinned runtime
+        run: |
+          cd freqtrade_lab
+          bash scripts/ft_pull.sh
+
+      - name: Run public futures-leg cross-check
+        env:
+          FT_FUTURES_TIMERANGE: 20240101-20240201
+        run: |
+          cd freqtrade_lab
+          bash scripts/ft_futures_probe.sh
+
+      - name: Confirm runtime artifacts remain untracked
+        if: always()
+        run: |
+          test -z "$(git status --short --untracked-files=all | grep -E 'freqtrade_lab/user_data/(data|logs|backtest_results)|\.sqlite' || true)"

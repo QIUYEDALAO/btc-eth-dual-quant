@@ -30,6 +30,8 @@ from btc_eth_dual_quant.backtest.m0_data import (
 SYMBOLS = ("BTCUSDT", "ETHUSDT")
 DATA_INTERVAL = "1h"
 HOUR_MS = 3_600_000
+FREQTRADE_FUTURES_PROBE_STATUS = "blocked_network"
+FREQTRADE_FUTURES_PROBE_RUN = "29049892500"
 
 
 def _strict_hourly_profile(bars: list[TrendBar]) -> tuple[list[TrendBar], dict[str, int]]:
@@ -146,6 +148,9 @@ def render_report(
         "- Required profile: BTCUSDT and ETHUSDT 1h spot, UM perpetual, mark, index, premium, plus funding history",
         "- M0 audit status: audit_revalidation_required; source-level ZIP/REST blockers remain separate",
         "- Freqtrade role: futures short/funding framework smoke only; not the two-leg portfolio truth",
+        f"- Freqtrade futures-leg probe: {FREQTRADE_FUTURES_PROBE_STATUS} "
+        f"(GitHub run {FREQTRADE_FUTURES_PROBE_RUN}; Binance exchangeInfo returned HTTP 451)",
+        "- No Freqtrade futures backtest result or funding-fee output is claimed from the blocked run.",
         f"- Portfolio range: {result_date_range(base_portfolio)}",
     ]
     for symbol, result in symbol_base.items():
@@ -238,6 +243,7 @@ def render_report(
             "",
             "- Freqtrade 2026.6 remains the primary single-leg research framework.",
             "- A futures-only short/funding smoke may cross-check the perpetual leg.",
+            "- The prepared public futures probe passed local schema/static validation but its hosted run was blocked by Binance HTTP 451 before market data loaded.",
             "- Freqtrade does not provide the native combined spot-long plus perpetual-short portfolio truth.",
             "- No two-bot workaround is treated as proof because leg synchronization and reconciliation remain external.",
             "",
@@ -259,6 +265,7 @@ def render_report(
             "- Public market data cannot model real two-leg fill synchronization, margin failures, or reconciliation incidents.",
             "- M0 audit source discrepancies remain unresolved independently of this accounting correction.",
             "- Freqtrade futures output is a single-leg smoke and is not substituted for two-leg accounting.",
+            "- The current hosted environment produced no futures-leg backtest output because public market metadata was region-blocked.",
         ]
     )
     return "\n".join(lines) + "\n"
