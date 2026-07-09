@@ -26,12 +26,14 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: post-M1B architecture hardening.
+- Current phase: post-hardening review.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
+- The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
 - M1A trend final status: failed_validation.
 - M1F Freqtrade Lab final status: accepted_as_feasibility_lab.
 - M1B funding-rate-arbitrage final status: failed_validation.
+- M0 public dual-source audit remains blocked by source differences and HTTP 451.
 - No strategy is eligible for M2.
 - Future work must be diagnostics or design review only.
 - Diagnostics must not lower validation thresholds.

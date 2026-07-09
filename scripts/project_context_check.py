@@ -119,7 +119,7 @@ def main() -> int:
     }
     if len(merged_numbers) != len(merged_prs):
         failures.append("PROJECT_STATE.yaml latest_merged_prs contains invalid or duplicate PR numbers")
-    for required_pr in (6, 7, 8, 9, 10):
+    for required_pr in (6, 7, 8, 9, 10, 11):
         if required_pr not in merged_numbers:
             failures.append(f"PROJECT_STATE.yaml latest_merged_prs missing PR #{required_pr}")
 
@@ -154,6 +154,7 @@ def main() -> int:
         "Freqtrade Primary Framework Hardening Started",
         "Freqtrade Primary Framework Hardening Merged",
         "M1B Event-Time Revalidation Started",
+        "M1B Event-Time Revalidation Merged",
     ):
         if required not in ledger_text:
             failures.append(f"PROJECT_LEDGER.md must contain: {required}")
@@ -177,6 +178,7 @@ def main() -> int:
         or "m1b_failed_validation_recorded" in current_status
         or "no_strategy_eligible_for_m2" in current_status
         or "freqtrade_first_revalidation_required_no_m2" in current_status
+        or "freqtrade_first_hardening_complete_m0_audit_blocked_no_m2" in current_status
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "m2" not in current_status and "m1b" not in current_status:
