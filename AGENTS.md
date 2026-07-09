@@ -2,17 +2,21 @@
 
 ## Current Stage
 
-- Current phase: M0-DATA-RUN hardening.
-- M1 remains blocked.
+- Current phase: M1A trend backtest validation only.
+- M0 final status: accepted.
+- M1A permits offline backtest validation only.
 
 ## Hard Guardrails
 
 - Do not create or use `execution/live`.
 - Do not implement or call order placement, order cancellation, `create_order`, `cancel_order`, or `place_order`.
-- Do not implement simulated matching.
+- Do not implement live trading or paper trading.
+- Do not implement simulated matching, matching engines, or execution modules.
 - Do not call trading-permission APIs.
+- Do not read, request, print, or require API keys.
 - Do not hardcode an 8-hour funding interval; infer funding cadence from data sources.
 - Do not allow same-bar close fills; signals after a bar close may only become effective no earlier than the next bar open.
+- Backtest modules may contain offline next-open fill assumptions for validation only; they must not become paper/live execution logic.
 
 ## Commit Hygiene
 
