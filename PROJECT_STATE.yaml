@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T14:55:43Z"
+last_updated_utc: "2026-07-09T15:24:00Z"
 current_phase: M1B funding-rate-arbitrage research validation
-current_status: paused_pending_freqtrade_suitability_review
+current_status: pr5_suitability_conclusion_b_pending_review
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -24,16 +24,19 @@ open_work:
     branch: m1b-funding-arbitrage-offline-backtest
     status: open_under_review
     url: https://github.com/QIUYEDALAO/btc-eth-dual-quant/pull/5
-    blocker: Freqtrade funding-arbitrage backtest suitability must be reviewed before custom numerical validation continues.
+    head_sha: 8d710bcdc3850b92e99fff82c7a57e2f6d33c502
+    current_finding: "Freqtrade suitability conclusion B: partial support, needs external portfolio/accounting/funding backtester."
+    blocker: "PR #5 suitability conclusion B must be reviewed and accepted/rejected before deciding whether to continue custom M1B numerical validation."
   - id: M1B-NUMERICAL-REPORT
     phase: M1B
-    status: pending
-    blocker: Local M0 public raw/DuckDB data is not available on main; do not continue before Freqtrade suitability decision.
+    status: paused
+    blocker: "Numerical report must not continue until PR #5 suitability conclusion B is reviewed."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
     status: active
     evidence: docs/decisions/ADR-0004-m1b-freqtrade-suitability-before-custom-backtest.md
+    current_finding: "PR #5 includes suitability conclusion B, not yet merged into main."
   - id: M2-GATE
     decision: M2 is not allowed.
     status: active
@@ -41,9 +44,10 @@ active_decisions:
     decision: Live trading and paper trading with real API are not allowed.
     status: active
 allowed_next_work:
-  - Review Freqtrade suitability for funding-rate-arbitrage backtest.
-  - Update M1B decision reports with suitability conclusion A/B/C.
-  - "Keep PR #5 open until the suitability review and ledger are updated."
+  - "Review PR #5 Freqtrade suitability conclusion B."
+  - Decide whether to adopt conclusion B and keep custom offline accounting backtester as research.
+  - "Keep PR #5 open until suitability conclusion and ledger are reviewed."
+  - Do not generate further M1B numerical report until this decision is recorded.
 prohibited:
   - live trading
   - paper trading with real API
@@ -76,13 +80,13 @@ latest_reports:
     status: accepted_as_feasibility_lab
   - path: reports/m1/M1B_FUNDING_ARBITRAGE_BACKTEST_REPORT.md
     phase: M1B
-    status: not_on_main_pr5_under_review
+    status: exists_on_open_pr5_under_review_placeholder_or_partial
   - path: reports/m1/M1B_DECISION.md
     phase: M1B
-    status: not_on_main_pr5_under_review
+    status: exists_on_open_pr5_paused_for_suitability_review_not_on_main
   - path: reports/m1/M1B_FREQTRADE_FUNDING_BACKTEST_SUITABILITY.md
     phase: M1B
-    status: not_on_main_pr5_under_review
+    status: exists_on_open_pr5_conclusion_b_not_on_main
 latest_tags:
   - m0-data-run-accepted-v0.1.4
   - m1a-trend-failed-validation-v0.2.0

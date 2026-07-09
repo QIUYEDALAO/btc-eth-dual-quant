@@ -28,6 +28,16 @@ offline arbitrage backtester only as research.
   decision report.
 - M2 remains not allowed.
 
+## Current PR #5 Finding
+
+- PR #5 currently contains a suitability report with conclusion B.
+- B means Freqtrade is partially suitable but requires an external
+  portfolio/accounting/funding backtester for spot-long plus perpetual-short
+  funding-rate arbitrage.
+- This finding is not yet merged into main and still requires review.
+- Until reviewed, PR #5 must remain open and must not be treated as completed
+  M1B validation.
+
 ## Prohibited Misinterpretations
 
 - A Freqtrade futures short smoke test does not prove full spot-long plus

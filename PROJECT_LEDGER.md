@@ -76,12 +76,29 @@ private exchange responses here.
 - Task ID: PROJECT-CONTEXT-SYSTEM
 - Phase: Project governance
 - Branch: project-ledger-and-context-system
-- Commit: project-ledger-and-context-system PR head
-- PR: pending
+- Commit: 7a0f2bceb0ae7e70533ee6ce60ca61ce44d1980a
+- PR: #6 open
 - Request summary: Add repository-level project state, ledger, next action, report index, ADRs, and context validation scripts.
-- Completed: Added project state, append-only ledger, next-action file, reports index, ADRs, context summary/check scripts, project validation script, and project validation workflow.
-- Not completed: No strategy validation, M1B numerical report generation, M2 approval, live trading, paper trading, private smoke, or trading logic changes.
-- Validation: `python3 scripts/project_context_check.py` pass; `python3 scripts/context_summary.py` pass; `bash scripts/project_validate.sh` pass with PASS=6 FAIL=0.
-- Decision: Future tasks must read context files before acting and update the ledger after completion.
-- Blockers: None expected.
-- Next action: Run `bash scripts/project_validate.sh`, commit, push, and open PR.
+- Completed: Project context system added and PR #6 opened for review.
+- Not completed: No strategy validation, no M2, no live/paper/API/private smoke/trading logic.
+- Validation: project_context_check pass; context_summary pass; project_validate pass; M0/M1A/M1F/Project Validate GitHub Actions success.
+- Decision: Future tasks must read context files before acting and update ledger/state/next action after completion.
+- Blockers: PR #6 itself requires review/merge before the project context system is active on main.
+- Next action: Review and merge PR #6 after checks pass; then use the context system for PR #5 suitability review.
+
+## 2026-07-09 - PR #5 Suitability Review Pending
+
+- Date UTC: 2026-07-09
+- Task ID: PR5-SUITABILITY-REVIEW-PENDING
+- Phase: M1B funding-rate-arbitrage research validation
+- Branch: m1b-funding-arbitrage-offline-backtest
+- Commit: PR #5 head 8d710bcdc3850b92e99fff82c7a57e2f6d33c502
+- PR: #5 open
+- Request summary: Record that PR #5 now contains a Freqtrade funding-arbitrage suitability finding that still needs review.
+- Completed: PR #5 now contains Freqtrade suitability conclusion B.
+- Not completed: PR #5 remains open and must not be merged as completed numerical validation.
+- Validation: Conclusion B is a report finding on open PR #5, not an accepted main-branch decision.
+- Decision: Conclusion B means Freqtrade is partially suitable, but funding-rate arbitrage still requires external portfolio/accounting/funding backtester.
+- Blockers: Review whether to accept conclusion B and decide the custom M1B backtester path.
+- Next action: Review whether to accept conclusion B and decide the custom M1B backtester path.
+- Guardrails: M2/live/paper/API/trading remain prohibited.

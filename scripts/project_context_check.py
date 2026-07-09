@@ -75,11 +75,25 @@ def main() -> int:
         if not (ROOT / rel_path).exists():
             failures.append(f"required file missing: {rel_path}")
 
+    next_action_text = (ROOT / "NEXT_ACTION.md").read_text(encoding="utf-8") if (ROOT / "NEXT_ACTION.md").exists() else ""
+    for required in ("PR #5", "conclusion B", "Do not enter M2"):
+        if required not in next_action_text:
+            failures.append(f"NEXT_ACTION.md must contain: {required}")
+
+    ledger_text = (ROOT / "PROJECT_LEDGER.md").read_text(encoding="utf-8") if (ROOT / "PROJECT_LEDGER.md").exists() else ""
+    for required in ("PR #5 Suitability Review Pending", "Conclusion B"):
+        if required not in ledger_text:
+            failures.append(f"PROJECT_LEDGER.md must contain: {required}")
+
     agents_text = (ROOT / "AGENTS.md").read_text(encoding="utf-8") if (ROOT / "AGENTS.md").exists() else ""
     if "PROJECT_STATE.yaml" not in agents_text:
         failures.append("AGENTS.md must mention PROJECT_STATE.yaml")
     if "PROJECT_LEDGER.md" not in agents_text:
         failures.append("AGENTS.md must mention PROJECT_LEDGER.md")
+
+    allowed_next_work = [str(item) for item in state.get("allowed_next_work", [])]
+    if not any("Review PR #5" in item for item in allowed_next_work):
+        failures.append("PROJECT_STATE.yaml allowed_next_work must include Review PR #5")
 
     prohibited = {str(item) for item in state.get("prohibited", [])}
     missing_prohibited = sorted(REQUIRED_PROHIBITED - prohibited)
