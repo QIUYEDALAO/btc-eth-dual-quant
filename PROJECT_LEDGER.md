@@ -151,3 +151,19 @@ private exchange responses here.
 - Key metrics: base cost total return 59.5509%; cost x2 total return 55.8009%; annualized volatility 1.3287%; Sharpe 7.0355; OOS Sharpe 11.5406; complete cycles 15; max drawdown 0.9124%.
 - Blockers: M1B failed validation because complete cycles 15 < 20; strategy is not eligible for M2.
 - Next action: Review corrected PR #5 report and decide whether to merge it as a truthful failed_validation artifact.
+
+## 2026-07-09 - M1B Failed Validation Merged
+
+- Date UTC: 2026-07-09
+- Task ID: M1B-FAILED-VALIDATION-MERGED
+- Phase: M1B funding-rate-arbitrage research validation
+- Branch: main
+- Commit: 105fd0dc39607100f70210c79f4bfe5f7413e479
+- PR: #5 merged
+- Request summary: Merge PR #5 as truthful M1B failed_validation artifact and record final decision.
+- Completed: M1B final status failed_validation recorded; metrics methodology fixed; PR #5 merged.
+- Not completed: No M2; no live/paper/API/trading; no execution/live.
+- Validation: M0/M1A/M1B/M1F/Project Validate success before merge; project validation pass after final record.
+- Decision: M1B funding-rate-arbitrage is not eligible for M2 because complete cycles 15 < 20.
+- Blockers: No strategy is currently eligible for M2. Future work requires explicit approval.
+- Next action: Post-M1B review only.

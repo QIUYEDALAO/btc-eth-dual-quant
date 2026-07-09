@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T17:20:20Z"
-current_phase: M1B funding-rate-arbitrage research validation
-current_status: m1b_numerical_failed_validation_pending_review
+last_updated_utc: "2026-07-09T17:30:48Z"
+current_phase: post-M1B review
+current_status: m1b_failed_validation_recorded
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -17,20 +17,15 @@ completed_milestones:
     status: accepted_as_feasibility_lab
     evidence: reports/m1/M1F_FINAL_ACCEPTANCE.md
     tag: m1f-freqtrade-feasibility-accepted-v0.3.0
+  - phase: M1B funding-rate-arbitrage research validation
+    status: failed_validation
+    evidence: reports/m1/M1B_FINAL_DECISION.md
+    tag: m1b-funding-failed-validation-v0.5.0
 open_work:
-  - id: PR-5
-    phase: M1B
-    title: Implement M1B funding arbitrage offline backtest
-    branch: m1b-funding-arbitrage-offline-backtest
-    status: open_under_review
-    url: https://github.com/QIUYEDALAO/btc-eth-dual-quant/pull/5
-    head_sha: 3e0fe83b18dbec562458fb999ab2806c45d2a186
-    current_finding: "Conclusion B accepted; M1B numerical report regenerated using time-indexed equity metrics with final status failed_validation."
-    blocker: "M1B failed validation; review whether to merge as truthful failed validation artifact. No M2."
-  - id: M1B-NUMERICAL-REPORT
-    phase: M1B
-    status: generated_failed_validation
-    blocker: "Review the corrected numerical report; do not promote M1B to M2 because the complete cycle-count gate failed."
+  - id: POST-M1B
+    phase: post-M1B review
+    status: pending
+    blocker: "No strategy is currently eligible for M2. Future work requires explicit approval."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -44,13 +39,11 @@ active_decisions:
     decision: Live trading and paper trading with real API are not allowed.
     status: active
 allowed_next_work:
-  - Review the corrected M1B numerical failed_validation report and decide whether to merge PR #5 as truthful failed validation artifact.
-  - Keep PR #5 open until numerical report and suitability conclusion are reviewed.
-  - Keep all work offline and public-data only.
+  - Review M1B failed_validation result.
+  - Decide whether to stop, run diagnostics, or design external arbitrage coordinator.
   - Do not enter M2.
   - Do not use API keys.
   - Do not run live or paper trading.
-  - Keep Freqtrade as research/UI/futures-leg smoke framework, not native funding-arbitrage execution engine.
 prohibited:
   - live trading
   - paper trading with real API
@@ -83,20 +76,24 @@ latest_reports:
     status: accepted_as_feasibility_lab
   - path: reports/m1/M1B_FUNDING_ARBITRAGE_BACKTEST_REPORT.md
     phase: M1B
-    status: exists_on_open_pr5_corrected_numerical_failed_validation_not_on_main
+    status: failed_validation
   - path: reports/m1/M1B_DECISION.md
     phase: M1B
-    status: exists_on_open_pr5_conclusion_b_accepted_corrected_numerical_failed_validation
+    status: failed_validation
   - path: reports/m1/M1B_FREQTRADE_FUNDING_BACKTEST_SUITABILITY.md
     phase: M1B
-    status: exists_on_open_pr5_conclusion_b_accepted_not_on_main
+    status: conclusion_b_accepted
   - path: reports/m1/M1B_DATA_RUN_PROVENANCE.md
     phase: M1B
-    status: exists_on_open_pr5_public_data_provenance
+    status: public_data_provenance
+  - path: reports/m1/M1B_FINAL_DECISION.md
+    phase: M1B
+    status: failed_validation
 latest_tags:
   - m0-data-run-accepted-v0.1.4
   - m1a-trend-failed-validation-v0.2.0
   - m1f-freqtrade-feasibility-accepted-v0.3.0
+  - m1b-funding-failed-validation-v0.5.0
 latest_merged_prs:
   - number: 1
     title: Harden M0 data-run validation and reports
@@ -110,6 +107,9 @@ latest_merged_prs:
   - number: 4
     title: Deploy Freqtrade feasibility lab
     merged_at_utc: "2026-07-09T13:45:31Z"
+  - number: 5
+    title: Implement M1B funding arbitrage offline backtest
+    merged_at_utc: "2026-07-09T17:30:06Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

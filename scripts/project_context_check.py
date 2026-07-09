@@ -76,12 +76,12 @@ def main() -> int:
             failures.append(f"required file missing: {rel_path}")
 
     next_action_text = (ROOT / "NEXT_ACTION.md").read_text(encoding="utf-8") if (ROOT / "NEXT_ACTION.md").exists() else ""
-    for required in ("M1B numerical", "public data", "Do not enter M2"):
+    for required in ("M1B failed_validation", "Do not enter M2"):
         if required not in next_action_text:
             failures.append(f"NEXT_ACTION.md must contain: {required}")
 
     ledger_text = (ROOT / "PROJECT_LEDGER.md").read_text(encoding="utf-8") if (ROOT / "PROJECT_LEDGER.md").exists() else ""
-    for required in ("PR #5 Suitability Conclusion B Accepted", "Conclusion B accepted"):
+    for required in ("PR #5 Suitability Conclusion B Accepted", "M1B Failed Validation Merged"):
         if required not in ledger_text:
             failures.append(f"PROJECT_LEDGER.md must contain: {required}")
 
@@ -92,17 +92,18 @@ def main() -> int:
         failures.append("AGENTS.md must mention PROJECT_LEDGER.md")
 
     allowed_next_work = [str(item) for item in state.get("allowed_next_work", [])]
-    if not any("M1B numerical" in item for item in allowed_next_work):
-        failures.append("PROJECT_STATE.yaml allowed_next_work must include M1B numerical")
+    if not any("M1B failed_validation" in item for item in allowed_next_work):
+        failures.append("PROJECT_STATE.yaml allowed_next_work must include M1B failed_validation")
 
     current_status = str(state.get("current_status", ""))
     if not (
         "pr5_suitability_conclusion_b_accepted" in current_status
         or "m1b_numerical_failed_validation_pending_review" in current_status
+        or "m1b_failed_validation_recorded" in current_status
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
-    if "numerical" not in current_status:
-        failures.append("PROJECT_STATE.yaml current_status must include numerical")
+    if "m1b" not in current_status:
+        failures.append("PROJECT_STATE.yaml current_status must include m1b")
 
     prohibited = {str(item) for item in state.get("prohibited", [])}
     missing_prohibited = sorted(REQUIRED_PROHIBITED - prohibited)
