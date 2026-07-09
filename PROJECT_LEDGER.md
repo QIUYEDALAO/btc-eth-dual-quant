@@ -343,3 +343,22 @@ private exchange responses here.
 - Blockers: The real 1h audit still has unexplained spot differences and unavailable hosted futures REST evidence.
 - Next action: User reviews the written specification; after approval, create the implementation plan without weakening validation thresholds.
 - Guardrails: Public unauthenticated data only; no API keys, private smoke, VPN/proxy bypass, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M0 Multi-Network Dual-Source Evidence Completed Blocked
+
+- Date UTC: 2026-07-09T22:13:36Z
+- Task ID: M0-DUAL-SOURCE-AUDIT-EVIDENCE
+- Phase: M0 audit revalidation
+- Branch: codex/m0-dual-source-audit-unblock
+- Commit: recorded in the branch history for this implementation
+- PR: not opened at evidence-record time
+- Request summary: Implement and run the approved multi-network, evidence-first official public REST/ZIP audit locally and on the approved remote node.
+- Completed: Strict Decimal/timestamp comparison, append-only ignored raw evidence, sanitized JSON/Markdown evidence, fixture tests, manual public workflow, local full-history audit, remote futures audit, and multi-node aggregation.
+- Validation: 95 repository tests passed; M0 validation PASS=6 FAIL=0 before final project-context update.
+- Evidence: `reports/m0/M0_DUAL_SOURCE_AUDIT_DIAGNOSTICS.md` and `reports/m0/M0_AUDIT_REVALIDATION_REPORT.md`.
+- Spot result: BTCUSDT had 14 field revisions and one timestamp mismatch across two blocked scopes; ETHUSDT had the same counts. The affected UTC windows are 2020-12-21T13:00Z/14:00Z and 2021-04-23T01:00Z. All other selected spot scopes passed exact comparison.
+- Futures result: Both compliant execution nodes could read official ZIP profiles, but official futures REST remained network blocked; no ZIP-only result was treated as pass.
+- Decision: M0 infrastructure remains accepted, while M0 audit remains `audit_revalidation_required`. M1A and M1B remain `failed_validation`; M2 remains prohibited.
+- Not completed: No official source-owner resolution for historical spot revisions and no compliant node with working official futures REST evidence.
+- Next action: Seek official source clarification or another compliant public network. Do not use third-party substitution, VPN/proxy bypass, threshold reduction, or ZIP-only acceptance.
+- Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.

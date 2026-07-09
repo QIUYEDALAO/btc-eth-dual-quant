@@ -7,7 +7,7 @@ Implement the approved Freqtrade-first hardening sequence:
 3. Pin and validate Freqtrade as the primary research framework: completed in PR #10.
 4. Revalidate M1B with strict 1-hour event-time semantics: completed in PR #11; result remains `failed_validation`.
 
-Immediate action: review `docs/superpowers/specs/2026-07-10-m0-dual-source-audit-unblock-design.md`. After explicit approval of the written specification, prepare a detailed implementation plan for the multi-network, evidence-first public audit. Do not begin implementation before that review gate. The audit must explain the spot ZIP/REST differences and obtain compliant official futures REST/ZIP evidence without private API access or region-bypass techniques.
+Immediate action: the multi-network, evidence-first audit implementation is complete, but its real gate remains blocked. Local and approved remote nodes both read official futures ZIP data but could not reach official futures REST. Exact spot comparison found synchronized BTCUSDT/ETHUSDT source revisions at `2020-12-21T13:00Z` and `2021-04-23T01:00Z`, plus a ZIP-only `2020-12-21T14:00Z` row for each symbol. Future work may seek official source-owner clarification or use another compliant network for official futures REST; it must not use a proxy/VPN bypass, third-party substitution, ZIP-only acceptance, or weaker comparison rules.
 
 Rules:
 

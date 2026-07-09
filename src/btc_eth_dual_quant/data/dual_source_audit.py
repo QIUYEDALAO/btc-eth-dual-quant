@@ -8,6 +8,7 @@ to the CLI orchestration layer.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from typing import Any, Iterable, Mapping
 import re
@@ -491,6 +492,12 @@ def _escape(value: Any) -> str:
     return str(value).replace("|", "\\|").replace("\n", " ")
 
 
+def _utc_iso(timestamp_ms: int | None) -> str:
+    if timestamp_ms is None:
+        return "n/a"
+    return datetime.fromtimestamp(timestamp_ms / 1000, timezone.utc).isoformat(timespec="seconds")
+
+
 def render_diagnostics_report(runs: Iterable[AuditRunEvidence]) -> str:
     run_list = list(runs)
     plans = _merge_plans(plan for run in run_list for plan in run.plans)
@@ -554,15 +561,15 @@ def render_diagnostics_report(runs: Iterable[AuditRunEvidence]) -> str:
             "",
             "## Classified Differences",
             "",
-            "| Node | Dataset | Symbol | Month | Classification | Open time ms | Field | ZIP value | REST value | Note |",
-            "| --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- |",
+            "| Node | Dataset | Symbol | Month | Classification | Open time UTC | Field | ZIP value | REST value | Note |",
+            "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
         ]
     )
     if visible_differences:
         for label, plan, item in visible_differences:
             lines.append(
                 f"| `{label}` | `{plan.dataset}` | `{plan.symbol}` | `{plan.month}` | "
-                f"`{item.classification}` | {item.open_time if item.open_time is not None else 'n/a'} | "
+                f"`{item.classification}` | `{_utc_iso(item.open_time)}` | "
                 f"`{_escape(item.field)}` | `{_escape(item.zip_value)}` | `{_escape(item.rest_value)}` | "
                 f"{_escape(item.note)} |"
             )
@@ -633,29 +640,52 @@ def render_revalidation_report(runs: Iterable[AuditRunEvidence]) -> str:
         )
 
     blocking_differences = [
-        (scope.plan, difference)
-        for scope in scopes
+        (run.execution_label, scope.plan, difference)
+        for run in run_list
+        for scope in run.scopes
         for difference in scope.differences
-        if difference.classification in BLOCKING_CLASSIFICATIONS
+        if difference.classification in {"source_revision", "timestamp_mismatch", "invalid_ohlcv"}
     ]
     rows.extend(
         [
             "",
             "## Blocking Evidence",
             "",
-            "| Dataset | Symbol | Month | Classification | Open time ms | Field | ZIP value | REST value | Note |",
-            "| --- | --- | --- | --- | ---: | --- | --- | --- | --- |",
+            "| Node | Dataset | Symbol | Month | Classification | Open time UTC | Field | ZIP value | REST value | Note |",
+            "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
         ]
     )
     if blocking_differences:
-        for plan, item in blocking_differences:
+        for label, plan, item in blocking_differences:
             rows.append(
-                f"| `{plan.dataset}` | `{plan.symbol}` | `{plan.month}` | `{item.classification}` | "
-                f"{item.open_time if item.open_time is not None else 'n/a'} | `{_escape(item.field)}` | "
+                f"| `{label}` | `{plan.dataset}` | `{plan.symbol}` | `{plan.month}` | `{item.classification}` | "
+                f"`{_utc_iso(item.open_time)}` | `{_escape(item.field)}` | "
                 f"`{_escape(item.zip_value)}` | `{_escape(item.rest_value)}` | {_escape(item.note)} |"
             )
     else:
-        rows.append("| none | none | none | none | n/a | none | none | none | No blocking evidence. |")
+        rows.append("| none | none | none | none | none | n/a | none | none | none | No blocking data difference. |")
+
+    rows.extend(
+        [
+            "",
+            "## Source Availability Blockers",
+            "",
+            "| Node | Dataset | Symbol | Error category | Affected scopes |",
+            "| --- | --- | --- | --- | ---: |",
+        ]
+    )
+    availability: dict[tuple[str, str, str, str], int] = {}
+    for run in run_list:
+        for scope in run.scopes:
+            if not (scope.classification_counts["network_blocked"] or scope.classification_counts["zip_unavailable"]):
+                continue
+            key = (run.execution_label, scope.plan.dataset, scope.plan.symbol, scope.error_category)
+            availability[key] = availability.get(key, 0) + 1
+    if availability:
+        for (label, dataset, symbol, category), count in sorted(availability.items()):
+            rows.append(f"| `{label}` | `{dataset}` | `{symbol}` | `{category}` | {count} |")
+    else:
+        rows.append("| none | none | none | none | 0 |")
 
     rows.extend(["", "## Required Gate", "", f"- Status: {'pass' if gate.passed else 'blocked'}"])
     if gate.blockers:
