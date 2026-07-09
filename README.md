@@ -27,7 +27,8 @@ and `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md`.
 - M1A trend: failed_validation.
 - M1B funding arbitrage: failed_validation; historical numerical evidence is
   pending event-time revalidation.
-- Freqtrade Lab: accepted only as a research/backtest/WebUI framework.
+- Freqtrade: primary single-leg research/backtest/WebUI framework, pinned to
+  official release `2026.6` and an immutable image digest.
 - M2, live trading, paper trading with real API, order placement, cancellation,
   and `execution/live`: prohibited.
 
@@ -40,3 +41,8 @@ bash scripts/project_validate.sh
 ```
 
 No validation command requires an API key or private exchange data.
+
+The approved Freqtrade research entrypoint is
+`freqtrade_lab/scripts/ft_research.sh`. It exposes only public-data download,
+data listing, backtesting, lookahead analysis, recursive analysis, and a
+local-only WebUI. The repository intentionally provides no trading runner.

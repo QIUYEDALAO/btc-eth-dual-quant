@@ -1,21 +1,23 @@
 # Freqtrade Lab
 
-This directory is a local feasibility lab for evaluating Freqtrade as an
-external framework for research, backtesting, dry-run tooling, WebUI hosting,
-and strategy-host experiments.
+This directory is the project's primary framework for single-leg public-data
+research, backtesting, time-series diagnostics, and local-only WebUI access.
 
 It is not a live-trading deployment. Do not add real exchange credentials, do
 not enable exchange trading permissions, and do not expose services publicly.
 
 ## Scope
 
-- Stage: M1F Freqtrade feasibility deployment.
-- Uses the upstream official Docker image: `freqtradeorg/freqtrade:stable`.
+- Stage: Freqtrade primary-framework hardening.
+- Uses the upstream official Docker image pinned to release and digest:
+  `freqtradeorg/freqtrade:2026.6@sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6`.
 - Upstream repository: https://github.com/freqtrade/freqtrade
 - Default Docker command is `version`, not a trading runner.
 - The example config is local dry-run/backtest oriented and contains no API
   credentials.
-- M1A trend strategy is ported only as a failed-validation reproduction.
+- `runtime-manifest.json` is the sanitized runtime/provenance contract.
+- M1A trend strategy is frozen as a historical failed-validation reproduction.
+- New single-leg strategy research belongs only in `user_data/strategies/`.
 
 ## Local Commands
 
@@ -25,14 +27,17 @@ static config validation only.
 ```bash
 cd freqtrade_lab
 bash scripts/ft_pull.sh
-bash scripts/ft_create_userdir.sh
-bash scripts/ft_validate_config.sh
-bash scripts/ft_download_spot_data.sh
-bash scripts/ft_backtest_m1a_trend.sh
-bash scripts/ft_check_futures_capability.sh
+bash scripts/ft_verify_runtime.sh
+bash scripts/ft_research.sh download-data --help
+bash scripts/ft_research.sh list-data --help
+bash scripts/ft_research.sh backtesting --help
+bash scripts/ft_research.sh lookahead-analysis --help
+bash scripts/ft_research.sh recursive-analysis --help
+bash scripts/ft_research.sh webserver
 ```
 
-The repository CI does not run Docker and does not access the network.
+Normal pull-request CI is static and does not access public market data. The
+manual public-data smoke workflow uses no secrets and uploads no runtime data.
 
 ## 中文快速入口
 
@@ -40,7 +45,7 @@ The repository CI does not run Docker and does not access the network.
 - 我想确认安全边界，看 `安全操作清单.md`。
 - 我想启动 WebUI，本机先 SSH tunnel，再执行 `bash scripts/ft_webui_local.sh`。
 - 我想停止 WebUI，执行 `bash scripts/ft_webui_stop.sh`。
-- 我想回测，执行 `bash scripts/ft_backtest_m1a_trend.sh`。
+- 我想回测，执行 `bash scripts/ft_research.sh backtesting ...`。
 - 我想看部署结论，看 `../reports/m1/M1F_中文验收摘要.md`。
 
 ## WebUI Boundary

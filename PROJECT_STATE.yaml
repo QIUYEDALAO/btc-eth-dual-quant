@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T20:05:00Z"
+last_updated_utc: "2026-07-09T20:23:04Z"
 current_phase: post-M1B architecture hardening
 current_status: freqtrade_first_revalidation_required_no_m2
 completed_milestones:
@@ -25,18 +25,15 @@ completed_milestones:
     evidence: reports/m1/M1B_FINAL_DECISION.md
     tag: m1b-funding-failed-validation-v0.5.0
 open_work:
-  - id: M0-AUDIT-CORRECTNESS
+  - id: M0-AUDIT-EVIDENCE-BLOCKER
     phase: M0 audit revalidation
-    status: in_progress
-    branch: codex/m0-audit-correctness-hardening
-    pr: 9
-    initial_sha: 021bb19
+    status: blocked
     blocker: "Real 1h audit remains blocked: futures REST returned HTTP 451 on the hosted runner, and spot ZIP/REST evidence contains 6/7 field differences plus one missing timestamp per symbol."
   - id: FREQTRADE-PRIMARY-HARDENING
     phase: Freqtrade primary framework hardening
-    status: pending
+    status: in_progress
     branch: codex/freqtrade-primary-framework-hardening
-    blocker: "Freqtrade image and runtime provenance are not yet immutable."
+    blocker: "Implementation and VPS public smoke pass locally; PR review and CI are pending."
   - id: M1B-EVENT-TIME-REVALIDATION
     phase: M1B event-time revalidation
     status: pending
@@ -63,8 +60,8 @@ active_decisions:
     status: active
     evidence: docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md
 allowed_next_work:
-  - Complete Freqtrade-first architecture governance.
-  - Revalidate M0 audit correctness without private API access.
+  - Freqtrade-first architecture governance completed in PR #8.
+  - M0 correctness hardening completed in PR #9; audit evidence remains blocked and may be investigated without private API access.
   - Pin and validate Freqtrade as the primary research framework.
   - Revalidate M1B event-time accounting offline with public data only.
   - Diagnostics and revalidation must not lower validation thresholds.
@@ -114,6 +111,14 @@ latest_reports:
     phase: M1F
     status: accepted_as_feasibility_lab
     status_marker: "M1F final status: accepted_as_feasibility_lab"
+  - path: reports/m1/FREQTRADE_PRIMARY_FRAMEWORK_HARDENING.md
+    phase: Freqtrade
+    status: pass
+    status_marker: "Status: pass"
+  - path: reports/m1/FREQTRADE_M0_DATA_PROVENANCE.md
+    phase: Freqtrade
+    status: pass
+    status_marker: "Status: pass"
   - path: reports/m1/M1B_FUNDING_ARBITRAGE_BACKTEST_REPORT.md
     phase: M1B
     status: failed_validation
@@ -182,6 +187,9 @@ latest_merged_prs:
   - number: 8
     title: Adopt Freqtrade-first architecture governance
     merged_at_utc: "2026-07-09T19:03:27Z"
+  - number: 9
+    title: Harden M0 public audit correctness
+    merged_at_utc: "2026-07-09T20:07:25Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

@@ -2,21 +2,27 @@
 
 The project no longer prioritizes building a full trading bot from scratch.
 M0 and M1A remain valuable as data, validation, and risk-control baselines.
-Freqtrade is now being evaluated as a candidate framework for backtesting,
-dry-run tooling, WebUI hosting, and strategy hosting.
+Freqtrade is now the primary framework for public single-leg data download,
+backtesting, strategy diagnostics, and local-only WebUI hosting. M0 remains the
+audit data authority, while Python keeps only strict time-semantics validation
+and offline two-leg accounting.
 
 ## Current Stage
 
-- Current phase: M1F Freqtrade feasibility.
+- Current phase: post-M1B Freqtrade-first hardening.
 - This is not M2.
 - M1A trend validation is complete and failed validation.
 - The trend leg is not eligible for live trading, paper trading, or M2.
 
-## Allowed Next Work
+## Runtime Contract
 
-The next permitted evaluation is whether Freqtrade can support the funding-rate
-arbitrage concept safely and faithfully enough for a later backtest-validation
-stage.
+- Official image: `freqtradeorg/freqtrade:2026.6` pinned by digest in Compose.
+- Sanitized runtime metadata: `freqtrade_lab/runtime-manifest.json`.
+- Approved research entry: `freqtrade_lab/scripts/ft_research.sh`.
+- Freqtrade cache is disposable; M0 is authoritative when provenance differs.
+- The custom M1A engine is deprecated and frozen.
+- Freqtrade does not natively replace offline spot-long plus perpetual-short
+  portfolio accounting.
 
 ## Hard Boundaries
 
