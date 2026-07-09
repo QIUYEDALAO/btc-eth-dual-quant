@@ -421,3 +421,18 @@ private exchange responses here.
 - Decision: No strategy is eligible for M2. The next primary task is a design review for one genuinely new fixed Freqtrade single-leg strategy hypothesis; no strategy code is approved yet.
 - Evidence: `reports/m1/STRATEGY_FAILURE_DIAGNOSTICS.md`.
 - Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, parameter rescue, simulated matching, or execution/live.
+
+## 2026-07-10 - End-to-End Roadmap P0 Started
+
+- Date UTC: 2026-07-10T00:05:00Z
+- Task ID: END-TO-END-P0
+- Phase: P0 end-to-end governance
+- Branch: codex/strategy-failure-diagnostics
+- Commit: pending P0 commit
+- PR: #14 open
+- Request summary: Establish the complete Freqtrade-first P0-P8 lifecycle and execute all authorized work in strict dependency order.
+- Completed so far: Approved master roadmap, implementation plan, and canonical `PROJECT_EXECUTION_CHECKLIST.md` created; M1C candidate and conservative gates fixed.
+- Current task: P0-05 local validation, GitHub checks, and merge.
+- Decision: P0-P4 are authorized sequentially. P5-P8 require future explicit approvals and remain blocked.
+- Next action: Validate, update PR #14, wait for CI, and merge P0 before creating the P1 branch.
+- Guardrails: No M1C strategy code before P0 merge; no API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
