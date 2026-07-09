@@ -1,0 +1,13 @@
+[Unit]
+Description=Freqtrade Lab Webserver Research Mode
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/btc-eth-dual-quant/freqtrade_lab
+ExecStart=/usr/bin/docker compose run --rm -p 127.0.0.1:8080:8080 freqtrade webserver --config user_data/configs/config.dryrun.example.json
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

@@ -1,6 +1,6 @@
 # M1F Freqtrade Feasibility Report
 
-Generated UTC: 2026-07-09T00:00:00Z
+Generated UTC: 2026-07-09T05:45:00Z
 
 ## Status
 
@@ -38,6 +38,24 @@ Generated UTC: 2026-07-09T00:00:00Z
 
 - Can support spot long-only trend: yes
 - Can directly support spot-long + perp-short funding arbitrage in one bot: unknown
+
+## VPS Deployment
+
+- VPS sync script: pass
+- Remote docker install script: pass
+- Remote project validation: pass
+- Remote docker smoke: pass
+- Freqtrade image pull: pass
+- Freqtrade show-config: pass
+- Public data download: pass
+- Freqtrade M1A backtest smoke: pass
+- Smoke timerange: 20240101-
+- Public market-data endpoint override: `https://data-api.binance.vision/api/v3`
+- CCXT market loading: spot-only
+- WebUI exposed publicly: no
+- API key used: no
+- Live trading enabled: no
+- Runtime artifacts committed: no
 
 ## M1A Strategy Port Notes
 
