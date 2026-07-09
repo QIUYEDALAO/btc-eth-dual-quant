@@ -44,7 +44,7 @@ JOBS = [
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="M0 scheduler dry-run")
     parser.add_argument("--log-path", default="storage/logs/m0_scheduler_dry_run.jsonl")
-    parser.add_argument("--report-path", default="reports/m0/M0_DATA_RUN_REPORT.md")
+    parser.add_argument("--report-path", default="reports/m0/M0_SCHEDULER_DRY_RUN_REPORT.md")
     return parser.parse_args()
 
 

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import inspect
 import json
+import sys
 import tempfile
 import unittest
 from decimal import Decimal
@@ -33,6 +34,13 @@ from btc_eth_dual_quant.data.storage import AppendOnlyRawStore
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+
+from m0_report import DatasetRun, M0RunReport, parse_report, write_report
+from m0_anomaly_review import CROSS_ENDPOINT_MARKET_MOVE_NOTE, review_anomaly, write_review
+from m0_anomaly_review import ReviewedAnomaly
+import m0_report_merge
+from m0_smoke_readonly_private import write_private_status
 
 
 class RegistryTests(unittest.TestCase):
@@ -228,6 +236,451 @@ class M0GuardrailTests(unittest.TestCase):
         ]
         for literal in forbidden_literals:
             self.assertNotIn(literal, source)
+
+
+class M0ReportTests(unittest.TestCase):
+    def _public_full_history_runs(self) -> list[DatasetRun]:
+        runs: list[DatasetRun] = []
+        for symbol in ("BTCUSDT", "ETHUSDT"):
+            for name in (
+                "spot_klines",
+                "um_futures_klines",
+                "mark_price_klines",
+                "index_price_klines",
+                "premium_index_klines",
+                "funding_rate_history",
+            ):
+                runs.append(
+                    DatasetRun(
+                        name=f"{name}:{symbol}",
+                        interval="1d",
+                        rows=1,
+                        start_ms=0,
+                        end_ms=86_399_999,
+                        zip_rest_differences=0,
+                        funding_interval_warnings="not_applicable",
+                        archive_status="not_applicable",
+                        commission_status="not_applicable",
+                    )
+                )
+            runs.append(
+                DatasetRun(
+                    name=f"funding_interval_{symbol}",
+                    interval="inferred",
+                    rows=1,
+                    start_ms=0,
+                    end_ms=0,
+                    zip_rest_differences="not_applicable",
+                    funding_interval_warnings=0,
+                    archive_status="not_applicable",
+                    commission_status="not_applicable",
+                )
+            )
+            runs.append(
+                DatasetRun(
+                    name=f"open_interest:{symbol}",
+                    interval="1d",
+                    rows=1,
+                    start_ms=0,
+                    end_ms=0,
+                    zip_rest_differences="not_applicable",
+                    funding_interval_warnings="not_applicable",
+                    archive_status="pass_retention_limited",
+                    commission_status="not_applicable",
+                )
+            )
+        return runs
+
+    def test_report_defaults_do_not_share_final_data_run_path(self) -> None:
+        self.assertIn('default="reports/m0/M0_PUBLIC_RUN_REPORT.md"', (ROOT / "scripts" / "m0_backfill_public.py").read_text())
+        self.assertIn(
+            'default="reports/m0/M0_PRIVATE_SMOKE_REPORT.local.md"',
+            (ROOT / "scripts" / "m0_smoke_readonly_private.py").read_text(),
+        )
+        self.assertIn(
+            'default="reports/m0/M0_SCHEDULER_DRY_RUN_REPORT.md"',
+            (ROOT / "scripts" / "m0_scheduler_dry_run.py").read_text(),
+        )
+
+    def test_merge_hides_private_details_and_keeps_m1_gate_inputs(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            public = root / "public.md"
+            scheduler = root / "scheduler.md"
+            private = root / "private.local.md"
+            output = root / "merged.md"
+            write_report(
+                M0RunReport(data_start="2019-09-01T00:00:00+00:00", data_end="2026-07-09T00:00:00+00:00", datasets=self._public_full_history_runs()),
+                public,
+            )
+            write_report(
+                M0RunReport(
+                    data_start="scheduler_dry_run",
+                    data_end="2026-07-09T00:00:00+00:00",
+                    scheduler_dry_run=["daily 00:10 UTC oi_daily_archive"],
+                    scheduler_dry_run_complete=True,
+                ),
+                scheduler,
+            )
+            write_report(
+                M0RunReport(
+                    data_start="private_smoke",
+                    data_end="private_smoke",
+                    private_smoke=["BTCUSDT spot commission taker=0.001 maker=0.001"],
+                    private_smoke_complete=True,
+                ),
+                private,
+            )
+            old_argv = sys.argv
+            try:
+                sys.argv = [
+                    "m0_report_merge.py",
+                    "--public-report",
+                    str(public),
+                    "--scheduler-report",
+                    str(scheduler),
+                    "--anomaly-review",
+                    str(root / "missing_review.md"),
+                    "--private-status-file",
+                    str(root / "missing_status.md"),
+                    "--private-report",
+                    str(private),
+                    "--output",
+                    str(output),
+                ]
+                self.assertEqual(m0_report_merge.main(), 0)
+            finally:
+                sys.argv = old_argv
+
+            text = output.read_text(encoding="utf-8")
+            self.assertIn("## Public Full-history Pull Summary", text)
+            self.assertIn("- status=pass", text)
+            self.assertNotIn("spot commission taker", text)
+            self.assertIn("- Public full-history: `pass`", text)
+            self.assertIn("- Scheduler dry-run: `pass`", text)
+            self.assertIn("- Private read-only smoke: `pass`", text)
+            self.assertIn("- Required checks: `pass`", text)
+            self.assertIn("- Zero unexplained anomalies: `pass`", text)
+            self.assertIn("- Status: `pass`", text)
+            parsed = parse_report(output)
+            self.assertTrue(parsed.public_full_history_complete)
+            self.assertTrue(parsed.scheduler_dry_run_complete)
+            self.assertTrue(parsed.private_smoke_complete)
+
+    def test_private_status_file_is_sanitized_and_merge_reads_it(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            public = root / "public.md"
+            scheduler = root / "scheduler.md"
+            status = root / "private_status.md"
+            output = root / "merged.md"
+            write_report(
+                M0RunReport(data_start="2019-09-01", data_end="2026-07-09", datasets=self._public_full_history_runs()),
+                public,
+            )
+            write_report(
+                M0RunReport(
+                    data_start="scheduler_dry_run",
+                    data_end="2026-07-09",
+                    scheduler_dry_run=["daily 00:10 UTC oi_daily_archive"],
+                    scheduler_dry_run_complete=True,
+                ),
+                scheduler,
+            )
+            write_private_status(
+                status,
+                "not_run",
+                ["GET /api/v3/account/commission", "GET /fapi/v1/commissionRate", "GET /fapi/v1/income"],
+                0,
+                0,
+            )
+            status_text = status.read_text(encoding="utf-8")
+            allowed_prefixes = {
+                "# M0 Private Smoke Status",
+                "",
+                "run_status:",
+                "endpoints_checked:",
+                "- GET /api/v3/account/commission",
+                "- GET /fapi/v1/commissionRate",
+                "- GET /fapi/v1/income",
+                "rows_count:",
+                "missing_fields_count:",
+                "generated_utc:",
+            }
+            for line in status_text.splitlines():
+                self.assertTrue(any(line.startswith(prefix) for prefix in allowed_prefixes), line)
+            forbidden = ["API_KEY", "API_SECRET", "secret", "balance", "tranId", "payload", "income="]
+            for item in forbidden:
+                self.assertNotIn(item, status_text)
+
+            old_argv = sys.argv
+            try:
+                sys.argv = [
+                    "m0_report_merge.py",
+                    "--public",
+                    str(public),
+                    "--scheduler",
+                    str(scheduler),
+                    "--anomaly-review",
+                    str(root / "missing_review.md"),
+                    "--private-status-file",
+                    str(status),
+                    "--out",
+                    str(output),
+                ]
+                self.assertEqual(m0_report_merge.main(), 0)
+            finally:
+                sys.argv = old_argv
+            merged = output.read_text(encoding="utf-8")
+            self.assertIn("- status=not_run", merged)
+            self.assertIn("- Private read-only smoke: `blocked`", merged)
+
+    def test_merge_accepts_multiple_public_reports_and_deduplicates_by_dataset(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            spot = root / "spot.md"
+            futures = root / "futures.md"
+            scheduler = root / "scheduler.md"
+            output = root / "merged.md"
+            spot_runs = [
+                DatasetRun(
+                    name=f"spot_klines:{symbol}",
+                    interval="1d",
+                    rows=100,
+                    start_ms=0,
+                    end_ms=99,
+                    zip_rest_differences=0,
+                    funding_interval_warnings="not_applicable",
+                    archive_status="not_applicable",
+                    commission_status="not_applicable",
+                )
+                for symbol in ("BTCUSDT", "ETHUSDT")
+            ]
+            futures_runs = self._public_full_history_runs()
+            for dataset in futures_runs:
+                if dataset.name.startswith("spot_klines:"):
+                    dataset.rows = 10
+            write_report(M0RunReport(data_start="2017-08-17", data_end="2026-07-08", datasets=spot_runs), spot)
+            write_report(M0RunReport(data_start="2019-09-01", data_end="2026-07-08", datasets=futures_runs), futures)
+            write_report(
+                M0RunReport(
+                    data_start="scheduler_dry_run",
+                    data_end="2026-07-09",
+                    scheduler_dry_run=["daily 00:10 UTC oi_daily_archive"],
+                    scheduler_dry_run_complete=True,
+                ),
+                scheduler,
+            )
+            old_argv = sys.argv
+            try:
+                sys.argv = [
+                    "m0_report_merge.py",
+                    "--public",
+                    str(spot),
+                    "--public",
+                    str(futures),
+                    "--scheduler",
+                    str(scheduler),
+                    "--anomaly-review",
+                    str(root / "missing_review.md"),
+                    "--private-status",
+                    "pass",
+                    "--out",
+                    str(output),
+                ]
+                self.assertEqual(m0_report_merge.main(), 0)
+            finally:
+                sys.argv = old_argv
+
+            text = output.read_text(encoding="utf-8")
+            self.assertEqual(text.count("`spot_klines:BTCUSDT`"), 1)
+            self.assertIn("| `spot_klines:BTCUSDT` | `1d` | 100 |", text)
+            self.assertIn("`um_futures_klines:BTCUSDT`", text)
+            self.assertIn("`funding_interval_ETHUSDT`", text)
+            self.assertIn("- Public full-history: `pass`", text)
+
+    def test_anomaly_review_classifies_matching_zip_market_move(self) -> None:
+        row = {
+            "open_time": 0,
+            "open": "100",
+            "high": "140",
+            "low": "90",
+            "close": "120",
+            "volume": "10",
+        }
+        reviewed = review_anomaly(
+            "spot_klines",
+            "BTCUSDT",
+            "1d",
+            row,
+            "amplitude_gt_30pct",
+            "abc123",
+            1,
+            zip_fetcher=lambda *_args: dict(row),
+        )
+        self.assertEqual(reviewed.classification, "explained_market_move")
+        self.assertTrue(reviewed.zip_available)
+        self.assertEqual(reviewed.zip_rest_consistent, "yes")
+
+    def test_anomaly_review_explains_zip_unavailable_with_cross_endpoint_confirmation(self) -> None:
+        row = {
+            "open_time": 1584057600000,
+            "open": "200",
+            "high": "205",
+            "low": "100",
+            "close": "110",
+            "volume": "0",
+        }
+        spot_row = {
+            "open_time": 1584057600000,
+            "open": "200",
+            "high": "206",
+            "low": "99",
+            "close": "111",
+            "volume": "1000",
+        }
+        futures_row = {
+            "open_time": 1584057600000,
+            "open": "201",
+            "high": "207",
+            "low": "98",
+            "close": "112",
+            "volume": "2000",
+        }
+        reviewed = review_anomaly(
+            "index_price_klines",
+            "ETHUSDT",
+            "1d",
+            row,
+            "amplitude_gt_30pct",
+            "abc123",
+            1,
+            zip_fetcher=lambda *_args: None,
+            corroborating_rows={
+                "spot_klines": spot_row,
+                "um_futures_klines": futures_row,
+            },
+        )
+        self.assertEqual(reviewed.classification, "explained_market_move")
+        self.assertFalse(reviewed.zip_available)
+        self.assertEqual(reviewed.zip_rest_consistent, "not_available")
+        self.assertEqual(reviewed.note, CROSS_ENDPOINT_MARKET_MOVE_NOTE)
+
+    def test_anomaly_review_keeps_zip_unavailable_without_corroboration_unresolved(self) -> None:
+        row = {
+            "open_time": 1584057600000,
+            "open": "200",
+            "high": "205",
+            "low": "100",
+            "close": "110",
+            "volume": "0",
+        }
+        spot_row = {
+            "open_time": 1584057600000,
+            "open": "200",
+            "high": "206",
+            "low": "99",
+            "close": "111",
+            "volume": "1000",
+        }
+        reviewed = review_anomaly(
+            "index_price_klines",
+            "ETHUSDT",
+            "1d",
+            row,
+            "amplitude_gt_30pct",
+            "abc123",
+            1,
+            zip_fetcher=lambda *_args: None,
+            corroborating_rows={"spot_klines": spot_row},
+        )
+        self.assertEqual(reviewed.classification, "unresolved")
+        self.assertFalse(reviewed.zip_available)
+        self.assertEqual(reviewed.zip_rest_consistent, "not_available")
+
+    def test_merge_counts_only_unresolved_anomaly_review_as_unexplained(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            public = root / "public.md"
+            scheduler = root / "scheduler.md"
+            review = root / "review.md"
+            output = root / "merged.md"
+            runs = self._public_full_history_runs()
+            runs[0].kline_anomalies = 2
+            runs[0].unexplained = ["kline anomalies pending review: {'amplitude_gt_30pct': 2}"]
+            write_report(M0RunReport(data_start="2019-09-01", data_end="2026-07-09", datasets=runs), public)
+            write_report(
+                M0RunReport(
+                    data_start="scheduler_dry_run",
+                    data_end="2026-07-09",
+                    scheduler_dry_run=["daily 00:10 UTC oi_daily_archive"],
+                    scheduler_dry_run_complete=True,
+                ),
+                scheduler,
+            )
+            write_review(
+                [
+                    ReviewedAnomaly(
+                        dataset="spot_klines",
+                        symbol="BTCUSDT",
+                        open_time_utc="1970-01-01T00:00:00+00:00",
+                        open="100",
+                        high="140",
+                        low="90",
+                        close="120",
+                        volume="10",
+                        amplitude="0.50000000",
+                        reason="amplitude_gt_30pct",
+                        rest_payload_hash="hash1",
+                        zip_available=True,
+                        zip_rest_consistent="yes",
+                        classification="explained_market_move",
+                        note="confirmed",
+                    ),
+                    ReviewedAnomaly(
+                        dataset="spot_klines",
+                        symbol="BTCUSDT",
+                        open_time_utc="1970-01-02T00:00:00+00:00",
+                        open="100",
+                        high="140",
+                        low="90",
+                        close="120",
+                        volume="10",
+                        amplitude="0.50000000",
+                        reason="amplitude_gt_30pct",
+                        rest_payload_hash="hash2",
+                        zip_available=False,
+                        zip_rest_consistent="not_available",
+                        classification="unresolved",
+                        note="missing zip",
+                    ),
+                ],
+                review,
+            )
+            old_argv = sys.argv
+            try:
+                sys.argv = [
+                    "m0_report_merge.py",
+                    "--public-report",
+                    str(public),
+                    "--scheduler-report",
+                    str(scheduler),
+                    "--anomaly-review",
+                    str(review),
+                    "--private-status",
+                    "pass",
+                    "--output",
+                    str(output),
+                ]
+                self.assertEqual(m0_report_merge.main(), 0)
+            finally:
+                sys.argv = old_argv
+
+            text = output.read_text(encoding="utf-8")
+            self.assertIn("explained_market_move=1", text)
+            self.assertIn("unresolved=1", text)
+            self.assertIn("- Zero unexplained anomalies: `blocked`", text)
+            self.assertIn("- Status: `blocked`", text)
 
 
 if __name__ == "__main__":

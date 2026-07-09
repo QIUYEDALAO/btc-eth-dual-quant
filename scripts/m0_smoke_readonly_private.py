@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import os
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -32,7 +33,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--income-limit", type=int, default=100)
     parser.add_argument("--raw-root", default="storage/raw")
     parser.add_argument("--duckdb-path", default="storage/duckdb/m0.duckdb")
-    parser.add_argument("--report-path", default="reports/m0/M0_DATA_RUN_REPORT.md")
+    parser.add_argument("--report-path", default="reports/m0/M0_PRIVATE_SMOKE_REPORT.local.md")
+    parser.add_argument("--status-path", default="reports/m0/M0_PRIVATE_SMOKE_STATUS.md")
     parser.add_argument("--proxy", default=None, help="Optional proxy URL, e.g. http://127.0.0.1:7897")
     parser.add_argument("--dry-run", action="store_true", help="Print plan without signed calls")
     return parser.parse_args()
@@ -56,6 +58,43 @@ def _missing_fields(payload: Any, fields: list[str]) -> list[str]:
         if field not in payload:
             missing.append(field)
     return missing
+
+
+def _generated_utc() -> str:
+    return datetime.now(tz=timezone.utc).isoformat(timespec="seconds")
+
+
+def write_private_status(
+    path: str | Path,
+    run_status: str,
+    endpoints_checked: list[str],
+    rows_count: int,
+    missing_fields_count: int,
+) -> Path:
+    if run_status not in {"not_run", "pass", "fail"}:
+        raise ValueError(f"invalid private smoke run_status: {run_status}")
+    output = Path(path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    lines = [
+        "# M0 Private Smoke Status",
+        "",
+        f"run_status: {run_status}",
+        "endpoints_checked:",
+    ]
+    if endpoints_checked:
+        lines.extend(f"- {endpoint}" for endpoint in endpoints_checked)
+    else:
+        lines.append("- none")
+    lines.extend(
+        [
+            f"rows_count: {rows_count}",
+            f"missing_fields_count: {missing_fields_count}",
+            f"generated_utc: {_generated_utc()}",
+            "",
+        ]
+    )
+    output.write_text("\n".join(lines), encoding="utf-8")
+    return output
 
 
 def main() -> int:
@@ -116,6 +155,20 @@ def main() -> int:
     duckdb = DuckDBLayer(args.duckdb_path)
     duckdb.index_from_store(store, "funding_income")
     duckdb.index_from_store(store, "commissions")
+    endpoints_checked = [
+        "GET /api/v3/account/commission",
+        "GET /fapi/v1/commissionRate",
+        "GET /fapi/v1/income",
+    ]
+    rows_count = len(income_payload) + len(symbols) * 2
+    missing_fields_count = len(income_missing)
+    write_private_status(
+        args.status_path,
+        "pass" if missing_fields_count == 0 else "fail",
+        endpoints_checked,
+        rows_count,
+        missing_fields_count,
+    )
     write_report(
         M0RunReport(
             data_start="private_smoke",
@@ -126,6 +179,7 @@ def main() -> int:
         args.report_path,
     )
     print(f"Wrote report: {args.report_path}")
+    print(f"Wrote sanitized status: {args.status_path}")
     return 0
 
 

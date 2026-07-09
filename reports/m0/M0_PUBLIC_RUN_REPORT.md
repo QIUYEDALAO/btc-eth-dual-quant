@@ -1,6 +1,6 @@
 # M0 Data Run Report
 
-Generated UTC: 2026-07-09T01:59:09+00:00
+Generated UTC: 2026-07-08T23:30:49+00:00
 
 ## Data Range
 
@@ -12,7 +12,6 @@ Generated UTC: 2026-07-09T01:59:09+00:00
 | Dataset | Interval | Rows | Gaps | ZIP/REST Diff | K-line Anomalies | Funding Interval Anomalies | Archive Status | Commission Status |
 |---|---:|---:|---:|---:|---:|---|---|---|
 | `spot_klines:BTCUSDT` | `1d` | 3248 | 0 | not_available_in_smoke | 6 | not_applicable | not_applicable | not_applicable |
-| `spot_klines:ETHUSDT` | `1d` | 3248 | 0 | not_available_in_smoke | 12 | not_applicable | not_applicable | not_applicable |
 | `um_futures_klines:BTCUSDT` | `1d` | 2496 | 0 | not_available_in_smoke | 4 | not_applicable | not_applicable | not_applicable |
 | `mark_price_klines:BTCUSDT` | `1d` | 2390 | 0 | not_available_in_smoke | 3 | not_applicable | not_applicable | not_applicable |
 | `index_price_klines:BTCUSDT` | `1d` | 2390 | 0 | not_available_in_smoke | 3 | not_applicable | not_applicable | not_applicable |
@@ -20,6 +19,7 @@ Generated UTC: 2026-07-09T01:59:09+00:00
 | `funding_rate_history:BTCUSDT` | `funding_period` | 7481 | 0 | not_applicable | 0 | not_applicable | not_applicable | not_applicable |
 | `funding_interval_BTCUSDT` | `inferred` | 7481 | 0 | not_applicable | 0 | 0 | not_applicable | not_applicable |
 | `open_interest:BTCUSDT` | `1d` | 30 | 0 | not_applicable | 0 | not_applicable | pass_retention_limited | not_applicable |
+| `spot_klines:ETHUSDT` | `1d` | 3248 | 0 | not_available_in_smoke | 12 | not_applicable | not_applicable | not_applicable |
 | `um_futures_klines:ETHUSDT` | `1d` | 2416 | 0 | not_available_in_smoke | 7 | not_applicable | not_applicable | not_applicable |
 | `mark_price_klines:ETHUSDT` | `1d` | 2390 | 0 | not_available_in_smoke | 6 | not_applicable | not_applicable | not_applicable |
 | `index_price_klines:ETHUSDT` | `1d` | 2390 | 0 | not_available_in_smoke | 6 | not_applicable | not_applicable | not_applicable |
@@ -30,13 +30,11 @@ Generated UTC: 2026-07-09T01:59:09+00:00
 
 ## Scheduler Dry-run
 
-- daily 00:10 UTC oi_daily_archive dataset=open_interest command='scripts/m0_backfill_public.py --symbols BTCUSDT,ETHUSDT --interval 1d --limit 30 --include-oi --oi-period 1d'
-- daily 00:20 UTC income_daily_archive dataset=funding_income command='scripts/m0_smoke_readonly_private.py --income-limit 100'
-- daily 00:30 UTC commission_daily_refresh dataset=commissions command='scripts/m0_smoke_readonly_private.py --symbols BTCUSDT,ETHUSDT'
+- not_run
 
 ## Private Smoke
 
-- status=not_run
+- not_run
 
 ## Archive Notes
 
@@ -45,25 +43,25 @@ Generated UTC: 2026-07-09T01:59:09+00:00
 
 ## Explained Anomalies
 
-- spot_klines:BTCUSDT: anomaly review classified explained_market_move=6; see `reports/m0/M0_ANOMALY_REVIEW.md`
-- spot_klines:ETHUSDT: anomaly review classified explained_market_move=12; see `reports/m0/M0_ANOMALY_REVIEW.md`
-- um_futures_klines:BTCUSDT: anomaly review classified explained_market_move=4; see `reports/m0/M0_ANOMALY_REVIEW.md`
-- mark_price_klines:BTCUSDT: anomaly review classified explained_market_move=3; see `reports/m0/M0_ANOMALY_REVIEW.md`
-- index_price_klines:BTCUSDT: anomaly review classified explained_market_move=3; see `reports/m0/M0_ANOMALY_REVIEW.md`
-- um_futures_klines:ETHUSDT: anomaly review classified explained_market_move=7; see `reports/m0/M0_ANOMALY_REVIEW.md`
-- mark_price_klines:ETHUSDT: anomaly review classified explained_market_move=6; see `reports/m0/M0_ANOMALY_REVIEW.md`
-- index_price_klines:ETHUSDT: anomaly review classified explained_market_move=6; see `reports/m0/M0_ANOMALY_REVIEW.md`
+- none
 
 ## Unexplained Anomalies
 
-- none
+- spot_klines:BTCUSDT: kline anomalies pending review: {'amplitude_gt_30pct': 6}
+- um_futures_klines:BTCUSDT: kline anomalies pending review: {'amplitude_gt_30pct': 4}
+- mark_price_klines:BTCUSDT: kline anomalies pending review: {'amplitude_gt_30pct': 3}
+- index_price_klines:BTCUSDT: kline anomalies pending review: {'amplitude_gt_30pct': 3}
+- spot_klines:ETHUSDT: kline anomalies pending review: {'amplitude_gt_30pct': 12}
+- um_futures_klines:ETHUSDT: kline anomalies pending review: {'amplitude_gt_30pct': 7}
+- mark_price_klines:ETHUSDT: kline anomalies pending review: {'amplitude_gt_30pct': 6}
+- index_price_klines:ETHUSDT: kline anomalies pending review: {'amplitude_gt_30pct': 6}
 
 ## M1 Gate
 
 - Status: `blocked`
 - Public full-history: `pass`
-- Scheduler dry-run: `pass`
+- Scheduler dry-run: `blocked`
 - Private read-only smoke: `blocked`
 - Required checks: `pass`
-- Zero unexplained anomalies: `pass`
+- Zero unexplained anomalies: `blocked`
 - Rule: M1 may proceed only when public full-history, scheduler dry-run, private read-only smoke, all required checks, and zero unexplained anomalies are all pass.

@@ -74,11 +74,12 @@ class DuckDBLayer:
         if any(sorted(row.keys()) != columns for row in rows):
             raise ValueError("all rows must have identical columns")
         quoted_cols = ", ".join(f'"{column}" VARCHAR' for column in columns)
+        insert_cols = ", ".join(f'"{column}"' for column in columns)
         placeholders = ", ".join("?" for _ in columns)
         with self.connect() as con:
             con.execute(f'CREATE TABLE IF NOT EXISTS "{table}" ({quoted_cols})')
             con.executemany(
-                f'INSERT INTO "{table}" ({", ".join(f"""\"{column}\"""" for column in columns)}) VALUES ({placeholders})',
+                f'INSERT INTO "{table}" ({insert_cols}) VALUES ({placeholders})',
                 [[json.dumps(row[column], ensure_ascii=False, default=str) for column in columns] for row in rows],
             )
         return len(rows)

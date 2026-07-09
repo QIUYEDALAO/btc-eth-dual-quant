@@ -27,3 +27,17 @@ Signed read-only endpoints are supported only for `income`, spot account commiss
 ## Validation And Testing
 
 Unit tests cover registry completeness, enabled M0 datasets, append-only raw writes, funding interval fallback and conflict handling, cost/payback math, quality checks, DuckDB SQL generation boundaries, backtest time semantics, and guardrails that ensure no `execution/live` tree or trading endpoint implementation exists.
+
+## Local Validation Commands
+
+This workspace may keep local dependencies in the ignored `.deps/` directory. The standard local commands are:
+
+```bash
+PYTHONPATH=.deps:src python3 -m unittest discover -s tests -v
+PYTHONPATH=.deps:src python3 -m compileall src scripts
+bash scripts/m0_validate.sh
+```
+
+The system command `python` is not required. If `python` is missing, that is an environment issue rather than an M0 failure; the standard validation entrypoint defaults to `python3` through `${PYTHON:-python3}`.
+
+Code may reference the environment variable names `BINANCE_API_KEY` and `BINANCE_API_SECRET`, and internal field names such as `api_key` and `api_secret`, without that being a secret leak. Real key values are judged by `scripts/m0_secret_scan.py`, which scans git-indexed files for high-confidence secret values, tracked `.env` files, private key blocks, `sk-` tokens, and hardcoded long credential assignments.
