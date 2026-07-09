@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T17:53:53Z"
+last_updated_utc: "2026-07-09T18:25:34Z"
 current_phase: post-M1B review
 current_status: no_strategy_eligible_for_m2
 completed_milestones:
@@ -25,6 +25,9 @@ open_work:
   - id: POST-M1B-REVIEW
     phase: post-M1B review
     status: pending_decision
+    branch: post-m1b-review-and-next-decision
+    pr: 7
+    head_sha: 9cb7be790eb10e68dfc98b95472ce534054c59a5
     blocker: "No strategy is eligible for M2; next work must be diagnostics or design review only."
 active_decisions:
   - id: ADR-0004

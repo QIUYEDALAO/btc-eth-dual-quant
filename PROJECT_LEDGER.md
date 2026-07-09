@@ -174,7 +174,8 @@ private exchange responses here.
 - Task ID: POST-M1B-REVIEW-STARTED
 - Phase: post-M1B review
 - Branch: post-m1b-review-and-next-decision
-- PR: pending
+- Commit: 9cb7be790eb10e68dfc98b95472ce534054c59a5
+- PR: #7 open
 - Completed:
   - M0/M1A/M1F/M1B statuses summarized
   - no-strategy-eligible-for-M2 decision drafted
