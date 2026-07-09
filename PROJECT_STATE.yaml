@@ -1,16 +1,18 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T18:25:34Z"
-current_phase: post-M1B review
-current_status: no_strategy_eligible_for_m2
+last_updated_utc: "2026-07-09T18:57:19Z"
+current_phase: post-M1B architecture hardening
+current_status: freqtrade_first_revalidation_required_no_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
+    audit_status: revalidation_required
     evidence: reports/m0/M0_FINAL_ACCEPTANCE.md
     tag: m0-data-run-accepted-v0.1.4
   - phase: M1A trend backtest validation
     status: failed_validation
+    evidence_status: superseded_pending_revalidation
     evidence: reports/m1/M1A_REVIEW_DECISION.md
     tag: m1a-trend-failed-validation-v0.2.0
   - phase: M1F Freqtrade feasibility lab
@@ -19,16 +21,32 @@ completed_milestones:
     tag: m1f-freqtrade-feasibility-accepted-v0.3.0
   - phase: M1B funding-rate-arbitrage research validation
     status: failed_validation
+    evidence_status: invalidated_pending_event_time_revalidation
     evidence: reports/m1/M1B_FINAL_DECISION.md
     tag: m1b-funding-failed-validation-v0.5.0
 open_work:
-  - id: POST-M1B-REVIEW
-    phase: post-M1B review
-    status: pending_decision
-    branch: post-m1b-review-and-next-decision
-    pr: 7
-    head_sha: 9cb7be790eb10e68dfc98b95472ce534054c59a5
-    blocker: "No strategy is eligible for M2; next work must be diagnostics or design review only."
+  - id: FREQTRADE-FIRST-GOVERNANCE
+    phase: post-M1B architecture hardening
+    status: in_progress
+    branch: codex/freqtrade-first-architecture-governance
+    pr: 8
+    initial_sha: f96a8d2
+    blocker: "No strategy is eligible for M2; architecture hardening must not implement execution."
+  - id: M0-AUDIT-CORRECTNESS
+    phase: M0 audit revalidation
+    status: pending
+    branch: codex/m0-audit-correctness-hardening
+    blocker: "Funding interval fallback and ZIP/REST evidence require correction before new strategy approval."
+  - id: FREQTRADE-PRIMARY-HARDENING
+    phase: Freqtrade primary framework hardening
+    status: pending
+    branch: codex/freqtrade-primary-framework-hardening
+    blocker: "Freqtrade image and runtime provenance are not yet immutable."
+  - id: M1B-EVENT-TIME-REVALIDATION
+    phase: M1B event-time revalidation
+    status: pending
+    branch: codex/m1b-event-time-revalidation
+    blocker: "Historical M1B numerical evidence contains event-time lookahead and cannot support approval."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -45,10 +63,17 @@ active_decisions:
     decision: No strategy is eligible for M2 after M1B.
     status: active
     evidence: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
+  - id: ADR-0006
+    decision: Freqtrade is the primary single-leg research framework; Python remains the audit and offline two-leg accounting sidecar.
+    status: active
+    evidence: docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md
 allowed_next_work:
-  - Review M1B failed_validation result.
-  - Decide whether to stop, run diagnostics, or design external arbitrage coordinator.
-  - Diagnostics must not change validation outcome.
+  - Complete Freqtrade-first architecture governance.
+  - Revalidate M0 audit correctness without private API access.
+  - Pin and validate Freqtrade as the primary research framework.
+  - Revalidate M1B event-time accounting offline with public data only.
+  - Diagnostics and revalidation must not lower validation thresholds.
+  - Architecture hardening must not implement execution.
   - Design review must not implement execution.
   - Do not enter M2.
   - Do not use API keys.
@@ -77,38 +102,62 @@ latest_reports:
   - path: reports/m0/M0_FINAL_ACCEPTANCE.md
     phase: M0
     status: accepted
+    status_marker: "M0 final status: accepted"
   - path: reports/m1/M1A_REVIEW_DECISION.md
     phase: M1A
     status: failed_validation
+    status_marker: "M1A review status: failed_validation"
+  - path: reports/m1/M1A_REVALIDATION_NOTICE.md
+    phase: M1A
+    status: superseded_pending_revalidation
+    status_marker: "Evidence status: superseded_pending_revalidation"
   - path: reports/m1/M1F_FINAL_ACCEPTANCE.md
     phase: M1F
     status: accepted_as_feasibility_lab
+    status_marker: "M1F final status: accepted_as_feasibility_lab"
   - path: reports/m1/M1B_FUNDING_ARBITRAGE_BACKTEST_REPORT.md
     phase: M1B
     status: failed_validation
+    status_marker: "Status: failed_validation"
   - path: reports/m1/M1B_DECISION.md
     phase: M1B
     status: failed_validation
+    status_marker: "Final M1B status: failed_validation"
   - path: reports/m1/M1B_FREQTRADE_FUNDING_BACKTEST_SUITABILITY.md
     phase: M1B
     status: conclusion_b_accepted
+    status_marker: "Conclusion: **B."
   - path: reports/m1/M1B_DATA_RUN_PROVENANCE.md
     phase: M1B
     status: public_data_provenance
+    status_marker: "data_source: Binance public"
   - path: reports/m1/M1B_FINAL_DECISION.md
     phase: M1B
     status: failed_validation
+    status_marker: "M1B final status: failed_validation"
+  - path: reports/m1/M1B_REVALIDATION_NOTICE.md
+    phase: M1B
+    status: invalidated_pending_event_time_revalidation
+    status_marker: "Evidence status: invalidated_pending_event_time_revalidation"
   - path: reports/m1/POST_M1B_REVIEW.md
     phase: post-M1B
     status: under_review
+    status_marker: "# Post-M1B Review"
   - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
     phase: post-M1B
     status: accepted
+    status_marker: "Status: Accepted"
+  - path: docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md
+    phase: architecture
+    status: accepted
+    status_marker: "Status: Accepted"
 latest_tags:
   - m0-data-run-accepted-v0.1.4
   - m1a-trend-failed-validation-v0.2.0
   - m1f-freqtrade-feasibility-accepted-v0.3.0
   - m1b-funding-failed-validation-v0.5.0
+  - project-context-system-v0.4.0
+  - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
   - number: 1
     title: Harden M0 data-run validation and reports
@@ -125,6 +174,12 @@ latest_merged_prs:
   - number: 5
     title: Implement M1B funding arbitrage offline backtest
     merged_at_utc: "2026-07-09T17:30:06Z"
+  - number: 6
+    title: Add project ledger and context recovery system
+    merged_at_utc: "2026-07-09T16:04:46Z"
+  - number: 7
+    title: Add post-M1B review and no-M2 decision
+    merged_at_utc: "2026-07-09T18:27:18Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
