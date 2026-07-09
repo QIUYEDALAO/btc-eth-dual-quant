@@ -33,7 +33,7 @@ After any task, the agent must update:
 - M1A trend final status: failed_validation.
 - M1F Freqtrade Lab final status: accepted_as_feasibility_lab.
 - M1B funding-rate-arbitrage final status: failed_validation.
-- M0 public dual-source audit remains blocked by source differences and HTTP 451.
+- M0 public dual-source REST connectivity is complete through a disclosed approved loopback proxy, but the audit remains blocked by official source revisions and missing daily archives.
 - No strategy is eligible for M2.
 - Future work must be diagnostics or design review only.
 - Diagnostics must not lower validation thresholds.

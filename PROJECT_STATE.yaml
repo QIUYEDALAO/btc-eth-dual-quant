@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T21:08:20Z"
+last_updated_utc: "2026-07-09T23:12:00Z"
 current_phase: post-hardening review
 current_status: freqtrade_first_hardening_complete_m0_audit_blocked_no_m2
 completed_milestones:
@@ -30,8 +30,13 @@ completed_milestones:
 open_work:
   - id: M0-AUDIT-EVIDENCE-BLOCKER
     phase: M0 audit revalidation
-    status: blocked
-    blocker: "Real 1h audit remains blocked: futures REST returned HTTP 451 on the hosted runner, and spot ZIP/REST evidence contains 6/7 field differences plus one missing timestamp per symbol."
+    status: proxy_rest_complete_official_archive_differences_blocked
+    branch: codex/m0-dual-source-audit-unblock
+    pr: 13
+    head_sha: ce6b226f8ffb06cc9cc11e1a515cade74603d6ad
+    design: docs/superpowers/specs/2026-07-10-m0-dual-source-audit-unblock-design.md
+    evidence: reports/m0/M0_DUAL_SOURCE_AUDIT_DIAGNOSTICS.md
+    blocker: "Official futures REST evidence now completes through the approved disclosed loopback proxy, but the strict gate remains blocked by real official-source differences: spot revisions and one ZIP-only timestamp, UM monthly/daily ZIP values that agree with each other and differ from REST at 2024-10-28T20:00Z/21:00Z, and REST-only mark/index/premium rows for 2026-06-29 whose official daily ZIP URLs return HTTP 404."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -58,6 +63,7 @@ allowed_next_work:
   - Freqtrade primary-framework hardening completed in PR #10.
   - Strict M1B event-time revalidation completed in PR #11; it remains failed_validation and cannot approve M2.
   - Investigate the M0 public dual-source audit blocker without private API access.
+  - Seek Binance source-owner clarification for the recorded spot and UM revisions, and recheck the missing 2026-06-29 daily reference-price archives after official publication; do not weaken or bypass the dual-source gate.
   - Diagnostics and revalidation must not lower validation thresholds.
   - Architecture hardening must not implement execution.
   - Design review must not implement execution.
@@ -90,6 +96,10 @@ latest_reports:
     status: accepted
     status_marker: "M0 final status: accepted"
   - path: reports/m0/M0_AUDIT_REVALIDATION_REPORT.md
+    phase: M0
+    status: audit_revalidation_required
+    status_marker: "Status: blocked"
+  - path: reports/m0/M0_DUAL_SOURCE_AUDIT_DIAGNOSTICS.md
     phase: M0
     status: audit_revalidation_required
     status_marker: "Status: blocked"

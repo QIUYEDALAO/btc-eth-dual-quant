@@ -327,3 +327,69 @@ private exchange responses here.
 - Blockers: M0 public dual-source audit remains blocked by spot differences and futures REST HTTP 451.
 - Next action: Public-data audit diagnostics or design review only; no strategy rescue and no execution work.
 - Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M0 Dual-Source Audit Unblock Design Approved
+
+- Date UTC: 2026-07-09T21:25:09Z
+- Task ID: M0-DUAL-SOURCE-AUDIT-UNBLOCK-DESIGN
+- Phase: M0 audit revalidation
+- Branch: codex/m0-dual-source-audit-unblock
+- Commit: recorded in the branch history for this specification
+- PR: not opened
+- Request summary: Design a multi-network, evidence-first public audit to explain spot ZIP/REST differences and obtain compliant futures dual-source evidence.
+- Completed: Architecture, difference classifications, strict gate, VPS safety rules, reporting, error handling, and fixture test requirements were approved in conversation and written as a specification.
+- Not completed: User review of the written specification, implementation plan, audit implementation, real local/VPS evidence run, M0 audit pass, M2, or any trading work.
+- Decision: Official REST plus official ZIP is mandatory. ZIP-only or third-party evidence cannot satisfy the gate. HTTP 451 and unresolved source differences remain blocking outcomes.
+- Blockers: The real 1h audit still has unexplained spot differences and unavailable hosted futures REST evidence.
+- Next action: User reviews the written specification; after approval, create the implementation plan without weakening validation thresholds.
+- Guardrails: Public unauthenticated data only; no API keys, private smoke, VPN/proxy bypass, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M0 Multi-Network Dual-Source Evidence Completed Blocked
+
+- Date UTC: 2026-07-09T22:13:36Z
+- Task ID: M0-DUAL-SOURCE-AUDIT-EVIDENCE
+- Phase: M0 audit revalidation
+- Branch: codex/m0-dual-source-audit-unblock
+- Commit: recorded in the branch history for this implementation
+- PR: not opened at evidence-record time
+- Request summary: Implement and run the approved multi-network, evidence-first official public REST/ZIP audit locally and on the approved remote node.
+- Completed: Strict Decimal/timestamp comparison, append-only ignored raw evidence, sanitized JSON/Markdown evidence, fixture tests, manual public workflow, local full-history audit, remote futures audit, and multi-node aggregation.
+- Validation: 95 repository tests passed; M0 validation PASS=6 FAIL=0 before final project-context update.
+- Evidence: `reports/m0/M0_DUAL_SOURCE_AUDIT_DIAGNOSTICS.md` and `reports/m0/M0_AUDIT_REVALIDATION_REPORT.md`.
+- Spot result: BTCUSDT had 14 field revisions and one timestamp mismatch across two blocked scopes; ETHUSDT had the same counts. The affected UTC windows are 2020-12-21T13:00Z/14:00Z and 2021-04-23T01:00Z. All other selected spot scopes passed exact comparison.
+- Futures result: Both compliant execution nodes could read official ZIP profiles, but official futures REST remained network blocked; no ZIP-only result was treated as pass.
+- Decision: M0 infrastructure remains accepted, while M0 audit remains `audit_revalidation_required`. M1A and M1B remain `failed_validation`; M2 remains prohibited.
+- Not completed: No official source-owner resolution for historical spot revisions and no compliant node with working official futures REST evidence.
+- Next action: Seek official source clarification or another compliant public network. Do not use third-party substitution, VPN/proxy bypass, threshold reduction, or ZIP-only acceptance.
+- Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M0 Dual-Source Audit PR Opened
+
+- Date UTC: 2026-07-09T22:15:56Z
+- Task ID: M0-DUAL-SOURCE-AUDIT-PR
+- Phase: M0 audit revalidation
+- Branch: codex/m0-dual-source-audit-unblock
+- Commit: 27f5032831b3cfbe8311ee019a71e89a92f7f455
+- PR: #13 open
+- Completed: Implementation, multi-network evidence, truthful blocked reports, validation, branch push, and PR creation.
+- Decision: PR #13 records a completed diagnostic implementation with a blocked audit result; it does not restore M0 audit pass or authorize M2.
+- Blockers: Historical spot source revisions remain, and official futures REST is unavailable from both compliant execution nodes.
+- Next action: Review PR #13 checks and evidence. Any future unblock requires official source clarification or a compliant public network, not weaker validation.
+- Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M0 Proxy-Assisted Official Audit Evidence Completed
+
+- Date UTC: 2026-07-09T23:12:00Z
+- Task ID: M0-DUAL-SOURCE-PROXY-EVIDENCE
+- Phase: M0 audit revalidation
+- Branch: codex/m0-dual-source-audit-unblock
+- Commit: ce6b226f8ffb06cc9cc11e1a515cade74603d6ad
+- PR: #13 open
+- Transport: official REST through an explicit unauthenticated loopback HTTPS proxy; official Binance Vision monthly/daily ZIP direct; proxy disclosed as transport, not a data source.
+- Completed: Futures REST connectivity, full BTCUSDT/ETHUSDT 1h comparison for UM/mark/index/premium, supplemental official daily ZIP recovery, payload-bundle hashes, daily HTTP outcomes, strict classification, and regenerated sanitized reports.
+- Archive result: 936 monthly-archive omissions were recovered exactly from 41 successful official daily ZIP requests. Six required `2026-06-29` mark/index/premium daily ZIP requests returned HTTP 404 and remain timestamp mismatches.
+- Source-revision result: BTCUSDT/ETHUSDT UM monthly and daily ZIPs agree with each other but differ from REST at `2024-10-28T20:00Z` and `2024-10-28T21:00Z`. Historical spot revisions and ZIP-only timestamps remain unchanged.
+- Validation: 101 tests passed; M0 validation PASS=6 FAIL=0; Project validation PASS=7 FAIL=0; secret, no-trading, execution/live, artifact, and diff checks passed.
+- Decision: Connectivity is no longer the active futures blocker, but M0 audit remains `audit_revalidation_required` because official-source differences and unavailable daily archives remain. No result is reclassified or hidden.
+- Next action: Seek Binance source-owner clarification and recheck the missing daily archives after official publication; do not weaken the dual-source gate.
+- Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
