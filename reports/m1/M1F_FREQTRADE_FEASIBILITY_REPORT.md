@@ -57,6 +57,14 @@ Generated UTC: 2026-07-09T05:45:00Z
 - Live trading enabled: no
 - Runtime artifacts committed: no
 
+## Chinese Operator Guide
+
+- WEBUI_中文说明.md: pass
+- 安全操作清单.md: pass
+- M1F_中文验收摘要.md: pass
+- WebUI local-only start script: pass
+- WebUI stop script: pass
+
 ## M1A Strategy Port Notes
 
 The Freqtrade strategy ports the fixed M1A trend rules: 1d timeframe, close above SMA(200), close above prior 55-day Donchian high for entry, close below prior 20-day Donchian low for exit, ATR(20), and a 2x ATR reference. It does not alter parameters, add symbols, add smaller timeframes, enable hyperopt, enable futures, or enable leverage.

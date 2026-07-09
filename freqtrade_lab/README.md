@@ -34,6 +34,15 @@ bash scripts/ft_check_futures_capability.sh
 
 The repository CI does not run Docker and does not access the network.
 
+## 中文快速入口
+
+- 我想打开 WebUI，看 `WEBUI_中文说明.md`。
+- 我想确认安全边界，看 `安全操作清单.md`。
+- 我想启动 WebUI，本机先 SSH tunnel，再执行 `bash scripts/ft_webui_local.sh`。
+- 我想停止 WebUI，执行 `bash scripts/ft_webui_stop.sh`。
+- 我想回测，执行 `bash scripts/ft_backtest_m1a_trend.sh`。
+- 我想看部署结论，看 `../reports/m1/M1F_中文验收摘要.md`。
+
 ## WebUI Boundary
 
 The example config disables the API/WebUI server. If a future local experiment

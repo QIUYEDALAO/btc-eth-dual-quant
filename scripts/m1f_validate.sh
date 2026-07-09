@@ -76,7 +76,12 @@ required_files() {
   test -f deploy/vps/README.md &&
   test -f deploy/vps/harden_ufw_readme.md &&
   test -f deploy/vps/remote_webui_dryrun_readme.md &&
-  test -f reports/m1/M1F_FREQTRADE_DOCKER_SMOKE_REPORT.md
+  test -f reports/m1/M1F_FREQTRADE_DOCKER_SMOKE_REPORT.md &&
+  test -f freqtrade_lab/WEBUI_中文说明.md &&
+  test -f freqtrade_lab/安全操作清单.md &&
+  test -f reports/m1/M1F_中文验收摘要.md &&
+  test -f freqtrade_lab/scripts/ft_webui_local.sh &&
+  test -f freqtrade_lab/scripts/ft_webui_stop.sh
 }
 
 smoke_report_guard() {
@@ -90,11 +95,20 @@ smoke_report_guard() {
   return 0
 }
 
+webui_local_guard() {
+  local script="freqtrade_lab/scripts/ft_webui_local.sh"
+  ! grep -q '0\.0\.0\.0' "$script" &&
+  grep -q '127\.0\.0\.1' "$script" &&
+  ! grep -q 'freqtrade[[:space:]]\+trade' "$script" &&
+  grep -q 'ft_no_live_guard\.sh' "$script"
+}
+
 run_check "M0 validation" bash scripts/m0_validate.sh
 run_check "M1A validation" bash scripts/m1a_validate.sh
 run_check "Freqtrade no-live guard" bash freqtrade_lab/scripts/ft_no_live_guard.sh
 run_check "M1F required files" required_files
 run_check "M1F smoke report guard" smoke_report_guard
+run_check "WebUI local-only guard" webui_local_guard
 run_check "compileall" env PYTHONPATH=.deps:src "$PY_CMD" -m compileall src scripts
 run_check "read-only/no-trading scan" read_only_scan
 run_check "execution/live scan" execution_live_scan
