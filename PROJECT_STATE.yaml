@@ -24,7 +24,7 @@ open_work:
     branch: m1b-funding-arbitrage-offline-backtest
     status: open_under_review
     url: https://github.com/QIUYEDALAO/btc-eth-dual-quant/pull/5
-    head_sha: 8d710bcdc3850b92e99fff82c7a57e2f6d33c502
+    head_sha: 3e0fe83b18dbec562458fb999ab2806c45d2a186
     current_finding: "Conclusion B accepted; M1B numerical report regenerated using time-indexed equity metrics with final status failed_validation."
     blocker: "M1B failed validation; review whether to merge as truthful failed validation artifact. No M2."
   - id: M1B-NUMERICAL-REPORT

@@ -142,7 +142,7 @@ private exchange responses here.
 - Task ID: M1B-METRICS-METHODOLOGY-FIX
 - Phase: M1B funding-rate-arbitrage research validation
 - Branch: m1b-funding-arbitrage-offline-backtest
-- Commit: pending_this_commit
+- Commit: 3e0fe83b18dbec562458fb999ab2806c45d2a186
 - PR: #5 open
 - Request summary: Replace cycle-level Sharpe/volatility with funding-period time-indexed metrics.
 - Completed: M1B report regenerated with funding-period time-indexed equity curve and time-based OOS split.
