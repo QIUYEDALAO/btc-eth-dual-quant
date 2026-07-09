@@ -53,13 +53,22 @@ execution_live_scan() {
   return 0
 }
 
+git_diff_check() {
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    git diff --check
+  else
+    echo "git diff --check skipped: not a git worktree"
+    return 0
+  fi
+}
+
 run_check "M0 validation" bash scripts/m0_validate.sh
 run_check "M1A unit tests" env PYTHONPATH=.deps:src "$PY_CMD" -m unittest discover -s tests -v
 run_check "compileall" env PYTHONPATH=.deps:src "$PY_CMD" -m compileall src scripts
 run_check "read-only/no-trading scan" read_only_scan
 run_check "execution/live scan" execution_live_scan
 run_check "secret scan" "$PY_CMD" scripts/m0_secret_scan.py
-run_check "git diff --check" git diff --check
+run_check "git diff --check" git_diff_check
 
 echo
 echo "M1A validation summary"

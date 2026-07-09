@@ -21,6 +21,10 @@ EXCLUDED_PREFIXES = (
     "storage/raw/",
     "storage/duckdb/",
     "storage/logs/",
+    "freqtrade_lab/user_data/data/",
+    "freqtrade_lab/user_data/logs/",
+    "freqtrade_lab/user_data/backtest_results/",
+    "freqtrade_lab/user_data/hyperopt_results/",
 )
 
 ALLOWED_ENV_FILES = {".env.example"}
@@ -44,12 +48,32 @@ LONG_TOKEN_RE = re.compile(r"""(?<![A-Za-z0-9])([A-Za-z0-9_+/=-]{32,})(?![A-Za-z
 
 
 def git_files() -> list[str]:
-    result = subprocess.run(
-        ["git", "ls-files", "--cached", "-z"],
-        check=True,
-        stdout=subprocess.PIPE,
-    )
-    return [item for item in result.stdout.decode("utf-8").split("\0") if item]
+    try:
+        result = subprocess.run(
+            ["git", "ls-files", "--cached", "-z"],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+        )
+        return [item for item in result.stdout.decode("utf-8").split("\0") if item]
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return filesystem_files()
+
+
+def filesystem_files() -> list[str]:
+    files: list[str] = []
+    for path in Path(".").rglob("*"):
+        if not path.is_file():
+            continue
+        normalized = path.as_posix()
+        if normalized.startswith("./"):
+            normalized = normalized[2:]
+        if is_excluded(normalized):
+            continue
+        if any(part in {".git", "__pycache__", ".pytest_cache"} for part in path.parts):
+            continue
+        files.append(normalized)
+    return files
 
 
 def is_excluded(path: str) -> bool:
