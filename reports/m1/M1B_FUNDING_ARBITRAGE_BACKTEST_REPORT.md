@@ -1,6 +1,7 @@
 # M1B Funding Arbitrage Backtest Report
 
 - Status: under_review
+- Decision dependency: conclusion B accepted; numerical validation still pending local M0 public data
 - Scope: funding-rate-arbitrage offline backtest only
 - No live trading
 - No paper trading with real API
@@ -13,6 +14,8 @@
 
 - Required local M0 public datasets: spot_klines, um_futures_klines, funding_rate_history, mark_price_klines, index_price_klines, premium_index_klines.
 - This committed report is an under_review placeholder because local M0 public raw/DuckDB data was not present in this worktree when `scripts/m1b_run_funding_arbitrage_backtest.py` was executed.
+- Local M0 public raw/DuckDB data is required before final numerical validation.
+- Conclusion B is accepted: Freqtrade is partially suitable, but this offline numerical validation still requires an external portfolio/accounting/funding backtester.
 - The report generation script does not access the network, does not read API keys, does not run private smoke, and does not use Freqtrade as an execution engine.
 
 ## 2. Data Range
@@ -127,4 +130,5 @@
 ## 20. Decision
 
 - Decision: under_review; numerical validation is pending local M0 public data.
+- Decision dependency: conclusion B accepted; Freqtrade remains a research/UI/futures-leg smoke framework, not a native funding-arbitrage execution engine.
 - No result in this report approves live trading.

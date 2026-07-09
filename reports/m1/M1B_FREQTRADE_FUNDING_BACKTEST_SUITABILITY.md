@@ -80,12 +80,18 @@ Conclusion: **B. Freqtrade 可承担部分功能，但需要外部组合/对账/
 
 Freqtrade remains useful for:
 
+- single-leg spot research;
 - single-leg spot trend research;
 - futures short strategy smoke tests;
+- parts of futures backtesting;
 - futures-only public-data backtesting;
 - UI and research workflow exploration.
 
 Freqtrade is not sufficient by itself for M1B final validation of spot-long plus USDT perpetual-short funding-rate arbitrage because the strategy requires cross-market portfolio accounting, leg synchronization, funding-income decomposition, basis PnL decomposition, and net-exposure controls that are outside a native single Freqtrade strategy/backtest run.
+
+Freqtrade can support futures short probes, but those probes do not natively prove a coordinated spot-long plus perpetual-short funding-arbitrage portfolio. A two-bot setup is not accepted as native arbitrage support because it leaves leg synchronization, reconciliation, single-leg exposure, basis accounting, and funding accounting outside Freqtrade.
+
+External coordinator/accounting remains required for M1B funding-rate-arbitrage research validation.
 
 ## Decision Impact
 
@@ -93,3 +99,5 @@ Freqtrade is not sufficient by itself for M1B final validation of spot-long plus
 - Do not proceed to M2.
 - Keep custom offline funding-arbitrage backtester only as a research/accounting candidate unless a future Freqtrade experiment proves native support.
 - If future Freqtrade futures experiments expose adequate funding-fee detail, use Freqtrade for the futures leg smoke and keep external portfolio reconciliation for the arbitrage portfolio.
+- Do not treat Freqtrade as a direct funding-arbitrage execution engine.
+- No live trading, paper trading with real API, order placement, API key use, or M2 approval is implied.

@@ -1,6 +1,6 @@
 # M1B Decision
 
-- Status: paused_for_freqtrade_suitability_review
+- Status: suitability_conclusion_b_accepted
 - Scope: M1B funding-rate-arbitrage research only
 - No live trading
 - No paper trading with real API
@@ -10,20 +10,30 @@
 
 ## Decision
 
-- Do not proceed with custom M1B numerical backtest until Freqtrade suitability is reviewed.
-- If Freqtrade can model funding arbitrage correctly, migrate M1B to Freqtrade.
-- If Freqtrade cannot model spot-long + perp-short correctly, retain the custom offline arbitrage backtester only for research/accounting validation.
+Conclusion B is accepted:
+
+Freqtrade is partially suitable for M1B research, but it is not sufficient as a native spot-long + perpetual-short funding-arbitrage backtest or execution engine. M1B requires an external portfolio/accounting/funding backtester or coordinator to model:
+
+- spot long leg
+- USDT perpetual short leg
+- funding income by settlement period
+- basis PnL
+- spot leg PnL
+- perp short leg PnL
+- net exposure <= 5%
+- single-leg exposure risk
+- reconciliation across legs
+- margin stress / liquidation risk diagnostics
+
+## Consequences
+
+- Do not migrate M1B fully to native Freqtrade.
+- Keep Freqtrade as a research/UI/futures-leg smoke framework.
+- Retain custom offline funding-arbitrage accounting backtester as research candidate.
+- Do not merge PR #5 as completed numerical validation unless report status clearly remains under_review or failed/pass based on real numerical data.
 - No live trading is allowed.
+- No M2 approval is granted.
 
-## Current Suitability Finding
+## Next
 
-Freqtrade can support parts of the workflow: backtesting, Binance spot research, futures mode, and futures short probes. It does not appear to natively model one coordinated portfolio that is simultaneously spot long and USDT perpetual short with cross-leg synchronization, net exposure controls, basis PnL decomposition, and funding-income reconciliation.
-
-Current conclusion: Freqtrade is partially suitable and needs an external portfolio/accounting coordinator for M1B funding-rate-arbitrage validation.
-
-## PR #5 Handling
-
-- Keep PR #5 open.
-- Do not merge PR #5 as a completed M1B numerical validation.
-- Do not tag M1B.
-- Do not enter M2.
+The next permitted work is to generate a real numerical M1B funding-arbitrage report using local M0 public data, still offline only, with no API keys and no trading execution.
