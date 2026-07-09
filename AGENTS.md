@@ -26,12 +26,15 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1B funding-rate-arbitrage research validation.
+- Current phase: post-M1B review.
 - M0 final status: accepted.
 - M1A trend final status: failed_validation.
 - M1F Freqtrade Lab final status: accepted_as_feasibility_lab.
-- M1B PR #5 is open / under_review.
-- M1B permits offline funding-rate-arbitrage backtest validation only.
+- M1B funding-rate-arbitrage final status: failed_validation.
+- No strategy is eligible for M2.
+- Future work must be diagnostics or design review only.
+- Diagnostics must not lower validation thresholds.
+- Design review must not implement execution.
 - M2 is not allowed.
 
 ## Hard Guardrails
