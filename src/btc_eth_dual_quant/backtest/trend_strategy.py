@@ -72,16 +72,26 @@ class TrendSignal:
     stop_price: float | None = None
 
 
-def validate_bars(bars: list[TrendBar]) -> None:
+def validate_bars(
+    bars: list[TrendBar],
+    expected_interval_ms: int = 86_400_000,
+    require_contiguous: bool = True,
+) -> None:
     previous_open: int | None = None
-    one_day_ms = 86_400_000
     for bar in bars:
         if bar.high < max(bar.open, bar.close, bar.low):
             raise ValueError(f"invalid OHLC high ordering for {bar.symbol} at {bar.open_time_ms}")
         if bar.low > min(bar.open, bar.close, bar.high):
             raise ValueError(f"invalid OHLC low ordering for {bar.symbol} at {bar.open_time_ms}")
-        if previous_open is not None and bar.open_time_ms - previous_open != one_day_ms:
-            raise ValueError(f"non-continuous 1d bars for {bar.symbol} at {bar.open_time_ms}")
+        if (
+            require_contiguous
+            and previous_open is not None
+            and bar.open_time_ms - previous_open != expected_interval_ms
+        ):
+            raise ValueError(
+                f"non-continuous bars for {bar.symbol} at {bar.open_time_ms}; "
+                f"expected interval_ms={expected_interval_ms}"
+            )
         previous_open = bar.open_time_ms
 
 

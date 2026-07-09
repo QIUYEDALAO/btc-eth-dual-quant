@@ -279,3 +279,34 @@ private exchange responses here.
 - Known limitation: Freqtrade 2026.6 emitted asynchronous connector cleanup warnings after completed analysis commands; monitor on future pinned upgrades.
 - Next action: Run full validation, publish the independent PR, and merge only after checks pass.
 - Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - Freqtrade Primary Framework Hardening Merged
+
+- Date UTC: 2026-07-09T20:27:35Z
+- Task ID: FREQTRADE-PRIMARY-HARDENING-MERGED
+- Phase: Freqtrade primary framework hardening
+- Branch: main
+- Commit: 7dabe38f7d8633ce8f04eab9a3747b2d9206bf19
+- PR: #10 merged
+- Completed: Official Freqtrade 2026.6 image digest, runtime manifest, unified research entry, no-live guard, public VPS smoke, lookahead/recursive analysis, and M0/Freqtrade provenance were merged.
+- Decision: Freqtrade is the primary single-leg research/data/backtest/WebUI framework; this is not strategy, M2, paper, or live approval.
+- Blockers: M0 public audit evidence remains blocked and M1B event-time evidence still requires revalidation.
+- Next action: Revalidate the existing offline M1B two-leg accounting with strict 1h event-time semantics.
+- Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M1B Event-Time Revalidation Started
+
+- Date UTC: 2026-07-09T20:51:34Z
+- Task ID: M1B-EVENT-TIME-REVALIDATION
+- Phase: M1B event-time revalidation
+- Branch: codex/m1b-event-time-revalidation
+- Commit: 795724d
+- PR: #11 open
+- Completed so far: The existing M1B engine now uses next-1h-open entries/exits, excludes triggering funding, credits held funding before exit, derives every event interval from M0 history, uses settlement mark notional, charges actual fill notionals, separates incomplete end positions and OOS carry-in, and joins BTC/ETH by UTC.
+- Public run: Local M0 public ZIP fallback covered 2020-01-01 through 2024-12-31. Invalid close-boundary bars and observed gaps remain explicit diagnostics; raw data and DuckDB stay ignored.
+- Validation result: M1B remains failed_validation with 13 complete cycles and 2 incomplete end positions. The complete-cycle gate fails; M0 audit status also remains revalidation_required.
+- Freqtrade cross-check: Futures probe schema validation passed after replacing an invalid empty placeholder, but GitHub run 29049892500 was blocked by Binance `exchangeInfo` HTTP 451 before data download/backtest. No futures result is claimed.
+- Freqtrade primary smoke: GitHub run 29050078339 passed after the blocked futures probe was separated into its own manual workflow.
+- Decision: The historical report remains unchanged. The new report cannot approve M2 even if numerical gates pass.
+- Next action: Run full validation, publish the independent PR, and merge only after checks pass.
+- Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.

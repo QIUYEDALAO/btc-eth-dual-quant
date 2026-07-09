@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the M1B offline funding-arbitrage validation report.
-
-This script reads local M0 public data only. It does not access networks,
-secrets, private smoke outputs, or Freqtrade runtime state.
-"""
+"""Generate strict event-time M1B revalidation from local M0 public data."""
 
 from __future__ import annotations
 
@@ -16,18 +12,49 @@ from btc_eth_dual_quant.backtest.funding_arbitrage import (
     FundingArbResult,
     combine_funding_results,
     compute_payback_required_apr,
+    evaluate_m1b_gates,
     percent,
     result_date_range,
     run_funding_arbitrage_backtest,
     utc_ms,
 )
-from btc_eth_dual_quant.backtest.m0_data import M0DataUnavailableError, load_funding_history_dicts, load_kline_bars
+from btc_eth_dual_quant.backtest.trend_strategy import TrendBar
+from btc_eth_dual_quant.backtest.m0_data import (
+    M0DataIndexError,
+    M0DataUnavailableError,
+    load_funding_history_dicts,
+    load_kline_bars,
+)
 
 
-SYMBOLS = ["BTCUSDT", "ETHUSDT"]
+SYMBOLS = ("BTCUSDT", "ETHUSDT")
+DATA_INTERVAL = "1h"
+HOUR_MS = 3_600_000
+FREQTRADE_FUTURES_PROBE_STATUS = "blocked_network"
+FREQTRADE_FUTURES_PROBE_RUN = "29049892500"
+FREQTRADE_PUBLIC_SMOKE_RUN = "29050078339"
 
 
-def _metric_line(result: FundingArbResult) -> list[str]:
+def _strict_hourly_profile(bars: list[TrendBar]) -> tuple[list[TrendBar], dict[str, int]]:
+    valid = [
+        bar
+        for bar in bars
+        if abs((bar.close_time_ms - bar.open_time_ms) - (HOUR_MS - 1)) <= 1_000
+    ]
+    gaps = sum(
+        1
+        for left, right in zip(valid, valid[1:])
+        if right.open_time_ms - left.open_time_ms != HOUR_MS
+    )
+    return valid, {
+        "raw_rows": len(bars),
+        "valid_completed_1h_rows": len(valid),
+        "invalid_close_boundary_rows": len(bars) - len(valid),
+        "observed_gap_boundaries": gaps,
+    }
+
+
+def _metric_lines(result: FundingArbResult) -> list[str]:
     metrics = result.metrics
     return [
         f"- total_return: {percent(metrics.get('total_return', 0.0))}",
@@ -36,53 +63,60 @@ def _metric_line(result: FundingArbResult) -> list[str]:
         f"- sharpe: {metrics.get('sharpe', 0.0):.4f}",
         f"- max_drawdown: {percent(metrics.get('max_drawdown', 0.0))}",
         f"- complete_cycles: {int(metrics.get('complete_cycles', 0.0))}",
-        f"- equity_points: {int(metrics.get('equity_points', 0.0))}",
-        f"- win_rate: {percent(metrics.get('win_rate', 0.0))}",
-        f"- profit_factor: {metrics.get('profit_factor', 0.0):.4f}",
-        f"- average_holding_days: {metrics.get('average_holding_days', 0.0):.2f}",
-        f"- funding_income_total: {metrics.get('funding_income_total', 0.0):.6f}",
-        f"- basis_pnl_total: {metrics.get('basis_pnl_total', 0.0):.6f}",
-        f"- fees_total: {metrics.get('fees_total', 0.0):.6f}",
-        f"- slippage_total: {metrics.get('slippage_total', 0.0):.6f}",
+        f"- incomplete_positions: {int(metrics.get('incomplete_positions', 0.0))}",
+        f"- funding_income_total: {metrics.get('funding_income_total', 0.0):.8f}",
+        f"- basis_pnl_total: {metrics.get('basis_pnl_total', 0.0):.8f}",
+        f"- fees_total: {metrics.get('fees_total', 0.0):.8f}",
+        f"- slippage_total: {metrics.get('slippage_total', 0.0):.8f}",
         f"- worst_cycle: {percent(metrics.get('worst_cycle', 0.0))}",
         f"- best_cycle: {percent(metrics.get('best_cycle', 0.0))}",
         f"- longest_sleep_days: {metrics.get('longest_sleep_days', 0.0):.2f}",
-        f"- percent_time_in_market: {percent(metrics.get('percent_time_in_market', 0.0))}",
     ]
 
 
-def _cycle_table(result: FundingArbResult, limit: int = 30) -> list[str]:
+def _cycle_table(result: FundingArbResult, limit: int = 40) -> list[str]:
     lines = [
-        "| symbol | entry UTC | exit UTC | days | net_return | funding | basis | fees | slippage | reason |",
-        "| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
+        "| symbol | entry signal UTC | entry open UTC | exit signal UTC | exit open UTC | funding events | funding | basis | fees | slippage | net return | reason |",
+        "| --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |",
     ]
     for cycle in result.cycles[:limit]:
         lines.append(
             "| "
-            f"{cycle.symbol} | {utc_ms(cycle.entry_time_ms)} | {utc_ms(cycle.exit_time_ms)} | "
-            f"{cycle.holding_days:.2f} | {percent(cycle.net_return)} | {cycle.funding_income:.6f} | "
-            f"{cycle.basis_pnl:.6f} | {cycle.fees:.6f} | {cycle.slippage:.6f} | {cycle.exit_reason} |"
+            f"{cycle.symbol} | {utc_ms(cycle.entry_signal_time_ms)} | {utc_ms(cycle.entry_time_ms)} | "
+            f"{utc_ms(cycle.exit_signal_time_ms)} | {utc_ms(cycle.exit_time_ms)} | "
+            f"{cycle.funding_periods_count} | {cycle.funding_income:.8f} | {cycle.basis_pnl:.8f} | "
+            f"{cycle.fees:.8f} | {cycle.slippage:.8f} | {percent(cycle.net_return)} | {cycle.exit_reason} |"
         )
     if len(result.cycles) > limit:
-        lines.append(f"| ... | ... | ... | ... | ... | ... | ... | ... | ... | truncated, total cycles={len(result.cycles)} |")
+        lines.append(f"| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | total={len(result.cycles)} |")
     return lines
 
 
-def _sleep_table(result: FundingArbResult, limit: int = 20) -> list[str]:
-    lines = ["| symbol | start UTC | end UTC | days | reason |", "| --- | --- | --- | ---: | --- |"]
-    for period in result.sleep_periods[:limit]:
+def _funding_table(result: FundingArbResult, limit: int = 50) -> list[str]:
+    contributions = [
+        (cycle.symbol, item)
+        for cycle in result.cycles
+        for item in cycle.funding_contributions
+    ]
+    lines = [
+        "| symbol | settlement UTC | interval hours | rate | mark | perp quantity | income | mark bar close UTC |",
+        "| --- | --- | ---: | ---: | ---: | ---: | ---: | --- |",
+    ]
+    for symbol, item in contributions[:limit]:
         lines.append(
-            f"| {period.symbol} | {utc_ms(period.start_time_ms)} | {utc_ms(period.end_time_ms)} | {period.days:.2f} | {period.reason} |"
+            f"| {symbol} | {utc_ms(item.funding_time_ms)} | {item.interval_hours:.4f} | "
+            f"{item.funding_rate:.8f} | {item.settlement_mark_price:.8f} | "
+            f"{item.perpetual_quantity:.12f} | {item.income:.8f} | "
+            f"{utc_ms(item.valuation_bar_close_time_ms)} |"
         )
-    if len(result.sleep_periods) > limit:
-        lines.append(f"| ... | ... | ... | ... | truncated, total sleep periods={len(result.sleep_periods)} |")
+    if len(contributions) > limit:
+        lines.append(f"| ... | ... | ... | ... | ... | ... | ... | truncated, total={len(contributions)} |")
     return lines
 
 
-def _gate_lines(result: FundingArbResult) -> list[str]:
+def _gate_table(result: FundingArbResult) -> list[str]:
     lines = ["| Gate | Status |", "| --- | --- |"]
-    for name, status in result.gates.items():
-        lines.append(f"| {name} | {status} |")
+    lines.extend(f"| {name} | {status} |" for name, status in result.gates.items())
     lines.append(f"| Final M1B status | {result.final_status} |")
     return lines
 
@@ -94,225 +128,218 @@ def render_report(
     symbol_x2: dict[str, FundingArbResult],
 ) -> str:
     params = base_portfolio.params
-    required_apr = compute_payback_required_apr(params)
-    best_cycle = max(base_portfolio.cycles, key=lambda cycle: cycle.net_return, default=None)
-    worst_cycle = min(base_portfolio.cycles, key=lambda cycle: cycle.net_return, default=None)
+    failed = [f"{name}={status}" for name, status in base_portfolio.gates.items() if status != "pass"]
     lines: list[str] = [
-        "# M1B Funding Arbitrage Backtest Report",
+        "# M1B Event-Time Revalidation Report",
         "",
         f"- Status: {base_portfolio.final_status}",
-        "- Scope: funding-rate-arbitrage offline backtest only",
+        "- Scope: funding-rate-arbitrage offline event-time revalidation only",
+        "- Historical report remains unchanged and invalidated for future approval",
         "- No live trading",
         "- No paper trading with real API",
         "- No execution/live",
-        "- No order placement",
-        "- No API trading permissions",
+        "- No order placement or cancellation",
+        "- No API key or private data",
+        "- This report does not approve M2",
         "- Not investment advice",
         "",
-        "## 1. Data Sources",
+        "## Data Authority",
         "",
-        "- spot_klines",
-        "- um_futures_klines",
-        "- funding_rate_history",
-        "- mark_price_klines",
-        "- index_price_klines",
-        "- premium_index_klines",
-        "- Source mode: local M0 public data only",
-        f"- Metrics basis: {base_portfolio.metrics_basis}",
-        f"- OOS split basis: {base_portfolio.oos_split_basis}",
-        "- Cycle-level returns are retained only for cycle table, win rate, profit factor, and best/worst cycle.",
-        "",
-        "## 2. Data Range",
-        "",
-        f"- Portfolio: {result_date_range(base_portfolio)}",
+        "- Source: local M0 append-only public data",
+        "- Required profile: BTCUSDT and ETHUSDT 1h spot, UM perpetual, mark, index, premium, plus funding history",
+        "- M0 audit status: audit_revalidation_required; source-level ZIP/REST blockers remain separate",
+        "- Freqtrade role: futures short/funding framework smoke only; not the two-leg portfolio truth",
+        f"- Freqtrade primary public research smoke: pass (GitHub run {FREQTRADE_PUBLIC_SMOKE_RUN})",
+        f"- Freqtrade futures-leg probe: {FREQTRADE_FUTURES_PROBE_STATUS} "
+        f"(GitHub run {FREQTRADE_FUTURES_PROBE_RUN}; Binance exchangeInfo returned HTTP 451)",
+        "- No Freqtrade futures backtest result or funding-fee output is claimed from the blocked run.",
+        f"- Portfolio range: {result_date_range(base_portfolio)}",
     ]
     for symbol, result in symbol_base.items():
-        lines.append(f"- {symbol}: {result_date_range(result)}")
+        lines.append(f"- {symbol} range: {result_date_range(result)}")
     lines.extend(
         [
             "",
-            "## 3. IS/OOS Split",
+            "## Event-Time Contract",
             "",
-            f"- IS start/end: {utc_ms(base_portfolio.is_start_ms)} -> {utc_ms(base_portfolio.is_end_ms)}",
-            f"- OOS start/end: {utc_ms(base_portfolio.oos_start_ms)} -> {utc_ms(base_portfolio.oos_end_ms)}",
-            f"- OOS split basis: {base_portfolio.oos_split_basis}",
-            "- OOS was not used for parameter selection.",
+            "- A funding event at T becomes visible only at T.",
+            "- Entry uses the first common spot/perpetual 1h open strictly after T.",
+            "- The triggering funding event is excluded from funding income.",
+            "- While held, funding at T is credited using the latest mark bar with close_time <= T.",
+            "- Exit signals are evaluated after the held-position funding at T and execute at the next common 1h open.",
+            "- The low-funding exit requires the trailing mean to remain below 2% APR for three consecutive days.",
+            "- Positions without a legal exit price at data end are incomplete and do not count as complete cycles.",
             "",
-            "## 4. Strategy Rules",
-            "",
-            "- Structure: spot long + USDT perpetual short, equal notional hedge.",
-            "- Entry: trailing 3-day funding mean annualized >= 8%, current funding positive, and payback threshold satisfied.",
-            "- Exit: trailing 3-day funding mean annualized < 2%, or two consecutive negative funding settlements, or forced final close.",
-            "- No leverage expansion, martingale, grid, loss adding, symbol rotation, paper trading, or exchange access.",
-            "",
-            "## 5. Payback Threshold Calculation",
+            "## Fixed Rules And Costs",
             "",
             f"- expected_hold_days: {params.expected_hold_days:.0f}",
             f"- roundtrip_cost_base: {percent(params.roundtrip_cost_base)}",
             f"- min_payback_ratio: {params.min_payback_ratio:.1f}",
-            f"- required annualized funding APR: {percent(required_apr)}",
-            "- 8% annualized funding is rejected by this payback threshold.",
+            f"- payback-required APR: {percent(compute_payback_required_apr(params))}",
+            "- 8% APR alone is rejected by the payback gate.",
+            "- Fees use actual entry and exit notionals for spot and perpetual fills.",
+            "- Slippage is charged separately on all four fill directions.",
             "",
-            "## 6. Cost Assumptions",
+            "## Base Cost Portfolio",
             "",
-            f"- spot fee per side: {percent(params.spot_fee_per_side)}",
-            f"- futures fee per side: {percent(params.futures_fee_per_side)}",
-            f"- slippage per leg per fill: {percent(params.slippage_per_leg)}",
-            f"- base full roundtrip baseline: {percent(params.roundtrip_cost_base)}",
-            "- cost_x2 doubles all modeled fees and slippage.",
+            *_metric_lines(base_portfolio),
             "",
-            "## 7. Base Cost Results",
+            "## Cost X2 Portfolio",
             "",
-            *_metric_line(base_portfolio),
+            *_metric_lines(cost_x2_portfolio),
+        ]
+    )
+    for symbol in SYMBOLS:
+        lines.extend(
+            [
+                "",
+                f"## {symbol}",
+                "",
+                *_metric_lines(symbol_base[symbol]),
+                f"- cost_x2_total_return: {percent(symbol_x2[symbol].metrics.get('total_return', 0.0))}",
+                f"- interval_distribution: {symbol_base[symbol].interval_distribution}",
+                f"- interval_warnings: {symbol_base[symbol].interval_anomalies or ['none']}",
+                f"- diagnostics_status: {symbol_base[symbol].basis_data_status}",
+                f"- mark/index/premium diagnostics: {symbol_base[symbol].diagnostics}",
+            ]
+        )
+    lines.extend(
+        [
             "",
-            "## 8. Cost x2 Results",
-            "",
-            *_metric_line(cost_x2_portfolio),
-            "",
-            "## 9. BTCUSDT Results",
-            "",
-            *_metric_line(symbol_base["BTCUSDT"]),
-            "",
-            "## 10. ETHUSDT Results",
-            "",
-            *_metric_line(symbol_base["ETHUSDT"]),
-            "",
-            "## 11. Portfolio Combined Results",
-            "",
-            f"- BTC+ETH allocation comparison: equal-weight combined cycles={int(base_portfolio.metrics.get('complete_cycles', 0.0))}",
-            f"- Base total return: {percent(base_portfolio.metrics.get('total_return', 0.0))}",
-            f"- Cost x2 total return: {percent(cost_x2_portfolio.metrics.get('total_return', 0.0))}",
-            "",
-            "## 12. PnL Decomposition",
-            "",
-            f"- Funding income contribution: {base_portfolio.metrics.get('funding_income_total', 0.0):.6f}",
-            f"- Basis PnL contribution: {base_portfolio.metrics.get('basis_pnl_total', 0.0):.6f}",
-            f"- Fees contribution: {-base_portfolio.metrics.get('fees_total', 0.0):.6f}",
-            f"- Slippage contribution: {-base_portfolio.metrics.get('slippage_total', 0.0):.6f}",
-            f"- Worst cycle: {worst_cycle.symbol + ' ' + percent(worst_cycle.net_return) if worst_cycle else 'n/a'}",
-            f"- Best cycle: {best_cycle.symbol + ' ' + percent(best_cycle.net_return) if best_cycle else 'n/a'}",
-            "",
-            "## 13. Cycle Table",
+            "## Complete Cycles",
             "",
             *_cycle_table(base_portfolio),
             "",
-            "## 14. Sleep Periods",
+            "## Funding Contributions",
             "",
-            *_sleep_table(base_portfolio),
+            *_funding_table(base_portfolio),
             "",
-            "## 15. OOS Results",
+            "## Incomplete Positions",
             "",
-            f"- OOS total_return: {percent(base_portfolio.oos_metrics.get('total_return', 0.0))}",
-            f"- OOS annualized_return: {percent(base_portfolio.oos_metrics.get('annualized_return', 0.0))}",
-            f"- OOS annualized_volatility: {percent(base_portfolio.oos_metrics.get('annualized_volatility', 0.0))}",
-            f"- OOS Sharpe: {base_portfolio.oos_metrics.get('sharpe', 0.0):.4f}",
-            f"- OOS complete cycles: {int(base_portfolio.oos_metrics.get('complete_cycles', 0.0))}",
-            f"- OOS equity points: {int(base_portfolio.oos_metrics.get('equity_points', 0.0))}",
-            "- OOS cycle count uses cycle entry_time >= split timestamp; OOS Sharpe uses the time-indexed OOS equity curve.",
-            "",
-            "## 16. Funding Interval Diagnostics",
-            "",
-            f"- Portfolio interval source: {base_portfolio.interval_source}",
-            f"- Conservative interval hours used: {base_portfolio.interval_hours:.4f}",
+            f"- count: {len(base_portfolio.incomplete_positions)}",
         ]
     )
-    for symbol, result in symbol_base.items():
-        lines.append(f"- {symbol} interval hours: {result.interval_hours:.4f}; anomalies: {result.interval_anomalies or ['none']}")
+    for item in base_portfolio.incomplete_positions:
+        lines.append(
+            f"- {item.symbol}: entry={utc_ms(item.entry_time_ms)}, last_event={utc_ms(item.last_event_time_ms)}, "
+            f"funding_periods={item.funding_periods_count}, reason={item.reason}"
+        )
     lines.extend(
         [
-            f"- Basis data status: {base_portfolio.basis_data_status}",
             "",
-            "## 17. Failure / Graceful Sleep Analysis",
+            "## OOS",
             "",
-            f"- Funding dries up gracefully gate: {base_portfolio.gates.get('Funding dries up gracefully', 'fail')}",
-            f"- Longest no-trade / sleep period: {base_portfolio.metrics.get('longest_sleep_days', 0.0):.2f} days",
-            "- If funding is below threshold, the engine remains flat instead of relaxing entry rules.",
+            f"- split: {utc_ms(base_portfolio.oos_start_ms)}",
+            f"- OOS total return: {percent(base_portfolio.oos_metrics.get('total_return', 0.0))}",
+            f"- OOS Sharpe: {base_portfolio.oos_metrics.get('sharpe', 0.0):.4f}",
+            f"- OOS complete cycles: {int(base_portfolio.oos_metrics.get('complete_cycles', 0.0))}",
+            f"- OOS carry-in cycles: {int(base_portfolio.oos_metrics.get('carry_in_cycles', 0.0))}",
+            "- Carry-in positions are reported separately and excluded from OOS complete-cycle count.",
             "",
-            "## 18. Known Limitations",
+            "## UTC Portfolio Alignment",
             "",
-            "- Offline validation only; no execution feasibility is implied.",
-            "- Private commission and income payloads are not used.",
-            "- Funding settlement mechanics are simplified to equal-notional period-rate accounting.",
-            "- Mark/index/premium data are diagnostics; spot and perpetual close prices drive modeled hedge PnL.",
+            f"- diagnostics: {base_portfolio.diagnostics}",
+            "- BTC and ETH component equity are joined only by UTC timestamps.",
             "",
-            "## 19. M1B Gate Status",
+            "## Freqtrade Cross-Check Boundary",
             "",
-            *_gate_lines(base_portfolio),
+            "- Freqtrade 2026.6 remains the primary single-leg research framework.",
+            "- A futures-only short/funding smoke may cross-check the perpetual leg.",
+            "- The prepared public futures probe passed local schema/static validation but its hosted run was blocked by Binance HTTP 451 before market data loaded.",
+            "- Freqtrade does not provide the native combined spot-long plus perpetual-short portfolio truth.",
+            "- No two-bot workaround is treated as proof because leg synchronization and reconciliation remain external.",
             "",
-            "## 20. Decision",
+            "## Gates",
             "",
+            *_gate_table(base_portfolio),
+            "",
+            "## Decision",
+            "",
+            f"- Failed or blocked numerical gates: {', '.join(failed) if failed else 'none'}",
+            f"- Final M1B status: {base_portfolio.final_status}",
+            "- Even if every numerical gate passes, the maximum automatic status is under_review.",
+            "- M1A and historical M1B remain failed_validation.",
+            "- No strategy is eligible for M2.",
+            "- No result here approves live trading, paper trading, API permissions, or execution.",
+            "",
+            "## Known Limitations",
+            "",
+            "- Public market data cannot model real two-leg fill synchronization, margin failures, or reconciliation incidents.",
+            "- M0 audit source discrepancies remain unresolved independently of this accounting correction.",
+            "- Freqtrade futures output is a single-leg smoke and is not substituted for two-leg accounting.",
+            "- The current hosted environment produced no futures-leg backtest output because public market metadata was region-blocked.",
         ]
     )
-    if base_portfolio.final_status == "pass":
-        lines.append("- Decision: eligible for design review only; not eligible for live trading or M2 approval.")
-    else:
-        failed_gates = [f"{name}={status}" for name, status in base_portfolio.gates.items() if status != "pass"]
-        lines.append("- Decision: failed_validation; do not promote funding-rate-arbitrage to execution or paper/live stages.")
-        lines.append(f"- Failed/blocked gates: {', '.join(failed_gates) if failed_gates else 'none'}")
-    lines.append("- No result in this report approves live trading.")
-    lines.append("")
-    lines.append("## Cost x2 Symbol Detail")
-    lines.append("")
-    for symbol, result in symbol_x2.items():
-        lines.append(f"### {symbol} cost_x2")
-        lines.extend(_metric_line(result))
-        lines.append("")
-    return "\n".join(lines)
+    return "\n".join(lines) + "\n"
 
 
-def run_from_local_m0(raw_root: str, duckdb_path: str) -> tuple[FundingArbResult, FundingArbResult, dict[str, FundingArbResult], dict[str, FundingArbResult]]:
+def run_from_local_m0(
+    raw_root: str,
+    duckdb_path: str,
+) -> tuple[FundingArbResult, FundingArbResult, dict[str, FundingArbResult], dict[str, FundingArbResult]]:
     base_params = FundingArbParams(cost_multiplier=1.0)
     x2_params = FundingArbParams(cost_multiplier=2.0)
     base_components: dict[str, FundingArbResult] = {}
     x2_components: dict[str, FundingArbResult] = {}
     for symbol in SYMBOLS:
-        spot = load_kline_bars("spot_klines", symbol, raw_root, duckdb_path)
-        perp = load_kline_bars("um_futures_klines", symbol, raw_root, duckdb_path)
-        try:
-            mark = load_kline_bars("mark_price_klines", symbol, raw_root, duckdb_path)
-        except (M0DataUnavailableError, ValueError):
-            mark = None
-        try:
-            index = load_kline_bars("index_price_klines", symbol, raw_root, duckdb_path)
-        except (M0DataUnavailableError, ValueError):
-            index = None
-        try:
-            premium = load_kline_bars("premium_index_klines", symbol, raw_root, duckdb_path)
-        except (M0DataUnavailableError, ValueError):
-            premium = None
+        loaded = {
+            dataset: load_kline_bars(dataset, symbol, raw_root, duckdb_path, interval=DATA_INTERVAL)
+            for dataset in (
+                "spot_klines",
+                "um_futures_klines",
+                "mark_price_klines",
+                "index_price_klines",
+                "premium_index_klines",
+            )
+        }
+        inputs: dict[str, list[TrendBar]] = {}
+        input_quality: dict[str, dict[str, int]] = {}
+        for dataset, bars in loaded.items():
+            inputs[dataset], input_quality[dataset] = _strict_hourly_profile(bars)
         funding = load_funding_history_dicts(symbol, raw_root, duckdb_path)
-        optional_missing = mark is None or index is None or premium is None
-        base_result = run_funding_arbitrage_backtest(symbol, spot, perp, funding, mark, index, premium, base_params)
-        x2_result = run_funding_arbitrage_backtest(symbol, spot, perp, funding, mark, index, premium, x2_params)
-        if optional_missing:
-            base_result = replace(base_result, basis_data_status="partial")
-            x2_result = replace(x2_result, basis_data_status="partial")
-        base_components[symbol] = base_result
-        x2_components[symbol] = x2_result
+        ordered = (
+            inputs["spot_klines"],
+            inputs["um_futures_klines"],
+            funding,
+            inputs["mark_price_klines"],
+            inputs["index_price_klines"],
+            inputs["premium_index_klines"],
+        )
+        base_result = run_funding_arbitrage_backtest(symbol, *ordered, base_params)
+        x2_result = run_funding_arbitrage_backtest(symbol, *ordered, x2_params)
+        has_quality_issues = any(
+            profile["invalid_close_boundary_rows"] or profile["observed_gap_boundaries"]
+            for profile in input_quality.values()
+        )
+        base_components[symbol] = replace(
+            base_result,
+            basis_data_status="partial" if has_quality_issues else base_result.basis_data_status,
+            diagnostics={**base_result.diagnostics, "input_quality": input_quality},
+        )
+        x2_components[symbol] = replace(
+            x2_result,
+            basis_data_status="partial" if has_quality_issues else x2_result.basis_data_status,
+            diagnostics={**x2_result.diagnostics, "input_quality": input_quality},
+        )
     base = combine_funding_results(base_components, base_params, "base_cost")
-    x2 = combine_funding_results(x2_components, x2_params, "cost_x2")
-    gates, final_status = __import__(
-        "btc_eth_dual_quant.backtest.funding_arbitrage",
-        fromlist=["evaluate_m1b_gates"],
-    ).evaluate_m1b_gates(base, x2)
+    cost_x2 = combine_funding_results(x2_components, x2_params, "cost_x2")
+    gates, final_status = evaluate_m1b_gates(base, cost_x2)
     base = replace(base, gates=gates, final_status=final_status)
-    return base, x2, base_components, x2_components
+    return base, cost_x2, base_components, x2_components
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run M1B funding-arbitrage offline backtest from local M0 public data.")
+    parser = argparse.ArgumentParser(description="Run strict M1B event-time revalidation from local M0 public data.")
     parser.add_argument("--raw-root", default="storage/raw")
     parser.add_argument("--duckdb-path", default="storage/duckdb/m0.duckdb")
-    parser.add_argument("--out", default="reports/m1/M1B_FUNDING_ARBITRAGE_BACKTEST_REPORT.md")
+    parser.add_argument("--out", default="reports/m1/M1B_EVENT_TIME_REVALIDATION_REPORT.md")
     args = parser.parse_args()
-
     try:
-        base, x2, symbol_base, symbol_x2 = run_from_local_m0(args.raw_root, args.duckdb_path)
-    except M0DataUnavailableError as exc:
-        print(f"M1B report not generated: {exc}")
+        base, cost_x2, symbol_base, symbol_x2 = run_from_local_m0(args.raw_root, args.duckdb_path)
+    except (M0DataUnavailableError, M0DataIndexError, ValueError) as exc:
+        print(f"M1B event-time report not generated: {exc}")
         return 2
-
-    report = render_report(base, x2, symbol_base, symbol_x2)
+    report = render_report(base, cost_x2, symbol_base, symbol_x2)
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(report, encoding="utf-8")

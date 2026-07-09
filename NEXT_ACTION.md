@@ -4,10 +4,10 @@ Implement the approved Freqtrade-first hardening sequence:
 
 1. Architecture governance and historical evidence notices: completed in PR #8.
 2. Correct M0 funding-interval and ZIP/REST audit semantics: code hardening merged in PR #9; real audit evidence remains blocked and must not be treated as pass.
-3. Pin and validate Freqtrade as the primary research framework: in progress on `codex/freqtrade-primary-framework-hardening`.
-4. Revalidate M1B with strict 1-hour event-time semantics.
+3. Pin and validate Freqtrade as the primary research framework: completed in PR #10.
+4. Revalidate M1B with strict 1-hour event-time semantics: implemented on `codex/m1b-event-time-revalidation`; result remains `failed_validation`.
 
-Immediate action: review the pinned Freqtrade primary-framework implementation, sanitized runtime manifest, VPS public smoke, and M0/Freqtrade data provenance. M0 remains `audit_revalidation_required`, and no framework smoke or provenance pass may approve M2.
+Immediate action: review the strict M1B event-time report and CI evidence. The corrected run has 13 complete cycles and 2 incomplete end positions, so M1B remains `failed_validation`. M0 remains `audit_revalidation_required`, and neither report may approve M2.
 
 Rules:
 

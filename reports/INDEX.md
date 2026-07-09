@@ -15,6 +15,7 @@
 | `reports/m1/M1B_DATA_RUN_PROVENANCE.md` | M1B | public_data_provenance | Records local public-data run provenance and corrected time-indexed metrics methodology; no raw data, DuckDB, API keys, or private payloads are committed. | no |
 | `reports/m1/M1B_FINAL_DECISION.md` | M1B | failed_validation | Final M1B decision; not eligible for M2. | no |
 | `reports/m1/M1B_REVALIDATION_NOTICE.md` | M1B | invalidated_pending_event_time_revalidation | Records the daily-close lookahead and entry-funding timing defects without rewriting history. | no |
+| `reports/m1/M1B_EVENT_TIME_REVALIDATION_REPORT.md` | M1B | failed_validation | Strict 1h event-time rerun excludes entry-trigger funding, uses settlement mark notional, separates incomplete/carry-in positions, and still fails the complete-cycle gate. | no |
 | `reports/m1/POST_M1B_REVIEW.md` | post-M1B | under_review | Reviews project after M1A and M1B failed validations. | no |
 | `docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md` | post-M1B | accepted | No strategy is eligible for M2. | no |
 | `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md` | architecture | accepted | Freqtrade owns single-leg research; M0 and Python remain independent audit/offline accounting sidecars. | no |
