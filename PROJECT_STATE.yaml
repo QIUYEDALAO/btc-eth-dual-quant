@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T20:51:34Z"
+last_updated_utc: "2026-07-09T20:57:50Z"
 current_phase: post-M1B architecture hardening
 current_status: freqtrade_first_revalidation_required_no_m2
 completed_milestones:
@@ -33,6 +33,8 @@ open_work:
     phase: M1B event-time revalidation
     status: in_progress
     branch: codex/m1b-event-time-revalidation
+    pr: 11
+    initial_sha: 795724d
     blocker: "Strict 1h revalidation remains failed_validation at 13 complete cycles; M0 public audit evidence is also still blocked. PR review and CI are pending."
 active_decisions:
   - id: ADR-0004
