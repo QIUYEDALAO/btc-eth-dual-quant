@@ -9,6 +9,7 @@ Before any task, every agent must read:
 - `NEXT_ACTION.md`
 - `reports/INDEX.md`
 - `AGENTS.md`
+- `PROJECT_EXECUTION_CHECKLIST.md`
 
 Before coding, the agent must summarize:
 
@@ -23,10 +24,11 @@ After any task, the agent must update:
 - `PROJECT_LEDGER.md`
 - `NEXT_ACTION.md`
 - `reports/INDEX.md` if reports changed
+- `PROJECT_EXECUTION_CHECKLIST.md`
 
 ## Current Stage
 
-- Current phase: post-hardening review.
+- Current phase: P0 end-to-end governance.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -34,6 +36,9 @@ After any task, the agent must update:
 - M1F Freqtrade Lab final status: accepted_as_feasibility_lab.
 - M1B funding-rate-arbitrage final status: failed_validation.
 - M0 public dual-source REST connectivity is complete through a disclosed approved loopback proxy, but the audit remains blocked by official source revisions and missing daily archives.
+- Strategy failure diagnostics are complete: freeze M1A, retain M1B as sample-limited offline research, and require a design review before any new Freqtrade strategy code.
+- The approved P0-P8 roadmap is canonical; execute `PROJECT_EXECUTION_CHECKLIST.md` strictly in dependency order.
+- P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.
 - Future work must be diagnostics or design review only.
 - Diagnostics must not lower validation thresholds.

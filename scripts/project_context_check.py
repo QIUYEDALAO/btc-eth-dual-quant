@@ -119,7 +119,7 @@ def main() -> int:
     }
     if len(merged_numbers) != len(merged_prs):
         failures.append("PROJECT_STATE.yaml latest_merged_prs contains invalid or duplicate PR numbers")
-    for required_pr in (6, 7, 8, 9, 10, 11):
+    for required_pr in (6, 7, 8, 9, 10, 11, 13):
         if required_pr not in merged_numbers:
             failures.append(f"PROJECT_STATE.yaml latest_merged_prs missing PR #{required_pr}")
 
@@ -135,7 +135,13 @@ def main() -> int:
         if isinstance(pr_value, int) and pr_value in merged_numbers:
             failures.append(f"open_work references already merged PR #{pr_value}: {item.get('id')}")
 
-    for rel_path in ("PROJECT_LEDGER.md", "NEXT_ACTION.md", "reports/INDEX.md", "AGENTS.md"):
+    for rel_path in (
+        "PROJECT_LEDGER.md",
+        "NEXT_ACTION.md",
+        "reports/INDEX.md",
+        "AGENTS.md",
+        "PROJECT_EXECUTION_CHECKLIST.md",
+    ):
         if not (ROOT / rel_path).exists():
             failures.append(f"required file missing: {rel_path}")
 
@@ -179,6 +185,8 @@ def main() -> int:
         or "no_strategy_eligible_for_m2" in current_status
         or "freqtrade_first_revalidation_required_no_m2" in current_status
         or "freqtrade_first_hardening_complete_m0_audit_blocked_no_m2" in current_status
+        or "diagnostics_complete_no_strategy_eligible_no_m2" in current_status
+        or "end_to_end_p0_in_progress_no_m2" in current_status
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "m2" not in current_status and "m1b" not in current_status:

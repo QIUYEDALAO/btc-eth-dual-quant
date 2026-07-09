@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T23:12:00Z"
-current_phase: post-hardening review
-current_status: freqtrade_first_hardening_complete_m0_audit_blocked_no_m2
+last_updated_utc: "2026-07-10T00:05:00Z"
+current_phase: P0 end-to-end governance
+current_status: end_to_end_p0_in_progress_no_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -27,16 +27,25 @@ completed_milestones:
     evidence_status: event_time_revalidated_failed_validation
     evidence: reports/m1/M1B_EVENT_TIME_REVALIDATION_REPORT.md
     tag: m1b-funding-failed-validation-v0.5.0
+  - phase: M0 public dual-source audit diagnostics
+    status: completed_blocked
+    evidence: reports/m0/M0_AUDIT_REVALIDATION_REPORT.md
+    merged_pr: 13
+  - phase: strategy failure diagnostics
+    status: completed_no_strategy_approved
+    evidence: reports/m1/STRATEGY_FAILURE_DIAGNOSTICS.md
+    pr: 14
 open_work:
-  - id: M0-AUDIT-EVIDENCE-BLOCKER
-    phase: M0 audit revalidation
-    status: proxy_rest_complete_official_archive_differences_blocked
-    branch: codex/m0-dual-source-audit-unblock
-    pr: 13
-    head_sha: ce6b226f8ffb06cc9cc11e1a515cade74603d6ad
-    design: docs/superpowers/specs/2026-07-10-m0-dual-source-audit-unblock-design.md
-    evidence: reports/m0/M0_DUAL_SOURCE_AUDIT_DIAGNOSTICS.md
-    blocker: "Official futures REST evidence now completes through the approved disclosed loopback proxy, but the strict gate remains blocked by real official-source differences: spot revisions and one ZIP-only timestamp, UM monthly/daily ZIP values that agree with each other and differ from REST at 2024-10-28T20:00Z/21:00Z, and REST-only mark/index/premium rows for 2026-06-29 whose official daily ZIP URLs return HTTP 404."
+  - id: END-TO-END-P0
+    phase: P0 end-to-end governance
+    status: validation_in_progress
+    branch: codex/strategy-failure-diagnostics
+    pr: 14
+    head_sha: 162b62ad12122e5cc720ad0e47323521efb8a581
+    design: docs/superpowers/specs/2026-07-10-quant-system-end-to-end-roadmap-design.md
+    plan: docs/superpowers/plans/2026-07-10-quant-system-end-to-end-implementation-plan.md
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    blocker: "P0 governance must pass local and GitHub validation and merge before the M1C design branch may be created."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -64,6 +73,11 @@ allowed_next_work:
   - Strict M1B event-time revalidation completed in PR #11; it remains failed_validation and cannot approve M2.
   - Investigate the M0 public dual-source audit blocker without private API access.
   - Seek Binance source-owner clarification for the recorded spot and UM revisions, and recheck the missing 2026-06-29 daily reference-price archives after official publication; do not weaken or bypass the dual-source gate.
+  - Review the completed M1A/M1B failure diagnostics.
+  - Complete and merge P0 governance before creating M1C strategy code.
+  - After P0, execute the approved BTC/ETH/cash M1C design on its dedicated branch.
+  - P1-P4 are authorized sequentially; P5-P8 remain not_authorized.
+  - Extend M1B history only after the relevant M0 data-authority blocker is resolved, without changing thresholds or rules.
   - Diagnostics and revalidation must not lower validation thresholds.
   - Architecture hardening must not implement execution.
   - Design review must not implement execution.
@@ -155,6 +169,18 @@ latest_reports:
     phase: post-M1B
     status: under_review
     status_marker: "# Post-M1B Review"
+  - path: reports/m1/STRATEGY_FAILURE_DIAGNOSTICS.md
+    phase: post-M1B
+    status: diagnostics_complete_no_strategy_approved
+    status_marker: "Status: diagnostics_complete_no_strategy_approved"
+  - path: docs/superpowers/specs/2026-07-10-quant-system-end-to-end-roadmap-design.md
+    phase: governance
+    status: approved
+    status_marker: "Design status: approved"
+  - path: PROJECT_EXECUTION_CHECKLIST.md
+    phase: governance
+    status: in_progress
+    status_marker: "Active task: P0-05"
   - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
     phase: post-M1B
     status: accepted
@@ -204,12 +230,16 @@ latest_merged_prs:
   - number: 11
     title: Revalidate M1B event-time accounting
     merged_at_utc: "2026-07-09T21:06:52Z"
+  - number: 13
+    title: Implement evidence-first M0 dual-source audit
+    merged_at_utc: "2026-07-09T23:23:15Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
   - NEXT_ACTION.md
   - reports/INDEX.md
   - AGENTS.md
+  - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
   - python3 scripts/project_context_check.py
   - python3 scripts/context_summary.py
