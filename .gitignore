@@ -33,3 +33,18 @@ storage/logs/
 # Generated report snapshots; keep canonical M0 reports tracked explicitly.
 reports/m0/M0_DATA_RUN_REPORT_*.md
 reports/m0/M0_PRIVATE_SMOKE_REPORT.local.md
+
+# Freqtrade M1F local runtime state
+freqtrade_lab/user_data/data/
+freqtrade_lab/user_data/logs/
+freqtrade_lab/user_data/backtest_results/
+freqtrade_lab/user_data/hyperopt_results/
+freqtrade_lab/user_data/tradesv3.sqlite
+freqtrade_lab/user_data/*.sqlite
+freqtrade_lab/user_data/*.sqlite-shm
+freqtrade_lab/user_data/*.sqlite-wal
+freqtrade_lab/.env
+freqtrade_lab/.env.*
+freqtrade_lab/user_data/configs/config.live*.json
+freqtrade_lab/user_data/configs/*secret*
+freqtrade_lab/user_data/configs/*key*

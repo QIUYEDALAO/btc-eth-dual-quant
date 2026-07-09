@@ -1,0 +1,25 @@
+name: M1F Validate
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  m1f-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Run M1F validation
+        run: bash scripts/m1f_validate.sh
