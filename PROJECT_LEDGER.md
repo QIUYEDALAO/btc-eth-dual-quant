@@ -270,8 +270,8 @@ private exchange responses here.
 - Task ID: FREQTRADE-PRIMARY-HARDENING
 - Phase: Freqtrade primary framework hardening
 - Branch: codex/freqtrade-primary-framework-hardening
-- Commit: working tree pending initial commit
-- PR: pending
+- Commit: 00f1607
+- PR: #10 open
 - Completed so far: Official `2026.6` image pinned to digest `sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6`; runtime manifest and validator added; unified research entry added; self-managed M1A marked frozen; VPS public download/list/backtest/lookahead/recursive smoke passed after correcting a configuration-error false positive.
 - Data provenance: BTCUSDT and ETHUSDT each matched 3,248 canonical M0 1d rows with zero missing timestamps and zero OHLCV differences from 2017-08-17 through 2026-07-08.
 - Not completed: PR review/merge, M1B event-time revalidation, M0 audit pass, M2, live/paper/API/trading.

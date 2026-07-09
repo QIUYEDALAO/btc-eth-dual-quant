@@ -33,6 +33,8 @@ open_work:
     phase: Freqtrade primary framework hardening
     status: in_progress
     branch: codex/freqtrade-primary-framework-hardening
+    pr: 10
+    initial_sha: 00f1607
     blocker: "Implementation and VPS public smoke pass locally; PR review and CI are pending."
   - id: M1B-EVENT-TIME-REVALIDATION
     phase: M1B event-time revalidation
