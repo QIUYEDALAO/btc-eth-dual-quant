@@ -188,3 +188,17 @@ private exchange responses here.
   - next work must be either diagnostics or design review only
 - Next action:
   - review POST_M1B_REVIEW.md and choose Option A/B/C
+
+## 2026-07-09 - Freqtrade-First Architecture Hardening Started
+
+- Date UTC: 2026-07-09T18:57:19Z
+- Task ID: FREQTRADE-FIRST-ARCHITECTURE-HARDENING
+- Phase: post-M1B architecture hardening
+- Branch: codex/freqtrade-first-architecture-governance
+- PR: pending creation
+- Request summary: Adopt Freqtrade as the primary single-leg research framework and retain Python only for M0 audit, event-time verification, and offline two-leg accounting.
+- Completed: Design approved; ADR-0006, architecture specification, README, and historical evidence notices drafted.
+- Not completed: M0 audit corrections, immutable Freqtrade runtime pinning, M1B event-time revalidation, M2, live/paper/API/trading.
+- Decision: Historical reports remain immutable; affected M1A metrics are superseded and M1B numerical evidence is invalidated pending revalidation.
+- Blockers: No strategy is eligible for M2; M0 audit and M1B event-time methodology require revalidation.
+- Next action: Complete and review the four independent hardening PRs without implementing execution.

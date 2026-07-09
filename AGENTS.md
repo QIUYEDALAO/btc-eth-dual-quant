@@ -26,7 +26,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: post-M1B review.
+- Current phase: post-M1B architecture hardening.
+- Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - M0 final status: accepted.
 - M1A trend final status: failed_validation.
 - M1F Freqtrade Lab final status: accepted_as_feasibility_lab.
@@ -36,6 +37,14 @@ After any task, the agent must update:
 - Diagnostics must not lower validation thresholds.
 - Design review must not implement execution.
 - M2 is not allowed.
+
+## Architecture Ownership
+
+- New single-leg strategies, public research-data downloads, backtests, and WebUI belong in Freqtrade.
+- M0 Python owns canonical data lineage, append-only storage, DuckDB queries, and data-quality evidence.
+- Python backtest helpers may enforce time semantics and perform offline two-leg accounting only.
+- The self-managed M1A trend engine is frozen as a historical failed-validation artifact.
+- Two-leg funding-arbitrage automation is prohibited without a future explicitly approved coordinator and execution phase.
 
 ## Hard Guardrails
 
