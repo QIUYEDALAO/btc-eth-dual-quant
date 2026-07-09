@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T00:05:00Z"
-current_phase: P0 end-to-end governance
-current_status: end_to_end_p0_in_progress_no_m2
+last_updated_utc: "2026-07-09T23:53:01Z"
+current_phase: P1 M1C rotation design
+current_status: m1c_rotation_design_pass_pending_review_no_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -35,17 +35,21 @@ completed_milestones:
     status: completed_no_strategy_approved
     evidence: reports/m1/STRATEGY_FAILURE_DIAGNOSTICS.md
     pr: 14
+  - phase: P0 end-to-end governance
+    status: completed
+    evidence: docs/superpowers/specs/2026-07-10-quant-system-end-to-end-roadmap-design.md
+    merged_pr: 14
 open_work:
-  - id: END-TO-END-P0
-    phase: P0 end-to-end governance
-    status: validation_in_progress
-    branch: codex/strategy-failure-diagnostics
-    pr: 14
-    head_sha: 162b62ad12122e5cc720ad0e47323521efb8a581
-    design: docs/superpowers/specs/2026-07-10-quant-system-end-to-end-roadmap-design.md
-    plan: docs/superpowers/plans/2026-07-10-quant-system-end-to-end-implementation-plan.md
+  - id: M1C-P1-DESIGN
+    phase: P1 M1C rotation design
+    status: design_pass_pending_review
+    branch: codex/m1c-btc-eth-rotation-design
+    pr: 15
+    head_sha: 62aa9e00d96eab8fc1aa1e6102d1c70dc17da967
+    design: docs/superpowers/specs/2026-07-10-m1c-btc-eth-rotation-design.md
+    evidence: reports/m1/M1C_FREQTRADE_CAPABILITY_REVIEW.md
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    blocker: "P0 governance must pass local and GitHub validation and merge before the M1C design branch may be created."
+    blocker: "P1 design PR and CI must pass before any M1C strategy implementation is created."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -74,8 +78,9 @@ allowed_next_work:
   - Investigate the M0 public dual-source audit blocker without private API access.
   - Seek Binance source-owner clarification for the recorded spot and UM revisions, and recheck the missing 2026-06-29 daily reference-price archives after official publication; do not weaken or bypass the dual-source gate.
   - Review the completed M1A/M1B failure diagnostics.
-  - Complete and merge P0 governance before creating M1C strategy code.
-  - After P0, execute the approved BTC/ETH/cash M1C design on its dedicated branch.
+  - P0 governance completed in PR #14.
+  - Review and merge the fixed BTC/ETH/cash M1C P1 design before creating strategy code.
+  - After P1 design_pass merges, implement P2 only on its dedicated branch.
   - P1-P4 are authorized sequentially; P5-P8 remain not_authorized.
   - Extend M1B history only after the relevant M0 data-authority blocker is resolved, without changing thresholds or rules.
   - Diagnostics and revalidation must not lower validation thresholds.
@@ -177,10 +182,18 @@ latest_reports:
     phase: governance
     status: approved
     status_marker: "Design status: approved"
+  - path: docs/superpowers/specs/2026-07-10-m1c-btc-eth-rotation-design.md
+    phase: M1C P1
+    status: design_pass
+    status_marker: "Design status: design_pass"
+  - path: reports/m1/M1C_FREQTRADE_CAPABILITY_REVIEW.md
+    phase: M1C P1
+    status: design_pass
+    status_marker: "Status: design_pass"
   - path: PROJECT_EXECUTION_CHECKLIST.md
     phase: governance
     status: in_progress
-    status_marker: "Active task: P0-05"
+    status_marker: "Active task: P1-03"
   - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
     phase: post-M1B
     status: accepted
@@ -233,6 +246,9 @@ latest_merged_prs:
   - number: 13
     title: Implement evidence-first M0 dual-source audit
     merged_at_utc: "2026-07-09T23:23:15Z"
+  - number: 14
+    title: Add strategy diagnostics and end-to-end quant roadmap
+    merged_at_utc: "2026-07-09T23:45:27Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

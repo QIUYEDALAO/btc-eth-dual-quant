@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "release": "2026.6",
+  "source_commit": "b604e2fd70539f7f73d3c62c16ce0b155bbab319",
+  "source_file": "freqtrade/optimize/backtesting.py",
+  "source_file_sha256": "3b1fbe43adb6cffe68ebb56bd3f0571dc45016cffd2c1d1c12f46d8879ac95bc",
+  "source_url": "https://github.com/freqtrade/freqtrade/blob/2026.6/freqtrade/optimize/backtesting.py",
+  "observations": {
+    "signal_columns_shifted_one_candle": true,
+    "pairs_with_open_trades_processed_first": true,
+    "closed_trade_releases_slot_immediately": true,
+    "different_pair_can_enter_same_timestamp_after_exit": true,
+    "runtime_fixture_required_in_p2": true
+  },
+  "design_conclusion": "capability_supported_pending_p2_runtime_fixture",
+  "reviewed_utc": "2026-07-10T00:30:00Z"
+}
