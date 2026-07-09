@@ -27,7 +27,12 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from btc_eth_dual_quant.data.binance import BinanceReadOnlyCollector, BinanceReadOnlyRestClient
 from btc_eth_dual_quant.data.duckdb_layer import DuckDBLayer
 from btc_eth_dual_quant.data.funding import infer_funding_interval_hours
-from btc_eth_dual_quant.data.quality import detect_kline_gaps, flag_kline_anomalies
+from btc_eth_dual_quant.data.quality import (
+    ZipRestAudit,
+    audit_zip_rest_klines,
+    detect_kline_gaps,
+    flag_kline_anomalies,
+)
 from btc_eth_dual_quant.data.registry import RegistryRecord, load_registry
 from btc_eth_dual_quant.data.storage import AppendOnlyRawStore, RawEnvelope
 from m0_report import DatasetRun, M0RunReport, write_report
@@ -61,6 +66,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--timeout-sec", type=int, default=20)
     parser.add_argument("--proxy", default=None, help="Optional proxy URL, e.g. http://127.0.0.1:7897")
     parser.add_argument("--zip-fallback", action="store_true", help="Use data.binance.vision ZIP fallback for public kline datasets when REST fails")
+    parser.add_argument(
+        "--skip-zip-compare",
+        action="store_true",
+        help="Skip ZIP/REST audit; resulting report is intentionally blocked for acceptance",
+    )
     parser.add_argument("--zip-lookback-days", type=int, default=90)
     parser.add_argument("--include-oi", action="store_true", help="Also archive openInterestHist")
     parser.add_argument("--spot-only", action="store_true", help="Only collect spot klines")
@@ -69,19 +79,26 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+def _epoch_ms(value: Any) -> int:
+    timestamp = int(value)
+    if abs(timestamp) >= 100_000_000_000_000:
+        timestamp //= 1000
+    return timestamp
+
+
 def _rows_from_kline_payload(payload: Any) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for row in payload if isinstance(payload, list) else []:
         if isinstance(row, list) and len(row) >= 7:
             rows.append(
                 {
-                    "open_time": row[0],
+                    "open_time": _epoch_ms(row[0]),
                     "open": row[1],
                     "high": row[2],
                     "low": row[3],
                     "close": row[4],
                     "volume": row[5] if len(row) > 5 else "0",
-                    "close_time": row[6],
+                    "close_time": _epoch_ms(row[6]),
                     "quote_volume": row[7] if len(row) > 7 else "0",
                 }
             )
@@ -171,7 +188,7 @@ def _funding_zip_url(symbol: str, month: date) -> str:
 
 def _row_ms(row: list[str], idx: int = 0) -> int | None:
     try:
-        return int(row[idx])
+        return _epoch_ms(row[idx])
     except (IndexError, TypeError, ValueError):
         return None
 
@@ -370,6 +387,71 @@ def _combined_envelope(envelopes: list[RawEnvelope]) -> RawEnvelope:
     )
 
 
+def _anomaly_input_rows(dataset: str, rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    if dataset == "premium_index_klines":
+        return [{**row, "open": row["high"], "low": row["high"], "volume": "1"} for row in rows]
+    if dataset in {"mark_price_klines", "index_price_klines"}:
+        return [{**row, "volume": "1"} for row in rows]
+    return rows
+
+
+def _month_for_ms(timestamp_ms: int) -> date:
+    value = datetime.fromtimestamp(timestamp_ms / 1000, tz=timezone.utc).date()
+    return value.replace(day=1)
+
+
+def _audit_months(dataset: str, rows: list[dict[str, Any]]) -> tuple[list[date], str]:
+    months = sorted({_month_for_ms(int(row["open_time"])) for row in rows})
+    if not months:
+        return [], "not_available"
+    now_month = datetime.now(tz=timezone.utc).date().replace(day=1)
+    completed = [month for month in months if month < now_month]
+    eligible = completed or months
+    first = eligible[0]
+    middle = eligible[len(eligible) // 2]
+    latest = eligible[-1]
+    selected = {first, middle, latest}
+    anomalies = flag_kline_anomalies(_anomaly_input_rows(dataset, rows))
+    anomaly_months = sorted({_month_for_ms(item.open_time) for item in anomalies})
+    selected.update(anomaly_months)
+    anomaly_scope = ",".join(month.isoformat()[:7] for month in anomaly_months) or "none"
+    scope = (
+        f"first={first.isoformat()[:7]};middle={middle.isoformat()[:7]};"
+        f"latest_complete={latest.isoformat()[:7]};anomaly={anomaly_scope}"
+    )
+    return sorted(selected), scope
+
+
+def _zip_rest_audit(
+    dataset: str,
+    symbol: str,
+    interval: str,
+    rest_rows: list[dict[str, Any]],
+    timeout_sec: int,
+) -> ZipRestAudit:
+    zip_payload: list[list[str]] = []
+    months, scope = _audit_months(dataset, rest_rows)
+    missing_months: list[str] = []
+    for month in months:
+        url = _kline_zip_url(dataset, symbol, interval, month)
+        try:
+            zip_payload.extend(_csv_rows_from_zip(url, timeout_sec))
+        except HTTPError as exc:
+            if exc.code == 404:
+                missing_months.append(month.isoformat()[:7])
+                continue
+            raise
+    if missing_months:
+        raise ValueError(
+            f"ZIP/REST audit missing selected ZIP month(s) for {dataset}:{symbol}: {','.join(missing_months)}"
+        )
+    zip_rows = _rows_from_kline_payload(zip_payload)
+    audit = audit_zip_rest_klines(zip_rows, rest_rows, scope=scope)
+    if audit.overlap_rows <= 0:
+        raise ValueError(f"ZIP/REST audit found no overlapping rows for {dataset}:{symbol}")
+    return audit
+
+
 def _payload_last_ms(payload: Any, kind: str) -> int | None:
     if not isinstance(payload, list) or not payload:
         return None
@@ -416,16 +498,18 @@ def _collect_paginated(
     return _combined_envelope(envelopes)
 
 
-def _summarize_kline(dataset: str, interval: str, envelope: RawEnvelope) -> DatasetRun:
+def _summarize_kline(
+    dataset: str,
+    interval: str,
+    envelope: RawEnvelope,
+    audit: ZipRestAudit | None = None,
+    audit_error: str | None = None,
+) -> DatasetRun:
     rows = _rows_from_kline_payload(envelope.payload)
     start_ms, end_ms = _row_time_bounds(rows, "open_time", "close_time")
     gaps = detect_kline_gaps(rows, interval).gaps if rows else []
-    if "premium_index_klines" in dataset:
-        anomaly_rows = [{**row, "open": row["high"], "low": row["high"], "volume": "1"} for row in rows]
-    elif any(token in dataset for token in ("mark_price_klines", "index_price_klines")):
-        anomaly_rows = [{**row, "volume": "1"} for row in rows]
-    else:
-        anomaly_rows = rows
+    base_dataset = dataset.split(":", 1)[0]
+    anomaly_rows = _anomaly_input_rows(base_dataset, rows)
     anomalies = flag_kline_anomalies(anomaly_rows) if rows else []
     unexplained = []
     if anomalies:
@@ -433,6 +517,10 @@ def _summarize_kline(dataset: str, interval: str, envelope: RawEnvelope) -> Data
         for anomaly in anomalies:
             reason_counts[anomaly.reason] = reason_counts.get(anomaly.reason, 0) + 1
         unexplained.append(f"kline anomalies pending review: {reason_counts}")
+    if audit_error:
+        unexplained.append(f"ZIP/REST comparison incomplete: {audit_error}")
+    if audit and audit.differences:
+        unexplained.append(f"ZIP/REST comparison differences={len(audit.differences)}")
     return DatasetRun(
         name=dataset,
         interval=interval,
@@ -440,7 +528,11 @@ def _summarize_kline(dataset: str, interval: str, envelope: RawEnvelope) -> Data
         start_ms=start_ms,
         end_ms=end_ms,
         gaps=len(gaps),
-        zip_rest_differences="not_available_in_smoke",
+        zip_rest_differences=len(audit.differences) if audit else "not_run",
+        zip_rest_overlap=audit.overlap_rows if audit else "not_run",
+        rest_payload_sha256=audit.rest_payload_sha256 if audit else "not_run",
+        zip_payload_sha256=audit.zip_payload_sha256 if audit else "not_run",
+        zip_rest_scope=audit.scope if audit else "not_run",
         kline_anomalies=len(anomalies),
         funding_interval_warnings="not_applicable",
         archive_status="not_applicable",
@@ -544,6 +636,7 @@ def _collect_for_symbol(
     oi_retention_limited: bool,
     max_pages: int,
     spot_only: bool,
+    zip_compare: bool,
 ) -> list[DatasetRun]:
     params = {"limit": limit, "startTime": start_ms, "endTime": end_ms}
     runs: list[DatasetRun] = []
@@ -563,7 +656,22 @@ def _collect_for_symbol(
             envelope = _collect_paginated(
                 fn, records[name], kwargs, start_ms, end_ms, limit, max_pages, "kline"
             )
-            runs.append(_summarize_kline(run_name, interval, envelope))
+            audit = None
+            audit_error = None
+            if zip_compare:
+                try:
+                    audit = _zip_rest_audit(
+                        name,
+                        symbol,
+                        interval,
+                        _rows_from_kline_payload(envelope.payload),
+                        timeout_sec,
+                    )
+                except Exception as exc:
+                    audit_error = f"{type(exc).__name__}: {exc}"
+            else:
+                audit_error = "skipped by --skip-zip-compare"
+            runs.append(_summarize_kline(run_name, interval, envelope, audit, audit_error))
         except Exception as exc:
             if zip_fallback:
                 try:
@@ -580,6 +688,10 @@ def _collect_for_symbol(
                         end_ms,
                     )
                     run = _summarize_kline(run_name, interval, envelope)
+                    run.zip_rest_differences = "not_available_rest_failed"
+                    run.zip_rest_overlap = "not_available_rest_failed"
+                    run.rest_payload_sha256 = "not_available_rest_failed"
+                    run.zip_payload_sha256 = envelope.content_sha256
                     run.unexplained.append(f"REST failed; used ZIP fallback: {type(exc).__name__}: {exc}")
                     runs.append(run)
                 except Exception as fallback_exc:
@@ -749,6 +861,7 @@ def main() -> int:
                 oi_retention_limited,
                 args.max_pages,
                 args.spot_only,
+                not args.skip_zip_compare,
             )
         )
 

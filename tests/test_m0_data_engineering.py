@@ -14,6 +14,7 @@ from btc_eth_dual_quant.backtest.skeleton import (
     assert_feature_available,
     schedule_next_open,
 )
+from btc_eth_dual_quant.backtest.m0_data import M0DataIndexError, load_funding_records
 from btc_eth_dual_quant.data import binance
 from btc_eth_dual_quant.data.binance import BinanceClientError, BinanceReadOnlyRestClient
 from btc_eth_dual_quant.data.costs import (
@@ -24,6 +25,7 @@ from btc_eth_dual_quant.data.costs import (
 )
 from btc_eth_dual_quant.data.funding import annualize_funding_rate, infer_funding_interval_hours
 from btc_eth_dual_quant.data.quality import (
+    audit_zip_rest_klines,
     compare_zip_rest_klines,
     detect_kline_gaps,
     flag_kline_anomalies,
@@ -31,15 +33,18 @@ from btc_eth_dual_quant.data.quality import (
 )
 from btc_eth_dual_quant.data.registry import load_registry
 from btc_eth_dual_quant.data.storage import AppendOnlyRawStore
+from btc_eth_dual_quant.data.duckdb_layer import DuckDBLayer
 
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from m0_report import DatasetRun, M0RunReport, parse_report, write_report
+from m0_report import DatasetRun, M0RunReport, _required_checks_complete, parse_report, write_report
 from m0_anomaly_review import CROSS_ENDPOINT_MARKET_MOVE_NOTE, review_anomaly, write_review
 from m0_anomaly_review import ReviewedAnomaly
 import m0_report_merge
+import m0_audit_revalidate
+import m0_backfill_public
 from m0_smoke_readonly_private import write_private_status
 
 
@@ -104,6 +109,22 @@ class StorageAndCollectorTests(unittest.TestCase):
         with self.assertRaises(BinanceClientError):
             BinanceReadOnlyRestClient._assert_read_only("/fapi/v1/countdownCancelAll")
 
+    def test_raw_store_rejects_path_traversal_dataset(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            store = AppendOnlyRawStore(tmp)
+            with self.assertRaises(ValueError):
+                store.append("../escape", "fixture", "GET /public", {}, [])
+
+    def test_duckdb_insert_count_and_identifier_validation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            store = AppendOnlyRawStore(Path(tmp) / "raw")
+            first = store.append("spot_klines", "fixture", "GET /public", {}, [[1]])
+            db = DuckDBLayer(Path(tmp) / "m0.duckdb")
+            self.assertEqual(db.index_envelopes([first]), 1)
+            self.assertEqual(db.index_envelopes([first]), 0)
+            with self.assertRaises(ValueError):
+                db.create_derived_table('bad"table', [{"value": 1}])
+
 
 class FundingTests(unittest.TestCase):
     def test_funding_info_has_priority_when_consistent(self) -> None:
@@ -124,7 +145,10 @@ class FundingTests(unittest.TestCase):
         result = infer_funding_interval_hours(
             "BTCUSDT",
             funding_info={"symbol": "BTCUSDT", "fundingIntervalHours": 8},
-            premium_index={"symbol": "BTCUSDT", "time": 0, "nextFundingTime": 14_400_000},
+            premium_index=[
+                {"symbol": "BTCUSDT", "time": 0, "nextFundingTime": 14_400_000},
+                {"symbol": "BTCUSDT", "time": 1, "nextFundingTime": 28_800_000},
+            ],
         )
         self.assertEqual(result.hours, Decimal("4"))
         self.assertEqual(result.source, "conflict_shorter_interval")
@@ -133,10 +157,36 @@ class FundingTests(unittest.TestCase):
     def test_premium_index_fallback(self) -> None:
         result = infer_funding_interval_hours(
             "BTCUSDT",
-            premium_index={"symbol": "BTCUSDT", "time": 1000, "nextFundingTime": 14_401_000},
+            premium_index=[
+                {"symbol": "BTCUSDT", "time": 1000, "nextFundingTime": 14_401_000},
+                {"symbol": "BTCUSDT", "time": 2000, "nextFundingTime": 28_801_000},
+            ],
         )
         self.assertEqual(result.hours, Decimal("4"))
         self.assertEqual(result.source, "premiumIndex.nextFundingTime")
+
+    def test_single_premium_snapshot_is_not_a_complete_interval(self) -> None:
+        with self.assertRaises(ValueError):
+            infer_funding_interval_hours(
+                "BTCUSDT",
+                premium_index={"symbol": "BTCUSDT", "time": 1000, "nextFundingTime": 14_401_000},
+            )
+
+    def test_history_preserves_variable_event_intervals(self) -> None:
+        result = infer_funding_interval_hours(
+            "BTCUSDT",
+            funding_rate_history=[
+                {"symbol": "BTCUSDT", "fundingTime": 0},
+                {"symbol": "BTCUSDT", "fundingTime": 14_400_000},
+                {"symbol": "BTCUSDT", "fundingTime": 36_000_000},
+                {"symbol": "BTCUSDT", "fundingTime": 64_800_000},
+                {"symbol": "BTCUSDT", "fundingTime": 108_000_000},
+            ],
+        )
+        self.assertEqual(
+            list(result.event_intervals.values()),
+            [Decimal("4"), Decimal("4"), Decimal("6"), Decimal("8"), Decimal("12")],
+        )
 
     def test_history_fallback_and_annualization(self) -> None:
         result = infer_funding_interval_hours(
@@ -149,6 +199,49 @@ class FundingTests(unittest.TestCase):
         )
         self.assertEqual(result.hours, Decimal("6"))
         self.assertEqual(annualize_funding_rate("0.001", result.hours), Decimal("1.460"))
+
+    def test_m0_loader_preserves_interval_per_funding_event(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            AppendOnlyRawStore(root / "raw").append(
+                "funding_rate_history",
+                "fixture",
+                "GET public funding history",
+                {"symbol": "BTCUSDT"},
+                [
+                    {"symbol": "BTCUSDT", "fundingTime": 0, "fundingRate": "0.001"},
+                    {"symbol": "BTCUSDT", "fundingTime": 14_400_000, "fundingRate": "0.001"},
+                    {"symbol": "BTCUSDT", "fundingTime": 36_000_000, "fundingRate": "0.001"},
+                ],
+            )
+            records = load_funding_records(
+                "BTCUSDT",
+                raw_root=root / "raw",
+                duckdb_path=root / "missing.duckdb",
+            )
+        self.assertEqual([record.interval_hours for record in records], [4.0, 4.0, 6.0])
+        self.assertAlmostEqual(records[-1].annualized_rate, 1.46)
+
+    def test_existing_broken_duckdb_does_not_silently_fallback(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "broken.duckdb").write_text("not a database", encoding="utf-8")
+            AppendOnlyRawStore(root / "raw").append(
+                "funding_rate_history",
+                "fixture",
+                "GET public funding history",
+                {"symbol": "BTCUSDT"},
+                [
+                    {"symbol": "BTCUSDT", "fundingTime": 0, "fundingRate": "0.001"},
+                    {"symbol": "BTCUSDT", "fundingTime": 14_400_000, "fundingRate": "0.001"},
+                ],
+            )
+            with self.assertRaises(M0DataIndexError):
+                load_funding_records(
+                    "BTCUSDT",
+                    raw_root=root / "raw",
+                    duckdb_path=root / "broken.duckdb",
+                )
 
 
 class CostTests(unittest.TestCase):
@@ -181,10 +274,28 @@ class QualityTests(unittest.TestCase):
         left = [{"open_time": 1, "open": "100", "high": "110", "low": "90", "close": "100", "volume": "10", "quote_volume": "1000"}]
         right = [{"open_time": 1, "open": "100.2", "high": "110", "low": "90", "close": "100", "volume": "10", "quote_volume": "1000"}]
         self.assertEqual(compare_zip_rest_klines(left, right)[0].field, "open")
+        audit = audit_zip_rest_klines(left, left)
+        self.assertEqual(audit.overlap_rows, 1)
+        self.assertEqual(audit.differences, [])
+        self.assertEqual(len(audit.rest_payload_sha256), 64)
+        self.assertEqual(len(audit.zip_payload_sha256), 64)
         anomalies = flag_kline_anomalies(
             [{"open_time": 1, "open": "100", "high": "140", "low": "90", "close": "100", "volume": "0"}]
         )
         self.assertEqual({item.reason for item in anomalies}, {"amplitude_gt_30pct", "zero_volume"})
+
+    def test_zip_rest_scope_covers_first_middle_latest_and_anomalies(self) -> None:
+        rows = [
+            {"open_time": 1_577_836_800_000, "open": "100", "high": "101", "low": "99", "volume": "1"},
+            {"open_time": 1_580_515_200_000, "open": "100", "high": "150", "low": "90", "volume": "1"},
+            {"open_time": 1_583_020_800_000, "open": "100", "high": "101", "low": "99", "volume": "1"},
+        ]
+        months, scope = m0_backfill_public._audit_months("spot_klines", rows)
+        self.assertEqual([month.isoformat()[:7] for month in months], ["2020-01", "2020-02", "2020-03"])
+        self.assertEqual(
+            scope,
+            "first=2020-01;middle=2020-02;latest_complete=2020-03;anomaly=2020-02",
+        )
 
     def test_archive_completeness_missing_days(self) -> None:
         records = [{"time": 0}, {"time": 2 * 24 * 60 * 60 * 1000}]
@@ -258,6 +369,10 @@ class M0ReportTests(unittest.TestCase):
                         start_ms=0,
                         end_ms=86_399_999,
                         zip_rest_differences=0,
+                        zip_rest_overlap=1,
+                        rest_payload_sha256="a" * 64,
+                        zip_payload_sha256="a" * 64,
+                        zip_rest_scope="first=2020-01;middle=2021-01;latest_complete=2022-01;anomaly=none",
                         funding_interval_warnings="not_applicable",
                         archive_status="not_applicable",
                         commission_status="not_applicable",
@@ -301,6 +416,116 @@ class M0ReportTests(unittest.TestCase):
             'default="reports/m0/M0_SCHEDULER_DRY_RUN_REPORT.md"',
             (ROOT / "scripts" / "m0_scheduler_dry_run.py").read_text(),
         )
+
+    def test_required_checks_block_when_zip_rest_was_not_run(self) -> None:
+        run = DatasetRun(
+            name="spot_klines:BTCUSDT",
+            interval="1h",
+            rows=10,
+            zip_rest_differences="not_run",
+            funding_interval_warnings="not_applicable",
+            archive_status="not_applicable",
+            commission_status="not_applicable",
+        )
+        self.assertFalse(_required_checks_complete([run]))
+
+    def test_render_cannot_override_failed_dataset_checks(self) -> None:
+        run = DatasetRun(
+            name="spot_klines:BTCUSDT",
+            interval="1h",
+            rows=10,
+            zip_rest_differences="not_run",
+            funding_interval_warnings="not_applicable",
+            archive_status="not_applicable",
+            commission_status="not_applicable",
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "report.md"
+            write_report(
+                M0RunReport(
+                    data_start="2026-01-01",
+                    data_end="2026-01-02",
+                    datasets=[run],
+                    public_full_history_complete=True,
+                    required_checks_complete=True,
+                ),
+                output,
+            )
+            text = output.read_text(encoding="utf-8")
+        self.assertIn("- Public full-history: `blocked`", text)
+        self.assertIn("- Required checks: `blocked`", text)
+
+    def test_m0_audit_revalidation_passes_complete_1h_fixture(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            raw_root = root / "raw"
+            store = AppendOnlyRawStore(raw_root)
+            runs: list[DatasetRun] = []
+            for symbol in ("BTCUSDT", "ETHUSDT"):
+                for name in (
+                    "spot_klines",
+                    "um_futures_klines",
+                    "mark_price_klines",
+                    "index_price_klines",
+                    "premium_index_klines",
+                ):
+                    runs.append(
+                        DatasetRun(
+                            name=f"{name}:{symbol}",
+                            interval="1h",
+                            rows=100,
+                            gaps=0,
+                            zip_rest_differences=0,
+                            zip_rest_overlap=72,
+                            rest_payload_sha256="a" * 64,
+                            zip_payload_sha256="b" * 64,
+                            zip_rest_scope=(
+                                "first=2020-01;middle=2021-01;latest_complete=2022-01;anomaly=none"
+                            ),
+                            funding_interval_warnings="not_applicable",
+                            archive_status="not_applicable",
+                            commission_status="not_applicable",
+                        )
+                    )
+                runs.append(
+                    DatasetRun(
+                        name=f"funding_rate_history:{symbol}",
+                        interval="funding_period",
+                        rows=3,
+                        funding_interval_warnings="not_applicable",
+                        archive_status="not_applicable",
+                        commission_status="not_applicable",
+                        zip_rest_differences="not_applicable",
+                    )
+                )
+                store.append(
+                    "funding_rate_history",
+                    "fixture",
+                    "GET public funding history",
+                    {"symbol": symbol},
+                    [
+                        {"symbol": symbol, "fundingTime": 0, "fundingRate": "0.0001"},
+                        {"symbol": symbol, "fundingTime": 14_400_000, "fundingRate": "0.0001"},
+                        {"symbol": symbol, "fundingTime": 43_200_000, "fundingRate": "0.0001"},
+                    ],
+                )
+            report = M0RunReport(data_start="2020-01-01", data_end="2022-01-31", datasets=runs)
+            text, passed = m0_audit_revalidate.render_audit_report(report, raw_root)
+        self.assertTrue(passed)
+        self.assertIn("- Status: pass", text)
+        self.assertIn("4h=2, 8h=1", text)
+
+    def test_m0_audit_revalidation_blocks_missing_zip_evidence(self) -> None:
+        report = M0RunReport(
+            data_start="2020-01-01",
+            data_end="2020-01-02",
+            datasets=[DatasetRun(name="spot_klines:BTCUSDT", interval="1h", rows=24)],
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            text, passed = m0_audit_revalidate.render_audit_report(report, Path(tmp) / "raw")
+        self.assertFalse(passed)
+        self.assertIn("- Status: blocked", text)
+        self.assertIn("ZIP/REST fields equal", text)
 
     def test_merge_hides_private_details_and_keeps_m1_gate_inputs(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -450,6 +675,10 @@ class M0ReportTests(unittest.TestCase):
                     start_ms=0,
                     end_ms=99,
                     zip_rest_differences=0,
+                    zip_rest_overlap=1,
+                    rest_payload_sha256="a" * 64,
+                    zip_payload_sha256="a" * 64,
+                    zip_rest_scope="first=2020-01;middle=2021-01;latest_complete=2022-01;anomaly=none",
                     funding_interval_warnings="not_applicable",
                     archive_status="not_applicable",
                     commission_status="not_applicable",

@@ -18,6 +18,7 @@ class FundingIntervalResult:
     source: str
     warnings: list[str]
     candidates: dict[str, Decimal]
+    event_intervals: dict[int, Decimal]
 
 
 def _as_decimal(value: Any) -> Decimal:
@@ -34,25 +35,54 @@ def _funding_info_interval(funding_info: Any, symbol: str) -> Decimal | None:
     return None
 
 
-def _premium_index_interval(premium_index: Any, symbol: str) -> Decimal | None:
+def _premium_index_interval(
+    premium_index: Any,
+    symbol: str,
+    funding_rate_history: list[dict[str, Any]] | None,
+) -> Decimal | None:
     if not premium_index:
         return None
     records = premium_index if isinstance(premium_index, list) else [premium_index]
-    for record in records:
-        if (
-            record.get("symbol") in (symbol, None)
+    next_times = sorted(
+        {
+            int(record["nextFundingTime"])
+            for record in records
+            if isinstance(record, dict)
+            and record.get("symbol") in (symbol, None)
             and record.get("nextFundingTime") is not None
-            and record.get("time") is not None
-        ):
-            delta_ms = _as_decimal(record["nextFundingTime"]) - _as_decimal(record["time"])
-            if delta_ms > 0:
-                return delta_ms / MS_PER_HOUR
+        }
+    )
+    next_deltas = [cur - prev for prev, cur in zip(next_times, next_times[1:]) if cur > prev]
+    if next_deltas:
+        delta_ms = Counter(next_deltas).most_common(1)[0][0]
+        return Decimal(delta_ms) / MS_PER_HOUR
+
+    # A single snapshot only reports time remaining until the next settlement.
+    # It becomes a full-period candidate only when paired with the immediately
+    # preceding observed settlement timestamp.
+    if len(next_times) == 1 and funding_rate_history:
+        historical_times = sorted(
+            {
+                int(record["fundingTime"])
+                for record in funding_rate_history
+                if record.get("symbol", symbol) == symbol and record.get("fundingTime") is not None
+            }
+        )
+        previous = [time_ms for time_ms in historical_times if time_ms < next_times[0]]
+        if previous:
+            delta_ms = next_times[0] - previous[-1]
+            historical_deltas = [cur - prev for prev, cur in zip(historical_times, historical_times[1:]) if cur > prev]
+            if not historical_deltas or delta_ms <= max(historical_deltas):
+                return Decimal(delta_ms) / MS_PER_HOUR
     return None
 
 
-def _history_interval(funding_rate_history: list[dict[str, Any]] | None, symbol: str) -> Decimal | None:
+def _history_intervals(
+    funding_rate_history: list[dict[str, Any]] | None,
+    symbol: str,
+) -> tuple[Decimal | None, dict[int, Decimal]]:
     if not funding_rate_history:
-        return None
+        return None, {}
     times = sorted(
         int(record["fundingTime"])
         for record in funding_rate_history
@@ -60,9 +90,13 @@ def _history_interval(funding_rate_history: list[dict[str, Any]] | None, symbol:
     )
     deltas = [cur - prev for prev, cur in zip(times, times[1:]) if cur > prev]
     if not deltas:
-        return None
+        return None, {}
     delta_ms = Counter(deltas).most_common(1)[0][0]
-    return Decimal(delta_ms) / MS_PER_HOUR
+    event_intervals: dict[int, Decimal] = {times[0]: Decimal(deltas[0]) / MS_PER_HOUR}
+    for prev, cur in zip(times, times[1:]):
+        if cur > prev:
+            event_intervals[cur] = Decimal(cur - prev) / MS_PER_HOUR
+    return Decimal(delta_ms) / MS_PER_HOUR, event_intervals
 
 
 def infer_funding_interval_hours(
@@ -77,10 +111,10 @@ def infer_funding_interval_hours(
     info_value = _funding_info_interval(funding_info, symbol)
     if info_value is not None:
         candidates["fundingInfo.fundingIntervalHours"] = info_value
-    premium_value = _premium_index_interval(premium_index, symbol)
+    premium_value = _premium_index_interval(premium_index, symbol, funding_rate_history)
     if premium_value is not None:
         candidates["premiumIndex.nextFundingTime"] = premium_value
-    history_value = _history_interval(funding_rate_history, symbol)
+    history_value, event_intervals = _history_intervals(funding_rate_history, symbol)
     if history_value is not None:
         candidates["fundingRate.fundingTime"] = history_value
 
@@ -101,8 +135,14 @@ def infer_funding_interval_hours(
         warnings.append(
             f"funding interval conflict for {symbol}: {candidates}; using shorter {conservative}h"
         )
-        return FundingIntervalResult(conservative, "conflict_shorter_interval", warnings, candidates)
-    return FundingIntervalResult(preferred_value, preferred_source, warnings, candidates)
+        return FundingIntervalResult(
+            conservative,
+            "conflict_shorter_interval",
+            warnings,
+            candidates,
+            event_intervals,
+        )
+    return FundingIntervalResult(preferred_value, preferred_source, warnings, candidates, event_intervals)
 
 
 def annualize_funding_rate(period_rate: Decimal | str | float, interval_hours: Decimal | str | float) -> Decimal:
