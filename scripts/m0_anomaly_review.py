@@ -160,18 +160,22 @@ def market_fields_valid(dataset: str, row: dict[str, Any]) -> bool:
 
 
 def load_envelopes(dataset: str, raw_root: str, duckdb_path: str) -> list[RawEnvelope]:
-    try:
+    db_path = Path(duckdb_path)
+    if db_path.exists():
         duckdb = DuckDBLayer(duckdb_path)
-        with duckdb.connect() as con:
-            rows = con.execute(
-                """
-                SELECT source, endpoint, params_json, payload_json, ingested_at_ms, content_sha256
-                FROM raw_envelopes
-                WHERE dataset = ?
-                ORDER BY ingested_at_ms, content_sha256
-                """,
-                [dataset],
-            ).fetchall()
+        try:
+            with duckdb.connect() as con:
+                rows = con.execute(
+                    """
+                    SELECT source, endpoint, params_json, payload_json, ingested_at_ms, content_sha256
+                    FROM raw_envelopes
+                    WHERE dataset = ?
+                    ORDER BY ingested_at_ms, content_sha256
+                    """,
+                    [dataset],
+                ).fetchall()
+        except Exception as exc:
+            raise RuntimeError(f"cannot read anomaly-review DuckDB index {db_path}: {exc}") from exc
         if rows:
             return [
                 RawEnvelope(
@@ -185,8 +189,6 @@ def load_envelopes(dataset: str, raw_root: str, duckdb_path: str) -> list[RawEnv
                 )
                 for source, endpoint, params_json, payload_json, ingested_at_ms, content_sha256 in rows
             ]
-    except Exception:
-        pass
     return AppendOnlyRawStore(raw_root).iter_envelopes(dataset)
 
 

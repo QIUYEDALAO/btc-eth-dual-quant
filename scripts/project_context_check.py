@@ -119,7 +119,7 @@ def main() -> int:
     }
     if len(merged_numbers) != len(merged_prs):
         failures.append("PROJECT_STATE.yaml latest_merged_prs contains invalid or duplicate PR numbers")
-    for required_pr in (6, 7):
+    for required_pr in (6, 7, 8):
         if required_pr not in merged_numbers:
             failures.append(f"PROJECT_STATE.yaml latest_merged_prs missing PR #{required_pr}")
 
@@ -149,6 +149,7 @@ def main() -> int:
         "M1B Failed Validation Merged",
         "Post-M1B Review Started",
         "Freqtrade-First Architecture Hardening Started",
+        "Freqtrade-First Architecture Governance Merged",
     ):
         if required not in ledger_text:
             failures.append(f"PROJECT_LEDGER.md must contain: {required}")

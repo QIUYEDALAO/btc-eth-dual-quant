@@ -203,3 +203,49 @@ private exchange responses here.
 - Decision: Historical reports remain immutable; affected M1A metrics are superseded and M1B numerical evidence is invalidated pending revalidation.
 - Blockers: No strategy is eligible for M2; M0 audit and M1B event-time methodology require revalidation.
 - Next action: Complete and review the four independent hardening PRs without implementing execution.
+
+## 2026-07-09 - Freqtrade-First Architecture Governance Merged
+
+- Date UTC: 2026-07-09T19:03:27Z
+- Task ID: FREQTRADE-FIRST-GOVERNANCE-MERGED
+- Phase: post-M1B architecture hardening
+- Branch: main
+- Commit: ee7a3ba2a438aa224e6768fbdde47d7f733930e3
+- PR: #8 merged
+- Completed: ADR-0006, the Freqtrade-first design specification, ownership boundaries, and historical evidence notices were merged.
+- Not completed: M0 audit revalidation, immutable Freqtrade runtime pinning, M1B event-time revalidation, M2, live/paper/API/trading.
+- Decision: Freqtrade owns single-leg research; M0 and Python remain audit and offline two-leg accounting sidecars.
+- Blockers: M0 audit correctness and M1B event-time evidence still require revalidation.
+- Next action: Complete M0 public audit correctness without private API access.
+
+## 2026-07-09 - M0 Audit Correctness Hardening Started
+
+- Date UTC: 2026-07-09T19:27:07Z
+- Task ID: M0-AUDIT-CORRECTNESS-HARDENING
+- Phase: M0 audit revalidation
+- Branch: codex/m0-audit-correctness-hardening
+- Commit: 021bb19
+- PR: #9 open
+- Completed so far: funding cadence candidates now require complete periods; historical event intervals are preserved; raw dataset and DuckDB identifiers are validated; DuckDB read failures are explicit; ZIP/REST evidence records overlap, hashes, and audit scope.
+- Not completed: sanitized real 1h public audit report and PR review.
+- Validation: 70 repository tests passed before the final M0 audit additions; local spot REST/ZIP probe passed through the official public market-data host.
+- Decision: ZIP-only fallback cannot satisfy the audit gate. Missing selected ZIP months or unavailable REST evidence must block revalidation.
+- Blockers: Production Binance REST is unreachable from local and VPS networks; run the manual no-secret GitHub public audit workflow after publishing this branch.
+- Next action: Publish the branch, run `M0 Public Audit`, inspect the report artifact, and restore M0 audit pass only if every check passes.
+- Guardrails: No private smoke, API keys, M2, live/paper trading, order operations, or execution/live.
+
+## 2026-07-09 - M0 Public Audit Revalidation Blocked Truthfully
+
+- Date UTC: 2026-07-09T20:04:18Z
+- Task ID: M0-PUBLIC-AUDIT-REAL-RUN
+- Phase: M0 audit revalidation
+- Branch: codex/m0-audit-correctness-hardening
+- Commit: 379d552
+- PR: #9 open
+- Workflow: M0 Public Audit run 29046010878
+- Completed: BTCUSDT/ETHUSDT 1h public profile ran from 2019-09-01 through 2026-07-08; spot REST/ZIP scope covered first, middle, latest complete, anomaly, and gap months; funding histories retained 7,119 inferred event intervals per symbol.
+- Validation result: M0 audit remains blocked. Funding interval evidence normalized to data-derived 8h for this history, but spot has 6/7 field differences and one timestamp-set difference for BTC/ETH; futures REST returned HTTP 451, so futures ZIP/REST evidence is unavailable.
+- Decision: Do not reinterpret ZIP-only fallback as dual-source pass and do not restore M0 audit status.
+- Blockers: A compliant network is required for futures REST comparison, and spot differences require source-level investigation.
+- Next action: Merge the correctness hardening only after CI passes, then continue Freqtrade primary-framework hardening while all strategy approval and M2 gates remain blocked.
+- Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.

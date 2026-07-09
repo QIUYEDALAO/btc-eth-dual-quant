@@ -17,6 +17,11 @@ class DatasetRun:
     end_ms: int | None = None
     gaps: int = 0
     zip_rest_differences: int | str = "not_run"
+    zip_rest_missing_rows: int | str = "not_run"
+    zip_rest_overlap: int | str = "not_run"
+    rest_payload_sha256: str = "not_run"
+    zip_payload_sha256: str = "not_run"
+    zip_rest_scope: str = "not_run"
     kline_anomalies: int = 0
     funding_interval_warnings: int | str = "not_run"
     archive_status: str = "not_run"
@@ -95,6 +100,9 @@ def parse_report(path: str | Path) -> M0RunReport:
             cells = [cell.strip() for cell in line.strip("|").split("|")]
             if len(cells) < 9:
                 continue
+            extended = len(cells) >= 12
+            scoped = len(cells) >= 13
+            missing_counts = len(cells) >= 14
             datasets.append(
                 DatasetRun(
                     name=cells[0].strip("`"),
@@ -102,10 +110,19 @@ def parse_report(path: str | Path) -> M0RunReport:
                     rows=_safe_int(cells[2]),
                     gaps=_safe_int(cells[3]),
                     zip_rest_differences=_string_to_value(cells[4]),
-                    kline_anomalies=_safe_int(cells[5]),
-                    funding_interval_warnings=_string_to_value(cells[6]),
-                    archive_status=cells[7],
-                    commission_status=cells[8],
+                    zip_rest_missing_rows=_string_to_value(cells[5]) if missing_counts else "legacy_unspecified",
+                    zip_rest_overlap=_string_to_value(cells[6] if missing_counts else cells[5]) if extended else "not_run",
+                    rest_payload_sha256=cells[7 if missing_counts else 6].strip("`") if extended else "not_run",
+                    zip_payload_sha256=cells[8 if missing_counts else 7].strip("`") if extended else "not_run",
+                    zip_rest_scope=cells[9 if missing_counts else 8].strip("`") if scoped else "legacy_unspecified",
+                    kline_anomalies=_safe_int(
+                        cells[10] if missing_counts else cells[9] if scoped else cells[8] if extended else cells[5]
+                    ),
+                    funding_interval_warnings=_string_to_value(
+                        cells[11] if missing_counts else cells[10] if scoped else cells[9] if extended else cells[6]
+                    ),
+                    archive_status=cells[12] if missing_counts else cells[11] if scoped else cells[10] if extended else cells[7],
+                    commission_status=cells[13] if missing_counts else cells[12] if scoped else cells[11] if extended else cells[8],
                 )
             )
             continue
@@ -171,12 +188,33 @@ def _public_full_history_complete(datasets: list[DatasetRun]) -> bool:
 def _required_checks_complete(datasets: list[DatasetRun]) -> bool:
     if not datasets:
         return False
-    incomplete_values = {"not_run"}
+    incomplete_values = {"not_run", "not_available", "not_available_in_smoke", "not_available_rest_failed"}
     for dataset in datasets:
         if dataset.rows <= 0:
             return False
         if str(dataset.zip_rest_differences) in incomplete_values:
             return False
+        base_name = dataset.name.split(":", 1)[0]
+        if base_name in {
+            "spot_klines",
+            "um_futures_klines",
+            "mark_price_klines",
+            "index_price_klines",
+            "premium_index_klines",
+        }:
+            if not isinstance(dataset.zip_rest_differences, int) or dataset.zip_rest_differences != 0:
+                return False
+            if not isinstance(dataset.zip_rest_missing_rows, int) or dataset.zip_rest_missing_rows != 0:
+                return False
+            if not isinstance(dataset.zip_rest_overlap, int) or dataset.zip_rest_overlap <= 0:
+                return False
+            if dataset.rest_payload_sha256 in incomplete_values or dataset.zip_payload_sha256 in incomplete_values:
+                return False
+            required_scope = {"first=", "middle=", "latest_complete="}
+            if not all(marker in dataset.zip_rest_scope for marker in required_scope):
+                return False
+            if dataset.kline_anomalies and "anomaly=" not in dataset.zip_rest_scope:
+                return False
         if str(dataset.funding_interval_warnings) in incomplete_values:
             return False
         if dataset.archive_status in {"not_run", "failed", "empty_response"}:
@@ -188,12 +226,12 @@ def _required_checks_complete(datasets: list[DatasetRun]) -> bool:
 
 def render_report(report: M0RunReport) -> str:
     generated = datetime.now(tz=timezone.utc).isoformat(timespec="seconds")
-    public_complete = report.public_full_history_complete or _public_full_history_complete(report.datasets)
+    public_complete = _public_full_history_complete(report.datasets)
     scheduler_complete = report.scheduler_dry_run_complete or bool(report.scheduler_dry_run)
     private_complete = report.private_smoke_complete or any(
         "status=pass" in item or item == "pass" for item in report.private_smoke
     )
-    required_checks_complete = report.required_checks_complete or _required_checks_complete(report.datasets)
+    required_checks_complete = _required_checks_complete(report.datasets)
     zero_unexplained = not report.unexplained
     m1_gate_status = (
         "pass"
@@ -218,14 +256,16 @@ def render_report(report: M0RunReport) -> str:
         "",
         "## Public Full-history Pull Summary",
         "",
-        "| Dataset | Interval | Rows | Gaps | ZIP/REST Diff | K-line Anomalies | Funding Interval Anomalies | Archive Status | Commission Status |",
-        "|---|---:|---:|---:|---:|---:|---|---|---|",
+        "| Dataset | Interval | Rows | Gaps | ZIP/REST Field Diff | ZIP/REST Missing Rows | ZIP/REST Overlap | REST SHA256 | ZIP SHA256 | ZIP/REST Scope | K-line Anomalies | Funding Interval Anomalies | Archive Status | Commission Status |",
+        "|---|---:|---:|---:|---:|---:|---:|---|---|---|---:|---|---|---|",
     ]
     for dataset in report.datasets:
         lines.append(
             f"| `{dataset.name}` | `{dataset.interval}` | {dataset.rows} | {dataset.gaps} | "
-            f"{dataset.zip_rest_differences} | {dataset.kline_anomalies} | "
-            f"{dataset.funding_interval_warnings} | {dataset.archive_status} | {dataset.commission_status} |"
+            f"{dataset.zip_rest_differences} | {dataset.zip_rest_missing_rows} | {dataset.zip_rest_overlap} | "
+            f"`{dataset.rest_payload_sha256}` | `{dataset.zip_payload_sha256}` | `{dataset.zip_rest_scope}` | "
+            f"{dataset.kline_anomalies} | {dataset.funding_interval_warnings} | {dataset.archive_status} | "
+            f"{dataset.commission_status} |"
         )
 
     lines.extend(["", "## Scheduler Dry-run", ""])

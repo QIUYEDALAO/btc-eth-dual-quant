@@ -54,6 +54,7 @@ class FundingRecord:
     funding_time_ms: int
     funding_rate: float
     annualized_rate: float
+    interval_hours: float | None = None
 
 
 @dataclass(frozen=True)

@@ -3,6 +3,7 @@
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
 | `reports/m0/M0_FINAL_ACCEPTANCE.md` | M0 | accepted / audit_revalidation_required | Read-only infrastructure remains accepted; funding cadence fallback and ZIP/REST evidence require revalidation before new strategy approval. | no |
+| `reports/m0/M0_AUDIT_REVALIDATION_REPORT.md` | M0 | blocked / audit_revalidation_required | Real BTC/ETH 1h public audit run; funding cadence passed, while spot source differences and futures REST HTTP 451 keep audit approval blocked. | no |
 | `reports/m1/M1A_REVIEW_DECISION.md` | M1A | failed_validation | Trend leg failed validation and is not eligible for M2; affected numerical evidence is superseded by the revalidation notice. | no |
 | `reports/m1/M1A_REVALIDATION_NOTICE.md` | M1A | superseded_pending_revalidation | UTC alignment and delete-best-three methodology defects make affected historical metrics ineligible for future approval. | no |
 | `reports/m1/M1F_FINAL_ACCEPTANCE.md` | M1F | accepted_as_feasibility_lab | Freqtrade Lab accepted only as research/backtest/WebUI candidate. | no |

@@ -11,12 +11,17 @@ from pathlib import Path
 from typing import Any
 
 from btc_eth_dual_quant.data.duckdb_layer import DuckDBLayer
+from btc_eth_dual_quant.data.funding import infer_funding_interval_hours
 from btc_eth_dual_quant.data.storage import AppendOnlyRawStore, RawEnvelope
 
 from .trend_strategy import FundingRecord, TrendBar, validate_bars
 
 
 class M0DataUnavailableError(RuntimeError):
+    pass
+
+
+class M0DataIndexError(RuntimeError):
     pass
 
 
@@ -49,16 +54,6 @@ def _normalize_kline(row: Any, symbol: str) -> TrendBar | None:
     return None
 
 
-def _funding_interval_hours(records: list[dict[str, Any]]) -> float | None:
-    times = sorted({int(row["fundingTime"]) for row in records if "fundingTime" in row})
-    if len(times) < 2:
-        return None
-    diffs = [right - left for left, right in zip(times, times[1:]) if right > left]
-    if not diffs:
-        return None
-    return min(diffs) / 3_600_000
-
-
 def _normalize_funding(row: Any, symbol: str, interval_hours: float | None) -> FundingRecord | None:
     if not isinstance(row, dict):
         return None
@@ -68,7 +63,13 @@ def _normalize_funding(row: Any, symbol: str, interval_hours: float | None) -> F
     except (KeyError, TypeError, ValueError):
         return None
     annualized = 0.0 if not interval_hours else rate * (24.0 / interval_hours) * 365.0
-    return FundingRecord(symbol=symbol, funding_time_ms=time_ms, funding_rate=rate, annualized_rate=annualized)
+    return FundingRecord(
+        symbol=symbol,
+        funding_time_ms=time_ms,
+        funding_rate=rate,
+        annualized_rate=annualized,
+        interval_hours=interval_hours,
+    )
 
 
 def _envelopes_from_duckdb(dataset: str, duckdb_path: str | Path) -> list[RawEnvelope]:
@@ -87,8 +88,8 @@ def _envelopes_from_duckdb(dataset: str, duckdb_path: str | Path) -> list[RawEnv
                 """,
                 [dataset],
             ).fetchall()
-    except Exception:
-        return []
+    except Exception as exc:
+        raise M0DataIndexError(f"cannot read M0 DuckDB index {db_path}: {exc}") from exc
     return [
         RawEnvelope(
             dataset=dataset,
@@ -175,12 +176,17 @@ def load_funding_records(
     duckdb_path: str | Path = "storage/duckdb/m0.duckdb",
 ) -> list[FundingRecord]:
     raw_records = load_funding_history_dicts(symbol, raw_root, duckdb_path)
-    interval_hours = _funding_interval_hours(raw_records)
-    records = [
-        item
-        for row in raw_records
-        if (item := _normalize_funding(row, symbol.upper(), interval_hours)) is not None
-    ]
+    inferred = infer_funding_interval_hours(symbol.upper(), funding_rate_history=raw_records)
+    records: list[FundingRecord] = []
+    for row in raw_records:
+        try:
+            time_ms = int(row["fundingTime"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        interval = inferred.event_intervals.get(time_ms)
+        item = _normalize_funding(row, symbol.upper(), float(interval) if interval is not None else None)
+        if item is not None:
+            records.append(item)
     return sorted(records, key=lambda item: item.funding_time_ms)
 
 

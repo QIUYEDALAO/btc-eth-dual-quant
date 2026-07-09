@@ -5,6 +5,8 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass
 from decimal import Decimal
+import hashlib
+import json
 from typing import Any, Iterable
 
 
@@ -52,6 +54,17 @@ class SourceDifference:
 class KlineAnomaly:
     open_time: int
     reason: str
+
+
+@dataclass(frozen=True)
+class ZipRestAudit:
+    overlap_rows: int
+    differences: list[SourceDifference]
+    zip_only_rows: int
+    rest_only_rows: int
+    rest_payload_sha256: str
+    zip_payload_sha256: str
+    scope: str = "unspecified"
 
 
 def interval_to_ms(interval: str) -> int:
@@ -105,6 +118,35 @@ def compare_zip_rest_klines(
             if relative > tolerance:
                 differences.append(SourceDifference(open_time, field, left_value, right_value, relative))
     return differences
+
+
+def audit_zip_rest_klines(
+    zip_rows: Iterable[dict[str, Any]],
+    rest_rows: Iterable[dict[str, Any]],
+    tolerance: Decimal = Decimal("0.001"),
+    scope: str = "unspecified",
+) -> ZipRestAudit:
+    """Hash and compare the exact overlapping rows from two public sources."""
+
+    zip_by_time = {int(row["open_time"]): row for row in zip_rows}
+    rest_by_time = {int(row["open_time"]): row for row in rest_rows}
+    overlap_times = sorted(set(zip_by_time) & set(rest_by_time))
+    zip_overlap = [zip_by_time[time_ms] for time_ms in overlap_times]
+    rest_overlap = [rest_by_time[time_ms] for time_ms in overlap_times]
+
+    def digest(rows: list[dict[str, Any]]) -> str:
+        payload = json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+    return ZipRestAudit(
+        overlap_rows=len(overlap_times),
+        differences=compare_zip_rest_klines(zip_overlap, rest_overlap, tolerance),
+        zip_only_rows=len(set(zip_by_time) - set(rest_by_time)),
+        rest_only_rows=len(set(rest_by_time) - set(zip_by_time)),
+        rest_payload_sha256=digest(rest_overlap),
+        zip_payload_sha256=digest(zip_overlap),
+        scope=scope,
+    )
 
 
 def flag_kline_anomalies(rows: Iterable[dict[str, Any]]) -> list[KlineAnomaly]:

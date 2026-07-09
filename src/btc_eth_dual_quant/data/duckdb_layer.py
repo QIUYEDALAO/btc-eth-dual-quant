@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -21,6 +22,14 @@ CREATE TABLE IF NOT EXISTS raw_envelopes (
     PRIMARY KEY (dataset, ingested_at_ms, content_sha256)
 )
 """
+
+SQL_IDENTIFIER_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+
+
+def validate_sql_identifier(value: str) -> str:
+    if not SQL_IDENTIFIER_RE.fullmatch(value):
+        raise ValueError(f"invalid SQL identifier: {value!r}")
+    return value
 
 
 class DuckDBLayer:
@@ -41,9 +50,10 @@ class DuckDBLayer:
         return con
 
     def index_envelopes(self, envelopes: Iterable[RawEnvelope]) -> int:
-        inserted = 0
+        materialized = list(envelopes)
         with self.connect() as con:
-            for envelope in envelopes:
+            before = int(con.execute("SELECT count(*) FROM raw_envelopes").fetchone()[0])
+            for envelope in materialized:
                 con.execute(
                     """
                     INSERT OR IGNORE INTO raw_envelopes
@@ -59,8 +69,8 @@ class DuckDBLayer:
                         envelope.content_sha256,
                     ],
                 )
-                inserted += con.rowcount if con.rowcount and con.rowcount > 0 else 0
-        return inserted
+            after = int(con.execute("SELECT count(*) FROM raw_envelopes").fetchone()[0])
+        return after - before
 
     def index_from_store(self, store: AppendOnlyRawStore, dataset: str) -> int:
         return self.index_envelopes(store.iter_envelopes(dataset))
@@ -70,7 +80,10 @@ class DuckDBLayer:
 
         if not rows:
             return 0
+        validate_sql_identifier(table)
         columns = sorted(rows[0].keys())
+        for column in columns:
+            validate_sql_identifier(column)
         if any(sorted(row.keys()) != columns for row in rows):
             raise ValueError("all rows must have identical columns")
         quoted_cols = ", ".join(f'"{column}" VARCHAR' for column in columns)
