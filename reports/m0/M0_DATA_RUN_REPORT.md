@@ -1,6 +1,6 @@
 # M0 Data Run Report
 
-Generated UTC: 2026-07-09T01:59:09+00:00
+Generated UTC: 2026-07-09T02:47:45+00:00
 
 ## Data Range
 
@@ -36,7 +36,7 @@ Generated UTC: 2026-07-09T01:59:09+00:00
 
 ## Private Smoke
 
-- status=not_run
+- status=pass
 
 ## Archive Notes
 
@@ -60,10 +60,10 @@ Generated UTC: 2026-07-09T01:59:09+00:00
 
 ## M1 Gate
 
-- Status: `blocked`
+- Status: `pass`
 - Public full-history: `pass`
 - Scheduler dry-run: `pass`
-- Private read-only smoke: `blocked`
+- Private read-only smoke: `pass`
 - Required checks: `pass`
 - Zero unexplained anomalies: `pass`
 - Rule: M1 may proceed only when public full-history, scheduler dry-run, private read-only smoke, all required checks, and zero unexplained anomalies are all pass.
