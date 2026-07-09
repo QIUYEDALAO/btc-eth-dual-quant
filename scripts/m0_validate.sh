@@ -36,7 +36,11 @@ read_only_scan() {
   local fill="fill"
   local engine="engine"
   local pattern="(/api/v3/${order}|/fapi/v1/${order}|/sapi/v1/margin/${order}|${post}|${delete_word}|place_${order}|cancel_${order}|create_${order}|simulate_${fill}|matching_${engine})"
-  ! rg -n "$pattern" src scripts
+  if command -v rg >/dev/null 2>&1; then
+    ! rg -n "$pattern" src scripts
+  else
+    ! grep -R -n -E "$pattern" src scripts
+  fi
 }
 
 execution_live_scan() {

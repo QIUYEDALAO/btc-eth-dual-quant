@@ -1,6 +1,6 @@
 # M0 Data Run Report
 
-Generated UTC: 2026-07-08T23:38:55+00:00
+Generated UTC: 2026-07-09T01:59:09+00:00
 
 ## Data Range
 
@@ -52,11 +52,11 @@ Generated UTC: 2026-07-08T23:38:55+00:00
 - index_price_klines:BTCUSDT: anomaly review classified explained_market_move=3; see `reports/m0/M0_ANOMALY_REVIEW.md`
 - um_futures_klines:ETHUSDT: anomaly review classified explained_market_move=7; see `reports/m0/M0_ANOMALY_REVIEW.md`
 - mark_price_klines:ETHUSDT: anomaly review classified explained_market_move=6; see `reports/m0/M0_ANOMALY_REVIEW.md`
-- index_price_klines:ETHUSDT: anomaly review classified explained_market_move=4; see `reports/m0/M0_ANOMALY_REVIEW.md`
+- index_price_klines:ETHUSDT: anomaly review classified explained_market_move=6; see `reports/m0/M0_ANOMALY_REVIEW.md`
 
 ## Unexplained Anomalies
 
-- index_price_klines:ETHUSDT: anomaly review classified unresolved=2; see `reports/m0/M0_ANOMALY_REVIEW.md`
+- none
 
 ## M1 Gate
 
@@ -65,5 +65,5 @@ Generated UTC: 2026-07-08T23:38:55+00:00
 - Scheduler dry-run: `pass`
 - Private read-only smoke: `blocked`
 - Required checks: `pass`
-- Zero unexplained anomalies: `blocked`
+- Zero unexplained anomalies: `pass`
 - Rule: M1 may proceed only when public full-history, scheduler dry-run, private read-only smoke, all required checks, and zero unexplained anomalies are all pass.

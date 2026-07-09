@@ -37,6 +37,18 @@ KLINE_DATASETS = {
     "premium_index_klines": ("futures/um", "premiumIndexKlines"),
 }
 
+CROSS_ENDPOINT_CONFIRMATION_DATASETS = {
+    "spot_klines",
+    "um_futures_klines",
+    "mark_price_klines",
+    "index_price_klines",
+}
+
+CROSS_ENDPOINT_MARKET_MOVE_NOTE = (
+    "ZIP counterpart unavailable, but cross-endpoint confirmation exists across "
+    "spot/UM futures/mark/index price datasets; retained as extreme market move."
+)
+
 
 @dataclass(frozen=True)
 class ReviewedAnomaly:
@@ -61,7 +73,8 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Review M0 K-line anomalies")
     parser.add_argument("--raw-root", default="storage/raw")
     parser.add_argument("--duckdb-path", default="storage/duckdb/m0.duckdb")
-    parser.add_argument("--public-report", default="reports/m0/M0_PUBLIC_RUN_REPORT.md")
+    parser.add_argument("--public", dest="public_reports", action="append", default=None)
+    parser.add_argument("--public-report", dest="public_reports", action="append", default=None)
     parser.add_argument("--output", default="reports/m0/M0_ANOMALY_REVIEW.md")
     parser.add_argument("--timeout-sec", type=int, default=20)
     parser.add_argument("--proxy", default=None, help="Optional proxy URL, e.g. http://127.0.0.1:7897")
@@ -121,6 +134,16 @@ def amplitude(row: dict[str, Any]) -> Decimal:
     high = Decimal(str(row["high"]))
     low = Decimal(str(row["low"]))
     return (high - low) / max(abs(open_price), Decimal("1e-18"))
+
+
+def price_direction(row: dict[str, Any]) -> int:
+    open_price = Decimal(str(row["open"]))
+    close = Decimal(str(row["close"]))
+    if close > open_price:
+        return 1
+    if close < open_price:
+        return -1
+    return 0
 
 
 def market_fields_valid(dataset: str, row: dict[str, Any]) -> bool:
@@ -215,6 +238,40 @@ def rows_consistent(rest_row: dict[str, Any], zip_row: dict[str, Any], dataset: 
     return True
 
 
+def cross_endpoint_confirmations(
+    dataset: str,
+    row: dict[str, Any],
+    corroborating_rows: dict[str, dict[str, Any]] | None,
+) -> list[str]:
+    if dataset not in CROSS_ENDPOINT_CONFIRMATION_DATASETS or not corroborating_rows:
+        return []
+    target_direction = price_direction(row)
+    if target_direction == 0:
+        return []
+
+    confirmed: list[str] = []
+    for candidate_dataset in sorted(CROSS_ENDPOINT_CONFIRMATION_DATASETS - {dataset}):
+        candidate = corroborating_rows.get(candidate_dataset)
+        if candidate is None:
+            continue
+        if not market_fields_valid(candidate_dataset, candidate):
+            continue
+        if price_direction(candidate) != target_direction:
+            continue
+        if amplitude(candidate) < Decimal("0.30"):
+            continue
+        confirmed.append(candidate_dataset)
+    return confirmed
+
+
+def has_cross_endpoint_confirmation(
+    dataset: str,
+    row: dict[str, Any],
+    corroborating_rows: dict[str, dict[str, Any]] | None,
+) -> bool:
+    return len(cross_endpoint_confirmations(dataset, row, corroborating_rows)) >= 2
+
+
 def review_anomaly(
     dataset: str,
     symbol: str,
@@ -224,6 +281,7 @@ def review_anomaly(
     rest_payload_hash: str,
     timeout_sec: int,
     zip_fetcher: Callable[[str, str, str, int, int], dict[str, Any] | None] = fetch_zip_row,
+    corroborating_rows: dict[str, dict[str, Any]] | None = None,
 ) -> ReviewedAnomaly:
     if not market_fields_valid(dataset, row):
         return ReviewedAnomaly(
@@ -246,10 +304,14 @@ def review_anomaly(
 
     zip_row = zip_fetcher(dataset, symbol, interval, int(row["open_time"]), timeout_sec)
     if zip_row is None:
-        classification = "unresolved"
         consistent = "not_available"
-        note = "ZIP counterpart is unavailable, so the REST anomaly is not cross-source confirmed."
         zip_available = False
+        if has_cross_endpoint_confirmation(dataset, row, corroborating_rows):
+            classification = "explained_market_move"
+            note = CROSS_ENDPOINT_MARKET_MOVE_NOTE
+        else:
+            classification = "unresolved"
+            note = "ZIP counterpart is unavailable, so the REST anomaly is not cross-source confirmed."
     else:
         zip_available = True
         is_consistent = rows_consistent(row, zip_row, dataset)
@@ -280,19 +342,53 @@ def review_anomaly(
     )
 
 
+def _requested_from_reports(paths: list[str | Path]) -> tuple[set[str], set[str]]:
+    requested: set[str] = set()
+    symbols: set[str] = set()
+    for path in paths:
+        report = parse_report(path)
+        for dataset in report.datasets:
+            if (
+                dataset.kline_anomalies > 0
+                and ":" in dataset.name
+                and dataset.name.split(":", 1)[0] in KLINE_DATASETS
+            ):
+                requested.add(dataset.name)
+                symbols.add(dataset.name.split(":", 1)[1])
+    return requested, symbols
+
+
+def _cross_endpoint_row_index(
+    symbols: set[str],
+    raw_root: str,
+    duckdb_path: str,
+) -> dict[tuple[str, int], dict[str, dict[str, Any]]]:
+    indexed: dict[tuple[str, int], dict[str, dict[str, Any]]] = {}
+    for dataset in sorted(CROSS_ENDPOINT_CONFIRMATION_DATASETS):
+        for envelope in load_envelopes(dataset, raw_root, duckdb_path):
+            params = envelope.params
+            symbol = str(params.get("symbol") or params.get("pair") or "").upper()
+            if symbol not in symbols:
+                continue
+            payload = envelope.payload if isinstance(envelope.payload, list) else []
+            for raw_row in payload:
+                row = normalize_kline_row(raw_row)
+                if row is None:
+                    continue
+                indexed.setdefault((symbol, int(row["open_time"])), {}).setdefault(dataset, row)
+    return indexed
+
+
 def collect_reviewed_anomalies(
-    public_report_path: str | Path,
+    public_report_path: str | Path | list[str | Path],
     raw_root: str,
     duckdb_path: str,
     timeout_sec: int,
     zip_fetcher: Callable[[str, str, str, int, int], dict[str, Any] | None] = fetch_zip_row,
 ) -> list[ReviewedAnomaly]:
-    report = parse_report(public_report_path)
-    requested = {
-        dataset.name
-        for dataset in report.datasets
-        if dataset.kline_anomalies > 0 and ":" in dataset.name and dataset.name.split(":", 1)[0] in KLINE_DATASETS
-    }
+    report_paths = public_report_path if isinstance(public_report_path, list) else [public_report_path]
+    requested, symbols = _requested_from_reports(report_paths)
+    corroborating_index = _cross_endpoint_row_index(symbols, raw_root, duckdb_path)
     reviewed: dict[tuple[str, str, int, str], ReviewedAnomaly] = {}
     for full_name in sorted(requested):
         dataset, symbol = full_name.split(":", 1)
@@ -320,6 +416,7 @@ def collect_reviewed_anomalies(
                             envelope.content_sha256,
                             timeout_sec,
                             zip_fetcher=zip_fetcher,
+                            corroborating_rows=corroborating_index.get((symbol, int(row["open_time"]))),
                         )
     return [reviewed[key] for key in sorted(reviewed)]
 
@@ -374,7 +471,8 @@ def main() -> int:
         os.environ["HTTP_PROXY"] = args.proxy
         os.environ["HTTPS_PROXY"] = args.proxy
         os.environ.setdefault("ALL_PROXY", args.proxy)
-    items = collect_reviewed_anomalies(args.public_report, args.raw_root, args.duckdb_path, args.timeout_sec)
+    public_reports = args.public_reports or ["reports/m0/M0_PUBLIC_RUN_REPORT.md"]
+    items = collect_reviewed_anomalies(public_reports, args.raw_root, args.duckdb_path, args.timeout_sec)
     write_review(items, args.output)
     unresolved = sum(1 for item in items if item.classification == "unresolved")
     print(f"Wrote anomaly review: {args.output}")

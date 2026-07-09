@@ -1,11 +1,10 @@
 # M0 Anomaly Review
 
-Generated UTC: 2026-07-08T23:36:19+00:00
+Generated UTC: 2026-07-09T01:59:00+00:00
 
 ## Summary
 
-- explained_market_move: 45
-- unresolved: 2
+- explained_market_move: 47
 
 ## Details
 
@@ -14,8 +13,8 @@ Generated UTC: 2026-07-08T23:36:19+00:00
 | `index_price_klines` | `BTCUSDT` | `2020-03-12T00:00:00+00:00` | 7933.86311580 | 7961.10246761 | 4448.39090909 | 4801.52015627 | 0 | 0.44274920 | `amplitude_gt_30pct` | `ffb49fa0e8220fa31dcc85e49882706b9c4096f1e823eb584153faf04b10a79c` | yes | yes | `explained_market_move` | ZIP source matches REST; OHLC ordering and volume checks pass; retained as extreme market move. |
 | `index_price_klines` | `BTCUSDT` | `2020-03-13T00:00:00+00:00` | 4801.67015627 | 5943.63663660 | 3802.26818182 | 5578.32653441 | 0 | 0.44596326 | `amplitude_gt_30pct` | `ffb49fa0e8220fa31dcc85e49882706b9c4096f1e823eb584153faf04b10a79c` | yes | yes | `explained_market_move` | ZIP source matches REST; OHLC ordering and volume checks pass; retained as extreme market move. |
 | `index_price_klines` | `BTCUSDT` | `2021-05-19T00:00:00+00:00` | 42853.19098431 | 43564.84067304 | 29834.85668085 | 36640.68231173 | 0 | 0.32039584 | `amplitude_gt_30pct` | `5d1c16ffd1388681972436e2ac41cb67143a315884e13476e214dade83341754` | yes | yes | `explained_market_move` | ZIP source matches REST; OHLC ordering and volume checks pass; retained as extreme market move. |
-| `index_price_klines` | `ETHUSDT` | `2020-03-12T00:00:00+00:00` | 194.59140909 | 195.38904545 | 101.65536808 | 107.62834276 | 0 | 0.48169484 | `amplitude_gt_30pct` | `566eaee026e66431b16cc03c8176f45636a6c0dee048464a86604eb8b230ede7` | no | not_available | `unresolved` | ZIP counterpart is unavailable, so the REST anomaly is not cross-source confirmed. |
-| `index_price_klines` | `ETHUSDT` | `2020-03-13T00:00:00+00:00` | 107.71993367 | 139.43758016 | 87.08668182 | 134.11399999 | 0 | 0.48599081 | `amplitude_gt_30pct` | `566eaee026e66431b16cc03c8176f45636a6c0dee048464a86604eb8b230ede7` | no | not_available | `unresolved` | ZIP counterpart is unavailable, so the REST anomaly is not cross-source confirmed. |
+| `index_price_klines` | `ETHUSDT` | `2020-03-12T00:00:00+00:00` | 194.59140909 | 195.38904545 | 101.65536808 | 107.62834276 | 0 | 0.48169484 | `amplitude_gt_30pct` | `566eaee026e66431b16cc03c8176f45636a6c0dee048464a86604eb8b230ede7` | no | not_available | `explained_market_move` | ZIP counterpart unavailable, but cross-endpoint confirmation exists across spot/UM futures/mark/index price datasets; retained as extreme market move. |
+| `index_price_klines` | `ETHUSDT` | `2020-03-13T00:00:00+00:00` | 107.71993367 | 139.43758016 | 87.08668182 | 134.11399999 | 0 | 0.48599081 | `amplitude_gt_30pct` | `566eaee026e66431b16cc03c8176f45636a6c0dee048464a86604eb8b230ede7` | no | not_available | `explained_market_move` | ZIP counterpart unavailable, but cross-endpoint confirmation exists across spot/UM futures/mark/index price datasets; retained as extreme market move. |
 | `index_price_klines` | `ETHUSDT` | `2021-01-03T00:00:00+00:00` | 774.54476090 | 1009.72809232 | 769.14159091 | 978.30625386 | 0 | 0.31061665 | `amplitude_gt_30pct` | `a68ee998a1cfb149fd2a86779193c9d3af8422a0fbcb879c8427ba73d1910b72` | yes | yes | `explained_market_move` | ZIP source matches REST; OHLC ordering and volume checks pass; retained as extreme market move. |
 | `index_price_klines` | `ETHUSDT` | `2021-05-19T00:00:00+00:00` | 3374.91846865 | 3439.47063706 | 1850.15653659 | 2435.49116404 | 0 | 0.47091926 | `amplitude_gt_30pct` | `a68ee998a1cfb149fd2a86779193c9d3af8422a0fbcb879c8427ba73d1910b72` | yes | yes | `explained_market_move` | ZIP source matches REST; OHLC ordering and volume checks pass; retained as extreme market move. |
 | `index_price_klines` | `ETHUSDT` | `2021-05-20T00:00:00+00:00` | 2434.93502768 | 2988.90931818 | 2157.40311402 | 2768.96159091 | 0 | 0.34149010 | `amplitude_gt_30pct` | `a68ee998a1cfb149fd2a86779193c9d3af8422a0fbcb879c8427ba73d1910b72` | yes | yes | `explained_market_move` | ZIP source matches REST; OHLC ordering and volume checks pass; retained as extreme market move. |

@@ -37,7 +37,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from m0_report import DatasetRun, M0RunReport, parse_report, write_report
-from m0_anomaly_review import review_anomaly, write_review
+from m0_anomaly_review import CROSS_ENDPOINT_MARKET_MOVE_NOTE, review_anomaly, write_review
 from m0_anomaly_review import ReviewedAnomaly
 import m0_report_merge
 from m0_smoke_readonly_private import write_private_status
@@ -521,6 +521,82 @@ class M0ReportTests(unittest.TestCase):
         self.assertEqual(reviewed.classification, "explained_market_move")
         self.assertTrue(reviewed.zip_available)
         self.assertEqual(reviewed.zip_rest_consistent, "yes")
+
+    def test_anomaly_review_explains_zip_unavailable_with_cross_endpoint_confirmation(self) -> None:
+        row = {
+            "open_time": 1584057600000,
+            "open": "200",
+            "high": "205",
+            "low": "100",
+            "close": "110",
+            "volume": "0",
+        }
+        spot_row = {
+            "open_time": 1584057600000,
+            "open": "200",
+            "high": "206",
+            "low": "99",
+            "close": "111",
+            "volume": "1000",
+        }
+        futures_row = {
+            "open_time": 1584057600000,
+            "open": "201",
+            "high": "207",
+            "low": "98",
+            "close": "112",
+            "volume": "2000",
+        }
+        reviewed = review_anomaly(
+            "index_price_klines",
+            "ETHUSDT",
+            "1d",
+            row,
+            "amplitude_gt_30pct",
+            "abc123",
+            1,
+            zip_fetcher=lambda *_args: None,
+            corroborating_rows={
+                "spot_klines": spot_row,
+                "um_futures_klines": futures_row,
+            },
+        )
+        self.assertEqual(reviewed.classification, "explained_market_move")
+        self.assertFalse(reviewed.zip_available)
+        self.assertEqual(reviewed.zip_rest_consistent, "not_available")
+        self.assertEqual(reviewed.note, CROSS_ENDPOINT_MARKET_MOVE_NOTE)
+
+    def test_anomaly_review_keeps_zip_unavailable_without_corroboration_unresolved(self) -> None:
+        row = {
+            "open_time": 1584057600000,
+            "open": "200",
+            "high": "205",
+            "low": "100",
+            "close": "110",
+            "volume": "0",
+        }
+        spot_row = {
+            "open_time": 1584057600000,
+            "open": "200",
+            "high": "206",
+            "low": "99",
+            "close": "111",
+            "volume": "1000",
+        }
+        reviewed = review_anomaly(
+            "index_price_klines",
+            "ETHUSDT",
+            "1d",
+            row,
+            "amplitude_gt_30pct",
+            "abc123",
+            1,
+            zip_fetcher=lambda *_args: None,
+            corroborating_rows={"spot_klines": spot_row},
+        )
+        self.assertEqual(reviewed.classification, "unresolved")
+        self.assertFalse(reviewed.zip_available)
+        self.assertEqual(reviewed.zip_rest_consistent, "not_available")
 
     def test_merge_counts_only_unresolved_anomaly_review_as_unexplained(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
