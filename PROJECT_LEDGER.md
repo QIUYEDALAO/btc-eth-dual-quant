@@ -393,3 +393,31 @@ private exchange responses here.
 - Decision: Connectivity is no longer the active futures blocker, but M0 audit remains `audit_revalidation_required` because official-source differences and unavailable daily archives remain. No result is reclassified or hidden.
 - Next action: Seek Binance source-owner clarification and recheck the missing daily archives after official publication; do not weaken the dual-source gate.
 - Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M0 Dual-Source Audit Evidence Merged
+
+- Date UTC: 2026-07-09T23:23:15Z
+- Task ID: M0-DUAL-SOURCE-AUDIT-MERGED
+- Phase: M0 audit revalidation
+- Branch: main
+- Commit: 8f0eb2c0f3c6ad4f780f4936ad54a77ffe46d3df
+- PR: #13 merged
+- Completed: The strict public REST/monthly ZIP/daily ZIP audit implementation, sanitized blocked evidence, approved proxy transport disclosure, and project context updates were squash merged.
+- Decision: M0 audit remains `audit_revalidation_required`; merging truthful diagnostic evidence does not turn its gate into pass.
+- Next action: Strategy diagnostics or M0 source-owner/archive follow-up only.
+- Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - Strategy Failure Diagnostics Completed
+
+- Date UTC: 2026-07-09T23:27:14Z
+- Task ID: STRATEGY-FAILURE-DIAGNOSTICS
+- Phase: strategy failure diagnostics
+- Branch: codex/strategy-failure-diagnostics
+- Commit: pending branch commit
+- PR: pending
+- Completed: Evidence-validity review, M1A structural scarcity diagnosis, M1B complete-cycle scarcity diagnosis, comparative priority, and next-work recommendation.
+- M1A finding: 35 trades over 8.89 years; all 81 fixed-neighborhood combinations remain below 80 trades and full-sample Sharpe 1.0, while the separate fixed-rule OOS evidence also fails. The frozen historical engine must not be tuned or extended.
+- M1B finding: 13 complete cycles over five years, two OOS complete cycles, long holding periods, and a 713-day sleep period. Cost and drawdown gates pass, but sample scarcity remains blocking.
+- Decision: No strategy is eligible for M2. The next primary task is a design review for one genuinely new fixed Freqtrade single-leg strategy hypothesis; no strategy code is approved yet.
+- Evidence: `reports/m1/STRATEGY_FAILURE_DIAGNOSTICS.md`.
+- Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, parameter rescue, simulated matching, or execution/live.
