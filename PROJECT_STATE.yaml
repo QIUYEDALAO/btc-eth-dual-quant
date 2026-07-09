@@ -1,0 +1,117 @@
+project:
+  name: btc-eth-dual-quant
+  repository: QIUYEDALAO/btc-eth-dual-quant
+last_updated_utc: "2026-07-09T15:24:00Z"
+current_phase: M1B funding-rate-arbitrage research validation
+current_status: pr5_suitability_conclusion_b_pending_review
+completed_milestones:
+  - phase: M0 data engineering
+    status: accepted
+    evidence: reports/m0/M0_FINAL_ACCEPTANCE.md
+    tag: m0-data-run-accepted-v0.1.4
+  - phase: M1A trend backtest validation
+    status: failed_validation
+    evidence: reports/m1/M1A_REVIEW_DECISION.md
+    tag: m1a-trend-failed-validation-v0.2.0
+  - phase: M1F Freqtrade feasibility lab
+    status: accepted_as_feasibility_lab
+    evidence: reports/m1/M1F_FINAL_ACCEPTANCE.md
+    tag: m1f-freqtrade-feasibility-accepted-v0.3.0
+open_work:
+  - id: PR-5
+    phase: M1B
+    title: Implement M1B funding arbitrage offline backtest
+    branch: m1b-funding-arbitrage-offline-backtest
+    status: open_under_review
+    url: https://github.com/QIUYEDALAO/btc-eth-dual-quant/pull/5
+    head_sha: 8d710bcdc3850b92e99fff82c7a57e2f6d33c502
+    current_finding: "Freqtrade suitability conclusion B: partial support, needs external portfolio/accounting/funding backtester."
+    blocker: "PR #5 suitability conclusion B must be reviewed and accepted/rejected before deciding whether to continue custom M1B numerical validation."
+  - id: M1B-NUMERICAL-REPORT
+    phase: M1B
+    status: paused
+    blocker: "Numerical report must not continue until PR #5 suitability conclusion B is reviewed."
+active_decisions:
+  - id: ADR-0004
+    decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
+    status: active
+    evidence: docs/decisions/ADR-0004-m1b-freqtrade-suitability-before-custom-backtest.md
+    current_finding: "PR #5 includes suitability conclusion B, not yet merged into main."
+  - id: M2-GATE
+    decision: M2 is not allowed.
+    status: active
+  - id: LIVE-GATE
+    decision: Live trading and paper trading with real API are not allowed.
+    status: active
+allowed_next_work:
+  - "Review PR #5 Freqtrade suitability conclusion B."
+  - Decide whether to adopt conclusion B and keep custom offline accounting backtester as research.
+  - "Keep PR #5 open until suitability conclusion and ledger are reviewed."
+  - Do not generate further M1B numerical report until this decision is recorded.
+prohibited:
+  - live trading
+  - paper trading with real API
+  - execution/live
+  - order placement
+  - cancel order
+  - create_order
+  - cancel_order
+  - place_order
+  - simulated matching
+  - API trading permissions
+  - API keys
+  - private smoke
+  - .env commits
+  - storage/raw commits
+  - DuckDB commits
+  - storage/logs commits
+  - Freqtrade runtime data commits
+  - rewriting failed_validation to pass without evidence
+  - merging PRs unless checks and ledger are updated
+latest_reports:
+  - path: reports/m0/M0_FINAL_ACCEPTANCE.md
+    phase: M0
+    status: accepted
+  - path: reports/m1/M1A_REVIEW_DECISION.md
+    phase: M1A
+    status: failed_validation
+  - path: reports/m1/M1F_FINAL_ACCEPTANCE.md
+    phase: M1F
+    status: accepted_as_feasibility_lab
+  - path: reports/m1/M1B_FUNDING_ARBITRAGE_BACKTEST_REPORT.md
+    phase: M1B
+    status: exists_on_open_pr5_under_review_placeholder_or_partial
+  - path: reports/m1/M1B_DECISION.md
+    phase: M1B
+    status: exists_on_open_pr5_paused_for_suitability_review_not_on_main
+  - path: reports/m1/M1B_FREQTRADE_FUNDING_BACKTEST_SUITABILITY.md
+    phase: M1B
+    status: exists_on_open_pr5_conclusion_b_not_on_main
+latest_tags:
+  - m0-data-run-accepted-v0.1.4
+  - m1a-trend-failed-validation-v0.2.0
+  - m1f-freqtrade-feasibility-accepted-v0.3.0
+latest_merged_prs:
+  - number: 1
+    title: Harden M0 data-run validation and reports
+    merged_at_utc: "2026-07-09T02:18:38Z"
+  - number: 2
+    title: Complete M0 private read-only smoke status
+    merged_at_utc: "2026-07-09T03:06:06Z"
+  - number: 3
+    title: Implement M1A trend backtest validation
+    merged_at_utc: "2026-07-09T04:00:28Z"
+  - number: 4
+    title: Deploy Freqtrade feasibility lab
+    merged_at_utc: "2026-07-09T13:45:31Z"
+required_context_files:
+  - PROJECT_STATE.yaml
+  - PROJECT_LEDGER.md
+  - NEXT_ACTION.md
+  - reports/INDEX.md
+  - AGENTS.md
+validation_commands:
+  - python3 scripts/project_context_check.py
+  - python3 scripts/context_summary.py
+  - bash scripts/project_validate.sh
+  - git diff --check
