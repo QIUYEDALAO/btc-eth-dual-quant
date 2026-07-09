@@ -18,6 +18,9 @@
 - index_price_klines
 - premium_index_klines
 - Source mode: local M0 public data only
+- Metrics basis: funding-period time-indexed equity curve
+- OOS split basis: time-based last 30%
+- Cycle-level returns are retained only for cycle table, win rate, profit factor, and best/worst cycle.
 
 ## 2. Data Range
 
@@ -29,6 +32,7 @@
 
 - IS start/end: 2020-01-01 00:00:00 UTC -> 2023-07-02 04:48:00 UTC
 - OOS start/end: 2023-07-02 04:48:00 UTC -> 2024-12-31 00:00:00 UTC
+- OOS split basis: time-based last 30%
 - OOS was not used for parameter selection.
 
 ## 4. Strategy Rules
@@ -56,52 +60,55 @@
 
 ## 7. Base Cost Results
 
-- total_return: 119.1019%
-- annualized_return: 16.9747%
-- annualized_volatility: 135.5083%
-- sharpe: 15.0513
-- max_drawdown: 1.1040%
+- total_return: 59.5509%
+- annualized_return: 9.7887%
+- annualized_volatility: 1.3287%
+- sharpe: 7.0355
+- max_drawdown: 0.9124%
 - complete_cycles: 15
+- equity_points: 5479
 - win_rate: 100.0000%
 - profit_factor: inf
 - average_holding_days: 94.76
-- funding_income_total: 1.253406
-- basis_pnl_total: 0.012613
-- fees_total: 0.045000
-- slippage_total: 0.030000
+- funding_income_total: 0.626703
+- basis_pnl_total: 0.006306
+- fees_total: 0.022500
+- slippage_total: 0.015000
 - worst_cycle: 0.1062%
 - best_cycle: 34.6108%
 - longest_sleep_days: 713.00
-- percent_time_in_market: 77.8386%
+- percent_time_in_market: 38.9193%
 
 ## 8. Cost x2 Results
 
-- total_return: 111.6019%
-- annualized_return: 16.1631%
-- annualized_volatility: 137.4752%
-- sharpe: 14.2041
-- max_drawdown: 1.1040%
+- total_return: 55.8009%
+- annualized_return: 9.2680%
+- annualized_volatility: 1.4209%
+- sharpe: 6.2450
+- max_drawdown: 1.2634%
 - complete_cycles: 15
+- equity_points: 5479
 - win_rate: 93.3333%
 - profit_factor: 284.3890
 - average_holding_days: 94.76
-- funding_income_total: 1.253406
-- basis_pnl_total: 0.012613
-- fees_total: 0.090000
-- slippage_total: 0.060000
+- funding_income_total: 0.626703
+- basis_pnl_total: 0.006306
+- fees_total: 0.045000
+- slippage_total: 0.030000
 - worst_cycle: -0.3938%
 - best_cycle: 34.1108%
 - longest_sleep_days: 713.00
-- percent_time_in_market: 77.8386%
+- percent_time_in_market: 38.9193%
 
 ## 9. BTCUSDT Results
 
 - total_return: 49.1569%
 - annualized_return: 8.3202%
-- annualized_volatility: 138.0724%
-- sharpe: 14.1515
-- max_drawdown: 0.3409%
+- annualized_volatility: 1.0704%
+- sharpe: 7.4724
+- max_drawdown: 0.7053%
 - complete_cycles: 8
+- equity_points: 5479
 - win_rate: 100.0000%
 - profit_factor: inf
 - average_holding_days: 71.88
@@ -118,10 +125,11 @@
 
 - total_return: 69.9450%
 - annualized_return: 11.1825%
-- annualized_volatility: 175.9763%
-- sharpe: 17.0713
-- max_drawdown: 1.1040%
+- annualized_volatility: 1.9549%
+- sharpe: 5.4324
+- max_drawdown: 1.3297%
 - complete_cycles: 7
+- equity_points: 5479
 - win_rate: 100.0000%
 - profit_factor: inf
 - average_holding_days: 120.90
@@ -137,15 +145,15 @@
 ## 11. Portfolio Combined Results
 
 - BTC+ETH allocation comparison: equal-weight combined cycles=15
-- Base total return: 119.1019%
-- Cost x2 total return: 111.6019%
+- Base total return: 59.5509%
+- Cost x2 total return: 55.8009%
 
 ## 12. PnL Decomposition
 
-- Funding income contribution: 1.253406
-- Basis PnL contribution: 0.012613
-- Fees contribution: -0.045000
-- Slippage contribution: -0.030000
+- Funding income contribution: 0.626703
+- Basis PnL contribution: 0.006306
+- Fees contribution: -0.022500
+- Slippage contribution: -0.015000
 - Worst cycle: BTCUSDT 0.1062%
 - Best cycle: ETHUSDT 34.6108%
 
@@ -191,9 +199,13 @@
 
 ## 15. OOS Results
 
-- OOS total_return: 25.4365%
-- OOS Sharpe: 26.1582
-- OOS complete cycles: 5
+- OOS total_return: 7.0645%
+- OOS annualized_return: 4.6533%
+- OOS annualized_volatility: 0.3942%
+- OOS Sharpe: 11.5406
+- OOS complete cycles: 4
+- OOS equity points: 1645
+- OOS cycle count uses cycle entry_time >= split timestamp; OOS Sharpe uses the time-indexed OOS equity curve.
 
 ## 16. Funding Interval Diagnostics
 
@@ -201,7 +213,7 @@
 - Conservative interval hours used: 8.0000
 - BTCUSDT interval hours: 8.0000; anomalies: ['none']
 - ETHUSDT interval hours: 8.0000; anomalies: ['none']
-- Basis data status: basis_data_unavailable
+- Basis data status: partial
 
 ## 17. Failure / Graceful Sleep Analysis
 
@@ -235,6 +247,7 @@
 ## 20. Decision
 
 - Decision: failed_validation; do not promote funding-rate-arbitrage to execution or paper/live stages.
+- Failed/blocked gates: Complete cycles >= 20=fail
 - No result in this report approves live trading.
 
 ## Cost x2 Symbol Detail
@@ -242,10 +255,11 @@
 ### BTCUSDT cost_x2
 - total_return: 45.1569%
 - annualized_return: 7.7333%
-- annualized_volatility: 139.5671%
-- sharpe: 13.0816
-- max_drawdown: 0.3727%
+- annualized_volatility: 1.2641%
+- sharpe: 5.8993
+- max_drawdown: 1.5357%
 - complete_cycles: 8
+- equity_points: 5479
 - win_rate: 87.5000%
 - profit_factor: 115.6662
 - average_holding_days: 71.88
@@ -261,10 +275,11 @@
 ### ETHUSDT cost_x2
 - total_return: 66.4450%
 - annualized_return: 10.7210%
-- annualized_volatility: 176.7765%
-- sharpe: 16.3409
-- max_drawdown: 1.1040%
+- annualized_volatility: 2.0525%
+- sharpe: 4.9725
+- max_drawdown: 1.7485%
 - complete_cycles: 7
+- equity_points: 5479
 - win_rate: 100.0000%
 - profit_factor: inf
 - average_holding_days: 120.90

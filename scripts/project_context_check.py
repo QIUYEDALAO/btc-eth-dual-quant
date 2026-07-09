@@ -96,8 +96,11 @@ def main() -> int:
         failures.append("PROJECT_STATE.yaml allowed_next_work must include M1B numerical")
 
     current_status = str(state.get("current_status", ""))
-    if "pr5_suitability_conclusion_b_accepted" not in current_status:
-        failures.append("PROJECT_STATE.yaml current_status must include pr5_suitability_conclusion_b_accepted")
+    if not (
+        "pr5_suitability_conclusion_b_accepted" in current_status
+        or "m1b_numerical_failed_validation_pending_review" in current_status
+    ):
+        failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "numerical" not in current_status:
         failures.append("PROJECT_STATE.yaml current_status must include numerical")
 

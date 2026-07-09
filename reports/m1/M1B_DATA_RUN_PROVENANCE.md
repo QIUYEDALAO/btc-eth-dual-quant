@@ -1,9 +1,13 @@
 # M1B Data Run Provenance
 
-- generated_utc: 2026-07-09T17:03:11Z
+- generated_utc: 2026-07-09T17:20:20Z
 - run_location: local
 - data_source: Binance public data only
 - transport: public REST attempted; official data.binance.vision ZIP fallback used because local REST TCP connections timed out
+- metrics_methodology: funding-period time-indexed equity curve
+- oos_methodology: time-based last 30%
+- previous_cycle_level_metrics_superseded: yes
+- superseded_reason: cycle-level equity curve distorted annualized volatility, Sharpe, and OOS Sharpe
 - no API key used: yes
 - no private data used: yes
 - private smoke run: no

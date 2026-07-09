@@ -125,13 +125,29 @@ private exchange responses here.
 - Task ID: M1B-NUMERICAL-REPORT-GENERATED
 - Phase: M1B funding-rate-arbitrage research validation
 - Branch: m1b-funding-arbitrage-offline-backtest
-- Commit: pending_this_commit
+- Commit: 885c02961e7b5934675a6f64eca4c0bb63d85ee4
 - PR: #5 open
 - Request summary: Generate a real M1B funding-arbitrage numerical report using local M0 public data after accepting Freqtrade suitability conclusion B.
 - Completed: Local M0 public ZIP fallback data was generated; M1B numerical report and public-data provenance were written.
 - Not completed: No M2; no live trading; no paper trading with real API; no API keys; no execution/live; no PR #5 merge.
 - Validation result: M1B final status is failed_validation.
 - Decision: Do not promote funding-rate-arbitrage to M2 because the complete cycle-count gate failed.
-- Key metrics: base cost total return 119.1019%; cost x2 total return 111.6019%; complete cycles 15; OOS Sharpe 26.1582; max drawdown 1.1040%.
+- Key metrics from superseded cycle-level Sharpe report: base cost total return 119.1019%; cost x2 total return 111.6019%; complete cycles 15; OOS Sharpe 26.1582; max drawdown 1.1040%.
 - Blockers: PR #5 still requires review as a truthful failed_validation research artifact.
 - Next action: Review PR #5 numerical report and decide whether to merge the failed_validation artifact.
+
+## 2026-07-09 - M1B Metrics Methodology Fixed
+
+- Date UTC: 2026-07-09
+- Task ID: M1B-METRICS-METHODOLOGY-FIX
+- Phase: M1B funding-rate-arbitrage research validation
+- Branch: m1b-funding-arbitrage-offline-backtest
+- Commit: pending_this_commit
+- PR: #5 open
+- Request summary: Replace cycle-level Sharpe/volatility with funding-period time-indexed metrics.
+- Completed: M1B report regenerated with funding-period time-indexed equity curve and time-based OOS split.
+- Not completed: No M2; no live trading; no paper trading with real API; no API keys; no private smoke; no execution/live; no trading logic.
+- Decision: Corrected M1B final status is failed_validation.
+- Key metrics: base cost total return 59.5509%; cost x2 total return 55.8009%; annualized volatility 1.3287%; Sharpe 7.0355; OOS Sharpe 11.5406; complete cycles 15; max drawdown 0.9124%.
+- Blockers: M1B failed validation because complete cycles 15 < 20; strategy is not eligible for M2.
+- Next action: Review corrected PR #5 report and decide whether to merge it as a truthful failed_validation artifact.

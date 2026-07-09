@@ -45,6 +45,25 @@ def bars(symbol: str, count: int, start: int = 0, base: float = 100.0) -> list[T
     return out
 
 
+def price_bars(symbol: str, prices: list[float], start: int = 0) -> list[TrendBar]:
+    out: list[TrendBar] = []
+    for idx, price in enumerate(prices):
+        open_time = start + idx * MS_PER_DAY
+        out.append(
+            TrendBar(
+                symbol=symbol,
+                open_time_ms=open_time,
+                close_time_ms=open_time + MS_PER_DAY - 1,
+                open=price,
+                high=price * 1.02,
+                low=price * 0.98,
+                close=price,
+                volume=1000.0,
+            )
+        )
+    return out
+
+
 def funding_history(cycles: int = 4, start: int = 0) -> list[dict[str, str | int]]:
     rows: list[dict[str, str | int]] = []
     time_ms = start
@@ -152,6 +171,62 @@ class M1BFundingArbitrageTests(unittest.TestCase):
         for cycle in result.cycles:
             self.assertLessEqual(cycle.entry_time_ms, cycle.exit_time_ms)
 
+    def test_cycle_level_equity_metrics_are_not_used_for_sharpe_gate(self) -> None:
+        rows = funding_history(cycles=4)
+        result = run_funding_arbitrage_backtest(
+            "BTCUSDT",
+            bars("BTCUSDT", 30, base=100.0),
+            bars("BTCUSDT", 30, base=101.0),
+            rows,
+            params=FundingArbParams(),
+        )
+        self.assertEqual(result.metrics_basis, "funding-period time-indexed equity curve")
+        self.assertGreater(len(result.equity_curve), len(result.cycles) + 1)
+        self.assertEqual(result.metrics["return_observations"], len(result.equity_curve) - 1)
+
+    def test_oos_split_is_time_based_not_cycle_count_based(self) -> None:
+        rows = funding_history(cycles=6)
+        result = run_funding_arbitrage_backtest(
+            "BTCUSDT",
+            bars("BTCUSDT", 40, base=100.0),
+            bars("BTCUSDT", 40, base=101.0),
+            rows,
+            params=FundingArbParams(),
+        )
+        expected_split = result.data_start_ms + int(((result.data_end_ms or 0) - (result.data_start_ms or 0)) * 0.70)
+        self.assertEqual(result.oos_start_ms, expected_split)
+        self.assertEqual(result.oos_split_basis, "time-based last 30%")
+        expected_oos_cycles = sum(1 for cycle in result.cycles if cycle.entry_time_ms >= expected_split)
+        self.assertEqual(result.oos_metrics["complete_cycles"], expected_oos_cycles)
+
+    def test_oos_sharpe_gate_insufficient_time_indexed_points(self) -> None:
+        rows = funding_history(cycles=1)
+        result = run_funding_arbitrage_backtest(
+            "BTCUSDT",
+            bars("BTCUSDT", 6, base=100.0),
+            bars("BTCUSDT", 6, base=101.0),
+            rows,
+            params=FundingArbParams(),
+        )
+        self.assertLess(result.oos_metrics["equity_points"], 30)
+        self.assertEqual(result.gates["OOS Sharpe >= 1.0"], "insufficient_data")
+        self.assertEqual(result.final_status, "failed_validation")
+
+    def test_max_drawdown_comes_from_time_indexed_equity_curve(self) -> None:
+        rows = [
+            {"symbol": "BTCUSDT", "fundingTime": idx * HALF_DAY_MS, "fundingRate": rate}
+            for idx, rate in enumerate(["0.01", "0.01", "0.01", "0.01", "-0.001", "-0.001"])
+        ]
+        result = run_funding_arbitrage_backtest(
+            "BTCUSDT",
+            price_bars("BTCUSDT", [100.0, 70.0, 100.0, 100.0]),
+            price_bars("BTCUSDT", [100.0, 100.0, 100.0, 100.0]),
+            rows,
+            params=FundingArbParams(),
+        )
+        self.assertGreater(result.metrics["max_drawdown"], 0.20)
+        self.assertAlmostEqual(result.metrics["max_drawdown"], max(1 - value / max(result.equity_curve[: idx + 1]) for idx, value in enumerate(result.equity_curve)))
+
     def test_graceful_sleep_when_funding_dries_up(self) -> None:
         rows = [
             {"symbol": "BTCUSDT", "fundingTime": idx * HALF_DAY_MS, "fundingRate": "0.00001"}
@@ -191,6 +266,9 @@ class M1BFundingArbitrageTests(unittest.TestCase):
             text = path.read_text(encoding="utf-8")
         self.assertIn("# M1B Funding Arbitrage Backtest Report", text)
         self.assertIn("M1B Gate Status", text)
+        self.assertIn("Metrics basis: funding-period time-indexed equity curve", text)
+        self.assertIn("OOS split basis: time-based last 30%", text)
+        self.assertIn("Cycle-level returns are retained only for cycle table", text)
 
     def test_no_trading_endpoint_implementation_and_no_execution_live(self) -> None:
         root = Path(__file__).resolve().parents[1]

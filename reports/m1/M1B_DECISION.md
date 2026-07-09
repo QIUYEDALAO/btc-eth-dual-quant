@@ -42,12 +42,18 @@ The real numerical M1B funding-arbitrage report has now been generated using loc
 
 - Report: `reports/m1/M1B_FUNDING_ARBITRAGE_BACKTEST_REPORT.md`
 - Provenance: `reports/m1/M1B_DATA_RUN_PROVENANCE.md`
+- Metrics basis: funding-period time-indexed equity curve
+- OOS split basis: time-based last 30%
+- Previous cycle-level volatility/Sharpe metrics superseded: yes
 - Final M1B status: failed_validation
-- Base cost total return: 119.1019%
-- Cost x2 total return: 111.6019%
+- Base cost total return: 59.5509%
+- Cost x2 total return: 55.8009%
 - Complete cycles: 15
 - Required complete cycles: 20
-- OOS Sharpe: 26.1582
-- Max drawdown: 1.1040%
+- Corrected annualized volatility: 1.3287%
+- Corrected Sharpe: 7.0355
+- Corrected OOS Sharpe: 11.5406
+- OOS equity points: 1645
+- Max drawdown: 0.9124%
 
 The funding-arbitrage research result remains not approved for M2, paper/live trading, API keys, execution/live, order placement, cancellation, or real capital deployment.

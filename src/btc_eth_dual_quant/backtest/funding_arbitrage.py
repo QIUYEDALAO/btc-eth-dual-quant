@@ -13,8 +13,6 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import Any
 
-from . import metrics as perf_metrics
-from .trend_engine import split_in_sample_oos
 from .trend_strategy import TrendBar
 
 
@@ -107,6 +105,7 @@ class FundingArbResult:
     params: FundingArbParams
     cost_label: str
     cycles: list[FundingArbCycle]
+    equity_times_ms: list[int]
     equity_curve: list[float]
     metrics: dict[str, float]
     oos_metrics: dict[str, float]
@@ -123,6 +122,8 @@ class FundingArbResult:
     oos_start_ms: int | None
     oos_end_ms: int | None
     basis_data_status: str
+    metrics_basis: str = "funding-period time-indexed equity curve"
+    oos_split_basis: str = "time-based last 30%"
     no_lookahead: bool = True
     components: dict[str, "FundingArbResult"] = field(default_factory=dict)
 
@@ -297,40 +298,180 @@ def _cycle_drawdown(
     return abs(worst)
 
 
-def _metrics_from_cycles(cycles: list[FundingArbCycle], data_days: float, sleep_periods: list[SleepPeriod]) -> tuple[list[float], dict[str, float]]:
-    equity = [1.0]
-    for cycle in cycles:
-        equity.append(max(0.0001, equity[-1] + cycle.net_return))
-    positions = [1.0 for _ in cycles]
-    trades = [
-        perf_metrics.Trade(
-            symbol=cycle.symbol,
-            entry_time_ms=cycle.entry_time_ms,
-            exit_time_ms=cycle.exit_time_ms,
-            entry_price=cycle.entry_spot_price,
-            exit_price=cycle.exit_spot_price,
-            quantity=1.0,
-            pnl=cycle.net_pnl,
-            return_pct=cycle.net_return,
-            bars_held=max(1, int(round(cycle.holding_days))),
-        )
-        for cycle in cycles
-    ]
-    summary = perf_metrics.metrics_summary(equity, trades, max(1, int(round(data_days))), positions)
-    summary["complete_cycles"] = float(len(cycles))
-    summary["average_holding_days"] = sum(cycle.holding_days for cycle in cycles) / len(cycles) if cycles else 0.0
-    summary["funding_income_total"] = sum(cycle.funding_income for cycle in cycles)
-    summary["basis_pnl_total"] = sum(cycle.basis_pnl for cycle in cycles)
-    summary["fees_total"] = sum(cycle.fees for cycle in cycles)
-    summary["slippage_total"] = sum(cycle.slippage for cycle in cycles)
-    summary["worst_cycle"] = min((cycle.net_return for cycle in cycles), default=0.0)
-    summary["best_cycle"] = max((cycle.net_return for cycle in cycles), default=0.0)
-    summary["longest_sleep_days"] = max((period.days for period in sleep_periods), default=0.0)
-    held_days = sum(cycle.holding_days for cycle in cycles)
-    summary["percent_time_in_market"] = held_days / data_days if data_days > 0 else 0.0
-    cycle_drawdown = max((cycle.max_drawdown_during_cycle for cycle in cycles), default=0.0)
-    summary["max_drawdown"] = max(abs(summary["max_drawdown"]), cycle_drawdown)
-    return equity, summary
+def _equity_returns(equity_curve: list[float]) -> list[float]:
+    returns: list[float] = []
+    for idx in range(1, len(equity_curve)):
+        previous = equity_curve[idx - 1]
+        returns.append(0.0 if previous <= 0 else equity_curve[idx] / previous - 1.0)
+    return returns
+
+
+def _max_drawdown_from_equity(equity_curve: list[float]) -> float:
+    peak = 0.0
+    worst = 0.0
+    for value in equity_curve:
+        peak = max(peak, value)
+        if peak > 0:
+            worst = min(worst, value / peak - 1.0)
+    return abs(worst)
+
+
+def _profit_factor_from_cycles(cycles: list[FundingArbCycle], pnl_weight: float) -> float:
+    wins = sum(cycle.net_pnl * pnl_weight for cycle in cycles if cycle.net_pnl > 0)
+    losses = abs(sum(cycle.net_pnl * pnl_weight for cycle in cycles if cycle.net_pnl < 0))
+    if losses == 0:
+        return float("inf") if wins > 0 else 0.0
+    return wins / losses
+
+
+def _time_indexed_metrics(
+    equity_times_ms: list[int],
+    equity_curve: list[float],
+    cycles: list[FundingArbCycle],
+    sleep_periods: list[SleepPeriod],
+    pnl_weight: float = 1.0,
+) -> dict[str, float]:
+    if len(equity_times_ms) != len(equity_curve):
+        raise ValueError("equity_times_ms and equity_curve must have the same length")
+    span_days = (
+        max((equity_times_ms[-1] - equity_times_ms[0]) / MS_PER_DAY, 0.0)
+        if len(equity_times_ms) >= 2
+        else 0.0
+    )
+    returns = _equity_returns(equity_curve)
+    total = equity_curve[-1] / equity_curve[0] - 1.0 if len(equity_curve) >= 2 and equity_curve[0] > 0 else 0.0
+    annualized_return = (equity_curve[-1] / equity_curve[0]) ** (365.0 / span_days) - 1.0 if span_days > 0 and equity_curve[0] > 0 and equity_curve[-1] > 0 else 0.0
+    periods_per_year = len(returns) / (span_days / 365.0) if span_days > 0 and returns else 0.0
+    if len(returns) >= 2 and periods_per_year > 0:
+        mean_return = sum(returns) / len(returns)
+        variance = sum((item - mean_return) ** 2 for item in returns) / len(returns)
+        annualized_volatility = math.sqrt(variance) * math.sqrt(periods_per_year)
+        sharpe = (mean_return * periods_per_year) / annualized_volatility if annualized_volatility > 0 else 0.0
+    else:
+        annualized_volatility = 0.0
+        sharpe = 0.0
+    held_days = sum(cycle.holding_days * pnl_weight for cycle in cycles)
+    winning_cycles = sum(1 for cycle in cycles if cycle.net_pnl > 0)
+    return {
+        "total_return": total,
+        "annualized_return": annualized_return,
+        "annualized_volatility": annualized_volatility,
+        "sharpe": sharpe,
+        "max_drawdown": _max_drawdown_from_equity(equity_curve),
+        "complete_cycles": float(len(cycles)),
+        "win_rate": winning_cycles / len(cycles) if cycles else 0.0,
+        "profit_factor": _profit_factor_from_cycles(cycles, pnl_weight),
+        "average_holding_days": sum(cycle.holding_days for cycle in cycles) / len(cycles) if cycles else 0.0,
+        "funding_income_total": sum(cycle.funding_income * pnl_weight for cycle in cycles),
+        "basis_pnl_total": sum(cycle.basis_pnl * pnl_weight for cycle in cycles),
+        "fees_total": sum(cycle.fees * pnl_weight for cycle in cycles),
+        "slippage_total": sum(cycle.slippage * pnl_weight for cycle in cycles),
+        "worst_cycle": min((cycle.net_return for cycle in cycles), default=0.0),
+        "best_cycle": max((cycle.net_return for cycle in cycles), default=0.0),
+        "longest_sleep_days": max((period.days for period in sleep_periods), default=0.0),
+        "percent_time_in_market": held_days / span_days if span_days > 0 else 0.0,
+        "equity_points": float(len(equity_curve)),
+        "return_observations": float(len(returns)),
+        "span_days": span_days,
+    }
+
+
+def _cycle_pnl_at_time(
+    cycle: FundingArbCycle,
+    point: FundingPoint,
+    spot_bars: list[TrendBar],
+    perp_bars: list[TrendBar],
+    held_points: list[FundingPoint],
+    params: FundingArbParams,
+) -> float:
+    if point.funding_time_ms >= cycle.exit_time_ms:
+        return cycle.net_pnl
+    spot = _latest_bar_at_or_before(spot_bars, point.funding_time_ms)
+    perp = _latest_bar_at_or_before(perp_bars, point.funding_time_ms)
+    if spot is None or perp is None:
+        return 0.0
+    spot_qty = params.notional / cycle.entry_spot_price
+    perp_qty = params.notional / cycle.entry_perp_price
+    spot_pnl = (spot.close - cycle.entry_spot_price) * spot_qty
+    perp_short_pnl = (cycle.entry_perp_price - perp.close) * perp_qty
+    funding_income = sum(item.funding_rate for item in held_points) * params.notional
+    open_cost = (cycle.fees + cycle.slippage) / 2.0
+    return spot_pnl + perp_short_pnl + funding_income - open_cost
+
+
+def _funding_period_equity_curve(
+    cycles: list[FundingArbCycle],
+    points: list[FundingPoint],
+    spot_bars: list[TrendBar],
+    perp_bars: list[TrendBar],
+    params: FundingArbParams,
+    data_start_ms: int,
+    data_end_ms: int,
+) -> tuple[list[int], list[float]]:
+    in_range_points = [point for point in points if data_start_ms <= point.funding_time_ms <= data_end_ms]
+    if not in_range_points:
+        return [data_start_ms, data_end_ms], [1.0, 1.0]
+    ordered_cycles = sorted(cycles, key=lambda cycle: cycle.entry_time_ms)
+    cycle_idx = 0
+    realized_pnl = 0.0
+    equity_times: list[int] = []
+    equity: list[float] = []
+    for point in in_range_points:
+        while cycle_idx < len(ordered_cycles) and ordered_cycles[cycle_idx].exit_time_ms < point.funding_time_ms:
+            realized_pnl += ordered_cycles[cycle_idx].net_pnl
+            cycle_idx += 1
+        current_cycle = ordered_cycles[cycle_idx] if cycle_idx < len(ordered_cycles) else None
+        if current_cycle and current_cycle.entry_time_ms <= point.funding_time_ms <= current_cycle.exit_time_ms:
+            held_points = [
+                item
+                for item in points
+                if current_cycle.entry_time_ms <= item.funding_time_ms <= point.funding_time_ms
+            ]
+            current_pnl = _cycle_pnl_at_time(current_cycle, point, spot_bars, perp_bars, held_points, params)
+            value = 1.0 + realized_pnl + current_pnl
+            if point.funding_time_ms >= current_cycle.exit_time_ms:
+                realized_pnl += current_cycle.net_pnl
+                cycle_idx += 1
+        else:
+            value = 1.0 + realized_pnl
+        equity_times.append(point.funding_time_ms)
+        equity.append(max(0.0001, value))
+    if equity_times[0] > data_start_ms:
+        equity_times.insert(0, data_start_ms)
+        equity.insert(0, 1.0)
+    if equity_times[-1] < data_end_ms:
+        equity_times.append(data_end_ms)
+        equity.append(equity[-1])
+    return equity_times, equity
+
+
+def _slice_equity_window(
+    equity_times_ms: list[int],
+    equity_curve: list[float],
+    start_ms: int | None,
+    end_ms: int | None,
+) -> tuple[list[int], list[float]]:
+    if not equity_times_ms or not equity_curve or start_ms is None or end_ms is None:
+        return [], []
+    anchor_idx: int | None = None
+    for idx, ts in enumerate(equity_times_ms):
+        if ts <= start_ms:
+            anchor_idx = idx
+        elif ts > start_ms:
+            break
+    times: list[int] = []
+    values: list[float] = []
+    if anchor_idx is not None:
+        times.append(start_ms)
+        values.append(equity_curve[anchor_idx])
+    for ts, value in zip(equity_times_ms, equity_curve):
+        if start_ms < ts <= end_ms:
+            times.append(ts)
+            values.append(value)
+    if len(times) == 1 and end_ms > times[0]:
+        times.append(end_ms)
+        values.append(values[-1])
+    return times, values
 
 
 def _sleep_periods(symbol: str, data_start: int | None, data_end: int | None, cycles: list[FundingArbCycle]) -> list[SleepPeriod]:
@@ -512,14 +653,27 @@ def run_funding_arbitrage_backtest(
             )
 
     sleep_periods = _sleep_periods(symbol, data_start, data_end, cycles)
-    equity_curve, summary = _metrics_from_cycles(cycles, data_days, sleep_periods)
-    _is_cycles, oos_cycles = split_in_sample_oos(cycles, params.oos_fraction)
-    _, oos_summary = _metrics_from_cycles(oos_cycles, max(1.0, data_days * params.oos_fraction), [])
+    equity_times, equity_curve = _funding_period_equity_curve(cycles, points, spot_bars, perp_bars, params, data_start, data_end)
+    summary = _time_indexed_metrics(equity_times, equity_curve, cycles, sleep_periods)
+    oos_times, oos_equity = _slice_equity_window(equity_times, equity_curve, split_ms, data_end)
+    oos_cycles = [cycle for cycle in cycles if cycle.entry_time_ms >= split_ms]
+    oos_summary = _time_indexed_metrics(oos_times, oos_equity, oos_cycles, []) if oos_times else {
+        "total_return": 0.0,
+        "annualized_return": 0.0,
+        "annualized_volatility": 0.0,
+        "sharpe": 0.0,
+        "max_drawdown": 0.0,
+        "complete_cycles": float(len(oos_cycles)),
+        "equity_points": 0.0,
+        "return_observations": 0.0,
+        "span_days": 0.0,
+    }
     result = FundingArbResult(
         symbol=symbol,
         params=params,
         cost_label="cost_x2" if params.cost_multiplier > 1 else "base_cost",
         cycles=cycles,
+        equity_times_ms=equity_times,
         equity_curve=equity_curve,
         metrics=summary,
         oos_metrics=oos_summary,
@@ -553,19 +707,52 @@ def combine_funding_results(
     )
     starts = [result.data_start_ms for result in components.values() if result.data_start_ms is not None]
     ends = [result.data_end_ms for result in components.values() if result.data_end_ms is not None]
-    data_start = min(starts) if starts else None
-    data_end = max(ends) if ends else None
-    data_days = max(1.0, ((data_end or 0) - (data_start or 0)) / MS_PER_DAY) if data_start and data_end else 1.0
+    data_start = max(starts) if starts else None
+    data_end = min(ends) if ends else None
     sleep_periods = [period for result in components.values() for period in result.sleep_periods]
-    equity_curve, summary = _metrics_from_cycles(cycles, data_days, sleep_periods)
-    _, oos_cycles = split_in_sample_oos(cycles, params.oos_fraction)
-    _, oos_summary = _metrics_from_cycles(oos_cycles, max(1.0, data_days * params.oos_fraction), [])
+    component_values = list(components.values())
+    weight = 1.0 / len(component_values) if component_values else 1.0
+    union_times = sorted(
+        {
+            ts
+            for result in component_values
+            for ts in result.equity_times_ms
+            if data_start is not None and data_end is not None and data_start <= ts <= data_end
+        }
+    )
+    component_indices = {symbol: 0 for symbol in components}
+    equity_curve: list[float] = []
+    for ts in union_times:
+        total = 0.0
+        for symbol, result in components.items():
+            idx = component_indices[symbol]
+            while idx + 1 < len(result.equity_times_ms) and result.equity_times_ms[idx + 1] <= ts:
+                idx += 1
+            component_indices[symbol] = idx
+            total += result.equity_curve[idx] * weight
+        equity_curve.append(total)
+    summary = _time_indexed_metrics(union_times, equity_curve, cycles, sleep_periods, weight) if union_times else {}
+    split_ms = data_start + int(((data_end or data_start or 0) - (data_start or 0)) * (1.0 - params.oos_fraction)) if data_start else None
+    oos_times, oos_equity = _slice_equity_window(union_times, equity_curve, split_ms, data_end)
+    oos_cycles = [cycle for cycle in cycles if split_ms is not None and cycle.entry_time_ms >= split_ms]
+    oos_summary = _time_indexed_metrics(oos_times, oos_equity, oos_cycles, [], weight) if oos_times else {
+        "total_return": 0.0,
+        "annualized_return": 0.0,
+        "annualized_volatility": 0.0,
+        "sharpe": 0.0,
+        "max_drawdown": 0.0,
+        "complete_cycles": float(len(oos_cycles)),
+        "equity_points": 0.0,
+        "return_observations": 0.0,
+        "span_days": 0.0,
+    }
     interval_anomalies = [warning for result in components.values() for warning in result.interval_anomalies]
     result = FundingArbResult(
         symbol="BTC+ETH",
         params=params,
         cost_label=cost_label,
         cycles=cycles,
+        equity_times_ms=union_times,
         equity_curve=equity_curve,
         metrics=summary,
         oos_metrics=oos_summary,
@@ -578,10 +765,10 @@ def combine_funding_results(
         data_start_ms=data_start,
         data_end_ms=data_end,
         is_start_ms=data_start,
-        is_end_ms=data_start + int(((data_end or data_start or 0) - (data_start or 0)) * (1.0 - params.oos_fraction)) if data_start else None,
-        oos_start_ms=data_start + int(((data_end or data_start or 0) - (data_start or 0)) * (1.0 - params.oos_fraction)) if data_start else None,
+        is_end_ms=split_ms,
+        oos_start_ms=split_ms,
         oos_end_ms=data_end,
-        basis_data_status="basis_data_unavailable"
+        basis_data_status="partial"
         if any(result.basis_data_status != "available" for result in components.values())
         else "available",
         components=components,
@@ -596,8 +783,18 @@ def evaluate_m1b_gates(
 ) -> tuple[dict[str, str], str]:
     params = result.params
     threshold = compute_payback_required_apr(params)
+    if result.data_start_ms is None or result.data_end_ms is None or not result.equity_curve:
+        return {"Backtest code": "under_review"}, "under_review"
+    oos_points = int(result.oos_metrics.get("equity_points", 0.0))
+    oos_sharpe = result.oos_metrics.get("sharpe", 0.0)
+    if oos_points < 30:
+        oos_gate = "insufficient_data"
+    elif result.oos_split_basis != "time-based last 30%" or result.metrics_basis != "funding-period time-indexed equity curve":
+        oos_gate = "invalid_metric"
+    else:
+        oos_gate = "pass" if oos_sharpe >= params.min_oos_sharpe else "fail"
     gates = {
-        "Backtest code": "pass" if result.data_start_ms is not None and result.data_end_ms is not None else "fail",
+        "Backtest code": "pass",
         "Funding interval not hardcoded": "pass" if result.interval_hours > 0 and result.interval_source else "fail",
         "Payback threshold": "pass"
         if threshold > params.entry_mean_apr_threshold and not should_enter_funding_arb(params.entry_mean_apr_threshold, 0.001, params)
@@ -607,7 +804,7 @@ def evaluate_m1b_gates(
         if (cost_x2_result.metrics.get("total_return", 0.0) > 0 if cost_x2_result is not None else result.cost_label == "cost_x2" and result.metrics.get("total_return", 0.0) > 0)
         else "fail",
         "Complete cycles >= 20": "pass" if result.metrics.get("complete_cycles", 0.0) >= params.min_complete_cycles else "fail",
-        "OOS Sharpe >= 1.0": "pass" if result.oos_metrics.get("sharpe", 0.0) >= params.min_oos_sharpe else "fail",
+        "OOS Sharpe >= 1.0": oos_gate,
         "Max drawdown <= 5%": "pass" if result.metrics.get("max_drawdown", 1.0) <= params.max_drawdown_limit else "fail",
         "Funding dries up gracefully": "pass" if result.sleep_periods or not result.cycles else "fail",
         "No lookahead": "pass" if result.no_lookahead else "fail",

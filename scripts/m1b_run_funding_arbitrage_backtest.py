@@ -36,6 +36,7 @@ def _metric_line(result: FundingArbResult) -> list[str]:
         f"- sharpe: {metrics.get('sharpe', 0.0):.4f}",
         f"- max_drawdown: {percent(metrics.get('max_drawdown', 0.0))}",
         f"- complete_cycles: {int(metrics.get('complete_cycles', 0.0))}",
+        f"- equity_points: {int(metrics.get('equity_points', 0.0))}",
         f"- win_rate: {percent(metrics.get('win_rate', 0.0))}",
         f"- profit_factor: {metrics.get('profit_factor', 0.0):.4f}",
         f"- average_holding_days: {metrics.get('average_holding_days', 0.0):.2f}",
@@ -117,6 +118,9 @@ def render_report(
         "- index_price_klines",
         "- premium_index_klines",
         "- Source mode: local M0 public data only",
+        f"- Metrics basis: {base_portfolio.metrics_basis}",
+        f"- OOS split basis: {base_portfolio.oos_split_basis}",
+        "- Cycle-level returns are retained only for cycle table, win rate, profit factor, and best/worst cycle.",
         "",
         "## 2. Data Range",
         "",
@@ -131,6 +135,7 @@ def render_report(
             "",
             f"- IS start/end: {utc_ms(base_portfolio.is_start_ms)} -> {utc_ms(base_portfolio.is_end_ms)}",
             f"- OOS start/end: {utc_ms(base_portfolio.oos_start_ms)} -> {utc_ms(base_portfolio.oos_end_ms)}",
+            f"- OOS split basis: {base_portfolio.oos_split_basis}",
             "- OOS was not used for parameter selection.",
             "",
             "## 4. Strategy Rules",
@@ -198,8 +203,12 @@ def render_report(
             "## 15. OOS Results",
             "",
             f"- OOS total_return: {percent(base_portfolio.oos_metrics.get('total_return', 0.0))}",
+            f"- OOS annualized_return: {percent(base_portfolio.oos_metrics.get('annualized_return', 0.0))}",
+            f"- OOS annualized_volatility: {percent(base_portfolio.oos_metrics.get('annualized_volatility', 0.0))}",
             f"- OOS Sharpe: {base_portfolio.oos_metrics.get('sharpe', 0.0):.4f}",
             f"- OOS complete cycles: {int(base_portfolio.oos_metrics.get('complete_cycles', 0.0))}",
+            f"- OOS equity points: {int(base_portfolio.oos_metrics.get('equity_points', 0.0))}",
+            "- OOS cycle count uses cycle entry_time >= split timestamp; OOS Sharpe uses the time-indexed OOS equity curve.",
             "",
             "## 16. Funding Interval Diagnostics",
             "",
@@ -237,7 +246,9 @@ def render_report(
     if base_portfolio.final_status == "pass":
         lines.append("- Decision: eligible for design review only; not eligible for live trading or M2 approval.")
     else:
+        failed_gates = [f"{name}={status}" for name, status in base_portfolio.gates.items() if status != "pass"]
         lines.append("- Decision: failed_validation; do not promote funding-rate-arbitrage to execution or paper/live stages.")
+        lines.append(f"- Failed/blocked gates: {', '.join(failed_gates) if failed_gates else 'none'}")
     lines.append("- No result in this report approves live trading.")
     lines.append("")
     lines.append("## Cost x2 Symbol Detail")
@@ -274,8 +285,8 @@ def run_from_local_m0(raw_root: str, duckdb_path: str) -> tuple[FundingArbResult
         base_result = run_funding_arbitrage_backtest(symbol, spot, perp, funding, mark, index, premium, base_params)
         x2_result = run_funding_arbitrage_backtest(symbol, spot, perp, funding, mark, index, premium, x2_params)
         if optional_missing:
-            base_result = replace(base_result, basis_data_status="basis_data_unavailable")
-            x2_result = replace(x2_result, basis_data_status="basis_data_unavailable")
+            base_result = replace(base_result, basis_data_status="partial")
+            x2_result = replace(x2_result, basis_data_status="partial")
         base_components[symbol] = base_result
         x2_components[symbol] = x2_result
     base = combine_funding_results(base_components, base_params, "base_cost")
