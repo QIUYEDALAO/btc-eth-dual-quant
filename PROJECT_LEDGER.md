@@ -436,3 +436,31 @@ private exchange responses here.
 - Decision: P0-P4 are authorized sequentially. P5-P8 require future explicit approvals and remain blocked.
 - Next action: Validate, update PR #14, wait for CI, and merge P0 before creating the P1 branch.
 - Guardrails: No M1C strategy code before P0 merge; no API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-09 - End-to-End Roadmap P0 Merged
+
+- Date UTC: 2026-07-09T23:45:27Z
+- Task ID: END-TO-END-P0-MERGED
+- Phase: P0 end-to-end governance
+- Branch: main
+- Commit: d3532b611bd0da4d5d20128979c3c93e17e2eb90
+- PR: #14 merged
+- Completed: The P0-P8 roadmap, implementation plan, canonical execution checklist, strategy diagnostics, and context updates were squash merged.
+- Decision: P0-P4 are authorized only in dependency order. P5-P8 remain not authorized.
+- Next action: Complete P1 fixed M1C design before creating strategy code.
+- Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-09 - M1C Rotation P1 Design Started
+
+- Date UTC: 2026-07-09T23:53:01Z
+- Task ID: M1C-P1-DESIGN
+- Phase: P1 M1C rotation design
+- Branch: codex/m1c-btc-eth-rotation-design
+- PR: pending
+- Commit: pending
+- Completed so far: Fixed strategy specification, machine-readable contract, pinned Freqtrade 2026.6 source capability evidence, design validator, fixture-level tests, and capability report.
+- Design result: `design_pass`. Informative-pair ranking and same-open different-pair rotation are representable in the pinned source; P2 runtime confirmation remains mandatory.
+- Not completed: P1 PR/CI/merge, strategy implementation, historical backtest, independent audit, M2, dry-run, live/API/trading.
+- Decision: If the P2 pinned-runtime same-open fixture fails, record `blocked_framework_capability` and stop; do not create a parallel single-leg backtester.
+- Next action: Validate and merge P1 before creating `BTCETHRelativeStrengthRotation`.
+- Guardrails: No strategy code on P1; no API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
