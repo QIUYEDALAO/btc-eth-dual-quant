@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T22:13:36Z"
+last_updated_utc: "2026-07-09T22:15:56Z"
 current_phase: post-hardening review
 current_status: freqtrade_first_hardening_complete_m0_audit_blocked_no_m2
 completed_milestones:
@@ -32,6 +32,8 @@ open_work:
     phase: M0 audit revalidation
     status: implementation_complete_evidence_blocked
     branch: codex/m0-dual-source-audit-unblock
+    pr: 13
+    head_sha: 27f5032831b3cfbe8311ee019a71e89a92f7f455
     design: docs/superpowers/specs/2026-07-10-m0-dual-source-audit-unblock-design.md
     evidence: reports/m0/M0_DUAL_SOURCE_AUDIT_DIAGNOSTICS.md
     blocker: "Strict multi-network evidence remains blocked: local and approved remote nodes could read official futures ZIPs but could not reach official futures REST; spot REST/ZIP has real source revisions for BTCUSDT and ETHUSDT at 2020-12-21T13:00Z and 2021-04-23T01:00Z, plus one ZIP-only timestamp per symbol at 2020-12-21T14:00Z."

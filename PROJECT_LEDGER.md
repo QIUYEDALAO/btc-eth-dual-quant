@@ -362,3 +362,17 @@ private exchange responses here.
 - Not completed: No official source-owner resolution for historical spot revisions and no compliant node with working official futures REST evidence.
 - Next action: Seek official source clarification or another compliant public network. Do not use third-party substitution, VPN/proxy bypass, threshold reduction, or ZIP-only acceptance.
 - Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M0 Dual-Source Audit PR Opened
+
+- Date UTC: 2026-07-09T22:15:56Z
+- Task ID: M0-DUAL-SOURCE-AUDIT-PR
+- Phase: M0 audit revalidation
+- Branch: codex/m0-dual-source-audit-unblock
+- Commit: 27f5032831b3cfbe8311ee019a71e89a92f7f455
+- PR: #13 open
+- Completed: Implementation, multi-network evidence, truthful blocked reports, validation, branch push, and PR creation.
+- Decision: PR #13 records a completed diagnostic implementation with a blocked audit result; it does not restore M0 audit pass or authorize M2.
+- Blockers: Historical spot source revisions remain, and official futures REST is unavailable from both compliant execution nodes.
+- Next action: Review PR #13 checks and evidence. Any future unblock requires official source clarification or a compliant public network, not weaker validation.
+- Guardrails: No API keys, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
