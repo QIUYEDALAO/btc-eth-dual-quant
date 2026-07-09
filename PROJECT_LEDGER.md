@@ -249,3 +249,33 @@ private exchange responses here.
 - Blockers: A compliant network is required for futures REST comparison, and spot differences require source-level investigation.
 - Next action: Merge the correctness hardening only after CI passes, then continue Freqtrade primary-framework hardening while all strategy approval and M2 gates remain blocked.
 - Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M0 Audit Correctness Hardening Merged
+
+- Date UTC: 2026-07-09T20:07:25Z
+- Task ID: M0-AUDIT-CORRECTNESS-MERGED
+- Phase: M0 audit revalidation
+- Branch: main
+- Commit: 8c33d67dd1c5b3ed7108d5578b36f96a05fd320c
+- PR: #9 merged
+- Completed: Funding cadence, per-event interval, ZIP/REST evidence, gap/timestamp-set comparison, raw path validation, DuckDB identifier/counting, and explicit index-failure hardening merged.
+- Not completed: M0 audit pass, M2, live/paper/API/trading.
+- Decision: M0 infrastructure stays accepted but audit status remains revalidation_required because the real public audit is blocked.
+- Blockers: Futures REST HTTP 451 and recorded spot source differences.
+- Next action: Pin and validate Freqtrade as the primary single-leg research framework.
+
+## 2026-07-09 - Freqtrade Primary Framework Hardening Started
+
+- Date UTC: 2026-07-09T20:23:04Z
+- Task ID: FREQTRADE-PRIMARY-HARDENING
+- Phase: Freqtrade primary framework hardening
+- Branch: codex/freqtrade-primary-framework-hardening
+- Commit: 00f1607
+- PR: #10 open
+- Completed so far: Official `2026.6` image pinned to digest `sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6`; runtime manifest and validator added; unified research entry added; self-managed M1A marked frozen; VPS public download/list/backtest/lookahead/recursive smoke passed after correcting a configuration-error false positive.
+- Data provenance: BTCUSDT and ETHUSDT each matched 3,248 canonical M0 1d rows with zero missing timestamps and zero OHLCV differences from 2017-08-17 through 2026-07-08.
+- Not completed: PR review/merge, M1B event-time revalidation, M0 audit pass, M2, live/paper/API/trading.
+- Decision: Framework smoke and provenance establish Freqtrade as the primary single-leg research framework, not as strategy or trading approval.
+- Known limitation: Freqtrade 2026.6 emitted asynchronous connector cleanup warnings after completed analysis commands; monitor on future pinned upgrades.
+- Next action: Run full validation, publish the independent PR, and merge only after checks pass.
+- Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.

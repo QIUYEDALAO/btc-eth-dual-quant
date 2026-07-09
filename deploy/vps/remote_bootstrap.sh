@@ -12,6 +12,7 @@ ssh "$VPS_HOST" "cd '$VPS_APP_DIR' && \
   bash deploy/vps/prepare_python_deps.sh && \
   bash deploy/vps/install_docker_ubuntu.sh && \
   bash scripts/m1f_validate.sh && \
+  cd freqtrade_lab && bash scripts/ft_verify_runtime.sh && cd .. && \
   test -f freqtrade_lab/docker-compose.yml && \
   test -f freqtrade_lab/user_data/configs/config.dryrun.example.json && \
   test -f freqtrade_lab/user_data/strategies/M1ATrendValidationStrategy.py"

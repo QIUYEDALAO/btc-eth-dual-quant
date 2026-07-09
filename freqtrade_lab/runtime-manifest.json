@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "image_ref": "freqtradeorg/freqtrade:2026.6@sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6",
+  "release": "2026.6",
+  "digest": "sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6",
+  "freqtrade_version": "freqtrade 2026.6",
+  "observed_version": "Freqtrade Version: freqtrade 2026.6",
+  "observed_runtime": {
+    "python": "Python 3.14.6",
+    "ccxt": "4.5.61"
+  },
+  "public_data_range": {
+    "start_utc": "2017-08-17T00:00:00Z",
+    "end_utc": "2026-07-08T23:59:59Z",
+    "symbols": [
+      "BTC/USDT",
+      "ETH/USDT"
+    ],
+    "timeframes": [
+      "1d"
+    ],
+    "market_type": "spot"
+  },
+  "command_categories": [
+    "download-data",
+    "list-data",
+    "backtesting",
+    "lookahead-analysis",
+    "recursive-analysis",
+    "webserver"
+  ],
+  "generated_utc": "2026-07-09T20:21:53Z",
+  "run_location": "VPS",
+  "api_key_used": false,
+  "runtime_artifacts_committed": false,
+  "server_metadata_recorded": false
+}

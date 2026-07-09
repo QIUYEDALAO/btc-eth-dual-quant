@@ -81,7 +81,25 @@ required_files() {
   test -f freqtrade_lab/安全操作清单.md &&
   test -f reports/m1/M1F_中文验收摘要.md &&
   test -f freqtrade_lab/scripts/ft_webui_local.sh &&
-  test -f freqtrade_lab/scripts/ft_webui_stop.sh
+  test -f freqtrade_lab/scripts/ft_webui_stop.sh &&
+  test -f freqtrade_lab/runtime-manifest.json &&
+  test -f freqtrade_lab/scripts/ft_research.sh &&
+  test -f freqtrade_lab/scripts/ft_verify_runtime.sh &&
+  test -f scripts/freqtrade_runtime_manifest.py &&
+  test -f scripts/freqtrade_data_provenance.py &&
+  test -f freqtrade_lab/user_data/strategies/README.md &&
+  test -f src/btc_eth_dual_quant/backtest/README.md
+}
+
+research_entry_guard() {
+  local entry="freqtrade_lab/scripts/ft_research.sh"
+  local command
+  for command in download-data list-data backtesting lookahead-analysis recursive-analysis webserver; do
+    grep -q "$command" "$entry" || return 1
+  done
+  grep -q 'ft_research\.sh backtesting' freqtrade_lab/scripts/ft_backtest_m1a_trend.sh &&
+  grep -q 'ft_research\.sh download-data' freqtrade_lab/scripts/ft_download_spot_data.sh &&
+  grep -q 'ft_research\.sh webserver' freqtrade_lab/scripts/ft_webui_local.sh
 }
 
 smoke_report_guard() {
@@ -106,6 +124,8 @@ webui_local_guard() {
 run_check "M0 validation" bash scripts/m0_validate.sh
 run_check "M1A validation" bash scripts/m1a_validate.sh
 run_check "Freqtrade no-live guard" bash freqtrade_lab/scripts/ft_no_live_guard.sh
+run_check "Freqtrade pinned runtime manifest" "$PY_CMD" scripts/freqtrade_runtime_manifest.py validate
+run_check "Freqtrade unified research entry" research_entry_guard
 run_check "M1F required files" required_files
 run_check "M1F smoke report guard" smoke_report_guard
 run_check "WebUI local-only guard" webui_local_guard

@@ -27,7 +27,4 @@ echo "请用 SSH tunnel 访问：ssh -L 8080:127.0.0.1:8080 \$VPS_HOST"
 echo "然后浏览器打开：http://127.0.0.1:8080"
 echo "不要开放公网端口，不要配置 API key，不要用于实盘。"
 
-docker compose run --rm \
-  -p 127.0.0.1:8080:8080 \
-  freqtrade webserver \
-  --config "$CONFIG"
+exec bash scripts/ft_research.sh webserver --config "$CONFIG"

@@ -1,7 +1,8 @@
 """M1A trend validation port for Freqtrade feasibility checks.
 
-This strategy mirrors the fixed BTC/ETH 1d spot trend rule that already failed
-the project's self-managed M1A validation. It is not approved for live use,
+This frozen historical reproduction mirrors the fixed BTC/ETH 1d spot trend
+rule that already failed the project's self-managed M1A validation. It is not
+an active strategy candidate and must not receive new strategy features. It is not approved for live use,
 paper use with real credentials, hyperopt, leverage, futures, FreqAI, or rescue
 parameter tuning. It exists only to check whether Freqtrade can host an
 equivalent research strategy skeleton.
