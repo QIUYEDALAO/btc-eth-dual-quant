@@ -29,6 +29,8 @@ open_work:
     phase: post-M1B architecture hardening
     status: in_progress
     branch: codex/freqtrade-first-architecture-governance
+    pr: 8
+    initial_sha: f96a8d2
     blocker: "No strategy is eligible for M2; architecture hardening must not implement execution."
   - id: M0-AUDIT-CORRECTNESS
     phase: M0 audit revalidation

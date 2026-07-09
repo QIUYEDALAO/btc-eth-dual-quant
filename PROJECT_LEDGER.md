@@ -195,7 +195,8 @@ private exchange responses here.
 - Task ID: FREQTRADE-FIRST-ARCHITECTURE-HARDENING
 - Phase: post-M1B architecture hardening
 - Branch: codex/freqtrade-first-architecture-governance
-- PR: pending creation
+- Commit: f96a8d2
+- PR: #8 open
 - Request summary: Adopt Freqtrade as the primary single-leg research framework and retain Python only for M0 audit, event-time verification, and offline two-leg accounting.
 - Completed: Design approved; ADR-0006, architecture specification, README, and historical evidence notices drafted.
 - Not completed: M0 audit corrections, immutable Freqtrade runtime pinning, M1B event-time revalidation, M2, live/paper/API/trading.
