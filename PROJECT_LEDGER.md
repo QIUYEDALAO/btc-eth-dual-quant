@@ -428,7 +428,7 @@ private exchange responses here.
 - Task ID: END-TO-END-P0
 - Phase: P0 end-to-end governance
 - Branch: codex/strategy-failure-diagnostics
-- Commit: pending P0 commit
+- Commit: 162b62ad12122e5cc720ad0e47323521efb8a581
 - PR: #14 open
 - Request summary: Establish the complete Freqtrade-first P0-P8 lifecycle and execute all authorized work in strict dependency order.
 - Completed so far: Approved master roadmap, implementation plan, and canonical `PROJECT_EXECUTION_CHECKLIST.md` created; M1C candidate and conservative gates fixed.
