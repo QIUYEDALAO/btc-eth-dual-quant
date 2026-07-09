@@ -34,9 +34,19 @@ offline arbitrage backtester only as research.
 - B means Freqtrade is partially suitable but requires an external
   portfolio/accounting/funding backtester for spot-long plus perpetual-short
   funding-rate arbitrage.
-- This finding is not yet merged into main and still requires review.
-- Until reviewed, PR #5 must remain open and must not be treated as completed
-  M1B validation.
+- This finding has been accepted on PR #5 but is not yet merged into main.
+- PR #5 must remain open and must not be treated as completed M1B numerical
+  validation until a real numerical report exists.
+
+## PR #5 Review Outcome
+
+- Conclusion B is accepted on PR #5.
+- Freqtrade is partially suitable for research and futures-leg smoke tests.
+- Freqtrade is not sufficient as native spot-long + perpetual-short
+  funding-arbitrage backtest or execution engine.
+- External portfolio/accounting/funding backtester remains required.
+- This outcome does not approve M2, live trading, paper trading, API keys, or
+  order placement.
 
 ## Prohibited Misinterpretations
 

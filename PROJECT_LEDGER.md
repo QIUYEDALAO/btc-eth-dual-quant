@@ -102,3 +102,52 @@ private exchange responses here.
 - Blockers: Review whether to accept conclusion B and decide the custom M1B backtester path.
 - Next action: Review whether to accept conclusion B and decide the custom M1B backtester path.
 - Guardrails: M2/live/paper/API/trading remain prohibited.
+
+## 2026-07-09 - PR #5 Suitability Conclusion B Accepted
+
+- Date UTC: 2026-07-09
+- Task ID: PR5-SUITABILITY-CONCLUSION-B-ACCEPTED
+- Phase: M1B funding-rate-arbitrage research validation
+- Branch: m1b-funding-arbitrage-offline-backtest
+- Commit: f17389f06152921ffcc9a8cef6773019e8632fb4
+- PR: #5 open
+- Request summary: Review PR #5 Freqtrade suitability finding and decide whether to adopt conclusion B.
+- Completed: Conclusion B accepted as project decision on PR #5.
+- Not completed: No real numerical M1B funding-arbitrage report yet; no M2; no live/paper/API/trading.
+- Validation: scripts/project_validate.sh and scripts/m1b_validate.sh pass.
+- Decision: Freqtrade is partially suitable but needs external portfolio/accounting/funding backtester.
+- Blockers: Numerical report still requires local M0 public raw/DuckDB data.
+- Next action: Generate real numerical M1B funding-arbitrage report offline from public data.
+
+## 2026-07-09 - M1B Numerical Report Generated
+
+- Date UTC: 2026-07-09
+- Task ID: M1B-NUMERICAL-REPORT-GENERATED
+- Phase: M1B funding-rate-arbitrage research validation
+- Branch: m1b-funding-arbitrage-offline-backtest
+- Commit: 885c02961e7b5934675a6f64eca4c0bb63d85ee4
+- PR: #5 open
+- Request summary: Generate a real M1B funding-arbitrage numerical report using local M0 public data after accepting Freqtrade suitability conclusion B.
+- Completed: Local M0 public ZIP fallback data was generated; M1B numerical report and public-data provenance were written.
+- Not completed: No M2; no live trading; no paper trading with real API; no API keys; no execution/live; no PR #5 merge.
+- Validation result: M1B final status is failed_validation.
+- Decision: Do not promote funding-rate-arbitrage to M2 because the complete cycle-count gate failed.
+- Key metrics from superseded cycle-level Sharpe report: base cost total return 119.1019%; cost x2 total return 111.6019%; complete cycles 15; OOS Sharpe 26.1582; max drawdown 1.1040%.
+- Blockers: PR #5 still requires review as a truthful failed_validation research artifact.
+- Next action: Review PR #5 numerical report and decide whether to merge the failed_validation artifact.
+
+## 2026-07-09 - M1B Metrics Methodology Fixed
+
+- Date UTC: 2026-07-09
+- Task ID: M1B-METRICS-METHODOLOGY-FIX
+- Phase: M1B funding-rate-arbitrage research validation
+- Branch: m1b-funding-arbitrage-offline-backtest
+- Commit: 3e0fe83b18dbec562458fb999ab2806c45d2a186
+- PR: #5 open
+- Request summary: Replace cycle-level Sharpe/volatility with funding-period time-indexed metrics.
+- Completed: M1B report regenerated with funding-period time-indexed equity curve and time-based OOS split.
+- Not completed: No M2; no live trading; no paper trading with real API; no API keys; no private smoke; no execution/live; no trading logic.
+- Decision: Corrected M1B final status is failed_validation.
+- Key metrics: base cost total return 59.5509%; cost x2 total return 55.8009%; annualized volatility 1.3287%; Sharpe 7.0355; OOS Sharpe 11.5406; complete cycles 15; max drawdown 0.9124%.
+- Blockers: M1B failed validation because complete cycles 15 < 20; strategy is not eligible for M2.
+- Next action: Review corrected PR #5 report and decide whether to merge it as a truthful failed_validation artifact.

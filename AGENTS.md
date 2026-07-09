@@ -31,6 +31,7 @@ After any task, the agent must update:
 - M1A trend final status: failed_validation.
 - M1F Freqtrade Lab final status: accepted_as_feasibility_lab.
 - M1B PR #5 is open / under_review.
+- M1B permits offline funding-rate-arbitrage backtest validation only.
 - M2 is not allowed.
 
 ## Hard Guardrails
@@ -46,6 +47,7 @@ After any task, the agent must update:
 - Do not hardcode an 8-hour funding interval; infer funding cadence from data sources.
 - Do not use future data in backtests.
 - Do not allow same-bar close fills; signals after a bar close may only become effective no earlier than the next bar open.
+- Do not tune parameters, lower payback thresholds, remove cost stress, remove OOS checks, or otherwise reshape validation to pass.
 - Do not rewrite `failed_validation` to `pass` without new evidence and an explicit approval path.
 - Do not merge PRs unless checks and ledger are updated.
 - Backtest modules may contain offline validation accounting only; they must not become paper/live execution logic.

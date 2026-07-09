@@ -129,6 +129,142 @@ def _csv_rows_from_zip(url: str, timeout_sec: int) -> list[list[str]]:
     return rows
 
 
+def _month_starts(start_ms: int | None, end_ms: int | None, lookback_days: int) -> list[date]:
+    if start_ms is None or end_ms is None:
+        end_day = datetime.now(tz=timezone.utc).date() - timedelta(days=1)
+        start_day = end_day - timedelta(days=max(1, lookback_days) - 1)
+    else:
+        start_day = datetime.fromtimestamp(start_ms / 1000, tz=timezone.utc).date().replace(day=1)
+        end_day = datetime.fromtimestamp(end_ms / 1000, tz=timezone.utc).date().replace(day=1)
+    months: list[date] = []
+    current = start_day
+    while current <= end_day:
+        months.append(current)
+        year = current.year + (1 if current.month == 12 else 0)
+        month = 1 if current.month == 12 else current.month + 1
+        current = date(year, month, 1)
+    return months
+
+
+def _kline_zip_url(dataset_name: str, symbol: str, interval: str, month: date) -> str:
+    kind_by_dataset = {
+        "spot_klines": "klines",
+        "um_futures_klines": "klines",
+        "mark_price_klines": "markPriceKlines",
+        "index_price_klines": "indexPriceKlines",
+        "premium_index_klines": "premiumIndexKlines",
+    }
+    kind = kind_by_dataset[dataset_name]
+    scope = "spot" if dataset_name == "spot_klines" else "futures/um"
+    return (
+        "https://data.binance.vision/"
+        f"data/{scope}/monthly/{kind}/{symbol}/{interval}/{symbol}-{interval}-{month:%Y-%m}.zip"
+    )
+
+
+def _funding_zip_url(symbol: str, month: date) -> str:
+    return (
+        "https://data.binance.vision/"
+        f"data/futures/um/monthly/fundingRate/{symbol}/{symbol}-fundingRate-{month:%Y-%m}.zip"
+    )
+
+
+def _row_ms(row: list[str], idx: int = 0) -> int | None:
+    try:
+        return int(row[idx])
+    except (IndexError, TypeError, ValueError):
+        return None
+
+
+def _within_ms(value: int | None, start_ms: int | None, end_ms: int | None) -> bool:
+    if value is None:
+        return False
+    if start_ms is not None and value < start_ms:
+        return False
+    if end_ms is not None and value > end_ms:
+        return False
+    return True
+
+
+def _zip_kline_payload(
+    dataset_name: str,
+    symbol: str,
+    interval: str,
+    limit: int,
+    timeout_sec: int,
+    lookback_days: int,
+    start_ms: int | None,
+    end_ms: int | None,
+) -> tuple[list[list[str]], list[str]]:
+    collected: list[list[str]] = []
+    sources: list[str] = []
+    for month in _month_starts(start_ms, end_ms, lookback_days):
+        url = _kline_zip_url(dataset_name, symbol, interval, month)
+        try:
+            rows = _csv_rows_from_zip(url, timeout_sec)
+        except HTTPError as exc:
+            if exc.code == 404:
+                continue
+            raise
+        filtered = [row for row in rows if _within_ms(_row_ms(row, 0), start_ms, end_ms)]
+        if filtered:
+            collected.extend(filtered)
+            sources.append(url)
+    if not collected:
+        raise ValueError(f"no ZIP fallback rows found for {dataset_name}:{symbol}")
+    collected = sorted(collected, key=lambda row: _row_ms(row, 0) or 0)
+    if start_ms is None and end_ms is None:
+        collected = collected[-limit:]
+    return collected, sources
+
+
+def _zip_funding_payload(
+    symbol: str,
+    limit: int,
+    timeout_sec: int,
+    lookback_days: int,
+    start_ms: int | None,
+    end_ms: int | None,
+) -> tuple[list[dict[str, Any]], list[str]]:
+    collected: list[dict[str, Any]] = []
+    sources: list[str] = []
+    for month in _month_starts(start_ms, end_ms, lookback_days):
+        url = _funding_zip_url(symbol, month)
+        try:
+            rows = _csv_rows_from_zip(url, timeout_sec)
+        except HTTPError as exc:
+            if exc.code == 404:
+                continue
+            raise
+        month_records: list[dict[str, Any]] = []
+        for row in rows:
+            ts = _row_ms(row, 0)
+            if not _within_ms(ts, start_ms, end_ms):
+                continue
+            try:
+                interval_hours = row[1]
+                funding_rate = row[2]
+            except IndexError:
+                continue
+            month_records.append(
+                {
+                    "symbol": symbol,
+                    "fundingTime": ts,
+                    "fundingRate": funding_rate,
+                    "fundingIntervalHours": interval_hours,
+                }
+            )
+        if month_records:
+            collected.extend(month_records)
+            sources.append(url)
+    if not collected:
+        raise ValueError(f"no ZIP fallback rows found for funding_rate_history:{symbol}")
+    collected = sorted(collected, key=lambda row: int(row["fundingTime"]))
+    if start_ms is None and end_ms is None:
+        collected = collected[-limit:]
+    return collected, sources
+
+
 def _recent_zip_payload(
     dataset_name: str,
     symbol: str,
@@ -177,13 +313,40 @@ def _append_zip_fallback(
     limit: int,
     timeout_sec: int,
     lookback_days: int,
+    start_ms: int | None = None,
+    end_ms: int | None = None,
 ) -> RawEnvelope:
-    payload, sources = _recent_zip_payload(dataset_name, symbol, interval, limit, timeout_sec, lookback_days)
+    if start_ms is not None or end_ms is not None or dataset_name == "spot_klines":
+        payload, sources = _zip_kline_payload(
+            dataset_name, symbol, interval, limit, timeout_sec, lookback_days, start_ms, end_ms
+        )
+    else:
+        payload, sources = _recent_zip_payload(dataset_name, symbol, interval, limit, timeout_sec, lookback_days)
     return collector.store.append(
         dataset=record.name,
         source=f"{record.source} ZIP fallback",
         endpoint="ZIP " + ",".join(sources),
         params={"symbol": symbol, "interval": interval, "limit": limit, "fallback": "data.binance.vision"},
+        payload=payload,
+    )
+
+
+def _append_funding_zip_fallback(
+    collector: BinanceReadOnlyCollector,
+    record: RegistryRecord,
+    symbol: str,
+    limit: int,
+    timeout_sec: int,
+    lookback_days: int,
+    start_ms: int | None,
+    end_ms: int | None,
+) -> RawEnvelope:
+    payload, sources = _zip_funding_payload(symbol, limit, timeout_sec, lookback_days, start_ms, end_ms)
+    return collector.store.append(
+        dataset=record.name,
+        source=f"{record.source} ZIP fallback",
+        endpoint="ZIP " + ",".join(sources),
+        params={"symbol": symbol, "limit": limit, "fallback": "data.binance.vision"},
         payload=payload,
     )
 
@@ -402,7 +565,7 @@ def _collect_for_symbol(
             )
             runs.append(_summarize_kline(run_name, interval, envelope))
         except Exception as exc:
-            if zip_fallback and name != "spot_klines":
+            if zip_fallback:
                 try:
                     envelope = _append_zip_fallback(
                         collector,
@@ -413,6 +576,8 @@ def _collect_for_symbol(
                         limit,
                         timeout_sec,
                         zip_lookback_days,
+                        start_ms,
+                        end_ms,
                     )
                     run = _summarize_kline(run_name, interval, envelope)
                     run.unexplained.append(f"REST failed; used ZIP fallback: {type(exc).__name__}: {exc}")
@@ -444,17 +609,54 @@ def _collect_for_symbol(
         funding_payload = funding_envelope.payload if isinstance(funding_envelope.payload, list) else []
         runs.append(_summarize_funding_interval(symbol, funding_payload))
     except Exception as exc:
-        runs.append(_failed_run(f"funding_rate_history:{symbol}", "funding_period", exc))
-        runs.append(
-            DatasetRun(
-                name=f"funding_interval_{symbol}",
-                interval="inferred",
-                rows=0,
-                funding_interval_warnings=1,
-                archive_status="not_applicable",
-                unexplained=[f"funding interval unavailable because fundingRate failed: {type(exc).__name__}: {exc}"],
+        if zip_fallback:
+            try:
+                funding_envelope = _append_funding_zip_fallback(
+                    collector,
+                    records["funding_rate_history"],
+                    symbol,
+                    max(limit, 1000),
+                    timeout_sec,
+                    zip_lookback_days,
+                    start_ms,
+                    end_ms,
+                )
+                run = _summarize_funding(funding_envelope, symbol)
+                run.unexplained.append(f"REST failed; used ZIP fallback: {type(exc).__name__}: {exc}")
+                runs.append(run)
+                funding_payload = funding_envelope.payload if isinstance(funding_envelope.payload, list) else []
+                interval_run = _summarize_funding_interval(symbol, funding_payload)
+                if interval_run.funding_interval_warnings != 0:
+                    interval_run.unexplained.append("fundingIntervalHours column present in ZIP source; verify against inferred cadence")
+                runs.append(interval_run)
+            except Exception as fallback_exc:
+                failed = _failed_run(f"funding_rate_history:{symbol}", "funding_period", fallback_exc)
+                failed.unexplained.insert(0, f"REST failed before ZIP fallback: {type(exc).__name__}: {exc}")
+                runs.append(failed)
+                runs.append(
+                    DatasetRun(
+                        name=f"funding_interval_{symbol}",
+                        interval="inferred",
+                        rows=0,
+                        funding_interval_warnings=1,
+                        archive_status="not_applicable",
+                        unexplained=[
+                            f"funding interval unavailable because fundingRate failed: {type(fallback_exc).__name__}: {fallback_exc}"
+                        ],
+                    )
+                )
+        else:
+            runs.append(_failed_run(f"funding_rate_history:{symbol}", "funding_period", exc))
+            runs.append(
+                DatasetRun(
+                    name=f"funding_interval_{symbol}",
+                    interval="inferred",
+                    rows=0,
+                    funding_interval_warnings=1,
+                    archive_status="not_applicable",
+                    unexplained=[f"funding interval unavailable because fundingRate failed: {type(exc).__name__}: {exc}"],
+                )
             )
-        )
     if include_oi:
         try:
             oi_start_ms = None if oi_retention_limited else start_ms

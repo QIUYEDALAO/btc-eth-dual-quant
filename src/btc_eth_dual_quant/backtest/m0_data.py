@@ -113,14 +113,22 @@ def _load_envelopes(dataset: str, raw_root: str | Path, duckdb_path: str | Path)
     return AppendOnlyRawStore(root).iter_envelopes(dataset)
 
 
-def load_spot_bars(symbol: str, raw_root: str | Path = "storage/raw", duckdb_path: str | Path = "storage/duckdb/m0.duckdb") -> list[TrendBar]:
-    envelopes = _load_envelopes("spot_klines", raw_root, duckdb_path)
+def load_kline_bars(
+    dataset: str,
+    symbol: str,
+    raw_root: str | Path = "storage/raw",
+    duckdb_path: str | Path = "storage/duckdb/m0.duckdb",
+    interval: str = "1d",
+) -> list[TrendBar]:
+    """Load a public M0 kline dataset without calling exchange APIs."""
+
+    envelopes = _load_envelopes(dataset, raw_root, duckdb_path)
     bars_by_time: dict[int, TrendBar] = {}
     for envelope in envelopes:
         params = envelope.params
         envelope_symbol = str(params.get("symbol") or "").upper()
-        interval = str(params.get("interval") or "1d")
-        if envelope_symbol != symbol.upper() or interval != "1d":
+        envelope_interval = str(params.get("interval") or interval)
+        if envelope_symbol != symbol.upper() or envelope_interval != interval:
             continue
         payload = envelope.payload if isinstance(envelope.payload, list) else []
         for raw_row in payload:
@@ -129,16 +137,22 @@ def load_spot_bars(symbol: str, raw_root: str | Path = "storage/raw", duckdb_pat
                 bars_by_time.setdefault(bar.open_time_ms, bar)
     bars = [bars_by_time[key] for key in sorted(bars_by_time)]
     if not bars:
-        raise M0DataUnavailableError(f"missing M0 spot_klines data for {symbol}; run M0 public backfill first")
+        raise M0DataUnavailableError(f"missing M0 {dataset} data for {symbol}; run M0 public backfill first")
     validate_bars(bars)
     return bars
 
 
-def load_funding_records(
+def load_spot_bars(symbol: str, raw_root: str | Path = "storage/raw", duckdb_path: str | Path = "storage/duckdb/m0.duckdb") -> list[TrendBar]:
+    return load_kline_bars("spot_klines", symbol, raw_root, duckdb_path)
+
+
+def load_funding_history_dicts(
     symbol: str,
     raw_root: str | Path = "storage/raw",
     duckdb_path: str | Path = "storage/duckdb/m0.duckdb",
-) -> list[FundingRecord]:
+) -> list[dict[str, Any]]:
+    """Load raw public funding-rate records as dicts for interval inference."""
+
     envelopes = _load_envelopes("funding_rate_history", raw_root, duckdb_path)
     raw_records: list[dict[str, Any]] = []
     for envelope in envelopes:
@@ -150,6 +164,17 @@ def load_funding_records(
         for row in payload:
             if isinstance(row, dict):
                 raw_records.append(row)
+    if not raw_records:
+        raise M0DataUnavailableError(f"missing M0 funding_rate_history data for {symbol}; run M0 public backfill first")
+    return sorted(raw_records, key=lambda row: int(row.get("fundingTime", 0)))
+
+
+def load_funding_records(
+    symbol: str,
+    raw_root: str | Path = "storage/raw",
+    duckdb_path: str | Path = "storage/duckdb/m0.duckdb",
+) -> list[FundingRecord]:
+    raw_records = load_funding_history_dicts(symbol, raw_root, duckdb_path)
     interval_hours = _funding_interval_hours(raw_records)
     records = [
         item

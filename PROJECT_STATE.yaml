@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T15:24:00Z"
+last_updated_utc: "2026-07-09T17:20:20Z"
 current_phase: M1B funding-rate-arbitrage research validation
-current_status: pr5_suitability_conclusion_b_pending_review
+current_status: m1b_numerical_failed_validation_pending_review
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -24,19 +24,19 @@ open_work:
     branch: m1b-funding-arbitrage-offline-backtest
     status: open_under_review
     url: https://github.com/QIUYEDALAO/btc-eth-dual-quant/pull/5
-    head_sha: 8d710bcdc3850b92e99fff82c7a57e2f6d33c502
-    current_finding: "Freqtrade suitability conclusion B: partial support, needs external portfolio/accounting/funding backtester."
-    blocker: "PR #5 suitability conclusion B must be reviewed and accepted/rejected before deciding whether to continue custom M1B numerical validation."
+    head_sha: 3e0fe83b18dbec562458fb999ab2806c45d2a186
+    current_finding: "Conclusion B accepted; M1B numerical report regenerated using time-indexed equity metrics with final status failed_validation."
+    blocker: "M1B failed validation; review whether to merge as truthful failed validation artifact. No M2."
   - id: M1B-NUMERICAL-REPORT
     phase: M1B
-    status: paused
-    blocker: "Numerical report must not continue until PR #5 suitability conclusion B is reviewed."
+    status: generated_failed_validation
+    blocker: "Review the corrected numerical report; do not promote M1B to M2 because the complete cycle-count gate failed."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
     status: active
     evidence: docs/decisions/ADR-0004-m1b-freqtrade-suitability-before-custom-backtest.md
-    current_finding: "PR #5 includes suitability conclusion B, not yet merged into main."
+    current_finding: "Conclusion B accepted on PR #5; corrected time-indexed numerical report now exists on PR #5 and failed validation."
   - id: M2-GATE
     decision: M2 is not allowed.
     status: active
@@ -44,10 +44,13 @@ active_decisions:
     decision: Live trading and paper trading with real API are not allowed.
     status: active
 allowed_next_work:
-  - "Review PR #5 Freqtrade suitability conclusion B."
-  - Decide whether to adopt conclusion B and keep custom offline accounting backtester as research.
-  - "Keep PR #5 open until suitability conclusion and ledger are reviewed."
-  - Do not generate further M1B numerical report until this decision is recorded.
+  - Review the corrected M1B numerical failed_validation report and decide whether to merge PR #5 as truthful failed validation artifact.
+  - Keep PR #5 open until numerical report and suitability conclusion are reviewed.
+  - Keep all work offline and public-data only.
+  - Do not enter M2.
+  - Do not use API keys.
+  - Do not run live or paper trading.
+  - Keep Freqtrade as research/UI/futures-leg smoke framework, not native funding-arbitrage execution engine.
 prohibited:
   - live trading
   - paper trading with real API
@@ -80,13 +83,16 @@ latest_reports:
     status: accepted_as_feasibility_lab
   - path: reports/m1/M1B_FUNDING_ARBITRAGE_BACKTEST_REPORT.md
     phase: M1B
-    status: exists_on_open_pr5_under_review_placeholder_or_partial
+    status: exists_on_open_pr5_corrected_numerical_failed_validation_not_on_main
   - path: reports/m1/M1B_DECISION.md
     phase: M1B
-    status: exists_on_open_pr5_paused_for_suitability_review_not_on_main
+    status: exists_on_open_pr5_conclusion_b_accepted_corrected_numerical_failed_validation
   - path: reports/m1/M1B_FREQTRADE_FUNDING_BACKTEST_SUITABILITY.md
     phase: M1B
-    status: exists_on_open_pr5_conclusion_b_not_on_main
+    status: exists_on_open_pr5_conclusion_b_accepted_not_on_main
+  - path: reports/m1/M1B_DATA_RUN_PROVENANCE.md
+    phase: M1B
+    status: exists_on_open_pr5_public_data_provenance
 latest_tags:
   - m0-data-run-accepted-v0.1.4
   - m1a-trend-failed-validation-v0.2.0
