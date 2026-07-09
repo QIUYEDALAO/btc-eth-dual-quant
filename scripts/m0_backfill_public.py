@@ -400,7 +400,7 @@ def _month_for_ms(timestamp_ms: int) -> date:
     return value.replace(day=1)
 
 
-def _audit_months(dataset: str, rows: list[dict[str, Any]]) -> tuple[list[date], str]:
+def _audit_months(dataset: str, rows: list[dict[str, Any]], interval: str) -> tuple[list[date], str]:
     months = sorted({_month_for_ms(int(row["open_time"])) for row in rows})
     if not months:
         return [], "not_available"
@@ -414,10 +414,14 @@ def _audit_months(dataset: str, rows: list[dict[str, Any]]) -> tuple[list[date],
     anomalies = flag_kline_anomalies(_anomaly_input_rows(dataset, rows))
     anomaly_months = sorted({_month_for_ms(item.open_time) for item in anomalies})
     selected.update(anomaly_months)
+    gaps = detect_kline_gaps(rows, interval).gaps if rows else []
+    gap_months = sorted({_month_for_ms(item.missing_start_ms) for item in gaps})
+    selected.update(gap_months)
     anomaly_scope = ",".join(month.isoformat()[:7] for month in anomaly_months) or "none"
+    gap_scope = ",".join(month.isoformat()[:7] for month in gap_months) or "none"
     scope = (
         f"first={first.isoformat()[:7]};middle={middle.isoformat()[:7]};"
-        f"latest_complete={latest.isoformat()[:7]};anomaly={anomaly_scope}"
+        f"latest_complete={latest.isoformat()[:7]};anomaly={anomaly_scope};gap={gap_scope}"
     )
     return sorted(selected), scope
 
@@ -430,7 +434,7 @@ def _zip_rest_audit(
     timeout_sec: int,
 ) -> ZipRestAudit:
     zip_payload: list[list[str]] = []
-    months, scope = _audit_months(dataset, rest_rows)
+    months, scope = _audit_months(dataset, rest_rows, interval)
     missing_months: list[str] = []
     for month in months:
         url = _kline_zip_url(dataset, symbol, interval, month)
@@ -446,7 +450,11 @@ def _zip_rest_audit(
             f"ZIP/REST audit missing selected ZIP month(s) for {dataset}:{symbol}: {','.join(missing_months)}"
         )
     zip_rows = _rows_from_kline_payload(zip_payload)
-    audit = audit_zip_rest_klines(zip_rows, rest_rows, scope=scope)
+    selected_months = set(months)
+    selected_rest_rows = [
+        row for row in rest_rows if _month_for_ms(int(row["open_time"])) in selected_months
+    ]
+    audit = audit_zip_rest_klines(zip_rows, selected_rest_rows, scope=scope)
     if audit.overlap_rows <= 0:
         raise ValueError(f"ZIP/REST audit found no overlapping rows for {dataset}:{symbol}")
     return audit
@@ -529,6 +537,7 @@ def _summarize_kline(
         end_ms=end_ms,
         gaps=len(gaps),
         zip_rest_differences=len(audit.differences) if audit else "not_run",
+        zip_rest_missing_rows=(audit.zip_only_rows + audit.rest_only_rows) if audit else "not_run",
         zip_rest_overlap=audit.overlap_rows if audit else "not_run",
         rest_payload_sha256=audit.rest_payload_sha256 if audit else "not_run",
         zip_payload_sha256=audit.zip_payload_sha256 if audit else "not_run",
@@ -689,6 +698,7 @@ def _collect_for_symbol(
                     )
                     run = _summarize_kline(run_name, interval, envelope)
                     run.zip_rest_differences = "not_available_rest_failed"
+                    run.zip_rest_missing_rows = "not_available_rest_failed"
                     run.zip_rest_overlap = "not_available_rest_failed"
                     run.rest_payload_sha256 = "not_available_rest_failed"
                     run.zip_payload_sha256 = envelope.content_sha256

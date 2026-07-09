@@ -43,11 +43,15 @@ def _valid_hash(value: str) -> bool:
 
 
 def _dataset_checks(dataset: DatasetRun) -> list[tuple[str, bool, str]]:
+    gaps_confirmed = dataset.gaps == 0 or (
+        "gap=" in dataset.zip_rest_scope and dataset.zip_rest_missing_rows == 0
+    )
     checks = [
         ("1h interval", dataset.interval == "1h", dataset.interval),
         ("rows present", dataset.rows > 0, str(dataset.rows)),
-        ("no gaps", dataset.gaps == 0, str(dataset.gaps)),
+        ("gaps dual-source confirmed", gaps_confirmed, str(dataset.gaps)),
         ("ZIP/REST fields equal", dataset.zip_rest_differences == 0, str(dataset.zip_rest_differences)),
+        ("ZIP/REST timestamp sets equal", dataset.zip_rest_missing_rows == 0, str(dataset.zip_rest_missing_rows)),
         (
             "ZIP/REST overlap present",
             isinstance(dataset.zip_rest_overlap, int) and dataset.zip_rest_overlap > 0,
@@ -148,12 +152,13 @@ def render_audit_report(public_report: M0RunReport, raw_root: str | Path) -> tup
         "",
         "## ZIP/REST Evidence",
         "",
-        "| Dataset | Rows | Gaps | Overlap | Field differences | Scope | REST SHA256 | ZIP SHA256 |",
-        "|---|---:|---:|---:|---:|---|---|---|",
+        "| Dataset | Rows | Gaps | Missing rows | Overlap | Field differences | Scope | REST SHA256 | ZIP SHA256 |",
+        "|---|---:|---:|---:|---:|---:|---|---|---|",
     ]
     for dataset in zip_rows:
         lines.append(
-            f"| `{dataset.name}` | {dataset.rows} | {dataset.gaps} | {dataset.zip_rest_overlap} | "
+            f"| `{dataset.name}` | {dataset.rows} | {dataset.gaps} | {dataset.zip_rest_missing_rows} | "
+            f"{dataset.zip_rest_overlap} | "
             f"{dataset.zip_rest_differences} | `{dataset.zip_rest_scope}` | "
             f"`{dataset.rest_payload_sha256}` | `{dataset.zip_payload_sha256}` |"
         )

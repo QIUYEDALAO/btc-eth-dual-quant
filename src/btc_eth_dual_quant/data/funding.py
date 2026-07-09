@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-from decimal import Decimal
+from decimal import Decimal, ROUND_HALF_UP
 from typing import Any
 
 
@@ -23,6 +23,14 @@ class FundingIntervalResult:
 
 def _as_decimal(value: Any) -> Decimal:
     return Decimal(str(value))
+
+
+def _normalized_hours(delta_ms: int) -> Decimal:
+    hours = Decimal(delta_ms) / MS_PER_HOUR
+    nearest_hour = hours.quantize(Decimal("1"), rounding=ROUND_HALF_UP)
+    if abs(hours - nearest_hour) <= Decimal("0.0167"):
+        return nearest_hour
+    return hours
 
 
 def _funding_info_interval(funding_info: Any, symbol: str) -> Decimal | None:
@@ -55,7 +63,7 @@ def _premium_index_interval(
     next_deltas = [cur - prev for prev, cur in zip(next_times, next_times[1:]) if cur > prev]
     if next_deltas:
         delta_ms = Counter(next_deltas).most_common(1)[0][0]
-        return Decimal(delta_ms) / MS_PER_HOUR
+        return _normalized_hours(delta_ms)
 
     # A single snapshot only reports time remaining until the next settlement.
     # It becomes a full-period candidate only when paired with the immediately
@@ -73,7 +81,7 @@ def _premium_index_interval(
             delta_ms = next_times[0] - previous[-1]
             historical_deltas = [cur - prev for prev, cur in zip(historical_times, historical_times[1:]) if cur > prev]
             if not historical_deltas or delta_ms <= max(historical_deltas):
-                return Decimal(delta_ms) / MS_PER_HOUR
+                return _normalized_hours(delta_ms)
     return None
 
 
@@ -91,12 +99,13 @@ def _history_intervals(
     deltas = [cur - prev for prev, cur in zip(times, times[1:]) if cur > prev]
     if not deltas:
         return None, {}
-    delta_ms = Counter(deltas).most_common(1)[0][0]
-    event_intervals: dict[int, Decimal] = {times[0]: Decimal(deltas[0]) / MS_PER_HOUR}
+    normalized = [_normalized_hours(delta_ms) for delta_ms in deltas]
+    modal_hours = Counter(normalized).most_common(1)[0][0]
+    event_intervals: dict[int, Decimal] = {times[0]: normalized[0]}
     for prev, cur in zip(times, times[1:]):
         if cur > prev:
-            event_intervals[cur] = Decimal(cur - prev) / MS_PER_HOUR
-    return Decimal(delta_ms) / MS_PER_HOUR, event_intervals
+            event_intervals[cur] = _normalized_hours(cur - prev)
+    return modal_hours, event_intervals
 
 
 def infer_funding_interval_hours(

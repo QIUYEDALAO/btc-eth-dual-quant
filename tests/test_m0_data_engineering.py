@@ -200,6 +200,18 @@ class FundingTests(unittest.TestCase):
         self.assertEqual(result.hours, Decimal("6"))
         self.assertEqual(annualize_funding_rate("0.001", result.hours), Decimal("1.460"))
 
+    def test_history_interval_normalizes_settlement_timestamp_jitter(self) -> None:
+        result = infer_funding_interval_hours(
+            "BTCUSDT",
+            funding_rate_history=[
+                {"symbol": "BTCUSDT", "fundingTime": 1_000},
+                {"symbol": "BTCUSDT", "fundingTime": 28_801_042},
+                {"symbol": "BTCUSDT", "fundingTime": 57_600_981},
+            ],
+        )
+        self.assertEqual(result.hours, Decimal("8"))
+        self.assertEqual(set(result.event_intervals.values()), {Decimal("8")})
+
     def test_m0_loader_preserves_interval_per_funding_event(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -277,8 +289,12 @@ class QualityTests(unittest.TestCase):
         audit = audit_zip_rest_klines(left, left)
         self.assertEqual(audit.overlap_rows, 1)
         self.assertEqual(audit.differences, [])
+        self.assertEqual(audit.zip_only_rows, 0)
+        self.assertEqual(audit.rest_only_rows, 0)
         self.assertEqual(len(audit.rest_payload_sha256), 64)
         self.assertEqual(len(audit.zip_payload_sha256), 64)
+        missing_audit = audit_zip_rest_klines(left, left + [{**left[0], "open_time": 2}])
+        self.assertEqual(missing_audit.rest_only_rows, 1)
         anomalies = flag_kline_anomalies(
             [{"open_time": 1, "open": "100", "high": "140", "low": "90", "close": "100", "volume": "0"}]
         )
@@ -290,11 +306,11 @@ class QualityTests(unittest.TestCase):
             {"open_time": 1_580_515_200_000, "open": "100", "high": "150", "low": "90", "volume": "1"},
             {"open_time": 1_583_020_800_000, "open": "100", "high": "101", "low": "99", "volume": "1"},
         ]
-        months, scope = m0_backfill_public._audit_months("spot_klines", rows)
+        months, scope = m0_backfill_public._audit_months("spot_klines", rows, "1h")
         self.assertEqual([month.isoformat()[:7] for month in months], ["2020-01", "2020-02", "2020-03"])
         self.assertEqual(
             scope,
-            "first=2020-01;middle=2020-02;latest_complete=2020-03;anomaly=2020-02",
+            "first=2020-01;middle=2020-02;latest_complete=2020-03;anomaly=2020-02;gap=2020-01,2020-02",
         )
 
     def test_archive_completeness_missing_days(self) -> None:
@@ -369,6 +385,7 @@ class M0ReportTests(unittest.TestCase):
                         start_ms=0,
                         end_ms=86_399_999,
                         zip_rest_differences=0,
+                        zip_rest_missing_rows=0,
                         zip_rest_overlap=1,
                         rest_payload_sha256="a" * 64,
                         zip_payload_sha256="a" * 64,
@@ -476,6 +493,7 @@ class M0ReportTests(unittest.TestCase):
                             rows=100,
                             gaps=0,
                             zip_rest_differences=0,
+                            zip_rest_missing_rows=0,
                             zip_rest_overlap=72,
                             rest_payload_sha256="a" * 64,
                             zip_payload_sha256="b" * 64,
@@ -675,6 +693,7 @@ class M0ReportTests(unittest.TestCase):
                     start_ms=0,
                     end_ms=99,
                     zip_rest_differences=0,
+                    zip_rest_missing_rows=0,
                     zip_rest_overlap=1,
                     rest_payload_sha256="a" * 64,
                     zip_payload_sha256="a" * 64,

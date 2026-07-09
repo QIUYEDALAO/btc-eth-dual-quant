@@ -17,6 +17,7 @@ class DatasetRun:
     end_ms: int | None = None
     gaps: int = 0
     zip_rest_differences: int | str = "not_run"
+    zip_rest_missing_rows: int | str = "not_run"
     zip_rest_overlap: int | str = "not_run"
     rest_payload_sha256: str = "not_run"
     zip_payload_sha256: str = "not_run"
@@ -101,6 +102,7 @@ def parse_report(path: str | Path) -> M0RunReport:
                 continue
             extended = len(cells) >= 12
             scoped = len(cells) >= 13
+            missing_counts = len(cells) >= 14
             datasets.append(
                 DatasetRun(
                     name=cells[0].strip("`"),
@@ -108,16 +110,19 @@ def parse_report(path: str | Path) -> M0RunReport:
                     rows=_safe_int(cells[2]),
                     gaps=_safe_int(cells[3]),
                     zip_rest_differences=_string_to_value(cells[4]),
-                    zip_rest_overlap=_string_to_value(cells[5]) if extended else "not_run",
-                    rest_payload_sha256=cells[6].strip("`") if extended else "not_run",
-                    zip_payload_sha256=cells[7].strip("`") if extended else "not_run",
-                    zip_rest_scope=cells[8].strip("`") if scoped else "legacy_unspecified",
-                    kline_anomalies=_safe_int(cells[9] if scoped else cells[8] if extended else cells[5]),
-                    funding_interval_warnings=_string_to_value(
-                        cells[10] if scoped else cells[9] if extended else cells[6]
+                    zip_rest_missing_rows=_string_to_value(cells[5]) if missing_counts else "legacy_unspecified",
+                    zip_rest_overlap=_string_to_value(cells[6] if missing_counts else cells[5]) if extended else "not_run",
+                    rest_payload_sha256=cells[7 if missing_counts else 6].strip("`") if extended else "not_run",
+                    zip_payload_sha256=cells[8 if missing_counts else 7].strip("`") if extended else "not_run",
+                    zip_rest_scope=cells[9 if missing_counts else 8].strip("`") if scoped else "legacy_unspecified",
+                    kline_anomalies=_safe_int(
+                        cells[10] if missing_counts else cells[9] if scoped else cells[8] if extended else cells[5]
                     ),
-                    archive_status=cells[11] if scoped else cells[10] if extended else cells[7],
-                    commission_status=cells[12] if scoped else cells[11] if extended else cells[8],
+                    funding_interval_warnings=_string_to_value(
+                        cells[11] if missing_counts else cells[10] if scoped else cells[9] if extended else cells[6]
+                    ),
+                    archive_status=cells[12] if missing_counts else cells[11] if scoped else cells[10] if extended else cells[7],
+                    commission_status=cells[13] if missing_counts else cells[12] if scoped else cells[11] if extended else cells[8],
                 )
             )
             continue
@@ -199,6 +204,8 @@ def _required_checks_complete(datasets: list[DatasetRun]) -> bool:
         }:
             if not isinstance(dataset.zip_rest_differences, int) or dataset.zip_rest_differences != 0:
                 return False
+            if not isinstance(dataset.zip_rest_missing_rows, int) or dataset.zip_rest_missing_rows != 0:
+                return False
             if not isinstance(dataset.zip_rest_overlap, int) or dataset.zip_rest_overlap <= 0:
                 return False
             if dataset.rest_payload_sha256 in incomplete_values or dataset.zip_payload_sha256 in incomplete_values:
@@ -249,13 +256,13 @@ def render_report(report: M0RunReport) -> str:
         "",
         "## Public Full-history Pull Summary",
         "",
-        "| Dataset | Interval | Rows | Gaps | ZIP/REST Diff | ZIP/REST Overlap | REST SHA256 | ZIP SHA256 | ZIP/REST Scope | K-line Anomalies | Funding Interval Anomalies | Archive Status | Commission Status |",
-        "|---|---:|---:|---:|---:|---:|---|---|---|---:|---|---|---|",
+        "| Dataset | Interval | Rows | Gaps | ZIP/REST Field Diff | ZIP/REST Missing Rows | ZIP/REST Overlap | REST SHA256 | ZIP SHA256 | ZIP/REST Scope | K-line Anomalies | Funding Interval Anomalies | Archive Status | Commission Status |",
+        "|---|---:|---:|---:|---:|---:|---:|---|---|---|---:|---|---|---|",
     ]
     for dataset in report.datasets:
         lines.append(
             f"| `{dataset.name}` | `{dataset.interval}` | {dataset.rows} | {dataset.gaps} | "
-            f"{dataset.zip_rest_differences} | {dataset.zip_rest_overlap} | "
+            f"{dataset.zip_rest_differences} | {dataset.zip_rest_missing_rows} | {dataset.zip_rest_overlap} | "
             f"`{dataset.rest_payload_sha256}` | `{dataset.zip_payload_sha256}` | `{dataset.zip_rest_scope}` | "
             f"{dataset.kline_anomalies} | {dataset.funding_interval_warnings} | {dataset.archive_status} | "
             f"{dataset.commission_status} |"

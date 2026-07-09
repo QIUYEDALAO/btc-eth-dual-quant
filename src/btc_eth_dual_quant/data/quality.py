@@ -60,6 +60,8 @@ class KlineAnomaly:
 class ZipRestAudit:
     overlap_rows: int
     differences: list[SourceDifference]
+    zip_only_rows: int
+    rest_only_rows: int
     rest_payload_sha256: str
     zip_payload_sha256: str
     scope: str = "unspecified"
@@ -139,6 +141,8 @@ def audit_zip_rest_klines(
     return ZipRestAudit(
         overlap_rows=len(overlap_times),
         differences=compare_zip_rest_klines(zip_overlap, rest_overlap, tolerance),
+        zip_only_rows=len(set(zip_by_time) - set(rest_by_time)),
+        rest_only_rows=len(set(rest_by_time) - set(zip_by_time)),
         rest_payload_sha256=digest(rest_overlap),
         zip_payload_sha256=digest(zip_overlap),
         scope=scope,
