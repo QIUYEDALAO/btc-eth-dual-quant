@@ -1,6 +1,7 @@
 name: M0 Public Audit
 
 on:
+  pull_request:
   workflow_dispatch:
     inputs:
       start_date:
@@ -46,7 +47,7 @@ jobs:
 
       - name: Pull public 1h audit profile
         env:
-          START_DATE: ${{ inputs.start_date }}
+          START_DATE: ${{ inputs.start_date || '2019-09-01' }}
           END_DATE: ${{ steps.range.outputs.end_date }}
         run: |
           PYTHONPATH=src python3 scripts/m0_backfill_public.py \

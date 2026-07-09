@@ -224,8 +224,8 @@ private exchange responses here.
 - Task ID: M0-AUDIT-CORRECTNESS-HARDENING
 - Phase: M0 audit revalidation
 - Branch: codex/m0-audit-correctness-hardening
-- Commit: working tree pending initial commit
-- PR: pending
+- Commit: 021bb19
+- PR: #9 open
 - Completed so far: funding cadence candidates now require complete periods; historical event intervals are preserved; raw dataset and DuckDB identifiers are validated; DuckDB read failures are explicit; ZIP/REST evidence records overlap, hashes, and audit scope.
 - Not completed: sanitized real 1h public audit report and PR review.
 - Validation: 70 repository tests passed before the final M0 audit additions; local spot REST/ZIP probe passed through the official public market-data host.
