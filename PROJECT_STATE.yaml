@@ -44,8 +44,8 @@ open_work:
     phase: P1 M1C rotation design
     status: design_pass_pending_review
     branch: codex/m1c-btc-eth-rotation-design
-    pr: pending
-    head_sha: pending
+    pr: 15
+    head_sha: 62aa9e00d96eab8fc1aa1e6102d1c70dc17da967
     design: docs/superpowers/specs/2026-07-10-m1c-btc-eth-rotation-design.md
     evidence: reports/m1/M1C_FREQTRADE_CAPABILITY_REVIEW.md
     checklist: PROJECT_EXECUTION_CHECKLIST.md

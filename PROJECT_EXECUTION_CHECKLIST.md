@@ -13,7 +13,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | P0-05 | P0 governance | completed | P0-04 | `codex/strategy-failure-diagnostics` / #14 | Merged governance PR | Local and GitHub checks pass | none |
 | P1-01 | P1 design | completed | P0-05 | `codex/m1c-btc-eth-rotation-design` | Fixed M1C specification and machine-readable contract | No ambiguous rule or parameter | none |
 | P1-02 | P1 design | completed | P1-01 | same P1 PR | Pinned Freqtrade capability evidence | Unique winner and rotation ordering proven | P2 runtime fixture still required |
-| P1-03 | P1 design | in_progress | P1-02 | same P1 PR | Design decision | `design_pass` plus PR/CI review required | P1 PR not merged |
+| P1-03 | P1 design | in_progress | P1-02 | `codex/m1c-btc-eth-rotation-design` / #15 | Design decision | `design_pass` plus PR/CI review required | P1 PR not merged |
 | P2-01 | P2 implementation | pending | P1-03 | `codex/m1c-btc-eth-rotation-validation` | Freqtrade strategy and public config | Behavior tests pass | P1 not passed |
 | P2-02 | P2 implementation | pending | P2-01 | same P2 PR | Guarded research commands | No trade/live command | P2 not started |
 | P2-03 | P2 implementation | pending | P2-02 | same P2 PR | Time-semantics tests | Next-open and UTC ranking pass | P2 not started |

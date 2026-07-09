@@ -456,8 +456,8 @@ private exchange responses here.
 - Task ID: M1C-P1-DESIGN
 - Phase: P1 M1C rotation design
 - Branch: codex/m1c-btc-eth-rotation-design
-- PR: pending
-- Commit: pending
+- PR: #15 open
+- Commit: 62aa9e00d96eab8fc1aa1e6102d1c70dc17da967
 - Completed so far: Fixed strategy specification, machine-readable contract, pinned Freqtrade 2026.6 source capability evidence, design validator, fixture-level tests, and capability report.
 - Design result: `design_pass`. Informative-pair ranking and same-open different-pair rotation are representable in the pinned source; P2 runtime confirmation remains mandatory.
 - Not completed: P1 PR/CI/merge, strategy implementation, historical backtest, independent audit, M2, dry-run, live/API/trading.
