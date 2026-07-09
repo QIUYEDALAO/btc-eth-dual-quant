@@ -31,7 +31,7 @@ from btc_eth_dual_quant.data.storage import AppendOnlyRawStore
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from m1a_run_trend_backtest import render_report
+from m1a_run_trend_backtest import evaluate_m1a_gates, render_report
 
 
 DAY_MS = 86_400_000
@@ -172,6 +172,54 @@ class M1ATrendEngineTests(unittest.TestCase):
 
 
 class M1ADataAndReportTests(unittest.TestCase):
+    def test_m1a_gate_fails_when_delete_best_3_portfolio_below_breakeven(self) -> None:
+        gates = evaluate_m1a_gates(
+            cost_x2_total_return=0.10,
+            parameter_neighborhood_rows=[(TrendParams(), {"total_return": 0.0})],
+            delete_best_rows=[
+                ("BTCUSDT", {"breakeven_or_better": 1.0}),
+                ("ETHUSDT", {"breakeven_or_better": 1.0}),
+                ("BTC+ETH equal-weight portfolio", {"breakeven_or_better": 0.0}),
+            ],
+            oos_sharpe=1.2,
+            combined_trade_count=100,
+        )
+        self.assertFalse(gates["delete_best_3_trades"])
+        self.assertEqual(gates["final_status"], "failed_validation")
+
+    def test_m1a_gate_fails_when_oos_sharpe_below_one(self) -> None:
+        gates = evaluate_m1a_gates(
+            cost_x2_total_return=0.10,
+            parameter_neighborhood_rows=[(TrendParams(), {"total_return": 0.0})],
+            delete_best_rows=[("BTC+ETH equal-weight portfolio", {"breakeven_or_better": 1.0})],
+            oos_sharpe=0.99,
+            combined_trade_count=100,
+        )
+        self.assertFalse(gates["oos_sharpe_ge_1"])
+        self.assertEqual(gates["final_status"], "failed_validation")
+
+    def test_m1a_gate_fails_when_trade_count_below_80(self) -> None:
+        gates = evaluate_m1a_gates(
+            cost_x2_total_return=0.10,
+            parameter_neighborhood_rows=[(TrendParams(), {"total_return": 0.0})],
+            delete_best_rows=[("BTC+ETH equal-weight portfolio", {"breakeven_or_better": 1.0})],
+            oos_sharpe=1.2,
+            combined_trade_count=79,
+        )
+        self.assertFalse(gates["trade_count_ge_80"])
+        self.assertEqual(gates["final_status"], "failed_validation")
+
+    def test_m1a_final_status_failed_validation_when_any_gate_fails(self) -> None:
+        gates = evaluate_m1a_gates(
+            cost_x2_total_return=-0.01,
+            parameter_neighborhood_rows=[(TrendParams(), {"total_return": 0.0})],
+            delete_best_rows=[("BTC+ETH equal-weight portfolio", {"breakeven_or_better": 1.0})],
+            oos_sharpe=1.2,
+            combined_trade_count=100,
+        )
+        self.assertFalse(gates["cost_x2"])
+        self.assertEqual(gates["final_status"], "failed_validation")
+
     def test_loads_m0_raw_fixtures_and_generates_report(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             store = AppendOnlyRawStore(Path(tmp) / "raw")
@@ -212,12 +260,33 @@ class M1ADataAndReportTests(unittest.TestCase):
                 {"BTCUSDT": result, "ETHUSDT": result},
                 {"BTCUSDT": result, "ETHUSDT": result},
                 [(params, {"total_return": 0.0, "sharpe": 0.0, "max_drawdown": 0.0, "trade_count": 0.0})],
-                [("BTCUSDT", {"total_return": 0.0, "sharpe": 0.0, "max_drawdown": 0.0, "breakeven_or_better": 1.0})],
+                [
+                    ("BTCUSDT", {"total_return": 0.0, "sharpe": 0.0, "max_drawdown": 0.0, "breakeven_or_better": 1.0}),
+                    ("BTC+ETH equal-weight portfolio", {"total_return": -0.1, "sharpe": 0.0, "max_drawdown": -0.2, "breakeven_or_better": 0.0}),
+                ],
                 [("BTCUSDT", "fixture", {"return": 0.0, "max_drawdown": 0.0, "trade_count": 0.0, "exposure_days": 0.0, "note": "fixture"})],
                 "ignored.md",
             )
-            self.assertIn("Status: under_review", report)
+            self.assertIn("Status: failed_validation", report)
             self.assertIn("M1A Gate Status", report)
+
+    def test_m1a_report_contains_do_not_advance_to_m2_when_failed(self) -> None:
+        bars = make_bars(count=80)
+        params = TrendParams(regime_ma=3, entry_channel=3, exit_channel=2, atr_period=3)
+        result = run_trend_backtest("BTCUSDT", bars, [], params)
+        report = render_report(
+            {"BTCUSDT": bars, "ETHUSDT": bars},
+            {"BTCUSDT": [], "ETHUSDT": []},
+            {"BTCUSDT": result, "ETHUSDT": result},
+            {"BTCUSDT": result, "ETHUSDT": result},
+            {"BTCUSDT": result, "ETHUSDT": result},
+            [(params, {"total_return": 0.0, "sharpe": 0.0, "max_drawdown": 0.0, "trade_count": 0.0})],
+            [("BTC+ETH equal-weight portfolio", {"total_return": -0.1, "sharpe": 0.0, "max_drawdown": -0.2, "breakeven_or_better": 0.0})],
+            [("BTCUSDT", "fixture", {"return": 0.0, "max_drawdown": 0.0, "trade_count": 0.0, "exposure_days": 0.0, "note": "fixture"})],
+            "ignored.md",
+        )
+        self.assertIn("Decision: do not advance trend leg to M2", report)
+        self.assertIn("Final M1A status: failed_validation", report)
 
     def test_no_trading_endpoint_implementation_in_m1a_modules(self) -> None:
         root = ROOT / "src" / "btc_eth_dual_quant" / "backtest"

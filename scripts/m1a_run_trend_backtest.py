@@ -60,6 +60,32 @@ def result_row(name: str, result) -> str:
     )
 
 
+def evaluate_m1a_gates(
+    *,
+    cost_x2_total_return: float,
+    parameter_neighborhood_rows: list[tuple[TrendParams, dict[str, float]]],
+    delete_best_rows: list[tuple[str, dict[str, float]]],
+    oos_sharpe: float,
+    combined_trade_count: int,
+    backtest_code: bool = True,
+    lookahead_tests: bool = True,
+) -> dict[str, bool | str]:
+    delete_best_pass = bool(delete_best_rows) and all(
+        bool(row.get("breakeven_or_better", 0.0)) for _name, row in delete_best_rows
+    )
+    gates: dict[str, bool | str] = {
+        "backtest_code": backtest_code,
+        "lookahead_tests": lookahead_tests,
+        "cost_x2": cost_x2_total_return > 0,
+        "parameter_neighborhood": bool(parameter_neighborhood_rows),
+        "delete_best_3_trades": delete_best_pass,
+        "oos_sharpe_ge_1": oos_sharpe >= 1.0,
+        "trade_count_ge_80": combined_trade_count >= 80,
+    }
+    gates["final_status"] = "pass" if all(value is True for value in gates.values()) else "failed_validation"
+    return gates
+
+
 def _common_range(bars_by_symbol: dict[str, list[TrendBar]]) -> tuple[int, int]:
     starts = [bars[0].open_time_ms for bars in bars_by_symbol.values()]
     ends = [bars[-1].close_time_ms for bars in bars_by_symbol.values()]
@@ -97,15 +123,14 @@ def render_report(
     combined_oos = combine_equal_weight(oos_results)
     total_trades = len(combined_base.trades)
     oos_sharpe = combined_oos.metrics["sharpe"]
-    gate = {
-        "Backtest code": True,
-        "Lookahead tests": True,
-        "Cost x2": bool(x2_results),
-        "Parameter neighborhood": bool(neighborhood_rows),
-        "Delete best 3 trades": bool(delete_best_rows),
-        "OOS Sharpe >= 1": oos_sharpe >= 1.0,
-        "Trade count >= 80 combined": total_trades >= 80,
-    }
+    gate = evaluate_m1a_gates(
+        cost_x2_total_return=combined_x2.metrics["total_return"],
+        parameter_neighborhood_rows=neighborhood_rows,
+        delete_best_rows=delete_best_rows,
+        oos_sharpe=oos_sharpe,
+        combined_trade_count=total_trades,
+    )
+    final_status = str(gate["final_status"])
     lines = [
         "# M1A Trend Backtest Report",
         "",
@@ -113,10 +138,20 @@ def render_report(
         "",
         "## Status",
         "",
-        "- Status: under_review",
+        f"- Status: {final_status}",
         "- Scope: trend backtest validation only",
         "- No live trading / no paper trading / no execution/live / no order placement",
         "- This report is not investment advice; historical backtests do not indicate future performance.",
+        "",
+        "## M1A Decision",
+        "",
+        "- Decision: do not advance trend leg to M2",
+        f"- Reason 1: OOS Sharpe = {num(oos_sharpe)} < required 1.0",
+        f"- Reason 2: combined trade count = {total_trades} < required 80",
+        "- Reason 3: delete-best-3 portfolio result is below breakeven",
+        "- No parameter change is allowed to rescue this result",
+        "- This is a failed validation of the fixed BTC/ETH long-only trend rule, not a code failure",
+        "- Next permitted work: M1A review/diagnostics only, or separate M1B funding-rate-arbitrage backtest after explicit approval",
         "",
         "## Data",
         "",
@@ -251,10 +286,19 @@ def render_report(
         "## M1A Gate Status",
         "",
     ])
-    for name, passed in gate.items():
-        lines.append(f"- {name}: `{'pass' if passed else 'fail'}`")
+    gate_labels = [
+        ("Backtest code", "backtest_code"),
+        ("Lookahead tests", "lookahead_tests"),
+        ("Cost x2", "cost_x2"),
+        ("Parameter neighborhood", "parameter_neighborhood"),
+        ("Delete best 3 trades", "delete_best_3_trades"),
+        ("OOS Sharpe >= 1", "oos_sharpe_ge_1"),
+        ("Trade count >= 80 combined", "trade_count_ge_80"),
+    ]
+    for label, key in gate_labels:
+        lines.append(f"- {label}: `{'pass' if gate[key] else 'fail'}`")
     lines.extend([
-        "- Final M1A status: under_review",
+        f"- Final M1A status: {final_status}",
         "",
     ])
     return "\n".join(lines)

@@ -1,13 +1,23 @@
 # M1A Trend Backtest Report
 
-Generated UTC: 2026-07-09T03:34:29+00:00
+Generated UTC: 2026-07-09T03:51:13+00:00
 
 ## Status
 
-- Status: under_review
+- Status: failed_validation
 - Scope: trend backtest validation only
 - No live trading / no paper trading / no execution/live / no order placement
 - This report is not investment advice; historical backtests do not indicate future performance.
+
+## M1A Decision
+
+- Decision: do not advance trend leg to M2
+- Reason 1: OOS Sharpe = 0.6440 < required 1.0
+- Reason 2: combined trade count = 35 < required 80
+- Reason 3: delete-best-3 portfolio result is below breakeven
+- No parameter change is allowed to rescue this result
+- This is a failed validation of the fixed BTC/ETH long-only trend rule, not a code failure
+- Next permitted work: M1A review/diagnostics only, or separate M1B funding-rate-arbitrage backtest after explicit approval
 
 ## Data
 
@@ -203,7 +213,7 @@ No best params are selected; this table is a robustness scan around the fixed ce
 - Lookahead tests: `pass`
 - Cost x2: `pass`
 - Parameter neighborhood: `pass`
-- Delete best 3 trades: `pass`
+- Delete best 3 trades: `fail`
 - OOS Sharpe >= 1: `fail`
 - Trade count >= 80 combined: `fail`
-- Final M1A status: under_review
+- Final M1A status: failed_validation
