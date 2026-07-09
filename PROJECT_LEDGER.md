@@ -109,7 +109,7 @@ private exchange responses here.
 - Task ID: PR5-SUITABILITY-CONCLUSION-B-ACCEPTED
 - Phase: M1B funding-rate-arbitrage research validation
 - Branch: m1b-funding-arbitrage-offline-backtest
-- Commit: pending_this_commit
+- Commit: f17389f06152921ffcc9a8cef6773019e8632fb4
 - PR: #5 open
 - Request summary: Review PR #5 Freqtrade suitability finding and decide whether to adopt conclusion B.
 - Completed: Conclusion B accepted as project decision on PR #5.
