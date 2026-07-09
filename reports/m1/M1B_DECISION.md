@@ -36,4 +36,18 @@ Freqtrade is partially suitable for M1B research, but it is not sufficient as a 
 
 ## Next
 
-The next permitted work is to generate a real numerical M1B funding-arbitrage report using local M0 public data, still offline only, with no API keys and no trading execution.
+The real numerical M1B funding-arbitrage report has now been generated using local M0 public data, still offline only, with no API keys and no trading execution.
+
+## Numerical Report Outcome
+
+- Report: `reports/m1/M1B_FUNDING_ARBITRAGE_BACKTEST_REPORT.md`
+- Provenance: `reports/m1/M1B_DATA_RUN_PROVENANCE.md`
+- Final M1B status: failed_validation
+- Base cost total return: 119.1019%
+- Cost x2 total return: 111.6019%
+- Complete cycles: 15
+- Required complete cycles: 20
+- OOS Sharpe: 26.1582
+- Max drawdown: 1.1040%
+
+The funding-arbitrage research result remains not approved for M2, paper/live trading, API keys, execution/live, order placement, cancellation, or real capital deployment.

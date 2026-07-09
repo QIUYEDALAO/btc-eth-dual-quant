@@ -122,6 +122,17 @@ class M1BFundingArbitrageTests(unittest.TestCase):
         self.assertEqual(interval, 12)
         self.assertTrue(warnings)
 
+    def test_interval_inference_ignores_timestamp_jitter(self) -> None:
+        interval, warnings = infer_interval_from_funding_history(
+            [
+                {"fundingTime": 0, "fundingRate": "0.001"},
+                {"fundingTime": HALF_DAY_MS + 5, "fundingRate": "0.001"},
+                {"fundingTime": HALF_DAY_MS * 2 + 10, "fundingRate": "0.001"},
+            ]
+        )
+        self.assertEqual(interval, 12)
+        self.assertEqual(warnings, [])
+
     def test_run_backtest_cycles_oos_sleep_and_no_lookahead(self) -> None:
         rows = funding_history(cycles=5)
         result = run_funding_arbitrage_backtest(

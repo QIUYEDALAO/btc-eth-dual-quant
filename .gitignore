@@ -32,6 +32,7 @@ storage/logs/
 
 # Generated report snapshots; keep canonical M0 reports tracked explicitly.
 reports/m0/M0_DATA_RUN_REPORT_*.md
+reports/m0/*.local.md
 reports/m0/M0_PRIVATE_SMOKE_REPORT.local.md
 
 # Freqtrade M1F local runtime state

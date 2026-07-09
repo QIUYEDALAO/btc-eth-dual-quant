@@ -1,18 +1,20 @@
 # Next Action
 
-Generate the real M1B funding-arbitrage numerical report using local M0 public data from raw/DuckDB storage.
+Review the generated M1B numerical funding-arbitrage report from local M0 public data.
 
 Context:
 
 - PR #5 suitability conclusion B is accepted.
 - Freqtrade is partially suitable but not sufficient as native funding-arbitrage backtest/execution engine.
 - Custom offline portfolio/accounting/funding backtester remains a research candidate.
-- Numerical validation is still pending.
+- Numerical validation has been generated from local M0 public data.
+- Final M1B status in the generated report is failed_validation.
+- Primary failed gate: complete cycles = 15, below the required 20.
 
 Rules:
 
 - Do not enter M2.
-- Do not merge PR #5 as completed numerical validation until a real report exists.
+- Do not treat PR #5 as approval for M2, paper/live trading, API keys, execution/live, or order placement.
 - Do not run live trading.
 - Do not run paper trading with real API.
 - Do not request, read, or use API keys.
@@ -21,4 +23,5 @@ Rules:
 
 Expected output:
 
-- M1B numerical report with base cost, cost x2, cycles, OOS, drawdown, funding income, basis PnL, and final M1B gate status.
+- Review outcome for the generated M1B numerical report.
+- Decide whether PR #5 should be merged as a truthful failed_validation research artifact or revised.

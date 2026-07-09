@@ -259,15 +259,15 @@ def run_from_local_m0(raw_root: str, duckdb_path: str) -> tuple[FundingArbResult
         perp = load_kline_bars("um_futures_klines", symbol, raw_root, duckdb_path)
         try:
             mark = load_kline_bars("mark_price_klines", symbol, raw_root, duckdb_path)
-        except M0DataUnavailableError:
+        except (M0DataUnavailableError, ValueError):
             mark = None
         try:
             index = load_kline_bars("index_price_klines", symbol, raw_root, duckdb_path)
-        except M0DataUnavailableError:
+        except (M0DataUnavailableError, ValueError):
             index = None
         try:
             premium = load_kline_bars("premium_index_klines", symbol, raw_root, duckdb_path)
-        except M0DataUnavailableError:
+        except (M0DataUnavailableError, ValueError):
             premium = None
         funding = load_funding_history_dicts(symbol, raw_root, duckdb_path)
         optional_missing = mark is None or index is None or premium is None

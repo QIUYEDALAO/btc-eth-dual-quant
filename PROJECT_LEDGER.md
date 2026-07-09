@@ -118,3 +118,20 @@ private exchange responses here.
 - Decision: Freqtrade is partially suitable but needs external portfolio/accounting/funding backtester.
 - Blockers: Numerical report still requires local M0 public raw/DuckDB data.
 - Next action: Generate real numerical M1B funding-arbitrage report offline from public data.
+
+## 2026-07-09 - M1B Numerical Report Generated
+
+- Date UTC: 2026-07-09
+- Task ID: M1B-NUMERICAL-REPORT-GENERATED
+- Phase: M1B funding-rate-arbitrage research validation
+- Branch: m1b-funding-arbitrage-offline-backtest
+- Commit: pending_this_commit
+- PR: #5 open
+- Request summary: Generate a real M1B funding-arbitrage numerical report using local M0 public data after accepting Freqtrade suitability conclusion B.
+- Completed: Local M0 public ZIP fallback data was generated; M1B numerical report and public-data provenance were written.
+- Not completed: No M2; no live trading; no paper trading with real API; no API keys; no execution/live; no PR #5 merge.
+- Validation result: M1B final status is failed_validation.
+- Decision: Do not promote funding-rate-arbitrage to M2 because the complete cycle-count gate failed.
+- Key metrics: base cost total return 119.1019%; cost x2 total return 111.6019%; complete cycles 15; OOS Sharpe 26.1582; max drawdown 1.1040%.
+- Blockers: PR #5 still requires review as a truthful failed_validation research artifact.
+- Next action: Review PR #5 numerical report and decide whether to merge the failed_validation artifact.

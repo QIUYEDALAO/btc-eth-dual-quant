@@ -98,6 +98,8 @@ def main() -> int:
     current_status = str(state.get("current_status", ""))
     if "pr5_suitability_conclusion_b_accepted" not in current_status:
         failures.append("PROJECT_STATE.yaml current_status must include pr5_suitability_conclusion_b_accepted")
+    if "numerical" not in current_status:
+        failures.append("PROJECT_STATE.yaml current_status must include numerical")
 
     prohibited = {str(item) for item in state.get("prohibited", [])}
     missing_prohibited = sorted(REQUIRED_PROHIBITED - prohibited)

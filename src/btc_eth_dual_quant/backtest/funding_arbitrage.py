@@ -21,6 +21,7 @@ from .trend_strategy import TrendBar
 MS_PER_HOUR = 3_600_000
 MS_PER_DAY = 86_400_000
 HOURS_PER_YEAR = 365 * 24
+FUNDING_INTERVAL_JITTER_TOLERANCE_MS = 60_000
 
 
 @dataclass(frozen=True)
@@ -145,10 +146,12 @@ def infer_interval_from_funding_history(records: list[dict[str, Any] | FundingPo
     deltas = [right - left for left, right in zip(times, times[1:]) if right > left]
     if not deltas:
         raise ValueError("funding records must contain increasing timestamps")
-    mode_delta, _count = Counter(deltas).most_common(1)[0]
+    buckets = [round(delta / FUNDING_INTERVAL_JITTER_TOLERANCE_MS) for delta in deltas]
+    mode_bucket, _count = Counter(buckets).most_common(1)[0]
+    mode_delta = mode_bucket * FUNDING_INTERVAL_JITTER_TOLERANCE_MS
     interval_hours = mode_delta / MS_PER_HOUR
     warnings: list[str] = []
-    unusual = sorted({delta for delta in deltas if delta != mode_delta})
+    unusual = sorted({delta for delta in deltas if abs(delta - mode_delta) > FUNDING_INTERVAL_JITTER_TOLERANCE_MS})
     if unusual:
         hours = ", ".join(f"{delta / MS_PER_HOUR:.4g}" for delta in unusual[:6])
         warnings.append(f"funding_interval_anomaly: observed non-modal interval hours {hours}")
