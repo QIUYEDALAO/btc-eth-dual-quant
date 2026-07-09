@@ -17,6 +17,7 @@
 - Required profile: BTCUSDT and ETHUSDT 1h spot, UM perpetual, mark, index, premium, plus funding history
 - M0 audit status: audit_revalidation_required; source-level ZIP/REST blockers remain separate
 - Freqtrade role: futures short/funding framework smoke only; not the two-leg portfolio truth
+- Freqtrade primary public research smoke: pass (GitHub run 29050078339)
 - Freqtrade futures-leg probe: blocked_network (GitHub run 29049892500; Binance exchangeInfo returned HTTP 451)
 - No Freqtrade futures backtest result or funding-fee output is claimed from the blocked run.
 - Portfolio range: 2020-01-01 00:00:00 UTC -> 2024-12-31 23:59:59 UTC

@@ -32,6 +32,7 @@ DATA_INTERVAL = "1h"
 HOUR_MS = 3_600_000
 FREQTRADE_FUTURES_PROBE_STATUS = "blocked_network"
 FREQTRADE_FUTURES_PROBE_RUN = "29049892500"
+FREQTRADE_PUBLIC_SMOKE_RUN = "29050078339"
 
 
 def _strict_hourly_profile(bars: list[TrendBar]) -> tuple[list[TrendBar], dict[str, int]]:
@@ -148,6 +149,7 @@ def render_report(
         "- Required profile: BTCUSDT and ETHUSDT 1h spot, UM perpetual, mark, index, premium, plus funding history",
         "- M0 audit status: audit_revalidation_required; source-level ZIP/REST blockers remain separate",
         "- Freqtrade role: futures short/funding framework smoke only; not the two-leg portfolio truth",
+        f"- Freqtrade primary public research smoke: pass (GitHub run {FREQTRADE_PUBLIC_SMOKE_RUN})",
         f"- Freqtrade futures-leg probe: {FREQTRADE_FUTURES_PROBE_STATUS} "
         f"(GitHub run {FREQTRADE_FUTURES_PROBE_RUN}; Binance exchangeInfo returned HTTP 451)",
         "- No Freqtrade futures backtest result or funding-fee output is claimed from the blocked run.",
