@@ -413,8 +413,8 @@ private exchange responses here.
 - Task ID: STRATEGY-FAILURE-DIAGNOSTICS
 - Phase: strategy failure diagnostics
 - Branch: codex/strategy-failure-diagnostics
-- Commit: pending branch commit
-- PR: pending
+- Commit: 9bcbb9047d7d13c20459afb12ce79cb677843839
+- PR: #14 open
 - Completed: Evidence-validity review, M1A structural scarcity diagnosis, M1B complete-cycle scarcity diagnosis, comparative priority, and next-work recommendation.
 - M1A finding: 35 trades over 8.89 years; all 81 fixed-neighborhood combinations remain below 80 trades and full-sample Sharpe 1.0, while the separate fixed-rule OOS evidence also fails. The frozen historical engine must not be tuned or extended.
 - M1B finding: 13 complete cycles over five years, two OOS complete cycles, long holding periods, and a 713-day sleep period. Cost and drawdown gates pass, but sample scarcity remains blocking.

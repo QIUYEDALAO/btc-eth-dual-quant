@@ -36,7 +36,8 @@ open_work:
     phase: strategy failure diagnostics
     status: diagnostics_complete_pending_review
     branch: codex/strategy-failure-diagnostics
-    pr: pending
+    pr: 14
+    head_sha: 9bcbb9047d7d13c20459afb12ce79cb677843839
     design: docs/superpowers/specs/2026-07-10-strategy-failure-diagnostics-design.md
     evidence: reports/m1/STRATEGY_FAILURE_DIAGNOSTICS.md
     blocker: "M1A is structurally sparse and M1B has only 13 complete cycles; no strategy is eligible for M2. The next permitted strategy work is a new Freqtrade single-leg hypothesis design review, not code or parameter rescue."
