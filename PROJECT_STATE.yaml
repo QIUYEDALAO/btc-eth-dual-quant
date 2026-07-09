@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T21:05:10Z"
-current_phase: post-M1B architecture hardening
-current_status: freqtrade_first_revalidation_required_no_m2
+last_updated_utc: "2026-07-09T21:08:20Z"
+current_phase: post-hardening review
+current_status: freqtrade_first_hardening_complete_m0_audit_blocked_no_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -19,6 +19,9 @@ completed_milestones:
     status: accepted_as_feasibility_lab
     evidence: reports/m1/M1F_FINAL_ACCEPTANCE.md
     tag: m1f-freqtrade-feasibility-accepted-v0.3.0
+  - phase: Freqtrade primary research framework
+    status: accepted_as_primary_research_framework
+    evidence: reports/m1/FREQTRADE_PRIMARY_FRAMEWORK_HARDENING.md
   - phase: M1B funding-rate-arbitrage research validation
     status: failed_validation
     evidence_status: event_time_revalidated_failed_validation
@@ -29,13 +32,6 @@ open_work:
     phase: M0 audit revalidation
     status: blocked
     blocker: "Real 1h audit remains blocked: futures REST returned HTTP 451 on the hosted runner, and spot ZIP/REST evidence contains 6/7 field differences plus one missing timestamp per symbol."
-  - id: M1B-EVENT-TIME-REVALIDATION
-    phase: M1B event-time revalidation
-    status: in_progress
-    branch: codex/m1b-event-time-revalidation
-    pr: 11
-    initial_sha: 795724d
-    blocker: "Strict 1h revalidation remains failed_validation at 13 complete cycles; M0 public audit and the Freqtrade futures probe are blocked by source differences/HTTP 451. PR review and CI are pending."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -60,7 +56,8 @@ allowed_next_work:
   - Freqtrade-first architecture governance completed in PR #8.
   - M0 correctness hardening completed in PR #9; audit evidence remains blocked and may be investigated without private API access.
   - Freqtrade primary-framework hardening completed in PR #10.
-  - Review the strict M1B event-time revalidation; it remains failed_validation and cannot approve M2.
+  - Strict M1B event-time revalidation completed in PR #11; it remains failed_validation and cannot approve M2.
+  - Investigate the M0 public dual-source audit blocker without private API access.
   - Diagnostics and revalidation must not lower validation thresholds.
   - Architecture hardening must not implement execution.
   - Design review must not implement execution.
@@ -194,6 +191,9 @@ latest_merged_prs:
   - number: 10
     title: Harden Freqtrade primary research framework
     merged_at_utc: "2026-07-09T20:27:35Z"
+  - number: 11
+    title: Revalidate M1B event-time accounting
+    merged_at_utc: "2026-07-09T21:06:52Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

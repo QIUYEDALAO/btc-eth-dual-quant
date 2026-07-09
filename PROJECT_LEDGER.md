@@ -310,3 +310,20 @@ private exchange responses here.
 - Decision: The historical report remains unchanged. The new report cannot approve M2 even if numerical gates pass.
 - Next action: Run full validation, publish the independent PR, and merge only after checks pass.
 - Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M1B Event-Time Revalidation Merged
+
+- Date UTC: 2026-07-09T21:06:52Z
+- Task ID: M1B-EVENT-TIME-REVALIDATION-MERGED
+- Phase: M1B event-time revalidation
+- Branch: main
+- Commit: 6e0d9ba74dd7c5490de496ba1dbd722cb50eebf7
+- PR: #11 merged
+- Completed: Strict next-1h-open timing, per-event funding intervals, settlement-mark funding income, actual-notional costs, incomplete-position handling, OOS carry-in separation, UTC portfolio alignment, and public-data diagnostics were merged.
+- Validation: 84 repository tests passed in the final branch cycle; M0/M1A/M1B/M1F/Project checks passed; Freqtrade Public Smoke run 29050078339 passed.
+- Result: M1B remains failed_validation with 13 complete cycles and 2 incomplete end positions. Complete cycles remain below the unchanged gate of 20.
+- Freqtrade futures probe: blocked_network; run 29049892500 reached Binance public market metadata and received HTTP 451. No futures backtest output is claimed.
+- Decision: The four Freqtrade-first hardening PRs are complete. No strategy is eligible for M2.
+- Blockers: M0 public dual-source audit remains blocked by spot differences and futures REST HTTP 451.
+- Next action: Public-data audit diagnostics or design review only; no strategy rescue and no execution work.
+- Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
