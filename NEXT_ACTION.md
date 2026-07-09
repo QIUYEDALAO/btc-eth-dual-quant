@@ -7,7 +7,7 @@ Implement the approved Freqtrade-first hardening sequence:
 3. Pin and validate Freqtrade as the primary research framework: completed in PR #10.
 4. Revalidate M1B with strict 1-hour event-time semantics: completed in PR #11; result remains `failed_validation`.
 
-Immediate action: no strategy work is approved. The only active engineering blocker is the M0 public dual-source audit: spot ZIP/REST differences remain unexplained and hosted futures REST is blocked by HTTP 451. Any next task must be public-data diagnostics or design review only.
+Immediate action: review `docs/superpowers/specs/2026-07-10-m0-dual-source-audit-unblock-design.md`. After explicit approval of the written specification, prepare a detailed implementation plan for the multi-network, evidence-first public audit. Do not begin implementation before that review gate. The audit must explain the spot ZIP/REST differences and obtain compliant official futures REST/ZIP evidence without private API access or region-bypass techniques.
 
 Rules:
 

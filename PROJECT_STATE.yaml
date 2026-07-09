@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-09T21:08:20Z"
+last_updated_utc: "2026-07-09T21:25:09Z"
 current_phase: post-hardening review
 current_status: freqtrade_first_hardening_complete_m0_audit_blocked_no_m2
 completed_milestones:
@@ -30,7 +30,9 @@ completed_milestones:
 open_work:
   - id: M0-AUDIT-EVIDENCE-BLOCKER
     phase: M0 audit revalidation
-    status: blocked
+    status: design_approved_spec_review_pending
+    branch: codex/m0-dual-source-audit-unblock
+    design: docs/superpowers/specs/2026-07-10-m0-dual-source-audit-unblock-design.md
     blocker: "Real 1h audit remains blocked: futures REST returned HTTP 451 on the hosted runner, and spot ZIP/REST evidence contains 6/7 field differences plus one missing timestamp per symbol."
 active_decisions:
   - id: ADR-0004

@@ -327,3 +327,19 @@ private exchange responses here.
 - Blockers: M0 public dual-source audit remains blocked by spot differences and futures REST HTTP 451.
 - Next action: Public-data audit diagnostics or design review only; no strategy rescue and no execution work.
 - Guardrails: No API key, private smoke, M2, live/paper trading, order operations, simulated matching, or execution/live.
+
+## 2026-07-09 - M0 Dual-Source Audit Unblock Design Approved
+
+- Date UTC: 2026-07-09T21:25:09Z
+- Task ID: M0-DUAL-SOURCE-AUDIT-UNBLOCK-DESIGN
+- Phase: M0 audit revalidation
+- Branch: codex/m0-dual-source-audit-unblock
+- Commit: recorded in the branch history for this specification
+- PR: not opened
+- Request summary: Design a multi-network, evidence-first public audit to explain spot ZIP/REST differences and obtain compliant futures dual-source evidence.
+- Completed: Architecture, difference classifications, strict gate, VPS safety rules, reporting, error handling, and fixture test requirements were approved in conversation and written as a specification.
+- Not completed: User review of the written specification, implementation plan, audit implementation, real local/VPS evidence run, M0 audit pass, M2, or any trading work.
+- Decision: Official REST plus official ZIP is mandatory. ZIP-only or third-party evidence cannot satisfy the gate. HTTP 451 and unresolved source differences remain blocking outcomes.
+- Blockers: The real 1h audit still has unexplained spot differences and unavailable hosted futures REST evidence.
+- Next action: User reviews the written specification; after approval, create the implementation plan without weakening validation thresholds.
+- Guardrails: Public unauthenticated data only; no API keys, private smoke, VPN/proxy bypass, M2, live/paper trading, order operations, simulated matching, or execution/live.
