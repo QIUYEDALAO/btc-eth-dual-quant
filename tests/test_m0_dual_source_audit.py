@@ -89,6 +89,38 @@ class DualSourceComparisonTests(unittest.TestCase):
         self.assertEqual(evidence.classification_counts["timestamp_mismatch"], 0)
         self.assertTrue(evidence.passed)
 
+    def test_supplemental_daily_zip_can_explain_monthly_archive_omission(self) -> None:
+        missing = row(3_600_000)
+        evidence = compare_scope(
+            plan=ScopePlan("um_futures_klines", "BTCUSDT", "1h", "2020-01", ("gap",)),
+            zip_rows=[row(0)],
+            rest_rows=[row(0), missing],
+            supplemental_zip_rows=[missing],
+            zip_payload_sha256="a" * 64,
+            rest_payload_sha256="b" * 64,
+        )
+        self.assertEqual(evidence.classification_counts["boundary_row"], 1)
+        self.assertEqual(evidence.classification_counts["timestamp_mismatch"], 0)
+        self.assertIn("supplemental official daily ZIP", evidence.differences[0].note)
+        self.assertTrue(evidence.passed)
+
+    def test_daily_zip_does_not_hide_monthly_source_revision(self) -> None:
+        monthly = row(high="110")
+        rest = row(high="111")
+        evidence = compare_scope(
+            plan=ScopePlan("um_futures_klines", "BTCUSDT", "1h", "2020-01", ("anomaly",)),
+            zip_rows=[monthly],
+            rest_rows=[rest],
+            supplemental_zip_rows=[monthly],
+            supplemental_zip_statuses={"2020-01-01": "200:none"},
+            zip_payload_sha256="a" * 64,
+            rest_payload_sha256="b" * 64,
+        )
+        self.assertEqual(evidence.classification_counts["source_revision"], 1)
+        self.assertIn("monthly and supplemental official daily ZIP agree", evidence.differences[0].note)
+        self.assertEqual(evidence.supplemental_zip_statuses, (("2020-01-01", "200:none"),))
+        self.assertFalse(evidence.passed)
+
     def test_unrecovered_timestamp_is_blocking(self) -> None:
         evidence = compare_scope(
             plan=ScopePlan("spot_klines", "BTCUSDT", "1h", "2020-01", ("gap",)),
@@ -165,6 +197,18 @@ class DualSourceGateTests(unittest.TestCase):
         self.assertTrue(gate.passed)
         self.assertEqual(gate.blockers, ())
 
+    def test_comparable_failure_replaces_stale_network_failure_in_gate_detail(self) -> None:
+        network_failure = source_failure(self.plan, "network_blocked", "http_451", rest_http_status=451)
+        comparable_failure = compare_scope(
+            plan=self.plan,
+            zip_rows=[row(high="110")],
+            rest_rows=[row(high="111")],
+            zip_payload_sha256="a" * 64,
+            rest_payload_sha256="b" * 64,
+        )
+        gate = evaluate_gate([network_failure, comparable_failure], [self.plan])
+        self.assertEqual(gate.blockers, (f"{self.plan.key}: source_revision",))
+
     def test_serialized_report_is_sanitized(self) -> None:
         evidence = compare_scope(
             plan=self.plan,
@@ -172,12 +216,17 @@ class DualSourceGateTests(unittest.TestCase):
             rest_rows=[row()],
             zip_payload_sha256="a" * 64,
             rest_payload_sha256="b" * 64,
+            supplemental_zip_statuses={
+                "2020-01-01": "200:none",
+                "2020-01-02": "404:http_404",
+            },
         )
         run = AuditRunEvidence(
             execution_label="remote",
             generated_utc="2026-07-10T00:00:00Z",
             plans=(self.plan,),
             scopes=(evidence,),
+            transport="direct",
         )
         report = render_diagnostics_report([run])
         forbidden = ("47.97.", "BINANCE_API_KEY", "BINANCE_API_SECRET", "raw payload", "tranId")
@@ -185,7 +234,11 @@ class DualSourceGateTests(unittest.TestCase):
             self.assertNotIn(value, report)
         self.assertIn("- API key used: no", report)
         self.assertIn("- Status: pass", report)
-        self.assertIn("- Status: pass", render_revalidation_report([run]))
+        self.assertIn("`direct`", report)
+        revalidation = render_revalidation_report([run])
+        self.assertIn("`2020-01-02` | `404:http_404`", revalidation)
+        self.assertIn("Supplemental daily ZIP requests unavailable or invalid: 1", revalidation)
+        self.assertIn("- Status: pass", revalidation)
 
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "evidence.json"
@@ -217,9 +270,25 @@ class DualSourceOrchestrationTests(unittest.TestCase):
         self.assertIn("latest_complete", reasons["2020-03"])
         self.assertTrue(any("gap" in item for item in reasons.values()))
 
-    def test_public_orchestrator_has_no_credentials_proxy_or_trading_calls(self) -> None:
+    def test_loopback_proxy_validation_rejects_credentials_and_remote_hosts(self) -> None:
+        self.assertEqual(
+            m0_dual_source_audit._validated_proxy_url("http://127.0.0.1:10808"),
+            "http://127.0.0.1:10808",
+        )
+        self.assertEqual(
+            m0_dual_source_audit._validated_proxy_url("http://localhost:10808"),
+            "http://localhost:10808",
+        )
+        for value in (
+            "http://user:password@127.0.0.1:10808",
+            "http://192.168.1.10:10808",
+            "socks5://127.0.0.1:10808",
+        ):
+            with self.assertRaises(ValueError):
+                m0_dual_source_audit._validated_proxy_url(value)
+
+    def test_public_orchestrator_has_no_credentials_or_trading_calls(self) -> None:
         source = (ROOT / "scripts" / "m0_dual_source_audit.py").read_text(encoding="utf-8")
-        self.assertIn("ProxyHandler({})", source)
         for forbidden in (
             "BINANCE_API_KEY",
             "BINANCE_API_SECRET",
@@ -236,6 +305,31 @@ class DualSourceOrchestrationTests(unittest.TestCase):
         )
         self.assertNotIn("secrets.", workflow)
         self.assertNotIn("private", workflow.lower())
+
+    def test_dataset_orchestrator_declares_separate_zip_and_rest_fetchers(self) -> None:
+        import inspect
+
+        parameters = inspect.signature(m0_dual_source_audit._run_dataset_symbol).parameters
+        self.assertIn("zip_fetcher", parameters)
+        self.assertIn("rest_fetcher", parameters)
+
+    def test_daily_zip_url_and_bundle_hash_are_deterministic(self) -> None:
+        url = m0_dual_source_audit._daily_zip_url(
+            "https://data.binance.vision",
+            "mark_price_klines",
+            "BTCUSDT",
+            "1h",
+            "2021-07-01",
+        )
+        self.assertEqual(
+            url,
+            "https://data.binance.vision/data/futures/um/daily/markPriceKlines/"
+            "BTCUSDT/1h/BTCUSDT-1h-2021-07-01.zip",
+        )
+        left = m0_dual_source_audit._combined_sha256([("monthly", b"a"), ("daily", b"b")])
+        right = m0_dual_source_audit._combined_sha256([("daily", b"b"), ("monthly", b"a")])
+        self.assertEqual(left, right)
+        self.assertEqual(len(left), 64)
 
 
 if __name__ == "__main__":

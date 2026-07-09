@@ -133,6 +133,7 @@ class ScopeEvidence:
     rest_http_status: int | None = 200
     zip_http_status: int | None = 200
     error_category: str = "none"
+    supplemental_zip_statuses: tuple[tuple[str, str], ...] = ()
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -150,6 +151,7 @@ class ScopeEvidence:
             "rest_http_status": self.rest_http_status,
             "zip_http_status": self.zip_http_status,
             "error_category": self.error_category,
+            "supplemental_zip_statuses": dict(self.supplemental_zip_statuses),
         }
 
     @classmethod
@@ -173,6 +175,12 @@ class ScopeEvidence:
             rest_http_status=int(rest_status) if rest_status is not None else None,
             zip_http_status=int(zip_status) if zip_status is not None else None,
             error_category=str(value.get("error_category", "none")),
+            supplemental_zip_statuses=tuple(
+                sorted(
+                    (str(day), str(status))
+                    for day, status in dict(value.get("supplemental_zip_statuses", {})).items()
+                )
+            ),
         )
 
 
@@ -182,10 +190,13 @@ class AuditRunEvidence:
     generated_utc: str
     plans: tuple[ScopePlan, ...]
     scopes: tuple[ScopeEvidence, ...]
+    transport: str = "direct"
 
     def __post_init__(self) -> None:
         if not LABEL_RE.fullmatch(self.execution_label):
             raise ValueError("execution_label must be a sanitized logical label")
+        if self.transport not in {"direct", "rest_local_https_proxy_zip_direct"}:
+            raise ValueError("unsupported or undisclosed audit transport")
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -194,6 +205,7 @@ class AuditRunEvidence:
             "generated_utc": self.generated_utc,
             "plans": [item.to_dict() for item in self.plans],
             "scopes": [item.to_dict() for item in self.scopes],
+            "transport": self.transport,
             "api_key_used": False,
             "private_data_used": False,
         }
@@ -209,6 +221,7 @@ class AuditRunEvidence:
             generated_utc=str(value["generated_utc"]),
             plans=tuple(ScopePlan.from_dict(item) for item in value.get("plans", [])),
             scopes=tuple(ScopeEvidence.from_dict(item) for item in value.get("scopes", [])),
+            transport=str(value.get("transport", "direct")),
         )
 
 
@@ -318,6 +331,8 @@ def compare_scope(
     rest_rows: Iterable[Mapping[str, Any]],
     zip_payload_sha256: str,
     rest_payload_sha256: str,
+    supplemental_zip_rows: Iterable[Mapping[str, Any]] = (),
+    supplemental_zip_statuses: Mapping[str, str] | None = None,
     adjacent_zip_rows: Iterable[Mapping[str, Any]] = (),
     adjacent_rest_rows: Iterable[Mapping[str, Any]] = (),
     rest_http_status: int | None = 200,
@@ -329,6 +344,7 @@ def compare_scope(
     rest_list = list(rest_rows)
     zip_by_time, zip_duplicates = _index_rows(zip_list)
     rest_by_time, rest_duplicates = _index_rows(rest_list)
+    supplemental_zip, _ = _index_rows(supplemental_zip_rows)
     adjacent_zip, _ = _index_rows(adjacent_zip_rows)
     adjacent_rest, _ = _index_rows(adjacent_rest_rows)
     counts = _empty_counts()
@@ -367,6 +383,14 @@ def compare_scope(
     for timestamp in overlap_times:
         left = zip_by_time[timestamp]
         right = rest_by_time[timestamp]
+        supplemental_matches_rest = (
+            timestamp in supplemental_zip
+            and _rows_semantically_equal(supplemental_zip[timestamp], right, plan.dataset)
+        )
+        supplemental_matches_zip = (
+            timestamp in supplemental_zip
+            and _rows_semantically_equal(supplemental_zip[timestamp], left, plan.dataset)
+        )
         row_difference = False
         for field in _fields(plan.dataset):
             try:
@@ -386,7 +410,15 @@ def compare_scope(
                         field,
                         left_raw,
                         right_raw,
-                        "official sources contain different canonical values",
+                        (
+                            "monthly official ZIP differs while supplemental official daily ZIP matches REST"
+                            if supplemental_matches_rest
+                            else (
+                                "monthly and supplemental official daily ZIP agree and differ from REST"
+                                if supplemental_matches_zip
+                                else "official sources contain different canonical values"
+                            )
+                        ),
                     )
                 )
             elif left_raw != right_raw:
@@ -408,13 +440,17 @@ def compare_scope(
     zip_only = sorted(set(zip_by_time) - set(rest_by_time))
     rest_only = sorted(set(rest_by_time) - set(zip_by_time))
     for timestamp in rest_only:
-        recovered = adjacent_zip.get(timestamp)
+        recovered = supplemental_zip.get(timestamp)
+        recovered_scope = "supplemental official daily ZIP"
+        if recovered is None:
+            recovered = adjacent_zip.get(timestamp)
+            recovered_scope = "adjacent official ZIP"
         if recovered is not None and _rows_semantically_equal(recovered, rest_by_time[timestamp], plan.dataset):
             classification = "boundary_row"
-            note = "REST-only timestamp is present and equal in an adjacent official ZIP scope"
+            note = f"REST-only timestamp is present and equal in a {recovered_scope} scope"
         else:
             classification = "timestamp_mismatch"
-            note = "REST-only timestamp is absent from the selected and adjacent official ZIP scopes"
+            note = "REST-only timestamp is absent from the selected, supplemental, and adjacent official ZIP scopes"
         counts[classification] += 1
         differences.append(AuditDifference(classification, timestamp, "open_time", "", str(timestamp), note))
 
@@ -447,6 +483,7 @@ def compare_scope(
         rest_http_status=rest_http_status,
         zip_http_status=zip_http_status,
         error_category="none" if passed else "comparison_blocked",
+        supplemental_zip_statuses=tuple(sorted((supplemental_zip_statuses or {}).items())),
     )
 
 
@@ -459,6 +496,23 @@ def _merge_plans(plans: Iterable[ScopePlan]) -> tuple[ScopePlan, ...]:
             reasons.update(previous.reasons)
         merged[plan.key] = ScopePlan(plan.dataset, plan.symbol, plan.interval, plan.month, tuple(sorted(reasons)))
     return tuple(merged[key] for key in sorted(merged))
+
+
+def _preferred_scope_by_key(scopes: Iterable[ScopeEvidence]) -> dict[str, ScopeEvidence]:
+    grouped: dict[str, list[ScopeEvidence]] = {}
+    for scope in scopes:
+        grouped.setdefault(scope.plan.key, []).append(scope)
+    preferred: dict[str, ScopeEvidence] = {}
+    for key, candidates in grouped.items():
+        passed = [candidate for candidate in candidates if candidate.passed]
+        comparable = [
+            candidate
+            for candidate in candidates
+            if not candidate.classification_counts["network_blocked"]
+            and not candidate.classification_counts["zip_unavailable"]
+        ]
+        preferred[key] = (passed or comparable or candidates)[-1]
+    return preferred
 
 
 def evaluate_gate(evidence: Iterable[ScopeEvidence], expected_plans: Iterable[ScopePlan]) -> AuditGate:
@@ -475,10 +529,17 @@ def evaluate_gate(evidence: Iterable[ScopeEvidence], expected_plans: Iterable[Sc
             blockers.append(f"{plan.key}: evidence not_run")
             continue
         if not any(candidate.passed for candidate in candidates):
+            comparable = [
+                candidate
+                for candidate in candidates
+                if not candidate.classification_counts["network_blocked"]
+                and not candidate.classification_counts["zip_unavailable"]
+            ]
+            candidates_for_detail = comparable or candidates
             categories = sorted(
                 {
                     name
-                    for candidate in candidates
+                    for candidate in candidates_for_detail
                     for name, count in candidate.classification_counts.items()
                     if count and name in BLOCKING_CLASSIFICATIONS
                 }
@@ -513,18 +574,19 @@ def render_diagnostics_report(runs: Iterable[AuditRunEvidence]) -> str:
         "- API key used: no",
         "- Private data used: no",
         "- Private smoke rerun: no",
-        "- VPN/proxy/region bypass used: no",
+        f"- Transport modes: {','.join(sorted({run.transport for run in run_list})) or 'not_run'}",
+        f"- Loopback proxy transport used: {'yes' if any(run.transport != 'direct' for run in run_list) else 'no'}",
         "- Raw payload committed: no",
         "- Trading approval: no",
         "",
         "## Execution Nodes",
         "",
-        "| Logical node | Generated UTC | Planned scopes | Completed scopes | Passed scopes |",
-        "| --- | --- | ---: | ---: | ---: |",
+        "| Logical node | Transport | Generated UTC | Planned scopes | Completed scopes | Passed scopes |",
+        "| --- | --- | --- | ---: | ---: | ---: |",
     ]
     for run in run_list:
         lines.append(
-            f"| `{run.execution_label}` | `{run.generated_utc}` | {len(run.plans)} | "
+            f"| `{run.execution_label}` | `{run.transport}` | `{run.generated_utc}` | {len(run.plans)} | "
             f"{len(run.scopes)} | {sum(1 for item in run.scopes if item.passed)} |"
         )
 
@@ -576,6 +638,29 @@ def render_diagnostics_report(runs: Iterable[AuditRunEvidence]) -> str:
     else:
         lines.append("| none | none | none | none | `exact_match` | n/a | none | none | none | No differences. |")
 
+    supplemental_outcomes = [
+        (run.execution_label, scope.plan, day, status)
+        for run in run_list
+        for scope in run.scopes
+        for day, status in scope.supplemental_zip_statuses
+    ]
+    lines.extend(
+        [
+            "",
+            "## Supplemental Daily ZIP Outcomes",
+            "",
+            "| Node | Dataset | Symbol | Month | Day | HTTP/error status |",
+            "| --- | --- | --- | --- | --- | --- |",
+        ]
+    )
+    if supplemental_outcomes:
+        for label, plan, day, status in supplemental_outcomes:
+            lines.append(
+                f"| `{label}` | `{plan.dataset}` | `{plan.symbol}` | `{plan.month}` | `{day}` | `{status}` |"
+            )
+    else:
+        lines.append("| none | none | none | none | none | not_run |")
+
     lines.extend(["", "## Strict Gate", "", f"- Status: {'pass' if gate.passed else 'blocked'}"])
     if gate.blockers:
         lines.append("- Blockers:")
@@ -604,6 +689,7 @@ def render_revalidation_report(runs: Iterable[AuditRunEvidence]) -> str:
     run_list = list(runs)
     plans = _merge_plans(plan for run in run_list for plan in run.plans)
     scopes = [scope for run in run_list for scope in run.scopes]
+    preferred_scopes = _preferred_scope_by_key(scopes)
     gate = evaluate_gate(scopes, plans)
     generated = max((run.generated_utc for run in run_list), default="not_run")
     rows = [
@@ -613,6 +699,8 @@ def render_revalidation_report(runs: Iterable[AuditRunEvidence]) -> str:
         f"- Generated UTC: {generated}",
         "- Scope: BTCUSDT/ETHUSDT 1h official public REST versus official public ZIP",
         "- Evidence method: multi-network, exact Decimal and timestamp-set comparison",
+        f"- Transport modes: {','.join(sorted({run.transport for run in run_list})) or 'not_run'}",
+        f"- Loopback proxy transport used: {'yes' if any(run.transport != 'direct' for run in run_list) else 'no'}",
         "- API key used: no",
         "- Private smoke rerun: no",
         "- Raw data committed: no",
@@ -626,7 +714,11 @@ def render_revalidation_report(runs: Iterable[AuditRunEvidence]) -> str:
     dataset_keys = sorted({(plan.dataset, plan.symbol) for plan in plans})
     for dataset, symbol in dataset_keys:
         dataset_plans = [plan for plan in plans if plan.dataset == dataset and plan.symbol == symbol]
-        candidate_scopes = [scope for scope in scopes if scope.plan.dataset == dataset and scope.plan.symbol == symbol]
+        candidate_scopes = [
+            scope
+            for scope in preferred_scopes.values()
+            if scope.plan.dataset == dataset and scope.plan.symbol == symbol
+        ]
         passed_keys = {scope.plan.key for scope in candidate_scopes if scope.passed}
         counts = _empty_counts()
         for scope in candidate_scopes:
@@ -639,12 +731,56 @@ def render_revalidation_report(runs: Iterable[AuditRunEvidence]) -> str:
             f"{counts['network_blocked']} | {counts['zip_unavailable']} | {status} |"
         )
 
-    blocking_differences = [
-        (run.execution_label, scope.plan, difference)
+    daily_recovered_rows = sum(
+        1
+        for scope in preferred_scopes.values()
+        for difference in scope.differences
+        if difference.classification == "boundary_row"
+        and "supplemental official daily ZIP" in difference.note
+    )
+    daily_ok = sum(
+        1
+        for scope in preferred_scopes.values()
+        for _, status in scope.supplemental_zip_statuses
+        if status == "200:none"
+    )
+    daily_unavailable = sum(
+        1
+        for scope in preferred_scopes.values()
+        for _, status in scope.supplemental_zip_statuses
+        if status != "200:none"
+    )
+    monthly_daily_confirmed_revisions = sum(
+        1
+        for scope in preferred_scopes.values()
+        for difference in scope.differences
+        if difference.classification == "source_revision"
+        and "monthly and supplemental official daily ZIP agree" in difference.note
+    )
+    rows.extend(
+        [
+            "",
+            "## Archive Findings",
+            "",
+            f"- Monthly archive omissions recovered exactly by official daily ZIP: {daily_recovered_rows} rows",
+            f"- Supplemental daily ZIP requests completed: {daily_ok}",
+            f"- Supplemental daily ZIP requests unavailable or invalid: {daily_unavailable}",
+            "- Monthly/daily ZIP field differences jointly confirmed against REST: "
+            f"{monthly_daily_confirmed_revisions}",
+            "- Supplemental evidence never replaces a conflicting monthly archive row.",
+        ]
+    )
+
+    labels_by_scope_identity = {
+        id(scope): run.execution_label
         for run in run_list
         for scope in run.scopes
+    }
+    blocking_differences = [
+        (labels_by_scope_identity[id(scope)], scope.plan, difference)
+        for scope in preferred_scopes.values()
         for difference in scope.differences
-        if difference.classification in {"source_revision", "timestamp_mismatch", "invalid_ohlcv"}
+        if difference.classification in {"source_revision", "invalid_ohlcv"}
     ]
     rows.extend(
         [
@@ -664,6 +800,57 @@ def render_revalidation_report(runs: Iterable[AuditRunEvidence]) -> str:
             )
     else:
         rows.append("| none | none | none | none | none | n/a | none | none | none | No blocking data difference. |")
+
+    timestamp_groups: dict[tuple[str, str, str, str, str], list[int]] = {}
+    for scope in preferred_scopes.values():
+        label = labels_by_scope_identity[id(scope)]
+        for difference in scope.differences:
+            if difference.classification != "timestamp_mismatch" or difference.open_time is None:
+                continue
+            key = (label, scope.plan.dataset, scope.plan.symbol, scope.plan.month, difference.note)
+            timestamp_groups.setdefault(key, []).append(difference.open_time)
+    rows.extend(
+        [
+            "",
+            "## Timestamp Mismatch Summary",
+            "",
+            "| Node | Dataset | Symbol | Month | Count | First UTC | Last UTC | Note |",
+            "| --- | --- | --- | --- | ---: | --- | --- | --- |",
+        ]
+    )
+    if timestamp_groups:
+        for (label, dataset, symbol, month, note), timestamps in sorted(timestamp_groups.items()):
+            rows.append(
+                f"| `{label}` | `{dataset}` | `{symbol}` | `{month}` | {len(timestamps)} | "
+                f"`{_utc_iso(min(timestamps))}` | `{_utc_iso(max(timestamps))}` | {_escape(note)} |"
+            )
+    else:
+        rows.append("| none | none | none | none | 0 | n/a | n/a | No timestamp mismatch. |")
+
+    supplemental_outcomes = [
+        (labels_by_scope_identity[id(scope)], scope.plan, day, status)
+        for scope in preferred_scopes.values()
+        for day, status in scope.supplemental_zip_statuses
+    ]
+    rows.extend(
+        [
+            "",
+            "## Supplemental Daily ZIP Outcomes",
+            "",
+            "| Node | Dataset | Symbol | Month | Day | HTTP/error status |",
+            "| --- | --- | --- | --- | --- | --- |",
+        ]
+    )
+    if supplemental_outcomes:
+        for label, plan, day, status in sorted(
+            supplemental_outcomes,
+            key=lambda item: (item[0], item[1].dataset, item[1].symbol, item[1].month, item[2]),
+        ):
+            rows.append(
+                f"| `{label}` | `{plan.dataset}` | `{plan.symbol}` | `{plan.month}` | `{day}` | `{status}` |"
+            )
+    else:
+        rows.append("| none | none | none | none | none | not_run |")
 
     rows.extend(
         [

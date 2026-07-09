@@ -2,7 +2,7 @@
 
 ## Status
 
-- Design status: approved, written specification pending user review
+- Design status: approved and under implementation
 - Phase: post-hardening review / M0 audit revalidation
 - Branch: `codex/m0-dual-source-audit-unblock`
 - Scope: public-data diagnostics only
@@ -36,8 +36,10 @@ remains prohibited.
 
 Use a multi-network, evidence-first audit. Run the same public-only comparison
 locally and on the approved VPS. A source result is valid only when it uses an
-official Binance public endpoint, records reproducible provenance, and does not
-use credentials, proxies, VPNs, or region-bypass techniques.
+official Binance public endpoint and records reproducible provenance. When a
+direct route is unavailable, the user-approved loopback HTTPS proxy may carry
+the REST connection, provided the report discloses the transport and TLS still
+verifies the official Binance hostname.
 
 Rejected alternatives:
 
@@ -137,7 +139,7 @@ classification:
 | --- | --- | --- |
 | `exact_match` | Timestamp and canonical comparable fields match. | pass |
 | `format_only` | Raw strings differ but canonical values and semantics match. | explained |
-| `boundary_row` | A request/month boundary row is missing on one side and is recovered from an adjacent official ZIP scope. | explained |
+| `boundary_row` | A request/month boundary row is missing on one side and is recovered exactly from an adjacent monthly or same-day official ZIP scope. | explained |
 | `source_revision` | Official sources contain different canonical values for the same timestamp and field. | block |
 | `timestamp_mismatch` | A timestamp exists on only one side and cannot be recovered from an adjacent official scope. | block |
 | `invalid_ohlcv` | Numeric validity, volume, or OHLC ordering fails. | block |
@@ -146,6 +148,14 @@ classification:
 
 Explained classifications remain visible in the report and are never deleted
 from evidence.
+
+The monthly ZIP remains the primary archive. When a selected monthly archive
+omits REST timestamps, the audit may fetch the matching official Binance daily
+ZIP directly and use it only as supplemental evidence. A daily ZIP can explain
+an omission only when its canonical row matches REST exactly. If monthly and
+daily ZIP values disagree, or if both ZIP forms agree and differ from REST, the
+scope remains blocked as `source_revision`. Daily HTTP/parse outcomes and the
+combined monthly/daily evidence hash are retained in sanitized evidence.
 
 ## Network and VPS Rules
 
@@ -156,8 +166,16 @@ from evidence.
 - Sync code only; do not sync `.env`, raw data, DuckDB, logs, or credentials.
 - Keep raw source responses under ignored storage on the execution node.
 - Pull back only sanitized Markdown evidence.
-- Do not use VPNs, proxies, or other region-bypass methods.
-- Treat HTTP 451 as `network_blocked`; do not retry through an evasion path.
+- Direct transport remains preferred. The approved fallback is an explicit
+  unauthenticated loopback HTTP/HTTPS proxy at `localhost` or `127.0.0.1`.
+- Reject proxy URLs containing credentials or non-loopback hosts.
+- Use the proxy for official REST only; official Binance Vision ZIP retrieval
+  remains direct.
+- Record transport as `direct` or `rest_local_https_proxy_zip_direct` in every
+  evidence file and report. The proxy is transport, never an independent data
+  source.
+- Treat HTTP 451 or exhausted network failure as `network_blocked` unless the
+  approved loopback transport completes the same official TLS endpoint.
 - Preserve each node's outcome independently. A successful node can provide
   valid evidence, but cannot erase a failed node's recorded diagnostic.
 
@@ -190,6 +208,7 @@ blocker, not an audit pass.
 Add `reports/m0/M0_DUAL_SOURCE_AUDIT_DIAGNOSTICS.md` containing:
 
 - execution time and public-only attestation;
+- disclosed REST/ZIP transport mode;
 - dataset, symbol, interval, and scope matrix;
 - per-node network outcome without node identity;
 - source row counts, overlap, and one-sided timestamp counts;
@@ -208,6 +227,8 @@ statuses must not change, and M2 must remain blocked.
 ## Error Handling
 
 - Apply bounded retries only to transient public-network errors.
+- Never read proxy configuration from a repository file or environment secret;
+  the CLI accepts only the explicit validated loopback proxy URL.
 - Record HTTP status and sanitized error category, not response payloads.
 - Fail a selected scope explicitly when parsing, schema validation, hashing, or
   comparison cannot complete.
@@ -222,6 +243,8 @@ Add fixture-based tests that require no network for:
 - `format_only` Decimal-equivalent values;
 - genuine OHLCV `source_revision` differences;
 - adjacent-month recovery of a `boundary_row`;
+- same-day official ZIP recovery of a monthly archive omission;
+- monthly ZIP differences remain blocking even when a daily ZIP is available;
 - unrecovered `timestamp_mismatch`;
 - invalid OHLC ordering, negative volume, and non-finite values;
 - REST HTTP 451, timeout, and ZIP-unavailable gate behavior;
@@ -268,4 +291,3 @@ There are two truthful completion outcomes:
 Neither outcome changes M1A or M1B from `failed_validation`, approves M2, or
 permits live trading, real-API paper trading, order operations, simulated
 matching, API permissions, or `execution/live`.
-

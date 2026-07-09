@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Run the strict M0 public ZIP/REST audit without credentials.
 
-Only official unauthenticated public GET resources are used. The script
-disables environment proxy discovery, writes raw responses into an ignored
-append-only run directory, and emits sanitized evidence and Markdown.
+Only official unauthenticated public GET resources are used. Environment proxy
+discovery is disabled. Callers may explicitly select the approved
+unauthenticated loopback HTTP proxy for REST while ZIP retrieval remains
+direct. Raw responses go to an ignored append-only run directory.
 """
 
 from __future__ import annotations
@@ -22,7 +23,7 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Iterable
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlparse
 from urllib.request import ProxyHandler, Request, build_opener
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -90,6 +91,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--zip-base-url", default="https://data.binance.vision")
     parser.add_argument("--timeout-sec", type=int, default=20)
     parser.add_argument("--retries", type=int, default=3)
+    parser.add_argument(
+        "--proxy-url",
+        default=None,
+        help="Approved unauthenticated loopback HTTP proxy for official REST only",
+    )
     parser.add_argument("--execution-label", default="local")
     parser.add_argument("--raw-root", default="storage/raw/m0_dual_source_audit")
     parser.add_argument("--evidence-out", default="storage/logs/m0_dual_source_audit_evidence.json")
@@ -175,11 +181,28 @@ def _safe_error(exc: BaseException) -> str:
     return type(exc).__name__.lower()
 
 
+def _validated_proxy_url(value: str | None) -> str | None:
+    if value is None:
+        return None
+    parsed = urlparse(value)
+    if parsed.scheme not in {"http", "https"}:
+        raise ValueError("proxy URL scheme must be http or https")
+    if parsed.hostname not in {"127.0.0.1", "localhost", "::1"}:
+        raise ValueError("proxy URL host must be loopback")
+    if parsed.username is not None or parsed.password is not None:
+        raise ValueError("proxy URL must not contain credentials")
+    if parsed.port is None or parsed.path not in {"", "/"} or parsed.query or parsed.fragment:
+        raise ValueError("proxy URL must contain only scheme, loopback host, and port")
+    return value.rstrip("/")
+
+
 class PublicFetcher:
-    def __init__(self, timeout_sec: int, retries: int) -> None:
+    def __init__(self, timeout_sec: int, retries: int, proxy_url: str | None = None) -> None:
         self.timeout_sec = timeout_sec
         self.retries = max(1, retries)
-        self.opener = build_opener(ProxyHandler({}))
+        validated = _validated_proxy_url(proxy_url)
+        proxies = {} if validated is None else {"http": validated, "https": validated}
+        self.opener = build_opener(ProxyHandler(proxies))
 
     def get(self, url: str) -> FetchResult:
         request = Request(url, headers={"User-Agent": "btc-eth-dual-quant-m0-audit/1"}, method="GET")
@@ -206,7 +229,7 @@ class AppendOnlyRunStore:
         self.root = Path(root) / f"run={run_id}"
 
     def write(self, dataset: str, symbol: str, month: str, source: str, page: int, body: bytes) -> Path:
-        suffix = "zip" if source == "zip" else "json"
+        suffix = "zip" if source.startswith("zip") else "json"
         path = self.root / dataset / symbol / f"month={month}" / source / f"response-{page:04d}.{suffix}"
         path.parent.mkdir(parents=True, exist_ok=True)
         with path.open("xb") as handle:
@@ -220,6 +243,28 @@ def _zip_url(base_url: str, dataset: str, symbol: str, interval: str, month: str
         f"{base_url.rstrip('/')}/data/{scope}/monthly/{kind}/{symbol}/{interval}/"
         f"{symbol}-{interval}-{month}.zip"
     )
+
+
+def _daily_zip_url(base_url: str, dataset: str, symbol: str, interval: str, day: str) -> str:
+    scope, kind = ZIP_KIND[dataset]
+    return (
+        f"{base_url.rstrip('/')}/data/{scope}/daily/{kind}/{symbol}/{interval}/"
+        f"{symbol}-{interval}-{day}.zip"
+    )
+
+
+def _combined_sha256(parts: Iterable[tuple[str, bytes]]) -> str:
+    digest = hashlib.sha256()
+    found = False
+    for label, body in sorted(parts):
+        found = True
+        digest.update(label.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(str(len(body)).encode("ascii"))
+        digest.update(b"\0")
+        digest.update(body)
+        digest.update(b"\n")
+    return digest.hexdigest() if found else ""
 
 
 def _decode_zip_rows(body: bytes, dataset: str) -> list[dict[str, Any]]:
@@ -454,9 +499,58 @@ def _failure_classification(result: FetchResult, source: str) -> str:
     return "network_blocked"
 
 
-def _run_dataset_symbol(
+def _supplemental_days(preliminary: ScopeEvidence) -> list[str]:
+    timestamps = {
+        item.open_time
+        for item in preliminary.differences
+        if item.open_time is not None
+        and item.rest_value != ""
+        and item.classification in {"source_revision", "timestamp_mismatch"}
+    }
+    return sorted({
+        datetime.fromtimestamp(timestamp / 1000, timezone.utc).strftime("%Y-%m-%d")
+        for timestamp in timestamps
+    })
+
+
+def _fetch_supplemental_daily_zip(
     *,
     fetcher: PublicFetcher,
+    store: AppendOnlyRunStore,
+    zip_base_url: str,
+    dataset: str,
+    symbol: str,
+    interval: str,
+    days: Iterable[str],
+) -> tuple[list[dict[str, Any]], list[tuple[str, bytes]], dict[str, str]]:
+    rows: list[dict[str, Any]] = []
+    payloads: list[tuple[str, bytes]] = []
+    statuses: dict[str, str] = {}
+    for day in sorted(set(days)):
+        result = fetcher.get(_daily_zip_url(zip_base_url, dataset, symbol, interval, day))
+        statuses[day] = f"{result.status if result.status is not None else 'n/a'}:{result.error_category}"
+        if not result.ok:
+            continue
+        store.write(dataset, symbol, day, "zip_daily", 0, result.body)
+        try:
+            decoded = _decode_zip_rows(result.body, dataset)
+        except (ValueError, zipfile.BadZipFile, UnicodeError):
+            statuses[day] = f"{result.status}:zip_parse_error"
+            continue
+        rows.extend(
+            item
+            for item in decoded
+            if datetime.fromtimestamp(int(item["open_time"]) / 1000, timezone.utc).strftime("%Y-%m-%d") == day
+        )
+        payloads.append((f"daily:{day}", result.body))
+    unique_rows = {int(item["open_time"]): item for item in rows}
+    return [unique_rows[key] for key in sorted(unique_rows)], payloads, statuses
+
+
+def _run_dataset_symbol(
+    *,
+    zip_fetcher: PublicFetcher,
+    rest_fetcher: PublicFetcher,
     store: AppendOnlyRunStore,
     args: argparse.Namespace,
     months: list[date],
@@ -465,7 +559,7 @@ def _run_dataset_symbol(
     rest_circuits: dict[str, FetchResult],
 ) -> tuple[list[ScopePlan], list[ScopeEvidence]]:
     profile = _build_zip_profile(
-        fetcher=fetcher,
+        fetcher=zip_fetcher,
         store=store,
         zip_base_url=args.zip_base_url,
         dataset=dataset,
@@ -483,7 +577,7 @@ def _run_dataset_symbol(
             rest_results[plan.month] = (circuit_failure, [], "")
             continue
         result = _fetch_rest_month(
-            fetcher=fetcher,
+            fetcher=rest_fetcher,
             store=store,
             spot_base_url=args.spot_base_url,
             futures_base_url=args.futures_base_url,
@@ -542,14 +636,39 @@ def _run_dataset_symbol(
             for adjacent in adjacent_months
             for item in rest_results.get(adjacent, (FetchResult(None, b"", ""), [], ""))[1]
         ]
+        preliminary = compare_scope(
+            plan=plan,
+            zip_rows=zip_rows,
+            rest_rows=rest_rows,
+            adjacent_zip_rows=adjacent_zip_rows,
+            adjacent_rest_rows=adjacent_rest_rows,
+            zip_payload_sha256=_sha256(zip_body),
+            rest_payload_sha256=rest_hash,
+            rest_http_status=rest_result.status,
+            zip_http_status=zip_result.status,
+        )
+        supplemental_rows, supplemental_payloads, supplemental_statuses = _fetch_supplemental_daily_zip(
+            fetcher=zip_fetcher,
+            store=store,
+            zip_base_url=args.zip_base_url,
+            dataset=dataset,
+            symbol=symbol,
+            interval=args.interval,
+            days=_supplemental_days(preliminary),
+        )
+        zip_evidence_hash = _combined_sha256(
+            [(f"monthly:{plan.month}", zip_body), *supplemental_payloads]
+        )
         evidence.append(
             compare_scope(
                 plan=plan,
                 zip_rows=zip_rows,
                 rest_rows=rest_rows,
+                supplemental_zip_rows=supplemental_rows,
+                supplemental_zip_statuses=supplemental_statuses,
                 adjacent_zip_rows=adjacent_zip_rows,
                 adjacent_rest_rows=adjacent_rest_rows,
-                zip_payload_sha256=_sha256(zip_body),
+                zip_payload_sha256=zip_evidence_hash,
                 rest_payload_sha256=rest_hash,
                 rest_http_status=rest_result.status,
                 zip_http_status=zip_result.status,
@@ -602,14 +721,17 @@ def main() -> int:
     generated = datetime.now(timezone.utc)
     run_id = generated.strftime("%Y%m%dT%H%M%S%fZ")
     store = AppendOnlyRunStore(args.raw_root, run_id)
-    fetcher = PublicFetcher(args.timeout_sec, args.retries)
+    proxy_url = _validated_proxy_url(args.proxy_url)
+    zip_fetcher = PublicFetcher(args.timeout_sec, args.retries)
+    rest_fetcher = PublicFetcher(args.timeout_sec, args.retries, proxy_url=proxy_url)
     plans: list[ScopePlan] = []
     scopes: list[ScopeEvidence] = []
     rest_circuits: dict[str, FetchResult] = {}
     for symbol in symbols:
         for dataset in datasets:
             dataset_plans, dataset_scopes = _run_dataset_symbol(
-                fetcher=fetcher,
+                zip_fetcher=zip_fetcher,
+                rest_fetcher=rest_fetcher,
                 store=store,
                 args=args,
                 months=months,
@@ -630,6 +752,7 @@ def main() -> int:
         generated_utc=generated.isoformat(timespec="seconds"),
         plans=tuple(plans),
         scopes=tuple(scopes),
+        transport="rest_local_https_proxy_zip_direct" if proxy_url else "direct",
     )
     _write_json(args.evidence_out, run.to_dict())
     _write_text(args.out, render_diagnostics_report([run]))

@@ -23,7 +23,13 @@ No strategy, private API, credential, execution, order, or M2 work is included.
 5. Run local evidence collection, inspect every source difference, and run the
    same command on the approved VPS when credential-free SSH access is
    available.
-6. Merge per-node sanitized evidence, update the M0 audit report truthfully,
+6. If direct official futures REST is unavailable, use the explicitly approved
+   unauthenticated loopback HTTPS proxy for REST only, keep ZIP direct, and
+   disclose `rest_local_https_proxy_zip_direct` in evidence.
+7. For selected monthly ZIP omissions, retrieve the matching official daily
+   ZIP directly, require exact REST equality, retain daily HTTP/hash evidence,
+   and never use it to hide a monthly source revision.
+8. Merge per-node sanitized evidence, update the M0 audit report truthfully,
    update project context files, run all validations, and publish the branch.
 
 ## Verification
@@ -34,4 +40,3 @@ No strategy, private API, credential, execution, order, or M2 work is included.
 - Real public audit result kept distinct from fixture and code validation.
 - Git tracks no raw data, DuckDB, logs, local reports, credentials, or runtime
   artifacts.
-
