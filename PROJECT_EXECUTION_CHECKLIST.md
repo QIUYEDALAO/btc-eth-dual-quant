@@ -26,8 +26,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | P6-01 | P6 dry-run | not_authorized | P5-01 plus explicit approval | future branch | 90-day dry-run report | 12 weekly decisions and no live orders | dry-run prohibited |
 | P7-01 | P7 limited live | not_authorized | P6-01 plus explicit approval | future branch | Limited-capital acceptance | Hard risk controls and separate approval | live prohibited |
 | P8-01 | P8 operations | not_authorized | P7-01 | future branch | Operations and scaling loop | Continuous audit | live prohibited |
-| T0-01 | Short-horizon governance | in_progress | M1C closed | `codex/short-horizon-product-governance` / PR #19 | Approved specification, ADR-0007, expert evidence, trial ledger | Isolated recompute, automated ledger hash check, context, CI, merge | PR checks and merge pending |
-| T1-01 | Canonical minute data | pending | T0-01 | future branch | BTC/ETH spot 1m source archive and liquidity qualification | Exact range, hashes, completeness, preregistered start | T0 must merge |
+| T0-01 | Short-horizon governance | completed | M1C closed | `codex/short-horizon-product-governance` / PR #19 | Approved specification, ADR-0007, expert evidence, trial ledger | Isolated recompute, automated ledger hash check, context, CI, merge | none |
+| T1-01 | Canonical minute data | pending | T0-01 completed | future branch | BTC/ETH spot 1m source archive and liquidity qualification | Exact range, hashes, completeness, preregistered start | new branch required |
 | T2-01 | Golden data and quarantine | pending | T1-01 | future branch | Golden 1m, conflicts, 5m/15m derivatives | Official 15m parity and source-variant reproducibility | T1 must pass |
 | T3-01 | Unified metrics | pending | T2-01 | future branch | General daily-MTM, PSR/DSR and policy benchmark | Expert M1C regression passes | T2 must pass |
 | T4-01 | Feasibility harness | pending | T3-01 | future branch | IS-only event decay, cost, frequency and risk tooling | No OOS exposure; deterministic fixtures | T3 must pass |
@@ -39,8 +39,9 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 
 ## Current Gate
 
-- Authorized work: T0 governance only on the current branch; T1-T9 are dependency-gated.
-- Active task: T0 short-horizon product governance.
+- Authorized work: T1 canonical public minute-data foundations only; T2-T9 remain dependency-gated.
+- Active implementation: none on the T0 closeout branch.
+- Next authorized task: T1 canonical minute data.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.
 - M1A status: `failed_validation`.
 - M1B status: `failed_validation`.

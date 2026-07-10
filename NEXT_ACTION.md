@@ -1,12 +1,12 @@
 # Next Action
 
-Complete T0 of the approved Freqtrade-first BTC/ETH short-horizon event product:
+T0 of the approved Freqtrade-first BTC/ETH short-horizon event product merged in
+PR #19. Start T1 on a new branch:
 
-1. Validate and merge the approved product specification and ADR-0007.
-2. Preserve the independently verified expert recompute and sanitized evidence.
-3. Enforce the immutable strategy trial ledger and candidate hashes in validation.
-4. Merge PR #19 after clean CI.
-5. Keep all new strategy and minute-data work blocked until T0 merges.
+1. Build the canonical BTC/ETH public spot 1m archive from official monthly ZIPs.
+2. Fill missing rows only from official daily ZIPs, with sampled REST snapshots as a final fallback.
+3. Record hashes, completeness, gaps, conflict/quarantine rows, and the preregistered research start.
+4. Derive 5m/15m only after T1 evidence passes; do not write M1D strategy code.
 
 After T0, execute `T1 -> T2 -> T3 -> T4` before M1D feasibility. T5 must
 pass before T6 fixed design, and T6 must pass before any Freqtrade strategy code.

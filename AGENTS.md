@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: short-horizon product governance.
+- Current phase: short-horizon data foundations.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -47,8 +47,9 @@ After any task, the agent must update:
 - Expert measurement review independently reproduced M1C and kept it failed; corrected daily-MTM metrics are the future regression authority.
 - ADR-0007 locks the product to discrete completed-15m events, authoritative 1m backtest detail, and 5m sensitivity only.
 - Holding time and trade frequency are strategy outputs. Do not add a fixed holding duration or daily trade quota.
-- T0 governance must merge before T1 minute data; T1-T4 must pass before T5 feasibility; T5/T6 must pass before strategy code.
-- The current task is governance and evidence only. No new strategy code is authorized.
+- T0 governance merged in PR #19. T1 canonical public minute-data work is now the only newly authorized implementation.
+- T1-T4 must pass before T5 feasibility; T5/T6 must pass before strategy code.
+- No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.
 - Future work must be diagnostics or design review only.

@@ -3,7 +3,7 @@
 ## Status
 
 - Product conditions: approved by the capital owner
-- Governance implementation: T0 in progress
+- Governance implementation: T0 completed in PR #19
 - Strategy implementation: not authorized before T5 and T6 pass
 - M2, dry-run, live, API credentials, and order operations: prohibited
 - Primary strategy framework: Freqtrade 2026.6
