@@ -802,7 +802,8 @@ private exchange responses here.
 - Task ID: M1E-OFFICIAL-SOURCE-CONFLICT-DIAGNOSTICS
 - Phase: M1E official source conflict diagnostics
 - Branch: codex/m1e-official-source-conflict-diagnostics
-- PR: pending
+- Commit: dd7fc9f3ad8942f179a68d37ce294b4adbae0305
+- PR: #35 open
 - Evidence: 36/36 affected monthly ZIP hashes were unchanged on fresh download; 30 field-level conflict rows were compared with current public REST.
 - Classification: 16 monthly/daily conflicts where REST supports daily; 10 higher-timeframe flow revisions confirmed by REST; 2 child aggregates confirmed by REST; 2 unresolved third-version flow revisions.
 - Result: Every conflict remains contract-blocking. Source precedence and numeric tolerances were not changed.

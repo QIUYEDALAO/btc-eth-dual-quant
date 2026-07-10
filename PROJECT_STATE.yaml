@@ -91,8 +91,8 @@ open_work:
     phase: M1E official source conflict diagnostics
     status: diagnostics_complete_pending_review
     branch: codex/m1e-official-source-conflict-diagnostics
-    pr: none
-    head_sha: pending
+    pr: 35
+    head_sha: dd7fc9f3ad8942f179a68d37ce294b4adbae0305
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1E_OFFICIAL_SOURCE_CONFLICT_DIAGNOSTICS.md
     blocker: "All 30 conflict rows remain contract-blocking; the diagnostic clean suffix has only 1338 full and 402 sealed-OOS days."

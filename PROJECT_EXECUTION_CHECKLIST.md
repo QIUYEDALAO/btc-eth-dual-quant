@@ -40,7 +40,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1E-02 | M1E public-data qualification | blocked | M1E-01 completed | `codex/m1e-1h-public-data-qualification` / PR #32 merged | Official 5m/1h/4h golden data, parity, quarantine, cache and report | Common six-month data/liquidity qualification and Freqtrade list-data pass | six post-start official OHLCV aggregate/source-conflict months |
 | M1E-03 | M1E sample budget | blocked | M1E-02 pass | branch not created | Metadata-only 70/30, 1800/540-day report | Actual qualified calendar passes both fixed minimums | M1E-02 data Gate failed; PR3 is not authorized |
 | M1E-04 | M1E IS-only rule design | not_authorized | M1E-03 pass plus separate approval | future branch | Non-M1A trend-breakout rule contract | No duplicate rule bundle and no OOS access | data and calendar Gates not yet passed |
-| M1E-DIAG-01 | M1E source-conflict diagnostics | in_progress | M1E-02 blocked | `codex/m1e-official-source-conflict-diagnostics` | Field-level ZIP/REST classifications, fresh hashes, clean-suffix budget | Reproducible evidence, no contract bypass, CI pass | 30 conflicts confirmed; clean suffix 1338/402 < 1800/540 |
+| M1E-DIAG-01 | M1E source-conflict diagnostics | in_progress | M1E-02 blocked | `codex/m1e-official-source-conflict-diagnostics` / PR #35 | Field-level ZIP/REST classifications, fresh hashes, clean-suffix budget | Reproducible evidence, no contract bypass, CI pass | 30 conflicts confirmed; clean suffix 1338/402 < 1800/540 |
 
 ## Current Gate
 
