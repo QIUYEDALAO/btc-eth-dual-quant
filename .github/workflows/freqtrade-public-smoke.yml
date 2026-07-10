@@ -51,12 +51,12 @@ jobs:
             --export-filename user_data/backtest_results/m1c-runtime.json
           bash scripts/ft_lookahead_m1c.sh \
             --lookahead-analysis-exportfilename user_data/backtest_results/m1c-lookahead.csv
-          bash scripts/ft_recursive_m1c.sh 2>&1 | tee user_data/backtest_results/m1c-recursive.log
+          bash scripts/ft_recursive_m1c.sh 2>&1 | tee "${RUNNER_TEMP}/m1c-recursive.log"
           cd ..
           python scripts/m1c_freqtrade_runtime_check.py \
             --results-dir freqtrade_lab/user_data/backtest_results \
             --lookahead-csv freqtrade_lab/user_data/backtest_results/m1c-lookahead.csv \
-            --recursive-log freqtrade_lab/user_data/backtest_results/m1c-recursive.log
+            --recursive-log "${RUNNER_TEMP}/m1c-recursive.log"
 
       - name: Confirm runtime artifacts remain untracked
         run: |

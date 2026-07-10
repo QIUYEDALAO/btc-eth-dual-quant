@@ -488,6 +488,7 @@ private exchange responses here.
 - Commit: 89271afeda71284487623e37bcde1b229251b84a
 - Completed so far: Fixed Freqtrade strategy, no-key public research config, guarded download/backtest/lookahead/recursive commands, independent event-time validator, and deterministic unit fixtures.
 - Validation so far: Nine strategy/time tests pass. Full validation awaits the context transition and pinned Freqtrade runtime checks.
+- Runtime attempt: GitHub run 29059348880 completed the pinned image, public download, M1A smoke, M1C backtest, lookahead-analysis, and recursive-analysis. The job failed only because host `tee` could not create a log inside the Docker-owned result directory; the log target was moved to the runner temporary directory for a full retry.
 - Blocker: Same-open cross-pair rotation, lookahead-analysis, and recursive-analysis must pass in the pinned Freqtrade 2026.6 runtime.
 - Decision: Runtime disagreement becomes `blocked_framework_capability`; no parallel single-leg engine is allowed.
 - Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
