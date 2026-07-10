@@ -36,15 +36,15 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | T7-01 | M1D Freqtrade implementation | pending | T6-01 | future branch | 15m strategy, 1m/5m research commands, tests | Behavior, timing, bias and no-live pass | T6 must pass |
 | T8-01 | M1D historical validation | pending | T7-01 | future branch | Full/OOS/cost/granularity/data-variant report | Every numerical and data Gate evaluated | T7 must pass |
 | T9-01 | M1D independent audit | pending | T8-01 pass | future branch | Timing, equity, benchmark and sensitivity audit | Evidence exact and all Gates pass | T8 must pass |
-| M1E-01 | M1E product/data contract | in_progress | separately approved new trial | `codex/m1e-1h-product-data-contract` / PR #31 | ADR-0008, sealed trial identity, machine-readable contract | Contract, non-reuse, ledger, context, safety and CI pass | strategy/OOS/backtesting remain unauthorized |
-| M1E-02 | M1E public-data qualification | pending | M1E-01 completed | `codex/m1e-1h-public-data-qualification` | Official 5m/1h/4h golden data, parity, quarantine, cache and report | Common six-month data/liquidity qualification and Freqtrade list-data pass | PR1 must merge first |
-| M1E-03 | M1E sample budget | pending | M1E-02 pass | `codex/m1e-1h-sample-budget` | Metadata-only 70/30, 1800/540-day report | Actual qualified calendar passes both fixed minimums | create only after data qualification passes |
+| M1E-01 | M1E product/data contract | completed | separately approved new trial | `codex/m1e-1h-product-data-contract` / PR #31 | ADR-0008, sealed trial identity, machine-readable contract | Contract, non-reuse, ledger, context, safety and CI pass | none; no strategy authorization granted |
+| M1E-02 | M1E public-data qualification | blocked | M1E-01 completed | `codex/m1e-1h-public-data-qualification` / PR #32 | Official 5m/1h/4h golden data, parity, quarantine, cache and report | Common six-month data/liquidity qualification and Freqtrade list-data pass | six post-start official OHLCV aggregate/source-conflict months |
+| M1E-03 | M1E sample budget | blocked | M1E-02 pass | branch not created | Metadata-only 70/30, 1800/540-day report | Actual qualified calendar passes both fixed minimums | M1E-02 data Gate failed; PR3 is not authorized |
 | M1E-04 | M1E IS-only rule design | not_authorized | M1E-03 pass plus separate approval | future branch | Non-M1A trend-breakout rule contract | No duplicate rule bundle and no OOS access | data and calendar Gates not yet passed |
 
 ## Current Gate
 
-- Authorized work: M1E product/data contract, followed conditionally by public-data qualification and metadata-only sample budget.
-- Active implementation: M1E contract only; candidate evaluated `no`, OOS opened `no`, strategy code authorized `no`.
+- Authorized work: review and merge the truthful M1E public-data qualification blocker; public source diagnostics may continue.
+- Active implementation: no strategy; candidate evaluated `no`, OOS opened `no`, strategy code authorized `no`, sample-budget PR authorized `no`.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

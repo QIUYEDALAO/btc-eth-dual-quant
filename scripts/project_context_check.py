@@ -210,6 +210,7 @@ def main() -> int:
         or "short_horizon_t1_complete_t2_authorized_no_strategy_eligible_for_m2" in current_status
         or "m1e_product_data_contract_in_progress_no_strategy_eligible_for_m2" in current_status
         or "m1e_data_qualification_in_progress_no_strategy_eligible_for_m2" in current_status
+        or "m1e_data_qualification_blocked_no_strategy_eligible_for_m2" in current_status
         or "m1e_data_qualified_sample_budget_authorized_no_strategy_eligible_for_m2" in current_status
         or "m1e_blocked_insufficient_oos_calendar_no_strategy_eligible_for_m2" in current_status
         or "m1e_sample_budget_pass_is_design_only_no_strategy_eligible_for_m2" in current_status
