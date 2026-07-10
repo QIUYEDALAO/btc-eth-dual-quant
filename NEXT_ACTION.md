@@ -2,11 +2,11 @@
 
 Under the Freqtrade-first architecture, M1D remains stopped by its fixed
 calendar Gate. The separate `M1E-1H-TREND-BREAKOUT` data contract passed in
-PR #31, but its public-data qualification is now blocked by official evidence.
+PR #31, and its blocked public-data qualification evidence merged in PR #32.
 
 The immediate sequence is:
 
-1. Review and preserve the six blocked months in the M1E qualification report.
+1. Preserve the six merged blocked months in the M1E qualification report.
 2. Do not weaken monthly-ZIP authority, numeric parity, or single-symbol rules.
 3. Do not create the conditional sample-budget PR while data qualification is blocked.
 4. Continue source-owner diagnostics or design a future separate candidate only

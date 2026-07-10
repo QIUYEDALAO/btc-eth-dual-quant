@@ -758,8 +758,8 @@ private exchange responses here.
 - Task ID: M1E-1H-DATA-ADMISSION
 - Phase: M1E product and data contract
 - Branch: codex/m1e-1h-product-data-contract
-- Commit: 50a0ba7812f26119941663e4258f065c263ce173
-- PR: #31 open
+- Commit: e98cd5789e0c7f83b13ed429df7f2e37a2f40879
+- PR: #31 merged
 - Candidate: `M1E-1H-TREND-BREAKOUT`, registered as a separate sealed trial with `oos_opened=false`.
 - Scope: Official Binance spot BTC/ETH 5m/1h/4h data qualification from 2020-01-01, followed only on pass by a metadata-only 1800/540-day calendar Gate.
 - Non-reuse: M1E may not reuse M1A's combined SMA200, Donchian 55/20, and ATR20 2x rules.
@@ -782,3 +782,16 @@ private exchange responses here.
 - Trial state: candidate evaluated `no`; OOS opened `no`; returns accessed `no`; strategy code authorized `no`.
 - Next action: Merge the truthful blocked evidence after CI. Do not create the sample-budget PR or change data tolerances.
 - Guardrails: No API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
+
+## 2026-07-11 - M1E Public-Data Qualification Blocker Merged
+
+- Date UTC: 2026-07-10T18:58:26Z
+- Task ID: M1E-1H-PUBLIC-DATA-QUALIFICATION-MERGED
+- Phase: post-M1E data qualification review
+- Branch: main
+- Commit: 9820ef8dbdbbff64ad268fa3b6c3b27112995745
+- PR: #32 merged
+- Validation: M1E Data Validate `PASS=9 FAIL=0`; all GitHub checks passed; no runtime artifacts or private data were committed.
+- Result: Data tooling and public evidence completed, but M1E remains blocked by six official OHLCV aggregate/source-conflict months after its fixed research start.
+- Decision: Do not create PR3 sample budget, strategy rules, Freqtrade backtesting, or M2 work. Source diagnostics may continue without weakening the contract.
+- Guardrails: No API keys, private smoke, dry-run, live, orders, cancellation, simulated matching, or execution/live.

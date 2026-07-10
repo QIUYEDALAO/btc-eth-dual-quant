@@ -1,14 +1,18 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T18:45:00Z"
-current_phase: M1E 1h public-data qualification
+last_updated_utc: "2026-07-10T18:58:26Z"
+current_phase: post-M1E data qualification review
 current_status: m1e_data_qualification_blocked_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M1E 1h product and data contract
     status: design_contract_pass
     evidence: reports/m1/M1E_1H_PRODUCT_DATA_CONTRACT.md
     merged_pr: 31
+  - phase: M1E 1h public-data qualification
+    status: blocked
+    evidence: reports/m1/M1E_1H_DATA_QUALIFICATION_REPORT.md
+    merged_pr: 32
   - phase: M0 data engineering
     status: accepted
     audit_status: revalidation_required
@@ -83,15 +87,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1E-1H-PUBLIC-DATA-QUALIFICATION
-    phase: M1E public-data qualification
-    status: blocked_pending_review
-    branch: codex/m1e-1h-public-data-qualification
-    pr: 32
-    head_sha: 9181fad67a4c8b245871d1397c2e33d145f814a4
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1E_1H_DATA_QUALIFICATION_REPORT.md
-    blocker: "Six official OHLCV aggregate/source-conflict months exist after the fixed 2020-07-01 research start; PR3 sample budget and strategy work are not authorized."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -130,7 +125,7 @@ active_decisions:
     status: accepted_for_data_qualification_only
     evidence: docs/decisions/ADR-0008-m1e-1h-trend-breakout-data-admission.md
 allowed_next_work:
-  - Review and merge the truthful M1E public-data qualification blocker without changing source precedence or tolerances.
+  - Preserve the merged M1E public-data qualification blocker without changing source precedence or tolerances.
   - Continue public archive accrual and seek source-owner clarification for the six recorded official aggregate/source conflicts.
   - Do not create the M1E sample-budget PR because public-data qualification is blocked.
   - Freqtrade-first architecture governance completed in PR #8.
@@ -421,6 +416,9 @@ latest_merged_prs:
   - number: 31
     title: Define M1E 1h product and data contract
     merged_at_utc: "2026-07-10T18:27:00Z"
+  - number: 32
+    title: Qualify M1E public 1h data and record blockers
+    merged_at_utc: "2026-07-10T18:58:00Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
