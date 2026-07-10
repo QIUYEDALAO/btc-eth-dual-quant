@@ -28,7 +28,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | P8-01 | P8 operations | not_authorized | P7-01 | future branch | Operations and scaling loop | Continuous audit | live prohibited |
 | T0-01 | Short-horizon governance | completed | M1C closed | `codex/short-horizon-product-governance` / PR #19 | Approved specification, ADR-0007, expert evidence, trial ledger | Isolated recompute, automated ledger hash check, context, CI, merge | none |
 | T1-01 | Canonical minute data | completed | T0-01 completed | `codex/short-horizon-t1-minute-data` / PR #21 | BTC/ETH spot 1m source archive and liquidity qualification | Exact range, hashes, completeness, preregistered start | none |
-| T2-01 | Golden data and quarantine | pending | T1-01 completed | future branch | Golden 1m, conflicts, 5m/15m derivatives | Official 15m parity and source-variant reproducibility | new branch required |
+| T2-01 | Golden data and quarantine | in_progress | T1-01 completed | `codex/short-horizon-t2-golden-data` / PR pending | Golden 1m, quarantine, 5m/15m derivatives, Freqtrade jsongz cache | Local Gate passed: complete research range, 66 official 15m parity checks, pinned runtime readability, T2 Validate 9/0 | PR checks and merge required before T3 |
 | T3-01 | Unified metrics | pending | T2-01 | future branch | General daily-MTM, PSR/DSR and policy benchmark | Expert M1C regression passes | T2 must pass |
 | T4-01 | Feasibility harness | pending | T3-01 | future branch | IS-only event decay, cost, frequency and risk tooling | No OOS exposure; deterministic fixtures | T3 must pass |
 | T5-01 | M1D feasibility | pending | T4-01 | future branch | M1D short-horizon feasibility report | Every paper Gate passes | stop before code on failure |
@@ -39,9 +39,9 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 
 ## Current Gate
 
-- Authorized work: T2 golden-data and quarantine foundations only; T3-T9 remain dependency-gated.
-- Active implementation: none on the T1 closeout branch.
-- Next authorized task: T2 golden data and quarantine.
+- Authorized work: T2 PR/CI/merge only; T3-T9 remain dependency-gated until T2 is merged.
+- Active implementation: T2 golden data and quarantine on `codex/short-horizon-t2-golden-data`.
+- Next authorized task after merge: T3 unified metrics; no M1D strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.
 - M1A status: `failed_validation`.
 - M1B status: `failed_validation`.

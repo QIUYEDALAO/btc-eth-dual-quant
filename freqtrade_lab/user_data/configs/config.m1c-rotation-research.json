@@ -9,6 +9,7 @@
   "dry_run_wallet": 100000,
   "fiat_display_currency": "USD",
   "timeframe": "1d",
+  "dataformat_ohlcv": "jsongz",
   "cancel_open_orders_on_exit": false,
   "exchange": {
     "name": "binance",

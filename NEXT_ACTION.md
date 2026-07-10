@@ -1,15 +1,20 @@
 # Next Action
 
-Under the Freqtrade-first architecture, T1 merged in PR #21. Start T2 on a new
-branch:
+Under the Freqtrade-first architecture, T2 passed its local data and runtime
+Gate on `codex/short-horizon-t2-golden-data`. The immediate action is to open
+the T2 PR, require all GitHub checks to pass, and merge it. Do not start T3
+before that merge.
 
-1. Produce golden 1m rows without overwriting monthly ZIP evidence.
-2. Keep official conflicts in a separate quarantine table and preserve both variants.
-3. Derive deterministic 5m/15m only from golden 1m after `2023-10-01`.
-4. Compare derived 15m rows with official 15m ZIP evidence and export ignored Freqtrade caches.
-5. Do not write M1D strategy code.
+T2 evidence now records:
 
-After T0, execute `T1 -> T2 -> T3 -> T4` before M1D feasibility. T5 must
+1. Complete BTC/ETH golden 1m from `2023-10-01` through `2026-06-30`.
+2. Deterministic 5m/15m derivatives with zero incomplete research buckets.
+3. Zero numeric differences against 66 official monthly 15m archives.
+4. Traceable pre-start quarantine kept outside formal research data.
+5. Freqtrade 2026.6 pinned-container readability for all six jsongz caches.
+
+After T0, execute `T1 -> T2 -> T3 -> T4` before M1D feasibility. After the T2
+merge, T3 unified daily-MTM/PSR/DSR metrics is the next task. T5 must
 pass before T6 fixed design, and T6 must pass before any Freqtrade strategy code.
 
 Locked conditions: discrete completed-15m events, authoritative 1m detail, 5m
