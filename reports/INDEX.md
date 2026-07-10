@@ -32,10 +32,11 @@
 | `docs/superpowers/plans/2026-07-10-btc-eth-short-horizon-event-quant-implementation-plan.md` | short-horizon governance | approved | Defines dependency-ordered T0-T9 implementation and failure stops. | no |
 | `docs/decisions/ADR-0007-btc-eth-short-horizon-product-conditions.md` | short-horizon governance | accepted | Records the capital-owner-approved product conditions and keeps automation prohibited. | no |
 | `STRATEGY_TRIAL_LEDGER.yaml` | research governance | initialized | Stores exact hypotheses, hashes, OOS-open state, and append-only trial rules. | no |
-| `PROJECT_EXECUTION_CHECKLIST.md` | governance | active | T1 is complete; T2 is the next authorized task while later work remains dependency-gated. | no |
+| `PROJECT_EXECUTION_CHECKLIST.md` | governance | active | T4 tooling passed locally; T5 is limited to a sample-budget precheck and currently blocked by 302 OOS days versus 540 required. | no |
 | `reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md` | T1 canonical public minute data | pass | Records actual BTC/ETH 1m ranges, monthly/daily ZIP evidence, deterministic REST samples, pre-start quarantine, and the fixed 2023-10-01 research start. | no |
 | `reports/m0/T2_GOLDEN_DATA_AND_QUARANTINE_REPORT.md` | T2 golden data and quarantine | pass | Records golden 1m hashes, deterministic 5m/15m derivatives, 66 official 15m parity checks, quarantine traceability, and pinned Freqtrade cache readability. | no |
 | `reports/m1/T3_UNIFIED_METRICS_AND_POLICY_BENCHMARK_REPORT.md` | T3 unified metrics and policy benchmark | pass | Records the single daily-MTM convention, fixed policy benchmark, PSR/DSR and diagnostics coverage, and sealed expert M1C regression. | no |
+| `reports/m1/T4_IS_ONLY_FEASIBILITY_HARNESS_REPORT.md` | T4 IS-only feasibility harness | pass | Records ledger-locked next-open event observation, fixed horizon/cost diagnostics, local golden-data structure evidence, and the 302/540-day T5 calendar blocker. No candidate or OOS return was evaluated. | no |
 | `docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md` | post-M1B | accepted | No strategy is eligible for M2. | no |
 | `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md` | architecture | accepted | Freqtrade owns single-leg research; M0 and Python remain independent audit/offline accounting sidecars. | no |
 
