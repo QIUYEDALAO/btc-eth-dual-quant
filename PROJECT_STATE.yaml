@@ -83,8 +83,8 @@ open_work:
     phase: M1E product and data contract
     status: in_progress
     branch: codex/m1e-1h-product-data-contract
-    pr: none
-    head_sha: pending
+    pr: 31
+    head_sha: 50a0ba7812f26119941663e4258f065c263ce173
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1E_1H_PRODUCT_DATA_CONTRACT.md
     blocker: "Only product/data-contract qualification is authorized; strategy code, OOS returns, Freqtrade backtesting, and M2 remain prohibited."
