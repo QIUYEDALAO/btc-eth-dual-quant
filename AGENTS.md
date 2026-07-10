@@ -48,6 +48,7 @@ After any task, the agent must update:
 - ADR-0007 locks the product to discrete completed-15m events, authoritative 1m backtest detail, and 5m sensitivity only.
 - Holding time and trade frequency are strategy outputs. Do not add a fixed holding duration or daily trade quota.
 - T0 governance merged in PR #19. T1 canonical public minute-data work is now the only newly authorized implementation.
+- T1 local evidence passed with research start `2023-10-01`; T2 remains blocked until T1 review, CI, and merge.
 - T1-T4 must pass before T5 feasibility; T5/T6 must pass before strategy code.
 - No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.

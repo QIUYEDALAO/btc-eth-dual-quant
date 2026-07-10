@@ -595,3 +595,29 @@ private exchange responses here.
 - Decision: T0 is complete. T1 canonical public spot 1m data work is the next authorized task; T2-T9 remain dependency-gated and no M1D strategy code is authorized.
 - Not completed: T1 minute data, golden derivatives, unified metrics, M1D feasibility, strategy implementation, historical validation, independent audit, M2, dry-run, live, or API trading.
 - Guardrails: No API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, execution/live, OOS tuning, raw commits, or runtime artifacts.
+
+## 2026-07-10 - Short-Horizon T0 Context Closed
+
+- Date UTC: 2026-07-10T03:24:46Z
+- Task ID: SHORT-HORIZON-T0-CLOSEOUT
+- Phase: short-horizon product governance
+- Branch: main
+- Commit: 6b9ca8e2f774c4c4450cd6827a0af5209b6eb9fc
+- PR: #20 merged
+- Completed: T0 was removed from open work, ADR-0007 became active, and T1 became the only newly authorized task.
+- Guardrails: T2-T9 remain dependency-gated; no API keys, M2, dry-run, live, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - T1 Canonical Public Minute Data Passed Locally
+
+- Date UTC: 2026-07-10T03:50:22Z
+- Task ID: SHORT-HORIZON-T1-MINUTE-DATA
+- Phase: T1 canonical public minute data
+- Branch: codex/short-horizon-t1-minute-data
+- Commit: 97799efe447a2485e79e176750d86d290d180cf3
+- PR: #21 open
+- Data: Official Binance public BTCUSDT/ETHUSDT spot 1m monthly ZIPs from actual first open `2017-08-17T04:00:00Z` through `2026-06-30T23:59:00Z`; official daily ZIPs supplement missing timestamps; 20 deterministic REST windows provide comparison evidence.
+- Result: T1 report status `pass`; all REST windows matched with zero field differences; no relevant blocker exists on or after the fixed research start `2023-10-01`.
+- Quarantine: 50 pre-start symbol-months remain explicitly registered. The official 2017-12 monthly archives contain 20,401 off-grid rows per symbol and are not rewritten or hidden.
+- Artifacts: Raw ZIP/REST data and the detailed manifest remain ignored; only the sanitized report, public-data code, tests, and validation workflow are eligible for commit.
+- Next action: Require clean PR #21 CI and merge T1. T2 remains blocked until then.
+- Guardrails: No strategy returns, M1D code, OOS access, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
