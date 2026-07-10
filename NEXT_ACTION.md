@@ -1,12 +1,13 @@
 # Next Action
 
-Under the Freqtrade-first architecture, T1 canonical public minute-data evidence
-is complete locally. Finish T1:
+Under the Freqtrade-first architecture, T1 merged in PR #21. Start T2 on a new
+branch:
 
-1. Review `reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md` and its fixed `2023-10-01` research start.
-2. Require T1 local validation and GitHub Actions to pass.
-3. Merge the T1 PR before starting T2 golden data and quarantine.
-4. Do not derive 5m/15m or write M1D strategy code on the T1 branch.
+1. Produce golden 1m rows without overwriting monthly ZIP evidence.
+2. Keep official conflicts in a separate quarantine table and preserve both variants.
+3. Derive deterministic 5m/15m only from golden 1m after `2023-10-01`.
+4. Compare derived 15m rows with official 15m ZIP evidence and export ignored Freqtrade caches.
+5. Do not write M1D strategy code.
 
 After T0, execute `T1 -> T2 -> T3 -> T4` before M1D feasibility. T5 must
 pass before T6 fixed design, and T6 must pass before any Freqtrade strategy code.

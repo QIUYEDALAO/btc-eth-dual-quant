@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T03:50:22Z"
+last_updated_utc: "2026-07-10T03:58:41Z"
 current_phase: short-horizon data foundations
-current_status: short_horizon_t1_pass_pending_review_no_strategy_eligible_for_m2
+current_status: short_horizon_t1_complete_t2_authorized_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -58,16 +58,11 @@ completed_milestones:
     status: completed
     evidence: docs/superpowers/specs/2026-07-10-btc-eth-short-horizon-event-quant-design.md
     merged_pr: 19
-open_work:
-  - id: SHORT-HORIZON-T1-MINUTE-DATA
-    phase: T1 canonical public minute data
-    status: pass_pending_review
-    branch: codex/short-horizon-t1-minute-data
-    pr: 21
-    head_sha: 97799efe447a2485e79e176750d86d290d180cf3
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
+  - phase: T1 canonical public minute data
+    status: pass
     evidence: reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md
-    blocker: "T1 PR checks and merge required before T2 golden-data work."
+    merged_pr: 21
+open_work:
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -115,8 +110,8 @@ allowed_next_work:
   - M1C P3 failed-validation evidence merged in PR #17.
   - Do not tune or rescue M1C; do not run P4 because P3 failed.
   - T0 short-horizon product governance completed in PR #19.
-  - T1 canonical public minute-data evidence passed locally; require review, CI, and merge before T2.
-  - T2 remains blocked until T1 merges. Execute T1-T4 foundations before M1D feasibility or strategy code.
+  - T1 canonical public minute-data evidence passed and merged in PR #21.
+  - T2 golden-data and quarantine work is the only newly authorized implementation. Execute T1-T4 foundations before M1D feasibility or strategy code.
   - Use completed 15m discrete events, authoritative 1m detail, and 5m sensitivity only.
   - Holding time and trade frequency are strategy outputs; do not impose a daily trade quota.
   - Do not start M1D strategy implementation unless T5 IS-only feasibility and T6 fixed design pass.
@@ -268,11 +263,11 @@ latest_reports:
     status_marker: "M1D-15M-DISCRETE-DISLOCATION"
   - path: PROJECT_EXECUTION_CHECKLIST.md
     phase: governance
-    status: in_progress
-    status_marker: "Active task: T1 canonical minute data."
+    status: active
+    status_marker: "Next authorized task: T2 golden data and quarantine."
   - path: reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md
     phase: T1 canonical public minute data
-    status: pass_pending_review
+    status: pass
     status_marker: "- Status: pass"
   - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
     phase: post-M1B
@@ -344,6 +339,9 @@ latest_merged_prs:
   - number: 20
     title: Finalize short-horizon T0 context
     merged_at_utc: "2026-07-10T03:24:46Z"
+  - number: 21
+    title: Implement T1 canonical public minute data audit
+    merged_at_utc: "2026-07-10T03:57:53Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
