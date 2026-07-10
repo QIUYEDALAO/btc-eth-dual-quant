@@ -1,7 +1,23 @@
 # Next Action
 
-Under the Freqtrade-first architecture, the T5 metadata-only calendar precheck
-merged in PR #29 and stopped M1D before event or return analysis.
+Under the Freqtrade-first architecture, M1D remains stopped by its fixed
+calendar Gate. The separately approved next trial is
+`M1E-1H-TREND-BREAKOUT`, currently limited to product and data admission.
+
+The immediate sequence is:
+
+1. Freeze the M1E contract and sealed trial identity without defining strategy rules.
+2. Qualify official Binance spot BTC/ETH 5m, 1h, and 4h ZIP archives from
+   `2020-01-01` through the latest complete UTC month.
+3. Select the research start from the first common six-month data/liquidity
+   qualification window, without reading candidate returns.
+4. Only if data qualification passes, run the fixed 1800-full-day and
+   540-sealed-OOS-day metadata Gate.
+
+Official 1h ZIP is signal-data authority. Official 5m ZIP provides future fill
+detail and 1h aggregate parity; 4h is future regime-filter data only. Daily ZIP
+may fill missing monthly timestamps but never overwrite them. REST is evidence
+only. The monthly 1m p95 spread proxy threshold is fixed at 0.30%.
 
 T2 evidence now records:
 
@@ -27,10 +43,10 @@ The formal range has 1004 days: 702 IS days and 302 sealed OOS days. This is
 OOS, 1800 full days are required, with the earliest projected complete date
 `2028-09-03`.
 
-The next productive work is monthly public-data accrual and M0 audit diagnostics.
-A different candidate may be considered only through a separately approved
-design PR. M1D must not define event thresholds, read OOS prices or returns,
-run a candidate, or proceed to T6.
+M1E is a new trial, not a shorter M1A. The M1A SMA200 + Donchian 55/20 + ATR20
+2x rule bundle is forbidden. No alternative entry, exit, position, or risk
+parameter is selected yet. M1E must not access OOS returns, run Freqtrade
+backtesting, or add strategy code during data admission.
 
 Locked conditions: discrete completed-15m events, authoritative 1m detail, 5m
 sensitivity, `max_open_trades=1`, no fixed holding duration, no daily trade

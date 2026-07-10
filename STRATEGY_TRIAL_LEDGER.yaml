@@ -1,11 +1,17 @@
 version: 1
-updated_utc: "2026-07-10T02:46:20Z"
+updated_utc: "2026-07-11T00:00:00Z"
 hash_algorithm: sha256
 rules:
   oos_opening_increments_trial_count: true
   post_freeze_rule_change_creates_new_candidate: true
   failed_or_rejected_candidates_are_append_only: true
 candidates:
+  - id: M1E-1H-TREND-BREAKOUT
+    status: declared_unopened
+    hypothesis: "M1E-1H-TREND-BREAKOUT: BTC/USDT and ETH/USDT Binance spot, long/cash only; completed UTC 1h candles define a trend-breakout candidate family distinct from M1A; entries may execute no earlier than the next available 5m open after the completed signal candle; completed 4h candles may be used only as a regime filter; no shorting or leverage."
+    sha256: 3668032467e2f46edff7f0ab27d358d0b918889518bfaf97276699cbc783ed15
+    oos_opened: false
+    notes: "Independent trial; data qualification and calendar budget must pass before IS-only rule design. M1A rule-bundle reuse is prohibited."
   - id: M1D-15M-DISCRETE-DISLOCATION
     status: declared_unopened
     hypothesis: "M1D-15M-DISCRETE-DISLOCATION: BTC/USDT and ETH/USDT spot; completed 15m candles identify discrete large-price-dislocation events; enter no earlier than the next 15m open; 1m data is execution detail only; no shorting or leverage."

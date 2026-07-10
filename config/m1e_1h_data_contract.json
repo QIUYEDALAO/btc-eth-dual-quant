@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "candidate_id": "M1E-1H-TREND-BREAKOUT",
+  "hypothesis_sha256": "3668032467e2f46edff7f0ab27d358d0b918889518bfaf97276699cbc783ed15",
+  "market": "binance_spot",
+  "symbols": ["BTCUSDT", "ETHUSDT"],
+  "direction": "long_cash_only",
+  "leverage_allowed": false,
+  "timeframes": {
+    "signal_authority": "1h",
+    "execution_detail": "5m",
+    "regime_filter_only": "4h"
+  },
+  "range": {
+    "start": "2020-01-01",
+    "end_policy": "latest_complete_utc_month"
+  },
+  "source_precedence": [
+    "official_monthly_zip",
+    "official_daily_zip_fill_missing_only",
+    "public_rest_compare_only"
+  ],
+  "aggregation": {
+    "one_hour_child_bars": 12,
+    "four_hour_child_bars": 4,
+    "fill_or_interpolate": false
+  },
+  "liquidity": {
+    "metric": "monthly_1m_p95_spread_proxy",
+    "maximum": "0.0030",
+    "callers_may_override": false
+  },
+  "costs_per_side": {
+    "base": "0.0015",
+    "cost_x2": "0.0030",
+    "stress_a": "0.0040",
+    "stress_b": "0.0055"
+  },
+  "qualification": {
+    "states": [
+      "audit_complete",
+      "audit_complete_with_confirmed_outage",
+      "blocked"
+    ],
+    "common_consecutive_months": 6,
+    "research_start_policy": "first_day_of_month_after_common_qualified_window",
+    "confirmed_outage_requires_both_symbols": true,
+    "single_symbol_gap_blocks": true,
+    "rest_may_overwrite_zip": false,
+    "rolling_windows_rewarm_after_gap": true
+  },
+  "sample_budget": {
+    "split_is_fraction": "0.70",
+    "split_oos_fraction": "0.30",
+    "minimum_full_days": 1800,
+    "minimum_oos_days": 540,
+    "oos_opened": false
+  },
+  "m1a_non_reuse": {
+    "forbidden_rule_bundle": [
+      "SMA200",
+      "Donchian55Entry",
+      "Donchian20Exit",
+      "ATR20x2Stop"
+    ],
+    "future_rule_contract_requires_non_duplication_review": true
+  },
+  "authorization": {
+    "data_qualification": true,
+    "sample_budget_if_data_passes": true,
+    "strategy_code": false,
+    "candidate_oos_returns": false,
+    "freqtrade_backtesting": false,
+    "m2": false
+  }
+}
