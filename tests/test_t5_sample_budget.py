@@ -53,6 +53,7 @@ class CalendarBudgetTests(unittest.TestCase):
     def test_current_calendar_splits_to_1004_702_302(self) -> None:
         result = self.result()
         self.assertEqual((result.full_days, result.is_days, result.oos_days), (1004, 702, 302))
+        self.assertEqual(result.oos_start_day, date(2025, 9, 2))
         self.assertEqual(result.research_start, date(2023, 10, 1))
         self.assertEqual(result.latest_complete_day, date(2026, 6, 30))
 

@@ -891,3 +891,15 @@ private exchange responses here.
 - Result: M1E canonical data Gate is `pass`; research start is `2020-07-01`; Binance source-owner response is no longer an operational dependency.
 - Next authorization: metadata-only 1800/540-day sample-budget Gate only. No candidate evaluation, OOS returns, strategy code, backtesting, or M2.
 - Safety: No raw runtime data, API key, private payload, order, paper/live mode, or execution module was committed or used.
+
+## 2026-07-11 - M1E Metadata-Only Sample Budget Passed Locally
+
+- Date UTC: 2026-07-10T21:12:00Z
+- Task ID: M1E-SAMPLE-BUDGET
+- Phase: M1E metadata-only sample-budget review
+- Branch: `codex/m1e-1h-sample-budget`
+- PR: pending
+- Evidence: 2191 full calendar days split into 1533 IS and 658 sealed OOS days; OOS starts `2024-09-11` and exceeds the fixed 540-day minimum.
+- Status: `sample_budget_pass_design_only`; candidate evaluated `no`, OOS prices/returns accessed `no`, trial count incremented `no`.
+- Authorization: After merge, only a separately approved IS-only rule-design review may follow. Strategy code, Freqtrade backtesting, OOS opening, and M2 remain unauthorized.
+- Safety: No OHLCV data, API key, private data, order, paper/live mode, or execution module was read or used.

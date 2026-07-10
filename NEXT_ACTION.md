@@ -24,22 +24,26 @@ cross-timeframe rows and 36 stable archive hashes. It was submitted with explici
 approval and is now `submitted_awaiting_response` at issue comment 4939090508.
 Monitor the official response; do not treat submission itself as a Gate pass.
 
+The M1E metadata-only calendar Gate now passes locally: 2191 full days, 1533 IS
+days, and 658 sealed OOS days. The sealed OOS begins `2024-09-11`; no OOS
+price, signal, event, trade, or return was read.
+
 The immediate sequence is:
 
-1. Create only the metadata-only M1E 1800/540-day sample-budget Gate.
-2. Calculate the split from the qualified `2020-07-01` start through `2026-06-30` without reading prices, signals, events, or returns.
-3. Do not read OOS prices/returns, define strategy rules, or run Freqtrade backtesting.
-4. Continue Binance source-owner monitoring for provenance; do not make it an operational dependency.
+1. Review and merge the metadata-only sample-budget pass.
+2. Require separate approval before opening an IS-only rule-design PR.
+3. Keep OOS sealed and do not implement strategy code or run Freqtrade backtesting.
+4. Continue Binance source-owner monitoring for provenance only.
 
 The first six-month clean suffix after the final blocked month starts
 `2022-11-01`. It contains 1338 full days and 402 sealed-OOS days through
 2026-06-30, so it still fails the fixed 1800/540-day calendar Gate. This suffix
 is diagnostic only and must not replace the registered `2020-07-01` start.
 
-Official 1h ZIP is signal-data authority. Official 5m ZIP provides future fill
-detail and 1h aggregate parity; 4h is future regime-filter data only. Daily ZIP
-may fill missing monthly timestamps but never overwrite them. REST is evidence
-only. The monthly 1m p95 spread proxy threshold is fixed at 0.30%.
+Under ADR-0009, evidenced official 5m rows are canonical. Canonical 1h and 4h
+bars are deterministic derivatives; official higher-timeframe rows remain
+audit comparators. A future volume-based rule requires a new data contract. The
+monthly 1m p95 spread-proxy threshold remains fixed at 0.30%.
 
 T2 evidence now records:
 

@@ -1,10 +1,13 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T04:30:00Z"
-current_phase: M1E metadata-only sample-budget preparation
-current_status: m1e_data_qualified_sample_budget_authorized_no_strategy_eligible_for_m2
+last_updated_utc: "2026-07-10T21:12:00Z"
+current_phase: M1E metadata-only sample-budget review
+current_status: m1e_sample_budget_pass_is_design_only_no_strategy_eligible_for_m2
 completed_milestones:
+  - phase: M1E metadata-only sample budget
+    status: local_pass_pending_review
+    evidence: reports/m1/M1E_1H_SAMPLE_BUDGET_REPORT.md
   - phase: M1E canonical 5m requalification
     status: pass
     evidence: reports/m1/M1E_CANONICAL_5M_REQUALIFICATION_REPORT.md
@@ -99,6 +102,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: M1E-SAMPLE-BUDGET
+    phase: M1E metadata-only sample budget
+    status: local_pass_pending_pr
+    branch: codex/m1e-1h-sample-budget
+    pr: none
+    head_sha: pending
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/M1E_1H_SAMPLE_BUDGET_REPORT.md
+    blocker: "Merge and CI review required before a separately approved IS-only rule-design PR."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -141,13 +153,14 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - Review and merge the M1E metadata-only sample-budget pass; after merge, only a separately approved IS-only rule-design PR may follow.
   - M1E canonical-5m v2 passed and merged in PR #40; only the metadata-only 1800/540-day sample-budget Gate is authorized next.
   - Keep Binance source-owner monitoring as evidence follow-up, not as an operational dependency for M1E canonical OHLC.
   - Review and merge the sanitized Binance source-owner package; do not post it externally without explicit approval.
   - Review and merge the M1E source-conflict diagnostics without changing the contract.
   - Preserve the original 2020-07-01 research start and the 1800/540-day sample Gate.
   - Preserve the original ADR-0008 blocked report as historical evidence; ADR-0009 v2 supersedes only the admission decision.
-  - Do not create strategy code or access OOS returns; the next conditional stage is metadata-only sample budgeting.
+  - Do not create strategy code or access OOS returns; after sample-budget merge, only a separately approved IS-only rule-design review may follow.
   - Freqtrade-first architecture governance completed in PR #8.
   - M0 correctness hardening completed in PR #9; audit evidence remains blocked and may be investigated without private API access.
   - Freqtrade primary-framework hardening completed in PR #10.
