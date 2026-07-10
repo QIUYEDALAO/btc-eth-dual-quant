@@ -722,3 +722,18 @@ private exchange responses here.
 - Result: T4 status `pass`. T5 is authorized only for a sample-budget precheck and is currently blocked because 302 OOS days are below the fixed 540-day minimum.
 - Next action: A T5 precheck may record the fixed calendar failure and stop. Do not define candidate events, read OOS returns, implement strategy code, or proceed to T6.
 - Guardrails: No API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, execution/live, threshold changes, or candidate OOS access.
+
+## 2026-07-10 - T5 Sample-Budget Precheck Blocked Locally
+
+- Date UTC: 2026-07-10T17:25:35Z
+- Task ID: SHORT-HORIZON-T5-SAMPLE-BUDGET
+- Phase: T5 M1D sample-budget precheck
+- Branch: codex/short-horizon-t5-sample-budget-precheck
+- Commit: 69bfca351543dc443cf20cd9e5b8790a32f53f68
+- PR: #29 open
+- Inputs: Ignored T1/T2 manifest metadata and the sealed M1D trial-ledger identity only; no OHLCV row, event, signal, price, equity, or return was read.
+- Result: 1004 full days split into 702 IS and 302 sealed OOS days. The fixed 540-day OOS Gate fails by 238 days; T5 status is `blocked_insufficient_oos_calendar`.
+- Earliest resolution: 1800 full days are required; the earliest projected complete day is `2028-09-03`.
+- Trial state: candidate evaluated `no`; events selected `no`; OOS opened `no`; trial count incremented `no`; T5 feasibility analysis executed `no`.
+- Next action: Commit and merge the truthful failure record, then stop M1D. Continue monthly public-data accrual and M0 audit diagnostics without lowering the Gate.
+- Guardrails: No T6, strategy code, OOS access, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.

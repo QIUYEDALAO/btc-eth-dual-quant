@@ -37,6 +37,7 @@
 | `reports/m0/T2_GOLDEN_DATA_AND_QUARANTINE_REPORT.md` | T2 golden data and quarantine | pass | Records golden 1m hashes, deterministic 5m/15m derivatives, 66 official 15m parity checks, quarantine traceability, and pinned Freqtrade cache readability. | no |
 | `reports/m1/T3_UNIFIED_METRICS_AND_POLICY_BENCHMARK_REPORT.md` | T3 unified metrics and policy benchmark | pass | Records the single daily-MTM convention, fixed policy benchmark, PSR/DSR and diagnostics coverage, and sealed expert M1C regression. | no |
 | `reports/m1/T4_IS_ONLY_FEASIBILITY_HARNESS_REPORT.md` | T4 IS-only feasibility harness | pass | Records ledger-locked next-open event observation, fixed horizon/cost diagnostics, local golden-data structure evidence, and the 302/540-day T5 calendar blocker. No candidate or OOS return was evaluated. | no |
+| `reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md` | T5 M1D sample-budget precheck | blocked_insufficient_oos_calendar | Metadata-only precheck records 1004 full, 702 IS, and 302 sealed OOS days against the fixed 540-day minimum. No event, price, return, or candidate analysis was performed. | no |
 | `docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md` | post-M1B | accepted | No strategy is eligible for M2. | no |
 | `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md` | architecture | accepted | Freqtrade owns single-leg research; M0 and Python remain independent audit/offline accounting sidecars. | no |
 

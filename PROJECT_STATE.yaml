@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T16:20:02Z"
-current_phase: short-horizon data foundations
-current_status: short_horizon_t4_complete_t5_sample_budget_blocked_no_strategy_eligible_for_m2
+last_updated_utc: "2026-07-10T17:25:35Z"
+current_phase: short-horizon feasibility gate
+current_status: m1d_blocked_insufficient_oos_calendar_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -74,6 +74,9 @@ completed_milestones:
     status: pass
     evidence: reports/m1/T4_IS_ONLY_FEASIBILITY_HARNESS_REPORT.md
     merged_pr: 27
+  - phase: T5 M1D sample-budget precheck
+    status: blocked_insufficient_oos_calendar
+    evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
 open_work:
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
@@ -84,6 +87,15 @@ open_work:
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
     blocker: "P3 failed complete-trade, OOS Sharpe, and drawdown gates; P4 and M2 are not allowed for M1C."
+  - id: SHORT-HORIZON-T5-SAMPLE-BUDGET
+    phase: T5 M1D sample-budget precheck
+    status: blocked_pending_review
+    branch: codex/short-horizon-t5-sample-budget-precheck
+    pr: 29
+    head_sha: 69bfca351543dc443cf20cd9e5b8790a32f53f68
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
+    blocker: "The sealed OOS calendar has 302 days versus the fixed 540-day minimum; M1D stops before event or return analysis."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -126,7 +138,8 @@ allowed_next_work:
   - T2 golden-data and quarantine passed and merged in PR #23.
   - T3 unified metrics and policy benchmark passed and merged in PR #25.
   - T4 IS-only feasibility harness passed and merged in PR #27 without candidate evaluation or OOS-return access.
-  - T5 is authorized only to run the sample-budget precheck first; the current 302-day OOS calendar fails the fixed 540-day minimum and must stop without lowering the gate.
+  - "T5 metadata-only sample-budget precheck completed locally and is blocked: 302 OOS days versus the fixed 540-day minimum. Merge the truthful failure record, then stop M1D."
+  - Continue monthly public-data accrual and M0 audit diagnostics; a different candidate requires a separately approved design and may not reuse or open this sealed OOS.
   - Use completed 15m discrete events, authoritative 1m detail, and 5m sensitivity only.
   - Holding time and trade frequency are strategy outputs; do not impose a daily trade quota.
   - Do not start M1D strategy implementation unless T5 IS-only feasibility and T6 fixed design pass.
@@ -279,7 +292,7 @@ latest_reports:
   - path: PROJECT_EXECUTION_CHECKLIST.md
     phase: governance
     status: active
-    status_marker: "T5 calendar precheck currently blocked: 302 OOS days < 540 required days."
+    status_marker: "T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days."
   - path: reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md
     phase: T1 canonical public minute data
     status: pass
@@ -296,6 +309,10 @@ latest_reports:
     phase: T4 IS-only feasibility harness
     status: pass
     status_marker: "- T4 harness foundation: pass"
+  - path: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
+    phase: T5 M1D sample-budget precheck
+    status: blocked_insufficient_oos_calendar
+    status_marker: "- T5 final status: blocked_insufficient_oos_calendar"
   - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
     phase: post-M1B
     status: accepted
@@ -393,4 +410,5 @@ validation_commands:
   - bash scripts/t2_validate.sh
   - bash scripts/t3_validate.sh
   - bash scripts/t4_validate.sh
+  - bash scripts/t5_validate.sh
   - git diff --check

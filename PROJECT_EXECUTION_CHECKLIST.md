@@ -31,17 +31,17 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | T2-01 | Golden data and quarantine | completed | T1-01 completed | `codex/short-horizon-t2-golden-data` / PR #23 | Golden 1m, quarantine, 5m/15m derivatives, Freqtrade jsongz cache | Complete research range, 66 official 15m parity checks, pinned runtime readability, T2 Validate 9/0, CI and merge pass | none |
 | T3-01 | Unified metrics | completed | T2-01 completed | `codex/short-horizon-t3-unified-metrics` / PR #25 | General daily-MTM, PSR/DSR, diagnostics and policy benchmark | Sealed M1C regression, 157 tests, T3 Validate 10/0, CI and merge pass | none |
 | T4-01 | Feasibility harness | completed | T3-01 completed | `codex/short-horizon-t4-feasibility-harness` / PR #27 | IS-only event decay, fixed costs, frequency, clustering, path risk, occupancy and sample-budget tooling | 169 tests, T4 Validate 10/0, no candidate evaluation, no OOS return access, CI and merge pass | none |
-| T5-01 | M1D feasibility | blocked | T4-01 completed | future branch | M1D short-horizon feasibility report | Sample-budget precheck first, then every paper Gate | 302 OOS days < fixed 540-day minimum; earliest projected resolution 2028-09-03 |
-| T6-01 | M1D fixed design | pending | T5-01 pass | future branch | Fixed contract and hash | No TBD, optional ROI, or OOS choice | T5 must pass |
+| T5-01 | M1D feasibility | blocked | T4-01 completed | `codex/short-horizon-t5-sample-budget-precheck` / PR #29 | Metadata-only M1D sample-budget precheck | Exact manifests, sealed OOS, fixed 70/30 and 540-day Gate, no return access | 302 OOS days < fixed 540-day minimum; earliest projected resolution 2028-09-03 |
+| T6-01 | M1D fixed design | blocked | T5-01 pass | future branch | Fixed contract and hash | No TBD, optional ROI, or OOS choice | T5 failed calendar Gate; M1D stopped |
 | T7-01 | M1D Freqtrade implementation | pending | T6-01 | future branch | 15m strategy, 1m/5m research commands, tests | Behavior, timing, bias and no-live pass | T6 must pass |
 | T8-01 | M1D historical validation | pending | T7-01 | future branch | Full/OOS/cost/granularity/data-variant report | Every numerical and data Gate evaluated | T7 must pass |
 | T9-01 | M1D independent audit | pending | T8-01 pass | future branch | Timing, equity, benchmark and sensitivity audit | Evidence exact and all Gates pass | T8 must pass |
 
 ## Current Gate
 
-- Authorized work: T5 may run only its sample-budget precheck first; no candidate return analysis may follow a failed precheck.
-- Active implementation: none after T4 closeout; candidate evaluated `no`, OOS returns accessed `no`.
-- T5 calendar precheck currently blocked: 302 OOS days < 540 required days.
+- Authorized work: finish the T5 failure-record PR/CI/merge and governance closeout only.
+- Active implementation: T5 metadata-only precheck completed; candidate evaluated `no`, events selected `no`, OOS prices/returns accessed `no`.
+- T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.
 - M1A status: `failed_validation`.
