@@ -115,6 +115,7 @@ jobs:
             --start "${M1C_START_DATE}" \
             --end-exclusive "${M1C_END_EXCLUSIVE}" \
             --oos-start "${M1C_OOS_START}" \
+            --workflow-url "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
             --out reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
 
       - name: Upload sanitized M1C P3 report only

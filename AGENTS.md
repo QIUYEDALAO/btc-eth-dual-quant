@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: P3 M1C immutable historical validation in Freqtrade.
+- Current phase: P3 M1C failed-validation review.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -42,6 +42,7 @@ After any task, the agent must update:
 - P2 must prove same-open cross-pair rotation in the pinned Freqtrade runtime or stop as `blocked_framework_capability`.
 - P2 static and pinned-runtime checks passed in run 29059474678 and merged in PR #16.
 - P2 merged in PR #16. P3 must use fixed parameters and gates; any failure stops the candidate without tuning or P4.
+- M1C P3 failed fixed trade-count, OOS Sharpe, and drawdown gates in run 29060604088. PR #17 is a failure record; P4 is blocked.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.
 - Future work must be diagnostics or design review only.

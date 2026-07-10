@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import csv
 from dataclasses import dataclass
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 import hashlib
 import json
 from pathlib import Path
@@ -137,6 +137,7 @@ def build_report(
     start: date,
     end_exclusive: date,
     oos_start: date,
+    workflow_url: str = "not_recorded",
 ) -> str:
     required = {"base-full", "x2-full", "base-oos", "x2-oos", *(f"segment-{index}" for index in range(1, 5))}
     missing = sorted(required - set(runs))
@@ -186,6 +187,8 @@ def build_report(
         "# M1C BTC/ETH Rotation Backtest Report",
         "",
         f"- Status: {status}",
+        f"- Generated UTC: {datetime.now(tz=UTC).isoformat(timespec='seconds')}",
+        f"- Evidence workflow: {workflow_url}",
         "- Scope: Freqtrade historical backtest validation only",
         "- Strategy: BTCETHRelativeStrengthRotation",
         "- No live trading / no dry-run / no execution/live / no order placement",
@@ -194,9 +197,11 @@ def build_report(
         "",
         "## Data and Split",
         "",
-        f"- Full range: {start.isoformat()} through {(end_exclusive.fromordinal(end_exclusive.toordinal() - 1)).isoformat()} UTC",
-        f"- IS range: {start.isoformat()} through {(oos_start.fromordinal(oos_start.toordinal() - 1)).isoformat()} UTC",
-        f"- OOS range: {oos_start.isoformat()} through {(end_exclusive.fromordinal(end_exclusive.toordinal() - 1)).isoformat()} UTC",
+        f"- Full data range: {start.isoformat()} through {(end_exclusive - timedelta(days=1)).isoformat()} UTC",
+        f"- Effective full backtest range after startup: {base.stats.get('backtest_start')} through {base.stats.get('backtest_end')} UTC",
+        f"- IS range: {start.isoformat()} through {(oos_start - timedelta(days=1)).isoformat()} UTC",
+        f"- OOS range: {oos_start.isoformat()} through {(end_exclusive - timedelta(days=1)).isoformat()} UTC",
+        f"- Effective OOS backtest range: {base_oos.stats.get('backtest_start')} through {base_oos.stats.get('backtest_end')} UTC",
         "- OOS policy: sealed final 30% by calendar time",
         "- Data source: Freqtrade Binance public spot JSON cache",
         "",
@@ -308,6 +313,7 @@ def main() -> int:
     parser.add_argument("--end-exclusive", type=date.fromisoformat, required=True)
     parser.add_argument("--oos-start", type=date.fromisoformat, required=True)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--workflow-url", default="not_recorded")
     args = parser.parse_args()
 
     runs: dict[str, RunResult] = {}
@@ -328,6 +334,7 @@ def main() -> int:
         args.start,
         args.end_exclusive,
         args.oos_start,
+        args.workflow_url,
     )
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(report, encoding="utf-8")
