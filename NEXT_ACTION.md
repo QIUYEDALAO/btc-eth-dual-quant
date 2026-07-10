@@ -1,8 +1,8 @@
 # Next Action
 
-Under the Freqtrade-first architecture, T3 unified metrics passed and merged in
-PR #25. T4 IS-only feasibility harness is now the only newly authorized
-implementation and must start on a new branch. This closeout does not start T4.
+Under the Freqtrade-first architecture, T4 IS-only feasibility tooling has
+passed locally on `codex/short-horizon-t4-feasibility-harness`. The immediate
+work is limited to PR review, CI, squash merge, and governance closeout.
 
 T2 evidence now records:
 
@@ -17,10 +17,16 @@ the fixed 25% BTC + 25% ETH + 50% cash benchmark, Freqtrade completed-trade
 audit adaptation, and sealed M1C regression. It reproduces Base Sharpe 0.7882,
 MaxDD 23.4729%, PSR 0.9024 and Cost x2 Sharpe 0.7528, MaxDD 24.4688%, PSR 0.8920.
 
-After T0, execute `T1 -> T2 -> T3 -> T4` before M1D feasibility. T4 must
-provide reusable IS-only event-decay, cost, frequency, clustering, adverse-path,
-duration, occupancy, and sample-budget tooling without exposing candidate OOS. T5 must
-pass before T6 fixed design, and T6 must pass before any Freqtrade strategy code.
+T4 now provides ledger-locked event observations, next-open semantics, fixed
+1/2/4/8/12/24-bar horizons, four immutable cost scenarios, decay, clustering,
+path-risk, occupancy, and sample-budget diagnostics. It evaluated no candidate,
+selected no events, and accessed no OOS returns.
+
+After T4 merges, T5 is authorized only to execute the sample-budget precheck
+first. The formal range has 1004 days and its last 30% contains 302 days, below
+the fixed 540-day OOS minimum by 238 days. Therefore T5 must stop at that Gate;
+the threshold must not be lowered. At 30% OOS, 1800 full days are required,
+with the earliest projected complete date `2028-09-03`.
 
 Locked conditions: discrete completed-15m events, authoritative 1m detail, 5m
 sensitivity, `max_open_trades=1`, no fixed holding duration, no daily trade

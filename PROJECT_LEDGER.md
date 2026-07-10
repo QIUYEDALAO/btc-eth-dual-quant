@@ -692,3 +692,19 @@ private exchange responses here.
 - Completed: Unified daily-MTM metrics, audit trade adaptation, fixed policy benchmark, PSR/DSR, diagnostics, sealed expert regression, tests, report Gate, and CI.
 - Result: T3 status `pass`; all PR checks passed. T4 IS-only feasibility harness is the next authorized task, but is not started by this closeout.
 - Guardrails: No M1D feasibility run or strategy code, no candidate OOS, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
+
+## 2026-07-10 - T4 IS-Only Feasibility Harness Passed Locally
+
+- Date UTC: 2026-07-10T16:12:00Z
+- Task ID: SHORT-HORIZON-T4-FEASIBILITY-HARNESS
+- Phase: T4 IS-only feasibility harness
+- Branch: codex/short-horizon-t4-feasibility-harness
+- Commit: c24144e5dac5a3a496558ef0f5927fe74756e83a
+- PR: #27 open
+- Completed: Ledger-locked event references, next-15m-open observation, fixed 1/2/4/8/12/24-bar horizons, four fixed cost scenarios, MAE/MFE, decay, frequency, clustering, path-risk, occupancy, right-censor and sample-budget diagnostics.
+- Local evidence: Ignored T2 golden 15m structure smoke passed for BTCUSDT and ETHUSDT with 96,384 rows each and deterministic hashes; no events were selected and no candidate return was computed.
+- Validation: 169 repository tests passed; T4 Validate `PASS=10 FAIL=0`; ledger, secret, no-trading, execution/live, artifact, and diff checks passed.
+- Scope result: T4 tooling foundation `pass`; candidate evaluated `no`; OOS returns accessed `no`; M1D strategy code remains unauthorized.
+- Calendar blocker: The formal 1004-day range provides 302 OOS days, below the fixed 540-day minimum by 238 days. T5 must run this precheck first and stop; earliest projected resolution is `2028-09-03`.
+- Next action: Commit, open the T4 PR, require clean CI, squash merge, and complete governance closeout. Do not define or run an M1D event candidate.
+- Guardrails: No strategy returns, OOS opening, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
