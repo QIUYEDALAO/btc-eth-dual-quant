@@ -53,6 +53,10 @@ def write_run(root: Path, label: str, run_stats: dict) -> Path:
     with ZipFile(directory / f"{label}.zip", "w", ZIP_DEFLATED) as archive:
         archive.writestr(f"{label}.json", json.dumps(payload))
         archive.writestr(f"{label}_config.json", "{}")
+    (directory / f"{label}.meta.json").write_text(
+        json.dumps({"BTCETHRelativeStrengthRotation": {"notes": f"m1c-p3:{label}"}}),
+        encoding="utf-8",
+    )
     return directory
 
 

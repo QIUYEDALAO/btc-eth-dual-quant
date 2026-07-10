@@ -40,9 +40,18 @@ class DataProfile:
 
 
 def load_run(label: str, directory: Path) -> RunResult:
-    archives = sorted(directory.glob(f"*{label}*.zip"), key=lambda path: path.stat().st_mtime)
+    archives = []
+    for archive in directory.glob("*.zip"):
+        metadata_path = archive.with_suffix(".meta.json")
+        if not metadata_path.is_file():
+            continue
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        notes = metadata.get(STRATEGY, {}).get("notes")
+        if notes == f"m1c-p3:{label}":
+            archives.append(archive)
+    archives.sort(key=lambda path: path.stat().st_mtime)
     if len(archives) != 1:
-        raise ValueError(f"{label}: expected one matching Freqtrade archive, found {len(archives)}")
+        raise ValueError(f"{label}: expected one note-matched Freqtrade archive, found {len(archives)}")
     archive_path = archives[0]
     with ZipFile(archive_path) as archive:
         candidates = [

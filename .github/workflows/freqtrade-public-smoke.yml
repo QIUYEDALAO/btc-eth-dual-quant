@@ -79,7 +79,7 @@ jobs:
             local fee="$3"
             FT_TIMERANGE="${timerange}" FT_FEE="${fee}" bash scripts/ft_backtest_m1c.sh \
               --export trades \
-              --export-filename "user_data/backtest_results/p3-${label}.json"
+              --notes "m1c-p3:${label}"
           }
           run_backtest base-full "${M1C_FULL_RANGE}" 0.0015
           run_backtest x2-full "${M1C_FULL_RANGE}" 0.0030
