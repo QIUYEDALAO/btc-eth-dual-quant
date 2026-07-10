@@ -552,3 +552,16 @@ private exchange responses here.
 - Result: `failed_validation`. M1C is not eligible for P4 or M2 and must not be tuned or rescued.
 - Next action: Merge PR #17 as truthful evidence, then stop this candidate. A future candidate requires a new approved P1 design.
 - Guardrails: No API keys, private smoke, M2, P4, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - M1C Rotation P3 Failed Validation Merged
+
+- Date UTC: 2026-07-10T00:50:37Z
+- Task ID: M1C-P3-FAILED-VALIDATION-MERGED
+- Phase: post-M1C review
+- Branch: main
+- Commit: bccb01c8d50733a0aaa5637c4ff4da55c5f7e418
+- PR: #17 merged
+- Completed: Immutable Freqtrade matrix, sanitized numerical report, truthful Gate failures, CI, and no-rescue decision were squash merged.
+- Result: M1C remains `failed_validation`. P4 was not started because its P3 dependency failed. No strategy is eligible for M2.
+- Next action: No active implementation. Future work requires a new approved P1 design or M0 audit diagnostics.
+- Guardrails: No API keys, private smoke, M2, P4 for M1C, dry-run, live trading, orders, simulated matching, or execution/live.

@@ -7,9 +7,9 @@ Implement the approved Freqtrade-first hardening sequence:
 3. Pin and validate Freqtrade as the primary research framework: completed in PR #10.
 4. Revalidate M1B with strict 1-hour event-time semantics: completed in PR #11; result remains `failed_validation`.
 
-P0 completed in PR #14, P1 design_pass in PR #15, and P2 implementation in PR #16. M1C P3 completed in Freqtrade Public Smoke run 29060604088 with `failed_validation`. Immediate action: review and merge PR #17 as a truthful failure record.
+P0 completed in PR #14, P1 design_pass in PR #15, P2 implementation in PR #16, and M1C P3 failed-validation evidence in PR #17. The candidate is closed. There is no active implementation task and P4 is blocked.
 
-M1C failed complete-trade count (31 < 80), OOS complete-trade count (15 < 20), OOS Sharpe (0.1146 < 1.0), and maximum drawdown (16.65% > 15%). Do not tune or rescue it. P4 is blocked because P3 did not pass. Any future candidate must start from a separately approved P1 design. P5-P8 remain `not_authorized`.
+M1C failed complete-trade count (31 < 80), OOS complete-trade count (15 < 20), OOS Sharpe (0.1146 < 1.0), and maximum drawdown (16.65% > 15%). Do not tune or rescue it. P4 is blocked because P3 did not pass. Any future work requires a separately approved new P1 candidate design or M0 audit diagnostics. P5-P8 remain `not_authorized`.
 
 M0 monitoring continues independently. PR #13 merged as truthful blocked evidence: official futures REST connectivity is complete, but historical spot/UM source differences and missing `2026-06-29` daily reference-price archives keep audit revalidation blocked. Do not weaken the data gate to accelerate strategy work.
 

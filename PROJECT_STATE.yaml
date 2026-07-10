@@ -1,8 +1,8 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T00:46:33Z"
-current_phase: P3 M1C failed-validation review
+last_updated_utc: "2026-07-10T00:51:24Z"
+current_phase: post-M1C review
 current_status: m1c_rotation_failed_validation_no_p4_no_m2
 completed_milestones:
   - phase: M0 data engineering
@@ -52,16 +52,15 @@ completed_milestones:
     evidence: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
     pr: 17
 open_work:
-  - id: M1C-P3-VALIDATION
-    phase: P3 M1C historical validation
-    status: failed_validation_pending_merge
-    branch: codex/m1c-btc-eth-rotation-backtest
-    pr: 17
-    head_sha: 45f8b86319a0c5c7b63110b989e0b14d6f86691e
-    design: docs/superpowers/specs/2026-07-10-m1c-btc-eth-rotation-design.md
+  - id: M1C-P4-AUDIT
+    phase: P4 M1C independent audit
+    status: blocked
+    branch: not_created
+    pr: none
+    head_sha: bccb01c8d50733a0aaa5637c4ff4da55c5f7e418
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
-    blocker: "PR #17 must record and merge the truthful failed-validation result. P4 and M2 are blocked by failed numerical gates."
+    blocker: "P3 failed complete-trade, OOS Sharpe, and drawdown gates; P4 and M2 are not allowed for M1C."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -93,7 +92,7 @@ allowed_next_work:
   - P0 governance completed in PR #14.
   - P1 M1C fixed design completed in PR #15.
   - P2 M1C implementation completed in PR #16 with pinned runtime checks passing.
-  - Review and merge the truthful M1C P3 failed-validation evidence in PR #17.
+  - M1C P3 failed-validation evidence merged in PR #17.
   - Do not tune or rescue M1C; do not run P4 because P3 failed.
   - Any future candidate requires a separately approved P1 design.
   - P1-P4 are authorized sequentially; P5-P8 remain not_authorized.
@@ -215,8 +214,8 @@ latest_reports:
     status_marker: "Status: failed_validation"
   - path: PROJECT_EXECUTION_CHECKLIST.md
     phase: governance
-    status: in_progress
-    status_marker: "Active task: P3-03"
+    status: completed_with_p3_failure
+    status_marker: "Active task: none"
   - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
     phase: post-M1B
     status: accepted
@@ -278,6 +277,9 @@ latest_merged_prs:
   - number: 16
     title: Implement M1C BTC ETH rotation validation
     merged_at_utc: "2026-07-10T00:19:23Z"
+  - number: 17
+    title: Validate M1C BTC ETH rotation history
+    merged_at_utc: "2026-07-10T00:50:37Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
