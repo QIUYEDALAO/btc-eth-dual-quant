@@ -40,9 +40,9 @@ class DataProfile:
 
 
 def load_run(label: str, directory: Path) -> RunResult:
-    archives = sorted(directory.glob("*.zip"), key=lambda path: path.stat().st_mtime)
+    archives = sorted(directory.glob(f"*{label}*.zip"), key=lambda path: path.stat().st_mtime)
     if len(archives) != 1:
-        raise ValueError(f"{label}: expected one Freqtrade archive, found {len(archives)}")
+        raise ValueError(f"{label}: expected one matching Freqtrade archive, found {len(archives)}")
     archive_path = archives[0]
     with ZipFile(archive_path) as archive:
         candidates = [

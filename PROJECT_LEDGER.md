@@ -530,6 +530,7 @@ private exchange responses here.
 - PR: pending
 - Commit: pending
 - Scope: Freqtrade full history, sealed last-30% OOS, four fixed IS segments, base and cost-x2, concentration, lookahead, recursive, and data-gap evidence.
+- Runtime attempt: GitHub run 29060046050 downloaded the complete public range and calculated the first full backtest, but Freqtrade could not create a nonexistent export subdirectory. No numerical Gate result was claimed. The retry uses unique export filename prefixes in the existing ignored result directory; ranges and thresholds are unchanged.
 - Decision: Any failed Gate records `failed_validation` and stops the candidate; no parameter tuning or P4 follows a failure.
 - Next action: Generate the numerical report from Freqtrade public-data exports.
 - Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.

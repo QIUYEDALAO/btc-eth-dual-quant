@@ -79,7 +79,7 @@ jobs:
             local fee="$3"
             FT_TIMERANGE="${timerange}" FT_FEE="${fee}" bash scripts/ft_backtest_m1c.sh \
               --export trades \
-              --backtest-directory "user_data/backtest_results/p3/${label}"
+              --export-filename "user_data/backtest_results/p3-${label}.json"
           }
           run_backtest base-full "${M1C_FULL_RANGE}" 0.0015
           run_backtest x2-full "${M1C_FULL_RANGE}" 0.0030
@@ -101,14 +101,14 @@ jobs:
       - name: Generate sanitized M1C P3 report
         run: |
           python scripts/m1c_p3_report.py \
-            --run base-full=freqtrade_lab/user_data/backtest_results/p3/base-full \
-            --run x2-full=freqtrade_lab/user_data/backtest_results/p3/x2-full \
-            --run base-oos=freqtrade_lab/user_data/backtest_results/p3/base-oos \
-            --run x2-oos=freqtrade_lab/user_data/backtest_results/p3/x2-oos \
-            --run segment-1=freqtrade_lab/user_data/backtest_results/p3/segment-1 \
-            --run segment-2=freqtrade_lab/user_data/backtest_results/p3/segment-2 \
-            --run segment-3=freqtrade_lab/user_data/backtest_results/p3/segment-3 \
-            --run segment-4=freqtrade_lab/user_data/backtest_results/p3/segment-4 \
+            --run base-full=freqtrade_lab/user_data/backtest_results \
+            --run x2-full=freqtrade_lab/user_data/backtest_results \
+            --run base-oos=freqtrade_lab/user_data/backtest_results \
+            --run x2-oos=freqtrade_lab/user_data/backtest_results \
+            --run segment-1=freqtrade_lab/user_data/backtest_results \
+            --run segment-2=freqtrade_lab/user_data/backtest_results \
+            --run segment-3=freqtrade_lab/user_data/backtest_results \
+            --run segment-4=freqtrade_lab/user_data/backtest_results \
             --data-dir freqtrade_lab/user_data/data/binance \
             --lookahead-csv freqtrade_lab/user_data/backtest_results/p3-lookahead.csv \
             --recursive-log "${RUNNER_TEMP}/m1c-p3-recursive.log" \
