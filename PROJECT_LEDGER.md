@@ -581,3 +581,17 @@ private exchange responses here.
 - Decision: Discrete completed-15m events only; 1m is authoritative detail, 5m is sensitivity, holding/frequency are strategy outputs, and daily-MTM MaxDD remains 15%.
 - Next action: Require clean PR #19 CI and merge T0 before T1.
 - Guardrails: No API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, execution/live, OOS tuning, raw commits, or runtime artifacts.
+
+## 2026-07-10 - Short-Horizon Product Governance Merged
+
+- Date UTC: 2026-07-10T03:19:29Z
+- Task ID: SHORT-HORIZON-T0-MERGED
+- Phase: short-horizon product governance
+- Branch: main
+- Commit: 82d4718efb3f15fb851ab93c16a74c099270e1e8
+- PR: #19 merged
+- Completed: The approved product specification, ADR-0007, T0-T9 plan, expert recomputation evidence, immutable strategy trial ledger, and automated ledger validator were squash merged.
+- Validation: All PR #19 M0, M1A, M1B, M1C, M1F, and Project Validate checks passed. Local validation recorded 124 tests and Project Validate PASS=8 FAIL=0.
+- Decision: T0 is complete. T1 canonical public spot 1m data work is the next authorized task; T2-T9 remain dependency-gated and no M1D strategy code is authorized.
+- Not completed: T1 minute data, golden derivatives, unified metrics, M1D feasibility, strategy implementation, historical validation, independent audit, M2, dry-run, live, or API trading.
+- Guardrails: No API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, execution/live, OOS tuning, raw commits, or runtime artifacts.

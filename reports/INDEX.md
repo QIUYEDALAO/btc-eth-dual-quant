@@ -28,11 +28,11 @@
 | `reports/expert/2026-07-10-FABLE5-EXPERT-REVIEW.md` | post-M1C expert review | expert_review_complete | Reproduces Freqtrade risk fields, corrects M1C daily-MTM Sharpe/MaxDD/PSR, and keeps every failed decision frozen. | no |
 | `reports/expert/m1c_recompute.py` | post-M1C expert review | deterministic_recompute_evidence | Standalone numpy recompute and integrity assertions for the expert review. | no |
 | `reports/expert/m1c_oos_daily_equity.csv` | post-M1C expert review | deterministic_recompute_evidence | Auditable OOS daily-MTM Base and Cost x2 equity series. | no |
-| `docs/superpowers/specs/2026-07-10-btc-eth-short-horizon-event-quant-design.md` | short-horizon governance | approved_pending_merge | Locks discrete 15m events, 1m detail, unified metrics, data authority, benchmark, and risk Gates. | no |
-| `docs/superpowers/plans/2026-07-10-btc-eth-short-horizon-event-quant-implementation-plan.md` | short-horizon governance | approved_pending_merge | Defines dependency-ordered T0-T9 implementation and failure stops. | no |
-| `docs/decisions/ADR-0007-btc-eth-short-horizon-product-conditions.md` | short-horizon governance | accepted_pending_merge | Records the capital-owner-approved product conditions and keeps automation prohibited. | no |
+| `docs/superpowers/specs/2026-07-10-btc-eth-short-horizon-event-quant-design.md` | short-horizon governance | approved | Locks discrete 15m events, 1m detail, unified metrics, data authority, benchmark, and risk Gates. | no |
+| `docs/superpowers/plans/2026-07-10-btc-eth-short-horizon-event-quant-implementation-plan.md` | short-horizon governance | approved | Defines dependency-ordered T0-T9 implementation and failure stops. | no |
+| `docs/decisions/ADR-0007-btc-eth-short-horizon-product-conditions.md` | short-horizon governance | accepted | Records the capital-owner-approved product conditions and keeps automation prohibited. | no |
 | `STRATEGY_TRIAL_LEDGER.yaml` | research governance | initialized | Stores exact hypotheses, hashes, OOS-open state, and append-only trial rules. | no |
-| `PROJECT_EXECUTION_CHECKLIST.md` | governance | in_progress | Canonical dependency-ordered task status for P0-P8; P5-P8 remain not authorized. | no |
+| `PROJECT_EXECUTION_CHECKLIST.md` | governance | active | T0 is complete; T1 is the next authorized task while later work remains dependency-gated. | no |
 | `docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md` | post-M1B | accepted | No strategy is eligible for M2. | no |
 | `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md` | architecture | accepted | Freqtrade owns single-leg research; M0 and Python remain independent audit/offline accounting sidecars. | no |
 

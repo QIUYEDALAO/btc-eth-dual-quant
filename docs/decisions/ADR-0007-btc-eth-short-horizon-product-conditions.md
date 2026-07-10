@@ -1,6 +1,6 @@
 # ADR-0007 BTC/ETH Short-Horizon Product Conditions
 
-- Status: Accepted by capital owner; pending governance merge
+- Status: Accepted
 - Date: 2026-07-10
 
 ## Context
