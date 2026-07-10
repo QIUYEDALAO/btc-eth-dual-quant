@@ -9,7 +9,7 @@ Field-level source diagnostics now confirm 30 reproducible conflict rows. All
 REST supports the daily archive in 16 December 2020 conflicts, the published
 higher timeframe in 10 rows, the child aggregation in 2 rows, and a third
 version in 2 rows. No evidence path makes the official sources arithmetically
-consistent under ADR-0008.
+consistent under ADR-0008. This diagnostic record merged in PR #35.
 
 The immediate sequence is:
 
