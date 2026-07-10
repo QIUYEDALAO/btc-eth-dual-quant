@@ -1,12 +1,12 @@
 # Next Action
 
-T0 of the approved Freqtrade-first BTC/ETH short-horizon event product merged in
-PR #19. Start T1 on a new branch:
+Under the Freqtrade-first architecture, T1 canonical public minute-data evidence
+is complete locally. Finish T1:
 
-1. Build the canonical BTC/ETH public spot 1m archive from official monthly ZIPs.
-2. Fill missing rows only from official daily ZIPs, with sampled REST snapshots as a final fallback.
-3. Record hashes, completeness, gaps, conflict/quarantine rows, and the preregistered research start.
-4. Derive 5m/15m only after T1 evidence passes; do not write M1D strategy code.
+1. Review `reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md` and its fixed `2023-10-01` research start.
+2. Require T1 local validation and GitHub Actions to pass.
+3. Merge the T1 PR before starting T2 golden data and quarantine.
+4. Do not derive 5m/15m or write M1D strategy code on the T1 branch.
 
 After T0, execute `T1 -> T2 -> T3 -> T4` before M1D feasibility. T5 must
 pass before T6 fixed design, and T6 must pass before any Freqtrade strategy code.

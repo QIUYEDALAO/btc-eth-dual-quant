@@ -119,7 +119,7 @@ def main() -> int:
     }
     if len(merged_numbers) != len(merged_prs):
         failures.append("PROJECT_STATE.yaml latest_merged_prs contains invalid or duplicate PR numbers")
-    for required_pr in (6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 19):
+    for required_pr in (6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 19, 20):
         if required_pr not in merged_numbers:
             failures.append(f"PROJECT_STATE.yaml latest_merged_prs missing PR #{required_pr}")
 
@@ -202,6 +202,7 @@ def main() -> int:
         or "m1c_rotation_failed_validation_no_p4_no_m2" in current_status
         or "short_horizon_product_t0_in_progress_no_strategy_eligible_for_m2" in current_status
         or "short_horizon_t0_complete_t1_authorized_no_strategy_eligible_for_m2" in current_status
+        or "short_horizon_t1_pass_pending_review_no_strategy_eligible_for_m2" in current_status
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "m2" not in current_status and "m1b" not in current_status:
