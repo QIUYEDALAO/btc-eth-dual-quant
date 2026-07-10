@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T00:03:50Z"
+last_updated_utc: "2026-07-10T00:16:26Z"
 current_phase: P2 M1C Freqtrade implementation
-current_status: m1c_rotation_implementation_in_progress_no_m2
+current_status: m1c_rotation_p2_pass_pending_merge_no_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -46,13 +46,14 @@ completed_milestones:
 open_work:
   - id: M1C-P2-IMPLEMENTATION
     phase: P2 M1C Freqtrade implementation
-    status: implementation_in_progress
+    status: pass_pending_merge
     branch: codex/m1c-btc-eth-rotation-validation
     pr: 16
-    head_sha: 89271afeda71284487623e37bcde1b229251b84a
+    head_sha: e5989a23b6de102e43c426afb10e6646d14712e5
     design: docs/superpowers/specs/2026-07-10-m1c-btc-eth-rotation-design.md
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    blocker: "Pinned Freqtrade runtime must confirm same-open rotation, lookahead analysis, and recursive analysis before P2 can pass."
+    evidence: reports/m1/M1C_IMPLEMENTATION_STATUS.md
+    blocker: "PR #16 checks and merge must complete before P3 historical validation starts."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -194,6 +195,10 @@ latest_reports:
     phase: M1C P1
     status: design_pass
     status_marker: "Status: design_pass"
+  - path: reports/m1/M1C_IMPLEMENTATION_STATUS.md
+    phase: M1C P2
+    status: pass_pending_merge
+    status_marker: "P2 status: pass_pending_merge"
   - path: PROJECT_EXECUTION_CHECKLIST.md
     phase: governance
     status: in_progress

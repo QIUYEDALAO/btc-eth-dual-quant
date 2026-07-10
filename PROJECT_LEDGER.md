@@ -492,3 +492,18 @@ private exchange responses here.
 - Blocker: Same-open cross-pair rotation, lookahead-analysis, and recursive-analysis must pass in the pinned Freqtrade 2026.6 runtime.
 - Decision: Runtime disagreement becomes `blocked_framework_capability`; no parallel single-leg engine is allowed.
 - Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - M1C Rotation P2 Runtime Gate Passed
+
+- Date UTC: 2026-07-10T00:16:26Z
+- Task ID: M1C-P2-RUNTIME-PASS
+- Phase: P2 M1C Freqtrade implementation
+- Branch: codex/m1c-btc-eth-rotation-validation
+- PR: #16 open
+- Commit: e5989a23b6de102e43c426afb10e6646d14712e5
+- Workflow: Freqtrade Public Smoke run 29059474678
+- Completed: Official pinned Freqtrade 2026.6 image, public spot data download, M1C backtest, same-open rotation check, one-position check, Monday-open check, lookahead-analysis, recursive-analysis, and artifact boundary.
+- Validation: lookahead checked 20 signals with zero biased entries/exits; recursive analysis reported zero indicator variance and no indicator lookahead; runtime evidence parser passed.
+- Result: P2 implementation Gate passed pending PR checks and merge. This is not a performance or trading approval.
+- Next action: Merge PR #16 after all checks pass, then start P3 immutable historical validation.
+- Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.

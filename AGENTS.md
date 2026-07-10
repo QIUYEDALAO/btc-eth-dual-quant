@@ -40,6 +40,7 @@ After any task, the agent must update:
 - The approved P0-P8 roadmap is canonical; execute `PROJECT_EXECUTION_CHECKLIST.md` strictly in dependency order.
 - P0 governance merged in PR #14. P1 design_pass merged in PR #15. P2 may implement only the fixed M1C Freqtrade strategy and independent timestamp checks.
 - P2 must prove same-open cross-pair rotation in the pinned Freqtrade runtime or stop as `blocked_framework_capability`.
+- P2 static and pinned-runtime checks passed in run 29059474678; PR #16 must merge before P3 starts.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.
 - Future work must be diagnostics or design review only.
