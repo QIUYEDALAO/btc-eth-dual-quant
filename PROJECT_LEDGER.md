@@ -795,3 +795,18 @@ private exchange responses here.
 - Result: Data tooling and public evidence completed, but M1E remains blocked by six official OHLCV aggregate/source-conflict months after its fixed research start.
 - Decision: Do not create PR3 sample budget, strategy rules, Freqtrade backtesting, or M2 work. Source diagnostics may continue without weakening the contract.
 - Guardrails: No API keys, private smoke, dry-run, live, orders, cancellation, simulated matching, or execution/live.
+
+## 2026-07-11 - M1E Official Source Conflict Diagnostics Completed Locally
+
+- Date UTC: 2026-07-10T19:23:51Z
+- Task ID: M1E-OFFICIAL-SOURCE-CONFLICT-DIAGNOSTICS
+- Phase: M1E official source conflict diagnostics
+- Branch: codex/m1e-official-source-conflict-diagnostics
+- PR: pending
+- Evidence: 36/36 affected monthly ZIP hashes were unchanged on fresh download; 30 field-level conflict rows were compared with current public REST.
+- Classification: 16 monthly/daily conflicts where REST supports daily; 10 higher-timeframe flow revisions confirmed by REST; 2 child aggregates confirmed by REST; 2 unresolved third-version flow revisions.
+- Result: Every conflict remains contract-blocking. Source precedence and numeric tolerances were not changed.
+- Diagnostic suffix: The first six-month clean suffix starts 2022-11-01 but has only 1338 full and 402 sealed-OOS days through 2026-06-30, below 1800/540.
+- Trial state: candidate evaluated `no`; candidate OOS returns accessed `no`; strategy code and PR3 remain unauthorized.
+- Next action: Validate and merge the diagnostic record. Do not create strategy, sample-budget, backtest, or M2 work.
+- Guardrails: No API keys, private smoke, dry-run, live, orders, cancellation, simulated matching, or execution/live.
