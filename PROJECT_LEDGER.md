@@ -507,3 +507,29 @@ private exchange responses here.
 - Result: P2 implementation Gate passed pending PR checks and merge. This is not a performance or trading approval.
 - Next action: Merge PR #16 after all checks pass, then start P3 immutable historical validation.
 - Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - M1C Rotation P2 Merged
+
+- Date UTC: 2026-07-10T00:19:23Z
+- Task ID: M1C-P2-MERGED
+- Phase: P2 M1C Freqtrade implementation
+- Branch: main
+- Commit: 1564df8c22e717d850091a2e6ade3e1f2aa0e1e2
+- PR: #16 merged
+- Completed: Fixed Freqtrade strategy, public research config and commands, independent event-time checks, runtime output validator, public runtime evidence, and implementation status report.
+- Result: P2 passed. This permits immutable P3 historical validation only.
+- Next action: Run P3 without changing strategy parameters or gates.
+- Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - M1C Rotation P3 Validation Started
+
+- Date UTC: 2026-07-10T00:20:41Z
+- Task ID: M1C-P3-VALIDATION
+- Phase: P3 M1C historical validation
+- Branch: codex/m1c-btc-eth-rotation-backtest
+- PR: pending
+- Commit: pending
+- Scope: Freqtrade full history, sealed last-30% OOS, four fixed IS segments, base and cost-x2, concentration, lookahead, recursive, and data-gap evidence.
+- Decision: Any failed Gate records `failed_validation` and stops the candidate; no parameter tuning or P4 follows a failure.
+- Next action: Generate the numerical report from Freqtrade public-data exports.
+- Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.

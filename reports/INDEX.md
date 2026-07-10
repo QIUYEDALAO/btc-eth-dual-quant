@@ -23,7 +23,7 @@
 | `docs/superpowers/plans/2026-07-10-quant-system-end-to-end-implementation-plan.md` | governance | approved | Defines sequential branches, deliverables, validation, and rollback for P0-P8. | no |
 | `docs/superpowers/specs/2026-07-10-m1c-btc-eth-rotation-design.md` | M1C P1 | design_pass | Fixes the BTC/ETH/cash rotation rules, time semantics, capital limits, numerical gates, and framework-failure behavior. | no |
 | `reports/m1/M1C_FREQTRADE_CAPABILITY_REVIEW.md` | M1C P1 | design_pass | Pinned Freqtrade source supports informative-pair ranking, next-open signals, one slot, and same-open different-pair rotation; P2 runtime confirmation remains mandatory. | no |
-| `reports/m1/M1C_IMPLEMENTATION_STATUS.md` | M1C P2 | pass_pending_merge | Fixed Freqtrade strategy, guarded research commands, UTC timing checks, same-open runtime fixture, lookahead, and recursive analysis passed; performance is not evaluated here. | no |
+| `reports/m1/M1C_IMPLEMENTATION_STATUS.md` | M1C P2 | pass | Fixed Freqtrade strategy, guarded research commands, UTC timing checks, same-open runtime fixture, lookahead, and recursive analysis passed; performance is not evaluated here. | no |
 | `PROJECT_EXECUTION_CHECKLIST.md` | governance | in_progress | Canonical dependency-ordered task status for P0-P8; P5-P8 remain not authorized. | no |
 | `docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md` | post-M1B | accepted | No strategy is eligible for M2. | no |
 | `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md` | architecture | accepted | Freqtrade owns single-leg research; M0 and Python remain independent audit/offline accounting sidecars. | no |

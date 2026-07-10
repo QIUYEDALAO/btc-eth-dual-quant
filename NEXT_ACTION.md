@@ -7,9 +7,9 @@ Implement the approved Freqtrade-first hardening sequence:
 3. Pin and validate Freqtrade as the primary research framework: completed in PR #10.
 4. Revalidate M1B with strict 1-hour event-time semantics: completed in PR #11; result remains `failed_validation`.
 
-P0 completed in PR #14 and P1 design_pass completed in PR #15. P2 static validation and pinned Freqtrade runtime run 29059474678 passed. Immediate action: wait for PR #16 checks and merge `codex/m1c-btc-eth-rotation-validation`; do not start P3 before merge.
+P0 completed in PR #14, P1 design_pass in PR #15, and P2 implementation in PR #16. P2 static validation and pinned Freqtrade runtime run 29059474678 passed. Immediate action: run immutable P3 full-history validation on `codex/m1c-btc-eth-rotation-backtest`.
 
-P2's hard Gate passed: old-pair exit and new-pair entry shared the same next-open timestamp, and public-data backtest, lookahead-analysis, and recursive-analysis passed. After PR #16 merges, run P3 with the immutable rules and gates; do not tune based on results. P4 may proceed only after P3 completes. P5-P8 remain `not_authorized`.
+P3 must evaluate base and cost-x2 full/OOS returns, complete trade counts, OOS Sharpe, maximum drawdown, delete-best-three concentration, four fixed IS segments, lookahead, recursive analysis, and unexplained daily gaps. Any failure becomes `failed_validation` and stops this candidate without parameter rescue. P4 may run only if all P3 gates pass. P5-P8 remain `not_authorized`.
 
 M0 monitoring continues independently. PR #13 merged as truthful blocked evidence: official futures REST connectivity is complete, but historical spot/UM source differences and missing `2026-06-29` daily reference-price archives keep audit revalidation blocked. Do not weaken the data gate to accelerate strategy work.
 

@@ -1,6 +1,6 @@
 # M1C Implementation Status
 
-- P2 status: pass_pending_merge
+- P2 status: pass
 - Scope: fixed BTC/ETH/cash Freqtrade strategy implementation and time semantics
 - Strategy performance approved: no
 - M2 approved: no
@@ -38,7 +38,7 @@
 
 ## Decision
 
-P2 implementation and framework capability checks pass. This status permits P3
-historical performance validation only after PR #16 merges. It does not approve
+P2 implementation and framework capability checks passed and PR #16 merged.
+This status permits P3 historical performance validation. It does not approve
 strategy performance, M2, dry-run, live trading, order operations, API trading
 permissions, or an execution module.

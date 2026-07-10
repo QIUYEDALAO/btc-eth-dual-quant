@@ -58,6 +58,72 @@ jobs:
             --lookahead-csv freqtrade_lab/user_data/backtest_results/m1c-lookahead.csv \
             --recursive-log "${RUNNER_TEMP}/m1c-recursive.log"
 
+      - name: Freeze M1C P3 ranges
+        run: |
+          python scripts/m1c_p3_ranges.py \
+            --start 2017-08-17 \
+            --end-exclusive "$(date -u +%F)" \
+            --github-env "${GITHUB_ENV}"
+
+      - name: Complete M1C public history
+        run: |
+          cd freqtrade_lab
+          FT_TIMERANGE="${M1C_FULL_RANGE}" bash scripts/ft_download_m1c.sh
+
+      - name: Run immutable M1C P3 matrix
+        run: |
+          cd freqtrade_lab
+          run_backtest() {
+            local label="$1"
+            local timerange="$2"
+            local fee="$3"
+            FT_TIMERANGE="${timerange}" FT_FEE="${fee}" bash scripts/ft_backtest_m1c.sh \
+              --export trades \
+              --backtest-directory "user_data/backtest_results/p3/${label}"
+          }
+          run_backtest base-full "${M1C_FULL_RANGE}" 0.0015
+          run_backtest x2-full "${M1C_FULL_RANGE}" 0.0030
+          run_backtest base-oos "${M1C_OOS_RANGE}" 0.0015
+          run_backtest x2-oos "${M1C_OOS_RANGE}" 0.0030
+          run_backtest segment-1 "${M1C_SEGMENT_1_RANGE}" 0.0015
+          run_backtest segment-2 "${M1C_SEGMENT_2_RANGE}" 0.0015
+          run_backtest segment-3 "${M1C_SEGMENT_3_RANGE}" 0.0015
+          run_backtest segment-4 "${M1C_SEGMENT_4_RANGE}" 0.0015
+
+      - name: Run full-range P3 bias checks
+        run: |
+          cd freqtrade_lab
+          FT_TIMERANGE="${M1C_FULL_RANGE}" bash scripts/ft_lookahead_m1c.sh \
+            --lookahead-analysis-exportfilename user_data/backtest_results/p3-lookahead.csv
+          FT_TIMERANGE="${M1C_FULL_RANGE}" bash scripts/ft_recursive_m1c.sh \
+            2>&1 | tee "${RUNNER_TEMP}/m1c-p3-recursive.log"
+
+      - name: Generate sanitized M1C P3 report
+        run: |
+          python scripts/m1c_p3_report.py \
+            --run base-full=freqtrade_lab/user_data/backtest_results/p3/base-full \
+            --run x2-full=freqtrade_lab/user_data/backtest_results/p3/x2-full \
+            --run base-oos=freqtrade_lab/user_data/backtest_results/p3/base-oos \
+            --run x2-oos=freqtrade_lab/user_data/backtest_results/p3/x2-oos \
+            --run segment-1=freqtrade_lab/user_data/backtest_results/p3/segment-1 \
+            --run segment-2=freqtrade_lab/user_data/backtest_results/p3/segment-2 \
+            --run segment-3=freqtrade_lab/user_data/backtest_results/p3/segment-3 \
+            --run segment-4=freqtrade_lab/user_data/backtest_results/p3/segment-4 \
+            --data-dir freqtrade_lab/user_data/data/binance \
+            --lookahead-csv freqtrade_lab/user_data/backtest_results/p3-lookahead.csv \
+            --recursive-log "${RUNNER_TEMP}/m1c-p3-recursive.log" \
+            --start "${M1C_START_DATE}" \
+            --end-exclusive "${M1C_END_EXCLUSIVE}" \
+            --oos-start "${M1C_OOS_START}" \
+            --out reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
+
+      - name: Upload sanitized M1C P3 report only
+        uses: actions/upload-artifact@v4
+        with:
+          name: m1c-p3-sanitized-report
+          path: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
+          if-no-files-found: error
+
       - name: Confirm runtime artifacts remain untracked
         run: |
           test -z "$(git status --short --untracked-files=all | grep -E 'freqtrade_lab/user_data/(data|logs|backtest_results)|\.sqlite' || true)"

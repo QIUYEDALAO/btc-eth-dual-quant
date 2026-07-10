@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: P2 M1C Freqtrade implementation and time-semantics validation.
+- Current phase: P3 M1C immutable historical validation in Freqtrade.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -40,7 +40,8 @@ After any task, the agent must update:
 - The approved P0-P8 roadmap is canonical; execute `PROJECT_EXECUTION_CHECKLIST.md` strictly in dependency order.
 - P0 governance merged in PR #14. P1 design_pass merged in PR #15. P2 may implement only the fixed M1C Freqtrade strategy and independent timestamp checks.
 - P2 must prove same-open cross-pair rotation in the pinned Freqtrade runtime or stop as `blocked_framework_capability`.
-- P2 static and pinned-runtime checks passed in run 29059474678; PR #16 must merge before P3 starts.
+- P2 static and pinned-runtime checks passed in run 29059474678 and merged in PR #16.
+- P2 merged in PR #16. P3 must use fixed parameters and gates; any failure stops the candidate without tuning or P4.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.
 - Future work must be diagnostics or design review only.
