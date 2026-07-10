@@ -52,8 +52,10 @@ After any task, the agent must update:
 - T2 golden-data and quarantine passed and merged in PR #23.
 - T3 unified metrics and policy benchmark passed and merged in PR #25.
 - T4 IS-only feasibility harness passed and merged in PR #27 with no candidate evaluation and no OOS-return access.
-- T5 is authorized only to run its sample-budget precheck first. The current sealed OOS calendar is 302 days versus the fixed 540-day minimum, so T5 must stop without lowering the gate.
+- T5 was authorized only for its sample-budget precheck. The current sealed OOS calendar is 302 days versus the fixed 540-day minimum, so T5 stopped without lowering the gate.
 - The earliest projected full-history end that can satisfy the calendar requirement is `2028-09-03`.
+- T5 metadata-only precheck completed locally as `blocked_insufficient_oos_calendar`; it evaluated no candidate, selected no events, and accessed no OOS prices or returns.
+- T6 and M1D strategy implementation are blocked. Only the T5 failure-record merge/closeout, monthly public-data accrual, M0 audit diagnostics, or a separately approved new-candidate design may follow.
 - No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.

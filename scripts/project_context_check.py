@@ -179,7 +179,11 @@ def main() -> int:
     if "PROJECT_LEDGER.md" not in agents_text:
         failures.append("AGENTS.md must mention PROJECT_LEDGER.md")
 
-    allowed_next_work = [str(item) for item in state.get("allowed_next_work", [])]
+    raw_allowed_next_work = state.get("allowed_next_work", [])
+    if not isinstance(raw_allowed_next_work, list) or any(not isinstance(item, str) for item in raw_allowed_next_work):
+        failures.append("PROJECT_STATE.yaml allowed_next_work must contain strings only")
+        raw_allowed_next_work = []
+    allowed_next_work = [str(item) for item in raw_allowed_next_work]
     if not any("diagnostics" in item.casefold() for item in allowed_next_work):
         failures.append("PROJECT_STATE.yaml allowed_next_work must include diagnostics")
     if not any("design review" in item.casefold() for item in allowed_next_work):

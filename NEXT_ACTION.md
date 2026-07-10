@@ -1,8 +1,7 @@
 # Next Action
 
-Under the Freqtrade-first architecture, T4 IS-only feasibility tooling passed
-and merged in PR #27. It selected no events, evaluated no candidate, accessed
-no OOS returns, and added no strategy or execution behavior.
+Under the Freqtrade-first architecture, the T5 metadata-only calendar precheck
+has completed locally and stopped M1D before event or return analysis.
 
 T2 evidence now records:
 
@@ -22,15 +21,16 @@ T4 now provides ledger-locked event observations, next-open semantics, fixed
 path-risk, occupancy, and sample-budget diagnostics. It evaluated no candidate,
 selected no events, and accessed no OOS returns.
 
-T5 is authorized only to execute the sample-budget precheck first. The formal
-range has 1004 days and its last 30% contains 302 days, below
-the fixed 540-day OOS minimum by 238 days. Therefore T5 must stop at that Gate;
-the threshold must not be lowered. At 30% OOS, 1800 full days are required,
-with the earliest projected complete date `2028-09-03`.
+The formal range has 1004 days: 702 IS days and 302 sealed OOS days. This is
+238 days below the fixed 540-day OOS minimum. T5 status is
+`blocked_insufficient_oos_calendar`; the threshold must not be lowered. At 30%
+OOS, 1800 full days are required, with the earliest projected complete date
+`2028-09-03`.
 
-Therefore there is no authorized strategy implementation now. A T5 precheck PR
-may record the truthful calendar failure, but it must not define event thresholds,
-read OOS prices or returns, run a candidate, or proceed to T6.
+The immediate task is to merge the truthful T5 failure record and complete its
+governance closeout. After that, continue monthly public-data accrual and M0
+audit diagnostics. M1D must not define event thresholds, read OOS prices or
+returns, run a candidate, or proceed to T6.
 
 Locked conditions: discrete completed-15m events, authoritative 1m detail, 5m
 sensitivity, `max_open_trades=1`, no fixed holding duration, no daily trade
