@@ -95,8 +95,8 @@ open_work:
     phase: M1E source-owner escalation preparation
     status: ready_not_submitted_pending_review
     branch: codex/m1e-binance-source-owner-package
-    pr: none
-    head_sha: pending
+    pr: 37
+    head_sha: a811d38ea3753bfc4226b22445c1e2527d17b967
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1E_BINANCE_SOURCE_OWNER_ESCALATION.md
     blocker: "Package is ready but external submission requires an explicit user decision; M1E remains blocked regardless."

@@ -831,7 +831,8 @@ private exchange responses here.
 - Task ID: M1E-BINANCE-SOURCE-OWNER-PACKAGE
 - Phase: M1E source-owner escalation preparation
 - Branch: codex/m1e-binance-source-owner-package
-- PR: pending
+- Commit: a811d38ea3753bfc4226b22445c1e2527d17b967
+- PR: #37 open
 - Official channel: `binance/binance-public-data` issue #475 already covers the 16 December 2020 overlap rows.
 - Package: 14 new cross-timeframe rows, 36/36 stable monthly ZIP hashes, deterministic evidence SHA256, and a ready-to-post issue comment.
 - Safety: No raw payload, API key, private data, account data, strategy, backtest, or trading operation is included.
