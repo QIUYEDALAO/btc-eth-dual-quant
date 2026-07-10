@@ -41,10 +41,11 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1E-03 | M1E sample budget | blocked | M1E-02 pass | branch not created | Metadata-only 70/30, 1800/540-day report | Actual qualified calendar passes both fixed minimums | M1E-02 data Gate failed; PR3 is not authorized |
 | M1E-04 | M1E IS-only rule design | not_authorized | M1E-03 pass plus separate approval | future branch | Non-M1A trend-breakout rule contract | No duplicate rule bundle and no OOS access | data and calendar Gates not yet passed |
 | M1E-DIAG-01 | M1E source-conflict diagnostics | completed | M1E-02 blocked | `codex/m1e-official-source-conflict-diagnostics` / PR #35 merged | Field-level ZIP/REST classifications, fresh hashes, clean-suffix budget | Reproducible evidence, no contract bypass, CI pass | 30 conflicts confirmed; clean suffix 1338/402 < 1800/540 |
+| M1E-OWNER-01 | Binance source-owner package | in_progress | M1E-DIAG-01 completed | `codex/m1e-binance-source-owner-package` | Sanitized evidence JSON and issue #475 comment draft | 14 supplemental rows, no raw/private data, CI pass | external submission requires explicit user approval |
 
 ## Current Gate
 
-- Authorized work: public source-owner follow-up and monthly data accrual only; no downstream M1E strategy work is authorized.
+- Authorized work: review the source-owner package and continue monthly data accrual; no downstream M1E strategy work is authorized.
 - Active implementation: no strategy; candidate evaluated `no`, OOS opened `no`, strategy code authorized `no`, sample-budget PR authorized `no`.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.

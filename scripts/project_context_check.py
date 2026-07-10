@@ -212,6 +212,7 @@ def main() -> int:
         or "m1e_data_qualification_in_progress_no_strategy_eligible_for_m2" in current_status
         or "m1e_data_qualification_blocked_no_strategy_eligible_for_m2" in current_status
         or "m1e_source_conflicts_confirmed_data_gate_blocked_no_strategy_eligible_for_m2" in current_status
+        or "m1e_source_owner_package_ready_not_submitted_data_gate_blocked_no_m2" in current_status
         or "m1e_data_qualified_sample_budget_authorized_no_strategy_eligible_for_m2" in current_status
         or "m1e_blocked_insufficient_oos_calendar_no_strategy_eligible_for_m2" in current_status
         or "m1e_sample_budget_pass_is_design_only_no_strategy_eligible_for_m2" in current_status

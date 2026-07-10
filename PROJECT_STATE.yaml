@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T19:30:49Z"
-current_phase: post-M1E source diagnostics review
-current_status: m1e_source_conflicts_confirmed_data_gate_blocked_no_strategy_eligible_for_m2
+last_updated_utc: "2026-07-10T19:45:00Z"
+current_phase: M1E Binance source-owner escalation preparation
+current_status: m1e_source_owner_package_ready_not_submitted_data_gate_blocked_no_m2
 completed_milestones:
   - phase: M1E official source conflict diagnostics
     status: diagnostics_complete_blocker_confirmed
@@ -91,6 +91,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: M1E-BINANCE-SOURCE-OWNER-PACKAGE
+    phase: M1E source-owner escalation preparation
+    status: ready_not_submitted_pending_review
+    branch: codex/m1e-binance-source-owner-package
+    pr: none
+    head_sha: pending
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/M1E_BINANCE_SOURCE_OWNER_ESCALATION.md
+    blocker: "Package is ready but external submission requires an explicit user decision; M1E remains blocked regardless."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -129,6 +138,7 @@ active_decisions:
     status: accepted_for_data_qualification_only
     evidence: docs/decisions/ADR-0008-m1e-1h-trend-breakout-data-admission.md
 allowed_next_work:
+  - Review and merge the sanitized Binance source-owner package; do not post it externally without explicit approval.
   - Review and merge the M1E source-conflict diagnostics without changing the contract.
   - Preserve the original 2020-07-01 research start and the 1800/540-day sample Gate.
   - Preserve the merged M1E public-data qualification blocker without changing source precedence or tolerances.
@@ -338,6 +348,14 @@ latest_reports:
     phase: M1E source-conflict diagnostics
     status: diagnostics_complete_blocker_confirmed
     status_marker: "- Status: diagnostics_complete_blocker_confirmed"
+  - path: reports/m1/M1E_BINANCE_SOURCE_OWNER_ESCALATION.md
+    phase: M1E source-owner escalation
+    status: ready_not_submitted
+    status_marker: "- Status: ready_not_submitted"
+  - path: reports/m1/M1E_BINANCE_SOURCE_OWNER_EVIDENCE.json
+    phase: M1E source-owner escalation
+    status: sanitized_evidence
+    status_marker: "\"status\": \"ready_not_submitted\""
   - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
     phase: post-M1B
     status: accepted
@@ -438,6 +456,9 @@ latest_merged_prs:
   - number: 35
     title: Diagnose M1E official source conflicts
     merged_at_utc: "2026-07-10T19:30:49Z"
+  - number: 36
+    title: Close M1E source diagnostics context
+    merged_at_utc: "2026-07-10T19:36:26Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
@@ -457,4 +478,5 @@ validation_commands:
   - bash scripts/m1e_contract_validate.sh
   - bash scripts/m1e_data_validate.sh
   - bash scripts/m1e_conflict_validate.sh
+  - bash scripts/m1e_source_owner_validate.sh
   - git diff --check
