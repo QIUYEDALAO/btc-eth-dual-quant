@@ -699,7 +699,7 @@ private exchange responses here.
 - Task ID: SHORT-HORIZON-T4-FEASIBILITY-HARNESS
 - Phase: T4 IS-only feasibility harness
 - Branch: codex/short-horizon-t4-feasibility-harness
-- Commit: c24144e06d2a8481784db9b9c51f768219d437a6
+- Commit: c24144e5dac5a3a496558ef0f5927fe74756e83a
 - PR: #27 open
 - Completed: Ledger-locked event references, next-15m-open observation, fixed 1/2/4/8/12/24-bar horizons, four fixed cost scenarios, MAE/MFE, decay, frequency, clustering, path-risk, occupancy, right-censor and sample-budget diagnostics.
 - Local evidence: Ignored T2 golden 15m structure smoke passed for BTCUSDT and ETHUSDT with 96,384 rows each and deterministic hashes; no events were selected and no candidate return was computed.

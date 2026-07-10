@@ -88,7 +88,7 @@ open_work:
     status: pass_pending_review
     branch: codex/short-horizon-t4-feasibility-harness
     pr: 27
-    head_sha: c24144e06d2a8481784db9b9c51f768219d437a6
+    head_sha: c24144e5dac5a3a496558ef0f5927fe74756e83a
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/T4_IS_ONLY_FEASIBILITY_HARNESS_REPORT.md
     blocker: "Merge and governance closeout are pending. T5 calendar precheck will fail because sealed OOS is 302 days versus the fixed 540-day minimum."
