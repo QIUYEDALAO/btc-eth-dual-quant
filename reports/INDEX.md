@@ -32,8 +32,8 @@
 | `docs/superpowers/plans/2026-07-10-btc-eth-short-horizon-event-quant-implementation-plan.md` | short-horizon governance | approved | Defines dependency-ordered T0-T9 implementation and failure stops. | no |
 | `docs/decisions/ADR-0007-btc-eth-short-horizon-product-conditions.md` | short-horizon governance | accepted | Records the capital-owner-approved product conditions and keeps automation prohibited. | no |
 | `STRATEGY_TRIAL_LEDGER.yaml` | research governance | initialized | Stores exact hypotheses, hashes, OOS-open state, and append-only trial rules. | no |
-| `PROJECT_EXECUTION_CHECKLIST.md` | governance | in_progress | T1 passed locally and awaits PR review/CI/merge; later work remains dependency-gated. | no |
-| `reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md` | T1 canonical public minute data | pass_pending_review | Records actual BTC/ETH 1m ranges, monthly/daily ZIP evidence, deterministic REST samples, pre-start quarantine, and the fixed 2023-10-01 research start. | no |
+| `PROJECT_EXECUTION_CHECKLIST.md` | governance | active | T1 is complete; T2 is the next authorized task while later work remains dependency-gated. | no |
+| `reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md` | T1 canonical public minute data | pass | Records actual BTC/ETH 1m ranges, monthly/daily ZIP evidence, deterministic REST samples, pre-start quarantine, and the fixed 2023-10-01 research start. | no |
 | `docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md` | post-M1B | accepted | No strategy is eligible for M2. | no |
 | `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md` | architecture | accepted | Freqtrade owns single-leg research; M0 and Python remain independent audit/offline accounting sidecars. | no |
 

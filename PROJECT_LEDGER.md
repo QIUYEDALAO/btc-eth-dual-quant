@@ -621,3 +621,16 @@ private exchange responses here.
 - Artifacts: Raw ZIP/REST data and the detailed manifest remain ignored; only the sanitized report, public-data code, tests, and validation workflow are eligible for commit.
 - Next action: Require clean PR #21 CI and merge T1. T2 remains blocked until then.
 - Guardrails: No strategy returns, M1D code, OOS access, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
+
+## 2026-07-10 - T1 Canonical Public Minute Data Merged
+
+- Date UTC: 2026-07-10T03:57:53Z
+- Task ID: SHORT-HORIZON-T1-MERGED
+- Phase: T1 canonical public minute data
+- Branch: main
+- Commit: f802868ecb2f0d39913074d009bea8e780d6147e
+- PR: #21 merged
+- Completed: Public 1m archive acquisition, daily supplement logic, deterministic REST evidence, liquidity qualification, report guard, unit tests, and T1 CI were squash merged.
+- Result: T1 status `pass`; fixed research start `2023-10-01`; T2 golden data and quarantine is the next authorized task.
+- Not completed: T2 derivatives/quarantine, unified metrics, M1D feasibility, strategy code, historical validation, M2, dry-run, live, or API trading.
+- Guardrails: No API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, execution/live, OOS tuning, raw commits, or runtime artifacts.
