@@ -464,3 +464,46 @@ private exchange responses here.
 - Decision: If the P2 pinned-runtime same-open fixture fails, record `blocked_framework_capability` and stop; do not create a parallel single-leg backtester.
 - Next action: Validate and merge P1 before creating `BTCETHRelativeStrengthRotation`.
 - Guardrails: No strategy code on P1; no API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-09 - M1C Rotation P1 Design Merged
+
+- Date UTC: 2026-07-09T23:57:24Z
+- Task ID: M1C-P1-DESIGN-MERGED
+- Phase: P1 M1C rotation design
+- Branch: main
+- Commit: 810d7332154a5bd00ad631ac98e268bfbdc157a5
+- PR: #15 merged
+- Completed: Fixed strategy specification, machine-readable contract, pinned Freqtrade source capability evidence, design validation, and context updates.
+- Result: `design_pass`. This permits P2 implementation only and does not approve performance, M2, dry-run, or live trading.
+- Next action: Implement the fixed strategy in Freqtrade and run the mandatory pinned-runtime capability checks.
+- Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - M1C Rotation P2 Implementation Started
+
+- Date UTC: 2026-07-10T00:03:50Z
+- Task ID: M1C-P2-IMPLEMENTATION
+- Phase: P2 M1C Freqtrade implementation
+- Branch: codex/m1c-btc-eth-rotation-validation
+- PR: #16 open
+- Commit: 89271afeda71284487623e37bcde1b229251b84a
+- Completed so far: Fixed Freqtrade strategy, no-key public research config, guarded download/backtest/lookahead/recursive commands, independent event-time validator, and deterministic unit fixtures.
+- Validation so far: Nine strategy/time tests pass. Full validation awaits the context transition and pinned Freqtrade runtime checks.
+- Runtime attempt: GitHub run 29059348880 completed the pinned image, public download, M1A smoke, M1C backtest, lookahead-analysis, and recursive-analysis. The job failed only because host `tee` could not create a log inside the Docker-owned result directory; the log target was moved to the runner temporary directory for a full retry.
+- Blocker: Same-open cross-pair rotation, lookahead-analysis, and recursive-analysis must pass in the pinned Freqtrade 2026.6 runtime.
+- Decision: Runtime disagreement becomes `blocked_framework_capability`; no parallel single-leg engine is allowed.
+- Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - M1C Rotation P2 Runtime Gate Passed
+
+- Date UTC: 2026-07-10T00:16:26Z
+- Task ID: M1C-P2-RUNTIME-PASS
+- Phase: P2 M1C Freqtrade implementation
+- Branch: codex/m1c-btc-eth-rotation-validation
+- PR: #16 open
+- Commit: e5989a23b6de102e43c426afb10e6646d14712e5
+- Workflow: Freqtrade Public Smoke run 29059474678
+- Completed: Official pinned Freqtrade 2026.6 image, public spot data download, M1C backtest, same-open rotation check, one-position check, Monday-open check, lookahead-analysis, recursive-analysis, and artifact boundary.
+- Validation: lookahead checked 20 signals with zero biased entries/exits; recursive analysis reported zero indicator variance and no indicator lookahead; runtime evidence parser passed.
+- Result: P2 implementation Gate passed pending PR checks and merge. This is not a performance or trading approval.
+- Next action: Merge PR #16 after all checks pass, then start P3 immutable historical validation.
+- Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
