@@ -1,8 +1,8 @@
 # Next Action
 
-Under the Freqtrade-first architecture, T2 passed and merged in PR #23. T3
-unified metrics is now the only newly authorized implementation and must start
-on a new branch. This closeout does not start T3.
+Under the Freqtrade-first architecture, T3 unified metrics passed its local
+Gate on `codex/short-horizon-t3-unified-metrics`. Open the T3 PR, require all
+GitHub checks to pass, and merge it. Do not start T4 before that merge.
 
 T2 evidence now records:
 
@@ -12,8 +12,13 @@ T2 evidence now records:
 4. Traceable pre-start quarantine kept outside formal research data.
 5. Freqtrade 2026.6 pinned-container readability for all six jsongz caches.
 
-After T0, execute `T1 -> T2 -> T3 -> T4` before M1D feasibility. T3 must build
-the unified daily-MTM/PSR/DSR metrics and reproduce the expert M1C regression. T5 must
+T3 now provides one daily-MTM convention, Sharpe/MaxDD/Sortino/Calmar/PSR/DSR,
+the fixed 25% BTC + 25% ETH + 50% cash benchmark, Freqtrade completed-trade
+audit adaptation, and sealed M1C regression. It reproduces Base Sharpe 0.7882,
+MaxDD 23.4729%, PSR 0.9024 and Cost x2 Sharpe 0.7528, MaxDD 24.4688%, PSR 0.8920.
+
+After T0, execute `T1 -> T2 -> T3 -> T4` before M1D feasibility. After T3
+merges, T4 is the next task. T5 must
 pass before T6 fixed design, and T6 must pass before any Freqtrade strategy code.
 
 Locked conditions: discrete completed-15m events, authoritative 1m detail, 5m
