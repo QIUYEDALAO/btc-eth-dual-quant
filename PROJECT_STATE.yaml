@@ -63,8 +63,8 @@ open_work:
     phase: T1 canonical public minute data
     status: pass_pending_review
     branch: codex/short-horizon-t1-minute-data
-    pr: none
-    head_sha: working_tree
+    pr: 21
+    head_sha: 97799efe447a2485e79e176750d86d290d180cf3
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md
     blocker: "T1 PR checks and merge required before T2 golden-data work."

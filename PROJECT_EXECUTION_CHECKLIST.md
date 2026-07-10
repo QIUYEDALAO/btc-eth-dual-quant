@@ -27,7 +27,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | P7-01 | P7 limited live | not_authorized | P6-01 plus explicit approval | future branch | Limited-capital acceptance | Hard risk controls and separate approval | live prohibited |
 | P8-01 | P8 operations | not_authorized | P7-01 | future branch | Operations and scaling loop | Continuous audit | live prohibited |
 | T0-01 | Short-horizon governance | completed | M1C closed | `codex/short-horizon-product-governance` / PR #19 | Approved specification, ADR-0007, expert evidence, trial ledger | Isolated recompute, automated ledger hash check, context, CI, merge | none |
-| T1-01 | Canonical minute data | in_progress | T0-01 completed | `codex/short-horizon-t1-minute-data` | BTC/ETH spot 1m source archive and liquidity qualification | Exact range, hashes, completeness, preregistered start | PR checks and merge pending |
+| T1-01 | Canonical minute data | in_progress | T0-01 completed | `codex/short-horizon-t1-minute-data` / PR #21 | BTC/ETH spot 1m source archive and liquidity qualification | Exact range, hashes, completeness, preregistered start | PR checks and merge pending |
 | T2-01 | Golden data and quarantine | pending | T1-01 | future branch | Golden 1m, conflicts, 5m/15m derivatives | Official 15m parity and source-variant reproducibility | T1 must pass |
 | T3-01 | Unified metrics | pending | T2-01 | future branch | General daily-MTM, PSR/DSR and policy benchmark | Expert M1C regression passes | T2 must pass |
 | T4-01 | Feasibility harness | pending | T3-01 | future branch | IS-only event decay, cost, frequency and risk tooling | No OOS exposure; deterministic fixtures | T3 must pass |
