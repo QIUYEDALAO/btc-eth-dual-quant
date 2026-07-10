@@ -26,14 +26,25 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | P6-01 | P6 dry-run | not_authorized | P5-01 plus explicit approval | future branch | 90-day dry-run report | 12 weekly decisions and no live orders | dry-run prohibited |
 | P7-01 | P7 limited live | not_authorized | P6-01 plus explicit approval | future branch | Limited-capital acceptance | Hard risk controls and separate approval | live prohibited |
 | P8-01 | P8 operations | not_authorized | P7-01 | future branch | Operations and scaling loop | Continuous audit | live prohibited |
+| T0-01 | Short-horizon governance | in_progress | M1C closed | `codex/short-horizon-product-governance` / PR #19 | Approved specification, ADR-0007, expert evidence, trial ledger | Isolated recompute, automated ledger hash check, context, CI, merge | PR checks and merge pending |
+| T1-01 | Canonical minute data | pending | T0-01 | future branch | BTC/ETH spot 1m source archive and liquidity qualification | Exact range, hashes, completeness, preregistered start | T0 must merge |
+| T2-01 | Golden data and quarantine | pending | T1-01 | future branch | Golden 1m, conflicts, 5m/15m derivatives | Official 15m parity and source-variant reproducibility | T1 must pass |
+| T3-01 | Unified metrics | pending | T2-01 | future branch | General daily-MTM, PSR/DSR and policy benchmark | Expert M1C regression passes | T2 must pass |
+| T4-01 | Feasibility harness | pending | T3-01 | future branch | IS-only event decay, cost, frequency and risk tooling | No OOS exposure; deterministic fixtures | T3 must pass |
+| T5-01 | M1D feasibility | pending | T4-01 | future branch | M1D short-horizon feasibility report | Every paper Gate passes | stop before code on failure |
+| T6-01 | M1D fixed design | pending | T5-01 pass | future branch | Fixed contract and hash | No TBD, optional ROI, or OOS choice | T5 must pass |
+| T7-01 | M1D Freqtrade implementation | pending | T6-01 | future branch | 15m strategy, 1m/5m research commands, tests | Behavior, timing, bias and no-live pass | T6 must pass |
+| T8-01 | M1D historical validation | pending | T7-01 | future branch | Full/OOS/cost/granularity/data-variant report | Every numerical and data Gate evaluated | T7 must pass |
+| T9-01 | M1D independent audit | pending | T8-01 pass | future branch | Timing, equity, benchmark and sensitivity audit | Evidence exact and all Gates pass | T8 must pass |
 
 ## Current Gate
 
-- Authorized work: P0-P4.
-- Active task: none.
-- Stop reason: M1C failed P3 fixed numerical gates; P4 is blocked.
+- Authorized work: T0 governance only on the current branch; T1-T9 are dependency-gated.
+- Active task: T0 short-horizon product governance.
+- Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.
 - M1A status: `failed_validation`.
 - M1B status: `failed_validation`.
 - M0 audit status: `audit_revalidation_required`.
 - M2 status: blocked.
 - Trading approval: none.
+- Short-horizon product: discrete 15m events, 1m authoritative detail, 5m sensitivity, no fixed holding time or daily trade quota.

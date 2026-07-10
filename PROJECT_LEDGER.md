@@ -565,3 +565,19 @@ private exchange responses here.
 - Result: M1C remains `failed_validation`. P4 was not started because its P3 dependency failed. No strategy is eligible for M2.
 - Next action: No active implementation. Future work requires a new approved P1 design or M0 audit diagnostics.
 - Guardrails: No API keys, private smoke, M2, P4 for M1C, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - Short-Horizon Product Governance Started
+
+- Date UTC: 2026-07-10T02:46:20Z
+- Task ID: SHORT-HORIZON-T0-GOVERNANCE
+- Phase: short-horizon product governance
+- Branch: codex/short-horizon-product-governance
+- Commit: 9eaf1161b69687e118717808720ce10473847d26
+- PR: #19 open
+- Request summary: Record the capital-owner-approved BTC/ETH 15m short-horizon event product and its dependency-complete T0-T9 delivery chain.
+- Completed so far: Approved specification, ADR-0007, implementation plan, expert evidence intake, immutable candidate hashes, automated ledger validation, and isolated expert recomputation.
+- Validation: The standalone expert script reproduced its committed OOS CSV byte-for-byte; 124 repository tests passed; Project Validate PASS=8 FAIL=0; secret, no-trading, execution/live, and diff checks passed.
+- Not completed: Governance PR checks/merge, public 1m golden data, unified MTM engine, M1D feasibility, strategy code, historical validation, audit, M2, dry-run, live, or API trading.
+- Decision: Discrete completed-15m events only; 1m is authoritative detail, 5m is sensitivity, holding/frequency are strategy outputs, and daily-MTM MaxDD remains 15%.
+- Next action: Require clean PR #19 CI and merge T0 before T1.
+- Guardrails: No API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, execution/live, OOS tuning, raw commits, or runtime artifacts.
