@@ -49,8 +49,8 @@ After any task, the agent must update:
 - Holding time and trade frequency are strategy outputs. Do not add a fixed holding duration or daily trade quota.
 - T0 governance merged in PR #19; T1 data work merged in PR #21.
 - T1 passed and merged in PR #21 with research start `2023-10-01`.
-- T2 golden-data and quarantine passed its local data/runtime Gate on `codex/short-horizon-t2-golden-data`; PR checks and merge remain required.
-- T3 unified metrics may start only after T2 merges. T1-T4 must pass before T5 feasibility; T5/T6 must pass before strategy code.
+- T2 golden-data and quarantine passed and merged in PR #23.
+- T3 unified metrics is the only newly authorized implementation. T1-T4 must pass before T5 feasibility; T5/T6 must pass before strategy code.
 - No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.

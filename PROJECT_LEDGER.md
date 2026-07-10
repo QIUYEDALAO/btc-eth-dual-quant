@@ -652,3 +652,16 @@ private exchange responses here.
 - Artifacts: Raw archives, golden files, detailed manifests, logs, and Freqtrade caches remain ignored and uncommitted.
 - Next action: Commit, open the T2 PR, require clean CI, and merge before T3. Do not implement M1D strategy code.
 - Guardrails: No strategy returns, OOS access, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
+
+## 2026-07-10 - T2 Golden Data and Quarantine Merged
+
+- Date UTC: 2026-07-10T13:48:14Z
+- Task ID: SHORT-HORIZON-T2-MERGED
+- Phase: T2 golden data and quarantine
+- Branch: main
+- Commit: da7874c4e2f6d391e898a36bbc819a9634d600f9
+- PR: #23 merged
+- Completed: Golden 1m construction, pre-start quarantine, deterministic 5m/15m derivation, official 15m payload and field parity, Freqtrade jsongz export, pinned runtime evidence, tests, report Gate, and CI.
+- Result: T2 status `pass`; all PR checks passed. T3 unified metrics is the next authorized task, but is not started by this closeout.
+- Artifacts: Raw archives, golden data, detailed manifests, logs, and Freqtrade runtime caches remain ignored and uncommitted.
+- Guardrails: No M1D strategy code, strategy returns, OOS access, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
