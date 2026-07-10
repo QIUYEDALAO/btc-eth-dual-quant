@@ -91,8 +91,8 @@ open_work:
     phase: T5 M1D sample-budget precheck
     status: blocked_pending_review
     branch: codex/short-horizon-t5-sample-budget-precheck
-    pr: pending
-    head_sha: pending
+    pr: 29
+    head_sha: 69bfca351543dc443cf20cd9e5b8790a32f53f68
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     blocker: "The sealed OOS calendar has 302 days versus the fixed 540-day minimum; M1D stops before event or return analysis."

@@ -729,8 +729,8 @@ private exchange responses here.
 - Task ID: SHORT-HORIZON-T5-SAMPLE-BUDGET
 - Phase: T5 M1D sample-budget precheck
 - Branch: codex/short-horizon-t5-sample-budget-precheck
-- Commit: pending
-- PR: pending
+- Commit: 69bfca351543dc443cf20cd9e5b8790a32f53f68
+- PR: #29 open
 - Inputs: Ignored T1/T2 manifest metadata and the sealed M1D trial-ledger identity only; no OHLCV row, event, signal, price, equity, or return was read.
 - Result: 1004 full days split into 702 IS and 302 sealed OOS days. The fixed 540-day OOS Gate fails by 238 days; T5 status is `blocked_insufficient_oos_calendar`.
 - Earliest resolution: 1800 full days are required; the earliest projected complete day is `2028-09-03`.
