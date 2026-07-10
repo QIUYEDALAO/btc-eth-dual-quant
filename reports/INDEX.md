@@ -40,6 +40,7 @@
 | `reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md` | T5 M1D sample-budget precheck | blocked_insufficient_oos_calendar | Metadata-only precheck records 1004 full, 702 IS, and 302 sealed OOS days against the fixed 540-day minimum. No event, price, return, or candidate analysis was performed. | no |
 | `reports/m1/M1E_1H_PRODUCT_DATA_CONTRACT.md` | M1E product/data contract | design_contract_pass | Registers a separate sealed 1h trial and fixes official 5m/1h/4h authority, 0.30% liquidity, M1A non-reuse, and conditional 1800/540-day admission without strategy rules or returns. | no |
 | `docs/decisions/ADR-0008-m1e-1h-trend-breakout-data-admission.md` | M1E governance | accepted_for_data_qualification_only | Authorizes only M1E public-data qualification and a conditional metadata-only calendar Gate; strategy code, OOS returns, backtesting, and M2 remain prohibited. | no |
+| `reports/m1/M1E_1H_DATA_QUALIFICATION_REPORT.md` | M1E public-data qualification | blocked | Official 5m/1h/4h reconstruction selects 2020-07-01 but finds six later OHLCV aggregate/source conflicts. REST and pinned Freqtrade list-data pass; sample-budget PR remains unauthorized. | no |
 | `docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md` | post-M1B | accepted | No strategy is eligible for M2. | no |
 | `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md` | architecture | accepted | Freqtrade owns single-leg research; M0 and Python remain independent audit/offline accounting sidecars. | no |
 

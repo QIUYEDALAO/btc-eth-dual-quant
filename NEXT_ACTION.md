@@ -1,18 +1,16 @@
 # Next Action
 
 Under the Freqtrade-first architecture, M1D remains stopped by its fixed
-calendar Gate. The separately approved next trial is
-`M1E-1H-TREND-BREAKOUT`, currently limited to product and data admission.
+calendar Gate. The separate `M1E-1H-TREND-BREAKOUT` data contract passed in
+PR #31, but its public-data qualification is now blocked by official evidence.
 
 The immediate sequence is:
 
-1. Freeze the M1E contract and sealed trial identity without defining strategy rules.
-2. Qualify official Binance spot BTC/ETH 5m, 1h, and 4h ZIP archives from
-   `2020-01-01` through the latest complete UTC month.
-3. Select the research start from the first common six-month data/liquidity
-   qualification window, without reading candidate returns.
-4. Only if data qualification passes, run the fixed 1800-full-day and
-   540-sealed-OOS-day metadata Gate.
+1. Review and preserve the six blocked months in the M1E qualification report.
+2. Do not weaken monthly-ZIP authority, numeric parity, or single-symbol rules.
+3. Do not create the conditional sample-budget PR while data qualification is blocked.
+4. Continue source-owner diagnostics or design a future separate candidate only
+   through a new approval; no strategy code is authorized.
 
 Official 1h ZIP is signal-data authority. Official 5m ZIP provides future fill
 detail and 1h aggregate parity; 4h is future regime-filter data only. Daily ZIP
@@ -47,6 +45,13 @@ M1E is a new trial, not a shorter M1A. The M1A SMA200 + Donchian 55/20 + ATR20
 2x rule bundle is forbidden. No alternative entry, exit, position, or risk
 parameter is selected yet. M1E must not access OOS returns, run Freqtrade
 backtesting, or add strategy code during data admission.
+
+The first common six-month data/liquidity window is January through June 2020,
+so the fixed research start is `2020-07-01`. Six later months are blocked by
+official OHLCV aggregate differences or monthly/daily source conflict:
+2020-12, 2021-01, 2021-04, 2021-09, 2021-11, and 2022-04. REST samples matched,
+all public downloads completed, and pinned Freqtrade `list-data` passed on the
+VPS. Those facts do not override the ZIP parity failures.
 
 Locked conditions: discrete completed-15m events, authoritative 1m detail, 5m
 sensitivity, `max_open_trades=1`, no fixed holding duration, no daily trade

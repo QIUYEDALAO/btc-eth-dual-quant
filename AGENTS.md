@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1E 1h product and data admission.
+- Current phase: M1E 1h public-data qualification failure review.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -59,6 +59,8 @@ After any task, the agent must update:
 - M1E is that separately approved new trial. ADR-0008 and its machine contract authorize only official spot 5m/1h/4h data qualification, then a conditional metadata-only 1800/540-day calendar check.
 - M1E is not an M1A rescue. Reuse of the combined SMA200, Donchian 55/20, and ATR20 2x rule bundle is prohibited.
 - M1E OOS remains sealed. No M1E strategy rule, Freqtrade backtest, candidate return, or opened trial is authorized.
+- M1E official-data qualification selected the contract research start `2020-07-01`, but six later months contain official OHLCV aggregate or monthly/daily source conflicts. The data Gate is blocked.
+- Pinned Freqtrade 2026.6 `list-data` read all six public caches on the VPS; no backtest ran. Do not create the M1E sample-budget PR while the data Gate is blocked.
 - No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.
