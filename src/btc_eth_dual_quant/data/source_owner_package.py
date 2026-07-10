@@ -12,7 +12,10 @@ TARGET_ISSUE = "https://github.com/binance/binance-public-data/issues/475"
 ALREADY_COVERED_MONTH = "2020-12"
 
 
-def build_package(evidence: Mapping[str, Any], generated_utc: str | None = None) -> dict[str, Any]:
+def build_package(
+    evidence: Mapping[str, Any], generated_utc: str | None = None,
+    submission_url: str | None = None, submitted_at_utc: str | None = None,
+) -> dict[str, Any]:
     diagnostics = evidence.get("diagnostics")
     refetch = evidence.get("archive_refetch")
     if not isinstance(diagnostics, list) or not isinstance(refetch, list):
@@ -42,7 +45,7 @@ def build_package(evidence: Mapping[str, Any], generated_utc: str | None = None)
     return {
         "schema_version": 1,
         "generated_utc": generated_utc or datetime.now(timezone.utc).isoformat(),
-        "status": "ready_not_submitted",
+        "status": "submitted_awaiting_response" if submission_url else "ready_not_submitted",
         "target_repository": "binance/binance-public-data",
         "target_issue": TARGET_ISSUE,
         "existing_issue_overlap_rows": len(covered),
@@ -51,7 +54,9 @@ def build_package(evidence: Mapping[str, Any], generated_utc: str | None = None)
         "monthly_zip_refetch_unchanged": sum(bool(item.get("unchanged")) for item in refetch),
         "monthly_zip_refetch_total": len(refetch),
         "rows": rows,
-        "external_submission_performed": False,
+        "external_submission_performed": bool(submission_url),
+        "submission_url": submission_url or "",
+        "submitted_at_utc": submitted_at_utc or "",
         "api_key_used": False,
         "private_data_used": False,
         "raw_payload_included": False,
@@ -70,14 +75,16 @@ def render_report(package: Mapping[str, Any]) -> str:
     lines = [
         "# M1E Binance Source-Owner Escalation Package",
         "",
-        "- Status: ready_not_submitted",
+        f"- Status: {package['status']}",
         f"- Target repository: `{package['target_repository']}`",
         f"- Existing issue: {package['target_issue']}",
         f"- Existing issue overlap rows: {package['existing_issue_overlap_rows']}",
         f"- New supplemental rows: {package['supplemental_rows']}",
         f"- Supplemental evidence SHA256: `{package['supplemental_evidence_sha256']}`",
         f"- Monthly ZIP refetch hashes unchanged: {package['monthly_zip_refetch_unchanged']}/{package['monthly_zip_refetch_total']}",
-        "- External submission performed: no",
+        f"- External submission performed: {'yes' if package['external_submission_performed'] else 'no'}",
+        f"- Submission URL: {package['submission_url'] or 'not_submitted'}",
+        f"- Submitted UTC: {package['submitted_at_utc'] or 'not_submitted'}",
         "- API key used: no",
         "- Raw payload included: no",
         "- M1E contract resolved: no",
@@ -127,7 +134,7 @@ def render_report(package: Mapping[str, Any]) -> str:
         "",
         "## Submission Boundary",
         "",
-        "This package is prepared but was not posted externally. Posting requires an explicit user decision. Regardless of any comment, M1E remains blocked until Binance corrects or documents the conflicting sources and the project reruns its fixed Gate.",
+        "The prepared package was posted only after explicit user approval. Submission does not resolve the contract: M1E remains blocked until Binance corrects or documents the conflicting sources and the project reruns its fixed Gate." if package["external_submission_performed"] else "This package is prepared but was not posted externally. Posting requires an explicit user decision. Regardless of any comment, M1E remains blocked until Binance corrects or documents the conflicting sources and the project reruns its fixed Gate.",
         "",
     ]
     return "\n".join(lines)

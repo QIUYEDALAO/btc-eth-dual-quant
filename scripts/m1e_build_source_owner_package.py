@@ -20,9 +20,11 @@ def main() -> int:
     parser.add_argument("--evidence", default="storage/logs/m1e_conflict_diagnostics.json")
     parser.add_argument("--json-out", default="reports/m1/M1E_BINANCE_SOURCE_OWNER_EVIDENCE.json")
     parser.add_argument("--report-out", default="reports/m1/M1E_BINANCE_SOURCE_OWNER_ESCALATION.md")
+    parser.add_argument("--submission-url", default=None)
+    parser.add_argument("--submitted-at-utc", default=None)
     args = parser.parse_args()
     evidence = json.loads(Path(args.evidence).read_text(encoding="utf-8"))
-    package = build_package(evidence)
+    package = build_package(evidence, submission_url=args.submission_url, submitted_at_utc=args.submitted_at_utc)
     json_path = Path(args.json_out)
     json_path.parent.mkdir(parents=True, exist_ok=True)
     json_path.write_text(json.dumps(package, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -31,7 +33,7 @@ def main() -> int:
     report_path.write_text(render_report(package), encoding="utf-8")
     print(f"json={json_path}")
     print(f"report={report_path}")
-    print(f"status={package['status']} supplemental_rows={package['supplemental_rows']} submitted=no")
+    print(f"status={package['status']} supplemental_rows={package['supplemental_rows']} submitted={'yes' if package['external_submission_performed'] else 'no'}")
     return 0
 
 

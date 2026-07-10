@@ -852,3 +852,15 @@ private exchange responses here.
 - Result: The sanitized issue #475 supplement is committed and ready, but no external submission occurred.
 - Next action: Await explicit user approval before posting the prepared comment. M1E remains blocked either way.
 - Guardrails: No PR3, OOS returns, strategy code, M2, private smoke, backtesting, dry-run, live, orders, or execution/live.
+
+## 2026-07-11 - M1E Source-Owner Comment Submitted
+
+- Date UTC: 2026-07-10T20:04:37Z
+- Task ID: M1E-BINANCE-SOURCE-OWNER-SUBMITTED
+- Phase: M1E source-owner response monitoring
+- External evidence: https://github.com/binance/binance-public-data/issues/475#issuecomment-4939090508
+- Submission: The prepared 14-row supplement was posted by `QIUYEDALAO` after explicit user approval and read back successfully.
+- Safety: No raw payload, API key, private data, account data, strategy, backtest, or trading operation was posted.
+- Status: `submitted_awaiting_response`; M1E contract remains unresolved and blocked.
+- Next action: Monitor for an official maintainer response or archive correction, then rerun the unchanged data Gate.
+- Guardrails: No PR3, OOS returns, strategy code, M2, private smoke, dry-run, live, orders, or execution/live.
