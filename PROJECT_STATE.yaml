@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T13:20:00Z"
+last_updated_utc: "2026-07-10T13:31:00Z"
 current_phase: short-horizon data foundations
 current_status: short_horizon_t2_pass_pending_pr_ci_merge_no_strategy_eligible_for_m2
 completed_milestones:
@@ -80,8 +80,8 @@ open_work:
     phase: T2 golden data and quarantine
     status: pass_pending_pr_ci_merge
     branch: codex/short-horizon-t2-golden-data
-    pr: none
-    head_sha: pending_initial_commit
+    pr: 23
+    head_sha: b89f637d0086bde3197b62f5b6942a49ec6c0d80
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/T2_GOLDEN_DATA_AND_QUARANTINE_REPORT.md
     blocker: "Local T2 data Gate passed; GitHub PR checks and merge are still required before T3 may start."

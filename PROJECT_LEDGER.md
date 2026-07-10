@@ -641,8 +641,8 @@ private exchange responses here.
 - Task ID: SHORT-HORIZON-T2-GOLDEN-DATA
 - Phase: T2 golden data and quarantine
 - Branch: codex/short-horizon-t2-golden-data
-- Commit: pending initial commit
-- PR: pending
+- Commit: b89f637d0086bde3197b62f5b6942a49ec6c0d80
+- PR: #23 open
 - Data: BTCUSDT and ETHUSDT golden spot 1m from `2023-10-01T00:00:00Z` through `2026-06-30T23:59:00Z`, derived from the append-only T1 run with monthly ZIP precedence and daily ZIP fill-only semantics.
 - Result: 1,445,760 golden 1m rows per symbol; 289,152 deterministic 5m rows and 96,384 deterministic 15m rows per symbol; zero incomplete research buckets.
 - Official parity: 66 symbol-month official 15m ZIP comparisons, 192,768 overlapping rows, and zero numeric, timestamp, ordering, derived-only, or official-only differences.
