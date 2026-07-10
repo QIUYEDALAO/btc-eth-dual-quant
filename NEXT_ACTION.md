@@ -1,8 +1,8 @@
 # Next Action
 
-Under the Freqtrade-first architecture, T4 IS-only feasibility tooling has
-passed locally on `codex/short-horizon-t4-feasibility-harness`. The immediate
-work is limited to PR review, CI, squash merge, and governance closeout.
+Under the Freqtrade-first architecture, T4 IS-only feasibility tooling passed
+and merged in PR #27. It selected no events, evaluated no candidate, accessed
+no OOS returns, and added no strategy or execution behavior.
 
 T2 evidence now records:
 
@@ -22,11 +22,15 @@ T4 now provides ledger-locked event observations, next-open semantics, fixed
 path-risk, occupancy, and sample-budget diagnostics. It evaluated no candidate,
 selected no events, and accessed no OOS returns.
 
-After T4 merges, T5 is authorized only to execute the sample-budget precheck
-first. The formal range has 1004 days and its last 30% contains 302 days, below
+T5 is authorized only to execute the sample-budget precheck first. The formal
+range has 1004 days and its last 30% contains 302 days, below
 the fixed 540-day OOS minimum by 238 days. Therefore T5 must stop at that Gate;
 the threshold must not be lowered. At 30% OOS, 1800 full days are required,
 with the earliest projected complete date `2028-09-03`.
+
+Therefore there is no authorized strategy implementation now. A T5 precheck PR
+may record the truthful calendar failure, but it must not define event thresholds,
+read OOS prices or returns, run a candidate, or proceed to T6.
 
 Locked conditions: discrete completed-15m events, authoritative 1m detail, 5m
 sensitivity, `max_open_trades=1`, no fixed holding duration, no daily trade
