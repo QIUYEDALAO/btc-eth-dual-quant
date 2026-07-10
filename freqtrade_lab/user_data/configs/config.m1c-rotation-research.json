@@ -1,0 +1,82 @@
+{
+  "dry_run": true,
+  "trading_mode": "spot",
+  "margin_mode": "",
+  "max_open_trades": 1,
+  "stake_currency": "USDT",
+  "stake_amount": "unlimited",
+  "tradable_balance_ratio": 0.5,
+  "dry_run_wallet": 100000,
+  "fiat_display_currency": "USD",
+  "timeframe": "1d",
+  "cancel_open_orders_on_exit": false,
+  "exchange": {
+    "name": "binance",
+    "ccxt_config": {
+      "enableRateLimit": true,
+      "urls": {
+        "api": {
+          "public": "https://data-api.binance.vision/api/v3"
+        }
+      },
+      "options": {
+        "defaultType": "spot",
+        "fetchMarkets": {
+          "types": [
+            "spot"
+          ]
+        }
+      }
+    },
+    "ccxt_async_config": {
+      "enableRateLimit": true,
+      "urls": {
+        "api": {
+          "public": "https://data-api.binance.vision/api/v3"
+        }
+      },
+      "options": {
+        "defaultType": "spot",
+        "fetchMarkets": {
+          "types": [
+            "spot"
+          ]
+        }
+      }
+    },
+    "pair_whitelist": [
+      "BTC/USDT",
+      "ETH/USDT"
+    ],
+    "pair_blacklist": []
+  },
+  "pairlists": [
+    {
+      "method": "StaticPairList"
+    }
+  ],
+  "entry_pricing": {
+    "price_side": "other",
+    "use_order_book": false
+  },
+  "exit_pricing": {
+    "price_side": "other",
+    "use_order_book": false
+  },
+  "api_server": {
+    "enabled": false,
+    "listen_ip_address": "127.0.0.1",
+    "listen_port": 8080,
+    "username": "",
+    "password": "",
+    "jwt_secret_key": "somethingRandomSomethingRandom123",
+    "verbosity": "error"
+  },
+  "telegram": {
+    "enabled": false,
+    "token": "",
+    "chat_id": ""
+  },
+  "bot_name": "m1c-rotation-research-only",
+  "initial_state": "stopped"
+}

@@ -17,6 +17,8 @@ not enable exchange trading permissions, and do not expose services publicly.
   credentials.
 - `runtime-manifest.json` is the sanitized runtime/provenance contract.
 - M1A trend strategy is frozen as a historical failed-validation reproduction.
+- M1C BTC/ETH/cash rotation is the active fixed-rule research candidate. Its
+  design contract is `m1c-btc-eth-rotation-contract.json`.
 - New single-leg strategy research belongs only in `user_data/strategies/`.
 
 ## Local Commands
@@ -35,6 +37,20 @@ bash scripts/ft_research.sh lookahead-analysis --help
 bash scripts/ft_research.sh recursive-analysis --help
 bash scripts/ft_research.sh webserver
 ```
+
+M1C public-data research commands are deliberately separate from any runtime
+bot command:
+
+```bash
+bash scripts/ft_download_m1c.sh
+bash scripts/ft_backtest_m1c.sh
+bash scripts/ft_lookahead_m1c.sh
+bash scripts/ft_recursive_m1c.sh
+```
+
+They use `config.m1c-rotation-research.json`, which contains no exchange
+credentials and keeps the API server disabled. Generated data and results stay
+under ignored Freqtrade runtime directories.
 
 The public futures-leg cross-check remains a single-leg capability probe and
 must not be used as spot-long plus perpetual-short portfolio evidence:

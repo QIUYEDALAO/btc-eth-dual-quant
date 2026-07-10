@@ -13,10 +13,10 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | P0-05 | P0 governance | completed | P0-04 | `codex/strategy-failure-diagnostics` / #14 | Merged governance PR | Local and GitHub checks pass | none |
 | P1-01 | P1 design | completed | P0-05 | `codex/m1c-btc-eth-rotation-design` | Fixed M1C specification and machine-readable contract | No ambiguous rule or parameter | none |
 | P1-02 | P1 design | completed | P1-01 | same P1 PR | Pinned Freqtrade capability evidence | Unique winner and rotation ordering proven | P2 runtime fixture still required |
-| P1-03 | P1 design | in_progress | P1-02 | `codex/m1c-btc-eth-rotation-design` / #15 | Design decision | `design_pass` plus PR/CI review required | P1 PR not merged |
-| P2-01 | P2 implementation | pending | P1-03 | `codex/m1c-btc-eth-rotation-validation` | Freqtrade strategy and public config | Behavior tests pass | P1 not passed |
-| P2-02 | P2 implementation | pending | P2-01 | same P2 PR | Guarded research commands | No trade/live command | P2 not started |
-| P2-03 | P2 implementation | pending | P2-02 | same P2 PR | Time-semantics tests | Next-open and UTC ranking pass | P2 not started |
+| P1-03 | P1 design | completed | P1-02 | `codex/m1c-btc-eth-rotation-design` / #15 | Design decision | `design_pass` plus PR/CI review required | none |
+| P2-01 | P2 implementation | in_progress | P1-03 | `codex/m1c-btc-eth-rotation-validation` | Freqtrade strategy and public config | Behavior tests pass | Pinned runtime checks pending |
+| P2-02 | P2 implementation | in_progress | P2-01 | same P2 PR | Guarded research commands | No trade/live command | Pinned runtime checks pending |
+| P2-03 | P2 implementation | in_progress | P2-02 | same P2 PR | Time-semantics and runtime tests | Next-open, same-open switch, UTC ranking, lookahead and recursive pass | Pinned runtime checks pending |
 | P3-01 | P3 validation | pending | P2-03 | P2 PR or report branch | Public Freqtrade data and provenance | Exact used range has no unexplained gap | P2 not passed |
 | P3-02 | P3 validation | pending | P3-01 | same validation PR | Base/cost-x2, OOS, segment results | Every fixed numerical gate evaluated | P3 not started |
 | P3-03 | P3 validation | pending | P3-02 | same validation PR | M1C backtest report | Truthful `under_review` or `failed_validation` | P3 not started |
@@ -30,7 +30,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 ## Current Gate
 
 - Authorized work: P0-P4.
-- Active task: P1-03.
+- Active task: P2-03.
 - M1A status: `failed_validation`.
 - M1B status: `failed_validation`.
 - M0 audit status: `audit_revalidation_required`.

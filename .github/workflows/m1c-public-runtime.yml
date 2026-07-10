@@ -1,0 +1,64 @@
+name: M1C Public Runtime
+
+on:
+  workflow_dispatch:
+
+jobs:
+  public-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - name: Static validation
+        run: bash scripts/m1c_validate.sh
+      - name: Pull and verify pinned Freqtrade
+        run: |
+          cd freqtrade_lab
+          bash scripts/ft_pull.sh
+          bash scripts/ft_verify_runtime.sh
+      - name: Download public spot data
+        env:
+          FT_TIMERANGE: 20180101-20250101
+        run: |
+          cd freqtrade_lab
+          bash scripts/ft_download_m1c.sh
+      - name: Backtest fixed M1C strategy
+        env:
+          FT_TIMERANGE: 20200101-20250101
+        run: |
+          cd freqtrade_lab
+          bash scripts/ft_backtest_m1c.sh \
+            --export trades \
+            --export-filename user_data/backtest_results/m1c-runtime.json
+      - name: Run lookahead analysis
+        env:
+          FT_TIMERANGE: 20200101-20250101
+        run: |
+          cd freqtrade_lab
+          bash scripts/ft_lookahead_m1c.sh \
+            --lookahead-analysis-exportfilename user_data/backtest_results/m1c-lookahead.csv
+      - name: Run recursive analysis
+        env:
+          FT_TIMERANGE: 20200101-20250101
+        run: |
+          cd freqtrade_lab
+          bash scripts/ft_recursive_m1c.sh 2>&1 | tee user_data/backtest_results/m1c-recursive.log
+      - name: Verify next-open and same-open behavior
+        run: |
+          python scripts/m1c_freqtrade_runtime_check.py \
+            --results-dir freqtrade_lab/user_data/backtest_results \
+            --lookahead-csv freqtrade_lab/user_data/backtest_results/m1c-lookahead.csv \
+            --recursive-log freqtrade_lab/user_data/backtest_results/m1c-recursive.log
+      - name: Remove runtime artifacts and verify git boundary
+        if: always()
+        run: |
+          rm -rf freqtrade_lab/user_data/data \
+            freqtrade_lab/user_data/logs \
+            freqtrade_lab/user_data/backtest_results
+          test -z "$(git status --short --untracked-files=all | grep -E 'freqtrade_lab/user_data/(data|logs|backtest_results)|\.sqlite' || true)"
