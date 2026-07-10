@@ -634,3 +634,21 @@ private exchange responses here.
 - Result: T1 status `pass`; fixed research start `2023-10-01`; T2 golden data and quarantine is the next authorized task.
 - Not completed: T2 derivatives/quarantine, unified metrics, M1D feasibility, strategy code, historical validation, M2, dry-run, live, or API trading.
 - Guardrails: No API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, execution/live, OOS tuning, raw commits, or runtime artifacts.
+
+## 2026-07-10 - T2 Golden Data and Quarantine Passed Locally
+
+- Date UTC: 2026-07-10T13:20:00Z
+- Task ID: SHORT-HORIZON-T2-GOLDEN-DATA
+- Phase: T2 golden data and quarantine
+- Branch: codex/short-horizon-t2-golden-data
+- Commit: b89f637d0086bde3197b62f5b6942a49ec6c0d80
+- PR: #23 open
+- Data: BTCUSDT and ETHUSDT golden spot 1m from `2023-10-01T00:00:00Z` through `2026-06-30T23:59:00Z`, derived from the append-only T1 run with monthly ZIP precedence and daily ZIP fill-only semantics.
+- Result: 1,445,760 golden 1m rows per symbol; 289,152 deterministic 5m rows and 96,384 deterministic 15m rows per symbol; zero incomplete research buckets.
+- Official parity: 66 symbol-month official 15m ZIP comparisons, 192,768 overlapping rows, and zero numeric, timestamp, ordering, derived-only, or official-only differences.
+- Quarantine: 60,485 traceable records from 50 pre-start symbol-months remain outside the formal research range and are hash-addressed in ignored storage.
+- Runtime: Pinned Freqtrade 2026.6 container read all six BTC/ETH 1m/5m/15m jsongz caches with exact time ranges and row counts.
+- Validation: 146 repository tests passed; T2 Validate `PASS=9 FAIL=0`; secret, no-trading, execution/live, artifact, and diff checks passed.
+- Artifacts: Raw archives, golden files, detailed manifests, logs, and Freqtrade caches remain ignored and uncommitted.
+- Next action: Commit, open the T2 PR, require clean CI, and merge before T3. Do not implement M1D strategy code.
+- Guardrails: No strategy returns, OOS access, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
