@@ -1,17 +1,25 @@
 # Next Action
 
-Implement the approved Freqtrade-first hardening sequence:
+Complete T0 of the approved Freqtrade-first BTC/ETH short-horizon event product:
 
-1. Architecture governance and historical evidence notices: completed in PR #8.
-2. Correct M0 funding-interval and ZIP/REST audit semantics: code hardening merged in PR #9; real audit evidence remains blocked and must not be treated as pass.
-3. Pin and validate Freqtrade as the primary research framework: completed in PR #10.
-4. Revalidate M1B with strict 1-hour event-time semantics: completed in PR #11; result remains `failed_validation`.
+1. Validate and merge the approved product specification and ADR-0007.
+2. Preserve the independently verified expert recompute and sanitized evidence.
+3. Enforce the immutable strategy trial ledger and candidate hashes in validation.
+4. Open and merge the T0 governance PR after clean CI.
+5. Keep all new strategy and minute-data work blocked until T0 merges.
 
-P0 completed in PR #14, P1 design_pass in PR #15, P2 implementation in PR #16, and M1C P3 failed-validation evidence in PR #17. The candidate is closed. There is no active implementation task and P4 is blocked.
+After T0, execute `T1 -> T2 -> T3 -> T4` before M1D feasibility. T5 must
+pass before T6 fixed design, and T6 must pass before any Freqtrade strategy code.
 
-M1C failed complete-trade count (31 < 80), OOS complete-trade count (15 < 20), OOS Sharpe (0.1146 < 1.0), and maximum drawdown (16.65% > 15%). Do not tune or rescue it. P4 is blocked because P3 did not pass. Any future work requires a separately approved new P1 candidate design or M0 audit diagnostics. P5-P8 remain `not_authorized`.
+Locked conditions: discrete completed-15m events, authoritative 1m detail, 5m
+sensitivity, `max_open_trades=1`, no fixed holding duration, no daily trade
+quota, daily-MTM MaxDD <=15%, OOS Sharpe >=1.0, and PSR >=0.95.
 
-M0 monitoring continues independently. PR #13 merged as truthful blocked evidence: official futures REST connectivity is complete, but historical spot/UM source differences and missing `2026-06-29` daily reference-price archives keep audit revalidation blocked. Do not weaken the data gate to accelerate strategy work.
+M1C remains `failed_validation` after expert correction. Its OOS daily-MTM
+Sharpe is 0.7882/0.7528 and MaxDD is 23.47%/24.47%; do not tune or rescue it.
+
+M0 source differences must be quarantined and sensitivity-tested. Never select
+the more profitable official data version.
 
 Rules:
 

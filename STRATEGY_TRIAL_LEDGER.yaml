@@ -1,0 +1,26 @@
+version: 1
+updated_utc: "2026-07-10T02:46:20Z"
+hash_algorithm: sha256
+rules:
+  oos_opening_increments_trial_count: true
+  post_freeze_rule_change_creates_new_candidate: true
+  failed_or_rejected_candidates_are_append_only: true
+candidates:
+  - id: M1D-15M-DISCRETE-DISLOCATION
+    status: declared_unopened
+    hypothesis: "M1D-15M-DISCRETE-DISLOCATION: BTC/USDT and ETH/USDT spot; completed 15m candles identify discrete large-price-dislocation events; enter no earlier than the next 15m open; 1m data is execution detail only; no shorting or leverage."
+    sha256: fdccf79b213f87fc9ee1cb74daf42f67e7ba63fba6de9990851c2eec9e11e1a7
+    oos_opened: false
+    notes: "Primary candidate family; IS-only feasibility must pass before strategy code."
+  - id: DAILY-PANIC-MEAN-REVERSION
+    status: declared_unopened_rejected_current_product_frequency
+    hypothesis: "DAILY-PANIC-MEAN-REVERSION: BTC/USDT and ETH/USDT spot; daily extreme panic events trigger next-open long entries and fixed-rule mean-reversion exits; declared but unopened; rejected from current product path for insufficient operating frequency."
+    sha256: 105bb720f9d253e897e36b79c9d781c44fccfefeb6394a002c169b64bf7bcfe0
+    oos_opened: false
+    notes: "Research shelf only; may use future clean calendar data if separately approved."
+  - id: FUNDING-EXTREME-SPOT-CONTRARIAN
+    status: declared_unopened
+    hypothesis: "FUNDING-EXTREME-SPOT-CONTRARIAN: BTC/USDT and ETH/USDT spot; historical funding extremes are sentiment inputs for spot-only contrarian long/cash signals; no futures position and no two-leg execution; declared but unopened."
+    sha256: f4caf96502aca9272d58faab20a6e2dc07eea4c69e49d9705272c00a46b814ed
+    oos_opened: false
+    notes: "Backup candidate only; do not open before M1D decision and a new approval."

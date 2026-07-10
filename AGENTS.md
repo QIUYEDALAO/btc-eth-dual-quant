@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: post-M1C review.
+- Current phase: short-horizon product governance.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -44,6 +44,11 @@ After any task, the agent must update:
 - P2 merged in PR #16. P3 must use fixed parameters and gates; any failure stops the candidate without tuning or P4.
 - M1C P3 failed fixed trade-count, OOS Sharpe, and drawdown gates in run 29060604088. PR #17 is a failure record; P4 is blocked.
 - PR #17 merged. M1C is closed as `failed_validation`; there is no active strategy implementation task.
+- Expert measurement review independently reproduced M1C and kept it failed; corrected daily-MTM metrics are the future regression authority.
+- ADR-0007 locks the product to discrete completed-15m events, authoritative 1m backtest detail, and 5m sensitivity only.
+- Holding time and trade frequency are strategy outputs. Do not add a fixed holding duration or daily trade quota.
+- T0 governance must merge before T1 minute data; T1-T4 must pass before T5 feasibility; T5/T6 must pass before strategy code.
+- The current task is governance and evidence only. No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.
 - Future work must be diagnostics or design review only.

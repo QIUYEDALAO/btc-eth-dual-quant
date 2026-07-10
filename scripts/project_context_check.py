@@ -200,6 +200,7 @@ def main() -> int:
         or "m1c_rotation_p2_pass_pending_merge_no_m2" in current_status
         or "m1c_rotation_p3_in_progress_no_m2" in current_status
         or "m1c_rotation_failed_validation_no_p4_no_m2" in current_status
+        or "short_horizon_product_t0_in_progress_no_strategy_eligible_for_m2" in current_status
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "m2" not in current_status and "m1b" not in current_status:

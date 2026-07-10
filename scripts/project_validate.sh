@@ -48,6 +48,7 @@ maybe_m1b_validate() {
 
 run_check "project context check" "$PY_CMD" scripts/project_context_check.py
 run_check "context summary" "$PY_CMD" scripts/context_summary.py
+run_check "strategy trial ledger check" "$PY_CMD" scripts/strategy_trial_ledger_check.py
 run_check "M0 validation" bash scripts/m0_validate.sh
 run_check "M1A validation" bash scripts/m1a_validate.sh
 run_check "M1F validation" bash scripts/m1f_validate.sh

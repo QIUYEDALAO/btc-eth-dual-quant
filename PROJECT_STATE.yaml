@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T00:51:24Z"
-current_phase: post-M1C review
-current_status: m1c_rotation_failed_validation_no_p4_no_m2
+last_updated_utc: "2026-07-10T02:46:20Z"
+current_phase: short-horizon product governance
+current_status: short_horizon_product_t0_in_progress_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -51,7 +51,19 @@ completed_milestones:
     status: failed_validation
     evidence: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
     pr: 17
+  - phase: post-M1C expert measurement review
+    status: independently_recomputed_failed_validation_unchanged
+    evidence: reports/expert/2026-07-10-FABLE5-EXPERT-REVIEW.md
 open_work:
+  - id: SHORT-HORIZON-T0-GOVERNANCE
+    phase: short-horizon product governance
+    status: in_progress
+    branch: codex/short-horizon-product-governance
+    pr: none
+    head_sha: working_tree
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: docs/superpowers/specs/2026-07-10-btc-eth-short-horizon-event-quant-design.md
+    blocker: "T0 governance review and merge required before T1 minute-data implementation."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -81,6 +93,10 @@ active_decisions:
     decision: Freqtrade is the primary single-leg research framework; Python remains the audit and offline two-leg accounting sidecar.
     status: active
     evidence: docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md
+  - id: ADR-0007
+    decision: BTC/ETH short-horizon research uses discrete 15m events, authoritative 1m detail, daily-MTM metrics, and no daily trade quota.
+    status: accepted_pending_governance_merge
+    evidence: docs/decisions/ADR-0007-btc-eth-short-horizon-product-conditions.md
 allowed_next_work:
   - Freqtrade-first architecture governance completed in PR #8.
   - M0 correctness hardening completed in PR #9; audit evidence remains blocked and may be investigated without private API access.
@@ -94,6 +110,11 @@ allowed_next_work:
   - P2 M1C implementation completed in PR #16 with pinned runtime checks passing.
   - M1C P3 failed-validation evidence merged in PR #17.
   - Do not tune or rescue M1C; do not run P4 because P3 failed.
+  - Complete and merge T0 short-horizon product governance before any minute-data implementation.
+  - After T0, execute T1-T4 foundations before M1D feasibility or strategy code.
+  - Use completed 15m discrete events, authoritative 1m detail, and 5m sensitivity only.
+  - Holding time and trade frequency are strategy outputs; do not impose a daily trade quota.
+  - Do not start M1D strategy implementation unless T5 IS-only feasibility and T6 fixed design pass.
   - Any future candidate requires a separately approved P1 design.
   - P1-P4 are authorized sequentially; P5-P8 remain not_authorized.
   - Extend M1B history only after the relevant M0 data-authority blocker is resolved, without changing thresholds or rules.
@@ -212,10 +233,38 @@ latest_reports:
     phase: M1C P3
     status: failed_validation
     status_marker: "Status: failed_validation"
+  - path: reports/expert/2026-07-10-FABLE5-EXPERT-REVIEW.md
+    phase: post-M1C expert review
+    status: expert_review_complete
+    status_marker: "三项 `failed_validation` 冻结决定全部正确"
+  - path: reports/expert/m1c_recompute.py
+    phase: post-M1C expert review
+    status: deterministic_recompute_evidence
+    status_marker: "M1C measurement-correction recompute"
+  - path: reports/expert/m1c_oos_daily_equity.csv
+    phase: post-M1C expert review
+    status: deterministic_recompute_evidence
+    status_marker: "date_utc,equity_base,equity_x2"
+  - path: docs/superpowers/specs/2026-07-10-btc-eth-short-horizon-event-quant-design.md
+    phase: short-horizon product governance
+    status: approved_pending_governance_merge
+    status_marker: "Product conditions: approved by the capital owner"
+  - path: docs/superpowers/plans/2026-07-10-btc-eth-short-horizon-event-quant-implementation-plan.md
+    phase: short-horizon product governance
+    status: approved_pending_governance_merge
+    status_marker: "Execute one task group per branch/PR."
+  - path: docs/decisions/ADR-0007-btc-eth-short-horizon-product-conditions.md
+    phase: short-horizon product governance
+    status: accepted_pending_governance_merge
+    status_marker: "Status: Accepted by capital owner; pending governance merge"
+  - path: STRATEGY_TRIAL_LEDGER.yaml
+    phase: short-horizon product governance
+    status: initialized
+    status_marker: "M1D-15M-DISCRETE-DISLOCATION"
   - path: PROJECT_EXECUTION_CHECKLIST.md
     phase: governance
-    status: completed_with_p3_failure
-    status_marker: "Active task: none"
+    status: in_progress
+    status_marker: "Active task: T0 short-horizon product governance."
   - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
     phase: post-M1B
     status: accepted
