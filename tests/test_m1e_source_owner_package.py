@@ -50,6 +50,16 @@ class SourceOwnerPackageTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             build_package(private)
 
+    def test_explicit_submission_is_recorded_without_resolving_contract(self) -> None:
+        package = build_package(
+            self.evidence(), generated_utc="2026-07-11T00:00:00Z",
+            submission_url="https://github.com/binance/binance-public-data/issues/475#issuecomment-1",
+            submitted_at_utc="2026-07-10T20:04:37Z",
+        )
+        self.assertEqual(package["status"], "submitted_awaiting_response")
+        self.assertTrue(package["external_submission_performed"])
+        self.assertFalse(package["contract_resolved"])
+
 
 if __name__ == "__main__":
     unittest.main()

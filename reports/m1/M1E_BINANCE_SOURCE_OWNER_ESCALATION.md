@@ -1,13 +1,15 @@
 # M1E Binance Source-Owner Escalation Package
 
-- Status: ready_not_submitted
+- Status: submitted_awaiting_response
 - Target repository: `binance/binance-public-data`
 - Existing issue: https://github.com/binance/binance-public-data/issues/475
 - Existing issue overlap rows: 16
 - New supplemental rows: 14
 - Supplemental evidence SHA256: `1148b87ffa6b9089210b90996c63c136ac1e32d56571617e7beb661bb3c4f805`
 - Monthly ZIP refetch hashes unchanged: 36/36
-- External submission performed: no
+- External submission performed: yes
+- Submission URL: https://github.com/binance/binance-public-data/issues/475#issuecomment-4939090508
+- Submitted UTC: 2026-07-10T20:04:37Z
 - API key used: no
 - Raw payload included: no
 - M1E contract resolved: no
@@ -68,4 +70,4 @@ Could Binance clarify whether kline archives at different intervals are expected
 
 ## Submission Boundary
 
-This package is prepared but was not posted externally. Posting requires an explicit user decision. Regardless of any comment, M1E remains blocked until Binance corrects or documents the conflicting sources and the project reruns its fixed Gate.
+The prepared package was posted only after explicit user approval. Submission does not resolve the contract: M1E remains blocked until Binance corrects or documents the conflicting sources and the project reruns its fixed Gate.

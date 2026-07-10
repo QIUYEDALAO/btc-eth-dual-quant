@@ -7,18 +7,19 @@ run_check() { local name="$1"; shift; echo "==> $name"; if "$@"; then RESULTS+=(
 report_guard() {
   local report="reports/m1/M1E_BINANCE_SOURCE_OWNER_ESCALATION.md" json="reports/m1/M1E_BINANCE_SOURCE_OWNER_EVIDENCE.json"
   [[ -f "$report" && -f "$json" ]] &&
-  grep -qE '^- Status: ready_not_submitted$' "$report" &&
+  grep -qE '^- Status: submitted_awaiting_response$' "$report" &&
   grep -qE '^- Existing issue overlap rows: 16$' "$report" &&
   grep -qE '^- New supplemental rows: 14$' "$report" &&
   grep -qE '^- Monthly ZIP refetch hashes unchanged: 36/36$' "$report" &&
-  grep -qE '^- External submission performed: no$' "$report" &&
+  grep -qE '^- External submission performed: yes$' "$report" &&
+  grep -qE '^- Submission URL: https://github.com/binance/binance-public-data/issues/475#issuecomment-4939090508$' "$report" &&
   grep -qE '^- Raw payload included: no$' "$report" &&
   grep -qE '^- M1E contract resolved: no$' "$report" &&
   "$PY_CMD" - "$json" <<'PY'
 import json, sys
 d=json.load(open(sys.argv[1]))
-assert d['status']=='ready_not_submitted' and d['supplemental_rows']==14
-assert d['external_submission_performed'] is False and d['raw_payload_included'] is False
+assert d['status']=='submitted_awaiting_response' and d['supplemental_rows']==14
+assert d['external_submission_performed'] is True and d['raw_payload_included'] is False
 assert d['api_key_used'] is False and d['m2_authorized'] is False
 PY
 }
