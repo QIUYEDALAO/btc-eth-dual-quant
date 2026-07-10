@@ -14,7 +14,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | P1-01 | P1 design | completed | P0-05 | `codex/m1c-btc-eth-rotation-design` | Fixed M1C specification and machine-readable contract | No ambiguous rule or parameter | none |
 | P1-02 | P1 design | completed | P1-01 | same P1 PR | Pinned Freqtrade capability evidence | Unique winner and rotation ordering proven | P2 runtime fixture still required |
 | P1-03 | P1 design | completed | P1-02 | `codex/m1c-btc-eth-rotation-design` / #15 | Design decision | `design_pass` plus PR/CI review required | none |
-| P2-01 | P2 implementation | in_progress | P1-03 | `codex/m1c-btc-eth-rotation-validation` | Freqtrade strategy and public config | Behavior tests pass | Pinned runtime checks pending |
+| P2-01 | P2 implementation | in_progress | P1-03 | `codex/m1c-btc-eth-rotation-validation` / #16 | Freqtrade strategy and public config | Behavior tests pass | Pinned runtime checks pending |
 | P2-02 | P2 implementation | in_progress | P2-01 | same P2 PR | Guarded research commands | No trade/live command | Pinned runtime checks pending |
 | P2-03 | P2 implementation | in_progress | P2-02 | same P2 PR | Time-semantics and runtime tests | Next-open, same-open switch, UTC ranking, lookahead and recursive pass | Pinned runtime checks pending |
 | P3-01 | P3 validation | pending | P2-03 | P2 PR or report branch | Public Freqtrade data and provenance | Exact used range has no unexplained gap | P2 not passed |

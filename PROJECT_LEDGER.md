@@ -484,8 +484,8 @@ private exchange responses here.
 - Task ID: M1C-P2-IMPLEMENTATION
 - Phase: P2 M1C Freqtrade implementation
 - Branch: codex/m1c-btc-eth-rotation-validation
-- PR: pending
-- Commit: pending
+- PR: #16 open
+- Commit: 89271afeda71284487623e37bcde1b229251b84a
 - Completed so far: Fixed Freqtrade strategy, no-key public research config, guarded download/backtest/lookahead/recursive commands, independent event-time validator, and deterministic unit fixtures.
 - Validation so far: Nine strategy/time tests pass. Full validation awaits the context transition and pinned Freqtrade runtime checks.
 - Blocker: Same-open cross-pair rotation, lookahead-analysis, and recursive-analysis must pass in the pinned Freqtrade 2026.6 runtime.

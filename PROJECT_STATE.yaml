@@ -48,8 +48,8 @@ open_work:
     phase: P2 M1C Freqtrade implementation
     status: implementation_in_progress
     branch: codex/m1c-btc-eth-rotation-validation
-    pr: pending
-    head_sha: pending
+    pr: 16
+    head_sha: 89271afeda71284487623e37bcde1b229251b84a
     design: docs/superpowers/specs/2026-07-10-m1c-btc-eth-rotation-design.md
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     blocker: "Pinned Freqtrade runtime must confirm same-open rotation, lookahead analysis, and recursive analysis before P2 can pass."

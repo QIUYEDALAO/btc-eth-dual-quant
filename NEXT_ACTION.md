@@ -7,7 +7,7 @@ Implement the approved Freqtrade-first hardening sequence:
 3. Pin and validate Freqtrade as the primary research framework: completed in PR #10.
 4. Revalidate M1B with strict 1-hour event-time semantics: completed in PR #11; result remains `failed_validation`.
 
-P0 completed in PR #14 and P1 design_pass completed in PR #15. Immediate action: finish P2 on `codex/m1c-btc-eth-rotation-validation`. The Freqtrade strategy, no-key public research config, guarded commands, and independent timestamp validator must pass static tests and pinned-runtime checks.
+P0 completed in PR #14 and P1 design_pass completed in PR #15. Immediate action: finish P2 PR #16 on `codex/m1c-btc-eth-rotation-validation`. The Freqtrade strategy, no-key public research config, guarded commands, and independent timestamp validator must pass static tests and pinned-runtime checks.
 
 P2's hard Gate is the pinned-image fixture proving old-pair exit and new-pair entry share the same next-open timestamp, plus successful public-data backtest, lookahead-analysis, and recursive-analysis. If the runtime fixture fails, record `blocked_framework_capability`; do not create a second single-leg backtester. P3-P4 may proceed only after their predecessor Gate passes. P5-P8 remain `not_authorized`.
 
