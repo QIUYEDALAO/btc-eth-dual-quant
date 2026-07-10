@@ -864,3 +864,17 @@ private exchange responses here.
 - Status: `submitted_awaiting_response`; M1E contract remains unresolved and blocked.
 - Next action: Monitor for an official maintainer response or archive correction, then rerun the unchanged data Gate.
 - Guardrails: No PR3, OOS returns, strategy code, M2, private smoke, dry-run, live, orders, or execution/live.
+
+## 2026-07-11 - M1E Canonical 5m Requalification Passed Locally
+
+- Date UTC: 2026-07-11T04:30:00Z
+- Task ID: M1E-CANONICAL-5M-V2
+- Phase: M1E canonical 5m requalification
+- Branch: `codex/m1e-canonical-5m-contract-v2`
+- PR: pending
+- Contract: ADR-0009 and machine contract v2 make evidenced official 5m rows canonical; official 1h/4h rows become audit comparators.
+- Evidence: 12 daily 5m revisions are independently supported by public REST; unresolved canonical conflicts `0`; unexpected incomplete child buckets `0`; 146 confirmed-outage child buckets isolated.
+- Runtime: Fixed Freqtrade 2026.6 container read BTC/ETH 5m, 1h, and 4h caches on the VPS using `list-data` only.
+- Result: Data Gate `pass`; fixed research start restored to `2020-07-01`. Binance source-owner response remains provenance follow-up rather than an operational dependency.
+- Authorization: Only the metadata-only 1800/540-day sample-budget Gate may follow after merge. Candidate evaluation, OOS returns, strategy code, backtesting, and M2 remain unauthorized.
+- Safety: No API key, private data, strategy return, order, paper/live mode, or execution module was used.

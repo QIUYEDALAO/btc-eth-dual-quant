@@ -15,6 +15,8 @@ from .minute_archive import KLINE_FIELDS, MINUTE_MS, month_bounds_ms, next_month
 INTERVAL_MS = {"5m": 5 * MINUTE_MS, "1h": 60 * MINUTE_MS, "4h": 240 * MINUTE_MS}
 SUM_FIELDS = ("volume", "quote_volume", "trade_count", "taker_buy_base_volume", "taker_buy_quote_volume")
 COMPARE_FIELDS = (*KLINE_FIELDS, "close_time")
+PRICE_FIELDS = ("open", "high", "low", "close")
+FLOW_FIELDS = ("volume", "quote_volume", "trade_count", "taker_buy_base_volume", "taker_buy_quote_volume")
 LIQUIDITY_P95_MAXIMUM = Decimal("0.0030")
 COMMON_QUALIFIED_MONTHS = 6
 
@@ -66,6 +68,28 @@ class PairMonthQualification:
     blockers: tuple[str, ...]
 
 
+@dataclass(frozen=True)
+class CanonicalArchive:
+    """Canonical 5m rows plus an explicit audit trail for every source decision."""
+
+    rows: tuple[dict[str, Any], ...]
+    patched_timestamps: tuple[int, ...]
+    unresolved_timestamps: tuple[int, ...]
+    decisions: tuple[dict[str, Any], ...]
+    canonical_sha256: str
+
+
+@dataclass(frozen=True)
+class AuditParity:
+    """Cross-timeframe evidence classified by decision relevance."""
+
+    price_differences: int
+    flow_differences: int
+    timestamp_differences: int
+    format_only_fields: int
+    classification: str
+
+
 def _decimal(value: Any) -> Decimal:
     result = Decimal(str(value))
     if not result.is_finite():
@@ -79,6 +103,100 @@ def _canonical_rows(rows: Iterable[Mapping[str, Any]]) -> str:
         digest.update(json.dumps(dict(row), sort_keys=True, separators=(",", ":"), default=str).encode())
         digest.update(b"\n")
     return digest.hexdigest()
+
+
+def _row_sha256(row: Mapping[str, Any]) -> str:
+    return hashlib.sha256(
+        json.dumps(dict(row), sort_keys=True, separators=(",", ":"), default=str).encode()
+    ).hexdigest()
+
+
+def differing_fields(left: Mapping[str, Any], right: Mapping[str, Any]) -> tuple[str, ...]:
+    return tuple(field for field in COMPARE_FIELDS if _decimal(left[field]) != _decimal(right[field]))
+
+
+def build_canonical_5m(
+    *,
+    monthly_rows: Iterable[Mapping[str, Any]],
+    daily_rows: Iterable[Mapping[str, Any]],
+    rest_supported_daily_timestamps: Iterable[int] = (),
+) -> CanonicalArchive:
+    """Build canonical 5m data without mutating either append-only source.
+
+    Monthly ZIP is the base. Daily ZIP fills missing timestamps and may replace a
+    conflicting monthly row only when independent public REST evidence confirms
+    the daily revision. Every replacement is recorded with both source hashes.
+    """
+    monthly = {int(row["open_time"]): dict(row) for row in monthly_rows if valid_kline(row, "5m")}
+    daily = {int(row["open_time"]): dict(row) for row in daily_rows if valid_kline(row, "5m")}
+    supported = set(int(value) for value in rest_supported_daily_timestamps)
+    canonical = dict(monthly)
+    patched: list[int] = []
+    unresolved: list[int] = []
+    decisions: list[dict[str, Any]] = []
+    for timestamp in sorted(daily):
+        candidate = daily[timestamp]
+        current = canonical.get(timestamp)
+        if current is None:
+            canonical[timestamp] = candidate
+            decisions.append({
+                "open_time": timestamp,
+                "decision": "daily_fill_missing",
+                "daily_sha256": _row_sha256(candidate),
+            })
+            continue
+        fields = differing_fields(current, candidate)
+        if not fields:
+            continue
+        if timestamp in supported:
+            canonical[timestamp] = candidate
+            patched.append(timestamp)
+            decisions.append({
+                "open_time": timestamp,
+                "decision": "daily_revision_confirmed_by_public_rest",
+                "differing_fields": list(fields),
+                "monthly_sha256": _row_sha256(current),
+                "daily_sha256": _row_sha256(candidate),
+            })
+        else:
+            unresolved.append(timestamp)
+            decisions.append({
+                "open_time": timestamp,
+                "decision": "unresolved_monthly_daily_conflict",
+                "differing_fields": list(fields),
+                "monthly_sha256": _row_sha256(current),
+                "daily_sha256": _row_sha256(candidate),
+            })
+    rows = tuple(canonical[timestamp] for timestamp in sorted(canonical))
+    return CanonicalArchive(rows, tuple(patched), tuple(unresolved), tuple(decisions), _canonical_rows(rows))
+
+
+def classify_audit_parity(derived: Iterable[Mapping[str, Any]], official: Iterable[Mapping[str, Any]]) -> AuditParity:
+    """Classify higher-timeframe differences without making them canonical."""
+    left = {int(row["open_time"]): dict(row) for row in derived}
+    right = {int(row["open_time"]): dict(row) for row in official}
+    price = flow = format_only = 0
+    for timestamp in sorted(set(left) & set(right)):
+        for field in COMPARE_FIELDS:
+            if _decimal(left[timestamp][field]) != _decimal(right[timestamp][field]):
+                if field in PRICE_FIELDS or field == "close_time":
+                    price += 1
+                elif field in FLOW_FIELDS:
+                    flow += 1
+            elif str(left[timestamp][field]) != str(right[timestamp][field]):
+                format_only += 1
+    timestamp = len(set(left) ^ set(right))
+    if price:
+        classification = "audit_price_revision_quarantined"
+    elif timestamp:
+        classification = "audit_timestamp_revision_quarantined"
+    elif flow:
+        classification = "audit_flow_revision_quarantined"
+    elif format_only:
+        classification = "format_only"
+    else:
+        classification = "exact"
+    return AuditParity(price, flow, timestamp, format_only, classification)
 
 
 def valid_kline(row: Mapping[str, Any], timeframe: str) -> bool:

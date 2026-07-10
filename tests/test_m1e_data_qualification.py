@@ -7,6 +7,8 @@ from btc_eth_dual_quant.data.m1e_qualification import (
     INTERVAL_MS,
     LIQUIDITY_P95_MAXIMUM,
     aggregate_bars,
+    build_canonical_5m,
+    classify_audit_parity,
     compare_parity,
     determine_research_start,
     merge_archive_month,
@@ -33,6 +35,49 @@ class M1EDataQualificationTests(unittest.TestCase):
         self.assertEqual(result.rows[0]["open"], "10")
         self.assertEqual(result.daily_fill_rows, 1)
         self.assertEqual(result.conflict_rows, 1)
+
+    def test_canonical_5m_patches_only_rest_confirmed_daily_revision(self) -> None:
+        start, _ = month_bounds_ms("2020-01")
+        monthly = [row(start, "5m", "10"), row(start + INTERVAL_MS["5m"], "5m", "20")]
+        daily = [row(start, "5m", "11"), row(start + INTERVAL_MS["5m"], "5m", "21")]
+        result = build_canonical_5m(
+            monthly_rows=monthly, daily_rows=daily, rest_supported_daily_timestamps=[start]
+        )
+        self.assertEqual(result.rows[0]["open"], "11")
+        self.assertEqual(result.rows[1]["open"], "20")
+        self.assertEqual(result.patched_timestamps, (start,))
+        self.assertEqual(result.unresolved_timestamps, (start + INTERVAL_MS["5m"],))
+        self.assertIn("monthly_sha256", result.decisions[0])
+
+    def test_higher_timeframe_flow_revision_is_audit_only(self) -> None:
+        start, _ = month_bounds_ms("2020-01")
+        derived = row(start, "1h", "10", "1")
+        official = dict(derived, volume="2", quote_volume="2", trade_count="2")
+        evidence = classify_audit_parity([derived], [official])
+        self.assertEqual(evidence.price_differences, 0)
+        self.assertGreater(evidence.flow_differences, 0)
+        self.assertEqual(evidence.classification, "audit_flow_revision_quarantined")
+
+    def test_higher_timeframe_price_revision_is_quarantined_not_canonical(self) -> None:
+        start, _ = month_bounds_ms("2020-01")
+        derived = row(start, "1h", "10")
+        official = dict(derived, close="11")
+        evidence = classify_audit_parity([derived], [official])
+        self.assertGreater(evidence.price_differences, 0)
+        self.assertEqual(evidence.classification, "audit_price_revision_quarantined")
+
+    def test_canonical_hash_is_deterministic_after_confirmed_patch(self) -> None:
+        start, _ = month_bounds_ms("2020-01")
+        monthly = [row(start, "5m", "10")]
+        daily = [row(start, "5m", "11")]
+        left = build_canonical_5m(
+            monthly_rows=monthly, daily_rows=daily, rest_supported_daily_timestamps=[start]
+        )
+        right = build_canonical_5m(
+            monthly_rows=reversed(monthly), daily_rows=reversed(daily),
+            rest_supported_daily_timestamps=[start],
+        )
+        self.assertEqual(left.canonical_sha256, right.canonical_sha256)
 
     def test_twelve_5m_and_four_1h_aggregate_exactly(self) -> None:
         start, _ = month_bounds_ms("2020-01")
@@ -114,7 +159,10 @@ class M1EDataQualificationTests(unittest.TestCase):
 
     def test_qualification_source_has_no_strategy_or_trading_command(self) -> None:
         root = __import__("pathlib").Path(__file__).resolve().parents[1]
-        source = (root / "scripts/m1e_qualify_public_data.py").read_text(encoding="utf-8")
+        source = "\n".join(
+            (root / path).read_text(encoding="utf-8")
+            for path in ("scripts/m1e_qualify_public_data.py", "scripts/m1e_requalify_canonical_5m.py")
+        )
         forbidden = ("create_" + "order", "cancel_" + "order", "place_" + "order", "freqtrade " + "trade", "backtesting\"")
         for token in forbidden:
             self.assertNotIn(token, source)

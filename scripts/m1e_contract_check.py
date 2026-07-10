@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the immutable M1E product/data contract without market access."""
+"""Validate the versioned M1E product/data contract without market access."""
 
 from __future__ import annotations
 
@@ -31,6 +31,7 @@ def load_contract(path: Path = CONTRACT_PATH) -> dict[str, Any]:
 def validate_contract(contract: dict[str, Any]) -> list[str]:
     failures: list[str] = []
     expected = {
+        "version": 2,
         "candidate_id": "M1E-1H-TREND-BREAKOUT",
         "hypothesis_sha256": EXPECTED_HASH,
         "market": "binance_spot",
@@ -43,9 +44,11 @@ def validate_contract(contract: dict[str, Any]) -> list[str]:
             failures.append(f"{key} must equal {value!r}")
 
     checks = (
-        (contract.get("timeframes", {}).get("signal_authority") == "1h", "1h signal authority"),
+        (contract.get("timeframes", {}).get("canonical_authority") == "5m", "5m canonical authority"),
+        (contract.get("timeframes", {}).get("signal_derived") == "1h", "1h derived signal data"),
         (contract.get("timeframes", {}).get("execution_detail") == "5m", "5m execution detail"),
-        (contract.get("timeframes", {}).get("regime_filter_only") == "4h", "4h regime only"),
+        (contract.get("timeframes", {}).get("regime_filter_derived") == "4h", "4h derived regime data"),
+        (contract.get("timeframes", {}).get("official_1h_4h_role") == "audit_only", "higher timeframes audit only"),
         (contract.get("range", {}).get("start") == "2020-01-01", "fixed range start"),
         (contract.get("range", {}).get("end_policy") == "latest_complete_utc_month", "complete-month end"),
         (contract.get("liquidity", {}).get("maximum") == "0.0030", "fixed liquidity threshold"),
@@ -60,15 +63,21 @@ def validate_contract(contract: dict[str, Any]) -> list[str]:
         (contract.get("authorization", {}).get("candidate_oos_returns") is False, "OOS returns prohibited"),
         (contract.get("authorization", {}).get("freqtrade_backtesting") is False, "backtesting prohibited"),
         (contract.get("authorization", {}).get("m2") is False, "M2 prohibited"),
+        (contract.get("qualification", {}).get("rest_may_confirm_daily_revision") is True, "REST-confirmed daily revision"),
+        (contract.get("qualification", {}).get("unresolved_5m_price_conflict_blocks") is True, "unresolved canonical conflict blocks"),
+        (contract.get("qualification", {}).get("higher_timeframe_flow_revision_blocks_price_strategy") is False, "flow revision is audit-only"),
+        (contract.get("qualification", {}).get("decision_fields") == ["open", "high", "low", "close"], "OHLC-only decision fields"),
+        (contract.get("qualification", {}).get("volume_use_requires_new_contract") is True, "volume requires requalification"),
     )
     failures.extend(f"contract violation: {label}" for ok, label in checks if not ok)
 
     if contract.get("source_precedence") != [
-        "official_monthly_zip",
-        "official_daily_zip_fill_missing_only",
-        "public_rest_compare_only",
+        "official_monthly_5m_zip_base",
+        "official_daily_5m_zip_fill_missing",
+        "official_daily_5m_revision_only_when_public_rest_confirms",
+        "official_1h_4h_zip_and_rest_audit_only",
     ]:
-        failures.append("source precedence must be monthly, daily fill-only, REST compare-only")
+        failures.append("source precedence must match canonical-5m contract v2")
     forbidden = set(contract.get("m1a_non_reuse", {}).get("forbidden_rule_bundle", []))
     required_forbidden = {"SMA200", "Donchian55Entry", "Donchian20Exit", "ATR20x2Stop"}
     if forbidden != required_forbidden:
