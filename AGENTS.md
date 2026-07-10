@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: short-horizon data foundations.
+- Current phase: post-T5 data accrual and audit.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -54,8 +54,8 @@ After any task, the agent must update:
 - T4 IS-only feasibility harness passed and merged in PR #27 with no candidate evaluation and no OOS-return access.
 - T5 was authorized only for its sample-budget precheck. The current sealed OOS calendar is 302 days versus the fixed 540-day minimum, so T5 stopped without lowering the gate.
 - The earliest projected full-history end that can satisfy the calendar requirement is `2028-09-03`.
-- T5 metadata-only precheck completed locally as `blocked_insufficient_oos_calendar`; it evaluated no candidate, selected no events, and accessed no OOS prices or returns.
-- T6 and M1D strategy implementation are blocked. Only the T5 failure-record merge/closeout, monthly public-data accrual, M0 audit diagnostics, or a separately approved new-candidate design may follow.
+- T5 metadata-only precheck merged in PR #29 as `blocked_insufficient_oos_calendar`; it evaluated no candidate, selected no events, and accessed no OOS prices or returns.
+- T6 and M1D strategy implementation are blocked. Only monthly public-data accrual, M0 audit diagnostics, or a separately approved new-candidate design may follow.
 - No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.
