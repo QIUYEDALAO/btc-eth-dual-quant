@@ -751,3 +751,17 @@ private exchange responses here.
 - Result: T5 status `blocked_insufficient_oos_calendar`. M1D and T6 are stopped; no strategy is eligible for M2.
 - Next action: Continue monthly public-data accrual and M0 audit diagnostics. Any different candidate requires a separately approved design PR and a separately sealed OOS path.
 - Guardrails: No threshold reduction, M1D continuation, T6, strategy code, OOS access, API keys, private smoke, M2, dry-run, live, orders, simulated matching, or execution/live.
+
+## 2026-07-11 - M1E 1h Product And Data Contract Started
+
+- Date UTC: 2026-07-10T18:09:31Z
+- Task ID: M1E-1H-DATA-ADMISSION
+- Phase: M1E product and data contract
+- Branch: codex/m1e-1h-product-data-contract
+- PR: pending
+- Candidate: `M1E-1H-TREND-BREAKOUT`, registered as a separate sealed trial with `oos_opened=false`.
+- Scope: Official Binance spot BTC/ETH 5m/1h/4h data qualification from 2020-01-01, followed only on pass by a metadata-only 1800/540-day calendar Gate.
+- Non-reuse: M1E may not reuse M1A's combined SMA200, Donchian 55/20, and ATR20 2x rules.
+- Current result: Product/data contract foundation is implemented locally; no strategy rule, candidate return, OOS value, or Freqtrade backtest was created.
+- Next action: Validate and merge the contract PR, then begin public-data qualification on a new branch.
+- Guardrails: No API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.

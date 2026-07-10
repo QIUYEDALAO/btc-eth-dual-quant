@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: post-T5 data accrual and audit.
+- Current phase: M1E 1h product and data admission.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -56,6 +56,9 @@ After any task, the agent must update:
 - The earliest projected full-history end that can satisfy the calendar requirement is `2028-09-03`.
 - T5 metadata-only precheck merged in PR #29 as `blocked_insufficient_oos_calendar`; it evaluated no candidate, selected no events, and accessed no OOS prices or returns.
 - T6 and M1D strategy implementation are blocked. Only monthly public-data accrual, M0 audit diagnostics, or a separately approved new-candidate design may follow.
+- M1E is that separately approved new trial. ADR-0008 and its machine contract authorize only official spot 5m/1h/4h data qualification, then a conditional metadata-only 1800/540-day calendar check.
+- M1E is not an M1A rescue. Reuse of the combined SMA200, Donchian 55/20, and ATR20 2x rule bundle is prohibited.
+- M1E OOS remains sealed. No M1E strategy rule, Freqtrade backtest, candidate return, or opened trial is authorized.
 - No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.

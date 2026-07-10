@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T17:36:17Z"
-current_phase: post-T5 data accrual and audit
-current_status: m1d_blocked_insufficient_oos_calendar_no_strategy_eligible_for_m2
+last_updated_utc: "2026-07-10T18:09:31Z"
+current_phase: M1E 1h product and data contract
+current_status: m1e_product_data_contract_in_progress_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -79,6 +79,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: M1E-1H-DATA-ADMISSION
+    phase: M1E product and data contract
+    status: in_progress
+    branch: codex/m1e-1h-product-data-contract
+    pr: none
+    head_sha: pending
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/M1E_1H_PRODUCT_DATA_CONTRACT.md
+    blocker: "Only product/data-contract qualification is authorized; strategy code, OOS returns, Freqtrade backtesting, and M2 remain prohibited."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -112,7 +121,14 @@ active_decisions:
     decision: BTC/ETH short-horizon research uses discrete 15m events, authoritative 1m detail, daily-MTM metrics, and no daily trade quota.
     status: accepted
     evidence: docs/decisions/ADR-0007-btc-eth-short-horizon-product-conditions.md
+  - id: ADR-0008
+    decision: M1E is a separate sealed 1h trend-breakout data-admission trial, not an M1A timeframe rescue.
+    status: accepted_for_data_qualification_only
+    evidence: docs/decisions/ADR-0008-m1e-1h-trend-breakout-data-admission.md
 allowed_next_work:
+  - Complete the approved M1E product/data-contract PR without strategy rules, candidate returns, or OOS access.
+  - After the contract passes, qualify official BTC/ETH spot 5m/1h/4h public ZIP data and the fixed 0.30% liquidity Gate.
+  - Only after data qualification passes, run the metadata-only 1800/540-day sample-budget Gate.
   - Freqtrade-first architecture governance completed in PR #8.
   - M0 correctness hardening completed in PR #9; audit evidence remains blocked and may be investigated without private API access.
   - Freqtrade primary-framework hardening completed in PR #10.
@@ -305,6 +321,10 @@ latest_reports:
     phase: T5 M1D sample-budget precheck
     status: blocked_insufficient_oos_calendar
     status_marker: "- T5 final status: blocked_insufficient_oos_calendar"
+  - path: reports/m1/M1E_1H_PRODUCT_DATA_CONTRACT.md
+    phase: M1E product/data contract
+    status: design_contract_pass
+    status_marker: "- Status: design_contract_pass"
   - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
     phase: post-M1B
     status: accepted
@@ -406,4 +426,5 @@ validation_commands:
   - bash scripts/t3_validate.sh
   - bash scripts/t4_validate.sh
   - bash scripts/t5_validate.sh
+  - bash scripts/m1e_contract_validate.sh
   - git diff --check
