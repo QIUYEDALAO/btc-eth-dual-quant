@@ -831,11 +831,24 @@ private exchange responses here.
 - Task ID: M1E-BINANCE-SOURCE-OWNER-PACKAGE
 - Phase: M1E source-owner escalation preparation
 - Branch: codex/m1e-binance-source-owner-package
-- Commit: a811d38ea3753bfc4226b22445c1e2527d17b967
-- PR: #37 open
+- Commit: 3828194d0c139bc80efe6cdcd7f3514333479ee5
+- PR: #37 merged
 - Official channel: `binance/binance-public-data` issue #475 already covers the 16 December 2020 overlap rows.
 - Package: 14 new cross-timeframe rows, 36/36 stable monthly ZIP hashes, deterministic evidence SHA256, and a ready-to-post issue comment.
 - Safety: No raw payload, API key, private data, account data, strategy, backtest, or trading operation is included.
 - Status: `ready_not_submitted`; no external comment or issue was created.
 - Decision: External publication requires explicit user approval and would not itself unblock M1E.
 - Guardrails: No PR3, OOS returns, strategy code, M2, private smoke, dry-run, live, orders, or execution/live.
+
+## 2026-07-11 - M1E Source-Owner Package Merged Not Submitted
+
+- Date UTC: 2026-07-10T19:51:13Z
+- Task ID: M1E-BINANCE-SOURCE-OWNER-PACKAGE-MERGED
+- Phase: M1E source-owner submission decision
+- Branch: main
+- Commit: 3828194d0c139bc80efe6cdcd7f3514333479ee5
+- PR: #37 merged
+- Validation: M1E Source Owner Validate `PASS=8 FAIL=0`; all GitHub checks passed.
+- Result: The sanitized issue #475 supplement is committed and ready, but no external submission occurred.
+- Next action: Await explicit user approval before posting the prepared comment. M1E remains blocked either way.
+- Guardrails: No PR3, OOS returns, strategy code, M2, private smoke, backtesting, dry-run, live, orders, or execution/live.
