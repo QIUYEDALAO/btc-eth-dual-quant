@@ -708,3 +708,17 @@ private exchange responses here.
 - Calendar blocker: The formal 1004-day range provides 302 OOS days, below the fixed 540-day minimum by 238 days. T5 must run this precheck first and stop; earliest projected resolution is `2028-09-03`.
 - Next action: Commit, open the T4 PR, require clean CI, squash merge, and complete governance closeout. Do not define or run an M1D event candidate.
 - Guardrails: No strategy returns, OOS opening, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
+
+## 2026-07-10 - T4 IS-Only Feasibility Harness Merged
+
+- Date UTC: 2026-07-10T16:20:02Z
+- Task ID: SHORT-HORIZON-T4-MERGED
+- Phase: T4 IS-only feasibility harness
+- Branch: main
+- Commit: b38d242563e3874be7653351973255dfc29a5889
+- PR: #27 merged
+- Completed: The ledger-locked IS-only observation interfaces, fixed costs and horizons, diagnostic summaries, local golden structure evidence, report Gate, tests, and T4 CI were squash merged.
+- Validation: All PR #27 checks passed, including T4 Validate. No candidate was evaluated and no OOS return was accessed.
+- Result: T4 status `pass`. T5 is authorized only for a sample-budget precheck and is currently blocked because 302 OOS days are below the fixed 540-day minimum.
+- Next action: A T5 precheck may record the fixed calendar failure and stop. Do not define candidate events, read OOS returns, implement strategy code, or proceed to T6.
+- Guardrails: No API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, execution/live, threshold changes, or candidate OOS access.

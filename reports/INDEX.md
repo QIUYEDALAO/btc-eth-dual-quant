@@ -32,7 +32,7 @@
 | `docs/superpowers/plans/2026-07-10-btc-eth-short-horizon-event-quant-implementation-plan.md` | short-horizon governance | approved | Defines dependency-ordered T0-T9 implementation and failure stops. | no |
 | `docs/decisions/ADR-0007-btc-eth-short-horizon-product-conditions.md` | short-horizon governance | accepted | Records the capital-owner-approved product conditions and keeps automation prohibited. | no |
 | `STRATEGY_TRIAL_LEDGER.yaml` | research governance | initialized | Stores exact hypotheses, hashes, OOS-open state, and append-only trial rules. | no |
-| `PROJECT_EXECUTION_CHECKLIST.md` | governance | active | T4 tooling passed locally; T5 is limited to a sample-budget precheck and currently blocked by 302 OOS days versus 540 required. | no |
+| `PROJECT_EXECUTION_CHECKLIST.md` | governance | active | T4 merged in PR #27; T5 is limited to a sample-budget precheck and currently blocked by 302 OOS days versus 540 required. | no |
 | `reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md` | T1 canonical public minute data | pass | Records actual BTC/ETH 1m ranges, monthly/daily ZIP evidence, deterministic REST samples, pre-start quarantine, and the fixed 2023-10-01 research start. | no |
 | `reports/m0/T2_GOLDEN_DATA_AND_QUARANTINE_REPORT.md` | T2 golden data and quarantine | pass | Records golden 1m hashes, deterministic 5m/15m derivatives, 66 official 15m parity checks, quarantine traceability, and pinned Freqtrade cache readability. | no |
 | `reports/m1/T3_UNIFIED_METRICS_AND_POLICY_BENCHMARK_REPORT.md` | T3 unified metrics and policy benchmark | pass | Records the single daily-MTM convention, fixed policy benchmark, PSR/DSR and diagnostics coverage, and sealed expert M1C regression. | no |

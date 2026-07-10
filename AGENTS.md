@@ -51,8 +51,8 @@ After any task, the agent must update:
 - T1 passed and merged in PR #21 with research start `2023-10-01`.
 - T2 golden-data and quarantine passed and merged in PR #23.
 - T3 unified metrics and policy benchmark passed and merged in PR #25.
-- T4 IS-only feasibility harness passed locally with no candidate evaluation and no OOS-return access; PR/CI/merge and closeout remain.
-- After T4 merge, T5 is authorized only to run its sample-budget precheck first. The current sealed OOS calendar is 302 days versus the fixed 540-day minimum, so T5 must stop without lowering the gate.
+- T4 IS-only feasibility harness passed and merged in PR #27 with no candidate evaluation and no OOS-return access.
+- T5 is authorized only to run its sample-budget precheck first. The current sealed OOS calendar is 302 days versus the fixed 540-day minimum, so T5 must stop without lowering the gate.
 - The earliest projected full-history end that can satisfy the calendar requirement is `2028-09-03`.
 - No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
