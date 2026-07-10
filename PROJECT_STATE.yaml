@@ -87,8 +87,8 @@ open_work:
     phase: M1E public-data qualification
     status: blocked_pending_review
     branch: codex/m1e-1h-public-data-qualification
-    pr: none
-    head_sha: pending
+    pr: 32
+    head_sha: 9181fad67a4c8b245871d1397c2e33d145f814a4
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1E_1H_DATA_QUALIFICATION_REPORT.md
     blocker: "Six official OHLCV aggregate/source-conflict months exist after the fixed 2020-07-01 research start; PR3 sample budget and strategy work are not authorized."
