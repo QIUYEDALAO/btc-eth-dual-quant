@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: post-M1E public-data qualification review.
+- Current phase: M1E official source conflict diagnostics review.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -62,6 +62,8 @@ After any task, the agent must update:
 - M1E official-data qualification selected the contract research start `2020-07-01`, but six later months contain official OHLCV aggregate or monthly/daily source conflicts. The data Gate is blocked.
 - Pinned Freqtrade 2026.6 `list-data` read all six public caches on the VPS; no backtest ran. Do not create the M1E sample-budget PR while the data Gate is blocked.
 - M1E contract PR #31 and blocked data-evidence PR #32 are merged. There is no active M1E implementation branch.
+- M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
+- The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.
 - No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.

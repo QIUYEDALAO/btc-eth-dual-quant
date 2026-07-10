@@ -4,6 +4,13 @@ Under the Freqtrade-first architecture, M1D remains stopped by its fixed
 calendar Gate. The separate `M1E-1H-TREND-BREAKOUT` data contract passed in
 PR #31, and its blocked public-data qualification evidence merged in PR #32.
 
+Field-level source diagnostics now confirm 30 reproducible conflict rows. All
+36 affected monthly ZIPs retain their original hashes on fresh download. Public
+REST supports the daily archive in 16 December 2020 conflicts, the published
+higher timeframe in 10 rows, the child aggregation in 2 rows, and a third
+version in 2 rows. No evidence path makes the official sources arithmetically
+consistent under ADR-0008.
+
 The immediate sequence is:
 
 1. Preserve the six merged blocked months in the M1E qualification report.
@@ -11,6 +18,11 @@ The immediate sequence is:
 3. Do not create the conditional sample-budget PR while data qualification is blocked.
 4. Continue source-owner diagnostics or design a future separate candidate only
    through a new approval; no strategy code is authorized.
+
+The first six-month clean suffix after the final blocked month starts
+`2022-11-01`. It contains 1338 full days and 402 sealed-OOS days through
+2026-06-30, so it still fails the fixed 1800/540-day calendar Gate. This suffix
+is diagnostic only and must not replace the registered `2020-07-01` start.
 
 Official 1h ZIP is signal-data authority. Official 5m ZIP provides future fill
 detail and 1h aggregate parity; 4h is future regime-filter data only. Daily ZIP
