@@ -1,8 +1,15 @@
 # Next Action
 
 Under the Freqtrade-first architecture, M1D remains stopped by its fixed
-calendar Gate. The separate `M1E-1H-TREND-BREAKOUT` data contract passed in
-PR #31, and its blocked public-data qualification evidence merged in PR #32.
+calendar Gate. M1E canonical-data contract v2 now passes locally under
+ADR-0009, while the original ADR-0008 blocked report remains historical evidence.
+
+The canonical layer uses monthly official 5m ZIP as base, applies 12 daily 5m
+revisions only where public REST independently confirms them, and derives all
+1h/4h bars deterministically. There are zero unresolved canonical conflicts and
+zero unexpected incomplete child buckets. A pinned Freqtrade 2026.6 container
+read all six caches on the VPS. Higher-timeframe archive revisions are retained
+as audit quarantine and cannot be used by a future volume-based rule.
 
 Field-level source diagnostics now confirm 30 reproducible conflict rows. All
 36 affected monthly ZIPs retain their original hashes on fresh download. Public
@@ -19,11 +26,10 @@ Monitor the official response; do not treat submission itself as a Gate pass.
 
 The immediate sequence is:
 
-1. Preserve the six merged blocked months in the M1E qualification report.
-2. Do not weaken monthly-ZIP authority, numeric parity, or single-symbol rules.
-3. Do not create the conditional sample-budget PR while data qualification is blocked.
-4. Continue source-owner diagnostics or design a future separate candidate only
-   through a new approval; no strategy code is authorized.
+1. Review, validate, and merge the canonical-5m v2 requalification.
+2. After merge, create only the metadata-only M1E 1800/540-day sample-budget Gate.
+3. Do not read OOS prices/returns, define strategy rules, or run Freqtrade backtesting.
+4. Continue Binance source-owner monitoring for provenance; do not make it an operational dependency.
 
 The first six-month clean suffix after the final blocked month starts
 `2022-11-01`. It contains 1338 full days and 402 sealed-OOS days through

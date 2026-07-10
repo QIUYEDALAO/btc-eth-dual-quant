@@ -30,7 +30,8 @@ class M1EContractTests(unittest.TestCase):
         self.assertEqual(MODULE.validate_ledger_identity(), [])
 
     def test_fixed_timeframes_and_range_cannot_change(self) -> None:
-        self.assertTrue(self.failures_after(("timeframes", "signal_authority"), "4h"))
+        self.assertTrue(self.failures_after(("timeframes", "canonical_authority"), "1h"))
+        self.assertTrue(self.failures_after(("timeframes", "signal_derived"), "4h"))
         self.assertTrue(self.failures_after(("range", "start"), "2023-10-01"))
 
     def test_liquidity_threshold_cannot_be_overridden(self) -> None:
@@ -42,6 +43,12 @@ class M1EContractTests(unittest.TestCase):
         changed["source_precedence"].reverse()
         self.assertTrue(MODULE.validate_contract(changed))
         self.assertTrue(self.failures_after(("aggregation", "fill_or_interpolate"), True))
+
+    def test_flow_fields_cannot_become_decision_inputs_without_new_contract(self) -> None:
+        changed = copy.deepcopy(self.contract)
+        changed["qualification"]["decision_fields"].append("volume")
+        self.assertTrue(MODULE.validate_contract(changed))
+        self.assertTrue(self.failures_after(("qualification", "volume_use_requires_new_contract"), False))
 
     def test_oos_strategy_backtest_and_m2_remain_prohibited(self) -> None:
         for key in ("candidate_oos_returns", "strategy_code", "freqtrade_backtesting", "m2"):
