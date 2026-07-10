@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T02:46:20Z"
+last_updated_utc: "2026-07-10T03:17:08Z"
 current_phase: short-horizon product governance
 current_status: short_horizon_product_t0_in_progress_no_strategy_eligible_for_m2
 completed_milestones:
@@ -59,8 +59,8 @@ open_work:
     phase: short-horizon product governance
     status: in_progress
     branch: codex/short-horizon-product-governance
-    pr: none
-    head_sha: working_tree
+    pr: 19
+    head_sha: 9eaf1161b69687e118717808720ce10473847d26
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: docs/superpowers/specs/2026-07-10-btc-eth-short-horizon-event-quant-design.md
     blocker: "T0 governance review and merge required before T1 minute-data implementation."

@@ -5,7 +5,7 @@ Complete T0 of the approved Freqtrade-first BTC/ETH short-horizon event product:
 1. Validate and merge the approved product specification and ADR-0007.
 2. Preserve the independently verified expert recompute and sanitized evidence.
 3. Enforce the immutable strategy trial ledger and candidate hashes in validation.
-4. Open and merge the T0 governance PR after clean CI.
+4. Merge PR #19 after clean CI.
 5. Keep all new strategy and minute-data work blocked until T0 merges.
 
 After T0, execute `T1 -> T2 -> T3 -> T4` before M1D feasibility. T5 must
