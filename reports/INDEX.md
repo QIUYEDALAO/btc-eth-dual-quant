@@ -35,7 +35,7 @@
 | `PROJECT_EXECUTION_CHECKLIST.md` | governance | active | T1 is complete; T2 is the next authorized task while later work remains dependency-gated. | no |
 | `reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md` | T1 canonical public minute data | pass | Records actual BTC/ETH 1m ranges, monthly/daily ZIP evidence, deterministic REST samples, pre-start quarantine, and the fixed 2023-10-01 research start. | no |
 | `reports/m0/T2_GOLDEN_DATA_AND_QUARANTINE_REPORT.md` | T2 golden data and quarantine | pass | Records golden 1m hashes, deterministic 5m/15m derivatives, 66 official 15m parity checks, quarantine traceability, and pinned Freqtrade cache readability. | no |
-| `reports/m1/T3_UNIFIED_METRICS_AND_POLICY_BENCHMARK_REPORT.md` | T3 unified metrics and policy benchmark | pass_pending_pr_ci_merge | Records the single daily-MTM convention, fixed policy benchmark, PSR/DSR and diagnostics coverage, and sealed expert M1C regression. | no |
+| `reports/m1/T3_UNIFIED_METRICS_AND_POLICY_BENCHMARK_REPORT.md` | T3 unified metrics and policy benchmark | pass | Records the single daily-MTM convention, fixed policy benchmark, PSR/DSR and diagnostics coverage, and sealed expert M1C regression. | no |
 | `docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md` | post-M1B | accepted | No strategy is eligible for M2. | no |
 | `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md` | architecture | accepted | Freqtrade owns single-leg research; M0 and Python remain independent audit/offline accounting sidecars. | no |
 
