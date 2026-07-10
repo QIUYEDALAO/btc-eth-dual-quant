@@ -903,3 +903,16 @@ private exchange responses here.
 - Status: `sample_budget_pass_design_only`; candidate evaluated `no`, OOS prices/returns accessed `no`, trial count incremented `no`.
 - Authorization: After merge, only a separately approved IS-only rule-design review may follow. Strategy code, Freqtrade backtesting, OOS opening, and M2 remain unauthorized.
 - Safety: No OHLCV data, API key, private data, order, paper/live mode, or execution module was read or used.
+
+## 2026-07-11 - M1E Metadata-Only Sample Budget Merged
+
+- Date UTC: 2026-07-10T21:20:00Z
+- Task ID: M1E-SAMPLE-BUDGET-MERGED
+- Phase: M1E IS-only rule-design approval decision
+- Branch: main
+- Commit: `b19e0ea`
+- PR: #42 merged
+- Validation: M1E Sample Budget Validate `PASS=8 FAIL=0`; all GitHub checks passed.
+- Result: Calendar Gate passed with 2191 full, 1533 IS, and 658 sealed OOS days. OOS remains unopened.
+- Next action: Await explicit approval for a separate IS-only rule-design PR. Do not implement strategy code or run Freqtrade backtesting.
+- Safety: No OHLCV row, OOS return, API key, private data, order, paper/live mode, or execution module was read or used.
