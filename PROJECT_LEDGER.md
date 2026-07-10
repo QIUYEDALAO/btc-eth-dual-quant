@@ -878,3 +878,16 @@ private exchange responses here.
 - Result: Data Gate `pass`; fixed research start restored to `2020-07-01`. Binance source-owner response remains provenance follow-up rather than an operational dependency.
 - Authorization: Only the metadata-only 1800/540-day sample-budget Gate may follow after merge. Candidate evaluation, OOS returns, strategy code, backtesting, and M2 remain unauthorized.
 - Safety: No API key, private data, strategy return, order, paper/live mode, or execution module was used.
+
+## 2026-07-11 - M1E Canonical 5m Requalification Merged
+
+- Date UTC: 2026-07-11T04:45:00Z
+- Task ID: M1E-CANONICAL-5M-V2-MERGED
+- Phase: post-M1E canonical data requalification
+- Branch: main
+- Commit: `37a9b17`
+- PR: #40 merged
+- Validation: M1E Requalification Validate `PASS=8 FAIL=0`; all GitHub checks passed.
+- Result: M1E canonical data Gate is `pass`; research start is `2020-07-01`; Binance source-owner response is no longer an operational dependency.
+- Next authorization: metadata-only 1800/540-day sample-budget Gate only. No candidate evaluation, OOS returns, strategy code, backtesting, or M2.
+- Safety: No raw runtime data, API key, private payload, order, paper/live mode, or execution module was committed or used.

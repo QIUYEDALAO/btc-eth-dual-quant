@@ -2,7 +2,7 @@
 
 Under the Freqtrade-first architecture, M1D remains stopped by its fixed
 calendar Gate. M1E canonical-data contract v2 now passes locally under
-ADR-0009, while the original ADR-0008 blocked report remains historical evidence.
+ADR-0009 and merged in PR #40, while the original ADR-0008 blocked report remains historical evidence.
 
 The canonical layer uses monthly official 5m ZIP as base, applies 12 daily 5m
 revisions only where public REST independently confirms them, and derives all
@@ -26,8 +26,8 @@ Monitor the official response; do not treat submission itself as a Gate pass.
 
 The immediate sequence is:
 
-1. Review, validate, and merge the canonical-5m v2 requalification.
-2. After merge, create only the metadata-only M1E 1800/540-day sample-budget Gate.
+1. Create only the metadata-only M1E 1800/540-day sample-budget Gate.
+2. Calculate the split from the qualified `2020-07-01` start through `2026-06-30` without reading prices, signals, events, or returns.
 3. Do not read OOS prices/returns, define strategy rules, or run Freqtrade backtesting.
 4. Continue Binance source-owner monitoring for provenance; do not make it an operational dependency.
 
