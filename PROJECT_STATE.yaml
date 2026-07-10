@@ -1,10 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T19:23:51Z"
-current_phase: M1E official source conflict diagnostics
+last_updated_utc: "2026-07-10T19:30:49Z"
+current_phase: post-M1E source diagnostics review
 current_status: m1e_source_conflicts_confirmed_data_gate_blocked_no_strategy_eligible_for_m2
 completed_milestones:
+  - phase: M1E official source conflict diagnostics
+    status: diagnostics_complete_blocker_confirmed
+    evidence: reports/m1/M1E_OFFICIAL_SOURCE_CONFLICT_DIAGNOSTICS.md
+    merged_pr: 35
   - phase: M1E 1h product and data contract
     status: design_contract_pass
     evidence: reports/m1/M1E_1H_PRODUCT_DATA_CONTRACT.md
@@ -87,15 +91,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1E-OFFICIAL-SOURCE-CONFLICT-DIAGNOSTICS
-    phase: M1E official source conflict diagnostics
-    status: diagnostics_complete_pending_review
-    branch: codex/m1e-official-source-conflict-diagnostics
-    pr: 35
-    head_sha: dd7fc9f3ad8942f179a68d37ce294b4adbae0305
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1E_OFFICIAL_SOURCE_CONFLICT_DIAGNOSTICS.md
-    blocker: "All 30 conflict rows remain contract-blocking; the diagnostic clean suffix has only 1338 full and 402 sealed-OOS days."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -440,6 +435,9 @@ latest_merged_prs:
   - number: 34
     title: Correct M1E REST evidence count
     merged_at_utc: "2026-07-10T19:08:25Z"
+  - number: 35
+    title: Diagnose M1E official source conflicts
+    merged_at_utc: "2026-07-10T19:30:49Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

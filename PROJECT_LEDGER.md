@@ -802,8 +802,8 @@ private exchange responses here.
 - Task ID: M1E-OFFICIAL-SOURCE-CONFLICT-DIAGNOSTICS
 - Phase: M1E official source conflict diagnostics
 - Branch: codex/m1e-official-source-conflict-diagnostics
-- Commit: dd7fc9f3ad8942f179a68d37ce294b4adbae0305
-- PR: #35 open
+- Commit: 8a334255089cac8d6f6742577684793ceb21bab3
+- PR: #35 merged
 - Evidence: 36/36 affected monthly ZIP hashes were unchanged on fresh download; 30 field-level conflict rows were compared with current public REST.
 - Classification: 16 monthly/daily conflicts where REST supports daily; 10 higher-timeframe flow revisions confirmed by REST; 2 child aggregates confirmed by REST; 2 unresolved third-version flow revisions.
 - Result: Every conflict remains contract-blocking. Source precedence and numeric tolerances were not changed.
@@ -811,3 +811,16 @@ private exchange responses here.
 - Trial state: candidate evaluated `no`; candidate OOS returns accessed `no`; strategy code and PR3 remain unauthorized.
 - Next action: Validate and merge the diagnostic record. Do not create strategy, sample-budget, backtest, or M2 work.
 - Guardrails: No API keys, private smoke, dry-run, live, orders, cancellation, simulated matching, or execution/live.
+
+## 2026-07-11 - M1E Official Source Diagnostics Merged
+
+- Date UTC: 2026-07-10T19:30:49Z
+- Task ID: M1E-OFFICIAL-SOURCE-CONFLICT-DIAGNOSTICS-MERGED
+- Phase: post-M1E source diagnostics review
+- Branch: main
+- Commit: 8a334255089cac8d6f6742577684793ceb21bab3
+- PR: #35 merged
+- Validation: M1E Conflict Validate `PASS=9 FAIL=0`; all GitHub checks passed; raw ZIP/REST evidence and runtime artifacts remained ignored.
+- Result: The source conflict is reproducible and contract-blocking. No data-quality resolution path exists under ADR-0008, and the clean suffix also fails 1800/540 days.
+- Decision: M1E stops before PR3. Future work requires source-owner correction, natural data accrual, or a separately approved new candidate; no strategy or M2 work is authorized.
+- Guardrails: No API keys, private smoke, backtesting, dry-run, live, orders, cancellation, simulated matching, or execution/live.
