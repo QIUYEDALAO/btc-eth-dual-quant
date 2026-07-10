@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T13:49:00Z"
+last_updated_utc: "2026-07-10T14:34:00Z"
 current_phase: short-horizon data foundations
-current_status: short_horizon_t2_complete_t3_authorized_no_strategy_eligible_for_m2
+current_status: short_horizon_t3_pass_pending_pr_ci_merge_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M0 data engineering
     status: accepted
@@ -66,6 +66,10 @@ completed_milestones:
     status: pass
     evidence: reports/m0/T2_GOLDEN_DATA_AND_QUARANTINE_REPORT.md
     merged_pr: 23
+  - phase: T3 unified metrics and policy benchmark
+    status: pass_pending_pr_ci_merge
+    evidence: reports/m1/T3_UNIFIED_METRICS_AND_POLICY_BENCHMARK_REPORT.md
+    branch: codex/short-horizon-t3-unified-metrics
 open_work:
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
@@ -76,6 +80,15 @@ open_work:
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
     blocker: "P3 failed complete-trade, OOS Sharpe, and drawdown gates; P4 and M2 are not allowed for M1C."
+  - id: SHORT-HORIZON-T3-UNIFIED-METRICS
+    phase: T3 unified metrics and policy benchmark
+    status: pass_pending_pr_ci_merge
+    branch: codex/short-horizon-t3-unified-metrics
+    pr: 25
+    head_sha: ecc464f3487fcd04c895592b83a95bae426bfbf1
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/T3_UNIFIED_METRICS_AND_POLICY_BENCHMARK_REPORT.md
+    blocker: "Local T3 Gate passed; GitHub PR checks and merge are required before T4 may start."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -116,7 +129,8 @@ allowed_next_work:
   - T0 short-horizon product governance completed in PR #19.
   - T1 canonical public minute-data evidence passed and merged in PR #21.
   - T2 golden-data and quarantine passed and merged in PR #23.
-  - T3 unified metrics is the only newly authorized implementation. T4-T9 remain dependency-gated.
+  - T3 unified metrics local Gate passed; complete its PR, CI, and merge before starting T4.
+  - T4 IS-only feasibility harness becomes the next authorized implementation only after T3 is merged. T5-T9 remain dependency-gated.
   - Use completed 15m discrete events, authoritative 1m detail, and 5m sensitivity only.
   - Holding time and trade frequency are strategy outputs; do not impose a daily trade quota.
   - Do not start M1D strategy implementation unless T5 IS-only feasibility and T6 fixed design pass.
@@ -269,7 +283,7 @@ latest_reports:
   - path: PROJECT_EXECUTION_CHECKLIST.md
     phase: governance
     status: active
-    status_marker: "Next authorized task: T3 unified metrics on a new branch"
+    status_marker: "Next authorized task after merge: T4 IS-only feasibility harness"
   - path: reports/m0/T1_CANONICAL_MINUTE_DATA_REPORT.md
     phase: T1 canonical public minute data
     status: pass
@@ -277,6 +291,10 @@ latest_reports:
   - path: reports/m0/T2_GOLDEN_DATA_AND_QUARANTINE_REPORT.md
     phase: T2 golden data and quarantine
     status: pass
+    status_marker: "- Status: pass"
+  - path: reports/m1/T3_UNIFIED_METRICS_AND_POLICY_BENCHMARK_REPORT.md
+    phase: T3 unified metrics and policy benchmark
+    status: pass_pending_pr_ci_merge
     status_marker: "- Status: pass"
   - path: docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md
     phase: post-M1B
@@ -367,4 +385,5 @@ validation_commands:
   - bash scripts/project_validate.sh
   - bash scripts/t1_validate.sh
   - bash scripts/t2_validate.sh
+  - bash scripts/t3_validate.sh
   - git diff --check
