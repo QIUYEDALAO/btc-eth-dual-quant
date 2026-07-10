@@ -45,7 +45,7 @@
 | `reports/m1/M1E_BINANCE_SOURCE_OWNER_ESCALATION.md` | M1E source-owner escalation | submitted_awaiting_response | Records the explicitly approved comment on Binance issue #475 with 14 supplemental rows. Submission does not resolve the data Gate. | no |
 | `reports/m1/M1E_BINANCE_SOURCE_OWNER_EVIDENCE.json` | M1E source-owner escalation | sanitized_evidence | Machine-readable hashes, timestamps, classifications and safety flags; contains no raw payload or private data. | no |
 | `reports/m1/M1E_CANONICAL_5M_REQUALIFICATION_REPORT.md` | M1E canonical data requalification | pass | ADR-0009 resolves canonical OHLC from official 5m evidence, deterministically derives 1h/4h, quarantines higher-timeframe revisions, and passes pinned Freqtrade list-data without strategy or OOS access. Merged in PR #40. | no |
-| `reports/m1/M1E_1H_SAMPLE_BUDGET_REPORT.md` | M1E metadata-only sample budget | sample_budget_pass_design_only | Records 2191 full, 1533 IS, and 658 sealed-OOS days; authorizes only a separate IS-only design review without reading OOS returns or approving strategy code. | no |
+| `reports/m1/M1E_1H_SAMPLE_BUDGET_REPORT.md` | M1E metadata-only sample budget | sample_budget_pass_design_only | Records 2191 full, 1533 IS, and 658 sealed-OOS days; PR #42 merged. Only a separately approved IS-only design review may follow. | no |
 | `docs/decisions/ADR-0005-post-m1b-no-strategy-eligible-for-m2.md` | post-M1B | accepted | No strategy is eligible for M2. | no |
 | `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md` | architecture | accepted | Freqtrade owns single-leg research; M0 and Python remain independent audit/offline accounting sidecars. | no |
 

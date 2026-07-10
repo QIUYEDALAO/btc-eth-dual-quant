@@ -30,8 +30,8 @@ price, signal, event, trade, or return was read.
 
 The immediate sequence is:
 
-1. Review and merge the metadata-only sample-budget pass.
-2. Require separate approval before opening an IS-only rule-design PR.
+1. Treat PR #42 as the completed metadata-only sample-budget evidence.
+2. Await explicit approval before opening an IS-only rule-design PR.
 3. Keep OOS sealed and do not implement strategy code or run Freqtrade backtesting.
 4. Continue Binance source-owner monitoring for provenance only.
 
