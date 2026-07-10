@@ -39,14 +39,14 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1E-01 | M1E product/data contract | completed | separately approved new trial | `codex/m1e-1h-product-data-contract` / PR #31 | ADR-0008, sealed trial identity, machine-readable contract | Contract, non-reuse, ledger, context, safety and CI pass | none; no strategy authorization granted |
 | M1E-02 | M1E public-data qualification | superseded_blocked_evidence | M1E-01 completed | `codex/m1e-1h-public-data-qualification` / PR #32 merged | Original official cross-timeframe parity evidence | Historical report remains immutable | ADR-0008 authority model was operationally over-constrained |
 | M1E-02B | M1E canonical 5m requalification | completed | M1E-02 diagnostics and ADR-0009 | `codex/m1e-canonical-5m-contract-v2` / PR #40 merged | Canonical 5m, derived 1h/4h, quarantine, Freqtrade cache and report | Zero unresolved canonical conflicts, deterministic derivation, pinned list-data pass, CI pass | none |
-| M1E-03 | M1E sample budget | authorized | M1E-02B merged pass | branch not created | Metadata-only 70/30, 1800/540-day report | Actual qualified calendar passes both fixed minimums | no strategy or OOS-return access authorized |
-| M1E-04 | M1E IS-only rule design | not_authorized | M1E-03 pass plus separate approval | future branch | Non-M1A trend-breakout rule contract | No duplicate rule bundle and no OOS access | data and calendar Gates not yet passed |
+| M1E-03 | M1E sample budget | local_pass_pending_review | M1E-02B merged pass | `codex/m1e-1h-sample-budget` / PR pending | Metadata-only 70/30, 1800/540-day report | 2191 full, 1533 IS, 658 sealed OOS; no return access | merge and CI review pending |
+| M1E-04 | M1E IS-only rule design | design_review_pending_separate_approval | M1E-03 merged pass plus separate approval | future branch | Non-M1A trend-breakout rule contract | No duplicate rule bundle and no OOS access | no strategy implementation authorization |
 | M1E-DIAG-01 | M1E source-conflict diagnostics | completed | M1E-02 blocked | `codex/m1e-official-source-conflict-diagnostics` / PR #35 merged | Field-level ZIP/REST classifications, fresh hashes, clean-suffix budget | Reproducible evidence, no contract bypass, CI pass | 30 conflicts confirmed; clean suffix 1338/402 < 1800/540 |
 | M1E-OWNER-01 | Binance source-owner package | completed_monitoring | M1E-DIAG-01 completed | PR #37 merged; issue #475 comment 4939090508 | Sanitized evidence JSON and submitted source-owner comment | 14 supplemental rows, no raw/private data, CI pass | awaiting response for provenance only; no longer an operational canonical-OHLC dependency |
 
 ## Current Gate
 
-- Authorized work: review/merge canonical-5m v2, then run only the metadata-only M1E sample-budget Gate; no downstream strategy work is authorized.
+- Authorized work: review/merge the metadata-only M1E sample-budget Gate; no strategy implementation or OOS access is authorized.
 - Active implementation: no strategy; candidate evaluated `no`, OOS opened `no`, strategy code authorized `no`.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.

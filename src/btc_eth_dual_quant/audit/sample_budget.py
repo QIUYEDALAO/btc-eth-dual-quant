@@ -45,6 +45,7 @@ class CalendarBudgetResult:
     full_days: int
     is_days: int
     oos_days: int
+    oos_start_day: date
     required_oos_days: int
     shortage_days: int
     required_full_days: int
@@ -111,6 +112,49 @@ def extract_research_calendar_metadata(
     return ResearchCalendarMetadata(start, end, 1, 1, len(blockers))
 
 
+def extract_m1e_requalification_metadata(manifest: Mapping[str, Any]) -> ResearchCalendarMetadata:
+    """Extract only admission metadata from the sanitized M1E v2 manifest."""
+    allowed = {
+        "schema_version": manifest.get("schema_version"),
+        "status": manifest.get("status"),
+        "research_start": manifest.get("research_start"),
+        "range_end": manifest.get("range_end"),
+        "unresolved_5m_conflicts": manifest.get("unresolved_5m_conflicts"),
+        "incomplete_child_buckets": manifest.get("incomplete_child_buckets"),
+        "canonical_traceable": manifest.get("canonical_traceable"),
+        "freqtrade_runtime_status": manifest.get("freqtrade_runtime", {}).get("status"),
+        "api_key_used": manifest.get("api_key_used"),
+        "private_data_used": manifest.get("private_data_used"),
+        "candidate_evaluated": manifest.get("candidate_evaluated"),
+        "oos_accessed": manifest.get("oos_accessed"),
+        "strategy_returns_computed": manifest.get("strategy_returns_computed"),
+    }
+    checks = {
+        "schema version must be 2": allowed["schema_version"] == 2,
+        "requalification status must pass": allowed["status"] == "pass",
+        "canonical data must be traceable": allowed["canonical_traceable"] is True,
+        "unresolved canonical conflicts must be zero": allowed["unresolved_5m_conflicts"] == 0,
+        "incomplete child buckets must be zero": allowed["incomplete_child_buckets"] == 0,
+        "Freqtrade list-data must pass": allowed["freqtrade_runtime_status"] == "pass",
+        "API key metadata must be false": allowed["api_key_used"] is False,
+        "private-data metadata must be false": allowed["private_data_used"] is False,
+        "candidate must remain unevaluated": allowed["candidate_evaluated"] is False,
+        "OOS must remain sealed": allowed["oos_accessed"] is False,
+        "strategy returns must remain uncomputed": allowed["strategy_returns_computed"] is False,
+    }
+    failed = [message for message, passed in checks.items() if not passed]
+    if failed:
+        raise ValueError("invalid M1E requalification metadata: " + "; ".join(failed))
+    try:
+        start = date.fromisoformat(str(allowed["research_start"]))
+        end = _parse_end_day(str(allowed["range_end"]))
+    except ValueError as exc:
+        raise ValueError(f"invalid M1E research calendar metadata: {exc}") from exc
+    if start.day != 1 or end < start:
+        raise ValueError("M1E research calendar must start on a month boundary before its end")
+    return ResearchCalendarMetadata(start, end, 2, 2, 0)
+
+
 def evaluate_calendar_budget(
     metadata: ResearchCalendarMetadata,
     candidate: CandidateIdentity,
@@ -125,6 +169,7 @@ def evaluate_calendar_budget(
     full_days = (metadata.latest_complete_day - metadata.research_start).days + 1
     oos_days = math.ceil(full_days * float(policy.oos_fraction))
     is_days = full_days - oos_days
+    oos_start = metadata.research_start + timedelta(days=is_days)
     required_full_days = math.ceil(policy.required_oos_days / float(policy.oos_fraction))
     earliest_end = metadata.research_start + timedelta(days=required_full_days - 1)
     passed = oos_days >= policy.required_oos_days
@@ -136,6 +181,7 @@ def evaluate_calendar_budget(
         "full_days": full_days,
         "is_days": is_days,
         "oos_days": oos_days,
+        "oos_start_day": oos_start.isoformat(),
         "required_oos_days": policy.required_oos_days,
         "required_full_days": required_full_days,
         "earliest_eligible_end_day": earliest_end.isoformat(),
@@ -148,6 +194,7 @@ def evaluate_calendar_budget(
         full_days=full_days,
         is_days=is_days,
         oos_days=oos_days,
+        oos_start_day=oos_start,
         required_oos_days=policy.required_oos_days,
         shortage_days=max(0, policy.required_oos_days - oos_days),
         required_full_days=required_full_days,
