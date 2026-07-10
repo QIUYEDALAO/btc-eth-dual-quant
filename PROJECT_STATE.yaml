@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T14:26:00Z"
+last_updated_utc: "2026-07-10T14:34:00Z"
 current_phase: short-horizon data foundations
 current_status: short_horizon_t3_pass_pending_pr_ci_merge_no_strategy_eligible_for_m2
 completed_milestones:
@@ -84,8 +84,8 @@ open_work:
     phase: T3 unified metrics and policy benchmark
     status: pass_pending_pr_ci_merge
     branch: codex/short-horizon-t3-unified-metrics
-    pr: none
-    head_sha: pending_initial_commit
+    pr: 25
+    head_sha: ecc464f3487fcd04c895592b83a95bae426bfbf1
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/T3_UNIFIED_METRICS_AND_POLICY_BENCHMARK_REPORT.md
     blocker: "Local T3 Gate passed; GitHub PR checks and merge are required before T4 may start."

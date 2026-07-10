@@ -672,8 +672,8 @@ private exchange responses here.
 - Task ID: SHORT-HORIZON-T3-UNIFIED-METRICS
 - Phase: T3 unified metrics and policy benchmark
 - Branch: codex/short-horizon-t3-unified-metrics
-- Commit: pending initial commit
-- PR: pending
+- Commit: ecc464f3487fcd04c895592b83a95bae426bfbf1
+- PR: #25 open
 - Completed: Continuous UTC daily-MTM metrics, Freqtrade completed-trade adapter, fixed weekly policy benchmark, PSR/DSR, cost attribution, frequency/turnover/duration/sleep/order-event percentiles, concentration, and granularity comparisons.
 - Regression: Sealed expert CSV SHA256 `842291287ca64967831fb36d1d1af2cbea4c77a80663f283d238f490e0a06bda` reproduced Base Sharpe 0.7882, MaxDD 23.4729%, PSR 0.9024 and Cost x2 Sharpe 0.7528, MaxDD 24.4688%, PSR 0.8920.
 - Validation: 157 repository tests passed; T3 Validate `PASS=10 FAIL=0`; isolated expert recompute, secret, no-trading, execution/live, artifact, and diff checks passed.
