@@ -775,7 +775,7 @@ private exchange responses here.
 - Branch: codex/m1e-1h-public-data-qualification
 - Commit: 9181fad67a4c8b245871d1397c2e33d145f814a4
 - PR: #32 open
-- Public evidence: 468 official monthly ZIP payloads for BTCUSDT/ETHUSDT 5m/1h/4h, daily fill-only evidence, 12 public REST samples, and deterministic aggregate parity through 2026-06.
+- Public evidence: 468 official monthly ZIP payloads for BTCUSDT/ETHUSDT 5m/1h/4h, daily fill-only evidence, 6 public REST sample windows, and deterministic aggregate parity through 2026-06.
 - Research start: The first common six-month quality/liquidity window is 2020-01 through 2020-06, fixing the research start at `2020-07-01`.
 - Result: blocked. Months 2020-12, 2021-01, 2021-04, 2021-09, 2021-11, and 2022-04 contain official aggregate or monthly/daily source conflicts that the contract forbids ignoring.
 - Runtime: Pinned Freqtrade 2026.6 on the VPS read all six jsongz caches with exact ranges and row counts using `list-data` only. No strategy or backtest ran.
