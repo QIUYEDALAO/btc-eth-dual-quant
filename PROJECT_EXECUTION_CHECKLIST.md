@@ -16,12 +16,12 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | P1-03 | P1 design | completed | P1-02 | `codex/m1c-btc-eth-rotation-design` / #15 | Design decision | `design_pass` plus PR/CI review required | none |
 | P2-01 | P2 implementation | completed | P1-03 | `codex/m1c-btc-eth-rotation-validation` / #16 | Freqtrade strategy and public config | Behavior tests pass | none |
 | P2-02 | P2 implementation | completed | P2-01 | same P2 PR | Guarded research commands | No trade/live command | none |
-| P2-03 | P2 implementation | in_progress | P2-02 | same P2 PR | Time-semantics and runtime tests | Next-open, same-open switch, UTC ranking, lookahead and recursive pass | PR #16 checks and merge pending |
-| P3-01 | P3 validation | pending | P2-03 | P2 PR or report branch | Public Freqtrade data and provenance | Exact used range has no unexplained gap | P2 not passed |
-| P3-02 | P3 validation | pending | P3-01 | same validation PR | Base/cost-x2, OOS, segment results | Every fixed numerical gate evaluated | P3 not started |
-| P3-03 | P3 validation | pending | P3-02 | same validation PR | M1C backtest report | Truthful `under_review` or `failed_validation` | P3 not started |
-| P4-01 | P4 audit | pending | P3-03 | `codex/m1c-independent-audit` | Independent timing and PnL audit | Timestamp exact, error <= 1e-8 | P3 not complete |
-| P4-02 | P4 audit | pending | P4-01 | same P4 PR | Final M1C research status | M0 and numerical gates combined | P4 not started |
+| P2-03 | P2 implementation | completed | P2-02 | `codex/m1c-btc-eth-rotation-validation` / #16 | Time-semantics and runtime tests | Next-open, same-open switch, UTC ranking, lookahead and recursive pass | none |
+| P3-01 | P3 validation | completed | P2-03 | `codex/m1c-btc-eth-rotation-backtest` / #17 | Public Freqtrade data and provenance | Exact used range has no unexplained gap | none |
+| P3-02 | P3 validation | completed | P3-01 | same validation PR | Base/cost-x2, OOS, segment results | Every fixed numerical gate evaluated | none |
+| P3-03 | P3 validation | in_progress | P3-02 | same validation PR | M1C failed-validation report | Truthful `failed_validation` merged | PR #17 checks and merge pending |
+| P4-01 | P4 audit | blocked | P3-03 pass required | `codex/m1c-independent-audit` | Independent timing and PnL audit | Timestamp exact, error <= 1e-8 | P3 failed: trade count, OOS Sharpe, and drawdown gates |
+| P4-02 | P4 audit | blocked | P4-01 | same P4 PR | Final M1C research status | M0 and numerical gates combined | P4 not allowed after P3 failure |
 | P5-01 | P5 M2 design | not_authorized | P4-02 plus explicit approval | future branch | M2 ADR | Separate approval | M2 prohibited |
 | P6-01 | P6 dry-run | not_authorized | P5-01 plus explicit approval | future branch | 90-day dry-run report | 12 weekly decisions and no live orders | dry-run prohibited |
 | P7-01 | P7 limited live | not_authorized | P6-01 plus explicit approval | future branch | Limited-capital acceptance | Hard risk controls and separate approval | live prohibited |
@@ -30,7 +30,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 ## Current Gate
 
 - Authorized work: P0-P4.
-- Active task: P2-03.
+- Active task: P3-03.
 - M1A status: `failed_validation`.
 - M1B status: `failed_validation`.
 - M0 audit status: `audit_revalidation_required`.

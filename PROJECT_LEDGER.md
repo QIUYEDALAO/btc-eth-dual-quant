@@ -507,3 +507,48 @@ private exchange responses here.
 - Result: P2 implementation Gate passed pending PR checks and merge. This is not a performance or trading approval.
 - Next action: Merge PR #16 after all checks pass, then start P3 immutable historical validation.
 - Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - M1C Rotation P2 Merged
+
+- Date UTC: 2026-07-10T00:19:23Z
+- Task ID: M1C-P2-MERGED
+- Phase: P2 M1C Freqtrade implementation
+- Branch: main
+- Commit: 1564df8c22e717d850091a2e6ade3e1f2aa0e1e2
+- PR: #16 merged
+- Completed: Fixed Freqtrade strategy, public research config and commands, independent event-time checks, runtime output validator, public runtime evidence, and implementation status report.
+- Result: P2 passed. This permits immutable P3 historical validation only.
+- Next action: Run P3 without changing strategy parameters or gates.
+- Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - M1C Rotation P3 Validation Started
+
+- Date UTC: 2026-07-10T00:20:41Z
+- Task ID: M1C-P3-VALIDATION
+- Phase: P3 M1C historical validation
+- Branch: codex/m1c-btc-eth-rotation-backtest
+- PR: pending
+- Commit: pending
+- Scope: Freqtrade full history, sealed last-30% OOS, four fixed IS segments, base and cost-x2, concentration, lookahead, recursive, and data-gap evidence.
+- Runtime attempt: GitHub run 29060046050 downloaded the complete public range and calculated the first full backtest, but Freqtrade could not create a nonexistent export subdirectory. No numerical Gate result was claimed. The retry uses unique export filename prefixes in the existing ignored result directory; ranges and thresholds are unchanged.
+- Runtime attempt: GitHub run 29060187324 completed all eight Freqtrade matrix runs and full-range bias checks, but Freqtrade 2026.6 ignored custom export filename prefixes, so the report loader found no labeled archive. No numerical Gate result was claimed. The retry uses official `--notes` metadata for exact run selection; ranges and thresholds remain unchanged.
+- Runtime attempt: GitHub run 29060403128 completed and note-matched all eight numerical runs plus bias checks. Report rendering then found that Freqtrade 2026.6 annual breakdown rows expose `profit_abs`, not `profit_total`. No partial Gate result was published. Annual return is now derived from Freqtrade annual absolute profit divided by Freqtrade starting balance; strategy inputs and gates remain unchanged.
+- Decision: Any failed Gate records `failed_validation` and stops the candidate; no parameter tuning or P4 follows a failure.
+- Next action: Generate the numerical report from Freqtrade public-data exports.
+- Guardrails: No API keys, private smoke, M2, dry-run, live trading, orders, simulated matching, or execution/live.
+
+## 2026-07-10 - M1C Rotation P3 Failed Validation Recorded
+
+- Date UTC: 2026-07-10T00:46:33Z
+- Task ID: M1C-P3-FAILED-VALIDATION
+- Phase: P3 M1C historical validation
+- Branch: codex/m1c-btc-eth-rotation-backtest
+- PR: #17 open
+- Commit: 45f8b86319a0c5c7b63110b989e0b14d6f86691e
+- Workflow: Freqtrade Public Smoke run 29060604088 passed
+- Data: BTC/ETH public spot daily JSON, 3,249 rows per symbol from 2017-08-17 through 2026-07-09, zero missing daily bars.
+- Passed: base and cost-x2 full/OOS returns, delete-best-three, 3/4 IS segments, lookahead, recursive, and data-gap gates.
+- Failed: complete trades 31 < 80; OOS complete trades 15 < 20; OOS Sharpe 0.1146 < 1.0; worst cost-scenario drawdown 16.6528% > 15%.
+- Result: `failed_validation`. M1C is not eligible for P4 or M2 and must not be tuned or rescued.
+- Next action: Merge PR #17 as truthful evidence, then stop this candidate. A future candidate requires a new approved P1 design.
+- Guardrails: No API keys, private smoke, M2, P4, dry-run, live trading, orders, simulated matching, or execution/live.

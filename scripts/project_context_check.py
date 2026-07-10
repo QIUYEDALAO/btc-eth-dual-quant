@@ -119,7 +119,7 @@ def main() -> int:
     }
     if len(merged_numbers) != len(merged_prs):
         failures.append("PROJECT_STATE.yaml latest_merged_prs contains invalid or duplicate PR numbers")
-    for required_pr in (6, 7, 8, 9, 10, 11, 13, 14, 15):
+    for required_pr in (6, 7, 8, 9, 10, 11, 13, 14, 15, 16):
         if required_pr not in merged_numbers:
             failures.append(f"PROJECT_STATE.yaml latest_merged_prs missing PR #{required_pr}")
 
@@ -165,6 +165,9 @@ def main() -> int:
         "M1C Rotation P1 Design Started",
         "M1C Rotation P1 Design Merged",
         "M1C Rotation P2 Implementation Started",
+        "M1C Rotation P2 Merged",
+        "M1C Rotation P3 Validation Started",
+        "M1C Rotation P3 Failed Validation Recorded",
     ):
         if required not in ledger_text:
             failures.append(f"PROJECT_LEDGER.md must contain: {required}")
@@ -194,6 +197,8 @@ def main() -> int:
         or "m1c_rotation_design_pass_pending_review_no_m2" in current_status
         or "m1c_rotation_implementation_in_progress_no_m2" in current_status
         or "m1c_rotation_p2_pass_pending_merge_no_m2" in current_status
+        or "m1c_rotation_p3_in_progress_no_m2" in current_status
+        or "m1c_rotation_failed_validation_no_p4_no_m2" in current_status
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "m2" not in current_status and "m1b" not in current_status:
