@@ -29,7 +29,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | T0-01 | Short-horizon governance | completed | M1C closed | `codex/short-horizon-product-governance` / PR #19 | Approved specification, ADR-0007, expert evidence, trial ledger | Isolated recompute, automated ledger hash check, context, CI, merge | none |
 | T1-01 | Canonical minute data | completed | T0-01 completed | `codex/short-horizon-t1-minute-data` / PR #21 | BTC/ETH spot 1m source archive and liquidity qualification | Exact range, hashes, completeness, preregistered start | none |
 | T2-01 | Golden data and quarantine | completed | T1-01 completed | `codex/short-horizon-t2-golden-data` / PR #23 | Golden 1m, quarantine, 5m/15m derivatives, Freqtrade jsongz cache | Complete research range, 66 official 15m parity checks, pinned runtime readability, T2 Validate 9/0, CI and merge pass | none |
-| T3-01 | Unified metrics | in_progress | T2-01 completed | `codex/short-horizon-t3-unified-metrics` / PR #25 | General daily-MTM, PSR/DSR, diagnostics and policy benchmark | Local Gate passed: sealed M1C regression, 157 tests, T3 Validate 10/0 | PR checks and merge required before T4 |
+| T3-01 | Unified metrics | completed | T2-01 completed | `codex/short-horizon-t3-unified-metrics` / PR #25 | General daily-MTM, PSR/DSR, diagnostics and policy benchmark | Sealed M1C regression, 157 tests, T3 Validate 10/0, CI and merge pass | none |
 | T4-01 | Feasibility harness | pending | T3-01 | future branch | IS-only event decay, cost, frequency and risk tooling | No OOS exposure; deterministic fixtures | T3 must pass |
 | T5-01 | M1D feasibility | pending | T4-01 | future branch | M1D short-horizon feasibility report | Every paper Gate passes | stop before code on failure |
 | T6-01 | M1D fixed design | pending | T5-01 pass | future branch | Fixed contract and hash | No TBD, optional ROI, or OOS choice | T5 must pass |
@@ -39,9 +39,9 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 
 ## Current Gate
 
-- Authorized work: T3 PR/CI/merge only; T4-T9 remain dependency-gated until T3 is merged.
-- Active implementation: T3 unified metrics on `codex/short-horizon-t3-unified-metrics`.
-- Next authorized task after merge: T4 IS-only feasibility harness; no M1D feasibility run or strategy code is authorized yet.
+- Authorized work: T4 IS-only feasibility harness only; T5-T9 remain dependency-gated.
+- Active implementation: none on the T3 closeout branch.
+- Next authorized task: T4 on a new branch; no M1D feasibility run or strategy code is authorized yet.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.
 - M1A status: `failed_validation`.
 - M1B status: `failed_validation`.

@@ -680,3 +680,15 @@ private exchange responses here.
 - Scope: Measurement foundation only. No new strategy, candidate OOS, strategy return, API, or execution behavior was introduced.
 - Next action: Commit, open the T3 PR, require clean CI, and merge before T4.
 - Guardrails: No M1D feasibility run or strategy code, no OOS opening, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
+
+## 2026-07-10 - T3 Unified Metrics Merged
+
+- Date UTC: 2026-07-10T14:36:02Z
+- Task ID: SHORT-HORIZON-T3-MERGED
+- Phase: T3 unified metrics and policy benchmark
+- Branch: main
+- Commit: e5eae32dedcdf77eb6684548f79ea2f9862ff7f5
+- PR: #25 merged
+- Completed: Unified daily-MTM metrics, audit trade adaptation, fixed policy benchmark, PSR/DSR, diagnostics, sealed expert regression, tests, report Gate, and CI.
+- Result: T3 status `pass`; all PR checks passed. T4 IS-only feasibility harness is the next authorized task, but is not started by this closeout.
+- Guardrails: No M1D feasibility run or strategy code, no candidate OOS, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
