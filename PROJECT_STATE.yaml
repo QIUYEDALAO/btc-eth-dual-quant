@@ -1,10 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T19:45:00Z"
-current_phase: M1E Binance source-owner escalation preparation
+last_updated_utc: "2026-07-10T19:51:13Z"
+current_phase: M1E source-owner submission decision
 current_status: m1e_source_owner_package_ready_not_submitted_data_gate_blocked_no_m2
 completed_milestones:
+  - phase: M1E Binance source-owner package
+    status: ready_not_submitted
+    evidence: reports/m1/M1E_BINANCE_SOURCE_OWNER_ESCALATION.md
+    merged_pr: 37
   - phase: M1E official source conflict diagnostics
     status: diagnostics_complete_blocker_confirmed
     evidence: reports/m1/M1E_OFFICIAL_SOURCE_CONFLICT_DIAGNOSTICS.md
@@ -91,15 +95,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1E-BINANCE-SOURCE-OWNER-PACKAGE
-    phase: M1E source-owner escalation preparation
-    status: ready_not_submitted_pending_review
-    branch: codex/m1e-binance-source-owner-package
-    pr: 37
-    head_sha: a811d38ea3753bfc4226b22445c1e2527d17b967
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1E_BINANCE_SOURCE_OWNER_ESCALATION.md
-    blocker: "Package is ready but external submission requires an explicit user decision; M1E remains blocked regardless."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -459,6 +454,9 @@ latest_merged_prs:
   - number: 36
     title: Close M1E source diagnostics context
     merged_at_utc: "2026-07-10T19:36:26Z"
+  - number: 37
+    title: Prepare M1E Binance source-owner escalation package
+    merged_at_utc: "2026-07-10T19:51:13Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

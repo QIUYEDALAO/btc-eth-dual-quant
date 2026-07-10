@@ -14,7 +14,7 @@ consistent under ADR-0008. This diagnostic record merged in PR #35.
 A sanitized source-owner package is now prepared for Binance public-data issue
 #475. The existing issue covers 16 December 2020 rows; the package adds 14
 cross-timeframe rows and 36 stable archive hashes. It is `ready_not_submitted`.
-Do not post externally without an explicit user decision.
+The package merged in PR #37. Do not post externally without an explicit user decision.
 
 The immediate sequence is:
 

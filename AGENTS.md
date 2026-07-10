@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1E Binance source-owner escalation preparation.
+- Current phase: M1E source-owner submission decision.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -66,6 +66,7 @@ After any task, the agent must update:
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.
 - M1E source diagnostics merged in PR #35. M1E is stopped before PR3; there is no active strategy or data-admission implementation branch.
 - A sanitized supplement for Binance public-data issue #475 is prepared with 14 new rows and status `ready_not_submitted`; external posting requires explicit user approval.
+- The package merged in PR #37. Do not post it externally without explicit approval.
 - No new strategy code is authorized.
 - P0-P4 are authorized sequentially. P5-P8 are not authorized.
 - No strategy is eligible for M2.
