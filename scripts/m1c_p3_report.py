@@ -101,7 +101,7 @@ def profile_data(data_dir: Path, symbol: str, start: date, end_exclusive: date) 
 
 
 def _pct(value: Any) -> str:
-    return f"{float(value):.4%}"
+    return f"{_num(value):.4%}"
 
 
 def _num(value: Any) -> float:
@@ -242,7 +242,11 @@ def build_report(
     yearly = base.stats.get("periodic_breakdown", {}).get("year", [])
     lines.extend(["", "## Annual Breakdown (Base)", "", "| Year | Trades | Profit |", "|---|---:|---:|"])
     for row in yearly:
-        lines.append(f"| {row.get('date')} | {row.get('trades', 0)} | {_pct(row.get('profit_total'))} |")
+        if row.get("profit_abs") is not None:
+            year_return = _num(row.get("profit_abs")) / _num(base.stats.get("starting_balance"))
+        else:
+            year_return = _num(row.get("profit_total"))
+        lines.append(f"| {row.get('date')} | {row.get('trades', 0)} | {_pct(year_return)} |")
 
     lines.extend(
         [

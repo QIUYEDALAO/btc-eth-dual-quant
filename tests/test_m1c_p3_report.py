@@ -42,7 +42,7 @@ def stats(trades: list[dict], profit_total: float, sharpe: float = 1.5) -> dict:
         "max_drawdown_account": 0.05,
         "backtest_start": "2020-01-01 00:00:00",
         "backtest_end": "2020-12-31 00:00:00",
-        "periodic_breakdown": {"year": [{"date": "01/01/2020", "trades": len(trades), "profit_total": profit_total}]},
+        "periodic_breakdown": {"year": [{"date": "01/01/2020", "trades": len(trades), "profit_abs": absolute}]},
     }
 
 
