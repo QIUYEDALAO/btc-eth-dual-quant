@@ -1,0 +1,286 @@
+{
+  "api_key_used": false,
+  "contract_resolved": false,
+  "existing_issue_overlap_rows": 16,
+  "external_submission_performed": false,
+  "generated_utc": "2026-07-10T19:43:11.591487+00:00",
+  "m2_authorized": false,
+  "monthly_zip_refetch_total": 36,
+  "monthly_zip_refetch_unchanged": 36,
+  "private_data_used": false,
+  "raw_payload_included": false,
+  "rows": [
+    {
+      "classification": "child_aggregate_flow_confirmed_by_rest",
+      "derived_sha256": "770e077915f687fc5e3fedd9acfa21f6a736d6b8d944fdead156a7e6e60e11b9",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-01",
+      "official_sha256": "a4791ab813fd5dd7f293866ac640aad3835ef58991c9618506505367556fe752",
+      "open_time": 1611216000000,
+      "rest_matches_derived": true,
+      "rest_matches_official": false,
+      "rest_sha256": "dfff3bd22bc7c4f62aa429c716d218e5c26ab0de8638456d67a13eb5ff7c34f5",
+      "symbol": "BTCUSDT",
+      "timeframe": "4h"
+    },
+    {
+      "classification": "child_aggregate_flow_confirmed_by_rest",
+      "derived_sha256": "cf5f7f505603c4e5bf3d7616374398fffe723aee2f7e1a7b93b9bc796a8044b3",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-01",
+      "official_sha256": "c1e44cc94271bf7b7e918427ae85ee3bdf0acc48bb0ea17317c106411251795e",
+      "open_time": 1611216000000,
+      "rest_matches_derived": true,
+      "rest_matches_official": false,
+      "rest_sha256": "fed486a6f6cca7d36fc0752102ce3a870b1ce457d46dbf5f878b87a9713800af",
+      "symbol": "ETHUSDT",
+      "timeframe": "4h"
+    },
+    {
+      "classification": "higher_timeframe_flow_revision_confirmed_by_rest",
+      "derived_sha256": "279b1615e3d64b132431ebfee92ea1d826cac614fa0cb6db6daf65e791efe3e1",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-04",
+      "official_sha256": "d1c3a9ecd5d6e002b9503135e6f76b7e6b38aac6eae1234cf5532a32be74d772",
+      "open_time": 1619056800000,
+      "rest_matches_derived": false,
+      "rest_matches_official": true,
+      "rest_sha256": "ea57dc66fc4675d60ee03df3c9e6decd8800b51c3db1dfcfa87230452238b2e8",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "classification": "unresolved_flow_revision",
+      "derived_sha256": "f7d93bc2f2ae1066f149f00de2a32d6380381819d02acac485f4a2adc057e207",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-04",
+      "official_sha256": "029f9ba3238ba45c28218a1da3008b4f3186200b7300bd11293f502b2b71455c",
+      "open_time": 1619139600000,
+      "rest_matches_derived": false,
+      "rest_matches_official": false,
+      "rest_sha256": "ebf1ec9219cdc8270e6144cd6111b746ba18380f2fa4baa718bafad4499159a9",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "classification": "higher_timeframe_flow_revision_confirmed_by_rest",
+      "derived_sha256": "668d2a5653ab7213e18864af4477d86b575f99fbaae9d7da86cce20fb5db1e51",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-04",
+      "official_sha256": "48b973ba2258757e9972e859dc71290969ede94141fe69105ad220ce10445871",
+      "open_time": 1619143200000,
+      "rest_matches_derived": false,
+      "rest_matches_official": true,
+      "rest_sha256": "e1b0ff532c3a1f8d98111e733e20e4c1d38a24ec99041dbaac4f461ba76dca3d",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "classification": "higher_timeframe_flow_revision_confirmed_by_rest",
+      "derived_sha256": "7b9d6f7c7e03de8f440bc8ed799750928ab0fe5f45802fbfa38625702462497b",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-04",
+      "official_sha256": "8cbbbcb74cac542602d93d46a716f30da9444c9f075ab689dd20cce86fcacb4e",
+      "open_time": 1619136000000,
+      "rest_matches_derived": false,
+      "rest_matches_official": true,
+      "rest_sha256": "b81afced945a04c571f81bb4e0b78a562472d845ec980e0af8199892b2d67579",
+      "symbol": "BTCUSDT",
+      "timeframe": "4h"
+    },
+    {
+      "classification": "higher_timeframe_flow_revision_confirmed_by_rest",
+      "derived_sha256": "9d62c9ee93be74d39ad27e893f7d07702999b6bc076630a00be853491e94e76c",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-04",
+      "official_sha256": "a188a0a9f85d63f0b6b9ac8f48d850c5e892b77343811aefe3f012d63b290b77",
+      "open_time": 1619056800000,
+      "rest_matches_derived": false,
+      "rest_matches_official": true,
+      "rest_sha256": "48017fb39b1c6931196d648a4e3917eb5b8ba0a644914f15f90c3d90944dadd1",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "classification": "unresolved_flow_revision",
+      "derived_sha256": "4b4520a283cebb15757713633272c519f8a2603a8ba59f69cb037f140c91b4c4",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-04",
+      "official_sha256": "ad881171ea1970e644f5e4962da5aa80785d77b56f6c16fba9dd370572bb6e8b",
+      "open_time": 1619139600000,
+      "rest_matches_derived": false,
+      "rest_matches_official": false,
+      "rest_sha256": "8e80f77600261d131edeae80f175554baf997b434682a1558a764238cdcc4ae3",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "classification": "higher_timeframe_flow_revision_confirmed_by_rest",
+      "derived_sha256": "5c6e7b93edc26386d94a8641b0da9904a86dfe08208f57a3e592a0ecb3858d49",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-04",
+      "official_sha256": "6a0aa7a604d2e1827f9784a989af6c9cfd46608ef22b8c6ad41d9c84d88deacc",
+      "open_time": 1619143200000,
+      "rest_matches_derived": false,
+      "rest_matches_official": true,
+      "rest_sha256": "1228e613f41d460c5a72273e21a49d04d0870d6db6e56382fb15e937ced281fb",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "classification": "higher_timeframe_flow_revision_confirmed_by_rest",
+      "derived_sha256": "b8628dc471458cccc844b3f26192370c3353a4b61222dc97224701887f9c7ab6",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-04",
+      "official_sha256": "8881f95c9e78fce8e29e8cda978e78581c3284a1938bc8ae685b4e7b79f949e4",
+      "open_time": 1619136000000,
+      "rest_matches_derived": false,
+      "rest_matches_official": true,
+      "rest_sha256": "66c3f158b897fe7d350f4dc3a4014a6e986b48e3d5f09329ad32a84da1f4f3a5",
+      "symbol": "ETHUSDT",
+      "timeframe": "4h"
+    },
+    {
+      "classification": "higher_timeframe_flow_revision_confirmed_by_rest",
+      "derived_sha256": "1139fa4291555550b7415ae99066ad8f6f5ad884b84196a4eecb0f9978a1d3e0",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-09",
+      "official_sha256": "d85d4bfd3649d3d579e1e73033fcc0ce334e76b74833328bd3d2d3af516a95a1",
+      "open_time": 1632358800000,
+      "rest_matches_derived": false,
+      "rest_matches_official": true,
+      "rest_sha256": "dce478b85b6eb166c96985004ba268aa0b318a957ce30ddfe111258fafa59114",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "classification": "higher_timeframe_flow_revision_confirmed_by_rest",
+      "derived_sha256": "9b7d941ae49069ed3df3c87c2213541e955ef10a951907d6b93c42afdc1e208c",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2021-11",
+      "official_sha256": "b6522af5d87713ce95b006a1bad9a1e1076e0541a88f4f12f739c3a98f434293",
+      "open_time": 1635735600000,
+      "rest_matches_derived": false,
+      "rest_matches_official": true,
+      "rest_sha256": "cf37b793483b78c7aa0e588de82769afa4dbc6da4afd40d43e7d3b6011295084",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "classification": "higher_timeframe_flow_revision_confirmed_by_rest",
+      "derived_sha256": "81b7d59bc2b845ce4671ced12a987a36c6776c67d7c25d69b7558e34a80c54f1",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2022-04",
+      "official_sha256": "132e829ae3027c2a483f9d905e3eeddec0d363afaa12a3486e8f36e0ceff7bf2",
+      "open_time": 1649822400000,
+      "rest_matches_derived": false,
+      "rest_matches_official": true,
+      "rest_sha256": "2fa03b2416edc035cd85d197aece7297e0657a1df180cf48db319be9112da85f",
+      "symbol": "BTCUSDT",
+      "timeframe": "4h"
+    },
+    {
+      "classification": "higher_timeframe_flow_revision_confirmed_by_rest",
+      "derived_sha256": "500fbecf1f6785c9dd71c71ce3686d5b85ad114e8c76893a2731e163fe1e4d58",
+      "differing_fields": [
+        "volume",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ],
+      "month": "2022-04",
+      "official_sha256": "487b4a488430c0656e7cfff6bb2090e9e22638d1647b35235c635c7c1573778b",
+      "open_time": 1649822400000,
+      "rest_matches_derived": false,
+      "rest_matches_official": true,
+      "rest_sha256": "e8c79ea657c811eb97cc7e8ddffcc961d07ccf9cb5eedbbf581016e67dca7260",
+      "symbol": "ETHUSDT",
+      "timeframe": "4h"
+    }
+  ],
+  "schema_version": 1,
+  "status": "ready_not_submitted",
+  "supplemental_evidence_sha256": "1148b87ffa6b9089210b90996c63c136ac1e32d56571617e7beb661bb3c4f805",
+  "supplemental_rows": 14,
+  "target_issue": "https://github.com/binance/binance-public-data/issues/475",
+  "target_repository": "binance/binance-public-data"
+}

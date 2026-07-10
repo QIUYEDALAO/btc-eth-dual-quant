@@ -824,3 +824,18 @@ private exchange responses here.
 - Result: The source conflict is reproducible and contract-blocking. No data-quality resolution path exists under ADR-0008, and the clean suffix also fails 1800/540 days.
 - Decision: M1E stops before PR3. Future work requires source-owner correction, natural data accrual, or a separately approved new candidate; no strategy or M2 work is authorized.
 - Guardrails: No API keys, private smoke, backtesting, dry-run, live, orders, cancellation, simulated matching, or execution/live.
+
+## 2026-07-11 - M1E Binance Source-Owner Package Prepared
+
+- Date UTC: 2026-07-10T19:45:00Z
+- Task ID: M1E-BINANCE-SOURCE-OWNER-PACKAGE
+- Phase: M1E source-owner escalation preparation
+- Branch: codex/m1e-binance-source-owner-package
+- Commit: a811d38ea3753bfc4226b22445c1e2527d17b967
+- PR: #37 open
+- Official channel: `binance/binance-public-data` issue #475 already covers the 16 December 2020 overlap rows.
+- Package: 14 new cross-timeframe rows, 36/36 stable monthly ZIP hashes, deterministic evidence SHA256, and a ready-to-post issue comment.
+- Safety: No raw payload, API key, private data, account data, strategy, backtest, or trading operation is included.
+- Status: `ready_not_submitted`; no external comment or issue was created.
+- Decision: External publication requires explicit user approval and would not itself unblock M1E.
+- Guardrails: No PR3, OOS returns, strategy code, M2, private smoke, dry-run, live, orders, or execution/live.
