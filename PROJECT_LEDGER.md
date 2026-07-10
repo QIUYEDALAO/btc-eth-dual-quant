@@ -737,3 +737,17 @@ private exchange responses here.
 - Trial state: candidate evaluated `no`; events selected `no`; OOS opened `no`; trial count incremented `no`; T5 feasibility analysis executed `no`.
 - Next action: Commit and merge the truthful failure record, then stop M1D. Continue monthly public-data accrual and M0 audit diagnostics without lowering the Gate.
 - Guardrails: No T6, strategy code, OOS access, API keys, private smoke, M2, dry-run, live, orders, cancellation, simulated matching, or execution/live.
+
+## 2026-07-10 - T5 Sample-Budget Blocker Merged
+
+- Date UTC: 2026-07-10T17:36:17Z
+- Task ID: SHORT-HORIZON-T5-MERGED
+- Phase: T5 M1D sample-budget precheck
+- Branch: main
+- Commit: 9362f9a2b0c5bb44bfdec52718c88ea379330494
+- PR: #29 merged
+- Completed: Immutable 30%/540-day policy validation, metadata-only T1/T2 calendar extraction, sealed-ledger guard, sanitized failure report, tests, report Gate, and T5 CI.
+- Validation: 178 repository tests passed; T5 Validate `PASS=10 FAIL=0`; all PR #29 checks passed. No candidate, event, OOS price, or return was evaluated.
+- Result: T5 status `blocked_insufficient_oos_calendar`. M1D and T6 are stopped; no strategy is eligible for M2.
+- Next action: Continue monthly public-data accrual and M0 audit diagnostics. Any different candidate requires a separately approved design PR and a separately sealed OOS path.
+- Guardrails: No threshold reduction, M1D continuation, T6, strategy code, OOS access, API keys, private smoke, M2, dry-run, live, orders, simulated matching, or execution/live.

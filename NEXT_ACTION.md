@@ -1,7 +1,7 @@
 # Next Action
 
 Under the Freqtrade-first architecture, the T5 metadata-only calendar precheck
-has completed locally and stopped M1D before event or return analysis.
+merged in PR #29 and stopped M1D before event or return analysis.
 
 T2 evidence now records:
 
@@ -27,10 +27,10 @@ The formal range has 1004 days: 702 IS days and 302 sealed OOS days. This is
 OOS, 1800 full days are required, with the earliest projected complete date
 `2028-09-03`.
 
-The immediate task is to merge the truthful T5 failure record and complete its
-governance closeout. After that, continue monthly public-data accrual and M0
-audit diagnostics. M1D must not define event thresholds, read OOS prices or
-returns, run a candidate, or proceed to T6.
+The next productive work is monthly public-data accrual and M0 audit diagnostics.
+A different candidate may be considered only through a separately approved
+design PR. M1D must not define event thresholds, read OOS prices or returns,
+run a candidate, or proceed to T6.
 
 Locked conditions: discrete completed-15m events, authoritative 1m detail, 5m
 sensitivity, `max_open_trades=1`, no fixed holding duration, no daily trade

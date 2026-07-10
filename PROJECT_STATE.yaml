@@ -1,8 +1,8 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T17:25:35Z"
-current_phase: short-horizon feasibility gate
+last_updated_utc: "2026-07-10T17:36:17Z"
+current_phase: post-T5 data accrual and audit
 current_status: m1d_blocked_insufficient_oos_calendar_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M0 data engineering
@@ -77,6 +77,7 @@ completed_milestones:
   - phase: T5 M1D sample-budget precheck
     status: blocked_insufficient_oos_calendar
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
+    merged_pr: 29
 open_work:
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
@@ -87,15 +88,6 @@ open_work:
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
     blocker: "P3 failed complete-trade, OOS Sharpe, and drawdown gates; P4 and M2 are not allowed for M1C."
-  - id: SHORT-HORIZON-T5-SAMPLE-BUDGET
-    phase: T5 M1D sample-budget precheck
-    status: blocked_pending_review
-    branch: codex/short-horizon-t5-sample-budget-precheck
-    pr: 29
-    head_sha: 69bfca351543dc443cf20cd9e5b8790a32f53f68
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
-    blocker: "The sealed OOS calendar has 302 days versus the fixed 540-day minimum; M1D stops before event or return analysis."
 active_decisions:
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
@@ -138,7 +130,7 @@ allowed_next_work:
   - T2 golden-data and quarantine passed and merged in PR #23.
   - T3 unified metrics and policy benchmark passed and merged in PR #25.
   - T4 IS-only feasibility harness passed and merged in PR #27 without candidate evaluation or OOS-return access.
-  - "T5 metadata-only sample-budget precheck completed locally and is blocked: 302 OOS days versus the fixed 540-day minimum. Merge the truthful failure record, then stop M1D."
+  - "T5 metadata-only sample-budget precheck merged in PR #29 and is blocked: 302 OOS days versus the fixed 540-day minimum. M1D and T6 are stopped."
   - Continue monthly public-data accrual and M0 audit diagnostics; a different candidate requires a separately approved design and may not reuse or open this sealed OOS.
   - Use completed 15m discrete events, authoritative 1m detail, and 5m sensitivity only.
   - Holding time and trade frequency are strategy outputs; do not impose a daily trade quota.
@@ -395,6 +387,9 @@ latest_merged_prs:
   - number: 27
     title: Implement T4 IS-only feasibility harness
     merged_at_utc: "2026-07-10T16:20:02Z"
+  - number: 29
+    title: Record T5 M1D sample-budget blocker
+    merged_at_utc: "2026-07-10T17:36:17Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
