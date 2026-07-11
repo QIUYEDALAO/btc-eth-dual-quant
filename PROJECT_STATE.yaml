@@ -9,6 +9,7 @@ completed_milestones:
     status: local_pass_pending_review
     evidence: reports/m1/M1E_IS_ONLY_RULE_DESIGN.md
     branch: codex/m1e-is-only-rule-design
+    pr: 46
   - phase: Q-01/Q-02 candidate queue governance
     status: completed
     evidence: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
@@ -115,8 +116,8 @@ open_work:
     phase: M1E IS-only economic hypothesis and non-duplication review
     status: local_pass_pending_review
     branch: codex/m1e-is-only-rule-design
-    pr: none
-    head_sha: pending_commit
+    pr: 46
+    head_sha: 36e9da6ccf3d79eef35f8dae5d37ec845b5ab89b
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1E_IS_ONLY_RULE_DESIGN.md
     blocker: "Merge M1E-04 before building the M1E-05 IS data isolator; paper diagnostics, rule contract, strategy code, backtesting, and OOS remain unauthorized."

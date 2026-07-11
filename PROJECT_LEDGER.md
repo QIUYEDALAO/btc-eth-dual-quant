@@ -950,7 +950,8 @@ private exchange responses here.
 - Task ID: M1E-04
 - Phase: M1E IS-only economic hypothesis and non-duplication review
 - Branch: `codex/m1e-is-only-rule-design`
-- PR: pending
+- PR: #46 open
+- Commit: `36e9da6ccf3d79eef35f8dae5d37ec845b5ab89b`
 - Approval: The user granted automatic approval for sequential research steps in the current session; dependency and Gate checks remain mandatory.
 - Hypothesis: A completed 1h compression state can precede directional expansion driven by delayed repricing, stops and forced liquidity; the candidate is spot long/cash only.
 - Non-duplication: M1A's SMA200, Donchian 55/20 and ATR20 x2 bundle, timeframe relabeling and fixed-channel rescue remain prohibited.
