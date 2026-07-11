@@ -123,8 +123,8 @@ open_work:
     phase: M1E IS-only paper feasibility
     status: failed_feasibility_pending_review
     branch: codex/m1e-is-paper-feasibility
-    pr: none
-    head_sha: pending
+    pr: 49
+    head_sha: c107190
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1E_IS_PAPER_FEASIBILITY_REPORT.md
     blocker: "Frozen 24h MFE cost-coverage Gates failed for the combined sample and both symbols; M1E-07 and all M1E strategy work are stopped."
