@@ -69,14 +69,14 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1G-09 | M1G IS numerical validation | failed_validation | M1G-08 merged | `codex/m1g-is-validation` / PR #59 merged | Four fixed cost runs, daily MTM, benchmark and Gate report | One frozen IS run; no OOS access | Base/x2 returns, Sharpe, PSR, MaxDD, concentration, segment and benchmark Gates failed |
 | M1G-10 | M1G IS independent audit | failed_audit | M1G-09 | PR #59 merged | Conservative repricing, timestamp and metric reconciliation | Native and audit must both satisfy frozen Gates | 66 Base and 83 Cost x2 native/audited exit-bar mismatches; numerical Gates also failed |
 | M1G-11 | M1G OOS opening | blocked | M1G-09/10 pass | not created | Frozen one-shot OOS opening package | Every IS and independent-audit Gate must pass | M1G failed IS; OOS remains sealed and trial count remains 3 |
-| M1H-01 | M1H independent design review | completed_pending_review | M1G failure evidence merged in PR #59 | `codex/m1h-independent-design-review` / PR #61 open | Negative settled-funding crowding hypothesis, timing/lineage proof, non-duplication matrix and representability constraints | Exact ledger hash, public lineage, strict post-settlement timing, no rules/returns/OOS and CI pass | review and merge pending |
-| M1H-02 | M1H paper protocol | blocked_until_design_merge | M1H-01 merged pass | future branch | Pre-outcome funding-event definition and paper Gates | Protocol committed before event outcomes; representability and sample Gates frozen | M1H-01 not merged; no diagnostic run authorized |
+| M1H-01 | M1H independent design review | completed | M1G failure evidence merged in PR #59 | PR #61 merged / `5622a10` | Negative settled-funding crowding hypothesis, timing/lineage proof, non-duplication matrix and representability constraints | Exact ledger hash, public lineage, strict post-settlement timing, no rules/returns/OOS and CI pass | none |
+| M1H-02 | M1H paper protocol | authorized | M1H-01 merged pass | future branch | Pre-outcome funding-event definition and paper Gates | Protocol committed before event outcomes; representability and sample Gates frozen | event scan remains prohibited until protocol merges |
 | M1H-03 | M1H IS paper feasibility | not_authorized | M1H-02 merged | future branch | Event count, distribution, cost coverage and path diagnostics | Frozen 120/30 and 1.80% Gates plus candidate-specific timing/lineage checks | Protocol not frozen |
 | M1H-04+ | M1H fixed rules, implementation, IS/OOS and audit | not_authorized | M1H-03 pass and sequential approvals | future branches | Freqtrade strategy and validation chain | Every predecessor Gate passes; zero-mismatch representability before implementation | No paper evidence exists |
 
 ## Current Gate
 
-- Authorized work: review and merge the M1H design-only package. After merge, only a separate pre-outcome paper-protocol design may start.
+- Authorized work: only a separate pre-outcome M1H paper-protocol design may start; no event scan may run in that PR.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H -> stop BTC/ETH two-asset indicator research. M1G OOS was never opened; M1H remains unopened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
 - Active implementation: none. M1H has selected an economic route only; no threshold, event, strategy, return or OOS has been evaluated.

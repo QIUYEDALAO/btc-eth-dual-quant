@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1H independent design review pending merge.
+- Current phase: M1H paper protocol design authorization after PR #61 merged.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -85,6 +85,7 @@ After any task, the agent must update:
 - M1H design selects only the settlement-aligned negative-funding crowding hypothesis route. Funding is a public sentiment input for spot long/cash; no futures position, funding cashflow or two-leg execution is allowed.
 - M1H timing requires decisions no earlier than settlement and any future entry strictly after `fundingTime`. The extreme threshold, lookback, spot condition, timeframe, entry, exit, risk and position rules remain unresolved.
 - M1H implementation requires a future zero-mismatch execution-representability Gate. The current design selects no exit family and authorizes only a separate paper-protocol design after merge.
+- M1H independent design merged in PR #61 at `5622a10`. Only a separate pre-outcome paper-protocol design is authorized; event scanning, returns, strategy code and OOS access remain prohibited.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.
