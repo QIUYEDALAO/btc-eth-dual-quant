@@ -26,11 +26,16 @@ return, equity curve, Freqtrade strategy or backtest was produced.
 
 Immediate sequence:
 
-1. Do not create M1E-07, tune M1E, or open its OOS.
-2. Move to M1G only through a separate IS-only economic hypothesis and
-   non-duplication design review.
-3. Keep M1G strategy code, Freqtrade backtesting and OOS unauthorized until its
-   own paper-feasibility dependencies pass.
+1. Review and merge the M1G IS-only economic hypothesis and non-duplication evidence.
+2. After merge, freeze one price-only M1G paper-diagnostic protocol before reading outcomes.
+3. Do not evaluate events in the protocol commit and do not derive rules from M1E results.
+4. Keep fixed rules, strategy code, Freqtrade backtesting and OOS unauthorized until M1G paper feasibility passes.
+
+M1G's prospective edge is a partial rebound after completed 1h forced-selling
+and urgent-liquidity dislocation. It is not an inversion of M1E, a 15m M1D
+rescue, a shortened daily-panic rule, or an M1A trend variant. No panic
+threshold, target, holding horizon, stop, position size, cooldown or warmup has
+been selected, and no event or return has been computed.
 
 Q-01/Q-02 candidate governance merged in PR #44. The
 immutable research order is M1E one-hour volatility-compression expansion,

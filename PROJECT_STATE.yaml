@@ -1,10 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T01:53:39Z"
-current_phase: M1G IS-only design preparation
-current_status: m1e_failed_feasibility_m1g_design_only_no_strategy_eligible_for_m2
+last_updated_utc: "2026-07-11T02:05:00Z"
+current_phase: M1G IS-only design pending review
+current_status: m1g_economic_hypothesis_pass_protocol_only_no_strategy_eligible_for_m2
 completed_milestones:
+  - phase: M1G IS-only economic hypothesis and non-duplication
+    status: economic_hypothesis_pass_paper_protocol_only
+    evidence: reports/m1/M1G_IS_ONLY_RULE_DESIGN.md
+    branch: codex/m1g-is-only-rule-design
   - phase: M1E-06 IS-only paper feasibility
     status: failed_feasibility
     evidence: reports/m1/M1E_IS_PAPER_FEASIBILITY_REPORT.md
@@ -119,6 +123,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: M1G-01
+    phase: M1G IS-only economic hypothesis and non-duplication
+    status: pending_review
+    branch: codex/m1g-is-only-rule-design
+    pr: none
+    head_sha: pending
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/M1G_IS_ONLY_RULE_DESIGN.md
+    blocker: "Only paper-protocol design may follow; event evaluation, fixed rules, strategy code, backtesting and OOS remain unauthorized."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -165,6 +178,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - Review and merge the M1G IS-only economic hypothesis and non-duplication evidence; after merge only a frozen paper-diagnostic protocol may be designed before outcomes are read.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G may enter a separate IS-only design review and diagnostics sequence; no strategy code is authorized.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -231,6 +245,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/M1G_IS_ONLY_RULE_DESIGN.md
+    phase: M1G design
+    status: economic_hypothesis_pass_paper_protocol_only
+    status_marker: "- Status: economic_hypothesis_pass_paper_protocol_only"
+  - path: reports/m1/M1G_NON_DUPLICATION_REVIEW.md
+    phase: M1G design
+    status: pass_design_level
+    status_marker: "- Status: pass_design_level"
   - path: reports/m1/M1E_IS_PAPER_FEASIBILITY_REPORT.md
     phase: M1E-06
     status: failed_feasibility

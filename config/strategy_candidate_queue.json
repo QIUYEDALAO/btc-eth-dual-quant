@@ -28,7 +28,7 @@
       "alias": "M1G",
       "candidate_id": "M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION",
       "family": "one_hour_panic_dislocation_mean_reversion",
-      "status": "design_review_eligible_after_separate_approval",
+      "status": "economic_hypothesis_pass_paper_protocol_only",
       "failure_transition": "M1H"
     },
     {
