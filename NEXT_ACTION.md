@@ -3,7 +3,7 @@
 ## Current Decision
 
 M1G remains closed as `failed_validation`. M1H remains `declared_unopened`,
-and its pre-outcome paper protocol is now frozen pending review:
+and its pre-outcome paper protocol merged in PR #63 at `dd4ae5b`:
 
 - Event identity: settled negative funding at or below the same-symbol prior-365-day lower 5% tail, with per-event interval annualization.
 - Timing: settlement first, then the exact next expected canonical 5m open strictly after `fundingTime`.
@@ -16,11 +16,11 @@ No historical event, event count, path result, return or OOS value has been read
 
 ## Immediate Sequence
 
-1. Review and merge the protocol-only PR after every local and GitHub check passes.
-2. Do not run data qualification, event scanning or paper feasibility in the protocol PR.
-3. After merge, a separately started M1H-03 task may first run pure funding-data qualification.
-4. Qualification may inspect only lineage, timestamps, per-event intervals, settlement availability, missing/duplicates, timezone and completeness.
-5. If qualification passes, that same task may proceed once to sealed-IS paper feasibility without another intermediate approval.
+1. Start M1H-03 on a new branch; it is authorized but not yet executed.
+2. Run pure funding-data qualification before loading any candidate event outcome.
+3. Qualification may inspect only lineage, timestamps, per-event intervals, settlement availability, missing/duplicates, timezone and completeness.
+4. If qualification fails, stop without event scanning or feasibility analysis.
+5. If qualification passes, the same task may proceed once to sealed-IS paper feasibility without another intermediate approval.
 6. Any frozen Gate failure closes M1H without tuning; failure stops BTC/ETH two-asset indicator research and requires a new ADR for a broader liquid spot universe.
 
 ## Boundaries
@@ -28,7 +28,7 @@ No historical event, event count, path result, return or OOS value has been read
 - No strategy is eligible for M2.
 - Do not enter M2.
 - Freqtrade-first remains the architecture: Freqtrade owns future single-leg lifecycle and return evidence; Python may only audit timing, metrics and exported evidence.
-- Do not create M1H strategy code, an event runner, a backtest runner, performance audit or second strategy engine in this PR.
+- Do not create M1H strategy code, a backtest runner, performance audit or second strategy engine. M1H-03 may implement only the frozen IS paper-observation runner after qualification passes.
 - Do not access OOS, private data, API keys, private smoke, dry-run/live, orders, cancellation, matching, wallets, trading permissions or `execution/live`.
 - Do not commit raw, DuckDB, Freqtrade runtime data, logs, SQLite, `.env` or private payloads.
 

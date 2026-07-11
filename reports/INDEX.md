@@ -3,7 +3,7 @@
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
 | `reports/m1/M1H_IS_ONLY_RULE_DESIGN.md` | M1H design | economic_hypothesis_pass_paper_protocol_only / PR #61 merged | Selects the settled-negative-funding crowding hypothesis route, strict post-settlement timing and public lineage without selecting rules, reading returns or opening OOS. | no |
-| `reports/m1/M1H_PAPER_PROTOCOL.md` | M1H paper protocol | frozen_before_result | Freezes the 5% funding-tail event identity, exact post-settlement 5m timing, market-reaction windows, close-displacement Gates and leakage controls without scanning events or authorizing feasibility. | no |
+| `reports/m1/M1H_PAPER_PROTOCOL.md` | M1H paper protocol | frozen_before_result / PR #63 merged | Freezes the 5% funding-tail event identity, exact post-settlement 5m timing, market-reaction windows, close-displacement Gates and leakage controls without scanning events or authorizing feasibility. | no |
 | `reports/m1/M1H_NON_DUPLICATION_REVIEW.md` | M1H design | pass_design_level | Proves structural differences from M1G price panic and M1B two-leg funding cashflow across signal source, timing, return source and position. | no |
 | `reports/m1/M1H_EXECUTION_REPRESENTABILITY_REVIEW.md` | M1H design | constraint_pass_no_exit_selected | Freezes zero-mismatch, no-optimistic-gap and Freqtrade-authority constraints before any exit family or implementation is allowed. | no |
 | `reports/m1/M1G_IS_VALIDATION_REPORT.md` | M1G IS validation | failed_validation | PR #59 merged the one frozen four-cost IS run, daily-MTM and benchmark results, and exported-trade-only conservative repricing. Base/x2 numerical and exit-bar audit Gates failed; OOS stayed sealed. | no |

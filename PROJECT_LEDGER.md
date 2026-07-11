@@ -1217,3 +1217,16 @@ private exchange responses here.
 - Leakage contract: No threshold, interval, horizon, year, symbol, clustering or censoring choice may change from outcomes; changes require a new ADR and protocol identity.
 - Outcome safety: Event scan `no`, event count `no`, formal returns `no`, paper feasibility `no`, OOS `no`, strategy code `no`, M2 `no`.
 - Next action: Review and merge this protocol. A future separately started M1H-03 task may qualify funding data first and, only if it passes, continue once to sealed-IS paper feasibility without an intermediate approval.
+
+## 2026-07-11 - M1H Paper Research Protocol Merged
+
+- Date UTC: 2026-07-11T16:12:28Z
+- Task ID: M1H-02-MERGED
+- Phase: M1H-03 authorization, not started
+- Branch: main
+- Commit: `dd4ae5bb04d9343e83a4a3f05994c7f5edea8617`
+- PR: #63 merged
+- Validation: Local M1H protocol validation passed 11/0 with 308 tests; all 64 GitHub checks passed.
+- Result: The pre-outcome funding-tail identity, exact post-settlement timing, fixed reaction windows, close-displacement Gates and leakage controls are frozen.
+- Outcome safety: M1H remains `declared_unopened`; no funding event, event count, path result, return or OOS value was accessed.
+- Next action: M1H-03 may be started separately. It must run pure funding-data qualification first and may continue once to sealed-IS paper feasibility only if qualification passes; no intermediate approval is required.
