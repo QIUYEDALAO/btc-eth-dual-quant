@@ -31,7 +31,7 @@ read_only_scan() {
   if command -v rg >/dev/null 2>&1; then
     ! rg -n "$pattern" src scripts freqtrade_lab/scripts freqtrade_lab/user_data/strategies
   else
-    ! grep -R -n -E "$pattern" src scripts freqtrade_lab/scripts freqtrade_lab/user_data/strategies
+    ! grep -R -n -E --exclude-dir=__pycache__ --binary-files=without-match "$pattern" src scripts freqtrade_lab/scripts freqtrade_lab/user_data/strategies
   fi
 }
 

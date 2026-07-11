@@ -62,14 +62,17 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1G-03 | M1G IS paper feasibility | completed_pass_tail_risk_disclosed | M1G-02 frozen and merged | `codex/m1g-is-paper-feasibility` / PR #53 merged | IS-only frequency, clustering, rebound MAE/MFE and cost coverage | All frozen paper Gates pass; adverse-path evidence constrains the fixed contract | none; not a profitability pass |
 | M1G-04 | M1G fixed rule contract | completed | M1G-03 merged pass | `codex/m1g-fixed-rule-contract` / PR #54 merged | 1.80% target, -4.00% stop, 24h timeout, 25% cap, one trade and 72h cooldown | No ranges, parameter search, OOS evidence or MFE-perfect-exit assumption | none |
 | M1G-05A | M1G Freqtrade capability review | completed | M1G-04 merged | `codex/m1g-freqtrade-capability-review` / PR #55 merged | Native mapping plus mandatory conservative execution audit | Global cooldown implementable; gap-price differences disclosed; no second strategy engine | none |
-| M1G-05 | M1G Freqtrade implementation | authorized_not_started | M1G-05A merged pass | `codex/m1g-freqtrade-implementation` / PR pending | Exact strategy plugin, 1h signal/5m detail, causal timing and safety tests | Contract-exact signals/lifecycle and mandatory audit hook; no performance run | performance run blocked until implementation validation passes |
+| M1G-05 | M1G Freqtrade implementation | completed_pending_review | M1G-05A merged pass | `codex/m1g-freqtrade-implementation` / PR pending | Exact strategy plugin, 1h signal/5m detail, deterministic pair ranking and global cooldown | Contract-exact signals and lifecycle; no performance report | review and CI pending |
+| M1G-06 | M1G causal and pinned runtime validation | completed_pending_review | M1G-05 | same PR | Fixtures, Freqtrade 2026.6 lookahead and recursive evidence | 20 lookahead signals with zero bias; zero recursive variance/lookahead | review and CI pending |
+| M1G-07 | M1G conservative execution repricing audit | completed_pending_review | M1G-05A | same PR | Exported-trade-only 5m target/stop/gap/timeout repricing | Cannot select signals; deterministic fixtures pass | review and CI pending |
+| M1G-08 | M1G IS validation protocol | blocked_until_implementation_merge | M1G-05/06/07 merged pass | `codex/m1g-is-validation-protocol` / future PR | Frozen IS range, scenarios, Gate matrix and artifact hashes | Protocol committed before performance outcomes | implementation PR not merged |
 
 ## Current Gate
 
-- Authorized work: exact M1G Freqtrade implementation, causal/runtime fixtures, and conservative trade-export repricing audit. Performance backtesting and OOS remain unauthorized.
+- Authorized work: review and merge M1G implementation evidence. After merge, freeze M1G IS protocol before any performance run. OOS remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G -> M1H -> stop BTC/ETH two-asset indicator research. M1G and M1H remain unopened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active implementation: M1G exact strategy code and audit hook are authorized after PR #55; no performance run is authorized, and OOS remains unopened.
+- Active implementation: exact Freqtrade strategy, causal/runtime fixtures and audit hook pass locally; no performance report exists and OOS remains unopened.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

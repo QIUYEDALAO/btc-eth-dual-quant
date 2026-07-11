@@ -1103,3 +1103,17 @@ private exchange responses here.
 - Result: `capability_pass_with_mandatory_execution_audit`; exact strategy implementation is authorized, but performance backtesting is not.
 - Next action: Implement the frozen Freqtrade plugin, causal/runtime fixtures, and conservative trade-export repricing audit on a new branch.
 - Safety: OOS remains unopened. M2, private APIs, dry-run/live, orders, matching and execution/live remain prohibited.
+
+## 2026-07-11 - M1G Freqtrade Implementation Passed Locally
+
+- Date UTC: 2026-07-11T07:45:53Z
+- Task IDs: M1G-05, M1G-06, M1G-07
+- Phase: M1G Freqtrade implementation and conservative execution audit
+- Branch: `codex/m1g-freqtrade-implementation`
+- PR: pending
+- Strategy: Exact completed-1h event, 5m detail, deterministic BTC/ETH ranking, +1.80% target, -4.00% stop, 24h timeout, 25% cap, one position and 72h all-pair cooldown.
+- Runtime: Pinned Freqtrade 2026.6 lookahead passed 20 signals with zero biased entries/exits/indicators; recursive analysis found zero variance and zero indicator lookahead at startup 170/250/340.
+- Audit: Python reprices only exported trades using canonical 5m target/stop/gap/timeout rules; it cannot select signals or become a second strategy engine.
+- Result: `implementation_pass_no_performance_run`; candidate return computed `no`, OOS opened `no`.
+- Next action: After merge, freeze a separate IS validation protocol before any performance run.
+- Safety: No API key, private data, dry-run/live, order, matching or execution/live logic was used.

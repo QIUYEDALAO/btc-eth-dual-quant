@@ -2,6 +2,7 @@
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
+| `reports/m1/M1G_IMPLEMENTATION_STATUS.md` | M1G implementation | implementation_pass_no_performance_run | Records exact Freqtrade strategy, causal fixtures, pinned lookahead/recursive pass, and exported-trade-only conservative execution repricing without a performance report or OOS access. | no |
 | `reports/m1/M1G_FREQTRADE_CAPABILITY_REVIEW.md` | M1G framework mapping | capability_pass_with_mandatory_execution_audit | Merged in PR #55; confirms native signal/lifecycle and global-cooldown support, discloses material ROI/stop gap-price differences, and requires conservative repricing of exported trades without a second strategy engine. | no |
 | `reports/m1/M1G_FIXED_RULE_CONTRACT.md` | M1G fixed contract | frozen_pre_implementation | Freezes one target, stop, timeout, position cap, cooldown, pair ranking and conservative 5m ambiguity/gap semantics without parameter search or backtesting. | no |
 | `reports/m1/M1G_IS_PAPER_FEASIBILITY_REPORT.md` | M1G paper feasibility | pass_tail_risk_disclosed | Exact frozen IS protocol passes sample/MFE/distribution Gates with 210 events, while disclosing median MAE -3.31%, worst MAE -21.58% and no formal strategy return. | no |
