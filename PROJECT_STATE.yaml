@@ -159,8 +159,8 @@ open_work:
     phase: M1H independent economic-hypothesis and non-duplication review
     status: design_pass_pending_review
     branch: codex/m1h-independent-design-review
-    pr: none
-    head_sha: pending
+    pr: 61
+    head_sha: 7cde978acd50291dc6d09f788c5e4301dc767533
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1H_IS_ONLY_RULE_DESIGN.md
     blocker: "Only paper-protocol design may follow after merge; event scan, rules, strategy code, returns and OOS remain unauthorized."

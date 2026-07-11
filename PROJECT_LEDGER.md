@@ -1178,7 +1178,8 @@ private exchange responses here.
 - Task ID: M1H-01
 - Phase: M1H economic hypothesis, timing, lineage and non-duplication design
 - Branch: `codex/m1h-independent-design-review`
-- PR: pending
+- PR: #61 open
+- Result commit: `7cde978acd50291dc6d09f788c5e4301dc767533`
 - Candidate: `FUNDING-EXTREME-SPOT-CONTRARIAN`; registered SHA256 remains `f4caf96502aca9272d58faab20a6e2dc07eea4c69e49d9705272c00a46b814ed`.
 - Selected route: A settled extreme negative funding observation may represent crowded short positioning whose later unwind can support spot appreciation.
 - Structural boundary: Funding is public sentiment information only; M1H uses spot long/cash and has no funding income, perpetual short, basis hedge or two-leg execution.
