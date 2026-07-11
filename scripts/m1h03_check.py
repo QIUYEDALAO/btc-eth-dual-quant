@@ -70,6 +70,10 @@ def check() -> list[str]:
             "BTC/ETH candidate queue exhausted; liquid-universe ADR authorized",
             "btc_eth_candidate_queue_exhausted_liquid_universe_adr_authorized_no_m2",
         ),
+        (
+            "Liquid universe public qualification blocked on unresolved 5m gaps",
+            "liquid_universe_qualification_blocked_151_gaps_no_strategy_no_m2",
+        ),
     }
     if (state.get("current_phase"), state.get("current_status")) not in allowed_states:
         failures.append("PROJECT_STATE is not an allowed M1H terminal governance state")

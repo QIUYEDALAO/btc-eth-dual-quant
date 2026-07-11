@@ -27,6 +27,8 @@ report_state_gate() {
     grep -qE '^current_status: m1h_failed_feasibility_candidate_queue_exhausted_oos_sealed_no_m2$' PROJECT_STATE.yaml
   elif grep -qE '^current_phase: BTC/ETH candidate queue exhausted; liquid-universe ADR authorized$' PROJECT_STATE.yaml; then
     grep -qE '^current_status: btc_eth_candidate_queue_exhausted_liquid_universe_adr_authorized_no_m2$' PROJECT_STATE.yaml
+  elif grep -qE '^current_phase: Liquid universe public qualification blocked on unresolved 5m gaps$' PROJECT_STATE.yaml; then
+    grep -qE '^current_status: liquid_universe_qualification_blocked_151_gaps_no_strategy_no_m2$' PROJECT_STATE.yaml
   else
     return 1
   fi
