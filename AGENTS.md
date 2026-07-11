@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1G fixed rule contract pending review.
+- Current phase: M1G Freqtrade capability review.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -73,6 +73,7 @@ After any task, the agent must update:
 - M1G design merged in PR #51. The M1G paper protocol is frozen before outcomes: completed 1h decline <= -2.40%, prior-168h median-relative return/range filters, bottom-quartile close, 24h clustering and unchanged 120/30 and 1.80% Gates. No event scan is authorized before protocol merge.
 - M1G protocol merged in PR #52. Its exact sealed-IS run passed all paper Gates with 210 events and 2.69% median MFE, but median MAE is -3.31%, worst MAE is -21.58%, and median 24h close displacement is below Base cost. This is not a profitability pass; only a fixed-rule contract may follow after review.
 - M1G paper evidence merged in PR #53. The fixed pre-implementation contract uses +1.80% target, -4.00% stop, 24h timeout, 25% equity cap, one open trade and 72h global cooldown. It contains no parameter alternatives and authorizes no backtest until separately merged and implemented.
+- M1G fixed contract merged in PR #54. Freqtrade 2026.6 supports the signal/lifecycle core and all-pair cooldown through `confirm_trade_entry`, but native ROI/stop gap pricing differs materially; every future result must also pass a conservative trade-export execution audit without creating a second strategy engine.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.

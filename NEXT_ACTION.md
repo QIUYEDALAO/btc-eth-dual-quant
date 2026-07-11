@@ -26,10 +26,10 @@ return, equity curve, Freqtrade strategy or backtest was produced.
 
 Immediate sequence:
 
-1. Review and merge the M1G fixed rule contract without adding alternatives.
-2. After merge, implement that exact contract in Freqtrade with independent next-5m-open and gap semantics tests.
-3. Run lookahead, recursive and fixture checks before any IS performance backtest.
-4. Keep Freqtrade performance backtesting and OOS unauthorized until implementation review passes.
+1. Review and merge the M1G Freqtrade capability mapping.
+2. Implement exact signals, pair ranking, ROI/stop/timeout, stake cap and global cooldown only after merge.
+3. Add a trade-export execution audit for conservative target/stop gap pricing; it must not select signals or become a second strategy engine.
+4. Run lookahead, recursive and fixture checks before any IS performance backtest; OOS remains sealed.
 
 The fixed contract is +1.80% target, -4.00% invalidation stop, 24h timeout,
 25% current-equity cap, maximum one position and 72h global cooldown. Same-5m
