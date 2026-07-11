@@ -40,13 +40,17 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1E-02 | M1E public-data qualification | superseded_blocked_evidence | M1E-01 completed | `codex/m1e-1h-public-data-qualification` / PR #32 merged | Original official cross-timeframe parity evidence | Historical report remains immutable | ADR-0008 authority model was operationally over-constrained |
 | M1E-02B | M1E canonical 5m requalification | completed | M1E-02 diagnostics and ADR-0009 | `codex/m1e-canonical-5m-contract-v2` / PR #40 merged | Canonical 5m, derived 1h/4h, quarantine, Freqtrade cache and report | Zero unresolved canonical conflicts, deterministic derivation, pinned list-data pass, CI pass | none |
 | M1E-03 | M1E sample budget | completed_design_only | M1E-02B merged pass | `codex/m1e-1h-sample-budget` / PR #42 merged | Metadata-only 70/30, 1800/540-day report | 2191 full, 1533 IS, 658 sealed OOS; validation and CI pass | none; does not authorize strategy code |
+| Q-01 | Candidate queue governance | in_progress | M1E-03 merged pass | `codex/candidate-queue-common-gates` / PR #44 | Immutable M1E -> M1G -> M1H queue, hypotheses, hashes, DSR trial count, failure transitions and terminal stop | Candidate queue validator, ledger hash checks, context and CI pass | review and merge required; no candidate design authorized |
+| Q-02 | Common validation governance | in_progress | Q-01 | `codex/candidate-queue-common-gates` / PR #44 | Fixed costs, sealed OOS, daily-MTM, PSR, drawdown, concentration, benchmark and no-rescue policy | Machine contract rejects lowered Gates or enabled downstream authorization | review and merge required; no backtest or OOS authorized |
 | M1E-04 | M1E IS-only rule design | awaiting_explicit_approval | M1E-03 merged pass plus separate approval | future branch | Non-M1A trend-breakout rule contract | No duplicate rule bundle and no OOS access | explicit approval not yet granted |
 | M1E-DIAG-01 | M1E source-conflict diagnostics | completed | M1E-02 blocked | `codex/m1e-official-source-conflict-diagnostics` / PR #35 merged | Field-level ZIP/REST classifications, fresh hashes, clean-suffix budget | Reproducible evidence, no contract bypass, CI pass | 30 conflicts confirmed; clean suffix 1338/402 < 1800/540 |
 | M1E-OWNER-01 | Binance source-owner package | completed_monitoring | M1E-DIAG-01 completed | PR #37 merged; issue #475 comment 4939090508 | Sanitized evidence JSON and submitted source-owner comment | 14 supplemental rows, no raw/private data, CI pass | awaiting response for provenance only; no longer an operational canonical-OHLC dependency |
 
 ## Current Gate
 
-- Authorized work: no active implementation. Await explicit approval for M1E IS-only rule design; strategy implementation and OOS access remain unauthorized.
+- Authorized work: Q-01/Q-02 governance only. Candidate order and common Gates may be reviewed and merged; M1E IS-only rule design still requires a separate explicit approval.
+- Candidate queue: M1E -> M1G -> M1H -> stop BTC/ETH two-asset indicator research. M1G and M1H remain `declared_unopened`.
+- DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
 - Active implementation: no strategy; candidate evaluated `no`, OOS opened `no`, strategy code authorized `no`.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.

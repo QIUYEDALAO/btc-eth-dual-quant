@@ -1,10 +1,15 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-10T21:12:00Z"
-current_phase: M1E IS-only rule-design approval decision
+last_updated_utc: "2026-07-11T00:43:41Z"
+current_phase: strategy candidate queue and common-gate governance review
 current_status: m1e_sample_budget_pass_is_design_only_no_strategy_eligible_for_m2
 completed_milestones:
+  - phase: Q-01/Q-02 candidate queue governance
+    status: local_pass_pending_review
+    evidence: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
+    branch: codex/candidate-queue-common-gates
+    pr: 44
   - phase: M1E metadata-only sample budget
     status: sample_budget_pass_design_only
     evidence: reports/m1/M1E_1H_SAMPLE_BUDGET_REPORT.md
@@ -103,6 +108,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: Q-01-Q-02
+    phase: candidate queue and common validation gates
+    status: local_pass_pending_review
+    branch: codex/candidate-queue-common-gates
+    pr: 44
+    head_sha: aaab962c09ae53f24b54a438ffc65a4a0216c598
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
+    blocker: "Merge governance evidence before separately approving M1E IS-only rule design; strategy code, backtesting, and OOS remain unauthorized."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -113,6 +127,10 @@ open_work:
     evidence: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
     blocker: "P3 failed complete-trade, OOS Sharpe, and drawdown gates; P4 and M2 are not allowed for M1C."
 active_decisions:
+  - id: ADR-0010
+    decision: Freeze the M1E, M1G, M1H candidate queue and common validation gates before any new rule design.
+    status: accepted_for_governance_only
+    evidence: docs/decisions/ADR-0010-candidate-queue-and-common-validation-gates.md
   - id: ADR-0004
     decision: Review Freqtrade suitability before continuing custom M1B numerical validation.
     status: active
@@ -145,6 +163,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - Review and merge Q-01/Q-02 candidate-queue governance; this does not authorize M1E design, strategy code, backtesting, or OOS access.
+  - After Q-01/Q-02 merge, await a separate explicit approval for M1E IS-only design review; M1G and M1H remain declared_unopened.
+  - If M1E fails, only a separately approved transition to M1G is allowed; if M1G then fails, only M1H may follow; three failures stop BTC/ETH two-asset indicator research.
   - M1E metadata-only sample budget passed and merged in PR #42; await explicit approval for a separate IS-only rule-design PR.
   - M1E canonical-5m v2 passed and merged in PR #40; only the metadata-only 1800/540-day sample-budget Gate is authorized next.
   - Keep Binance source-owner monitoring as evidence follow-up, not as an operational dependency for M1E canonical OHLC.
@@ -205,6 +226,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
+    phase: research governance
+    status: queue_frozen_design_only
+    status_marker: "- Status: queue_frozen_design_only"
+  - path: docs/decisions/ADR-0010-candidate-queue-and-common-validation-gates.md
+    phase: research governance
+    status: accepted_for_governance_only
+    status_marker: "- Status: accepted for governance only"
   - path: reports/m0/M0_FINAL_ACCEPTANCE.md
     phase: M0
     status: accepted
@@ -482,6 +511,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/candidate_queue_validate.sh
   - python3 scripts/project_context_check.py
   - python3 scripts/context_summary.py
   - bash scripts/project_validate.sh

@@ -15,7 +15,10 @@ import yaml
 
 
 REQUIRED_RULES = {
+    "candidate_queue_order_is_immutable",
+    "dsr_trial_count_equals_opened_oos_candidates",
     "oos_opening_increments_trial_count",
+    "oos_opening_is_single_use_per_hash",
     "post_freeze_rule_change_creates_new_candidate",
     "failed_or_rejected_candidates_are_append_only",
 }

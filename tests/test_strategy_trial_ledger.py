@@ -24,7 +24,10 @@ def valid_ledger() -> dict:
         "version": 1,
         "hash_algorithm": "sha256",
         "rules": {
+            "candidate_queue_order_is_immutable": True,
+            "dsr_trial_count_equals_opened_oos_candidates": True,
             "oos_opening_increments_trial_count": True,
+            "oos_opening_is_single_use_per_hash": True,
             "post_freeze_rule_change_creates_new_candidate": True,
             "failed_or_rejected_candidates_are_append_only": True,
         },

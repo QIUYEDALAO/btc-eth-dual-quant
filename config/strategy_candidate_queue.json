@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "status": "queue_frozen_design_only",
+  "architecture": {
+    "strategy_return_authority": "freqtrade_2026.6_pinned",
+    "python_role": "time_semantics_daily_mtm_and_independent_audit_only"
+  },
+  "historical_opened_trials": {
+    "count": 3,
+    "candidate_ids": [
+      "M1A-DAILY-TREND",
+      "M1B-FUNDING-ARBITRAGE",
+      "M1C-BTC-ETH-ROTATION"
+    ],
+    "dsr_trial_count_source": "STRATEGY_TRIAL_LEDGER.yaml:oos_opened_true"
+  },
+  "queue": [
+    {
+      "order": 1,
+      "alias": "M1E",
+      "candidate_id": "M1E-1H-TREND-BREAKOUT",
+      "family": "one_hour_volatility_compression_expansion_breakout",
+      "status": "design_review_eligible_after_separate_approval",
+      "failure_transition": "M1G"
+    },
+    {
+      "order": 2,
+      "alias": "M1G",
+      "candidate_id": "M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION",
+      "family": "one_hour_panic_dislocation_mean_reversion",
+      "status": "declared_unopened",
+      "failure_transition": "M1H"
+    },
+    {
+      "order": 3,
+      "alias": "M1H",
+      "candidate_id": "FUNDING-EXTREME-SPOT-CONTRARIAN",
+      "family": "funding_extreme_spot_contrarian",
+      "status": "declared_unopened",
+      "failure_transition": "STOP_BTC_ETH_TWO_ASSET_RESEARCH"
+    }
+  ],
+  "common_policy": {
+    "costs_per_side": {
+      "base": "0.0015",
+      "cost_x2": "0.0030",
+      "stress_a": "0.0040",
+      "stress_b": "0.0055"
+    },
+    "sealed_oos": {
+      "fraction": "0.30",
+      "minimum_calendar_days": 540,
+      "minimum_full_calendar_days": 1800,
+      "single_open_per_candidate_hash": true,
+      "post_oos_parameter_change_creates_new_candidate": true
+    },
+    "paper_feasibility": {
+      "projected_full_trades_minimum": 120,
+      "projected_oos_trades_minimum": 30,
+      "gross_displacement_multiple_of_cost_x2_roundtrip_minimum": "3.0",
+      "gross_displacement_minimum": "0.0180",
+      "formal_strategy_return_permitted": false
+    },
+    "numerical_gates": {
+      "complete_trades_full_minimum": 80,
+      "complete_trades_oos_minimum": 20,
+      "oos_daily_mtm_sharpe_minimum": "1.0",
+      "oos_daily_mtm_psr_minimum": "0.95",
+      "daily_mtm_max_drawdown_maximum": "0.15",
+      "base_full_return_strictly_positive": true,
+      "cost_x2_full_return_strictly_positive": true,
+      "base_oos_return_strictly_positive": true,
+      "cost_x2_oos_return_strictly_positive": true,
+      "delete_best_three_return_minimum": "0.0",
+      "lookahead_analysis_required": true,
+      "recursive_analysis_required": true,
+      "unexplained_data_gaps_maximum": 0
+    },
+    "risk_matched_benchmark_gates": {
+      "strategy_sharpe_not_below_benchmark": true,
+      "strategy_drawdown_not_worse_than_benchmark": true,
+      "strategy_total_return_strictly_above_benchmark": true
+    },
+    "mandatory_diagnostics": {
+      "stress_a_and_b": true,
+      "dsr_with_opened_trial_count": true,
+      "stress_hard_gate_must_be_frozen_in_candidate_contract": true,
+      "dsr_hard_threshold": null
+    }
+  },
+  "stop_policy": {
+    "after_all_three_fail": "stop_btc_eth_two_asset_indicator_research",
+    "next_permitted_scope": "separate_adr_for_10_to_20_high_liquidity_usdt_spot_universe",
+    "prohibited_rescues": [
+      "fourth_ad_hoc_indicator_candidate",
+      "lower_validation_thresholds",
+      "increase_leverage",
+      "smaller_timeframe_rescue",
+      "repeat_same_oos",
+      "reuse_failed_candidate_with_new_parameters"
+    ]
+  },
+  "authorization": {
+    "m1e_rule_design": false,
+    "m1g_rule_design": false,
+    "m1h_rule_design": false,
+    "strategy_code": false,
+    "oos_access": false,
+    "freqtrade_backtesting": false,
+    "m2": false
+  }
+}

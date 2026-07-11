@@ -1,10 +1,13 @@
 version: 1
-updated_utc: "2026-07-11T00:00:00Z"
+updated_utc: "2026-07-11T00:43:41Z"
 hash_algorithm: sha256
 rules:
   oos_opening_increments_trial_count: true
   post_freeze_rule_change_creates_new_candidate: true
   failed_or_rejected_candidates_are_append_only: true
+  oos_opening_is_single_use_per_hash: true
+  dsr_trial_count_equals_opened_oos_candidates: true
+  candidate_queue_order_is_immutable: true
 candidates:
   - id: M1E-1H-TREND-BREAKOUT
     status: declared_unopened
@@ -29,4 +32,28 @@ candidates:
     hypothesis: "FUNDING-EXTREME-SPOT-CONTRARIAN: BTC/USDT and ETH/USDT spot; historical funding extremes are sentiment inputs for spot-only contrarian long/cash signals; no futures position and no two-leg execution; declared but unopened."
     sha256: f4caf96502aca9272d58faab20a6e2dc07eea4c69e49d9705272c00a46b814ed
     oos_opened: false
-    notes: "Backup candidate only; do not open before M1D decision and a new approval."
+    notes: "Governance alias M1H; backup candidate only; do not open before M1E and M1G fail and a new approval."
+  - id: M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION
+    status: declared_unopened
+    hypothesis: "M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION: BTC/USDT and ETH/USDT Binance spot, long/cash only; completed UTC 1h candles identify forced-selling price dislocations for a separately frozen mean-reversion design; entries may execute no earlier than the next available 5m open; no shorting, leverage, martingale, grid, or loss-adding."
+    sha256: 288d3c37b577f6523890155b3ab4e31e4150fea876e8c66bf5c0c69403c4f2fc
+    oos_opened: false
+    notes: "Second queued candidate; remains unopened unless M1E fails and separate approval is granted."
+  - id: M1A-DAILY-TREND
+    status: failed_validation
+    hypothesis: "M1A-DAILY-TREND: BTC/USDT and ETH/USDT spot long-only; completed UTC daily candles use SMA200, Donchian 55/20, ATR20 2x stop, 1% risk and a 20% volatility cap; signals execute no earlier than the next daily open; no shorting or leverage."
+    sha256: 024e20d3f1c61315f2799c3eae214c766440f8c84ac3bdeb7c74adf7b91129e5
+    oos_opened: true
+    notes: "Retrospective immutable registration of the completed failed OOS trial; never rerun or rescue."
+  - id: M1B-FUNDING-ARBITRAGE
+    status: failed_validation
+    hypothesis: "M1B-FUNDING-ARBITRAGE: BTCUSDT and ETHUSDT spot-long plus USDT perpetual-short offline funding arbitrage; entry requires positive funding, 3-day mean annualized funding at least 8%, and expected 14-day funding at least 2x a 0.5% roundtrip cost; event-time next-open execution; no leverage expansion."
+    sha256: ec187fb27bd6eb93939ddcb3195a59d2c005350124db4f70b0406bc1d22d3390
+    oos_opened: true
+    notes: "Retrospective immutable registration of the completed failed OOS trial; offline two-leg research only."
+  - id: M1C-BTC-ETH-ROTATION
+    status: failed_validation
+    hypothesis: "M1C-BTC-ETH-ROTATION: BTC/USDT and ETH/USDT spot long/cash; completed UTC daily candles select at most one asset weekly using close above SMA200 and positive 90-day return, with stronger return winning and BTC winning ties; next daily open execution; 50% maximum exposure; no shorting or leverage."
+    sha256: 0c94070e1731fb4f14726ee91e8529dcaf3de8a8af8522c62d7beb73abd686b2
+    oos_opened: true
+    notes: "Retrospective immutable registration of the completed failed OOS trial; expert-recomputed failure remains authoritative."
