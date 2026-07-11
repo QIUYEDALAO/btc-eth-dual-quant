@@ -26,10 +26,15 @@ return, equity curve, Freqtrade strategy or backtest was produced.
 
 Immediate sequence:
 
-1. Review and merge the exact M1G sealed-IS paper result without changing the protocol.
-2. After merge, derive one fixed target, invalidation stop, holding limit, position cap and cluster cooldown from the preregistered path evidence without search.
-3. Reject any contract that assumes perfect MFE capture or hides the -21.58% worst adverse path.
-4. Keep strategy code, Freqtrade backtesting and OOS unauthorized until the fixed contract is reviewed.
+1. Review and merge the M1G fixed rule contract without adding alternatives.
+2. After merge, implement that exact contract in Freqtrade with independent next-5m-open and gap semantics tests.
+3. Run lookahead, recursive and fixture checks before any IS performance backtest.
+4. Keep Freqtrade performance backtesting and OOS unauthorized until implementation review passes.
+
+The fixed contract is +1.80% target, -4.00% invalidation stop, 24h timeout,
+25% current-equity cap, maximum one position and 72h global cooldown. Same-5m
+target/stop ambiguity resolves to stop; stop gaps use the worse open. A planned
+stop therefore risks about 1% of equity before costs and gap slippage.
 
 M1G's prospective edge is a partial rebound after completed 1h forced-selling
 and urgent-liquidity dislocation. It is not an inversion of M1E, a 15m M1D

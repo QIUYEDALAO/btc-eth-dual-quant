@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "contract_id": "M1G-04-FIXED-RULE-V1",
+  "candidate_id": "M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION",
+  "hypothesis_sha256": "288d3c37b577f6523890155b3ab4e31e4150fea876e8c66bf5c0c69403c4f2fc",
+  "paper_protocol_sha256": "b77feb6725ee80837f67a56513a67bf7f305ea043dc81f4087c762fc4a61e91d",
+  "market": {
+    "exchange": "binance",
+    "trading_mode": "spot",
+    "pairs": ["BTC/USDT", "ETH/USDT"],
+    "direction": "long_cash_only",
+    "leverage": "1.0",
+    "signal_timeframe": "1h",
+    "execution_detail_timeframe": "5m",
+    "maximum_open_trades": 1
+  },
+  "entry": {
+    "event_definition": "exact_M1G_02_frozen_protocol",
+    "decision_time": "completed_event_1h_close",
+    "earliest_fill": "next_available_5m_open",
+    "same_bar_close_fill_allowed": false,
+    "simultaneous_pair_ranking": [
+      "absolute_return_multiple_descending",
+      "true_range_multiple_descending",
+      "BTCUSDT_before_ETHUSDT_exact_tie"
+    ],
+    "four_hour_filter": "none",
+    "volume_filter": "none"
+  },
+  "exit": {
+    "profit_target_from_entry": "0.0180",
+    "invalidation_stop_from_entry": "-0.0400",
+    "maximum_holding_hours": 24,
+    "target_evaluation": "first_post_entry_5m_high_touch",
+    "stop_evaluation": "first_post_entry_5m_low_touch",
+    "same_5m_target_and_stop_priority": "stop_first",
+    "stop_gap_fill": "worse_of_stop_threshold_or_5m_open",
+    "target_gap_fill": "target_threshold",
+    "timeout_fill": "first_5m_open_at_or_after_24h",
+    "trailing_stop": false,
+    "roi_table": false
+  },
+  "risk": {
+    "maximum_position_fraction_of_equity": "0.25",
+    "planned_stop_equity_risk": "0.01",
+    "global_cooldown_hours_after_exit": 72,
+    "position_adjustment": false,
+    "averaging_down": false,
+    "martingale": false,
+    "grid": false
+  },
+  "data_semantics": {
+    "continuous_1h_warmup_bars": 169,
+    "gap_resets_warmup": true,
+    "quarantine_events_allowed": false,
+    "oos_start": "2024-09-11T00:00:00Z",
+    "oos_opened": false
+  },
+  "cost_scenarios_per_side": {
+    "base": "0.0015",
+    "cost_x2": "0.0030",
+    "stress_a": "0.0040",
+    "stress_b": "0.0055"
+  },
+  "derivation": {
+    "profit_target": "fixed_1.80pct_paper_cost_coverage_hurdle",
+    "stop_and_position": "4.00pct_price_stop_times_25pct_equity_cap_equals_1.00pct_planned_equity_risk_before_gap_and_cost_stress",
+    "holding_limit": "frozen_24h_paper_observation_horizon",
+    "cooldown": "72h_global_limit_for_observed_rolling_7d_event_clusters",
+    "parameter_search_used": false,
+    "alternatives_evaluated": false
+  },
+  "authorization": {
+    "contract_frozen": true,
+    "strategy_code": false,
+    "freqtrade_backtesting": false,
+    "oos_access": false,
+    "dry_run": false,
+    "live": false,
+    "m2": false
+  }
+}
