@@ -1171,3 +1171,19 @@ private exchange responses here.
 - Validation: All 60 GitHub checks passed; local M1G IS Validate passed 9/0.
 - Result: M1G is closed as `failed_validation`; no Gate was lowered, no parameter changed, and OOS was never opened.
 - Next action: Only M1H economic-hypothesis and non-duplication design review is authorized. Rule selection, strategy code, return analysis, OOS, M2 and trading remain prohibited.
+
+## 2026-07-11 - M1H Independent Design Review Passed Locally
+
+- Date UTC: 2026-07-11T09:20:00Z
+- Task ID: M1H-01
+- Phase: M1H economic hypothesis, timing, lineage and non-duplication design
+- Branch: `codex/m1h-independent-design-review`
+- PR: pending
+- Candidate: `FUNDING-EXTREME-SPOT-CONTRARIAN`; registered SHA256 remains `f4caf96502aca9272d58faab20a6e2dc07eea4c69e49d9705272c00a46b814ed`.
+- Selected route: A settled extreme negative funding observation may represent crowded short positioning whose later unwind can support spot appreciation.
+- Structural boundary: Funding is public sentiment information only; M1H uses spot long/cash and has no funding income, perpetual short, basis hedge or two-leg execution.
+- Timing: The event is unavailable before `fundingTime`; a future entry must be at a canonical spot open strictly later than settlement and cannot precede the decision.
+- Data lineage: M0 public funding history is primary; funding cadence follows fundingInfo, multiple premium schedules, then adjacent historical settlements, with no hardcoded default.
+- Representability: No exit selected. Any later implementation requires a separate capability review and zero-mismatch conservative fixtures under Freqtrade-first authority.
+- Outcome safety: Event scan `no`, rule parameters selected `no`, formal returns `no`, OOS opened `no`, DSR trial count unchanged at three.
+- Next action: Review and merge the design package. Only then may a separate pre-outcome M1H paper protocol be frozen; no diagnostic run is yet authorized.
