@@ -1131,3 +1131,31 @@ private exchange responses here.
 - Outcome safety: IS performance run `no`; OOS opened `no`; trial count remains 3.
 - Next action: Merge this pre-result protocol before one fixed IS numerical run.
 - Safety: API keys, private data, dry-run/live, orders, matching, execution/live and M2 remain prohibited.
+
+## 2026-07-11 - M1G IS Protocol Merged
+
+- Date UTC: 2026-07-11T08:13:06Z
+- Task ID: M1G-08-MERGED
+- Phase: M1G frozen IS validation
+- Branch: main
+- Commit: `f7dddd215ef556d4ff7067a70315381d92a44f74`
+- PR: #58 merged
+- Result: The IS range, four cost scenarios, daily-MTM and benchmark Gates, artifact hashes, and mandatory native/conservative audit were frozen before any performance result was accessed.
+- Authorization: One exact IS run only. OOS, parameter changes, M2 and all trading remained prohibited.
+
+## 2026-07-11 - M1G Frozen IS Validation Failed
+
+- Date UTC: 2026-07-11T08:24:06Z
+- Task IDs: M1G-09, M1G-10
+- Phase: M1G IS numerical validation and independent audit
+- Branch: `codex/m1g-is-validation`
+- PR: #59 open
+- Result commit: `3636a2ad93996f02ab0c629acfc38c5995fc608b`
+- Evidence: `reports/m1/M1G_IS_VALIDATION_REPORT.md`
+- Freqtrade Base: 179 trades, -22.6272% total return, daily-MTM Sharpe -1.3195, PSR 0.0013, MaxDD 23.9747%.
+- Conservative Base: -21.3551% total return with 66 native/audited exit-bar mismatches.
+- Freqtrade Cost x2: 177 trades, -28.3540% total return, daily-MTM Sharpe -1.6457, PSR 0.0001, MaxDD 29.5509%.
+- Conservative Cost x2: -31.5286% total return with 83 native/audited exit-bar mismatches.
+- Decision: `failed_validation`; returns, risk-adjusted metrics, drawdown, delete-best-3, segment, benchmark and execution-audit Gates fail.
+- OOS safety: M1G OOS remains unopened and the DSR opened-trial count remains three.
+- Next action: Merge the truthful failure record, then allow only a separate M1H design review. No M1G rescue, M2, private API, dry-run/live, order or execution work is authorized.

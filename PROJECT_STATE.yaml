@@ -1,14 +1,18 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T08:00:16Z"
-current_phase: M1G IS validation protocol review
-current_status: m1g_is_protocol_frozen_before_result_no_m2
+last_updated_utc: "2026-07-11T08:37:00Z"
+current_phase: M1G failed IS validation review
+current_status: m1g_is_failed_validation_oos_sealed_m1h_design_only_no_m2
 completed_milestones:
+  - phase: M1G frozen IS numerical validation and independent audit
+    status: failed_validation
+    evidence: reports/m1/M1G_IS_VALIDATION_REPORT.md
+    branch: codex/m1g-is-validation
   - phase: M1G IS validation protocol
     status: frozen_before_is_result
     evidence: reports/m1/M1G_IS_VALIDATION_PROTOCOL.md
-    branch: codex/m1g-is-validation-protocol
+    merged_pr: 58
   - phase: M1G Freqtrade implementation and execution audit
     status: implementation_pass_no_performance_run
     evidence: reports/m1/M1G_IMPLEMENTATION_STATUS.md
@@ -147,15 +151,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1G-08
-    phase: M1G IS validation protocol freeze
-    status: frozen_pending_review
-    branch: codex/m1g-is-validation-protocol
-    pr: none
-    head_sha: pending
+  - id: M1G-09-10
+    phase: M1G frozen IS validation and independent audit
+    status: failed_validation_pending_review
+    branch: codex/m1g-is-validation
+    pr: 59
+    head_sha: pending_context_commit
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1G_IS_VALIDATION_PROTOCOL.md
-    blocker: "IS performance remains blocked until this pre-result protocol PR is merged with all checks successful."
+    evidence: reports/m1/M1G_IS_VALIDATION_REPORT.md
+    blocker: "Frozen IS Gates failed; OOS remains sealed. After this evidence merges, only a separate M1H design review may follow."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -202,8 +206,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge the frozen M1G IS validation protocol; no performance outcome may be accessed before merge.
-  - Only after protocol merge, run the four fixed IS cost scenarios once and apply both native and conservative audit Gates; OOS remains sealed.
+  - Review and merge the truthful M1G failed IS validation record; do not tune or open OOS.
+  - After the M1G failure record merges, only a separate M1H funding-extreme spot-signal design review may follow.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G capability review merged in PR #55; exact strategy implementation is authorized, while performance backtesting remains separately gated.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -270,6 +274,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/M1G_IS_VALIDATION_REPORT.md
+    phase: M1G IS validation
+    status: failed_validation
+    status_marker: "- Status: failed_validation"
   - path: reports/m1/M1G_IS_VALIDATION_PROTOCOL.md
     phase: M1G IS protocol
     status: frozen_before_is_result
@@ -656,6 +664,9 @@ latest_merged_prs:
   - number: 57
     title: Implement M1G Freqtrade strategy and execution audit
     merged_at_utc: "2026-07-11T07:58:00Z"
+  - number: 58
+    title: Freeze M1G IS validation protocol
+    merged_at_utc: "2026-07-11T08:13:06Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
@@ -664,6 +675,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/m1g_is_validate.sh
   - bash scripts/m1g_is_protocol_validate.sh
   - bash scripts/m1g_implementation_validate.sh
   - bash scripts/m1g_freqtrade_capability_validate.sh
