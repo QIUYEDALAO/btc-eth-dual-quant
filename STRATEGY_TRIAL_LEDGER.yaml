@@ -10,11 +10,11 @@ rules:
   candidate_queue_order_is_immutable: true
 candidates:
   - id: M1E-1H-TREND-BREAKOUT
-    status: declared_unopened
+    status: failed_feasibility
     hypothesis: "M1E-1H-TREND-BREAKOUT: BTC/USDT and ETH/USDT Binance spot, long/cash only; completed UTC 1h candles define a trend-breakout candidate family distinct from M1A; entries may execute no earlier than the next available 5m open after the completed signal candle; completed 4h candles may be used only as a regime filter; no shorting or leverage."
     sha256: 3668032467e2f46edff7f0ab27d358d0b918889518bfaf97276699cbc783ed15
     oos_opened: false
-    notes: "Independent trial; data qualification and calendar budget must pass before IS-only rule design. M1A rule-bundle reuse is prohibited."
+    notes: "M1E-06 failed the preregistered combined and per-symbol 1.80% median 24h MFE Gates. OOS was never opened and trial count was not incremented. No parameter rescue is allowed."
   - id: M1D-15M-DISCRETE-DISLOCATION
     status: declared_unopened
     hypothesis: "M1D-15M-DISCRETE-DISLOCATION: BTC/USDT and ETH/USDT spot; completed 15m candles identify discrete large-price-dislocation events; enter no earlier than the next 15m open; 1m data is execution detail only; no shorting or leverage."

@@ -993,3 +993,19 @@ private exchange responses here.
 - Validation: M1E Isolator Validate `PASS=8 FAIL=0`; all GitHub checks succeeded.
 - Result: Physically bounded IS snapshots and OOS-rejecting audit interfaces are canonical; runtime snapshots remain ignored.
 - Next action: M1E-06 IS-only paper diagnostics. No formal strategy returns or OOS access.
+
+## 2026-07-11 - M1E-06 IS-Only Paper Feasibility Failed
+
+- Date UTC: 2026-07-11T01:40:08Z
+- Task ID: M1E-06
+- Phase: M1E IS-only paper feasibility
+- Branch: `codex/m1e-is-paper-feasibility`
+- PR: #49 open
+- Commit: `c107190`
+- Protocol: Frozen in commits `03b8df8` and `66fd9a7` before outcome access; no parameter search or alternate rule was run.
+- Evidence: 177 raw candidates, 139 complete 24h-cluster representatives, projected full/OOS counts 198/59, and no right-censored observation.
+- Passed Gates: projected sample counts, both-symbol event counts, three-year repetition, year concentration and quarantine exclusion.
+- Failed Gates: combined median 24h MFE 1.4005%, BTC 1.4658%, and ETH 1.4005%, each below the fixed 1.80% requirement.
+- Decision: `failed_feasibility`. M1E-07, strategy code and Freqtrade backtesting are blocked. No M1E parameter rescue is allowed.
+- OOS safety: OOS remains unopened; no OOS price, event, signal, trade or return was read. No formal strategy return or equity curve was computed.
+- Next action: After this failure record is merged, only a separate M1G IS-only design review may follow. M2 and all trading remain prohibited.

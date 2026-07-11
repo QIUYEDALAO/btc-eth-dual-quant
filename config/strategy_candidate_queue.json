@@ -20,7 +20,7 @@
       "alias": "M1E",
       "candidate_id": "M1E-1H-TREND-BREAKOUT",
       "family": "one_hour_volatility_compression_expansion_breakout",
-      "status": "design_review_eligible_after_separate_approval",
+      "status": "failed_feasibility",
       "failure_transition": "M1G"
     },
     {
@@ -28,7 +28,7 @@
       "alias": "M1G",
       "candidate_id": "M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION",
       "family": "one_hour_panic_dislocation_mean_reversion",
-      "status": "declared_unopened",
+      "status": "design_review_eligible_after_separate_approval",
       "failure_transition": "M1H"
     },
     {

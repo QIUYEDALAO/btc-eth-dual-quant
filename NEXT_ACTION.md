@@ -17,13 +17,21 @@ IS snapshots for BTC/ETH 1h and 4h. Candidate code receives no row at or after
 continuous segments per dataset, and each row records its segment age so the
 future fixed warmup can be applied without filling or interpolation.
 
+M1E-06 is complete with `failed_feasibility`. The protocol was committed before
+outcomes were read. Its 139 complete IS events projected to 198 full and 59 OOS
+events, so sample count and distribution Gates passed. The decisive frozen
+cost-coverage Gates failed: combined median 24h MFE was 1.4005%, BTC 1.4658%,
+and ETH 1.4005%, all below 1.80%. OOS remained unopened and no formal strategy
+return, equity curve, Freqtrade strategy or backtest was produced.
+
 Immediate sequence:
 
-1. Design and run M1E-06 IS-only paper diagnostics from the sealed snapshots.
-2. Measure event frequency, clustering, fixed-horizon displacement, MAE/MFE,
-   cost coverage and projected sample count without formal strategy returns.
-3. Do not select a fixed strategy rule unless every paper Gate passes.
-4. Keep strategy code, Freqtrade backtesting and OOS unopened.
+1. Merge the truthful M1E-06 failure record without changing its protocol.
+2. Do not create M1E-07, tune M1E, or open its OOS.
+3. Move to M1G only through a separate IS-only economic hypothesis and
+   non-duplication design review.
+4. Keep M1G strategy code, Freqtrade backtesting and OOS unauthorized until its
+   own paper-feasibility dependencies pass.
 
 Q-01/Q-02 candidate governance merged in PR #44. The
 immutable research order is M1E one-hour volatility-compression expansion,
@@ -38,9 +46,9 @@ cost, sealed-OOS, daily-MTM, PSR, drawdown, concentration, benchmark, and
 no-rescue rules are machine checked in
 `config/strategy_candidate_queue.json`.
 
-M1E is now the only active candidate. M1G and M1H remain
-`declared_unopened`; transitions still require their predecessor to fail its
-fixed Gate.
+M1E is now `failed_feasibility` with OOS unopened. M1G is the next design-review
+candidate and M1H remains `declared_unopened`; transitions still require their
+predecessor to fail its fixed Gate.
 
 Q-01/Q-02 do not authorize strategy rules, strategy code, Freqtrade
 backtesting, M2, dry-run, paper trading, live trading, API keys, or execution.

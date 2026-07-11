@@ -2,6 +2,8 @@
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
+| `reports/m1/M1E_IS_PAPER_PROTOCOL.md` | M1E-06 | frozen_before_outcomes | Freezes the one permitted IS-only compression-expansion diagnostic and its cost-coverage/sample-distribution Gates before outcomes were read. | no |
+| `reports/m1/M1E_IS_PAPER_FEASIBILITY_REPORT.md` | M1E-06 | failed_feasibility | Records 139 complete IS events and sufficient projected samples, but combined/BTC/ETH median 24h MFE below the fixed 1.80% Gate; M1E stops before strategy code and OOS. | no |
 | `reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md` | M1E-05 | pass | Records physically bounded BTC/ETH 1h/4h IS snapshots, hashes, gap segments and no OOS OHLC parsing; runtime snapshots remain ignored. | no |
 | `reports/m1/M1E_IS_ONLY_RULE_DESIGN.md` | M1E-04 | economic_hypothesis_pass_isolation_only | Defines the compression-to-expansion economic mechanism, failure regimes, sealed IS/OOS boundary and deferred parameters; authorizes only M1E-05 isolation after merge. | no |
 | `reports/m1/M1E_NON_DUPLICATION_REVIEW.md` | M1E-04 | pass | Proves the M1E event-state family is not an M1A daily trend timeframe rescue and keeps the complete M1A bundle forbidden. | no |
