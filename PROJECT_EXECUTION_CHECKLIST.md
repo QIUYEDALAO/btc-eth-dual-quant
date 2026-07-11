@@ -77,7 +77,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-01 | BTC/ETH candidate terminal stop | completed | M1E, M1G and M1H failed applicable frozen Gates | PR #65 merged / `57c2b1c` | Immutable candidate-queue stop | No fourth BTC/ETH indicator candidate; M1G/M1H OOS sealed | none |
 | U-02 | Liquid spot universe ADR | completed | U-01 completed | PR #67 merged | Point-in-time Top-15 universe and qualification contract | Design only; no strategy, event, return, OOS or M2 authorization | none |
 | U-03A | Liquid universe qualification core | completed | U-02 merged | `codex/liquid-spot-universe-qualification` | Deterministic ranking, precedence, exclusion, aggregation and hash tooling | Fixture and safety validation pass | none |
-| U-03B | Liquid universe public archive run | blocked | U-03A | same task or data-run branch | Historical monthly membership and data-quality evidence | Point-in-time, no survivorship bias, official daily/5m evidence | Official broader-universe archive run not executed |
+| U-03B | Liquid universe public archive run | blocked | U-03A | `codex/liquid-spot-universe-qualification` | 676 symbols, 78 months, 1170 membership rows and 5m/1h evidence | Point-in-time, no survivorship bias, zero unresolved gaps | 151 incomplete 5m hours require official common-outage classification |
 
 ## Current Gate
 

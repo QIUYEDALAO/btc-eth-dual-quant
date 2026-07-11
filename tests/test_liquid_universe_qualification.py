@@ -3,12 +3,15 @@ from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 from pathlib import Path
 from btc_eth_dual_quant.data.liquid_universe import *
+from scripts.liquid_universe_public_run import archive_timestamp
 
 ROOT=Path(__file__).resolve().parents[1]; CONTRACT=json.loads((ROOT/'config/liquid_spot_universe_contract.json').read_text())
 def evidence(symbol, start, count, volume=100):
     return [DailyEvidence(symbol,start+timedelta(days=i),Decimal(volume),"monthly",f"{symbol}-{i}") for i in range(count)]
 
 class QualificationTests(unittest.TestCase):
+    def test_archive_millisecond_and_microsecond_timestamps_match(self):
+        self.assertEqual(archive_timestamp('1704067200000'),archive_timestamp('1704067200000000'))
     def test_daily_only_fills_and_never_overwrites(self):
         d=date(2020,1,1); m=DailyEvidence('BTCUSDT',d,Decimal(1),'monthly','m'); x=DailyEvidence('BTCUSDT',d,Decimal(9),'daily','d')
         self.assertEqual(merge_daily([m],[x])[0],m)
@@ -17,7 +20,8 @@ class QualificationTests(unittest.TestCase):
         rows=evidence('ETHUSDT',start,365)+evidence('BTCUSDT',start,365)
         result=build_month(effective,rows,CONTRACT)
         self.assertEqual([x.symbol for x in result],['BTCUSDT','ETHUSDT'])
-        with self.assertRaises(ValueError): build_month(effective,rows+[DailyEvidence('BTCUSDT',effective,Decimal(1),'monthly','future')],CONTRACT)
+        future=DailyEvidence('ZZZUSDT',effective,Decimal(999999),'monthly','future')
+        self.assertEqual(build_month(effective,rows,CONTRACT),build_month(effective,rows+[future],CONTRACT))
     def test_spike_does_not_dominate_median_and_short_history_rejected(self):
         e=date(2021,1,1); s=e-timedelta(days=365); a=evidence('AAAUSDT',s,365,100); a[-1]=DailyEvidence('AAAUSDT',a[-1].day,Decimal(999999),'monthly','spike')
         rows=a+evidence('BBBUSDT',s,365,101)+evidence('CCCUSDT',e-timedelta(days=364),364,1000)

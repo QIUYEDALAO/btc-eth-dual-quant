@@ -1275,3 +1275,11 @@ private exchange responses here.
 - Evidence status: `implementation_pass_runtime_qualification_pending`; no real broader-universe monthly membership is claimed.
 - Safety: No strategy, event, signal, return, OOS, API or trading logic was added.
 - Next action: Execute the official public archive run. Cross-sectional hypothesis design remains blocked until real qualification evidence passes.
+
+## 2026-07-12 - Liquid Universe Public Qualification Blocked
+
+- Task ID: U-03B
+- Evidence: 676 historical symbols, 78 effective months, 1,170 membership rows, 1,019 qualified 5m symbol-months and 803,652 derived 1h bars.
+- Blocker: 151 selected symbol-months contain at least one incomplete 5m hour. They have not yet been proven as common exchange outages.
+- Decision: Qualification remains blocked; no fill, interpolation or strategy authorization is allowed.
+- Next action: Use official cross-symbol and archive evidence to classify each incomplete observation. Preserve the frozen universe contract and rankings.

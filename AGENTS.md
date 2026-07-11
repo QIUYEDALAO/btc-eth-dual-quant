@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: ADR-0011 qualification core implemented; real public archive qualification remains pending.
+- Current phase: ADR-0011 public qualification is blocked by 151 unresolved incomplete 5m hours.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -97,7 +97,8 @@ After any task, the agent must update:
 - Future research requires ADR-0011 for a broader point-in-time high-liquidity spot universe. Do not add a fourth BTC/ETH indicator candidate or modify the M1H protocol.
 - ADR-0011 may define universe membership and data qualification only. It cannot select a strategy, scan outcomes, calculate returns, open OOS or authorize M2.
 - ADR-0011 fixes monthly Top 15 by prior-90-complete-day median daily quote volume, 365 complete history days and deterministic symbol tie-break. Current dynamic pairlists are not historical authority.
-- Do not claim asset qualification from fixtures. Cross-sectional design remains blocked until the official public archive run produces real monthly evidence.
+- The public run discovered 676 historical symbols and 78 monthly Top-15 snapshots, but 151 incomplete 5m observations remain blocking. Do not treat them as confirmed outages without official cross-symbol evidence.
+- Cross-sectional design remains blocked until all 151 observations are resolved or validly quarantined.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.

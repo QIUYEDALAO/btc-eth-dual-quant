@@ -34,7 +34,7 @@ def build_month(effective: date, rows: list[DailyEvidence], contract: dict) -> l
     m = contract["membership"]; end = effective; start = end - timedelta(days=m["ranking_window_complete_days"])
     by_symbol: dict[str, list[DailyEvidence]] = {}
     for row in rows:
-        if row.day >= effective: raise ValueError("future/effective-month evidence supplied")
+        if row.day >= effective: continue
         by_symbol.setdefault(row.symbol, []).append(row)
     ranked = []
     for symbol, evidence in by_symbol.items():

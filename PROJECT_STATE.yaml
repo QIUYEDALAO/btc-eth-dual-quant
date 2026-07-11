@@ -2,8 +2,8 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-11T17:23:26Z"
-current_phase: Liquid universe qualification implementation complete; public archive run pending
-current_status: liquid_universe_qualification_runtime_data_pending_no_strategy_no_m2
+current_phase: Liquid universe public qualification blocked on unresolved 5m gaps
+current_status: liquid_universe_qualification_blocked_151_gaps_no_strategy_no_m2
 completed_milestones:
   - phase: M1H sealed-IS paper feasibility
     status: failed_feasibility
@@ -219,8 +219,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Run the official public archive qualification for the ADR-0011 universe contract and record real monthly membership evidence.
-  - Until that run passes, cross-sectional hypothesis design, outcomes, returns, OOS and M2 remain unauthorized.
+  - Classify the 151 incomplete 5m member-month observations as confirmed common exchange outages or unresolved symbol-specific gaps using official evidence.
+  - Until every blocker is resolved or quarantined under ADR-0011, cross-sectional hypothesis design, outcomes, returns, OOS and M2 remain unauthorized.
   - ADR-0011 freezes monthly Top 15 by prior-90-day median daily quote volume, 365-day history, deterministic tie-break and conservative exclusions.
   - Only asset/data qualification may follow after ADR-0011 merges; no strategy family, event scan, return calculation, OOS or M2 is authorized.
   - PR #65 merged the truthful M1H failure evidence; M1H remains declared_unopened and its OOS remains sealed.

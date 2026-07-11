@@ -2,9 +2,10 @@
 
 ## Current Decision
 
-The ADR-0011 qualification core is implemented and fixture-validated. No real
-broader-universe archive run has yet qualified a month or symbol, so the report
-is explicitly `implementation_pass_runtime_qualification_pending`.
+The ADR-0011 public archive run discovered 676 historical USDT spot symbols and
+rebuilt 78 monthly Top-15 snapshots with 1,170 membership rows. It qualified
+1,019 5m symbol-months and derived 803,652 1h bars, but 151 incomplete-hour
+blockers remain. Qualification is blocked rather than silently filling them.
 
 ADR-0011 is frozen pending review. It defines a monthly point-in-time Top-15
 Binance USDT spot universe using the prior 90 complete UTC days' median daily
@@ -30,7 +31,7 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Run the official public archive qualification and replace the pending report with real point-in-time evidence; or
+1. Classify the 151 incomplete 5m observations using common-outage and official archive evidence; or
 2. Continue M0 public dual-source audit diagnostics without private data.
 
 ADR-0011 must freeze point-in-time membership, listings and delistings,
