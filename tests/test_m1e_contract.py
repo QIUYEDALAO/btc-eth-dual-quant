@@ -29,6 +29,11 @@ class M1EContractTests(unittest.TestCase):
         self.assertEqual(MODULE.validate_contract(self.contract), [])
         self.assertEqual(MODULE.validate_ledger_identity(), [])
 
+    def test_failed_feasibility_keeps_contract_identity_and_oos_sealed(self) -> None:
+        source = (ROOT / "scripts" / "m1e_contract_check.py").read_text(encoding="utf-8")
+        self.assertIn('{"declared_unopened", "failed_feasibility"}', source)
+        self.assertIn('entry.get("oos_opened") is not False', source)
+
     def test_fixed_timeframes_and_range_cannot_change(self) -> None:
         self.assertTrue(self.failures_after(("timeframes", "canonical_authority"), "1h"))
         self.assertTrue(self.failures_after(("timeframes", "signal_derived"), "4h"))

@@ -102,8 +102,11 @@ def validate_ledger_identity(path: Path = LEDGER_PATH) -> list[str]:
         failures.append("trial ledger M1E hypothesis differs from the registered text")
     if entry.get("sha256") != EXPECTED_HASH:
         failures.append("trial ledger M1E hash differs from the registered hash")
-    if entry.get("status") != "declared_unopened" or entry.get("oos_opened") is not False:
-        failures.append("M1E must remain declared_unopened with oos_opened=false")
+    allowed_statuses = {"declared_unopened", "failed_feasibility"}
+    if entry.get("status") not in allowed_statuses or entry.get("oos_opened") is not False:
+        failures.append(
+            "M1E must remain sealed with status declared_unopened or failed_feasibility"
+        )
     return failures
 
 
