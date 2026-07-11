@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "status": "economic_hypothesis_pass_paper_protocol_only",
+  "candidate_id": "M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION",
+  "hypothesis_sha256": "288d3c37b577f6523890155b3ab4e31e4150fea876e8c66bf5c0c69403c4f2fc",
+  "research_scope": {
+    "market": "binance_spot",
+    "symbols": ["BTCUSDT", "ETHUSDT"],
+    "direction": "long_cash_only",
+    "signal_timeframe": "completed_utc_1h",
+    "regime_timeframe": "completed_utc_4h_optional_price_only",
+    "future_execution_detail": "next_available_5m_open",
+    "is_start": "2020-07-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z",
+    "oos_opened": false,
+    "canonical_fields": ["open", "high", "low", "close"],
+    "reuse_existing_sealed_is_snapshot": true
+  },
+  "economic_hypothesis": {
+    "family": "forced_selling_dislocation_then_short_horizon_mean_reversion",
+    "return_source": "temporary_liquidity_imbalance_and_forced_selling_that_overshoots_short_horizon_price_discovery",
+    "mechanism": [
+      "a_completed_one_hour_downward_dislocation_can_reflect_forced_liquidation_and_urgent_liquidity_demand",
+      "when urgent selling exhausts without a permanent information shock passive liquidity and delayed buyers may restore part of the displacement",
+      "the rebound must be large enough to exceed the frozen stressed roundtrip cost without leverage or loss adding"
+    ],
+    "failure_regimes": [
+      "permanent_information_shock_or_structural_repricing",
+      "continued_liquidation_cascade_and_serial_correlated_events",
+      "event_time_spread_and_slippage_above_the_frozen_cost_model",
+      "weak_rebound_that_cannot_cover_stressed_roundtrip_cost",
+      "exchange_outage_quarantine_or_incomplete_rewarm_window",
+      "btc_eth_correlation_that_turns_two_events_into_one_risk_exposure"
+    ]
+  },
+  "non_duplication": {
+    "m1e_family": "compression_then_upside_directional_expansion",
+    "m1g_family": "downward_forced_selling_dislocation_then_reversion",
+    "m1e_protocol_reuse_prohibited": true,
+    "m1e_outcome_derived_rule_prohibited": true,
+    "m1d_15m_timeframe_rescue_prohibited": true,
+    "daily_panic_threshold_rescaling_prohibited": true,
+    "m1a_combined_bundle_prohibited": true
+  },
+  "unresolved_until_later_gates": [
+    "one_hour_panic_dislocation_definition",
+    "forced_selling_price_only_confirmation",
+    "four_hour_regime_filter",
+    "reversion_target",
+    "maximum_holding_horizon",
+    "risk_invalidation_stop",
+    "position_cap",
+    "event_cluster_cooldown",
+    "indicator_warmup"
+  ],
+  "authorization": {
+    "m1g_paper_protocol_design": true,
+    "m1g_paper_diagnostic_run": false,
+    "fixed_rule_contract": false,
+    "strategy_code": false,
+    "freqtrade_backtesting": false,
+    "oos_access": false,
+    "m2": false
+  }
+}

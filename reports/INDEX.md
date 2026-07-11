@@ -2,6 +2,8 @@
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
+| `reports/m1/M1G_IS_ONLY_RULE_DESIGN.md` | M1G design | economic_hypothesis_pass_paper_protocol_only | Defines the completed-1h forced-selling dislocation and partial-reversion hypothesis, failure regimes and sealed data boundary without selecting an event or rule. | no |
+| `reports/m1/M1G_NON_DUPLICATION_REVIEW.md` | M1G design | pass_design_level | Prohibits M1E inversion/outcome reuse, M1D or daily-panic timeframe rescue, M1A bundle reuse and unauthorized volume fields. | no |
 | `reports/m1/M1E_IS_PAPER_PROTOCOL.md` | M1E-06 | frozen_before_outcomes | Freezes the one permitted IS-only compression-expansion diagnostic and its cost-coverage/sample-distribution Gates before outcomes were read. | no |
 | `reports/m1/M1E_IS_PAPER_FEASIBILITY_REPORT.md` | M1E-06 | failed_feasibility | Records 139 complete IS events and sufficient projected samples, but combined/BTC/ETH median 24h MFE below the fixed 1.80% Gate; M1E stops before strategy code and OOS. | no |
 | `reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md` | M1E-05 | pass | Records physically bounded BTC/ETH 1h/4h IS snapshots, hashes, gap segments and no OOS OHLC parsing; runtime snapshots remain ignored. | no |

@@ -218,6 +218,7 @@ def main() -> int:
         or "m1e_blocked_insufficient_oos_calendar_no_strategy_eligible_for_m2" in current_status
         or "m1e_sample_budget_pass_is_design_only_no_strategy_eligible_for_m2" in current_status
         or "m1e_failed_feasibility_m1g_design_only_no_strategy_eligible_for_m2" in current_status
+        or "m1g_economic_hypothesis_pass_protocol_only_no_strategy_eligible_for_m2" in current_status
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "m2" not in current_status and "m1b" not in current_status:

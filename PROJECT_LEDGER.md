@@ -1021,3 +1021,17 @@ private exchange responses here.
 - Validation: M1E Paper Validate, all predecessor M1E validators, Project Validate, M0 Validate, M1A Validate, M1B Validate and M1F Validate succeeded.
 - Result: M1E is closed as `failed_feasibility`; M1E-07 and all M1E strategy implementation remain blocked, and its OOS was never opened.
 - Next action: M1G may begin only with a separate IS-only economic-hypothesis and non-duplication design review. No fixed rule, strategy code, backtesting or OOS access is authorized.
+
+## 2026-07-11 - M1G IS-Only Design Passed Locally
+
+- Date UTC: 2026-07-11T02:05:00Z
+- Task ID: M1G-01
+- Phase: M1G IS-only economic hypothesis and non-duplication
+- Branch: `codex/m1g-is-only-rule-design`
+- PR: pending
+- Candidate: `M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION`; registered hypothesis SHA256 remains `288d3c37b577f6523890155b3ab4e31e4150fea876e8c66bf5c0c69403c4f2fc`.
+- Mechanism: A completed 1h forced-selling and urgent-liquidity dislocation may partially revert when the move is not permanent information repricing.
+- Non-duplication: No M1E inversion or outcome-derived rule, M1D/daily-panic timeframe rescue, M1A bundle, or unauthorized volume field is allowed.
+- Result: `economic_hypothesis_pass_paper_protocol_only`; no threshold, event, trade, return or strategy rule was selected.
+- OOS safety: OOS remains unopened; existing sealed IS snapshot evidence is reused without duplicating the data pipeline.
+- Next action: After merge, only freeze a price-only M1G paper protocol before outcome access. Strategy code, backtesting, M2 and all trading remain prohibited.
