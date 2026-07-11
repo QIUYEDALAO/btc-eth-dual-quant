@@ -42,8 +42,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1E-03 | M1E sample budget | completed_design_only | M1E-02B merged pass | `codex/m1e-1h-sample-budget` / PR #42 merged | Metadata-only 70/30, 1800/540-day report | 2191 full, 1533 IS, 658 sealed OOS; validation and CI pass | none; does not authorize strategy code |
 | Q-01 | Candidate queue governance | completed | M1E-03 merged pass | `codex/candidate-queue-common-gates` / PR #44 merged | Immutable M1E -> M1G -> M1H queue, hypotheses, hashes, DSR trial count, failure transitions and terminal stop | Candidate queue validator, ledger hash checks, context and CI pass | none; no candidate design authorized |
 | Q-02 | Common validation governance | completed | Q-01 | `codex/candidate-queue-common-gates` / PR #44 merged | Fixed costs, sealed OOS, daily-MTM, PSR, drawdown, concentration, benchmark and no-rescue policy | Machine contract rejects lowered Gates or enabled downstream authorization | none; no backtest or OOS authorized |
-| M1E-04 | M1E economic hypothesis | in_progress | M1E-03 and Q-01/Q-02 merged; user approval granted | `codex/m1e-is-only-rule-design` / PR #46 | IS-only economic hypothesis and non-duplication review | Hypothesis/hash, failure regimes, IS boundary, no M1A rescue, no parameter selection | review and merge required |
-| M1E-05 | M1E IS data isolator | pending | M1E-04 merged pass | future branch | Metadata-locked canonical 1h/4h IS reader and OOS rejection tests | Reject timestamps at or after 2024-09-11, future/incomplete bars and unrewarmed gaps | M1E-04 not merged |
+| M1E-04 | M1E economic hypothesis | completed | M1E-03 and Q-01/Q-02 merged; user approval granted | `codex/m1e-is-only-rule-design` / PR #46 merged | IS-only economic hypothesis and non-duplication review | Hypothesis/hash, failure regimes, IS boundary, no M1A rescue, no parameter selection | none |
+| M1E-05 | M1E IS data isolator | in_progress | M1E-04 merged pass | `codex/m1e-is-data-isolator` | Metadata-locked canonical 1h/4h IS reader and OOS rejection tests | Reject timestamps at or after 2024-09-11, future/incomplete bars and expose gap rewarm age | review and merge required |
 | M1E-06 | M1E paper feasibility | pending | M1E-05 pass | future branch | IS-only frequency, displacement, MAE/MFE, cost-coverage and sample projection | 120/30 projected trades, 1.80% typical displacement and cross-year/cross-symbol evidence | M1E-05 not complete |
 | M1E-07 | M1E fixed rule contract | not_authorized | M1E-06 pass | future branch | Immutable rule YAML/JSON and hash | No ranges, alternatives, hyperopt or OOS-derived choice | M1E-06 not passed |
 | M1E-08 | M1E Freqtrade strategy | not_authorized | M1E-07 pass | future branch | Spot long/cash strategy plugin | Fixed contract only; no order or execution module | M1E-07 not passed |
@@ -60,7 +60,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 
 ## Current Gate
 
-- Authorized work: M1E-04 economic hypothesis and non-duplication review only. After merge, M1E-05 IS data isolation may proceed automatically under the user's current-session approval; later steps still require their dependency Gates.
+- Authorized work: M1E-05 IS data isolation review only. After merge, M1E-06 IS paper diagnostics may proceed automatically; fixed rules, strategy code, backtesting and OOS remain unauthorized.
 - Candidate queue: M1E -> M1G -> M1H -> stop BTC/ETH two-asset indicator research. M1G and M1H remain `declared_unopened`.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
 - Active implementation: no strategy; candidate evaluated `no`, OOS opened `no`, strategy code authorized `no`.

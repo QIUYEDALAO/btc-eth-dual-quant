@@ -2,6 +2,7 @@
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
+| `reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md` | M1E-05 | pass | Records physically bounded BTC/ETH 1h/4h IS snapshots, hashes, gap segments and no OOS OHLC parsing; runtime snapshots remain ignored. | no |
 | `reports/m1/M1E_IS_ONLY_RULE_DESIGN.md` | M1E-04 | economic_hypothesis_pass_isolation_only | Defines the compression-to-expansion economic mechanism, failure regimes, sealed IS/OOS boundary and deferred parameters; authorizes only M1E-05 isolation after merge. | no |
 | `reports/m1/M1E_NON_DUPLICATION_REVIEW.md` | M1E-04 | pass | Proves the M1E event-state family is not an M1A daily trend timeframe rescue and keeps the complete M1A bundle forbidden. | no |
 | `reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md` | research governance | queue_frozen_design_only | Freezes M1E -> M1G -> M1H, the three historical opened-OOS trials, common validation Gates, failure transitions, and the terminal stop without authorizing a design or backtest. | no |
