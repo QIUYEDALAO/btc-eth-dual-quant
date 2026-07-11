@@ -4,19 +4,24 @@ The user granted automatic approval for sequential research approvals in the
 current session. This removes repeated confirmation prompts but does not waive
 any dependency, frozen Gate, OOS single-use rule or safety boundary.
 
-M1E-04 now passes locally at the economic-hypothesis level. M1E is defined as a
+M1E-04 merged in PR #46. M1E is defined as a
 completed-1h compression-to-directional-expansion state transition whose
 potential edge comes from delayed repricing and forced liquidity. It is not a
 daily continuous trend rule and may not reuse or relabel the M1A SMA200,
 Donchian 55/20 and ATR20 x2 bundle. No compression, expansion, exit, stop,
 position, cooldown or warmup parameter has been selected.
 
+M1E-05 now passes locally. The audit sidecar created ignored, physically bounded
+IS snapshots for BTC/ETH 1h and 4h. Candidate code receives no row at or after
+`2024-09-11`; OOS OHLC was not parsed. Eleven common outage gaps create twelve
+continuous segments per dataset, and each row records its segment age so the
+future fixed warmup can be applied without filling or interpolation.
+
 Immediate sequence:
 
-1. Review and merge M1E-04.
-2. Build M1E-05 as an IS-only data isolator using `2020-07-01` through
-   `2024-09-10`; reject `2024-09-11` and later.
-3. Do not run M1E-06 paper diagnostics until the isolator passes.
+1. Review and merge M1E-05.
+2. Run M1E-06 IS-only paper diagnostics from the sealed snapshots.
+3. Do not select a fixed strategy rule unless every paper Gate passes.
 4. Keep strategy code, Freqtrade backtesting and OOS unopened.
 
 Q-01/Q-02 candidate governance merged in PR #44. The
@@ -32,12 +37,9 @@ cost, sealed-OOS, daily-MTM, PSR, drawdown, concentration, benchmark, and
 no-rescue rules are machine checked in
 `config/strategy_candidate_queue.json`.
 
-The immediate sequence is now:
-
-1. Await a separate explicit approval before M1E
-   IS-only rule design.
-2. Do not open OOS or run a candidate backtest.
-3. Keep M1G and M1H `declared_unopened`; transitions require separate approval.
+M1E is now the only active candidate. M1G and M1H remain
+`declared_unopened`; transitions still require their predecessor to fail its
+fixed Gate.
 
 Q-01/Q-02 do not authorize strategy rules, strategy code, Freqtrade
 backtesting, M2, dry-run, paper trading, live trading, API keys, or execution.
@@ -70,10 +72,10 @@ The M1E metadata-only calendar Gate now passes locally: 2191 full days, 1533 IS
 days, and 658 sealed OOS days. The sealed OOS begins `2024-09-11`; no OOS
 price, signal, event, trade, or return was read.
 
-The previous M1E sample-budget sequence remains a dependency record:
+The completed M1E sample-budget sequence remains a dependency record:
 
 1. Treat PR #42 as the completed metadata-only sample-budget evidence.
-2. Await explicit approval before opening an IS-only rule-design PR.
+2. M1E-04 design was approved and merged in PR #46.
 3. Keep OOS sealed and do not implement strategy code or run Freqtrade backtesting.
 4. Continue Binance source-owner monitoring for provenance only.
 

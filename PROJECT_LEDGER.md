@@ -957,3 +957,27 @@ private exchange responses here.
 - Non-duplication: M1A's SMA200, Donchian 55/20 and ATR20 x2 bundle, timeframe relabeling and fixed-channel rescue remain prohibited.
 - Result: `economic_hypothesis_pass_isolation_only`; no rule parameter, event, trade or return was selected or calculated.
 - Authorization: After merge, M1E-05 IS data isolation only. Paper diagnostics, fixed rules, strategy code, backtesting, OOS, M2, API use, paper/live mode, orders and execution remain unauthorized.
+
+## 2026-07-11 - M1E-04 Economic Hypothesis Merged
+
+- Date UTC: 2026-07-11T01:10:31Z
+- Task ID: M1E-04
+- Phase: M1E IS-only economic hypothesis
+- Branch: main
+- Commit: `fca037f78a5a7cb8151129e86c3d721a81cc7d31`
+- PR: #46 merged
+- Result: Economic mechanism and M1A non-duplication are canonical; no strategy parameter or return was selected.
+- Next action: M1E-05 IS data isolation only.
+
+## 2026-07-11 - M1E-05 IS Data Isolation Passed Locally
+
+- Date UTC: 2026-07-11T01:14:56Z
+- Task ID: M1E-05
+- Phase: M1E IS-only data isolation
+- Branch: `codex/m1e-is-data-isolator`
+- PR: #47 open
+- Commit: `7adaf3f60fbcbc8e0e3ef91307b247b68a883564`
+- Evidence: BTC/ETH each contain 36,763 isolated 1h bars and 9,181 isolated 4h bars from 2020-07-01 through 2024-09-10. Each dataset has 11 gaps and 12 continuous segments.
+- OOS safety: Rows at or after 2024-09-11 are not exposed to the isolator and their OHLC fields are not parsed; candidate evaluated `no`, returns computed `no`, OOS opened `no`.
+- Runtime artifacts: IS snapshots and detailed manifest remain ignored under storage/duckdb and storage/logs.
+- Authorization: After merge, M1E-06 IS paper diagnostics only. Fixed rule contract, strategy code, backtesting, OOS, M2, APIs, paper/live mode, orders and execution remain unauthorized.

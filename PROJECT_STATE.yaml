@@ -1,15 +1,19 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T01:00:00Z"
-current_phase: M1E-04 IS-only economic hypothesis and non-duplication review
+last_updated_utc: "2026-07-11T01:14:56Z"
+current_phase: M1E-05 IS-only data isolation review
 current_status: m1e_sample_budget_pass_is_design_only_no_strategy_eligible_for_m2
 completed_milestones:
-  - phase: M1E-04 economic hypothesis and non-duplication
+  - phase: M1E-05 IS-only data isolation
     status: local_pass_pending_review
+    evidence: reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md
+    branch: codex/m1e-is-data-isolator
+    pr: 47
+  - phase: M1E-04 economic hypothesis and non-duplication
+    status: completed
     evidence: reports/m1/M1E_IS_ONLY_RULE_DESIGN.md
-    branch: codex/m1e-is-only-rule-design
-    pr: 46
+    merged_pr: 46
   - phase: Q-01/Q-02 candidate queue governance
     status: completed
     evidence: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
@@ -112,15 +116,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1E-04
-    phase: M1E IS-only economic hypothesis and non-duplication review
+  - id: M1E-05
+    phase: M1E IS-only data isolation review
     status: local_pass_pending_review
-    branch: codex/m1e-is-only-rule-design
-    pr: 46
-    head_sha: 36e9da6ccf3d79eef35f8dae5d37ec845b5ab89b
+    branch: codex/m1e-is-data-isolator
+    pr: 47
+    head_sha: 7adaf3f60fbcbc8e0e3ef91307b247b68a883564
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1E_IS_ONLY_RULE_DESIGN.md
-    blocker: "Merge M1E-04 before building the M1E-05 IS data isolator; paper diagnostics, rule contract, strategy code, backtesting, and OOS remain unauthorized."
+    evidence: reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md
+    blocker: "Merge M1E-05 before M1E-06 paper diagnostics; fixed rules, strategy code, backtesting, and OOS remain unauthorized."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -167,12 +171,12 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge M1E-04 economic-hypothesis and non-duplication evidence; it authorizes only the subsequent M1E-05 IS data isolator.
+  - Review and merge M1E-05 IS data isolation evidence; only M1E-06 IS paper diagnostics may follow.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
-  - Q-01/Q-02 candidate-queue governance merged in PR #44; await a separate explicit approval for M1E IS-only design review.
+  - Q-01/Q-02 candidate-queue governance merged in PR #44 and M1E-04 design merged in PR #46.
   - M1G and M1H remain declared_unopened; no strategy code, backtesting, or OOS access is authorized.
   - If M1E fails, only a separately approved transition to M1G is allowed; if M1G then fails, only M1H may follow; three failures stop BTC/ETH two-asset indicator research.
-  - M1E metadata-only sample budget passed and merged in PR #42; await explicit approval for a separate IS-only rule-design PR.
+  - M1E metadata-only sample budget passed in PR #42 and M1E-04 design passed in PR #46.
   - M1E canonical-5m v2 passed and merged in PR #40; only the metadata-only 1800/540-day sample-budget Gate is authorized next.
   - Keep Binance source-owner monitoring as evidence follow-up, not as an operational dependency for M1E canonical OHLC.
   - Review and merge the sanitized Binance source-owner package; do not post it externally without explicit approval.
@@ -232,6 +236,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md
+    phase: M1E-05
+    status: pass
+    status_marker: "- Status: pass"
   - path: reports/m1/M1E_IS_ONLY_RULE_DESIGN.md
     phase: M1E-04
     status: economic_hypothesis_pass_isolation_only
@@ -535,6 +543,12 @@ latest_merged_prs:
   - number: 44
     title: Freeze strategy candidate queue and common validation gates
     merged_at_utc: "2026-07-11T00:49:27Z"
+  - number: 45
+    title: Close candidate queue governance context
+    merged_at_utc: "2026-07-11T00:52:55Z"
+  - number: 46
+    title: Define M1E IS-only economic hypothesis
+    merged_at_utc: "2026-07-11T01:10:31Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
@@ -543,6 +557,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/m1e_isolator_validate.sh
   - bash scripts/m1e_is_design_validate.sh
   - bash scripts/candidate_queue_validate.sh
   - python3 scripts/project_context_check.py

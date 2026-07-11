@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1E-04 IS-only economic-hypothesis and non-duplication review.
+- Current phase: M1E-05 IS-only data isolation review.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -66,6 +66,7 @@ After any task, the agent must update:
 - Q-01/Q-02 governance merged in PR #44. M1E-04 design approval is now granted, while strategy code, Freqtrade backtesting and OOS access remain unauthorized.
 - The user granted current-session automatic approval for sequential research approvals. This removes confirmation pauses only; dependencies, machine Gates, OOS sealing and safety prohibitions remain mandatory.
 - M1E-04 selects no strategy parameter. It defines only the compression-to-expansion economic mechanism, failure regimes, IS boundary and M1A non-duplication; only M1E-05 isolation may follow after merge.
+- M1E-04 merged in PR #46. M1E-05 produced ignored IS-only 1h/4h snapshots with no OOS OHLC parsing, gap segmentation and deferred rewarm thresholds; only M1E-06 paper diagnostics may follow after merge.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.
