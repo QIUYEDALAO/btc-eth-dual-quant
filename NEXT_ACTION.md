@@ -1,6 +1,6 @@
 # Next Action
 
-Q-01/Q-02 candidate governance is now implemented locally for review. The
+Q-01/Q-02 candidate governance merged in PR #44. The
 immutable research order is M1E one-hour volatility-compression expansion,
 M1G one-hour panic-dislocation mean reversion, then M1H funding-extreme spot
 contrarian. M1H aliases the existing registered hypothesis rather than
@@ -15,11 +15,10 @@ no-rescue rules are machine checked in
 
 The immediate sequence is now:
 
-1. Review and merge Q-01/Q-02 candidate-queue governance.
-2. Do not open OOS or run a candidate backtest.
-3. After governance merge, require a separate explicit approval before M1E
+1. Await a separate explicit approval before M1E
    IS-only rule design.
-4. Keep M1G and M1H `declared_unopened`; transitions require separate approval.
+2. Do not open OOS or run a candidate backtest.
+3. Keep M1G and M1H `declared_unopened`; transitions require separate approval.
 
 Q-01/Q-02 do not authorize strategy rules, strategy code, Freqtrade
 backtesting, M2, dry-run, paper trading, live trading, API keys, or execution.
