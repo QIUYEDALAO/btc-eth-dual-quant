@@ -66,14 +66,14 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1G-06 | M1G causal and pinned runtime validation | completed | M1G-05 | PR #57 merged | Fixtures, Freqtrade 2026.6 lookahead and recursive evidence | 20 lookahead signals with zero bias; zero recursive variance/lookahead | none |
 | M1G-07 | M1G conservative execution repricing audit | completed | M1G-05A | PR #57 merged | Exported-trade-only 5m target/stop/gap/timeout repricing | Cannot select signals; deterministic fixtures pass | none |
 | M1G-08 | M1G IS validation protocol | completed | M1G-05/06/07 merged pass | `codex/m1g-is-validation-protocol` / PR #58 merged | Frozen IS range, scenarios, Gate matrix and artifact hashes | Protocol committed before performance outcomes and CI passed | none |
-| M1G-09 | M1G IS numerical validation | failed_validation | M1G-08 merged | `codex/m1g-is-validation` / PR #59 open | Four fixed cost runs, daily MTM, benchmark and Gate report | One frozen IS run; no OOS access | Base/x2 returns, Sharpe, PSR, MaxDD, concentration, segment and benchmark Gates failed |
-| M1G-10 | M1G IS independent audit | failed_audit | M1G-09 | same PR | Conservative repricing, timestamp and metric reconciliation | Native and audit must both satisfy frozen Gates | 66 Base and 83 Cost x2 native/audited exit-bar mismatches; numerical Gates also failed |
+| M1G-09 | M1G IS numerical validation | failed_validation | M1G-08 merged | `codex/m1g-is-validation` / PR #59 merged | Four fixed cost runs, daily MTM, benchmark and Gate report | One frozen IS run; no OOS access | Base/x2 returns, Sharpe, PSR, MaxDD, concentration, segment and benchmark Gates failed |
+| M1G-10 | M1G IS independent audit | failed_audit | M1G-09 | PR #59 merged | Conservative repricing, timestamp and metric reconciliation | Native and audit must both satisfy frozen Gates | 66 Base and 83 Cost x2 native/audited exit-bar mismatches; numerical Gates also failed |
 | M1G-11 | M1G OOS opening | blocked | M1G-09/10 pass | not created | Frozen one-shot OOS opening package | Every IS and independent-audit Gate must pass | M1G failed IS; OOS remains sealed and trial count remains 3 |
-| M1H-01 | M1H independent design review | authorized_after_m1g_failure_merge | M1G failure evidence merged | future branch | Funding-extreme spot-contrarian hypothesis and non-duplication review | Design only; no futures leg, return run, or OOS opening | Wait for M1G failure-record merge |
+| M1H-01 | M1H independent design review | authorized | M1G failure evidence merged in PR #59 | future branch | Funding-extreme spot-contrarian hypothesis and non-duplication review | Design only; no futures leg, rule selection, return run, or OOS opening | none; implementation remains unauthorized |
 
 ## Current Gate
 
-- Authorized work: review and merge the M1G truthful failed-IS record. After merge, only a separate M1H design review may start.
+- Authorized work: only a separate M1H economic-hypothesis and non-duplication design review. M1H rule selection, implementation, returns and OOS remain unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H -> stop BTC/ETH two-asset indicator research. M1G OOS was never opened; M1H remains unopened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
 - Active implementation: none. M1G Base and Cost x2 lost money and failed daily-MTM, benchmark and conservative audit Gates; OOS remains unopened.

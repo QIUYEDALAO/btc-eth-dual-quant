@@ -1,14 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T08:37:00Z"
-current_phase: M1G failed IS validation review
+last_updated_utc: "2026-07-11T08:40:23Z"
+current_phase: M1H independent design review authorized after M1G failure
 current_status: m1g_is_failed_validation_oos_sealed_m1h_design_only_no_m2
 completed_milestones:
   - phase: M1G frozen IS numerical validation and independent audit
     status: failed_validation
     evidence: reports/m1/M1G_IS_VALIDATION_REPORT.md
-    branch: codex/m1g-is-validation
+    merged_pr: 59
   - phase: M1G IS validation protocol
     status: frozen_before_is_result
     evidence: reports/m1/M1G_IS_VALIDATION_PROTOCOL.md
@@ -151,15 +151,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1G-09-10
-    phase: M1G frozen IS validation and independent audit
-    status: failed_validation_pending_review
-    branch: codex/m1g-is-validation
-    pr: 59
-    head_sha: pending_context_commit
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1G_IS_VALIDATION_REPORT.md
-    blocker: "Frozen IS Gates failed; OOS remains sealed. After this evidence merges, only a separate M1H design review may follow."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -206,8 +197,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge the truthful M1G failed IS validation record; do not tune or open OOS.
-  - After the M1G failure record merges, only a separate M1H funding-extreme spot-signal design review may follow.
+  - Begin only a separate M1H funding-extreme spot-signal economic-hypothesis and non-duplication design review.
+  - Keep M1H declared_unopened; do not select rules, run returns, or access OOS during design review.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G capability review merged in PR #55; exact strategy implementation is authorized, while performance backtesting remains separately gated.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -667,6 +658,9 @@ latest_merged_prs:
   - number: 58
     title: Freeze M1G IS validation protocol
     merged_at_utc: "2026-07-11T08:13:06Z"
+  - number: 59
+    title: Record M1G failed IS validation
+    merged_at_utc: "2026-07-11T08:40:23Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

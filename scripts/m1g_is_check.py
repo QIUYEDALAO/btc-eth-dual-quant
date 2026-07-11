@@ -4,7 +4,11 @@
 from __future__ import annotations
 
 import re
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / ".deps"))
 
 import yaml
 
@@ -12,7 +16,6 @@ from m1g_is_protocol_check import load as load_protocol
 from m1g_is_protocol_check import validate as validate_protocol
 
 
-ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "reports/m1/M1G_IS_VALIDATION_REPORT.md"
 BACKTEST = ROOT / "freqtrade_lab/scripts/ft_backtest_m1g_is.sh"
 

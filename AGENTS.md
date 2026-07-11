@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1G failed IS validation review and evidence closeout.
+- Current phase: M1H independent design review authorization after M1G failed validation.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -80,6 +80,8 @@ After any task, the agent must update:
 - M1G IS protocol merged in PR #58 before any performance result was accessed.
 - The one frozen IS run is now `failed_validation`: Base and Cost x2 lose money, daily-MTM Sharpe/PSR/MaxDD and benchmark Gates fail, and conservative repricing finds non-zero exit-bar mismatches.
 - M1G OOS remains sealed and its trial does not increment the DSR opened count. After the failure record merges, only a separate M1H design review may follow.
+- M1G failed-IS evidence merged in PR #59 as `929e3a2`; all 60 GitHub checks passed. M1G is closed without opening OOS or changing its frozen contract.
+- M1H is now authorized only for an economic-hypothesis and non-duplication design review. Rule selection, strategy code, returns and OOS access remain unauthorized.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.
