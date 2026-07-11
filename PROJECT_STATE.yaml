@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T16:45:55Z"
+last_updated_utc: "2026-07-11T16:52:00Z"
 current_phase: M1H failed feasibility; BTC/ETH two-asset indicator research stopped
 current_status: m1h_failed_feasibility_candidate_queue_exhausted_oos_sealed_no_m2
 completed_milestones:
@@ -167,6 +167,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: M1H-03-FAILURE-RECORD
+    phase: M1H failed feasibility review
+    status: completed_pending_review
+    branch: codex/m1h-funding-paper-feasibility
+    pr: 65
+    head_sha: b348126c38e9b22106e5a499a650781c1f159f86
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/M1H_IS_PAPER_FEASIBILITY_REPORT.md
+    blocker: "M1H failed frozen close-displacement and concentration Gates; review and merge the truthful stop record without tuning."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
