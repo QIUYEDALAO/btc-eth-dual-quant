@@ -2,6 +2,8 @@
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
+| `reports/m1/M1E_IS_ONLY_RULE_DESIGN.md` | M1E-04 | economic_hypothesis_pass_isolation_only | Defines the compression-to-expansion economic mechanism, failure regimes, sealed IS/OOS boundary and deferred parameters; authorizes only M1E-05 isolation after merge. | no |
+| `reports/m1/M1E_NON_DUPLICATION_REVIEW.md` | M1E-04 | pass | Proves the M1E event-state family is not an M1A daily trend timeframe rescue and keeps the complete M1A bundle forbidden. | no |
 | `reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md` | research governance | queue_frozen_design_only | Freezes M1E -> M1G -> M1H, the three historical opened-OOS trials, common validation Gates, failure transitions, and the terminal stop without authorizing a design or backtest. | no |
 | `docs/decisions/ADR-0010-candidate-queue-and-common-validation-gates.md` | research governance | accepted_for_governance_only | Records the immutable candidate queue, DSR count source, common cost/OOS/risk policy, and no-rescue rule. | no |
 | `reports/m0/M0_FINAL_ACCEPTANCE.md` | M0 | accepted / audit_revalidation_required | Read-only infrastructure remains accepted; funding cadence fallback and ZIP/REST evidence require revalidation before new strategy approval. | no |

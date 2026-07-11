@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1E IS-only rule-design approval decision.
+- Current phase: M1E-04 IS-only economic-hypothesis and non-duplication review.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -63,7 +63,9 @@ After any task, the agent must update:
 - M1E metadata-only sample budgeting passed and merged in PR #42 with 2191 full, 1533 IS, and 658 sealed OOS days. It authorizes design review only after explicit approval.
 - ADR-0010 freezes the research order as M1E, M1G, then M1H. M1G and M1H remain unopened; failure of all three stops BTC/ETH two-asset indicator research.
 - The DSR ledger counts three historically opened OOS trials: M1A, M1B, and M1C. No current candidate OOS is open.
-- Q-01/Q-02 governance merged in PR #44 and authorizes no M1E rule design, strategy code, Freqtrade backtest, or OOS access. M1E design still requires separate explicit approval.
+- Q-01/Q-02 governance merged in PR #44. M1E-04 design approval is now granted, while strategy code, Freqtrade backtesting and OOS access remain unauthorized.
+- The user granted current-session automatic approval for sequential research approvals. This removes confirmation pauses only; dependencies, machine Gates, OOS sealing and safety prohibitions remain mandatory.
+- M1E-04 selects no strategy parameter. It defines only the compression-to-expansion economic mechanism, failure regimes, IS boundary and M1A non-duplication; only M1E-05 isolation may follow after merge.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.

@@ -42,13 +42,25 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1E-03 | M1E sample budget | completed_design_only | M1E-02B merged pass | `codex/m1e-1h-sample-budget` / PR #42 merged | Metadata-only 70/30, 1800/540-day report | 2191 full, 1533 IS, 658 sealed OOS; validation and CI pass | none; does not authorize strategy code |
 | Q-01 | Candidate queue governance | completed | M1E-03 merged pass | `codex/candidate-queue-common-gates` / PR #44 merged | Immutable M1E -> M1G -> M1H queue, hypotheses, hashes, DSR trial count, failure transitions and terminal stop | Candidate queue validator, ledger hash checks, context and CI pass | none; no candidate design authorized |
 | Q-02 | Common validation governance | completed | Q-01 | `codex/candidate-queue-common-gates` / PR #44 merged | Fixed costs, sealed OOS, daily-MTM, PSR, drawdown, concentration, benchmark and no-rescue policy | Machine contract rejects lowered Gates or enabled downstream authorization | none; no backtest or OOS authorized |
-| M1E-04 | M1E IS-only rule design | awaiting_explicit_approval | M1E-03 merged pass plus separate approval | future branch | Non-M1A trend-breakout rule contract | No duplicate rule bundle and no OOS access | explicit approval not yet granted |
+| M1E-04 | M1E economic hypothesis | in_progress | M1E-03 and Q-01/Q-02 merged; user approval granted | `codex/m1e-is-only-rule-design` / PR #46 | IS-only economic hypothesis and non-duplication review | Hypothesis/hash, failure regimes, IS boundary, no M1A rescue, no parameter selection | review and merge required |
+| M1E-05 | M1E IS data isolator | pending | M1E-04 merged pass | future branch | Metadata-locked canonical 1h/4h IS reader and OOS rejection tests | Reject timestamps at or after 2024-09-11, future/incomplete bars and unrewarmed gaps | M1E-04 not merged |
+| M1E-06 | M1E paper feasibility | pending | M1E-05 pass | future branch | IS-only frequency, displacement, MAE/MFE, cost-coverage and sample projection | 120/30 projected trades, 1.80% typical displacement and cross-year/cross-symbol evidence | M1E-05 not complete |
+| M1E-07 | M1E fixed rule contract | not_authorized | M1E-06 pass | future branch | Immutable rule YAML/JSON and hash | No ranges, alternatives, hyperopt or OOS-derived choice | M1E-06 not passed |
+| M1E-08 | M1E Freqtrade strategy | not_authorized | M1E-07 pass | future branch | Spot long/cash strategy plugin | Fixed contract only; no order or execution module | M1E-07 not passed |
+| M1E-09 | M1E time semantics | not_authorized | M1E-08 | future branch | 1h/4h close, next-5m-open, immutable-history and rewarm tests | All causal timing checks pass | M1E-08 not authorized |
+| M1E-10 | M1E Freqtrade static validation | not_authorized | M1E-09 | future branch | Lookahead, recursive, fixture and safety evidence | Pinned runtime and no-live checks pass | M1E-09 not authorized |
+| M1E-11 | M1E IS backtest | not_authorized | M1E-10 | future branch | Base/x2/Stress and granularity/data-version IS evidence | Frozen contract only; OOS remains sealed | M1E-10 not authorized |
+| M1E-12 | M1E IS Gate | not_authorized | M1E-11 | future branch | IS decision and independent Python reconciliation | Every preregistered IS Gate passes or candidate fails | M1E-11 not authorized |
+| M1E-13 | M1E OOS opening | not_authorized | M1E-12 pass | future branch | Single-use OOS approval record and incremented trial count | Code, data, cost, runtime and Gate hashes frozen | M1E-12 not passed |
+| M1E-14 | M1E one-shot OOS | not_authorized | M1E-13 | future branch | Single immutable OOS run | No post-result parameter rerun | OOS remains sealed |
+| M1E-15 | M1E independent audit | not_authorized | M1E-14 | future branch | Timestamp, trade, fee, equity and metric recomputation | Exact timestamps and numeric error <= 1e-8 | OOS remains sealed |
+| M1E-16 | M1E final decision | not_authorized | M1E-15 | future branch | failed_validation or passed_numerical_pending_independent_review | Never auto-approves M2 | M1E-15 not complete |
 | M1E-DIAG-01 | M1E source-conflict diagnostics | completed | M1E-02 blocked | `codex/m1e-official-source-conflict-diagnostics` / PR #35 merged | Field-level ZIP/REST classifications, fresh hashes, clean-suffix budget | Reproducible evidence, no contract bypass, CI pass | 30 conflicts confirmed; clean suffix 1338/402 < 1800/540 |
 | M1E-OWNER-01 | Binance source-owner package | completed_monitoring | M1E-DIAG-01 completed | PR #37 merged; issue #475 comment 4939090508 | Sanitized evidence JSON and submitted source-owner comment | 14 supplemental rows, no raw/private data, CI pass | awaiting response for provenance only; no longer an operational canonical-OHLC dependency |
 
 ## Current Gate
 
-- Authorized work: Q-01/Q-02 governance is complete. M1E IS-only rule design still requires a separate explicit approval; strategy implementation and OOS remain unauthorized.
+- Authorized work: M1E-04 economic hypothesis and non-duplication review only. After merge, M1E-05 IS data isolation may proceed automatically under the user's current-session approval; later steps still require their dependency Gates.
 - Candidate queue: M1E -> M1G -> M1H -> stop BTC/ETH two-asset indicator research. M1G and M1H remain `declared_unopened`.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
 - Active implementation: no strategy; candidate evaluated `no`, OOS opened `no`, strategy code authorized `no`.

@@ -943,3 +943,17 @@ private exchange responses here.
 - Result: M1E -> M1G -> M1H, the historical DSR count of three, common Gates, failure transitions, and the terminal stop are now canonical.
 - Next action: Await separate explicit approval for M1E IS-only rule design. M1G and M1H remain unopened.
 - Safety: No OOS access, strategy code, backtest, API key, private data, order, paper/live mode, or execution module was used or authorized.
+
+## 2026-07-11 - M1E-04 Economic Hypothesis Passed Locally
+
+- Date UTC: 2026-07-11T01:00:00Z
+- Task ID: M1E-04
+- Phase: M1E IS-only economic hypothesis and non-duplication review
+- Branch: `codex/m1e-is-only-rule-design`
+- PR: #46 open
+- Commit: `36e9da6ccf3d79eef35f8dae5d37ec845b5ab89b`
+- Approval: The user granted automatic approval for sequential research steps in the current session; dependency and Gate checks remain mandatory.
+- Hypothesis: A completed 1h compression state can precede directional expansion driven by delayed repricing, stops and forced liquidity; the candidate is spot long/cash only.
+- Non-duplication: M1A's SMA200, Donchian 55/20 and ATR20 x2 bundle, timeframe relabeling and fixed-channel rescue remain prohibited.
+- Result: `economic_hypothesis_pass_isolation_only`; no rule parameter, event, trade or return was selected or calculated.
+- Authorization: After merge, M1E-05 IS data isolation only. Paper diagnostics, fixed rules, strategy code, backtesting, OOS, M2, API use, paper/live mode, orders and execution remain unauthorized.

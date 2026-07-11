@@ -1,5 +1,24 @@
 # Next Action
 
+The user granted automatic approval for sequential research approvals in the
+current session. This removes repeated confirmation prompts but does not waive
+any dependency, frozen Gate, OOS single-use rule or safety boundary.
+
+M1E-04 now passes locally at the economic-hypothesis level. M1E is defined as a
+completed-1h compression-to-directional-expansion state transition whose
+potential edge comes from delayed repricing and forced liquidity. It is not a
+daily continuous trend rule and may not reuse or relabel the M1A SMA200,
+Donchian 55/20 and ATR20 x2 bundle. No compression, expansion, exit, stop,
+position, cooldown or warmup parameter has been selected.
+
+Immediate sequence:
+
+1. Review and merge M1E-04.
+2. Build M1E-05 as an IS-only data isolator using `2020-07-01` through
+   `2024-09-10`; reject `2024-09-11` and later.
+3. Do not run M1E-06 paper diagnostics until the isolator passes.
+4. Keep strategy code, Freqtrade backtesting and OOS unopened.
+
 Q-01/Q-02 candidate governance merged in PR #44. The
 immutable research order is M1E one-hour volatility-compression expansion,
 M1G one-hour panic-dislocation mean reversion, then M1H funding-extreme spot
