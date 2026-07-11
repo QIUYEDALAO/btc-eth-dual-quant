@@ -32,6 +32,8 @@ position, fill, exit, stop, cooldown or portfolio model is used.
 - Fixed horizons: 1, 2, 4, 8, 12 and 24 completed 1h bars.
 - Path diagnostics: 24-hour MAE and MFE.
 - Right-censored events are disclosed but excluded from Gate statistics.
+- Full/OOS projections use complete cluster representatives per 1,533 IS days
+  and round down to the nearest whole event.
 - Costs are reference hurdles only: 0.30%, 0.60%, 0.80% and 1.10% roundtrip.
 - No cost-adjusted trade return or equity curve is produced.
 

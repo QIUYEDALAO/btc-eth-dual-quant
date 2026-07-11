@@ -15,6 +15,7 @@
     "compression_window_bars": 24,
     "compression_reference_bars": 4320,
     "compression_quantile": "0.20",
+    "compression_quantile_interpolation": "linear",
     "breakout_lookback_bars": 24,
     "expansion_true_range_multiple": "2.0",
     "minimum_segment_age_bars": 4345,
@@ -28,6 +29,8 @@
     "fixed_horizon_bars": [1, 2, 4, 8, 12, 24],
     "path_horizon_bars": 24,
     "right_censored_excluded_from_gate": true,
+    "projection_count_source": "complete_cluster_representatives",
+    "projection_rounding": "floor",
     "entry_fill_model_used": false,
     "position_or_exit_model_used": false
   },
