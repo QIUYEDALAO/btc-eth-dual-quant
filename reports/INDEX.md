@@ -2,7 +2,7 @@
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
-| `reports/m1/M1G_IS_VALIDATION_REPORT.md` | M1G IS validation | failed_validation | Records the one frozen four-cost IS run, daily-MTM and benchmark results, and exported-trade-only conservative repricing. Base/x2 numerical and exit-bar audit Gates failed; OOS stayed sealed. | no |
+| `reports/m1/M1G_IS_VALIDATION_REPORT.md` | M1G IS validation | failed_validation | PR #59 merged the one frozen four-cost IS run, daily-MTM and benchmark results, and exported-trade-only conservative repricing. Base/x2 numerical and exit-bar audit Gates failed; OOS stayed sealed. | no |
 | `reports/m1/M1G_IS_VALIDATION_PROTOCOL.md` | M1G IS protocol | frozen_before_is_result | Freezes IS range, four costs, numerical/benchmark Gates, artifact hashes and dual native/conservative audit before any performance outcome access. | no |
 | `reports/m1/M1G_IMPLEMENTATION_STATUS.md` | M1G implementation | implementation_pass_no_performance_run | Records exact Freqtrade strategy, causal fixtures, pinned lookahead/recursive pass, and exported-trade-only conservative execution repricing without a performance report or OOS access. | no |
 | `reports/m1/M1G_FREQTRADE_CAPABILITY_REVIEW.md` | M1G framework mapping | capability_pass_with_mandatory_execution_audit | Merged in PR #55; confirms native signal/lifecycle and global-cooldown support, discloses material ROI/stop gap-price differences, and requires conservative repricing of exported trades without a second strategy engine. | no |

@@ -1159,3 +1159,15 @@ private exchange responses here.
 - Decision: `failed_validation`; returns, risk-adjusted metrics, drawdown, delete-best-3, segment, benchmark and execution-audit Gates fail.
 - OOS safety: M1G OOS remains unopened and the DSR opened-trial count remains three.
 - Next action: Merge the truthful failure record, then allow only a separate M1H design review. No M1G rescue, M2, private API, dry-run/live, order or execution work is authorized.
+
+## 2026-07-11 - M1G Failed IS Validation Merged
+
+- Date UTC: 2026-07-11T08:40:23Z
+- Task IDs: M1G-09-MERGED, M1G-10-MERGED
+- Phase: M1H independent design-review authorization
+- Branch: main
+- Commit: `929e3a23f0f78be75a746920a313572d15519910`
+- PR: #59 merged
+- Validation: All 60 GitHub checks passed; local M1G IS Validate passed 9/0.
+- Result: M1G is closed as `failed_validation`; no Gate was lowered, no parameter changed, and OOS was never opened.
+- Next action: Only M1H economic-hypothesis and non-duplication design review is authorized. Rule selection, strategy code, return analysis, OOS, M2 and trading remain prohibited.

@@ -3,7 +3,8 @@
 ## Current Decision
 
 M1G completed its one permitted frozen IS run after protocol PR #58 merged.
-The result is `failed_validation`:
+The truthful failure record merged in PR #59 as `929e3a2`. The result is
+`failed_validation`:
 
 - Base: 179 trades, native return -22.6272%, conservative return -21.3551%.
 - Cost x2: 177 trades, native return -28.3540%, conservative return -31.5286%.
@@ -18,10 +19,10 @@ before spending the sealed OOS.
 
 ## Immediate Sequence
 
-1. Review and merge `reports/m1/M1G_IS_VALIDATION_REPORT.md` with all CI checks successful.
-2. Keep M1G OOS sealed and keep the DSR opened-trial count at three.
-3. Do not tune the -2.40% event, +1.80% target, -4.00% stop, 24h timeout, 25% cap or 72h cooldown.
-4. After the M1G failure record merges, the only next candidate work is a separate M1H funding-extreme spot-contrarian design review.
+1. Keep M1G OOS sealed and keep the DSR opened-trial count at three.
+2. Do not tune the -2.40% event, +1.80% target, -4.00% stop, 24h timeout, 25% cap or 72h cooldown.
+3. The only next candidate work is a separate M1H funding-extreme spot-contrarian economic-hypothesis and non-duplication design review.
+4. During that design review M1H remains `declared_unopened`; no rule parameter, event, return or OOS value may be selected or read.
 5. M1H must remain spot long/cash; funding is a public sentiment signal only, not a futures leg or two-leg execution design.
 6. If M1H fails its independent chain, stop BTC/ETH two-asset indicator mining and require a new ADR before considering a broader liquid spot universe.
 
