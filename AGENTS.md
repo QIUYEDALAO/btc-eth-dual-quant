@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1G IS validation protocol review.
+- Current phase: M1G failed IS validation review and evidence closeout.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -77,6 +77,9 @@ After any task, the agent must update:
 - M1G capability review merged in PR #55 as `d9e43dd`. Only exact strategy implementation, causal/runtime fixtures, and the mandatory conservative trade-export audit are authorized next; performance backtesting and OOS remain blocked.
 - M1G exact strategy, causal fixtures, conservative repricing audit, pinned lookahead and recursive checks pass on `codex/m1g-freqtrade-implementation`. No performance report was generated; only a separately frozen IS protocol may follow after merge.
 - M1G implementation merged in PR #57. The IS protocol is frozen before outcomes on `codex/m1g-is-validation-protocol`; no performance run is allowed before that protocol merges.
+- M1G IS protocol merged in PR #58 before any performance result was accessed.
+- The one frozen IS run is now `failed_validation`: Base and Cost x2 lose money, daily-MTM Sharpe/PSR/MaxDD and benchmark Gates fail, and conservative repricing finds non-zero exit-bar mismatches.
+- M1G OOS remains sealed and its trial does not increment the DSR opened count. After the failure record merges, only a separate M1H design review may follow.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.

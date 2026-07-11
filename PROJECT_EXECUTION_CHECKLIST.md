@@ -65,16 +65,18 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1G-05 | M1G Freqtrade implementation | completed | M1G-05A merged pass | `codex/m1g-freqtrade-implementation` / PR #57 merged | Exact strategy plugin, 1h signal/5m detail, deterministic pair ranking and global cooldown | Contract-exact signals and lifecycle; no performance report | none |
 | M1G-06 | M1G causal and pinned runtime validation | completed | M1G-05 | PR #57 merged | Fixtures, Freqtrade 2026.6 lookahead and recursive evidence | 20 lookahead signals with zero bias; zero recursive variance/lookahead | none |
 | M1G-07 | M1G conservative execution repricing audit | completed | M1G-05A | PR #57 merged | Exported-trade-only 5m target/stop/gap/timeout repricing | Cannot select signals; deterministic fixtures pass | none |
-| M1G-08 | M1G IS validation protocol | frozen_pending_review | M1G-05/06/07 merged pass | `codex/m1g-is-validation-protocol` / PR pending | Frozen IS range, scenarios, Gate matrix and artifact hashes | Protocol committed before performance outcomes | review and CI pending |
-| M1G-09 | M1G IS numerical validation | blocked_until_protocol_merge | M1G-08 merged | `codex/m1g-is-validation` / future PR | Four fixed cost runs, daily MTM, benchmark and Gate report | One frozen IS run; no OOS access | protocol not merged |
-| M1G-10 | M1G IS independent audit | blocked_until_protocol_merge | M1G-09 | same future PR | Conservative repricing, timestamp and metric reconciliation | Native and audit both satisfy frozen Gates | protocol not merged |
+| M1G-08 | M1G IS validation protocol | completed | M1G-05/06/07 merged pass | `codex/m1g-is-validation-protocol` / PR #58 merged | Frozen IS range, scenarios, Gate matrix and artifact hashes | Protocol committed before performance outcomes and CI passed | none |
+| M1G-09 | M1G IS numerical validation | failed_validation | M1G-08 merged | `codex/m1g-is-validation` / PR pending | Four fixed cost runs, daily MTM, benchmark and Gate report | One frozen IS run; no OOS access | Base/x2 returns, Sharpe, PSR, MaxDD, concentration, segment and benchmark Gates failed |
+| M1G-10 | M1G IS independent audit | failed_audit | M1G-09 | same PR | Conservative repricing, timestamp and metric reconciliation | Native and audit must both satisfy frozen Gates | 66 Base and 83 Cost x2 native/audited exit-bar mismatches; numerical Gates also failed |
+| M1G-11 | M1G OOS opening | blocked | M1G-09/10 pass | not created | Frozen one-shot OOS opening package | Every IS and independent-audit Gate must pass | M1G failed IS; OOS remains sealed and trial count remains 3 |
+| M1H-01 | M1H independent design review | authorized_after_m1g_failure_merge | M1G failure evidence merged | future branch | Funding-extreme spot-contrarian hypothesis and non-duplication review | Design only; no futures leg, return run, or OOS opening | Wait for M1G failure-record merge |
 
 ## Current Gate
 
-- Authorized work: review and merge the frozen M1G IS protocol. Only after merge may the fixed IS matrix run; OOS remains unauthorized.
-- Candidate queue: M1E (`failed_feasibility`) -> M1G -> M1H -> stop BTC/ETH two-asset indicator research. M1G and M1H remain unopened.
+- Authorized work: review and merge the M1G truthful failed-IS record. After merge, only a separate M1H design review may start.
+- Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H -> stop BTC/ETH two-asset indicator research. M1G OOS was never opened; M1H remains unopened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active implementation: M1G strategy and audit merged; IS protocol frozen before outcomes. No performance report exists and OOS remains unopened.
+- Active implementation: none. M1G Base and Cost x2 lost money and failed daily-MTM, benchmark and conservative audit Gates; OOS remains unopened.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.
