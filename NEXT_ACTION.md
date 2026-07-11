@@ -24,12 +24,16 @@ cost-coverage Gates failed: combined median 24h MFE was 1.4005%, BTC 1.4658%,
 and ETH 1.4005%, all below 1.80%. OOS remained unopened and no formal strategy
 return, equity curve, Freqtrade strategy or backtest was produced.
 
+PR #55 merged as `d9e43dd` with every check successful. The capability decision
+is now canonical: native Freqtrade owns M1G signal selection and trade lifecycle,
+while a mandatory Python audit may only conservatively reprice exported trades.
+
 Immediate sequence:
 
-1. Review and merge the M1G Freqtrade capability mapping.
-2. Implement exact signals, pair ranking, ROI/stop/timeout, stake cap and global cooldown only after merge.
-3. Add a trade-export execution audit for conservative target/stop gap pricing; it must not select signals or become a second strategy engine.
-4. Run lookahead, recursive and fixture checks before any IS performance backtest; OOS remains sealed.
+1. Implement exact signals, pair ranking, ROI/stop/timeout, stake cap and global cooldown.
+2. Add the trade-export execution audit for conservative target/stop gap pricing; it must not select signals or become a second strategy engine.
+3. Run lookahead, recursive, causal fixture and pinned-runtime checks without producing a performance report.
+4. Freeze a separate IS validation protocol only after implementation validation passes; OOS remains sealed.
 
 The fixed contract is +1.80% target, -4.00% invalidation stop, 24h timeout,
 25% current-equity cap, maximum one position and 72h global cooldown. Same-5m

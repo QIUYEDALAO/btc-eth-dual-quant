@@ -1090,3 +1090,16 @@ private exchange responses here.
 - Material difference: Native ROI and stoploss gap pricing can be more favorable than the fixed conservative target/stop gap rules.
 - Decision: `capability_pass_with_mandatory_execution_audit`. Freqtrade remains signal/trade-lifecycle authority; Python may only reprice exported trades with canonical 5m data and cannot select events or run a second strategy.
 - Next action: After merge, implement the exact Freqtrade plugin and audit hook without running performance backtests. OOS, M2 and trading remain prohibited.
+
+## 2026-07-11 - M1G Freqtrade Capability Review Merged
+
+- Date UTC: 2026-07-11T07:11:38Z
+- Task ID: M1G-05A-C
+- Phase: M1G Freqtrade implementation preparation
+- Branch: main
+- Commit: `d9e43ddf805bbed8100e0596012acb4a84334cee`
+- PR: #55 merged
+- Validation: M1G Freqtrade Capability Validate, Project Validate, and all repository checks succeeded.
+- Result: `capability_pass_with_mandatory_execution_audit`; exact strategy implementation is authorized, but performance backtesting is not.
+- Next action: Implement the frozen Freqtrade plugin, causal/runtime fixtures, and conservative trade-export repricing audit on a new branch.
+- Safety: OOS remains unopened. M2, private APIs, dry-run/live, orders, matching and execution/live remain prohibited.

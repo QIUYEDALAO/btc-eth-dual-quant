@@ -61,15 +61,15 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1G-02 | M1G paper protocol | completed | M1G-01 merged pass | `codex/m1g-paper-protocol` / PR #52 merged | Frozen price-only event definition and paper Gates committed before outcomes | No event evaluation in protocol commit; common 120/30 and 1.80% Gates unchanged | none |
 | M1G-03 | M1G IS paper feasibility | completed_pass_tail_risk_disclosed | M1G-02 frozen and merged | `codex/m1g-is-paper-feasibility` / PR #53 merged | IS-only frequency, clustering, rebound MAE/MFE and cost coverage | All frozen paper Gates pass; adverse-path evidence constrains the fixed contract | none; not a profitability pass |
 | M1G-04 | M1G fixed rule contract | completed | M1G-03 merged pass | `codex/m1g-fixed-rule-contract` / PR #54 merged | 1.80% target, -4.00% stop, 24h timeout, 25% cap, one trade and 72h cooldown | No ranges, parameter search, OOS evidence or MFE-perfect-exit assumption | none |
-| M1G-05A | M1G Freqtrade capability review | pending_review | M1G-04 merged | `codex/m1g-freqtrade-capability-review` / PR pending | Native mapping plus mandatory conservative execution audit | Global cooldown implementable; gap-price differences disclosed; no second strategy engine | review and CI pending |
-| M1G-05 | M1G Freqtrade implementation | not_authorized | M1G-05A merged pass | future branch | Exact strategy plugin, 1h signal/5m detail, causal timing and safety tests | Contract-exact signals/lifecycle and mandatory audit hook; no performance run | M1G-05A not merged |
+| M1G-05A | M1G Freqtrade capability review | completed | M1G-04 merged | `codex/m1g-freqtrade-capability-review` / PR #55 merged | Native mapping plus mandatory conservative execution audit | Global cooldown implementable; gap-price differences disclosed; no second strategy engine | none |
+| M1G-05 | M1G Freqtrade implementation | authorized_not_started | M1G-05A merged pass | `codex/m1g-freqtrade-implementation` / PR pending | Exact strategy plugin, 1h signal/5m detail, causal timing and safety tests | Contract-exact signals/lifecycle and mandatory audit hook; no performance run | performance run blocked until implementation validation passes |
 
 ## Current Gate
 
-- Authorized work: review the M1G Freqtrade capability mapping. Only after merge may strategy implementation be considered; performance backtesting and OOS remain unauthorized.
+- Authorized work: exact M1G Freqtrade implementation, causal/runtime fixtures, and conservative trade-export repricing audit. Performance backtesting and OOS remain unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G -> M1H -> stop BTC/ETH two-asset indicator research. M1G and M1H remain unopened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active implementation: no strategy; M1G paper paths passed frozen Gates but exposed severe left-tail risk, OOS opened `no`, strategy code authorized `no`.
+- Active implementation: M1G exact strategy code and audit hook are authorized after PR #55; no performance run is authorized, and OOS remains unopened.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

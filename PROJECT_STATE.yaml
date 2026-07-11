@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T02:48:23Z"
-current_phase: M1G Freqtrade capability review
-current_status: m1g_freqtrade_capability_audit_required_no_strategy_eligible_for_m2
+last_updated_utc: "2026-07-11T07:11:38Z"
+current_phase: M1G Freqtrade implementation preparation
+current_status: m1g_capability_merged_implementation_and_audit_only_no_m2
 completed_milestones:
   - phase: M1G IS-only economic hypothesis and non-duplication
     status: economic_hypothesis_pass_paper_protocol_only
@@ -24,7 +24,7 @@ completed_milestones:
   - phase: M1G Freqtrade capability mapping
     status: capability_pass_with_mandatory_execution_audit
     evidence: reports/m1/M1G_FREQTRADE_CAPABILITY_REVIEW.md
-    branch: codex/m1g-freqtrade-capability-review
+    merged_pr: 55
   - phase: M1E-06 IS-only paper feasibility
     status: failed_feasibility
     evidence: reports/m1/M1E_IS_PAPER_FEASIBILITY_REPORT.md
@@ -139,15 +139,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1G-05A
-    phase: M1G Freqtrade capability review
-    status: pending_review
-    branch: codex/m1g-freqtrade-capability-review
+  - id: M1G-05
+    phase: M1G Freqtrade implementation and conservative execution audit
+    status: authorized_not_started
+    branch: not_created
     pr: none
-    head_sha: pending
+    head_sha: d9e43ddf805bbed8100e0596012acb4a84334cee
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1G_FREQTRADE_CAPABILITY_REVIEW.md
-    blocker: "Native gap pricing differs from the fixed conservative contract; implementation requires a mandatory trade-export execution audit."
+    evidence: config/m1g_freqtrade_capability_mapping.json
+    blocker: "Performance backtesting remains blocked until the exact Freqtrade plugin, causal fixtures, and conservative trade-export repricing audit all pass."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -194,13 +194,13 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge the M1G Freqtrade capability mapping. Native signal/lifecycle support passes, but conservative gap repricing is mandatory in the independent audit.
-  - Only after capability merge may the exact Freqtrade strategy be implemented; performance backtesting and OOS remain unauthorized.
+  - Implement the exact frozen M1G Freqtrade strategy and mandatory conservative trade-export repricing audit; do not run performance backtesting or access OOS.
+  - Run only causal fixtures, pinned-runtime smoke, lookahead analysis, and recursive analysis before separately freezing an IS validation protocol.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
-  - M1G may enter a separate IS-only design review and diagnostics sequence; no strategy code is authorized.
+  - M1G capability review merged in PR #55; exact strategy implementation is authorized, while performance backtesting remains separately gated.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
   - Q-01/Q-02 candidate-queue governance merged in PR #44 and M1E-04 design merged in PR #46.
-  - M1E is failed_feasibility with OOS unopened; M1G and M1H remain unopened and no strategy code, backtesting, or OOS access is authorized.
+  - M1E is failed_feasibility with OOS unopened; M1G implementation is authorized but M1G/M1H OOS, performance backtesting, and all trading remain unauthorized.
   - If M1E fails, only a separately approved transition to M1G is allowed; if M1G then fails, only M1H may follow; three failures stop BTC/ETH two-asset indicator research.
   - M1E metadata-only sample budget passed in PR #42 and M1E-04 design passed in PR #46.
   - M1E canonical-5m v2 passed and merged in PR #40; only the metadata-only 1800/540-day sample-budget Gate is authorized next.
@@ -610,6 +610,30 @@ latest_merged_prs:
   - number: 47
     title: Isolate M1E in-sample market data
     merged_at_utc: "2026-07-11T01:25:17Z"
+  - number: 48
+    title: Close M1E isolator context
+    merged_at_utc: "2026-07-11T01:30:40Z"
+  - number: 49
+    title: Record M1E failed IS paper feasibility
+    merged_at_utc: "2026-07-11T01:53:07Z"
+  - number: 50
+    title: Close M1E paper feasibility context
+    merged_at_utc: "2026-07-11T02:01:23Z"
+  - number: 51
+    title: Define M1G IS-only economic hypothesis
+    merged_at_utc: "2026-07-11T02:12:44Z"
+  - number: 52
+    title: Freeze M1G IS paper protocol
+    merged_at_utc: "2026-07-11T02:22:39Z"
+  - number: 53
+    title: Run M1G sealed IS paper feasibility
+    merged_at_utc: "2026-07-11T02:34:35Z"
+  - number: 54
+    title: Freeze M1G fixed rule contract
+    merged_at_utc: "2026-07-11T02:44:54Z"
+  - number: 55
+    title: Review M1G Freqtrade capability mapping
+    merged_at_utc: "2026-07-11T02:57:24Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
@@ -618,6 +642,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/m1g_freqtrade_capability_validate.sh
   - bash scripts/m1e_isolator_validate.sh
   - bash scripts/m1e_is_design_validate.sh
   - bash scripts/candidate_queue_validate.sh
