@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "status": "economic_hypothesis_pass_isolation_only",
+  "candidate_id": "M1E-1H-TREND-BREAKOUT",
+  "hypothesis_sha256": "3668032467e2f46edff7f0ab27d358d0b918889518bfaf97276699cbc783ed15",
+  "research_scope": {
+    "market": "binance_spot",
+    "symbols": ["BTCUSDT", "ETHUSDT"],
+    "direction": "long_cash_only",
+    "signal_timeframe": "completed_utc_1h",
+    "regime_timeframe": "completed_utc_4h_only",
+    "future_execution_detail": "next_available_5m_open",
+    "is_start": "2020-07-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z",
+    "oos_opened": false
+  },
+  "economic_hypothesis": {
+    "family": "volatility_compression_then_directional_expansion",
+    "return_source": "delayed_repricing_and_forced_liquidity_after_a_completed_compression_state_breaks_directionally",
+    "mechanism": [
+      "compression_reduces_observed_range_while_inventory_and_information_imbalance_can_accumulate",
+      "directional_expansion_can_activate_stops_and_delayed_participation",
+      "the_resulting_short_horizon_order_imbalance_can_persist_long_enough_to_exceed_stressed_roundtrip_cost"
+    ],
+    "failure_regimes": [
+      "range_bound_chop_and_repeated_false_expansion",
+      "news_gap_or_liquidity_shock_with_unmodelled_slippage",
+      "persistent_trend_without_a_preceding_compression_state",
+      "exchange_outage_or_quarantine_rewarm_window",
+      "high_cross_asset_correlation_that_concentrates_btc_eth_exposure"
+    ]
+  },
+  "non_duplication": {
+    "m1a_family": "daily_continuous_trend_following",
+    "m1e_family": "one_hour_state_transition_event",
+    "forbidden_combined_bundle": [
+      "SMA200",
+      "Donchian55Entry",
+      "Donchian20Exit",
+      "ATR20x2Stop"
+    ],
+    "m1a_timeframe_rescue_prohibited": true,
+    "fixed_channel_relabel_prohibited": true
+  },
+  "unresolved_until_later_gates": [
+    "four_hour_state_filter",
+    "one_hour_compression_definition",
+    "one_hour_expansion_definition",
+    "exit_rule",
+    "risk_stop",
+    "position_cap",
+    "cooldown",
+    "indicator_warmup"
+  ],
+  "authorization": {
+    "m1e_05_is_data_isolator": true,
+    "m1e_06_paper_diagnostics": false,
+    "m1e_07_fixed_rule_contract": false,
+    "strategy_code": false,
+    "freqtrade_backtesting": false,
+    "oos_access": false,
+    "m2": false
+  }
+}

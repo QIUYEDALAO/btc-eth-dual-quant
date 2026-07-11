@@ -1,10 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T00:50:00Z"
-current_phase: M1E IS-only rule-design approval decision
+last_updated_utc: "2026-07-11T01:00:00Z"
+current_phase: M1E-04 IS-only economic hypothesis and non-duplication review
 current_status: m1e_sample_budget_pass_is_design_only_no_strategy_eligible_for_m2
 completed_milestones:
+  - phase: M1E-04 economic hypothesis and non-duplication
+    status: local_pass_pending_review
+    evidence: reports/m1/M1E_IS_ONLY_RULE_DESIGN.md
+    branch: codex/m1e-is-only-rule-design
   - phase: Q-01/Q-02 candidate queue governance
     status: completed
     evidence: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
@@ -107,6 +111,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: M1E-04
+    phase: M1E IS-only economic hypothesis and non-duplication review
+    status: local_pass_pending_review
+    branch: codex/m1e-is-only-rule-design
+    pr: none
+    head_sha: pending_commit
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/M1E_IS_ONLY_RULE_DESIGN.md
+    blocker: "Merge M1E-04 before building the M1E-05 IS data isolator; paper diagnostics, rule contract, strategy code, backtesting, and OOS remain unauthorized."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -153,6 +166,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - Review and merge M1E-04 economic-hypothesis and non-duplication evidence; it authorizes only the subsequent M1E-05 IS data isolator.
+  - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
   - Q-01/Q-02 candidate-queue governance merged in PR #44; await a separate explicit approval for M1E IS-only design review.
   - M1G and M1H remain declared_unopened; no strategy code, backtesting, or OOS access is authorized.
   - If M1E fails, only a separately approved transition to M1G is allowed; if M1G then fails, only M1H may follow; three failures stop BTC/ETH two-asset indicator research.
@@ -216,6 +231,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/M1E_IS_ONLY_RULE_DESIGN.md
+    phase: M1E-04
+    status: economic_hypothesis_pass_isolation_only
+    status_marker: "- Status: economic_hypothesis_pass_isolation_only"
+  - path: reports/m1/M1E_NON_DUPLICATION_REVIEW.md
+    phase: M1E-04
+    status: pass
+    status_marker: "- Status: pass"
   - path: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
     phase: research governance
     status: queue_frozen_design_only
@@ -519,6 +542,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/m1e_is_design_validate.sh
   - bash scripts/candidate_queue_validate.sh
   - python3 scripts/project_context_check.py
   - python3 scripts/context_summary.py
