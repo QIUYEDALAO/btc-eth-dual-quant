@@ -57,13 +57,13 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1E-16 | M1E final decision | not_authorized | M1E-15 | future branch | failed_validation or passed_numerical_pending_independent_review | Never auto-approves M2 | M1E-15 not complete |
 | M1E-DIAG-01 | M1E source-conflict diagnostics | completed | M1E-02 blocked | `codex/m1e-official-source-conflict-diagnostics` / PR #35 merged | Field-level ZIP/REST classifications, fresh hashes, clean-suffix budget | Reproducible evidence, no contract bypass, CI pass | 30 conflicts confirmed; clean suffix 1338/402 < 1800/540 |
 | M1E-OWNER-01 | Binance source-owner package | completed_monitoring | M1E-DIAG-01 completed | PR #37 merged; issue #475 comment 4939090508 | Sanitized evidence JSON and submitted source-owner comment | 14 supplemental rows, no raw/private data, CI pass | awaiting response for provenance only; no longer an operational canonical-OHLC dependency |
-| M1G-01 | M1G economic hypothesis and non-duplication | pending_review | M1E-06 failed and PR #49 merged | `codex/m1g-is-only-rule-design` / PR pending | IS-only mechanism, failure regimes, sealed data boundary and non-duplication contract | Exact ledger hash, no M1E/M1D/daily-panic rescue, no parameter selection, OOS sealed | review and CI pending |
-| M1G-02 | M1G paper protocol | not_authorized | M1G-01 merged pass | future branch | Frozen price-only event definition and paper Gates committed before outcomes | No event evaluation in protocol commit; common 120/30 and 1.80% Gates unchanged | M1G-01 not merged |
+| M1G-01 | M1G economic hypothesis and non-duplication | completed | M1E-06 failed and PR #49 merged | `codex/m1g-is-only-rule-design` / PR #51 merged | IS-only mechanism, failure regimes, sealed data boundary and non-duplication contract | Exact ledger hash, no M1E/M1D/daily-panic rescue, no parameter selection, OOS sealed | none |
+| M1G-02 | M1G paper protocol | pending_review | M1G-01 merged pass | `codex/m1g-paper-protocol` / PR pending | Frozen price-only event definition and paper Gates committed before outcomes | No event evaluation in protocol commit; common 120/30 and 1.80% Gates unchanged | review and CI pending |
 | M1G-03 | M1G IS paper feasibility | not_authorized | M1G-02 frozen | future branch | IS-only frequency, clustering, rebound MAE/MFE and cost coverage | Every frozen paper Gate passes or candidate fails and moves to M1H | M1G-02 not frozen |
 
 ## Current Gate
 
-- Authorized work: review M1G IS-only economic-hypothesis and non-duplication evidence. After merge only paper-protocol design is eligible; event evaluation, fixed rules, strategy code, Freqtrade backtesting and OOS remain unauthorized.
+- Authorized work: review the M1G paper protocol frozen before outcomes. A single exact sealed-IS diagnostic run is eligible only after merge; fixed rules, strategy code, Freqtrade backtesting and OOS remain unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G -> M1H -> stop BTC/ETH two-asset indicator research. M1G and M1H remain unopened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
 - Active implementation: no strategy; M1G has only a paper economic hypothesis, events evaluated `no`, OOS opened `no`, strategy code authorized `no`.

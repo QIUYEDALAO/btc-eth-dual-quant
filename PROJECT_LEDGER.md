@@ -1035,3 +1035,16 @@ private exchange responses here.
 - Result: `economic_hypothesis_pass_paper_protocol_only`; no threshold, event, trade, return or strategy rule was selected.
 - OOS safety: OOS remains unopened; existing sealed IS snapshot evidence is reused without duplicating the data pipeline.
 - Next action: After merge, only freeze a price-only M1G paper protocol before outcome access. Strategy code, backtesting, M2 and all trading remain prohibited.
+
+## 2026-07-11 - M1G Design Merged And Paper Protocol Frozen Locally
+
+- Date UTC: 2026-07-11T02:13:18Z
+- Task IDs: M1G-01-MERGED, M1G-02
+- Phase: M1G paper protocol review
+- Branch: `codex/m1g-paper-protocol`
+- PR: pending
+- Design merge: PR #51 merged as `0933779`; no event or return was evaluated.
+- Frozen event: completed 1h return <= -2.40%, at least 3x prior-168h median absolute return, at least 2.5x prior-168h median true range, bottom-quartile close, and first event in each connected 24h cluster.
+- Frozen Gates: projected full/OOS 120/30; combined and per-symbol median 24h MFE 1.80%; cross-symbol/year distribution and quarantine checks unchanged.
+- Outcome safety: Event scan executed `no`; candidate outcomes accessed `no`; OOS opened `no`; formal returns computed `no`.
+- Next action: After protocol merge, one exact sealed-IS diagnostic run may follow. Fixed rule contract, strategy code, backtesting, M2 and trading remain prohibited.

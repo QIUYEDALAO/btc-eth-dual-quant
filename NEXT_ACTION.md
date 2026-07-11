@@ -26,16 +26,18 @@ return, equity curve, Freqtrade strategy or backtest was produced.
 
 Immediate sequence:
 
-1. Review and merge the M1G IS-only economic hypothesis and non-duplication evidence.
-2. After merge, freeze one price-only M1G paper-diagnostic protocol before reading outcomes.
-3. Do not evaluate events in the protocol commit and do not derive rules from M1E results.
+1. Review and merge the frozen M1G paper protocol; it contains no event outcome.
+2. Only after merge, run that exact protocol once on the sealed IS snapshots.
+3. If any paper Gate fails, close M1G without tuning and move only to M1H design.
 4. Keep fixed rules, strategy code, Freqtrade backtesting and OOS unauthorized until M1G paper feasibility passes.
 
 M1G's prospective edge is a partial rebound after completed 1h forced-selling
 and urgent-liquidity dislocation. It is not an inversion of M1E, a 15m M1D
 rescue, a shortened daily-panic rule, or an M1A trend variant. No panic
 threshold, target, holding horizon, stop, position size, cooldown or warmup has
-been selected, and no event or return has been computed.
+been selected, and no event or return has been computed. The paper protocol now
+pre-registers a completed 1h decline of at least 2.40%, prior-168h median-based
+return and range expansion, bottom-quartile close and 24h first-event clustering.
 
 Q-01/Q-02 candidate governance merged in PR #44. The
 immutable research order is M1E one-hour volatility-compression expansion,

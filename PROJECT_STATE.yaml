@@ -1,14 +1,18 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T02:05:00Z"
-current_phase: M1G IS-only design pending review
-current_status: m1g_economic_hypothesis_pass_protocol_only_no_strategy_eligible_for_m2
+last_updated_utc: "2026-07-11T02:13:18Z"
+current_phase: M1G paper protocol pending review
+current_status: m1g_paper_protocol_frozen_no_outcome_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M1G IS-only economic hypothesis and non-duplication
     status: economic_hypothesis_pass_paper_protocol_only
     evidence: reports/m1/M1G_IS_ONLY_RULE_DESIGN.md
-    branch: codex/m1g-is-only-rule-design
+    merged_pr: 51
+  - phase: M1G IS-only paper protocol
+    status: frozen_before_result
+    evidence: reports/m1/M1G_IS_PAPER_PROTOCOL.md
+    branch: codex/m1g-paper-protocol
   - phase: M1E-06 IS-only paper feasibility
     status: failed_feasibility
     evidence: reports/m1/M1E_IS_PAPER_FEASIBILITY_REPORT.md
@@ -123,15 +127,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1G-01
-    phase: M1G IS-only economic hypothesis and non-duplication
+  - id: M1G-02
+    phase: M1G IS-only paper protocol
     status: pending_review
-    branch: codex/m1g-is-only-rule-design
+    branch: codex/m1g-paper-protocol
     pr: none
     head_sha: pending
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1G_IS_ONLY_RULE_DESIGN.md
-    blocker: "Only paper-protocol design may follow; event evaluation, fixed rules, strategy code, backtesting and OOS remain unauthorized."
+    evidence: reports/m1/M1G_IS_PAPER_PROTOCOL.md
+    blocker: "Protocol review and merge are required before the one permitted sealed-IS event run; no outcome has been accessed."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -178,7 +182,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge the M1G IS-only economic hypothesis and non-duplication evidence; after merge only a frozen paper-diagnostic protocol may be designed before outcomes are read.
+  - Review and merge the M1G paper protocol frozen before outcomes; only after merge may one sealed-IS diagnostic run execute the exact protocol.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G may enter a separate IS-only design review and diagnostics sequence; no strategy code is authorized.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -245,6 +249,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/M1G_IS_PAPER_PROTOCOL.md
+    phase: M1G paper protocol
+    status: frozen_before_result
+    status_marker: "- Status: frozen_before_result"
   - path: reports/m1/M1G_IS_ONLY_RULE_DESIGN.md
     phase: M1G design
     status: economic_hypothesis_pass_paper_protocol_only
