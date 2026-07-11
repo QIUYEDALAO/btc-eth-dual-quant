@@ -1,10 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T07:11:38Z"
-current_phase: M1G Freqtrade implementation preparation
-current_status: m1g_capability_merged_implementation_and_audit_only_no_m2
+last_updated_utc: "2026-07-11T07:45:53Z"
+current_phase: M1G IS validation protocol preparation
+current_status: m1g_implementation_pass_is_protocol_only_no_m2
 completed_milestones:
+  - phase: M1G Freqtrade implementation and execution audit
+    status: implementation_pass_no_performance_run
+    evidence: reports/m1/M1G_IMPLEMENTATION_STATUS.md
+    branch: codex/m1g-freqtrade-implementation
   - phase: M1G IS-only economic hypothesis and non-duplication
     status: economic_hypothesis_pass_paper_protocol_only
     evidence: reports/m1/M1G_IS_ONLY_RULE_DESIGN.md
@@ -139,15 +143,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1G-05
-    phase: M1G Freqtrade implementation and conservative execution audit
-    status: authorized_not_started
+  - id: M1G-08
+    phase: M1G IS validation protocol freeze
+    status: blocked_until_implementation_merge
     branch: not_created
     pr: none
-    head_sha: d9e43ddf805bbed8100e0596012acb4a84334cee
+    head_sha: pending
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: config/m1g_freqtrade_capability_mapping.json
-    blocker: "Performance backtesting remains blocked until the exact Freqtrade plugin, causal fixtures, and conservative trade-export repricing audit all pass."
+    evidence: reports/m1/M1G_IMPLEMENTATION_STATUS.md
+    blocker: "IS performance remains blocked until implementation PR merge and a separate machine-readable IS protocol is frozen before outcome access."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -194,8 +198,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Implement the exact frozen M1G Freqtrade strategy and mandatory conservative trade-export repricing audit; do not run performance backtesting or access OOS.
-  - Run only causal fixtures, pinned-runtime smoke, lookahead analysis, and recursive analysis before separately freezing an IS validation protocol.
+  - Review and merge the exact M1G Freqtrade implementation, causal/runtime evidence, and conservative trade-export repricing audit.
+  - Only after implementation merge, freeze a separate machine-readable IS validation protocol before running any performance backtest; OOS remains sealed.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G capability review merged in PR #55; exact strategy implementation is authorized, while performance backtesting remains separately gated.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -262,6 +266,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/M1G_IMPLEMENTATION_STATUS.md
+    phase: M1G implementation
+    status: implementation_pass_no_performance_run
+    status_marker: "- Status: implementation_pass_no_performance_run"
   - path: reports/m1/M1G_FREQTRADE_CAPABILITY_REVIEW.md
     phase: M1G Freqtrade capability
     status: capability_pass_with_mandatory_execution_audit
@@ -642,6 +650,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/m1g_implementation_validate.sh
   - bash scripts/m1g_freqtrade_capability_validate.sh
   - bash scripts/m1e_isolator_validate.sh
   - bash scripts/m1e_is_design_validate.sh

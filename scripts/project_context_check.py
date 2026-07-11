@@ -224,6 +224,7 @@ def main() -> int:
         or "m1g_fixed_rule_frozen_preimplementation_no_strategy_eligible_for_m2" in current_status
         or "m1g_freqtrade_capability_audit_required_no_strategy_eligible_for_m2" in current_status
         or "m1g_capability_merged_implementation_and_audit_only_no_m2" in current_status
+        or "m1g_implementation_pass_is_protocol_only_no_m2" in current_status
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "m2" not in current_status and "m1b" not in current_status:

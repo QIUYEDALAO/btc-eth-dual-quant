@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1G Freqtrade implementation preparation.
+- Current phase: M1G IS validation protocol preparation.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -75,6 +75,7 @@ After any task, the agent must update:
 - M1G paper evidence merged in PR #53. The fixed pre-implementation contract uses +1.80% target, -4.00% stop, 24h timeout, 25% equity cap, one open trade and 72h global cooldown. It contains no parameter alternatives and authorizes no backtest until separately merged and implemented.
 - M1G fixed contract merged in PR #54. Freqtrade 2026.6 supports the signal/lifecycle core and all-pair cooldown through `confirm_trade_entry`, but native ROI/stop gap pricing differs materially; every future result must also pass a conservative trade-export execution audit without creating a second strategy engine.
 - M1G capability review merged in PR #55 as `d9e43dd`. Only exact strategy implementation, causal/runtime fixtures, and the mandatory conservative trade-export audit are authorized next; performance backtesting and OOS remain blocked.
+- M1G exact strategy, causal fixtures, conservative repricing audit, pinned lookahead and recursive checks pass on `codex/m1g-freqtrade-implementation`. No performance report was generated; only a separately frozen IS protocol may follow after merge.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.
