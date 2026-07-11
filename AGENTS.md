@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1H paper protocol frozen pending review.
+- Current phase: M1H data qualification then sealed-IS paper feasibility authorized, not started.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -89,6 +89,7 @@ After any task, the agent must update:
 - M1H paper protocol freezes the prior-365-day lower 5% settled-funding event identity, exact post-settlement 5m timing, fixed reaction windows, close-displacement Gates and leakage controls without reading any outcome.
 - MFE is a mandatory path diagnostic only and cannot prove edge or override a failed median 24h close-displacement Gate.
 - This protocol PR authorizes no data qualification, event scan or paper feasibility. After merge, a separately started M1H-03 task may qualify data first and continue to one sealed-IS paper run only if qualification passes.
+- M1H paper protocol merged in PR #63 at `dd4ae5b` after local 11/0 and GitHub 64/64 validation. M1H-03 may now be started as one two-stage task, but qualification must pass before any event scan.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.

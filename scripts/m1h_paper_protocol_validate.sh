@@ -17,9 +17,15 @@ report_state_gate() {
   grep -qE '^- Trial status: declared_unopened$' reports/m1/M1H_PAPER_PROTOCOL.md &&
   grep -qE '^- Event scan executed: no$' reports/m1/M1H_PAPER_PROTOCOL.md &&
   grep -qE '^- Formal strategy returns computed: no$' reports/m1/M1H_PAPER_PROTOCOL.md &&
-  grep -qE '^- OOS opened: no$' reports/m1/M1H_PAPER_PROTOCOL.md &&
-  grep -qE '^current_phase: M1H paper protocol frozen pending review$' PROJECT_STATE.yaml &&
-  grep -qE '^current_status: m1h_paper_protocol_frozen_no_outcome_oos_sealed_no_m2$' PROJECT_STATE.yaml
+  grep -qE '^- OOS opened: no$' reports/m1/M1H_PAPER_PROTOCOL.md || return 1
+
+  if grep -qE '^current_phase: M1H paper protocol frozen pending review$' PROJECT_STATE.yaml; then
+    grep -qE '^current_status: m1h_paper_protocol_frozen_no_outcome_oos_sealed_no_m2$' PROJECT_STATE.yaml
+  elif grep -qE '^current_phase: M1H data qualification then sealed-IS paper feasibility authorized not started$' PROJECT_STATE.yaml; then
+    grep -qE '^current_status: m1h_protocol_merged_m1h03_authorized_not_started_oos_sealed_no_m2$' PROJECT_STATE.yaml
+  else
+    return 1
+  fi
 }
 
 read_only_scan() {
