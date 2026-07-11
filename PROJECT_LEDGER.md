@@ -1208,6 +1208,8 @@ private exchange responses here.
 - Task ID: M1H-02
 - Phase: M1H paper protocol freeze pending review
 - Branch: `codex/m1h-paper-protocol-freeze`
+- PR: #63 open
+- Result commit: `71d1e38b1f3ff41960f3c663a2070976f0049523`
 - Candidate: `FUNDING-EXTREME-SPOT-CONTRARIAN`; registered hash and `declared_unopened` state are unchanged.
 - Event contract: Settled negative funding at or below the same-symbol prior-365-day lower 5% percentile, linearly interpolated and annualized with the M0 per-event interval chain.
 - Timing contract: The observation reference is the exact next expected canonical 5m open strictly after `fundingTime`; missing references are not shifted forward.

@@ -164,8 +164,8 @@ open_work:
     phase: M1H paper protocol freeze
     status: completed_pending_review
     branch: codex/m1h-paper-protocol-freeze
-    pr: none
-    head_sha: pending
+    pr: 63
+    head_sha: 71d1e38b1f3ff41960f3c663a2070976f0049523
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1H_PAPER_PROTOCOL.md
     blocker: "This PR authorizes no data qualification, event scan, paper feasibility, strategy code, returns, OOS or M2."
