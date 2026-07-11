@@ -1117,3 +1117,17 @@ private exchange responses here.
 - Result: `implementation_pass_no_performance_run`; candidate return computed `no`, OOS opened `no`.
 - Next action: After merge, freeze a separate IS validation protocol before any performance run.
 - Safety: No API key, private data, dry-run/live, order, matching or execution/live logic was used.
+
+## 2026-07-11 - M1G Implementation Merged And IS Protocol Frozen
+
+- Date UTC: 2026-07-11T08:00:16Z
+- Task IDs: M1G-05/06/07-MERGED, M1G-08
+- Phase: M1G IS validation protocol review
+- Branch: `codex/m1g-is-validation-protocol`
+- PR: pending
+- Implementation merge: PR #57 merged as `03879c5`; all checks succeeded.
+- Protocol: IS `2020-07-01` through `2024-09-11` exclusive, four fixed costs, 56-trade IS minimum, daily-MTM/benchmark Gates and mandatory native plus conservative audit.
+- Artifact freeze: Strategy, config, audit, fixed contract, runtime evidence and data-authority report are pinned by SHA256.
+- Outcome safety: IS performance run `no`; OOS opened `no`; trial count remains 3.
+- Next action: Merge this pre-result protocol before one fixed IS numerical run.
+- Safety: API keys, private data, dry-run/live, orders, matching, execution/live and M2 remain prohibited.

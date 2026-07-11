@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "status": "frozen_before_is_result",
+  "protocol_id": "M1G-08-IS-VALIDATION-V1",
+  "candidate_id": "M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION",
+  "hypothesis_sha256": "288d3c37b577f6523890155b3ab4e31e4150fea876e8c66bf5c0c69403c4f2fc",
+  "range": {
+    "is_start": "2020-07-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z",
+    "oos_opened": false
+  },
+  "runtime": {
+    "release": "freqtrade 2026.6",
+    "image_digest": "sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6",
+    "signal_timeframe": "1h",
+    "detail_timeframe": "5m",
+    "data_format": "jsongz",
+    "pairs": ["BTC/USDT", "ETH/USDT"],
+    "initial_wallet": "100000.0"
+  },
+  "costs_per_side": {
+    "base": "0.0015",
+    "cost_x2": "0.0030",
+    "stress_a": "0.0040",
+    "stress_b": "0.0055"
+  },
+  "is_gates": {
+    "complete_trades_minimum": 56,
+    "base_total_return_strictly_positive": true,
+    "cost_x2_total_return_strictly_positive": true,
+    "daily_mtm_sharpe_minimum": "1.0",
+    "daily_mtm_psr_minimum": "0.95",
+    "daily_mtm_max_drawdown_maximum": "0.15",
+    "delete_best_three_return_minimum": "0.0",
+    "contiguous_segments": 4,
+    "positive_segments_minimum": 3,
+    "strategy_sharpe_not_below_benchmark": true,
+    "strategy_drawdown_not_worse_than_benchmark": true,
+    "strategy_total_return_strictly_above_benchmark": true,
+    "lookahead_analysis_required": true,
+    "recursive_analysis_required": true,
+    "unexplained_data_gaps_maximum": 0,
+    "native_and_conservative_audit_must_both_pass": true
+  },
+  "diagnostics": {
+    "stress_a_required": true,
+    "stress_b_required": true,
+    "stress_hard_gate": null,
+    "dsr_opened_trial_count": 3,
+    "best_and_worst_trade": true,
+    "annual_and_monthly_distribution": true,
+    "holding_time_and_sleep_periods": true,
+    "return_concentration": true
+  },
+  "benchmark": {
+    "definition": "quarter_btc_quarter_eth_half_cash_monday_open_rebalance",
+    "same_cost_scenario": true,
+    "daily_mtm": true
+  },
+  "audit": {
+    "input": "freqtrade_exported_trade_lifecycle_plus_canonical_5m_ohlc",
+    "signal_selection_allowed": false,
+    "exit_bar_timestamp_must_match": true,
+    "numeric_tolerance": "1e-8"
+  },
+  "artifact_sha256": {
+    "strategy": "31a1efd4e80fb13f5f716450fec5ddf13976f61fb80d71949556e8eca9da36da",
+    "research_config": "eb6377fa186b4077d58dc07592cdd3039be415195bd2119eacd57c58e359168d",
+    "execution_audit": "41f8ad0624a86abb8ff1701acbc1b56c143d6f7a528e4885597731deb66e532c",
+    "fixed_rule_contract": "7adc0a79cfd89d1a6ba8458ddc5257bf5bbc5ce8c501c11b3b0c519741949dc5",
+    "runtime_evidence": "f5cf7955c39b2cab021e701118b840dc8ff3b654399bd6c241334f3aee5c77e2",
+    "data_authority_report": "a09ef1aa7802b81ae8d3e44591cc0c790b00cff9d827f54687e0c42b063d4bcf"
+  },
+  "authorization": {
+    "is_performance_after_merge": true,
+    "parameter_change": false,
+    "oos_access": false,
+    "dry_run": false,
+    "live": false,
+    "m2": false
+  }
+}

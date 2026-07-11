@@ -28,16 +28,16 @@ PR #55 merged as `d9e43dd` with every check successful. The capability decision
 is now canonical: native Freqtrade owns M1G signal selection and trade lifecycle,
 while a mandatory Python audit may only conservatively reprice exported trades.
 
-The exact implementation now passes locally. Freqtrade 2026.6 found zero bias
+The exact implementation merged in PR #57. Freqtrade 2026.6 found zero bias
 across 20 targeted signals and no recursive indicator variance across startup
 windows 170/250/340. The Python audit accepts exported trades only and applies
 the frozen conservative 5m target, stop, gap and timeout semantics.
 
 Immediate sequence:
 
-1. Review and merge the M1G implementation PR with all checks successful.
-2. Freeze a separate machine-readable IS validation protocol, including fixed costs and Gates, before performance outcomes are accessed.
-3. Only after that protocol merges, run the IS performance matrix and independent audit once.
+1. Review and merge the already frozen machine-readable IS protocol with all checks successful.
+2. Only after that protocol merges, run Base, Cost x2, Stress A and Stress B on the sealed IS once.
+3. Apply daily-MTM, benchmark and conservative execution-audit Gates without changing the contract.
 4. Keep OOS sealed unless every frozen IS Gate passes.
 
 The fixed contract is +1.80% target, -4.00% invalidation stop, 24h timeout,
