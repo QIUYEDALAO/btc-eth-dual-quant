@@ -28,11 +28,11 @@ candidates:
     oos_opened: false
     notes: "Research shelf only; may use future clean calendar data if separately approved."
   - id: FUNDING-EXTREME-SPOT-CONTRARIAN
-    status: declared_unopened
+    status: failed_feasibility
     hypothesis: "FUNDING-EXTREME-SPOT-CONTRARIAN: BTC/USDT and ETH/USDT spot; historical funding extremes are sentiment inputs for spot-only contrarian long/cash signals; no futures position and no two-leg execution; declared but unopened."
     sha256: f4caf96502aca9272d58faab20a6e2dc07eea4c69e49d9705272c00a46b814ed
     oos_opened: false
-    notes: "Governance alias M1H. M1E and M1G failed; design review selects only the settlement-aligned negative-funding crowding hypothesis route. No threshold, rule, event, return or OOS was opened."
+    notes: "Governance alias M1H. The frozen sealed-IS paper observation failed close-displacement and concentration Gates. No strategy rule, return or OOS was opened; no parameter rescue is allowed."
   - id: M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION
     status: declared_unopened
     hypothesis: "M1G-1H-PANIC-DISLOCATION-MEAN-REVERSION: BTC/USDT and ETH/USDT Binance spot, long/cash only; completed UTC 1h candles identify forced-selling price dislocations for a separately frozen mean-reversion design; entries may execute no earlier than the next available 5m open; no shorting, leverage, martingale, grid, or loss-adding."

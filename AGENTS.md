@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1H data qualification then sealed-IS paper feasibility authorized, not started.
+- Current phase: M1H failed feasibility; the ADR-0010 BTC/ETH two-asset candidate queue is exhausted.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -61,7 +61,7 @@ After any task, the agent must update:
 - M1E OOS remains sealed. No M1E strategy rule, Freqtrade backtest, candidate return, or opened trial is authorized.
 - ADR-0009 canonical-5m requalification passed and merged in PR #40 with research start `2020-07-01`, zero unresolved canonical conflicts, and pinned Freqtrade 2026.6 `list-data` pass.
 - M1E metadata-only sample budgeting passed and merged in PR #42 with 2191 full, 1533 IS, and 658 sealed OOS days. It authorizes design review only after explicit approval.
-- ADR-0010 freezes the research order as M1E, M1G, then M1H. M1E failed its frozen IS-only paper cost-coverage Gate without opening OOS; M1G and M1H remain unopened, and failure of all three stops BTC/ETH two-asset indicator research.
+- ADR-0010 froze the research order as M1E, M1G, then M1H. All three have now failed their applicable frozen Gates without opening M1G/M1H OOS, so BTC/ETH two-asset indicator research is stopped.
 - The DSR ledger counts three historically opened OOS trials: M1A, M1B, and M1C. No current candidate OOS is open.
 - Q-01/Q-02 governance merged in PR #44. M1E-04 design approval is now granted, while strategy code, Freqtrade backtesting and OOS access remain unauthorized.
 - The user granted current-session automatic approval for sequential research approvals. This removes confirmation pauses only; dependencies, machine Gates, OOS sealing and safety prohibitions remain mandatory.
@@ -90,6 +90,10 @@ After any task, the agent must update:
 - MFE is a mandatory path diagnostic only and cannot prove edge or override a failed median 24h close-displacement Gate.
 - This protocol PR authorizes no data qualification, event scan or paper feasibility. After merge, a separately started M1H-03 task may qualify data first and continue to one sealed-IS paper run only if qualification passes.
 - M1H paper protocol merged in PR #63 at `dd4ae5b` after local 11/0 and GitHub 64/64 validation. M1H-03 may now be started as one two-stage task, but qualification must pass before any event scan.
+- M1H-03A passed public funding lineage, per-event interval, settlement-continuity, canonical 5m and sealed-OOS qualification.
+- The only frozen M1H-03B sealed-IS observation failed: combined/BTC/ETH median 24h close displacement was far below 1.80%, and the maximum single-year episode share exceeded 45%. MFE cannot rescue these failures.
+- M1H remains `declared_unopened`; no strategy return, Freqtrade backtest or OOS value was accessed. M1H fixed rules and implementation are blocked.
+- Future research requires a new product ADR for a broader high-liquidity spot universe. Do not add a fourth BTC/ETH indicator candidate or modify the M1H protocol.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.

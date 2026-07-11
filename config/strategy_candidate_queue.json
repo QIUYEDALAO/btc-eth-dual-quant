@@ -36,7 +36,7 @@
       "alias": "M1H",
       "candidate_id": "FUNDING-EXTREME-SPOT-CONTRARIAN",
       "family": "funding_extreme_spot_contrarian",
-      "status": "declared_unopened",
+      "status": "failed_feasibility",
       "failure_transition": "STOP_BTC_ETH_TWO_ASSET_RESEARCH"
     }
   ],

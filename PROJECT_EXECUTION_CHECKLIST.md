@@ -71,13 +71,14 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1G-11 | M1G OOS opening | blocked | M1G-09/10 pass | not created | Frozen one-shot OOS opening package | Every IS and independent-audit Gate must pass | M1G failed IS; OOS remains sealed and trial count remains 3 |
 | M1H-01 | M1H independent design review | completed | M1G failure evidence merged in PR #59 | PR #61 merged / `5622a10` | Negative settled-funding crowding hypothesis, timing/lineage proof, non-duplication matrix and representability constraints | Exact ledger hash, public lineage, strict post-settlement timing, no rules/returns/OOS and CI pass | none |
 | M1H-02 | M1H paper protocol | completed | M1H-01 merged pass | PR #63 merged / `dd4ae5b` | Frozen funding-tail event identity, timing, path observations, close-displacement Gates and leakage prevention | No event/result access; MFE diagnostic only; local 11/0 and GitHub 64/64 pass | none |
-| M1H-03 | M1H data qualification then IS paper feasibility | authorized_not_started | M1H-02 merged | future branch | Two-stage task: pure funding-data qualification, then at most one sealed-IS paper run if qualification passes | Qualification cannot scan/count events or inspect paths; feasibility uses frozen protocol without parameter changes | task not started; qualification must pass before event scan |
-| M1H-04+ | M1H fixed rules, implementation, IS/OOS and audit | not_authorized | M1H-03 pass and sequential approvals | future branches | Freqtrade strategy and validation chain | Every predecessor Gate passes; zero-mismatch representability before implementation | No paper evidence exists |
+| M1H-03A | M1H public funding-data qualification | completed | M1H-02 merged | `codex/m1h-funding-paper-feasibility` / PR #65 open | Public ZIP lineage, per-event interval, settlement continuity and sealed canonical 5m report | Qualification pass with zero conflicting duplicates, invalid intervals, missing settlements or OOS-value parsing | none |
+| M1H-03B | M1H sealed-IS paper feasibility | failed_feasibility | M1H-03A pass | `codex/m1h-funding-paper-feasibility` / PR #65 open | One frozen funding-tail event/path observation | Fixed sample, close-displacement, year-distribution and invalid-data Gates | Combined/BTC/ETH median 24h close displacement failed 1.80%; 2022 episode share 48.09% exceeded 45% |
+| M1H-04+ | M1H fixed rules, implementation, IS/OOS and audit | blocked | M1H-03B pass required | not created | Freqtrade strategy and validation chain | Every predecessor Gate passes; zero-mismatch representability before implementation | M1H-03B failed; no tuning, strategy, OOS or rescue is allowed |
 
 ## Current Gate
 
-- Authorized work: start M1H-03 as one two-stage task; qualification must pass before any event scan, with no intermediate approval required.
-- Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H -> stop BTC/ETH two-asset indicator research. M1G OOS was never opened; M1H remains unopened.
+- Authorized work: M1H-03 is complete and failed feasibility. Only M0 audit work or a new broader-universe product ADR may follow.
+- Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
 - Active implementation: none. M1H has frozen a pre-outcome event-identification protocol, but no event, strategy, return or OOS has been evaluated.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.

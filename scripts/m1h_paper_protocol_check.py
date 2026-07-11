@@ -226,8 +226,8 @@ def validate_ledger(path: Path = LEDGER_PATH) -> list[str]:
     failures: list[str] = []
     if digest != EXPECTED_HASH or item.get("sha256") != EXPECTED_HASH:
         failures.append("M1H hypothesis hash changed")
-    if item.get("status") != "declared_unopened" or item.get("oos_opened") is not False:
-        failures.append("M1H must remain declared_unopened with sealed OOS")
+    if item.get("status") not in {"declared_unopened", "failed_feasibility"} or item.get("oos_opened") is not False:
+        failures.append("M1H must remain pre-OOS or failed_feasibility with sealed OOS")
     return failures
 
 

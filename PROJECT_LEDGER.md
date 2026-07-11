@@ -528,7 +528,8 @@ private exchange responses here.
 - Phase: P3 M1C historical validation
 - Branch: codex/m1c-btc-eth-rotation-backtest
 - Commit: pending
-- PR: pending
+- PR: #65 open
+- Result commit: `b348126c38e9b22106e5a499a650781c1f159f86`
 - Scope: Freqtrade full history, sealed last-30% OOS, four fixed IS segments, base and cost-x2, concentration, lookahead, recursive, and data-gap evidence.
 - Runtime attempt: GitHub run 29060046050 downloaded the complete public range and calculated the first full backtest, but Freqtrade could not create a nonexistent export subdirectory. No numerical Gate result was claimed. The retry uses unique export filename prefixes in the existing ignored result directory; ranges and thresholds are unchanged.
 - Runtime attempt: GitHub run 29060187324 completed all eight Freqtrade matrix runs and full-range bias checks, but Freqtrade 2026.6 ignored custom export filename prefixes, so the report loader found no labeled archive. No numerical Gate result was claimed. The retry uses official `--notes` metadata for exact run selection; ranges and thresholds remain unchanged.
@@ -1230,3 +1231,18 @@ private exchange responses here.
 - Result: The pre-outcome funding-tail identity, exact post-settlement timing, fixed reaction windows, close-displacement Gates and leakage controls are frozen.
 - Outcome safety: M1H remains `declared_unopened`; no funding event, event count, path result, return or OOS value was accessed.
 - Next action: M1H-03 may be started separately. It must run pure funding-data qualification first and may continue once to sealed-IS paper feasibility only if qualification passes; no intermediate approval is required.
+
+## 2026-07-11 - M1H Funding Qualification Passed And Paper Feasibility Failed
+
+- Date UTC: 2026-07-11T16:45:55Z
+- Task IDs: M1H-03A, M1H-03B
+- Phase: M1H public funding qualification and one frozen sealed-IS paper observation
+- Branch: `codex/m1h-funding-paper-feasibility`
+- PR: pending
+- Qualification: pass; BTCUSDT and ETHUSDT each have 5,145 unique pre-OOS settlements, zero conflicting duplicates, invalid intervals or missing settlements. OOS funding and spot values parsed: no.
+- Canonical spot dependency: 441,215 sealed-IS 5m rows per symbol; 11 known gaps remain explicit and were never filled or shifted.
+- Paper evidence: 131 independent episodes, projected full 187 and sealed-OOS 56; sample Gates passed without reading OOS events or prices.
+- Failure: combined median 24h close displacement was 0.0714%, BTCUSDT 0.0731%, and ETHUSDT 0.0132%, each below the frozen 1.80% Gate. The maximum single-year share was 48.09%, above 45%.
+- MFE disclosure: median 24h MFE was 2.3108%, but the frozen protocol makes MFE diagnostic only and forbids it from overriding close-displacement failure.
+- Decision: `failed_feasibility`; no protocol parameter changed, no strategy rule or return was created, and OOS remains sealed.
+- Next action: Stop the ADR-0010 BTC/ETH two-asset candidate queue. Only M0 audit work or a new broader high-liquidity spot-universe ADR may follow; M2 and all trading remain prohibited.
