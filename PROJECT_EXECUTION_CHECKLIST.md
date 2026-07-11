@@ -71,16 +71,18 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1G-11 | M1G OOS opening | blocked | M1G-09/10 pass | not created | Frozen one-shot OOS opening package | Every IS and independent-audit Gate must pass | M1G failed IS; OOS remains sealed and trial count remains 3 |
 | M1H-01 | M1H independent design review | completed | M1G failure evidence merged in PR #59 | PR #61 merged / `5622a10` | Negative settled-funding crowding hypothesis, timing/lineage proof, non-duplication matrix and representability constraints | Exact ledger hash, public lineage, strict post-settlement timing, no rules/returns/OOS and CI pass | none |
 | M1H-02 | M1H paper protocol | completed | M1H-01 merged pass | PR #63 merged / `dd4ae5b` | Frozen funding-tail event identity, timing, path observations, close-displacement Gates and leakage prevention | No event/result access; MFE diagnostic only; local 11/0 and GitHub 64/64 pass | none |
-| M1H-03A | M1H public funding-data qualification | completed | M1H-02 merged | `codex/m1h-funding-paper-feasibility` / PR #65 open | Public ZIP lineage, per-event interval, settlement continuity and sealed canonical 5m report | Qualification pass with zero conflicting duplicates, invalid intervals, missing settlements or OOS-value parsing | none |
-| M1H-03B | M1H sealed-IS paper feasibility | failed_feasibility | M1H-03A pass | `codex/m1h-funding-paper-feasibility` / PR #65 open | One frozen funding-tail event/path observation | Fixed sample, close-displacement, year-distribution and invalid-data Gates | Combined/BTC/ETH median 24h close displacement failed 1.80%; 2022 episode share 48.09% exceeded 45% |
+| M1H-03A | M1H public funding-data qualification | completed | M1H-02 merged | `codex/m1h-funding-paper-feasibility` / PR #65 merged | Public ZIP lineage, per-event interval, settlement continuity and sealed canonical 5m report | Qualification pass with zero conflicting duplicates, invalid intervals, missing settlements or OOS-value parsing | none |
+| M1H-03B | M1H sealed-IS paper feasibility | failed_feasibility | M1H-03A pass | `codex/m1h-funding-paper-feasibility` / PR #65 merged | One frozen funding-tail event/path observation | Fixed sample, close-displacement, year-distribution and invalid-data Gates | Combined/BTC/ETH median 24h close displacement failed 1.80%; 2022 episode share 48.09% exceeded 45% |
 | M1H-04+ | M1H fixed rules, implementation, IS/OOS and audit | blocked | M1H-03B pass required | not created | Freqtrade strategy and validation chain | Every predecessor Gate passes; zero-mismatch representability before implementation | M1H-03B failed; no tuning, strategy, OOS or rescue is allowed |
+| U-01 | BTC/ETH candidate terminal stop | completed | M1E, M1G and M1H failed applicable frozen Gates | PR #65 merged / `57c2b1c` | Immutable candidate-queue stop | No fourth BTC/ETH indicator candidate; M1G/M1H OOS sealed | none |
+| U-02 | Liquid spot universe ADR | pending | U-01 completed | `codex/adr-0011-liquid-spot-universe-expansion` | Point-in-time Top-15 universe and qualification contract | Design only; no strategy, event, return, OOS or M2 authorization | ADR-0011 not yet merged |
 
 ## Current Gate
 
-- Authorized work: M1H-03 is complete and failed feasibility. Only M0 audit work or a new broader-universe product ADR may follow.
+- Authorized work: ADR-0011 point-in-time liquid-universe design or M0 audit diagnostics only.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active implementation: none. M1H has frozen a pre-outcome event-identification protocol, but no event, strategy, return or OOS has been evaluated.
+- Active implementation: none. M1H produced paper path observations but no strategy return or OOS evidence; the candidate is closed.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

@@ -1,13 +1,15 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T16:52:00Z"
-current_phase: M1H failed feasibility; BTC/ETH two-asset indicator research stopped
-current_status: m1h_failed_feasibility_candidate_queue_exhausted_oos_sealed_no_m2
+last_updated_utc: "2026-07-11T17:23:26Z"
+current_phase: BTC/ETH candidate queue exhausted; liquid-universe ADR authorized
+current_status: btc_eth_candidate_queue_exhausted_liquid_universe_adr_authorized_no_m2
 completed_milestones:
   - phase: M1H sealed-IS paper feasibility
     status: failed_feasibility
     evidence: reports/m1/M1H_IS_PAPER_FEASIBILITY_REPORT.md
+    merged_pr: 65
+    merge_commit: 57c2b1c038b949396999c9735b2c06df76cf61aa
   - phase: M1H public funding-data qualification
     status: pass
     evidence: reports/m1/M1H_FUNDING_DATA_QUALIFICATION_REPORT.md
@@ -167,15 +169,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1H-03-FAILURE-RECORD
-    phase: M1H failed feasibility review
-    status: completed_pending_review
-    branch: codex/m1h-funding-paper-feasibility
-    pr: 65
-    head_sha: b348126c38e9b22106e5a499a650781c1f159f86
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1H_IS_PAPER_FEASIBILITY_REPORT.md
-    blocker: "M1H failed frozen close-displacement and concentration Gates; review and merge the truthful stop record without tuning."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -222,11 +215,10 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - M1H-03A funding-data qualification passed with public ZIP lineage, per-event interval continuity, canonical 5m dependency and sealed OOS.
-  - M1H-03B completed its only frozen sealed-IS paper observation and failed the close-displacement and concentration Gates.
-  - Keep M1H declared_unopened and OOS sealed; no return, strategy rule, Freqtrade backtest or trading lifecycle was produced.
-  - M1E, M1G and M1H have exhausted the ADR-0010 BTC/ETH two-asset candidate queue. Do not add or rescue another indicator candidate in this research space.
-  - Only M0 audit work or a new ADR for a broader high-liquidity spot universe may follow; neither authorizes strategy code, OOS access or M2.
+  - PR #65 merged the truthful M1H failure evidence; M1H remains declared_unopened and its OOS remains sealed.
+  - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
+  - Only M0 audit work or ADR-0011 design for a historically reconstructable high-liquidity USDT spot universe may follow.
+  - ADR-0011 may define point-in-time membership and data qualification only; it cannot authorize a strategy, event scan, return calculation, OOS access or M2.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G capability review merged in PR #55; exact strategy implementation is authorized, while performance backtesting remains separately gated.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -713,6 +705,24 @@ latest_merged_prs:
   - number: 59
     title: Record M1G failed IS validation
     merged_at_utc: "2026-07-11T08:40:23Z"
+  - number: 60
+    title: Close M1G failed validation context
+    merged_at_utc: "2026-07-11T08:48:19Z"
+  - number: 61
+    title: Define M1H independent design review
+    merged_at_utc: "2026-07-11T15:10:06Z"
+  - number: 62
+    title: Close M1H design review context
+    merged_at_utc: "2026-07-11T15:18:03Z"
+  - number: 63
+    title: Freeze M1H paper research protocol
+    merged_at_utc: "2026-07-11T16:12:28Z"
+  - number: 64
+    title: Close M1H paper protocol context
+    merged_at_utc: "2026-07-11T16:28:53Z"
+  - number: 65
+    title: Complete M1H funding qualification and paper feasibility
+    merged_at_utc: "2026-07-11T17:23:26Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

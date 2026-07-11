@@ -13,20 +13,21 @@ protocol or opening OOS.
 - Maximum single-year episode share: 48.09% versus 45% allowed.
 - Median 24h MFE: 2.3108%, disclosed as path evidence only and not a Gate override.
 
-M1H is `failed_feasibility`; M1H fixed rules, strategy implementation,
-backtesting and OOS opening are blocked. M1E, M1G and M1H have now exhausted
-the frozen ADR-0010 BTC/ETH two-asset candidate queue.
+M1H is `failed_feasibility`; PR #65 merged the truthful stop record at
+`57c2b1c`. M1H fixed rules, strategy implementation, backtesting and OOS
+opening are blocked. M1E, M1G and M1H have exhausted the frozen ADR-0010
+BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Complete and merge the truthful M1H-03 failure record.
-2. Continue M0 public dual-source audit diagnostics without private data; or
-3. Create a new product ADR for a broader, historically reconstructable set of high-liquidity USDT spot pairs.
+1. Create ADR-0011 for a broader, historically reconstructable set of high-liquidity USDT spot pairs; or
+2. Continue M0 public dual-source audit diagnostics without private data.
 
-The broader-universe route must first address dynamic membership, listings and
-delistings, survivorship bias, liquidity admission, cross-sectional UTC
-alignment, maximum holdings and concentration. It does not inherit permission
-to write a strategy, access OOS or enter M2.
+ADR-0011 must freeze point-in-time membership, listings and delistings,
+survivorship controls, liquidity admission and cross-sectional UTC alignment.
+It may authorize a later asset-qualification stage only. It does not inherit
+permission to choose a strategy, scan events, calculate returns, access OOS or
+enter M2.
 
 ## Prohibited
 
@@ -35,6 +36,7 @@ to write a strategy, access OOS or enter M2.
 - Do not enter M2.
 - Do not change the M1H percentile, 365-day window, horizons, interval policy, clustering or Gates.
 - Do not add a fourth BTC/ETH indicator candidate or reuse this sealed IS outcome for parameter selection.
+- Do not rescue M1B, M1G or M1H through a broader symbol list.
 - Do not write M1H fixed rules, strategy code, Freqtrade implementation or a backtest.
 - Do not open OOS or increment the DSR opened-trial count.
 - Do not access API keys, private data, private smoke, dry-run/live, orders, cancellation, matching, wallets, trading permissions or `execution/live`.

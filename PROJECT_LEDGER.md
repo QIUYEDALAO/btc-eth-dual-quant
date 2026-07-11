@@ -1238,7 +1238,8 @@ private exchange responses here.
 - Task IDs: M1H-03A, M1H-03B
 - Phase: M1H public funding qualification and one frozen sealed-IS paper observation
 - Branch: `codex/m1h-funding-paper-feasibility`
-- PR: pending
+- PR: #65 merged
+- Merge commit: `57c2b1c038b949396999c9735b2c06df76cf61aa`
 - Qualification: pass; BTCUSDT and ETHUSDT each have 5,145 unique pre-OOS settlements, zero conflicting duplicates, invalid intervals or missing settlements. OOS funding and spot values parsed: no.
 - Canonical spot dependency: 441,215 sealed-IS 5m rows per symbol; 11 known gaps remain explicit and were never filled or shifted.
 - Paper evidence: 131 independent episodes, projected full 187 and sealed-OOS 56; sample Gates passed without reading OOS events or prices.
@@ -1246,3 +1247,13 @@ private exchange responses here.
 - MFE disclosure: median 24h MFE was 2.3108%, but the frozen protocol makes MFE diagnostic only and forbids it from overriding close-displacement failure.
 - Decision: `failed_feasibility`; no protocol parameter changed, no strategy rule or return was created, and OOS remains sealed.
 - Next action: Stop the ADR-0010 BTC/ETH two-asset candidate queue. Only M0 audit work or a new broader high-liquidity spot-universe ADR may follow; M2 and all trading remain prohibited.
+
+## 2026-07-11 - BTC/ETH Candidate Queue Closed
+
+- Date UTC: 2026-07-11T17:23:26Z
+- Task ID: U-01
+- Phase: Candidate-queue terminal governance
+- Evidence: PR #65 merged at `57c2b1c`; M1E, M1G and M1H retain their truthful failure records.
+- Decision: BTC/ETH two-asset indicator research is exhausted. A fourth indicator candidate, parameter rescue, OOS reuse or threshold reduction is prohibited.
+- Safety: M1G and M1H OOS remain sealed; DSR opened-trial count remains three; no strategy is eligible for M2.
+- Next action: ADR-0011 may define a historically reconstructable high-liquidity USDT spot universe and asset qualification contract only. Strategy selection, event scanning, returns and OOS remain unauthorized.
