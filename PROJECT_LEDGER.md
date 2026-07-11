@@ -1266,3 +1266,12 @@ private exchange responses here.
 - Authority: M0 constructs historical membership; Freqtrade may later consume deterministic slices and must not use a current dynamic pairlist as historical truth.
 - Safety: No strategy family, event, signal, return, OOS, API, trading or M2 permission is created.
 - Next action: Merge after contract and project validation; only then may a separate asset/data qualification task start.
+
+## 2026-07-12 - Liquid Universe Qualification Core Implemented
+
+- Task ID: U-03A
+- Branch: `codex/liquid-spot-universe-qualification`
+- Result: Deterministic prior-window ranking, monthly/daily precedence, exclusions, delisting-safe historical membership, exact 5m-to-1h aggregation and canonical hashing are fixture-tested.
+- Evidence status: `implementation_pass_runtime_qualification_pending`; no real broader-universe monthly membership is claimed.
+- Safety: No strategy, event, signal, return, OOS, API or trading logic was added.
+- Next action: Execute the official public archive run. Cross-sectional hypothesis design remains blocked until real qualification evidence passes.

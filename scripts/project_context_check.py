@@ -234,6 +234,7 @@ def main() -> int:
         or "m1h_failed_feasibility_candidate_queue_exhausted_oos_sealed_no_m2" in current_status
         or "btc_eth_candidate_queue_exhausted_liquid_universe_adr_authorized_no_m2" in current_status
         or "liquid_universe_contract_frozen_qualification_only_no_m2" in current_status
+        or "liquid_universe_qualification_runtime_data_pending_no_strategy_no_m2" in current_status
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "m2" not in current_status and "m1b" not in current_status:

@@ -2,6 +2,10 @@
 
 ## Current Decision
 
+The ADR-0011 qualification core is implemented and fixture-validated. No real
+broader-universe archive run has yet qualified a month or symbol, so the report
+is explicitly `implementation_pass_runtime_qualification_pending`.
+
 ADR-0011 is frozen pending review. It defines a monthly point-in-time Top-15
 Binance USDT spot universe using the prior 90 complete UTC days' median daily
 quote volume, 365 complete history days, deterministic symbol tie-break and
@@ -26,7 +30,7 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Validate and merge ADR-0011; then create a separate asset/data qualification task; or
+1. Run the official public archive qualification and replace the pending report with real point-in-time evidence; or
 2. Continue M0 public dual-source audit diagnostics without private data.
 
 ADR-0011 must freeze point-in-time membership, listings and delistings,

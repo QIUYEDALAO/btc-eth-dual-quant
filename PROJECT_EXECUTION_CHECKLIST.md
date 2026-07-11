@@ -75,8 +75,9 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1H-03B | M1H sealed-IS paper feasibility | failed_feasibility | M1H-03A pass | `codex/m1h-funding-paper-feasibility` / PR #65 merged | One frozen funding-tail event/path observation | Fixed sample, close-displacement, year-distribution and invalid-data Gates | Combined/BTC/ETH median 24h close displacement failed 1.80%; 2022 episode share 48.09% exceeded 45% |
 | M1H-04+ | M1H fixed rules, implementation, IS/OOS and audit | blocked | M1H-03B pass required | not created | Freqtrade strategy and validation chain | Every predecessor Gate passes; zero-mismatch representability before implementation | M1H-03B failed; no tuning, strategy, OOS or rescue is allowed |
 | U-01 | BTC/ETH candidate terminal stop | completed | M1E, M1G and M1H failed applicable frozen Gates | PR #65 merged / `57c2b1c` | Immutable candidate-queue stop | No fourth BTC/ETH indicator candidate; M1G/M1H OOS sealed | none |
-| U-02 | Liquid spot universe ADR | in_progress | U-01 completed | `codex/adr-0011-liquid-spot-universe-expansion` | Point-in-time Top-15 universe and qualification contract | Design only; no strategy, event, return, OOS or M2 authorization | Pending PR review and CI |
-| U-03 | Liquid universe asset qualification | not_authorized | U-02 merged | future branch | Historical monthly membership and data-quality evidence | Point-in-time, no survivorship bias, 5m/1h qualification | ADR-0011 not merged |
+| U-02 | Liquid spot universe ADR | completed | U-01 completed | PR #67 merged | Point-in-time Top-15 universe and qualification contract | Design only; no strategy, event, return, OOS or M2 authorization | none |
+| U-03A | Liquid universe qualification core | completed | U-02 merged | `codex/liquid-spot-universe-qualification` | Deterministic ranking, precedence, exclusion, aggregation and hash tooling | Fixture and safety validation pass | none |
+| U-03B | Liquid universe public archive run | blocked | U-03A | same task or data-run branch | Historical monthly membership and data-quality evidence | Point-in-time, no survivorship bias, official daily/5m evidence | Official broader-universe archive run not executed |
 
 ## Current Gate
 

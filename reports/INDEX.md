@@ -1,6 +1,7 @@
 # Reports Index
 
-| `docs/decisions/ADR-0011-liquid-spot-universe-expansion.md` | liquid spot universe governance | accepted_for_data_qualification_only_pending_review | Freezes point-in-time monthly Top-15 membership without selecting a strategy, scanning outcomes, calculating returns or opening OOS. | no |
+| `docs/decisions/ADR-0011-liquid-spot-universe-expansion.md` | liquid spot universe governance | accepted_for_data_qualification_only / PR #67 merged | Freezes point-in-time monthly Top-15 membership without selecting a strategy, scanning outcomes, calculating returns or opening OOS. | no |
+| `reports/m0/LIQUID_SPOT_UNIVERSE_QUALIFICATION_REPORT.md` | liquid spot universe qualification | implementation_pass_runtime_qualification_pending | Deterministic qualification core is tested; no historical archive run or qualified membership is claimed yet. | no |
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
