@@ -528,8 +528,7 @@ private exchange responses here.
 - Phase: P3 M1C historical validation
 - Branch: codex/m1c-btc-eth-rotation-backtest
 - Commit: pending
-- PR: #49 open
-- Commit: `c107190`
+- PR: pending
 - Scope: Freqtrade full history, sealed last-30% OOS, four fixed IS segments, base and cost-x2, concentration, lookahead, recursive, and data-gap evidence.
 - Runtime attempt: GitHub run 29060046050 downloaded the complete public range and calculated the first full backtest, but Freqtrade could not create a nonexistent export subdirectory. No numerical Gate result was claimed. The retry uses unique export filename prefixes in the existing ignored result directory; ranges and thresholds are unchanged.
 - Runtime attempt: GitHub run 29060187324 completed all eight Freqtrade matrix runs and full-range bias checks, but Freqtrade 2026.6 ignored custom export filename prefixes, so the report loader found no labeled archive. No numerical Gate result was claimed. The retry uses official `--notes` metadata for exact run selection; ranges and thresholds remain unchanged.
@@ -1001,7 +1000,8 @@ private exchange responses here.
 - Task ID: M1E-06
 - Phase: M1E IS-only paper feasibility
 - Branch: `codex/m1e-is-paper-feasibility`
-- PR: pending
+- PR: #49 open
+- Commit: `c107190`
 - Protocol: Frozen in commits `03b8df8` and `66fd9a7` before outcome access; no parameter search or alternate rule was run.
 - Evidence: 177 raw candidates, 139 complete 24h-cluster representatives, projected full/OOS counts 198/59, and no right-censored observation.
 - Passed Gates: projected sample counts, both-symbol event counts, three-year repetition, year concentration and quarantine exclusion.
