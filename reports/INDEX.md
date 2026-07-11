@@ -1,5 +1,7 @@
 # Reports Index
 
+| `docs/decisions/ADR-0011-liquid-spot-universe-expansion.md` | liquid spot universe governance | accepted_for_data_qualification_only_pending_review | Freezes point-in-time monthly Top-15 membership without selecting a strategy, scanning outcomes, calculating returns or opening OOS. | no |
+
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
 | `reports/m1/M1H_IS_PAPER_FEASIBILITY_REPORT.md` | M1H sealed-IS paper feasibility | failed_feasibility / PR #65 merged | The one frozen observation had sufficient projected episodes but failed combined/BTC/ETH 24h close-displacement and single-year concentration Gates. MFE remained diagnostic only; OOS stayed sealed. | no |
