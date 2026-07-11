@@ -1283,3 +1283,13 @@ private exchange responses here.
 - Blocker: 151 selected symbol-months contain at least one incomplete 5m hour. They have not yet been proven as common exchange outages.
 - Decision: Qualification remains blocked; no fill, interpolation or strategy authorization is allowed.
 - Next action: Use official cross-symbol and archive evidence to classify each incomplete observation. Preserve the frozen universe contract and rankings.
+
+## 2026-07-12 - Liquid Universe Gap Attribution Completed
+
+- Task ID: U-03C
+- Branch / PR: `codex/liquid-spot-universe-qualification` / #68
+- Scope correction: The original 151 count represented affected symbol-months. Exact timestamp expansion produced 227 contiguous gap runs.
+- Global evidence: 225 per-symbol runs collapse to 15 unique windows and meet the frozen >=80% synchronous-member threshold; they are quarantined without synthetic bars.
+- Symbol-specific evidence: LUNAUSDT 2022-05 and RNDRUSDT 2024-07 terminate in their official monthly ZIP while 14 peers remain present. Each symbol-month is isolated without replacement.
+- Processing/unresolved: zero / zero.
+- Decision: Universe data qualification is `pass_with_quarantine` pending PR review. Strategy design, outcomes, backtesting, OOS and M2 remain unauthorized.

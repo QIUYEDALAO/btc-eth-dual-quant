@@ -29,6 +29,18 @@ def validate(data: dict) -> list[str]:
     if authority.get("daily_primary") != "official_monthly_zip" or authority.get("daily_supplement") != "official_daily_zip_fill_missing_only": failures.append("ZIP authority changed")
     if authority.get("rest_role") != "sampled_evidence_never_overwrite" or authority.get("interpolation_allowed") is not False: failures.append("evidence or interpolation policy changed")
     if authority.get("current_exchange_info_is_historical_authority") is not False: failures.append("current exchangeInfo cannot be historical authority")
+    policy = data.get("gap_handling_policy", {})
+    expected_policy = {
+        "exchange_wide_documented_or_synchronous_outage": "quarantine_isolate",
+        "synchronous_outage_minimum_symbols": 2,
+        "synchronous_outage_minimum_fraction": 0.8,
+        "symbol_specific_confirmed_archive_gap": "quarantine_isolate_symbol_month_without_replacement",
+        "symbol_specific_unexplained_gap": "blocked_unresolved",
+        "processing_error": "blocked_until_fixed_and_revalidated",
+        "manual_symbol_deletion_allowed": False,
+        "synthetic_fill_or_interpolation_allowed": False,
+    }
+    if policy != expected_policy: failures.append("gap handling policy changed")
     categories = set(data.get("exclusions", {}).get("categories", []))
     if categories != {"stable_value", "fiat_pegged", "leveraged_token", "wrapped_or_pegged_duplicate"}: failures.append("exclusion categories changed")
     auth = data.get("authorizations", {})

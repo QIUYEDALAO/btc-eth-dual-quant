@@ -1,13 +1,18 @@
 # Liquid Spot Universe Qualification Report
 
-- Status: blocked
+- Status: pass
 - Actual range: 2020-01-01 through 2026-06-30
 - Historical symbols discovered: 676
 - Monthly memberships: 78
 - Membership rows: 1170
-- Qualified 5m symbol-months: 1019
-- Derived 1h bars: 803652
-- Blockers: 151
+- Clean 5m symbol-months: 1019
+- Global-outage quarantined symbol-months: 149
+- Symbol-month exclusions without replacement: 2
+- Complete derived 1h symbol-bars: 852930
+- Quarantined incomplete 1h symbol-bars: 1350
+- Blockers: 0
+- Gap attribution: pass_with_quarantine
+- Unresolved gaps: 0
 - Membership hash: 5099d58f7970a091d09ea15572f64a0eeb1e668a23ce8d0ec7123cd6df918114
 - Strategy/events/signals/returns computed: no
 - OOS accessed: no
@@ -96,7 +101,11 @@
 - 2026-05: BTCUSDT, ETHUSDT, SOLUSDT, XRPUSDT, DOGEUSDT, BNBUSDT, ZECUSDT, PAXGUSDT, TRXUSDT, PEPEUSDT, ADAUSDT, SUIUSDT, TAOUSDT, LINKUSDT, AVAXUSDT
 - 2026-06: BTCUSDT, ETHUSDT, SOLUSDT, USD1USDT, XRPUSDT, DOGEUSDT, ZECUSDT, BNBUSDT, TRXUSDT, TAOUSDT, SUIUSDT, PEPEUSDT, ADAUSDT, PAXGUSDT, LINKUSDT
 
-## Blockers
+## Historical Pre-Attribution Gap Observations
+
+The following 151 symbol-month observations triggered the original conservative
+block. The detailed timestamp-level disposition is recorded in
+`reports/m0/LIQUID_SPOT_UNIVERSE_GAP_ATTRIBUTION_REPORT.md`; none remains unresolved.
 
 - ADAUSDT:2020-02 one hour requires exactly twelve 5m bars
 - ADAUSDT:2020-03 one hour requires exactly twelve 5m bars
