@@ -2,6 +2,13 @@
 
 ## Current Decision
 
+The ADR-0011 public archive run discovered 676 historical USDT spot symbols and
+rebuilt 78 monthly Top-15 snapshots with 1,170 membership rows. All 151 original
+blocked symbol-month observations are attributed: 15 unique synchronous Binance
+outage windows produced 225 per-symbol gap runs, while LUNAUSDT 2022-05 and
+RNDRUSDT 2024-07 are isolated without replacement. Processing errors and
+unresolved gaps are zero. Qualification is `pass_with_quarantine`.
+
 ADR-0011 is frozen pending review. It defines a monthly point-in-time Top-15
 Binance USDT spot universe using the prior 90 complete UTC days' median daily
 quote volume, 365 complete history days, deterministic symbol tie-break and
@@ -26,8 +33,11 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Validate and merge ADR-0011; then create a separate asset/data qualification task; or
+1. Review PR #68 and require all CI checks to pass before merge; or
 2. Continue M0 public dual-source audit diagnostics without private data.
+
+This qualification pass does not authorize a cross-sectional hypothesis,
+strategy code, event scan, returns, OOS, backtesting or M2.
 
 ADR-0011 must freeze point-in-time membership, listings and delistings,
 survivorship controls, liquidity admission and cross-sectional UTC alignment.

@@ -17,5 +17,9 @@ class LiquidUniverseContractTests(unittest.TestCase):
         changed = copy.deepcopy(BASE); changed["data_authority"]["current_exchange_info_is_historical_authority"] = True; changed["canonical_hash"] = canonical_hash(changed)
         self.assertTrue(validate(changed))
     def test_hash_is_deterministic(self): self.assertEqual(canonical_hash(BASE), canonical_hash(copy.deepcopy(BASE)))
+    def test_gap_policy_forbids_manual_deletion_and_synthetic_fill(self):
+        for key in ("manual_symbol_deletion_allowed", "synthetic_fill_or_interpolation_allowed"):
+            changed=copy.deepcopy(BASE); changed["gap_handling_policy"][key]=True; changed["canonical_hash"]=canonical_hash(changed)
+            self.assertTrue(validate(changed))
 
 if __name__ == "__main__": unittest.main()

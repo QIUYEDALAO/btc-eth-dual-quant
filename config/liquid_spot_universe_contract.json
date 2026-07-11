@@ -29,6 +29,16 @@
     "interpolation_allowed": false,
     "current_exchange_info_is_historical_authority": false
   },
+  "gap_handling_policy": {
+    "exchange_wide_documented_or_synchronous_outage": "quarantine_isolate",
+    "synchronous_outage_minimum_symbols": 2,
+    "synchronous_outage_minimum_fraction": 0.8,
+    "symbol_specific_confirmed_archive_gap": "quarantine_isolate_symbol_month_without_replacement",
+    "symbol_specific_unexplained_gap": "blocked_unresolved",
+    "processing_error": "blocked_until_fixed_and_revalidated",
+    "manual_symbol_deletion_allowed": false,
+    "synthetic_fill_or_interpolation_allowed": false
+  },
   "asset_roles": {
     "BTC": ["eligible_trade_asset", "market_regime_benchmark", "risk_benchmark"],
     "ETH": ["eligible_trade_asset", "market_regime_benchmark", "risk_benchmark"]
@@ -44,5 +54,5 @@
     "m2": false,
     "api_or_trading": false
   },
-  "canonical_hash": "b61d766dcf864696f8cbcf07a38c9a8aa7a9c44a6701fe7956fd06bdfecbc0f8"
+  "canonical_hash": "6867331c23f88db75e06f95f24caf4f352f453449a1503d79b597597d13ef3e2"
 }

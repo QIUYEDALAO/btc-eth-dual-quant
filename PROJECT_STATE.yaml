@@ -1,10 +1,16 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T17:23:26Z"
-current_phase: ADR-0011 liquid spot universe contract frozen pending review
-current_status: liquid_universe_contract_frozen_qualification_only_no_m2
+last_updated_utc: "2026-07-12T00:00:00Z"
+current_phase: Liquid universe qualification passed with quarantined gaps pending PR review
+current_status: liquid_universe_qualification_pass_gap_attributed_no_strategy_no_m2
 completed_milestones:
+  - phase: Liquid spot universe gap attribution
+    status: pass_with_quarantine
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_GAP_ATTRIBUTION_REPORT.md
+  - phase: Liquid spot universe public qualification
+    status: pass
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_QUALIFICATION_REPORT.md
   - phase: M1H sealed-IS paper feasibility
     status: failed_feasibility
     evidence: reports/m1/M1H_IS_PAPER_FEASIBILITY_REPORT.md
@@ -181,7 +187,7 @@ open_work:
 active_decisions:
   - id: ADR-0011
     decision: Build a monthly point-in-time Top-15 Binance USDT spot universe from prior public evidence.
-    status: accepted_for_data_qualification_only_pending_review
+    status: accepted_for_data_qualification_only
     evidence: docs/decisions/ADR-0011-liquid-spot-universe-expansion.md
   - id: ADR-0010
     decision: Freeze the M1E, M1G, M1H candidate queue and common validation gates before any new rule design.
@@ -219,6 +225,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - Review and merge PR #68 as the truthful data-qualification record after all checks pass.
+  - This task does not authorize cross-sectional hypothesis design, outcomes, returns, OOS or M2.
   - ADR-0011 freezes monthly Top 15 by prior-90-day median daily quote volume, 365-day history, deterministic tie-break and conservative exclusions.
   - Only asset/data qualification may follow after ADR-0011 merges; no strategy family, event scan, return calculation, OOS or M2 is authorized.
   - PR #65 merged the truthful M1H failure evidence; M1H remains declared_unopened and its OOS remains sealed.

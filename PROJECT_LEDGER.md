@@ -1266,3 +1266,30 @@ private exchange responses here.
 - Authority: M0 constructs historical membership; Freqtrade may later consume deterministic slices and must not use a current dynamic pairlist as historical truth.
 - Safety: No strategy family, event, signal, return, OOS, API, trading or M2 permission is created.
 - Next action: Merge after contract and project validation; only then may a separate asset/data qualification task start.
+
+## 2026-07-12 - Liquid Universe Qualification Core Implemented
+
+- Task ID: U-03A
+- Branch: `codex/liquid-spot-universe-qualification`
+- Result: Deterministic prior-window ranking, monthly/daily precedence, exclusions, delisting-safe historical membership, exact 5m-to-1h aggregation and canonical hashing are fixture-tested.
+- Evidence status: `implementation_pass_runtime_qualification_pending`; no real broader-universe monthly membership is claimed.
+- Safety: No strategy, event, signal, return, OOS, API or trading logic was added.
+- Next action: Execute the official public archive run. Cross-sectional hypothesis design remains blocked until real qualification evidence passes.
+
+## 2026-07-12 - Liquid Universe Public Qualification Blocked
+
+- Task ID: U-03B
+- Evidence: 676 historical symbols, 78 effective months, 1,170 membership rows, 1,019 qualified 5m symbol-months and 803,652 derived 1h bars.
+- Blocker: 151 selected symbol-months contain at least one incomplete 5m hour. They have not yet been proven as common exchange outages.
+- Decision: Qualification remains blocked; no fill, interpolation or strategy authorization is allowed.
+- Next action: Use official cross-symbol and archive evidence to classify each incomplete observation. Preserve the frozen universe contract and rankings.
+
+## 2026-07-12 - Liquid Universe Gap Attribution Completed
+
+- Task ID: U-03C
+- Branch / PR: `codex/liquid-spot-universe-qualification` / #68
+- Scope correction: The original 151 count represented affected symbol-months. Exact timestamp expansion produced 227 contiguous gap runs.
+- Global evidence: 225 per-symbol runs collapse to 15 unique windows and meet the frozen >=80% synchronous-member threshold; they are quarantined without synthetic bars.
+- Symbol-specific evidence: LUNAUSDT 2022-05 and RNDRUSDT 2024-07 terminate in their official monthly ZIP while 14 peers remain present. Each symbol-month is isolated without replacement.
+- Processing/unresolved: zero / zero.
+- Decision: Universe data qualification is `pass_with_quarantine` pending PR review. Strategy design, outcomes, backtesting, OOS and M2 remain unauthorized.
