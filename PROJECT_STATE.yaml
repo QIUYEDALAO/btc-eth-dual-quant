@@ -1,10 +1,16 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T16:12:28Z"
-current_phase: M1H data qualification then sealed-IS paper feasibility authorized not started
-current_status: m1h_protocol_merged_m1h03_authorized_not_started_oos_sealed_no_m2
+last_updated_utc: "2026-07-11T16:45:55Z"
+current_phase: M1H failed feasibility; BTC/ETH two-asset indicator research stopped
+current_status: m1h_failed_feasibility_candidate_queue_exhausted_oos_sealed_no_m2
 completed_milestones:
+  - phase: M1H sealed-IS paper feasibility
+    status: failed_feasibility
+    evidence: reports/m1/M1H_IS_PAPER_FEASIBILITY_REPORT.md
+  - phase: M1H public funding-data qualification
+    status: pass
+    evidence: reports/m1/M1H_FUNDING_DATA_QUALIFICATION_REPORT.md
   - phase: M1H paper research protocol
     status: frozen_before_result
     evidence: reports/m1/M1H_PAPER_PROTOCOL.md
@@ -207,10 +213,11 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - M1H paper protocol merged in PR #63 with all 64 checks successful.
-  - Keep M1H declared_unopened; no event, return, strategy rule or OOS value has been read.
-  - "M1H-03 is authorized but not started: perform data qualification first and only then one sealed-IS paper-feasibility run in the same task."
-  - Data qualification may inspect lineage, timestamps, per-event intervals, settlement availability, missing/duplicates, timezone and completeness only; it may not scan or count events.
+  - M1H-03A funding-data qualification passed with public ZIP lineage, per-event interval continuity, canonical 5m dependency and sealed OOS.
+  - M1H-03B completed its only frozen sealed-IS paper observation and failed the close-displacement and concentration Gates.
+  - Keep M1H declared_unopened and OOS sealed; no return, strategy rule, Freqtrade backtest or trading lifecycle was produced.
+  - M1E, M1G and M1H have exhausted the ADR-0010 BTC/ETH two-asset candidate queue. Do not add or rescue another indicator candidate in this research space.
+  - Only M0 audit work or a new ADR for a broader high-liquidity spot universe may follow; neither authorizes strategy code, OOS access or M2.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G capability review merged in PR #55; exact strategy implementation is authorized, while performance backtesting remains separately gated.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -277,6 +284,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/M1H_IS_PAPER_FEASIBILITY_REPORT.md
+    phase: M1H sealed-IS paper feasibility
+    status: failed_feasibility
+    status_marker: "- Status: failed_feasibility"
+  - path: reports/m1/M1H_FUNDING_DATA_QUALIFICATION_REPORT.md
+    phase: M1H public funding-data qualification
+    status: pass
+    status_marker: "- Status: pass"
   - path: reports/m1/M1H_PAPER_PROTOCOL.md
     phase: M1H paper protocol
     status: frozen_before_result

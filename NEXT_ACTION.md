@@ -2,36 +2,41 @@
 
 ## Current Decision
 
-M1G remains closed as `failed_validation`. M1H remains `declared_unopened`,
-and its pre-outcome paper protocol merged in PR #63 at `dd4ae5b`:
+M1H-03 is complete. Public funding-data qualification passed, then the one
+frozen sealed-IS paper observation failed feasibility without changing the
+protocol or opening OOS.
 
-- Event identity: settled negative funding at or below the same-symbol prior-365-day lower 5% tail, with per-event interval annualization.
-- Timing: settlement first, then the exact next expected canonical 5m open strictly after `fundingTime`.
-- Observation: fixed 1/2/4/8/12/24-hour market-reaction windows only.
-- Paper Gate: median 24h close displacement, not MFE alone; MFE/MAE/recovery remain mandatory path diagnostics.
-- Non-duplication: no spot panic trigger and no funding carry, basis, hedge, perpetual short or two-leg logic.
-- Leakage: event identity, windows, clustering and interval policy cannot change from results without a new ADR.
+- Independent market episodes: 131.
+- Projected full / sealed-OOS episodes: 187 / 56.
+- Combined median 24h close displacement: 0.0714% versus 1.80% required.
+- BTCUSDT / ETHUSDT median 24h close displacement: 0.0731% / 0.0132%.
+- Maximum single-year episode share: 48.09% versus 45% allowed.
+- Median 24h MFE: 2.3108%, disclosed as path evidence only and not a Gate override.
 
-No historical event, event count, path result, return or OOS value has been read.
+M1H is `failed_feasibility`; M1H fixed rules, strategy implementation,
+backtesting and OOS opening are blocked. M1E, M1G and M1H have now exhausted
+the frozen ADR-0010 BTC/ETH two-asset candidate queue.
 
-## Immediate Sequence
+## Allowed Next Work
 
-1. Start M1H-03 on a new branch; it is authorized but not yet executed.
-2. Run pure funding-data qualification before loading any candidate event outcome.
-3. Qualification may inspect only lineage, timestamps, per-event intervals, settlement availability, missing/duplicates, timezone and completeness.
-4. If qualification fails, stop without event scanning or feasibility analysis.
-5. If qualification passes, the same task may proceed once to sealed-IS paper feasibility without another intermediate approval.
-6. Any frozen Gate failure closes M1H without tuning; failure stops BTC/ETH two-asset indicator research and requires a new ADR for a broader liquid spot universe.
+1. Complete and merge the truthful M1H-03 failure record.
+2. Continue M0 public dual-source audit diagnostics without private data; or
+3. Create a new product ADR for a broader, historically reconstructable set of high-liquidity USDT spot pairs.
 
-## Boundaries
+The broader-universe route must first address dynamic membership, listings and
+delistings, survivorship bias, liquidity admission, cross-sectional UTC
+alignment, maximum holdings and concentration. It does not inherit permission
+to write a strategy, access OOS or enter M2.
 
+## Prohibited
+
+- Freqtrade-first remains the architecture for any future single-leg research.
 - No strategy is eligible for M2.
 - Do not enter M2.
-- Freqtrade-first remains the architecture: Freqtrade owns future single-leg lifecycle and return evidence; Python may only audit timing, metrics and exported evidence.
-- Do not create M1H strategy code, a backtest runner, performance audit or second strategy engine. M1H-03 may implement only the frozen IS paper-observation runner after qualification passes.
-- Do not access OOS, private data, API keys, private smoke, dry-run/live, orders, cancellation, matching, wallets, trading permissions or `execution/live`.
+- Do not change the M1H percentile, 365-day window, horizons, interval policy, clustering or Gates.
+- Do not add a fourth BTC/ETH indicator candidate or reuse this sealed IS outcome for parameter selection.
+- Do not write M1H fixed rules, strategy code, Freqtrade implementation or a backtest.
+- Do not open OOS or increment the DSR opened-trial count.
+- Do not access API keys, private data, private smoke, dry-run/live, orders, cancellation, matching, wallets, trading permissions or `execution/live`.
 - Do not commit raw, DuckDB, Freqtrade runtime data, logs, SQLite, `.env` or private payloads.
-
-The M0 public dual-source audit remains a separate blocker. The future M1H-03
-qualification step must fail closed on funding lineage or interval defects and
-must not weaken that audit.
+- M2 remains blocked and no strategy is approved for trading.
