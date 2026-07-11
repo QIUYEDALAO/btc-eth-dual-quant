@@ -9,6 +9,7 @@ completed_milestones:
     status: local_pass_pending_review
     evidence: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
     branch: codex/candidate-queue-common-gates
+    pr: 44
   - phase: M1E metadata-only sample budget
     status: sample_budget_pass_design_only
     evidence: reports/m1/M1E_1H_SAMPLE_BUDGET_REPORT.md
@@ -111,8 +112,8 @@ open_work:
     phase: candidate queue and common validation gates
     status: local_pass_pending_review
     branch: codex/candidate-queue-common-gates
-    pr: none
-    head_sha: pending_commit
+    pr: 44
+    head_sha: aaab962c09ae53f24b54a438ffc65a4a0216c598
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
     blocker: "Merge governance evidence before separately approving M1E IS-only rule design; strategy code, backtesting, and OOS remain unauthorized."

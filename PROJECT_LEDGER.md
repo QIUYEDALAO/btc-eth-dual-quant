@@ -923,7 +923,8 @@ private exchange responses here.
 - Task IDs: Q-01, Q-02
 - Phase: research candidate governance
 - Branch: `codex/candidate-queue-common-gates`
-- PR: pending
+- PR: #44 open
+- Commit: `aaab962c09ae53f24b54a438ffc65a4a0216c598`
 - Decision: ADR-0010 freezes M1E -> M1G -> M1H; M1H aliases the existing `FUNDING-EXTREME-SPOT-CONTRARIAN` trial and is not duplicated.
 - Trial accounting: M1A, M1B, and M1C are the three historical OOS-opened trials used by DSR. M1D, M1E, M1G, daily panic, and M1H remain unopened.
 - Common Gates: Base 0.15%, Cost x2 0.30%, Stress A 0.40%, Stress B 0.55% per side; sealed final 30% OOS; 1800/540 calendar minimum; 80/20 completed trades; OOS daily-MTM Sharpe 1.0; PSR 0.95; MaxDD 15%; positive Base/Cost-x2 full and OOS returns; delete-best-three nonnegative; benchmark, bias, and data-quality checks.
