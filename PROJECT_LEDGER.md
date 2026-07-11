@@ -975,7 +975,8 @@ private exchange responses here.
 - Task ID: M1E-05
 - Phase: M1E IS-only data isolation
 - Branch: `codex/m1e-is-data-isolator`
-- PR: pending
+- PR: #47 open
+- Commit: `7adaf3f60fbcbc8e0e3ef91307b247b68a883564`
 - Evidence: BTC/ETH each contain 36,763 isolated 1h bars and 9,181 isolated 4h bars from 2020-07-01 through 2024-09-10. Each dataset has 11 gaps and 12 continuous segments.
 - OOS safety: Rows at or after 2024-09-11 are not exposed to the isolator and their OHLC fields are not parsed; candidate evaluated `no`, returns computed `no`, OOS opened `no`.
 - Runtime artifacts: IS snapshots and detailed manifest remain ignored under storage/duckdb and storage/logs.

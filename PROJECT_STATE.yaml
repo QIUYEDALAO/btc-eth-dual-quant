@@ -9,6 +9,7 @@ completed_milestones:
     status: local_pass_pending_review
     evidence: reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md
     branch: codex/m1e-is-data-isolator
+    pr: 47
   - phase: M1E-04 economic hypothesis and non-duplication
     status: completed
     evidence: reports/m1/M1E_IS_ONLY_RULE_DESIGN.md
@@ -119,8 +120,8 @@ open_work:
     phase: M1E IS-only data isolation review
     status: local_pass_pending_review
     branch: codex/m1e-is-data-isolator
-    pr: none
-    head_sha: pending_commit
+    pr: 47
+    head_sha: 7adaf3f60fbcbc8e0e3ef91307b247b68a883564
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md
     blocker: "Merge M1E-05 before M1E-06 paper diagnostics; fixed rules, strategy code, backtesting, and OOS remain unauthorized."
