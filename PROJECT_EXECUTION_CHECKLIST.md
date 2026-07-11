@@ -44,7 +44,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | Q-02 | Common validation governance | completed | Q-01 | `codex/candidate-queue-common-gates` / PR #44 merged | Fixed costs, sealed OOS, daily-MTM, PSR, drawdown, concentration, benchmark and no-rescue policy | Machine contract rejects lowered Gates or enabled downstream authorization | none; no backtest or OOS authorized |
 | M1E-04 | M1E economic hypothesis | completed | M1E-03 and Q-01/Q-02 merged; user approval granted | `codex/m1e-is-only-rule-design` / PR #46 merged | IS-only economic hypothesis and non-duplication review | Hypothesis/hash, failure regimes, IS boundary, no M1A rescue, no parameter selection | none |
 | M1E-05 | M1E IS data isolator | completed | M1E-04 merged pass | `codex/m1e-is-data-isolator` / PR #47 merged | Metadata-locked canonical 1h/4h IS reader and OOS rejection tests | Reject timestamps at or after 2024-09-11, future/incomplete bars and expose gap rewarm age | none |
-| M1E-06 | M1E paper feasibility | failed_feasibility | M1E-05 merged pass | `codex/m1e-is-paper-feasibility` / PR #49 open | Frozen protocol, IS-only frequency, displacement, MAE/MFE, cost coverage and sample projection | Projected samples and distribution passed; combined/BTC/ETH median 24h MFE each failed fixed 1.80% Gate | M1E stops before rule contract; OOS remains sealed |
+| M1E-06 | M1E paper feasibility | failed_feasibility | M1E-05 merged pass | `codex/m1e-is-paper-feasibility` / PR #49 merged | Frozen protocol, IS-only frequency, displacement, MAE/MFE, cost coverage and sample projection | Projected samples and distribution passed; combined/BTC/ETH median 24h MFE each failed fixed 1.80% Gate | M1E stops before rule contract; OOS remains sealed |
 | M1E-07 | M1E fixed rule contract | blocked | M1E-06 pass | not created | Immutable rule YAML/JSON and hash | No ranges, alternatives, hyperopt or OOS-derived choice | M1E-06 failed_feasibility |
 | M1E-08 | M1E Freqtrade strategy | not_authorized | M1E-07 pass | future branch | Spot long/cash strategy plugin | Fixed contract only; no order or execution module | M1E-07 not passed |
 | M1E-09 | M1E time semantics | not_authorized | M1E-08 | future branch | 1h/4h close, next-5m-open, immutable-history and rewarm tests | All causal timing checks pass | M1E-08 not authorized |
@@ -60,7 +60,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 
 ## Current Gate
 
-- Authorized work: close the M1E-06 failed-feasibility record, then prepare a separate M1G IS-only design review. Fixed rules, strategy code, Freqtrade backtesting and OOS remain unauthorized.
+- Authorized work: prepare a separate M1G IS-only economic-hypothesis and non-duplication design review. Fixed rules, strategy code, Freqtrade backtesting and OOS remain unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G -> M1H -> stop BTC/ETH two-asset indicator research. M1G and M1H remain unopened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
 - Active implementation: no strategy; M1E was evaluated only by IS path diagnostics, OOS opened `no`, strategy code authorized `no`.

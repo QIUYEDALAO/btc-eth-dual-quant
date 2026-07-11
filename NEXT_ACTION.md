@@ -17,7 +17,7 @@ IS snapshots for BTC/ETH 1h and 4h. Candidate code receives no row at or after
 continuous segments per dataset, and each row records its segment age so the
 future fixed warmup can be applied without filling or interpolation.
 
-M1E-06 is complete with `failed_feasibility`. The protocol was committed before
+M1E-06 merged in PR #49 with `failed_feasibility`. The protocol was committed before
 outcomes were read. Its 139 complete IS events projected to 198 full and 59 OOS
 events, so sample count and distribution Gates passed. The decisive frozen
 cost-coverage Gates failed: combined median 24h MFE was 1.4005%, BTC 1.4658%,
@@ -26,11 +26,10 @@ return, equity curve, Freqtrade strategy or backtest was produced.
 
 Immediate sequence:
 
-1. Merge the truthful M1E-06 failure record without changing its protocol.
-2. Do not create M1E-07, tune M1E, or open its OOS.
-3. Move to M1G only through a separate IS-only economic hypothesis and
+1. Do not create M1E-07, tune M1E, or open its OOS.
+2. Move to M1G only through a separate IS-only economic hypothesis and
    non-duplication design review.
-4. Keep M1G strategy code, Freqtrade backtesting and OOS unauthorized until its
+3. Keep M1G strategy code, Freqtrade backtesting and OOS unauthorized until its
    own paper-feasibility dependencies pass.
 
 Q-01/Q-02 candidate governance merged in PR #44. The

@@ -1009,3 +1009,15 @@ private exchange responses here.
 - Decision: `failed_feasibility`. M1E-07, strategy code and Freqtrade backtesting are blocked. No M1E parameter rescue is allowed.
 - OOS safety: OOS remains unopened; no OOS price, event, signal, trade or return was read. No formal strategy return or equity curve was computed.
 - Next action: After this failure record is merged, only a separate M1G IS-only design review may follow. M2 and all trading remain prohibited.
+
+## 2026-07-11 - M1E-06 Failure Record Merged
+
+- Date UTC: 2026-07-11T01:53:39Z
+- Task ID: M1E-06-MERGED
+- Phase: M1G IS-only design preparation
+- Branch: main
+- Commit: `5bedd60`
+- PR: #49 merged
+- Validation: M1E Paper Validate, all predecessor M1E validators, Project Validate, M0 Validate, M1A Validate, M1B Validate and M1F Validate succeeded.
+- Result: M1E is closed as `failed_feasibility`; M1E-07 and all M1E strategy implementation remain blocked, and its OOS was never opened.
+- Next action: M1G may begin only with a separate IS-only economic-hypothesis and non-duplication design review. No fixed rule, strategy code, backtesting or OOS access is authorized.
