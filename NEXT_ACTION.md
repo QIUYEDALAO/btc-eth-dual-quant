@@ -2,39 +2,36 @@
 
 ## Current Decision
 
-M1G remains closed as `failed_validation`; its OOS was never opened. M1H's
-independent design package merged in PR #61 at `5622a10`:
+M1G remains closed as `failed_validation`. M1H remains `declared_unopened`,
+and its pre-outcome paper protocol is now frozen pending review:
 
-- Candidate identity: `FUNDING-EXTREME-SPOT-CONTRARIAN`; registered hash unchanged.
-- Economic route: a settled extreme negative funding observation may represent crowded short positioning whose later unwind supports spot appreciation.
-- Position and return source: spot long/cash and later spot-price movement only.
-- Funding role: public crowding/sentiment information only; no funding cashflow.
-- Timing: no use before `fundingTime`; any future entry must be strictly later than settlement.
-- Data cadence: fundingInfo, then multiple premium schedules, then adjacent historical settlements; no fixed default interval.
-- Non-duplication: no M1G spot-panic trigger and no M1B perpetual short, basis hedge, payback or funding-income rule.
-- Execution: no exit selected; a later zero-mismatch representability review is mandatory before implementation.
+- Event identity: settled negative funding at or below the same-symbol prior-365-day lower 5% tail, with per-event interval annualization.
+- Timing: settlement first, then the exact next expected canonical 5m open strictly after `fundingTime`.
+- Observation: fixed 1/2/4/8/12/24-hour market-reaction windows only.
+- Paper Gate: median 24h close displacement, not MFE alone; MFE/MAE/recovery remain mandatory path diagnostics.
+- Non-duplication: no spot panic trigger and no funding carry, basis, hedge, perpetual short or two-leg logic.
+- Leakage: event identity, windows, clustering and interval policy cannot change from results without a new ADR.
 
-This is a design-level pass, not evidence of events, frequency, displacement,
-profitability or implementation feasibility.
+No historical event, event count, path result, return or OOS value has been read.
 
 ## Immediate Sequence
 
-1. Keep M1H `declared_unopened`; no event, return or OOS has been read.
-2. Create a separate branch that freezes one M1H paper protocol before any IS event scan.
-3. The future protocol must define the negative-funding extreme, interval-aware normalization, event clustering, post-settlement legality and frozen 120/30 plus 1.80% paper Gates.
-4. The protocol PR must not run the event scan or select target, stop, holding period, position size or cooldown.
-5. Only after that protocol merges may one sealed-IS paper-feasibility run be considered.
-6. If M1H fails feasibility or any later Gate, stop BTC/ETH two-asset indicator research and require a new ADR for a broader liquid spot universe.
+1. Review and merge the protocol-only PR after every local and GitHub check passes.
+2. Do not run data qualification, event scanning or paper feasibility in the protocol PR.
+3. After merge, a separately started M1H-03 task may first run pure funding-data qualification.
+4. Qualification may inspect only lineage, timestamps, per-event intervals, settlement availability, missing/duplicates, timezone and completeness.
+5. If qualification passes, that same task may proceed once to sealed-IS paper feasibility without another intermediate approval.
+6. Any frozen Gate failure closes M1H without tuning; failure stops BTC/ETH two-asset indicator research and requires a new ADR for a broader liquid spot universe.
 
 ## Boundaries
 
 - No strategy is eligible for M2.
 - Do not enter M2.
 - Freqtrade-first remains the architecture: Freqtrade owns future single-leg lifecycle and return evidence; Python may only audit timing, metrics and exported evidence.
-- Do not create M1H strategy code, a backtest runner, performance audit or second strategy engine.
+- Do not create M1H strategy code, an event runner, a backtest runner, performance audit or second strategy engine in this PR.
 - Do not access OOS, private data, API keys, private smoke, dry-run/live, orders, cancellation, matching, wallets, trading permissions or `execution/live`.
 - Do not commit raw, DuckDB, Freqtrade runtime data, logs, SQLite, `.env` or private payloads.
 
-The M0 public dual-source audit remains a separate blocker. Before an M1H
-paper run, funding lineage and per-event interval evidence must be explicitly
-qualified without weakening that audit.
+The M0 public dual-source audit remains a separate blocker. The future M1H-03
+qualification step must fail closed on funding lineage or interval defects and
+must not weaken that audit.

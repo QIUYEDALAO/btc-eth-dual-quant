@@ -34,3 +34,17 @@ M1H is distinct at the signal-source, timing, return-source and position axes.
 The registered hypothesis and hash predate this review, and no parameter or
 event outcome was selected. Non-duplication passes only at design level and
 must be rechecked at every later Gate.
+
+## Frozen Protocol Matrix
+
+| Axis | M1H frozen paper protocol | M1G prohibited family | M1B prohibited family |
+| --- | --- | --- | --- |
+| Event identity | Settled funding annualization in the prior-365-day lower 5% tail | Price decline, close-location or range-expansion panic trigger | Positive funding, payback or carry threshold |
+| Timing | `fundingTime`, then strictly later canonical 5m observation | Completed panic candle | Two-leg funding holding period |
+| Evidence | Spot reaction path only | Price-panic mean reversion lifecycle | Funding income, basis or leg PnL |
+| Position boundary | Future spot long/cash only | Spot panic entry | Spot long plus perpetual short |
+
+Spot OHLC cannot participate in M1H event identification. The frozen percentile
+is not an entry rule, and no lifecycle parameter has been selected. The
+protocol therefore remains distinct from both failed families before any event
+outcome is accessed.

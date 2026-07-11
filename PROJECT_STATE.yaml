@@ -1,10 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T15:10:06Z"
-current_phase: M1H paper protocol design authorized
-current_status: m1h_design_merged_paper_protocol_only_no_strategy_no_m2
+last_updated_utc: "2026-07-11T15:36:43Z"
+current_phase: M1H paper protocol frozen pending review
+current_status: m1h_paper_protocol_frozen_no_outcome_oos_sealed_no_m2
 completed_milestones:
+  - phase: M1H paper research protocol
+    status: frozen_before_result_pending_review
+    evidence: reports/m1/M1H_PAPER_PROTOCOL.md
+    branch: codex/m1h-paper-protocol-freeze
   - phase: M1H economic hypothesis, timing, lineage and non-duplication design
     status: economic_hypothesis_pass_paper_protocol_only
     evidence: reports/m1/M1H_IS_ONLY_RULE_DESIGN.md
@@ -156,6 +160,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: M1H-02
+    phase: M1H paper protocol freeze
+    status: completed_pending_review
+    branch: codex/m1h-paper-protocol-freeze
+    pr: none
+    head_sha: pending
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/M1H_PAPER_PROTOCOL.md
+    blocker: "This PR authorizes no data qualification, event scan, paper feasibility, strategy code, returns, OOS or M2."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -202,9 +215,10 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - M1H design merged in PR #61; authorize only a separate pre-outcome M1H paper-protocol design.
-  - Freeze the protocol before any event scan; the protocol PR must not read event outcomes or returns.
-  - Keep M1H declared_unopened; no rule parameter, event, return or OOS value has been selected or read.
+  - Review and merge the frozen M1H paper protocol with all checks successful.
+  - Keep M1H declared_unopened; no event, return, strategy rule or OOS value has been read.
+  - After protocol merge, a separately started M1H-03 task may perform data qualification first and only then one sealed-IS paper-feasibility run in the same task.
+  - Data qualification may inspect lineage, timestamps, per-event intervals, settlement availability, missing/duplicates, timezone and completeness only; it may not scan or count events.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G capability review merged in PR #55; exact strategy implementation is authorized, while performance backtesting remains separately gated.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -271,6 +285,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/M1H_PAPER_PROTOCOL.md
+    phase: M1H paper protocol
+    status: frozen_before_result
+    status_marker: "- Status: frozen_before_result"
   - path: reports/m1/M1H_IS_ONLY_RULE_DESIGN.md
     phase: M1H design
     status: economic_hypothesis_pass_paper_protocol_only
@@ -687,6 +705,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/m1h_paper_protocol_validate.sh
   - bash scripts/m1h_is_design_validate.sh
   - bash scripts/m1g_is_validate.sh
   - bash scripts/m1g_is_protocol_validate.sh
