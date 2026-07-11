@@ -26,18 +26,25 @@ return, equity curve, Freqtrade strategy or backtest was produced.
 
 Immediate sequence:
 
-1. Review and merge the frozen M1G paper protocol; it contains no event outcome.
-2. Only after merge, run that exact protocol once on the sealed IS snapshots.
-3. If any paper Gate fails, close M1G without tuning and move only to M1H design.
-4. Keep fixed rules, strategy code, Freqtrade backtesting and OOS unauthorized until M1G paper feasibility passes.
+1. Review and merge the exact M1G sealed-IS paper result without changing the protocol.
+2. After merge, derive one fixed target, invalidation stop, holding limit, position cap and cluster cooldown from the preregistered path evidence without search.
+3. Reject any contract that assumes perfect MFE capture or hides the -21.58% worst adverse path.
+4. Keep strategy code, Freqtrade backtesting and OOS unauthorized until the fixed contract is reviewed.
 
 M1G's prospective edge is a partial rebound after completed 1h forced-selling
 and urgent-liquidity dislocation. It is not an inversion of M1E, a 15m M1D
-rescue, a shortened daily-panic rule, or an M1A trend variant. No panic
-threshold, target, holding horizon, stop, position size, cooldown or warmup has
-been selected, and no event or return has been computed. The paper protocol now
-pre-registers a completed 1h decline of at least 2.40%, prior-168h median-based
-return and range expansion, bottom-quartile close and 24h first-event clustering.
+rescue, a shortened daily-panic rule, or an M1A trend variant. Before the frozen
+paper run, no threshold, target, holding horizon, stop, position size, cooldown,
+event or return had been selected. The merged protocol preregistered a completed
+1h decline of at least 2.40%, prior-168h median-based return and range expansion,
+bottom-quartile close and 24h first-event clustering.
+
+The frozen protocol has now run once on sealed IS. It found 210 complete events,
+projecting 300 full and 90 OOS events. Median 24h MFE was 2.6908% for the
+combined sample, 2.6997% for BTC and 2.6409% for ETH, so every paper Gate passed.
+The same evidence shows median MAE -3.3118%, worst MAE -21.5829%, and median
+24h close displacement only 0.2268%; therefore this is opportunity-envelope
+evidence, not positive-expectancy evidence.
 
 Q-01/Q-02 candidate governance merged in PR #44. The
 immutable research order is M1E one-hour volatility-compression expansion,
@@ -52,9 +59,8 @@ cost, sealed-OOS, daily-MTM, PSR, drawdown, concentration, benchmark, and
 no-rescue rules are machine checked in
 `config/strategy_candidate_queue.json`.
 
-M1E is now `failed_feasibility` with OOS unopened. M1G is the next design-review
-candidate and M1H remains `declared_unopened`; transitions still require their
-predecessor to fail its fixed Gate.
+M1E is `failed_feasibility` with OOS unopened. M1G has passed only its IS paper
+Gate and awaits a fixed-rule contract; M1H remains `declared_unopened`.
 
 Q-01/Q-02 do not authorize strategy rules, strategy code, Freqtrade
 backtesting, M2, dry-run, paper trading, live trading, API keys, or execution.

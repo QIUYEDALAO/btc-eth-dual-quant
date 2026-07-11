@@ -1048,3 +1048,18 @@ private exchange responses here.
 - Frozen Gates: projected full/OOS 120/30; combined and per-symbol median 24h MFE 1.80%; cross-symbol/year distribution and quarantine checks unchanged.
 - Outcome safety: Event scan executed `no`; candidate outcomes accessed `no`; OOS opened `no`; formal returns computed `no`.
 - Next action: After protocol merge, one exact sealed-IS diagnostic run may follow. Fixed rule contract, strategy code, backtesting, M2 and trading remain prohibited.
+
+## 2026-07-11 - M1G Protocol Merged And Paper Feasibility Passed Locally
+
+- Date UTC: 2026-07-11T02:23:06Z
+- Task IDs: M1G-02-MERGED, M1G-03
+- Phase: M1G IS-only paper feasibility
+- Branch: `codex/m1g-is-paper-feasibility`
+- PR: pending
+- Protocol merge: PR #52 merged as `9a4e1f1`; the protocol was not changed before the run.
+- Evidence: 316 raw candidates, 213 cluster representatives, 210 complete events, 3 right-censored; projected full/OOS events 300/90.
+- Passed Gates: combined median 24h MFE 2.6908%, BTC 2.6997%, ETH 2.6409%; sample, symbol, year, concentration and quarantine Gates all pass.
+- Tail warning: median 24h MAE -3.3118%, worst MAE -21.5829%, maximum 7 events in rolling 7 days, and median 24h close displacement 0.2268% below Base roundtrip cost.
+- Decision: `pass_tail_risk_disclosed` authorizes only fixed-rule contract design after merge. It does not establish positive expectancy or approve strategy code.
+- OOS safety: OOS prices/returns accessed `no`; OOS opened `no`; formal strategy returns and equity curve computed `no`.
+- Next action: Freeze one target, invalidation stop, holding limit, position cap and cooldown without parameter search. Backtesting, M2 and trading remain prohibited.
