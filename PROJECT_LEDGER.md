@@ -1077,3 +1077,16 @@ private exchange responses here.
 - Derivation: target equals the fixed paper hurdle; stop rounds median MAE outward; stop times position cap gives 1% planned equity risk; cooldown addresses observed event clustering.
 - Search safety: Parameter search `no`; alternatives evaluated `no`; OOS opened `no`; backtest executed `no`.
 - Next action: After contract merge, only an exact Freqtrade implementation and causal fixture validation may follow. Performance backtesting, M2 and trading remain prohibited.
+
+## 2026-07-11 - M1G Contract Merged And Freqtrade Capability Reviewed Locally
+
+- Date UTC: 2026-07-11T02:48:23Z
+- Task IDs: M1G-04-MERGED, M1G-05A
+- Phase: M1G Freqtrade capability review
+- Branch: `codex/m1g-freqtrade-capability-review`
+- PR: pending
+- Contract merge: PR #54 merged as `a160f2c`; no performance backtest or OOS access occurred.
+- Native pass: 1h next-open signals, 5m detail, stop-before-ROI, 1.80% ROI, 24h timeout, one slot, 25% capital cap, deterministic pair ranking and all-pair 72h cooldown are implementable.
+- Material difference: Native ROI and stoploss gap pricing can be more favorable than the fixed conservative target/stop gap rules.
+- Decision: `capability_pass_with_mandatory_execution_audit`. Freqtrade remains signal/trade-lifecycle authority; Python may only reprice exported trades with canonical 5m data and cannot select events or run a second strategy.
+- Next action: After merge, implement the exact Freqtrade plugin and audit hook without running performance backtests. OOS, M2 and trading remain prohibited.
