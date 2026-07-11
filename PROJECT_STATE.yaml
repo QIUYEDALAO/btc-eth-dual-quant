@@ -1,10 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T08:40:23Z"
-current_phase: M1H independent design review authorized after M1G failure
-current_status: m1g_is_failed_validation_oos_sealed_m1h_design_only_no_m2
+last_updated_utc: "2026-07-11T09:20:00Z"
+current_phase: M1H independent design review pending merge
+current_status: m1h_economic_hypothesis_pass_protocol_only_no_strategy_no_m2
 completed_milestones:
+  - phase: M1H economic hypothesis, timing, lineage and non-duplication design
+    status: economic_hypothesis_pass_paper_protocol_only
+    evidence: reports/m1/M1H_IS_ONLY_RULE_DESIGN.md
+    branch: codex/m1h-independent-design-review
   - phase: M1G frozen IS numerical validation and independent audit
     status: failed_validation
     evidence: reports/m1/M1G_IS_VALIDATION_REPORT.md
@@ -151,6 +155,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: M1H-01
+    phase: M1H independent economic-hypothesis and non-duplication review
+    status: design_pass_pending_review
+    branch: codex/m1h-independent-design-review
+    pr: 61
+    head_sha: 7cde978acd50291dc6d09f788c5e4301dc767533
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m1/M1H_IS_ONLY_RULE_DESIGN.md
+    blocker: "Only paper-protocol design may follow after merge; event scan, rules, strategy code, returns and OOS remain unauthorized."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -197,8 +210,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Begin only a separate M1H funding-extreme spot-signal economic-hypothesis and non-duplication design review.
-  - Keep M1H declared_unopened; do not select rules, run returns, or access OOS during design review.
+  - Review and merge the M1H design-only package with all checks successful.
+  - After merge, authorize only a separate pre-outcome M1H paper-protocol design; do not run the protocol in the same PR.
+  - Keep M1H declared_unopened; no rule parameter, event, return or OOS value has been selected or read.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G capability review merged in PR #55; exact strategy implementation is authorized, while performance backtesting remains separately gated.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -265,6 +279,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/M1H_IS_ONLY_RULE_DESIGN.md
+    phase: M1H design
+    status: economic_hypothesis_pass_paper_protocol_only
+    status_marker: "- Status: economic_hypothesis_pass_paper_protocol_only"
+  - path: reports/m1/M1H_NON_DUPLICATION_REVIEW.md
+    phase: M1H design
+    status: pass_design_level
+    status_marker: "- Status: pass_design_level"
+  - path: reports/m1/M1H_EXECUTION_REPRESENTABILITY_REVIEW.md
+    phase: M1H design
+    status: constraint_pass_no_exit_selected
+    status_marker: "- Status: constraint_pass_no_exit_selected"
   - path: reports/m1/M1G_IS_VALIDATION_REPORT.md
     phase: M1G IS validation
     status: failed_validation
@@ -669,6 +695,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/m1h_is_design_validate.sh
   - bash scripts/m1g_is_validate.sh
   - bash scripts/m1g_is_protocol_validate.sh
   - bash scripts/m1g_implementation_validate.sh

@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "status": "economic_hypothesis_pass_paper_protocol_only",
+  "candidate_id": "FUNDING-EXTREME-SPOT-CONTRARIAN",
+  "hypothesis_sha256": "f4caf96502aca9272d58faab20a6e2dc07eea4c69e49d9705272c00a46b814ed",
+  "research_scope": {
+    "market": "binance_spot",
+    "symbols": ["BTCUSDT", "ETHUSDT"],
+    "direction": "spot_long_cash_only",
+    "primary_signal_family": "settled_negative_funding_extreme",
+    "funding_use": "public_derivatives_crowding_sentiment_input_only",
+    "futures_position": false,
+    "funding_cashflow_return": false,
+    "two_leg_execution": false,
+    "is_start": "2020-07-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z",
+    "oos_opened": false
+  },
+  "economic_hypothesis": {
+    "family": "settlement_aligned_negative_funding_crowding_then_spot_contrarian_observation",
+    "return_source": "spot_price_appreciation_after_derivatives_short_crowding_unwinds",
+    "mechanism": [
+      "an_extreme_negative_settled_funding_observation_can_represent_crowded_short_positioning_and_pessimistic_derivatives_sentiment",
+      "after_settlement_the_exhaustion_or_unwind_of_that_crowding_may_support_a_later_spot_price_rebound",
+      "funding_is_an_information_input_only_and_never_a_cashflow_captured_by_the_strategy"
+    ],
+    "failure_regimes": [
+      "negative_funding_correctly_reflects_persistent_adverse_information_instead_of_temporary_crowding",
+      "funding_extremes_are_too_sparse_for_the_frozen_sample_budget",
+      "funding_cadence_or_publication_semantics_are_incomplete_or_inconsistent",
+      "spot_rebound_displacement_cannot_cover_the_frozen_stressed_roundtrip_cost",
+      "btc_eth_events_are_one_correlated_market_stress_episode",
+      "future_exit_family_cannot_be_represented_without_intrabar_or_gap_optimism"
+    ]
+  },
+  "data_lineage": {
+    "primary_observation": {
+      "dataset": "funding_rate_history",
+      "endpoint": "GET /fapi/v1/fundingRate",
+      "fields": ["symbol", "fundingRate", "fundingTime", "markPrice"],
+      "public_only": true,
+      "available_no_earlier_than": "fundingTime"
+    },
+    "interval_metadata": {
+      "priority": [
+        "fundingInfo.fundingIntervalHours",
+        "multiple_premiumIndex.nextFundingTime_cadence",
+        "adjacent_fundingRate.fundingTime"
+      ],
+      "single_premium_snapshot_is_complete_interval": false,
+      "hardcoded_default_interval": false,
+      "per_event_interval_required": true
+    },
+    "future_spot_observation": {
+      "authority": "M0_canonical_public_spot_OHLC",
+      "purpose": "post_settlement_observation_and_future_execution_evidence_only",
+      "cannot_independently_create_candidate_event": true
+    },
+    "private_income_or_commission_used": false,
+    "network_access_in_design_review": false
+  },
+  "time_semantics": {
+    "funding_event_visible_before_settlement": false,
+    "decision_may_use_event_at_or_after_funding_time": true,
+    "entry_must_be_strictly_after_funding_time": true,
+    "same_timestamp_entry_prohibited": true,
+    "entry_must_not_precede_decision": true,
+    "future_bar_data_prohibited": true
+  },
+  "non_duplication": {
+    "m1h_primary_source": "settled_public_funding_observation",
+    "m1g_primary_source": "spot_price_only_panic_dislocation",
+    "m1b_return_source": "funding_cashflow_plus_two_leg_basis_accounting",
+    "price_only_panic_trigger_prohibited": true,
+    "funding_cashflow_capture_prohibited": true,
+    "perpetual_short_leg_prohibited": true,
+    "basis_hedge_prohibited": true,
+    "m1g_threshold_or_exit_reuse_prohibited": true,
+    "m1b_entry_or_payback_rule_reuse_prohibited": true,
+    "failed_candidate_outcome_derived_rule_prohibited": true
+  },
+  "execution_representability": {
+    "freqtrade_remains_single_leg_return_authority": true,
+    "external_single_leg_strategy_engine_prohibited": true,
+    "exit_family_selected": false,
+    "same_bar_double_touch_dependency_allowed": false,
+    "optimistic_gap_fill_dependency_allowed": false,
+    "zero_mismatch_fixture_required_before_implementation": true,
+    "capability_review_required_before_fixed_rule_implementation": true
+  },
+  "unresolved_until_later_gates": [
+    "negative_funding_extreme_definition",
+    "funding_history_normalization_lookback",
+    "interval_aware_signal_normalization",
+    "post_settlement_spot_confirmation",
+    "signal_and_execution_timeframe",
+    "entry_bar_definition",
+    "exit_family",
+    "maximum_holding_horizon",
+    "risk_invalidation_stop",
+    "position_cap",
+    "event_cluster_cooldown",
+    "indicator_warmup"
+  ],
+  "authorization": {
+    "m1h_paper_protocol_design": true,
+    "m1h_paper_diagnostic_run": false,
+    "fixed_rule_contract": false,
+    "strategy_code": false,
+    "freqtrade_backtesting": false,
+    "oos_access": false,
+    "private_data": false,
+    "dry_run": false,
+    "live": false,
+    "m2": false
+  }
+}
