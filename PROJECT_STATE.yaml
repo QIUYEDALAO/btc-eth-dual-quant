@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T08:24:06Z"
+last_updated_utc: "2026-07-11T08:37:00Z"
 current_phase: M1G failed IS validation review
 current_status: m1g_is_failed_validation_oos_sealed_m1h_design_only_no_m2
 completed_milestones:
@@ -155,8 +155,8 @@ open_work:
     phase: M1G frozen IS validation and independent audit
     status: failed_validation_pending_review
     branch: codex/m1g-is-validation
-    pr: none
-    head_sha: pending
+    pr: 59
+    head_sha: pending_context_commit
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m1/M1G_IS_VALIDATION_REPORT.md
     blocker: "Frozen IS Gates failed; OOS remains sealed. After this evidence merges, only a separate M1H design review may follow."

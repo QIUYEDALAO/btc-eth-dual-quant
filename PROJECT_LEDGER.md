@@ -1149,7 +1149,8 @@ private exchange responses here.
 - Task IDs: M1G-09, M1G-10
 - Phase: M1G IS numerical validation and independent audit
 - Branch: `codex/m1g-is-validation`
-- PR: pending
+- PR: #59 open
+- Result commit: `3636a2ad93996f02ab0c629acfc38c5995fc608b`
 - Evidence: `reports/m1/M1G_IS_VALIDATION_REPORT.md`
 - Freqtrade Base: 179 trades, -22.6272% total return, daily-MTM Sharpe -1.3195, PSR 0.0013, MaxDD 23.9747%.
 - Conservative Base: -21.3551% total return with 66 native/audited exit-bar mismatches.
