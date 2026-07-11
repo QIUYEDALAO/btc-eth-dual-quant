@@ -11,7 +11,7 @@ daily continuous trend rule and may not reuse or relabel the M1A SMA200,
 Donchian 55/20 and ATR20 x2 bundle. No compression, expansion, exit, stop,
 position, cooldown or warmup parameter has been selected.
 
-M1E-05 now passes locally. The audit sidecar created ignored, physically bounded
+M1E-05 merged in PR #47. The audit sidecar created ignored, physically bounded
 IS snapshots for BTC/ETH 1h and 4h. Candidate code receives no row at or after
 `2024-09-11`; OOS OHLC was not parsed. Eleven common outage gaps create twelve
 continuous segments per dataset, and each row records its segment age so the
@@ -19,8 +19,9 @@ future fixed warmup can be applied without filling or interpolation.
 
 Immediate sequence:
 
-1. Review and merge M1E-05.
-2. Run M1E-06 IS-only paper diagnostics from the sealed snapshots.
+1. Design and run M1E-06 IS-only paper diagnostics from the sealed snapshots.
+2. Measure event frequency, clustering, fixed-horizon displacement, MAE/MFE,
+   cost coverage and projected sample count without formal strategy returns.
 3. Do not select a fixed strategy rule unless every paper Gate passes.
 4. Keep strategy code, Freqtrade backtesting and OOS unopened.
 

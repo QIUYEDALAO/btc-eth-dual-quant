@@ -1,15 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T01:14:56Z"
-current_phase: M1E-05 IS-only data isolation review
+last_updated_utc: "2026-07-11T01:25:41Z"
+current_phase: M1E-06 IS-only paper-feasibility preparation
 current_status: m1e_sample_budget_pass_is_design_only_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M1E-05 IS-only data isolation
-    status: local_pass_pending_review
+    status: completed
     evidence: reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md
-    branch: codex/m1e-is-data-isolator
-    pr: 47
+    merged_pr: 47
   - phase: M1E-04 economic hypothesis and non-duplication
     status: completed
     evidence: reports/m1/M1E_IS_ONLY_RULE_DESIGN.md
@@ -116,15 +115,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1E-05
-    phase: M1E IS-only data isolation review
-    status: local_pass_pending_review
-    branch: codex/m1e-is-data-isolator
-    pr: 47
-    head_sha: 7adaf3f60fbcbc8e0e3ef91307b247b68a883564
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md
-    blocker: "Merge M1E-05 before M1E-06 paper diagnostics; fixed rules, strategy code, backtesting, and OOS remain unauthorized."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -171,7 +161,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge M1E-05 IS data isolation evidence; only M1E-06 IS paper diagnostics may follow.
+  - M1E-05 IS data isolation merged in PR #47; M1E-06 IS-only paper diagnostics are the next authorized task.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
   - Q-01/Q-02 candidate-queue governance merged in PR #44 and M1E-04 design merged in PR #46.
   - M1G and M1H remain declared_unopened; no strategy code, backtesting, or OOS access is authorized.
@@ -549,6 +539,9 @@ latest_merged_prs:
   - number: 46
     title: Define M1E IS-only economic hypothesis
     merged_at_utc: "2026-07-11T01:10:31Z"
+  - number: 47
+    title: Isolate M1E in-sample market data
+    merged_at_utc: "2026-07-11T01:25:17Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

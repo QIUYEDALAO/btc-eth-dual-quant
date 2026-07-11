@@ -981,3 +981,15 @@ private exchange responses here.
 - OOS safety: Rows at or after 2024-09-11 are not exposed to the isolator and their OHLC fields are not parsed; candidate evaluated `no`, returns computed `no`, OOS opened `no`.
 - Runtime artifacts: IS snapshots and detailed manifest remain ignored under storage/duckdb and storage/logs.
 - Authorization: After merge, M1E-06 IS paper diagnostics only. Fixed rule contract, strategy code, backtesting, OOS, M2, APIs, paper/live mode, orders and execution remain unauthorized.
+
+## 2026-07-11 - M1E-05 IS Data Isolation Merged
+
+- Date UTC: 2026-07-11T01:25:17Z
+- Task ID: M1E-05
+- Phase: M1E-06 IS-only paper-feasibility preparation
+- Branch: main
+- Commit: `08d40c8e8f3416e81269f3fb3a80d47a786fc88c`
+- PR: #47 merged
+- Validation: M1E Isolator Validate `PASS=8 FAIL=0`; all GitHub checks succeeded.
+- Result: Physically bounded IS snapshots and OOS-rejecting audit interfaces are canonical; runtime snapshots remain ignored.
+- Next action: M1E-06 IS-only paper diagnostics. No formal strategy returns or OOS access.
