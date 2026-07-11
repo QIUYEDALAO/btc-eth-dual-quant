@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "protocol_id": "M1H-02-FUNDING-EXTREME-SPOT-PAPER-V1",
+  "status": "frozen_before_result",
+  "candidate_id": "FUNDING-EXTREME-SPOT-CONTRARIAN",
+  "hypothesis_sha256": "f4caf96502aca9272d58faab20a6e2dc07eea4c69e49d9705272c00a46b814ed",
+  "scope": {
+    "symbols": ["BTCUSDT", "ETHUSDT"],
+    "market": "binance_spot",
+    "position_family": "spot_long_cash_only",
+    "is_start": "2020-07-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_opened": false
+  },
+  "funding_extreme_event": {
+    "dataset": "funding_rate_history",
+    "settled_observations_only": true,
+    "funding_rate_must_be_negative": true,
+    "annualization": "fundingRate*(365*24/event_interval_hours)",
+    "event_interval_source": "M0_per_event_inference_chain",
+    "hardcoded_default_interval_allowed": false,
+    "history_window_utc_days": 365,
+    "history_excludes_current_event": true,
+    "lower_tail_percentile": "0.05",
+    "percentile_interpolation": "linear",
+    "complete_interval_history_required": true,
+    "same_symbol_cluster_hours": 24,
+    "same_symbol_cluster_representative": "first_event_only",
+    "cross_symbol_episode_hours": 24,
+    "cross_symbol_episode_use": "sample_budget_only_keep_symbol_diagnostics",
+    "spot_price_trigger_allowed": false,
+    "classification": "frozen_event_identification_not_strategy_entry_or_optimization_parameter"
+  },
+  "timing_contract": {
+    "funding_visible_before_funding_time": false,
+    "decision_not_before_funding_time": true,
+    "reference_bar_timeframe": "5m",
+    "reference_bar": "first_expected_canonical_open_strictly_after_fundingTime",
+    "same_timestamp_bar_allowed": false,
+    "search_later_for_missing_reference_allowed": false,
+    "future_data_allowed": false,
+    "missing_quarantine_or_is_boundary_crossing": "right_censored"
+  },
+  "observation_contract": {
+    "purpose": "market_reaction_path_only_not_strategy_holding_or_exit",
+    "fixed_horizon_hours": [1, 2, 4, 8, 12, 24],
+    "horizon_optimization_allowed": false,
+    "path_timeframe": "5m",
+    "required_diagnostics": [
+      "median_24h_mfe",
+      "median_24h_close_displacement",
+      "mae_distribution",
+      "recovery_time_distribution"
+    ],
+    "mae_distribution_fields": ["minimum", "p05", "median", "p95"],
+    "recovery_definition": "first_completed_5m_close_at_or_above_reference_open",
+    "recovery_censor_hours": 24,
+    "recovery_distribution_fields": ["recovered_share", "recovered_median", "recovered_p90", "unrecovered_count"],
+    "formal_strategy_return": false,
+    "fill_position_or_exit_model": false
+  },
+  "paper_gates": {
+    "projected_full_independent_episodes_minimum": 120,
+    "projected_sealed_oos_episodes_minimum": 30,
+    "projection_may_read_oos_events_or_prices": false,
+    "combined_median_24h_close_displacement_minimum": "0.0180",
+    "each_symbol_complete_events_minimum": 20,
+    "each_symbol_median_24h_close_displacement_minimum": "0.0180",
+    "minimum_years_with_ten_independent_episodes": 3,
+    "maximum_single_year_episode_share": "0.45",
+    "invalid_lineage_interval_quarantine_or_unrewarmed_events_maximum": 0,
+    "mfe_standalone_gate": false,
+    "mfe_may_override_close_displacement_failure": false,
+    "mae_and_recovery_are_mandatory_diagnostics_without_hard_gate": true
+  },
+  "research_leakage_prevention": {
+    "adjust_percentile_from_event_count": false,
+    "adjust_event_from_path_diagnostics": false,
+    "delete_years_from_performance": false,
+    "change_definition_by_symbol_results": false,
+    "change_horizons_from_feasibility": false,
+    "reselect_interval_from_results": false,
+    "add_spot_confirmation_from_results": false,
+    "change_clustering_or_censoring_from_results": false,
+    "protocol_change_requires_new_adr_and_new_protocol_identity": true
+  },
+  "non_duplication": {
+    "primary_signal": "settled_funding_tail_observation",
+    "funding_use": "sentiment_signal_only",
+    "spot_ohlc_may_trigger_event": false,
+    "funding_carry_allowed": false,
+    "funding_income_allowed": false,
+    "basis_trade_allowed": false,
+    "hedge_allowed": false,
+    "perpetual_short_allowed": false,
+    "two_leg_logic_allowed": false,
+    "m1g_price_panic_decline_close_location_or_range_reuse_allowed": false
+  },
+  "execution_representability": {
+    "lifecycle_selected": false,
+    "freqtrade_capability_review_required_before_implementation": true,
+    "same_bar_optimism_allowed": false,
+    "optimistic_gap_fill_allowed": false,
+    "zero_mismatch_fixture_required": true,
+    "freqtrade_single_leg_return_authority": true,
+    "second_python_strategy_engine_allowed": false
+  },
+  "next_task_data_qualification": {
+    "same_task_before_paper_feasibility": true,
+    "allowed_checks": [
+      "lineage",
+      "funding_timestamp",
+      "per_event_funding_interval",
+      "settlement_availability",
+      "missing_duplicate",
+      "timezone",
+      "data_completeness"
+    ],
+    "event_scan_allowed": false,
+    "event_count_allowed": false,
+    "path_diagnostics_allowed": false,
+    "returns_allowed": false,
+    "feasibility_decision_allowed": false
+  },
+  "authorization": {
+    "paper_protocol_frozen": true,
+    "funding_data_qualification": false,
+    "paper_feasibility": false,
+    "event_scan": false,
+    "formal_strategy_returns": false,
+    "fixed_rule_contract": false,
+    "strategy_code": false,
+    "freqtrade_backtesting": false,
+    "is_validation": false,
+    "oos_access": false,
+    "api_or_trading": false,
+    "m2": false
+  }
+}

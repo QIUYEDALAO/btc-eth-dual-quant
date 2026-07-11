@@ -1201,3 +1201,19 @@ private exchange responses here.
 - Result: The settlement-aligned negative-funding crowding hypothesis, strict post-settlement timing, public lineage, non-duplication and representability constraints are accepted as design evidence only.
 - Outcome safety: M1H remains `declared_unopened`; no event scan, return, OOS value, strategy rule or implementation was produced.
 - Next action: Only a separate pre-outcome M1H paper-protocol design is authorized. It must merge before any sealed-IS event scan; strategy code, OOS, M2 and trading remain prohibited.
+
+## 2026-07-11 - M1H Paper Research Protocol Frozen Locally
+
+- Date UTC: 2026-07-11T15:36:43Z
+- Task ID: M1H-02
+- Phase: M1H paper protocol freeze pending review
+- Branch: `codex/m1h-paper-protocol-freeze`
+- PR: #63 open
+- Result commit: `71d1e38b1f3ff41960f3c663a2070976f0049523`
+- Candidate: `FUNDING-EXTREME-SPOT-CONTRARIAN`; registered hash and `declared_unopened` state are unchanged.
+- Event contract: Settled negative funding at or below the same-symbol prior-365-day lower 5% percentile, linearly interpolated and annualized with the M0 per-event interval chain.
+- Timing contract: The observation reference is the exact next expected canonical 5m open strictly after `fundingTime`; missing references are not shifted forward.
+- Evidence contract: Frozen 1/2/4/8/12/24-hour reaction windows; median close displacement is the cost-coverage Gate, while MFE/MAE/recovery are mandatory mechanism diagnostics only.
+- Leakage contract: No threshold, interval, horizon, year, symbol, clustering or censoring choice may change from outcomes; changes require a new ADR and protocol identity.
+- Outcome safety: Event scan `no`, event count `no`, formal returns `no`, paper feasibility `no`, OOS `no`, strategy code `no`, M2 `no`.
+- Next action: Review and merge this protocol. A future separately started M1H-03 task may qualify funding data first and, only if it passes, continue once to sealed-IS paper feasibility without an intermediate approval.

@@ -25,3 +25,15 @@ Freqtrade runtime and the conservative audit semantics. Failure blocks
 implementation; it does not authorize a custom single-leg backtester.
 
 This review freezes the representability Gate but deliberately selects no exit.
+
+## Paper Protocol Annex
+
+The 1h/2h/4h/8h/12h/24h windows in the M1H paper protocol are market-reaction
+observations, not holding periods or exits. MFE, close displacement, MAE and
+recovery time are path diagnostics and cannot be converted into an optimistic
+lifecycle by this protocol.
+
+Any later lifecycle requires a new capability review before strategy code. It
+must reject same-bar optimistic ordering and favorable gap assumptions and
+must pass deterministic zero-mismatch fixtures. No current paper Gate can
+override that future review.
