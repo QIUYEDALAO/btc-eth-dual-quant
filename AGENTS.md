@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1H failed feasibility; the ADR-0010 BTC/ETH two-asset candidate queue is exhausted.
+- Current phase: BTC/ETH candidate queue exhausted; ADR-0011 liquid-universe design is the only authorized new research direction.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -79,9 +79,9 @@ After any task, the agent must update:
 - M1G implementation merged in PR #57. The IS protocol is frozen before outcomes on `codex/m1g-is-validation-protocol`; no performance run is allowed before that protocol merges.
 - M1G IS protocol merged in PR #58 before any performance result was accessed.
 - The one frozen IS run is now `failed_validation`: Base and Cost x2 lose money, daily-MTM Sharpe/PSR/MaxDD and benchmark Gates fail, and conservative repricing finds non-zero exit-bar mismatches.
-- M1G OOS remains sealed and its trial does not increment the DSR opened count. After the failure record merges, only a separate M1H design review may follow.
+- M1G OOS remains sealed and its trial does not increment the DSR opened count.
 - M1G failed-IS evidence merged in PR #59 as `929e3a2`; all 60 GitHub checks passed. M1G is closed without opening OOS or changing its frozen contract.
-- M1H is now authorized only for an economic-hypothesis and non-duplication design review. Rule selection, strategy code, returns and OOS access remain unauthorized.
+- M1H independent design is historical evidence only. Rule selection, strategy code, returns and OOS access remain unauthorized.
 - M1H design selects only the settlement-aligned negative-funding crowding hypothesis route. Funding is a public sentiment input for spot long/cash; no futures position, funding cashflow or two-leg execution is allowed.
 - M1H timing requires decisions no earlier than settlement and any future entry strictly after `fundingTime`. The extreme threshold, lookback, spot condition, timeframe, entry, exit, risk and position rules remain unresolved.
 - M1H implementation requires a future zero-mismatch execution-representability Gate. The current design selects no exit family and authorizes only a separate paper-protocol design after merge.
@@ -93,7 +93,9 @@ After any task, the agent must update:
 - M1H-03A passed public funding lineage, per-event interval, settlement-continuity, canonical 5m and sealed-OOS qualification.
 - The only frozen M1H-03B sealed-IS observation failed: combined/BTC/ETH median 24h close displacement was far below 1.80%, and the maximum single-year episode share exceeded 45%. MFE cannot rescue these failures.
 - M1H remains `declared_unopened`; no strategy return, Freqtrade backtest or OOS value was accessed. M1H fixed rules and implementation are blocked.
-- Future research requires a new product ADR for a broader high-liquidity spot universe. Do not add a fourth BTC/ETH indicator candidate or modify the M1H protocol.
+- PR #65 merged the M1H truthful failure record at `57c2b1c`; M1H remains `declared_unopened`, failed feasibility, and closed without strategy or OOS access.
+- Future research requires ADR-0011 for a broader point-in-time high-liquidity spot universe. Do not add a fourth BTC/ETH indicator candidate or modify the M1H protocol.
+- ADR-0011 may define universe membership and data qualification only. It cannot select a strategy, scan outcomes, calculate returns, open OOS or authorize M2.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.

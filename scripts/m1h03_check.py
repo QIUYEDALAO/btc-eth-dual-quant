@@ -61,10 +61,18 @@ def check() -> list[str]:
     ])
 
     state = yaml.safe_load(STATE_PATH.read_text(encoding="utf-8"))
-    if state.get("current_phase") != "M1H failed feasibility; BTC/ETH two-asset indicator research stopped":
-        failures.append("PROJECT_STATE current_phase is not the M1H terminal research stop")
-    if state.get("current_status") != "m1h_failed_feasibility_candidate_queue_exhausted_oos_sealed_no_m2":
-        failures.append("PROJECT_STATE current_status is not the M1H failed-feasibility state")
+    allowed_states = {
+        (
+            "M1H failed feasibility; BTC/ETH two-asset indicator research stopped",
+            "m1h_failed_feasibility_candidate_queue_exhausted_oos_sealed_no_m2",
+        ),
+        (
+            "BTC/ETH candidate queue exhausted; liquid-universe ADR authorized",
+            "btc_eth_candidate_queue_exhausted_liquid_universe_adr_authorized_no_m2",
+        ),
+    }
+    if (state.get("current_phase"), state.get("current_status")) not in allowed_states:
+        failures.append("PROJECT_STATE is not an allowed M1H terminal governance state")
 
     ledger = yaml.safe_load(LEDGER_PATH.read_text(encoding="utf-8"))
     candidates = [item for item in ledger.get("candidates", []) if item.get("id") == EXPECTED_CANDIDATE]
