@@ -33,11 +33,12 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Review PR #68 and require all CI checks to pass before merge; or
+1. Await a separate approval to preregister exactly one cross-sectional hypothesis family; or
 2. Continue M0 public dual-source audit diagnostics without private data.
 
-This qualification pass does not authorize a cross-sectional hypothesis,
-strategy code, event scan, returns, OOS, backtesting or M2.
+PR #68 merged at `1996ea3` after 70/70 GitHub checks passed. This qualification
+pass does not itself authorize a cross-sectional hypothesis, strategy code,
+event scan, returns, OOS, backtesting or M2.
 
 ADR-0011 must freeze point-in-time membership, listings and delistings,
 survivorship controls, liquidity admission and cross-sectional UTC alignment.
