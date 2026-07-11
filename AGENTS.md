@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: M1E failed feasibility / M1G design preparation.
+- Current phase: M1G IS-only design preparation.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -68,7 +68,7 @@ After any task, the agent must update:
 - M1E-04 selects no strategy parameter. It defines only the compression-to-expansion economic mechanism, failure regimes, IS boundary and M1A non-duplication; only M1E-05 isolation may follow after merge.
 - M1E-04 merged in PR #46. M1E-05 produced ignored IS-only 1h/4h snapshots with no OOS OHLC parsing, gap segmentation and deferred rewarm thresholds; only M1E-06 paper diagnostics may follow after merge.
 - M1E-05 merged in PR #47. M1E-06 used only sealed IS snapshots and failed the fixed combined/BTC/ETH 24h MFE Gates. M1E-07 and all M1E strategy work are blocked; no formal strategy returns or OOS data were accessed.
-- The next queue item is M1G one-hour panic-dislocation mean reversion, but only an independent IS-only design review may start after the M1E failure record is merged. No M1G strategy code or OOS access is authorized.
+- M1E-06 failed-feasibility evidence merged in PR #49. The next queue item is M1G one-hour panic-dislocation mean reversion, but only an independent IS-only design review may start. No M1G strategy code or OOS access is authorized.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.

@@ -1,14 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T01:40:08Z"
-current_phase: M1E failed feasibility / M1G design preparation
+last_updated_utc: "2026-07-11T01:53:39Z"
+current_phase: M1G IS-only design preparation
 current_status: m1e_failed_feasibility_m1g_design_only_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M1E-06 IS-only paper feasibility
     status: failed_feasibility
     evidence: reports/m1/M1E_IS_PAPER_FEASIBILITY_REPORT.md
-    branch: codex/m1e-is-paper-feasibility
+    merged_pr: 49
   - phase: M1E-05 IS-only data isolation
     status: completed
     evidence: reports/m1/M1E_IS_DATA_ISOLATION_REPORT.md
@@ -119,15 +119,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1E-06
-    phase: M1E IS-only paper feasibility
-    status: failed_feasibility_pending_review
-    branch: codex/m1e-is-paper-feasibility
-    pr: 49
-    head_sha: c107190
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1E_IS_PAPER_FEASIBILITY_REPORT.md
-    blocker: "Frozen 24h MFE cost-coverage Gates failed for the combined sample and both symbols; M1E-07 and all M1E strategy work are stopped."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -174,8 +165,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - M1E-06 failed its frozen IS-only paper cost-coverage Gates; close the failure record without tuning or OOS access.
-  - After the M1E failure record is merged, M1G may enter a separate IS-only design review and diagnostics sequence; no strategy code is authorized.
+  - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
+  - M1G may enter a separate IS-only design review and diagnostics sequence; no strategy code is authorized.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
   - Q-01/Q-02 candidate-queue governance merged in PR #44 and M1E-04 design merged in PR #46.
   - M1E is failed_feasibility with OOS unopened; M1G and M1H remain unopened and no strategy code, backtesting, or OOS access is authorized.
