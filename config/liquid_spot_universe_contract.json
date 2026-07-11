@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "universe_id": "LIQUID-SPOT-USDT-TOP15-V1",
+  "market": "binance_spot",
+  "quote_asset": "USDT",
+  "research_start": "2020-01-01",
+  "membership": {
+    "frequency": "monthly_utc",
+    "activation": "first_day_00:00_utc",
+    "target_size": 15,
+    "ranking_window_complete_days": 90,
+    "ranking_metric": "median_daily_quote_volume",
+    "ranking_window_excludes_effective_month": true,
+    "tie_break": "symbol_ascending",
+    "minimum_complete_history_days": 365,
+    "allow_fewer_than_target": true
+  },
+  "exclusions": {
+    "exact_base_assets": ["AEUR", "BETH", "BUSD", "DAI", "EUR", "FDUSD", "PAX", "STETH", "TUSD", "USDC", "USDP", "USDS", "UST", "USTC", "WBETH", "WBTC", "WETH"],
+    "leveraged_suffixes": ["BEAR", "BULL", "DOWN", "UP"],
+    "categories": ["stable_value", "fiat_pegged", "leveraged_token", "wrapped_or_pegged_duplicate"]
+  },
+  "data_authority": {
+    "daily_primary": "official_monthly_zip",
+    "daily_supplement": "official_daily_zip_fill_missing_only",
+    "rest_role": "sampled_evidence_never_overwrite",
+    "detail_timeframe": "5m",
+    "derived_timeframe": "1h",
+    "interpolation_allowed": false,
+    "current_exchange_info_is_historical_authority": false
+  },
+  "asset_roles": {
+    "BTC": ["eligible_trade_asset", "market_regime_benchmark", "risk_benchmark"],
+    "ETH": ["eligible_trade_asset", "market_regime_benchmark", "risk_benchmark"]
+  },
+  "authorizations": {
+    "asset_data_qualification": true,
+    "strategy_selection": false,
+    "event_scan": false,
+    "signals": false,
+    "returns": false,
+    "oos_access": false,
+    "freqtrade_backtesting": false,
+    "m2": false,
+    "api_or_trading": false
+  },
+  "canonical_hash": "b61d766dcf864696f8cbcf07a38c9a8aa7a9c44a6701fe7956fd06bdfecbc0f8"
+}

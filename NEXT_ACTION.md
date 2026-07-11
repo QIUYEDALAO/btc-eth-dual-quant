@@ -2,6 +2,12 @@
 
 ## Current Decision
 
+ADR-0011 is frozen pending review. It defines a monthly point-in-time Top-15
+Binance USDT spot universe using the prior 90 complete UTC days' median daily
+quote volume, 365 complete history days, deterministic symbol tie-break and
+conservative asset exclusions. BTC and ETH remain eligible and also serve as
+regime/risk benchmarks.
+
 M1H-03 is complete. Public funding-data qualification passed, then the one
 frozen sealed-IS paper observation failed feasibility without changing the
 protocol or opening OOS.
@@ -20,7 +26,7 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Create ADR-0011 for a broader, historically reconstructable set of high-liquidity USDT spot pairs; or
+1. Validate and merge ADR-0011; then create a separate asset/data qualification task; or
 2. Continue M0 public dual-source audit diagnostics without private data.
 
 ADR-0011 must freeze point-in-time membership, listings and delistings,

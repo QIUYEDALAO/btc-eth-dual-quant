@@ -1257,3 +1257,12 @@ private exchange responses here.
 - Decision: BTC/ETH two-asset indicator research is exhausted. A fourth indicator candidate, parameter rescue, OOS reuse or threshold reduction is prohibited.
 - Safety: M1G and M1H OOS remain sealed; DSR opened-trial count remains three; no strategy is eligible for M2.
 - Next action: ADR-0011 may define a historically reconstructable high-liquidity USDT spot universe and asset qualification contract only. Strategy selection, event scanning, returns and OOS remain unauthorized.
+
+## 2026-07-12 - ADR-0011 Liquid Spot Universe Frozen
+
+- Task ID: U-02
+- Branch: `codex/adr-0011-liquid-spot-universe-expansion`
+- Decision: Monthly point-in-time Top 15 by prior-90-day median daily quote volume, minimum 365 complete days, deterministic symbol tie-break and conservative exclusions.
+- Authority: M0 constructs historical membership; Freqtrade may later consume deterministic slices and must not use a current dynamic pairlist as historical truth.
+- Safety: No strategy family, event, signal, return, OOS, API, trading or M2 permission is created.
+- Next action: Merge after contract and project validation; only then may a separate asset/data qualification task start.
