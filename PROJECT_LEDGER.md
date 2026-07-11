@@ -1188,3 +1188,16 @@ private exchange responses here.
 - Representability: No exit selected. Any later implementation requires a separate capability review and zero-mismatch conservative fixtures under Freqtrade-first authority.
 - Outcome safety: Event scan `no`, rule parameters selected `no`, formal returns `no`, OOS opened `no`, DSR trial count unchanged at three.
 - Next action: Review and merge the design package. Only then may a separate pre-outcome M1H paper protocol be frozen; no diagnostic run is yet authorized.
+
+## 2026-07-11 - M1H Independent Design Review Merged
+
+- Date UTC: 2026-07-11T15:10:06Z
+- Task ID: M1H-01-MERGED
+- Phase: M1H paper protocol design authorization
+- Branch: main
+- Commit: `5622a10606f32ed7af04f172ff1c0e919cc035b4`
+- PR: #61 merged
+- Validation: All 62 GitHub checks passed; local M1H design validation passed 10/0.
+- Result: The settlement-aligned negative-funding crowding hypothesis, strict post-settlement timing, public lineage, non-duplication and representability constraints are accepted as design evidence only.
+- Outcome safety: M1H remains `declared_unopened`; no event scan, return, OOS value, strategy rule or implementation was produced.
+- Next action: Only a separate pre-outcome M1H paper-protocol design is authorized. It must merge before any sealed-IS event scan; strategy code, OOS, M2 and trading remain prohibited.

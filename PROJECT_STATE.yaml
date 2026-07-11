@@ -1,14 +1,15 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T09:20:00Z"
-current_phase: M1H independent design review pending merge
-current_status: m1h_economic_hypothesis_pass_protocol_only_no_strategy_no_m2
+last_updated_utc: "2026-07-11T15:10:06Z"
+current_phase: M1H paper protocol design authorized
+current_status: m1h_design_merged_paper_protocol_only_no_strategy_no_m2
 completed_milestones:
   - phase: M1H economic hypothesis, timing, lineage and non-duplication design
     status: economic_hypothesis_pass_paper_protocol_only
     evidence: reports/m1/M1H_IS_ONLY_RULE_DESIGN.md
-    branch: codex/m1h-independent-design-review
+    merged_pr: 61
+    merge_commit: 5622a10606f32ed7af04f172ff1c0e919cc035b4
   - phase: M1G frozen IS numerical validation and independent audit
     status: failed_validation
     evidence: reports/m1/M1G_IS_VALIDATION_REPORT.md
@@ -155,15 +156,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1H-01
-    phase: M1H independent economic-hypothesis and non-duplication review
-    status: design_pass_pending_review
-    branch: codex/m1h-independent-design-review
-    pr: 61
-    head_sha: 7cde978acd50291dc6d09f788c5e4301dc767533
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1H_IS_ONLY_RULE_DESIGN.md
-    blocker: "Only paper-protocol design may follow after merge; event scan, rules, strategy code, returns and OOS remain unauthorized."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -210,8 +202,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge the M1H design-only package with all checks successful.
-  - After merge, authorize only a separate pre-outcome M1H paper-protocol design; do not run the protocol in the same PR.
+  - M1H design merged in PR #61; authorize only a separate pre-outcome M1H paper-protocol design.
+  - Freeze the protocol before any event scan; the protocol PR must not read event outcomes or returns.
   - Keep M1H declared_unopened; no rule parameter, event, return or OOS value has been selected or read.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G capability review merged in PR #55; exact strategy implementation is authorized, while performance backtesting remains separately gated.
