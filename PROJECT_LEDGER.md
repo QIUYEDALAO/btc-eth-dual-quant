@@ -930,3 +930,16 @@ private exchange responses here.
 - Common Gates: Base 0.15%, Cost x2 0.30%, Stress A 0.40%, Stress B 0.55% per side; sealed final 30% OOS; 1800/540 calendar minimum; 80/20 completed trades; OOS daily-MTM Sharpe 1.0; PSR 0.95; MaxDD 15%; positive Base/Cost-x2 full and OOS returns; delete-best-three nonnegative; benchmark, bias, and data-quality checks.
 - Stop: M1E failure may move only to M1G after separate approval; M1G failure may move only to M1H; three failures stop BTC/ETH two-asset indicator research.
 - Authorization: Governance review only. M1E rule design, all strategy code, backtesting, OOS access, M2, API use, paper/live mode, orders, and execution remain unauthorized.
+
+## 2026-07-11 - Candidate Queue And Common Gates Merged
+
+- Date UTC: 2026-07-11T00:49:27Z
+- Task IDs: Q-01, Q-02
+- Phase: M1E IS-only rule-design approval decision
+- Branch: main
+- Commit: `8f883d9e3275747745f3c708443a97029bf2517b`
+- PR: #44 merged
+- Validation: Candidate Queue Validate, Project Validate, M0 Validate, M1A Validate, M1B Validate, and M1F Validate all succeeded on the final head.
+- Result: M1E -> M1G -> M1H, the historical DSR count of three, common Gates, failure transitions, and the terminal stop are now canonical.
+- Next action: Await separate explicit approval for M1E IS-only rule design. M1G and M1H remain unopened.
+- Safety: No OOS access, strategy code, backtest, API key, private data, order, paper/live mode, or execution module was used or authorized.

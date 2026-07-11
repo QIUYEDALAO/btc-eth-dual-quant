@@ -1,15 +1,14 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T00:43:41Z"
-current_phase: strategy candidate queue and common-gate governance review
+last_updated_utc: "2026-07-11T00:50:00Z"
+current_phase: M1E IS-only rule-design approval decision
 current_status: m1e_sample_budget_pass_is_design_only_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: Q-01/Q-02 candidate queue governance
-    status: local_pass_pending_review
+    status: completed
     evidence: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
-    branch: codex/candidate-queue-common-gates
-    pr: 44
+    merged_pr: 44
   - phase: M1E metadata-only sample budget
     status: sample_budget_pass_design_only
     evidence: reports/m1/M1E_1H_SAMPLE_BUDGET_REPORT.md
@@ -108,15 +107,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: Q-01-Q-02
-    phase: candidate queue and common validation gates
-    status: local_pass_pending_review
-    branch: codex/candidate-queue-common-gates
-    pr: 44
-    head_sha: aaab962c09ae53f24b54a438ffc65a4a0216c598
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md
-    blocker: "Merge governance evidence before separately approving M1E IS-only rule design; strategy code, backtesting, and OOS remain unauthorized."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -163,8 +153,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge Q-01/Q-02 candidate-queue governance; this does not authorize M1E design, strategy code, backtesting, or OOS access.
-  - After Q-01/Q-02 merge, await a separate explicit approval for M1E IS-only design review; M1G and M1H remain declared_unopened.
+  - Q-01/Q-02 candidate-queue governance merged in PR #44; await a separate explicit approval for M1E IS-only design review.
+  - M1G and M1H remain declared_unopened; no strategy code, backtesting, or OOS access is authorized.
   - If M1E fails, only a separately approved transition to M1G is allowed; if M1G then fails, only M1H may follow; three failures stop BTC/ETH two-asset indicator research.
   - M1E metadata-only sample budget passed and merged in PR #42; await explicit approval for a separate IS-only rule-design PR.
   - M1E canonical-5m v2 passed and merged in PR #40; only the metadata-only 1800/540-day sample-budget Gate is authorized next.
@@ -503,6 +493,24 @@ latest_merged_prs:
   - number: 38
     title: Close M1E source-owner package context
     merged_at_utc: "2026-07-10T19:56:06Z"
+  - number: 39
+    title: Record M1E Binance source-owner submission
+    merged_at_utc: "2026-07-10T20:11:58Z"
+  - number: 40
+    title: Adopt canonical 5m authority for M1E data
+    merged_at_utc: "2026-07-10T20:59:16Z"
+  - number: 41
+    title: Close M1E canonical data requalification context
+    merged_at_utc: "2026-07-10T21:04:22Z"
+  - number: 42
+    title: Validate M1E metadata sample budget
+    merged_at_utc: "2026-07-10T21:17:28Z"
+  - number: 43
+    title: Close M1E sample budget context
+    merged_at_utc: "2026-07-10T21:22:50Z"
+  - number: 44
+    title: Freeze strategy candidate queue and common validation gates
+    merged_at_utc: "2026-07-11T00:49:27Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md
