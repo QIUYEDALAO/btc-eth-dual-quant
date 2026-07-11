@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-11T02:23:06Z"
-current_phase: M1G paper feasibility pending review
-current_status: m1g_paper_feasibility_pass_tail_risk_rule_contract_only_no_m2
+last_updated_utc: "2026-07-11T02:35:07Z"
+current_phase: M1G fixed rule contract pending review
+current_status: m1g_fixed_rule_frozen_preimplementation_no_strategy_eligible_for_m2
 completed_milestones:
   - phase: M1G IS-only economic hypothesis and non-duplication
     status: economic_hypothesis_pass_paper_protocol_only
@@ -16,7 +16,11 @@ completed_milestones:
   - phase: M1G IS-only paper feasibility
     status: pass_tail_risk_disclosed
     evidence: reports/m1/M1G_IS_PAPER_FEASIBILITY_REPORT.md
-    branch: codex/m1g-is-paper-feasibility
+    merged_pr: 53
+  - phase: M1G fixed rule contract
+    status: frozen_pre_implementation
+    evidence: reports/m1/M1G_FIXED_RULE_CONTRACT.md
+    branch: codex/m1g-fixed-rule-contract
   - phase: M1E-06 IS-only paper feasibility
     status: failed_feasibility
     evidence: reports/m1/M1E_IS_PAPER_FEASIBILITY_REPORT.md
@@ -131,15 +135,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: M1G-03
-    phase: M1G IS-only paper feasibility
+  - id: M1G-04
+    phase: M1G fixed rule contract
     status: pending_review
-    branch: codex/m1g-is-paper-feasibility
+    branch: codex/m1g-fixed-rule-contract
     pr: none
     head_sha: pending
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/M1G_IS_PAPER_FEASIBILITY_REPORT.md
-    blocker: "Paper pass exposes severe adverse paths; only a single fixed-rule contract may follow after review, with no strategy implementation or OOS access."
+    evidence: reports/m1/M1G_FIXED_RULE_CONTRACT.md
+    blocker: "Contract review and merge are required before strategy implementation; no backtest or OOS access has occurred."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -186,8 +190,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge the exact M1G sealed-IS paper result. It passes frozen paper Gates but discloses median MAE -3.31%, worst MAE -21.58%, and 24h median close displacement below Base cost.
-  - After merge only one fixed-rule contract may be derived without parameter search; strategy implementation and OOS remain unauthorized.
+  - Review and merge the single M1G fixed rule contract. It uses a 1.80% target, -4.00% stop, 24h timeout, 25% equity cap, one open trade and 72h global cooldown without alternatives or search.
+  - Only after contract merge may a separate Freqtrade implementation be considered; backtesting and OOS remain unauthorized.
   - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
   - M1G may enter a separate IS-only design review and diagnostics sequence; no strategy code is authorized.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -254,6 +258,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/M1G_FIXED_RULE_CONTRACT.md
+    phase: M1G fixed rule contract
+    status: frozen_pre_implementation
+    status_marker: "- Status: frozen_pre_implementation"
   - path: reports/m1/M1G_IS_PAPER_FEASIBILITY_REPORT.md
     phase: M1G paper feasibility
     status: pass

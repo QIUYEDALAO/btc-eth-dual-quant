@@ -2,6 +2,7 @@
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
+| `reports/m1/M1G_FIXED_RULE_CONTRACT.md` | M1G fixed contract | frozen_pre_implementation | Freezes one target, stop, timeout, position cap, cooldown, pair ranking and conservative 5m ambiguity/gap semantics without parameter search or backtesting. | no |
 | `reports/m1/M1G_IS_PAPER_FEASIBILITY_REPORT.md` | M1G paper feasibility | pass_tail_risk_disclosed | Exact frozen IS protocol passes sample/MFE/distribution Gates with 210 events, while disclosing median MAE -3.31%, worst MAE -21.58% and no formal strategy return. | no |
 | `reports/m1/M1G_IS_PAPER_PROTOCOL.md` | M1G protocol | frozen_before_result | Pre-registers the price-only forced-selling event, observations, tail diagnostics and unchanged paper Gates before any event scan or outcome access. | no |
 | `reports/m1/M1G_IS_ONLY_RULE_DESIGN.md` | M1G design | economic_hypothesis_pass_paper_protocol_only | Defines the completed-1h forced-selling dislocation and partial-reversion hypothesis, failure regimes and sealed data boundary without selecting an event or rule. | no |

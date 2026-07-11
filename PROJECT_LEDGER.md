@@ -1063,3 +1063,17 @@ private exchange responses here.
 - Decision: `pass_tail_risk_disclosed` authorizes only fixed-rule contract design after merge. It does not establish positive expectancy or approve strategy code.
 - OOS safety: OOS prices/returns accessed `no`; OOS opened `no`; formal strategy returns and equity curve computed `no`.
 - Next action: Freeze one target, invalidation stop, holding limit, position cap and cooldown without parameter search. Backtesting, M2 and trading remain prohibited.
+
+## 2026-07-11 - M1G Paper Evidence Merged And Fixed Contract Frozen Locally
+
+- Date UTC: 2026-07-11T02:35:07Z
+- Task IDs: M1G-03-MERGED, M1G-04
+- Phase: M1G fixed rule contract
+- Branch: `codex/m1g-fixed-rule-contract`
+- PR: pending
+- Paper merge: PR #53 merged as `5221e43`; the frozen event protocol and outcome report remain unchanged.
+- Contract: +1.80% target, -4.00% invalidation stop, 24h timeout, 25% equity cap, maximum one trade and 72h global cooldown.
+- Conservative semantics: next available 5m open entry; same-5m target/stop resolves to stop; stop gap uses worse open; target gap receives target threshold only.
+- Derivation: target equals the fixed paper hurdle; stop rounds median MAE outward; stop times position cap gives 1% planned equity risk; cooldown addresses observed event clustering.
+- Search safety: Parameter search `no`; alternatives evaluated `no`; OOS opened `no`; backtest executed `no`.
+- Next action: After contract merge, only an exact Freqtrade implementation and causal fixture validation may follow. Performance backtesting, M2 and trading remain prohibited.

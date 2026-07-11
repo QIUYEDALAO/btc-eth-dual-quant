@@ -221,6 +221,7 @@ def main() -> int:
         or "m1g_economic_hypothesis_pass_protocol_only_no_strategy_eligible_for_m2" in current_status
         or "m1g_paper_protocol_frozen_no_outcome_no_strategy_eligible_for_m2" in current_status
         or "m1g_paper_feasibility_pass_tail_risk_rule_contract_only_no_m2" in current_status
+        or "m1g_fixed_rule_frozen_preimplementation_no_strategy_eligible_for_m2" in current_status
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "m2" not in current_status and "m1b" not in current_status:

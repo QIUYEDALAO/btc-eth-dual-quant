@@ -59,12 +59,13 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | M1E-OWNER-01 | Binance source-owner package | completed_monitoring | M1E-DIAG-01 completed | PR #37 merged; issue #475 comment 4939090508 | Sanitized evidence JSON and submitted source-owner comment | 14 supplemental rows, no raw/private data, CI pass | awaiting response for provenance only; no longer an operational canonical-OHLC dependency |
 | M1G-01 | M1G economic hypothesis and non-duplication | completed | M1E-06 failed and PR #49 merged | `codex/m1g-is-only-rule-design` / PR #51 merged | IS-only mechanism, failure regimes, sealed data boundary and non-duplication contract | Exact ledger hash, no M1E/M1D/daily-panic rescue, no parameter selection, OOS sealed | none |
 | M1G-02 | M1G paper protocol | completed | M1G-01 merged pass | `codex/m1g-paper-protocol` / PR #52 merged | Frozen price-only event definition and paper Gates committed before outcomes | No event evaluation in protocol commit; common 120/30 and 1.80% Gates unchanged | none |
-| M1G-03 | M1G IS paper feasibility | pass_tail_risk_disclosed | M1G-02 frozen and merged | `codex/m1g-is-paper-feasibility` / PR pending | IS-only frequency, clustering, rebound MAE/MFE and cost coverage | All frozen paper Gates pass; adverse-path evidence must constrain the fixed contract | review and CI pending; not a profitability pass |
-| M1G-04 | M1G fixed rule contract | not_authorized | M1G-03 merged pass | future branch | One target, invalidation stop, holding limit, position cap and cooldown with hashes | No ranges, parameter search, OOS evidence or MFE-perfect-exit assumption | M1G-03 not merged |
+| M1G-03 | M1G IS paper feasibility | completed_pass_tail_risk_disclosed | M1G-02 frozen and merged | `codex/m1g-is-paper-feasibility` / PR #53 merged | IS-only frequency, clustering, rebound MAE/MFE and cost coverage | All frozen paper Gates pass; adverse-path evidence constrains the fixed contract | none; not a profitability pass |
+| M1G-04 | M1G fixed rule contract | pending_review | M1G-03 merged pass | `codex/m1g-fixed-rule-contract` / PR pending | 1.80% target, -4.00% stop, 24h timeout, 25% cap, one trade and 72h cooldown | No ranges, parameter search, OOS evidence or MFE-perfect-exit assumption | review and CI pending |
+| M1G-05 | M1G Freqtrade implementation | not_authorized | M1G-04 merged pass | future branch | Exact strategy plugin, 1h signal/5m detail, causal timing and safety tests | Contract-exact behavior, no lookahead, no live/trading entry | M1G-04 not merged |
 
 ## Current Gate
 
-- Authorized work: review the M1G sealed-IS paper result. After merge only a fixed-rule contract is eligible; strategy code, Freqtrade backtesting and OOS remain unauthorized.
+- Authorized work: review the M1G fixed rule contract. Only after merge may strategy implementation be considered; Freqtrade backtesting and OOS remain unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G -> M1H -> stop BTC/ETH two-asset indicator research. M1G and M1H remain unopened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
 - Active implementation: no strategy; M1G paper paths passed frozen Gates but exposed severe left-tail risk, OOS opened `no`, strategy code authorized `no`.
