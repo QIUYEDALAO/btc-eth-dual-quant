@@ -2,6 +2,8 @@
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
+| `reports/m1/STRATEGY_CANDIDATE_QUEUE_GOVERNANCE.md` | research governance | queue_frozen_design_only | Freezes M1E -> M1G -> M1H, the three historical opened-OOS trials, common validation Gates, failure transitions, and the terminal stop without authorizing a design or backtest. | no |
+| `docs/decisions/ADR-0010-candidate-queue-and-common-validation-gates.md` | research governance | accepted_for_governance_only | Records the immutable candidate queue, DSR count source, common cost/OOS/risk policy, and no-rescue rule. | no |
 | `reports/m0/M0_FINAL_ACCEPTANCE.md` | M0 | accepted / audit_revalidation_required | Read-only infrastructure remains accepted; funding cadence fallback and ZIP/REST evidence require revalidation before new strategy approval. | no |
 | `reports/m0/M0_AUDIT_REVALIDATION_REPORT.md` | M0 | blocked / audit_revalidation_required | Decision-facing exact audit summary. Approved proxy transport completed official futures REST; remaining blockers are official spot/UM source revisions and a 2026-06-29 reference-price archive omission with daily ZIP HTTP 404. | no |
 | `reports/m0/M0_DUAL_SOURCE_AUDIT_DIAGNOSTICS.md` | M0 | blocked / audit_revalidation_required | Field-level direct/proxy evidence with payload hashes and daily ZIP outcomes. Official daily ZIPs recover monthly omissions when exact, but never replace conflicting monthly rows. | no |

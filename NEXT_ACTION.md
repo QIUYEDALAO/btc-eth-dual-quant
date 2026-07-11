@@ -1,5 +1,29 @@
 # Next Action
 
+Q-01/Q-02 candidate governance is now implemented locally for review. The
+immutable research order is M1E one-hour volatility-compression expansion,
+M1G one-hour panic-dislocation mean reversion, then M1H funding-extreme spot
+contrarian. M1H aliases the existing registered hypothesis rather than
+creating a duplicate trial. Failure of all three stops BTC/ETH two-asset
+indicator research.
+
+The historical DSR trial count is three because M1A, M1B, and M1C opened OOS.
+M1D, M1E, M1G, the daily-panic hypothesis, and M1H remain unopened. Common
+cost, sealed-OOS, daily-MTM, PSR, drawdown, concentration, benchmark, and
+no-rescue rules are machine checked in
+`config/strategy_candidate_queue.json`.
+
+The immediate sequence is now:
+
+1. Review and merge Q-01/Q-02 candidate-queue governance.
+2. Do not open OOS or run a candidate backtest.
+3. After governance merge, require a separate explicit approval before M1E
+   IS-only rule design.
+4. Keep M1G and M1H `declared_unopened`; transitions require separate approval.
+
+Q-01/Q-02 do not authorize strategy rules, strategy code, Freqtrade
+backtesting, M2, dry-run, paper trading, live trading, API keys, or execution.
+
 Under the Freqtrade-first architecture, M1D remains stopped by its fixed
 calendar Gate. M1E canonical-data contract v2 now passes locally under
 ADR-0009 and merged in PR #40, while the original ADR-0008 blocked report remains historical evidence.
@@ -28,7 +52,7 @@ The M1E metadata-only calendar Gate now passes locally: 2191 full days, 1533 IS
 days, and 658 sealed OOS days. The sealed OOS begins `2024-09-11`; no OOS
 price, signal, event, trade, or return was read.
 
-The immediate sequence is:
+The previous M1E sample-budget sequence remains a dependency record:
 
 1. Treat PR #42 as the completed metadata-only sample-budget evidence.
 2. Await explicit approval before opening an IS-only rule-design PR.

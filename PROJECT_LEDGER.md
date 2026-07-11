@@ -916,3 +916,16 @@ private exchange responses here.
 - Result: Calendar Gate passed with 2191 full, 1533 IS, and 658 sealed OOS days. OOS remains unopened.
 - Next action: Await explicit approval for a separate IS-only rule-design PR. Do not implement strategy code or run Freqtrade backtesting.
 - Safety: No OHLCV row, OOS return, API key, private data, order, paper/live mode, or execution module was read or used.
+
+## 2026-07-11 - Candidate Queue And Common Gates Frozen Locally
+
+- Date UTC: 2026-07-11T00:43:41Z
+- Task IDs: Q-01, Q-02
+- Phase: research candidate governance
+- Branch: `codex/candidate-queue-common-gates`
+- PR: pending
+- Decision: ADR-0010 freezes M1E -> M1G -> M1H; M1H aliases the existing `FUNDING-EXTREME-SPOT-CONTRARIAN` trial and is not duplicated.
+- Trial accounting: M1A, M1B, and M1C are the three historical OOS-opened trials used by DSR. M1D, M1E, M1G, daily panic, and M1H remain unopened.
+- Common Gates: Base 0.15%, Cost x2 0.30%, Stress A 0.40%, Stress B 0.55% per side; sealed final 30% OOS; 1800/540 calendar minimum; 80/20 completed trades; OOS daily-MTM Sharpe 1.0; PSR 0.95; MaxDD 15%; positive Base/Cost-x2 full and OOS returns; delete-best-three nonnegative; benchmark, bias, and data-quality checks.
+- Stop: M1E failure may move only to M1G after separate approval; M1G failure may move only to M1H; three failures stop BTC/ETH two-asset indicator research.
+- Authorization: Governance review only. M1E rule design, all strategy code, backtesting, OOS access, M2, API use, paper/live mode, orders, and execution remain unauthorized.
