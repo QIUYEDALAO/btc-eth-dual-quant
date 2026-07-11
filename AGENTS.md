@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: ADR-0011 public qualification and gap attribution pass pending PR #68 review; no strategy is authorized.
+- Current phase: ADR-0011 public qualification and gap attribution completed in PR #68; no strategy is authorized.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
@@ -98,7 +98,7 @@ After any task, the agent must update:
 - ADR-0011 may define universe membership and data qualification only. It cannot select a strategy, scan outcomes, calculate returns, open OOS or authorize M2.
 - ADR-0011 fixes monthly Top 15 by prior-90-complete-day median daily quote volume, 365 complete history days and deterministic symbol tie-break. Current dynamic pairlists are not historical authority.
 - The public run discovered 676 historical symbols and 78 monthly Top-15 snapshots. All 151 affected symbol-months are attributed with 15 synchronized global windows, two isolated symbol-months, zero processing errors and zero unresolved gaps.
-- Gap isolation never fills bars or replaces an excluded symbol. Cross-sectional design remains unauthorized until PR #68 merges and a separate design task is approved.
+- Gap isolation never fills bars or replaces an excluded symbol. PR #68 merged at `1996ea3` after 70/70 checks passed; cross-sectional design still requires a separate explicit task.
 - The original PR #32 blocked report remains historical evidence; PR #40 supersedes only its admission decision under the versioned authority contract.
 - M1E conflict diagnostics found 30 reproducible rows: 16 monthly/daily conflicts, 10 REST-confirmed higher-timeframe revisions, 2 REST-confirmed child aggregates, and 2 third-version REST revisions. All remain contract-blocking.
 - The diagnostic clean suffix starts `2022-11-01` but has only 1338 full and 402 sealed-OOS days, so it cannot satisfy the fixed 1800/540-day Gate even under a future contract review.

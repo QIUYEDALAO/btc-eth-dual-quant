@@ -1293,3 +1293,12 @@ private exchange responses here.
 - Symbol-specific evidence: LUNAUSDT 2022-05 and RNDRUSDT 2024-07 terminate in their official monthly ZIP while 14 peers remain present. Each symbol-month is isolated without replacement.
 - Processing/unresolved: zero / zero.
 - Decision: Universe data qualification is `pass_with_quarantine` pending PR review. Strategy design, outcomes, backtesting, OOS and M2 remain unauthorized.
+
+## 2026-07-11 - Liquid Universe Qualification Merged
+
+- Task IDs: U-03A, U-03B, U-03C
+- PR / merge commit: #68 / `1996ea3e2c891d3ad6a366b5243111950a6968ed`
+- Validation: 70/70 GitHub checks passed; local qualification validation passed with 336 full-suite tests.
+- Result: Public data qualification and all gap attributions are accepted with quarantine, zero processing errors and zero unresolved gaps.
+- Safety: No strategy, event, return, backtest, OOS, API, trading or M2 authorization was created.
+- Next action: Await a separate explicit decision to preregister one cross-sectional hypothesis family; do not begin implementation automatically.

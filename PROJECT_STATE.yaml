@@ -2,15 +2,19 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-12T00:00:00Z"
-current_phase: Liquid universe qualification passed with quarantined gaps pending PR review
-current_status: liquid_universe_qualification_pass_gap_attributed_no_strategy_no_m2
+current_phase: Liquid universe qualification complete; next research decision pending
+current_status: liquid_universe_qualification_pass_no_strategy_authorized_no_m2
 completed_milestones:
   - phase: Liquid spot universe gap attribution
     status: pass_with_quarantine
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_GAP_ATTRIBUTION_REPORT.md
+    merged_pr: 68
+    merge_commit: 1996ea3e2c891d3ad6a366b5243111950a6968ed
   - phase: Liquid spot universe public qualification
     status: pass
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_QUALIFICATION_REPORT.md
+    merged_pr: 68
+    merge_commit: 1996ea3e2c891d3ad6a366b5243111950a6968ed
   - phase: M1H sealed-IS paper feasibility
     status: failed_feasibility
     evidence: reports/m1/M1H_IS_PAPER_FEASIBILITY_REPORT.md
@@ -225,8 +229,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge PR #68 as the truthful data-qualification record after all checks pass.
-  - This task does not authorize cross-sectional hypothesis design, outcomes, returns, OOS or M2.
+  - Data qualification is complete. A separate explicitly approved task must choose and preregister exactly one cross-sectional hypothesis family before any outcome access.
+  - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - ADR-0011 freezes monthly Top 15 by prior-90-day median daily quote volume, 365-day history, deterministic tie-break and conservative exclusions.
   - Only asset/data qualification may follow after ADR-0011 merges; no strategy family, event scan, return calculation, OOS or M2 is authorized.
   - PR #65 merged the truthful M1H failure evidence; M1H remains declared_unopened and its OOS remains sealed.
@@ -737,6 +741,15 @@ latest_merged_prs:
   - number: 65
     title: Complete M1H funding qualification and paper feasibility
     merged_at_utc: "2026-07-11T17:23:26Z"
+  - number: 66
+    title: Close BTC ETH candidate queue governance
+    merged_at_utc: "2026-07-11T17:40:14Z"
+  - number: 67
+    title: Define point-in-time liquid spot universe
+    merged_at_utc: "2026-07-11T17:46:01Z"
+  - number: 68
+    title: Implement liquid spot universe qualification core
+    merged_at_utc: "2026-07-11T18:29:38Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

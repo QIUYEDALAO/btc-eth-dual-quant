@@ -31,6 +31,8 @@ report_state_gate() {
     grep -qE '^current_status: liquid_universe_qualification_blocked_151_gaps_no_strategy_no_m2$' PROJECT_STATE.yaml
   elif grep -qE '^current_phase: Liquid universe qualification passed with quarantined gaps pending PR review$' PROJECT_STATE.yaml; then
     grep -qE '^current_status: liquid_universe_qualification_pass_gap_attributed_no_strategy_no_m2$' PROJECT_STATE.yaml
+  elif grep -qE '^current_phase: Liquid universe qualification complete; next research decision pending$' PROJECT_STATE.yaml; then
+    grep -qE '^current_status: liquid_universe_qualification_pass_no_strategy_authorized_no_m2$' PROJECT_STATE.yaml
   else
     return 1
   fi

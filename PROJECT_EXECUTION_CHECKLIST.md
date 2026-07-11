@@ -77,9 +77,9 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-01 | BTC/ETH candidate terminal stop | completed | M1E, M1G and M1H failed applicable frozen Gates | PR #65 merged / `57c2b1c` | Immutable candidate-queue stop | No fourth BTC/ETH indicator candidate; M1G/M1H OOS sealed | none |
 | U-02 | Liquid spot universe ADR | completed | U-01 completed | PR #67 merged | Point-in-time Top-15 universe and qualification contract | Design only; no strategy, event, return, OOS or M2 authorization | none |
 | U-03A | Liquid universe qualification core | completed | U-02 merged | `codex/liquid-spot-universe-qualification` | Deterministic ranking, precedence, exclusion, aggregation and hash tooling | Fixture and safety validation pass | none |
-| U-03B | Liquid universe public archive run | completed_pending_review | U-03A | `codex/liquid-spot-universe-qualification` / PR #68 | 676 symbols, 78 months, 1170 membership rows and 5m/1h evidence | Point-in-time, no survivorship bias, zero unresolved gaps | none; PR/CI review pending |
-| U-03C | Universe gap attribution | completed_pending_review | U-03B evidence | PR #68 | 227 exact runs, 15 global windows, two isolated symbol-months | Zero processing errors and unresolved gaps; no manual deletion | none; PR/CI review pending |
-| U-04 | Cross-sectional hypothesis design | not_authorized | U-03B/U-03C merged and separate approval | future branch | One preregistered cross-sectional hypothesis | Design only, no outcomes or OOS | Not authorized by this task |
+| U-03B | Liquid universe public archive run | completed | U-03A | PR #68 merged / `1996ea3` | 676 symbols, 78 months, 1170 membership rows and 5m/1h evidence | Point-in-time, no survivorship bias, zero unresolved gaps | none |
+| U-03C | Universe gap attribution | completed | U-03B evidence | PR #68 merged / `1996ea3` | 227 exact runs, 15 global windows, two isolated symbol-months | Zero processing errors and unresolved gaps; no manual deletion | none |
+| U-04 | Cross-sectional hypothesis design | not_authorized | U-03B/U-03C merged and separate approval | future branch | One preregistered cross-sectional hypothesis | Design only, no outcomes or OOS | Requires separate explicit approval |
 
 ## Current Gate
 

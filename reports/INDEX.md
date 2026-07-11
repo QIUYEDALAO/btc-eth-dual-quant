@@ -1,8 +1,8 @@
 # Reports Index
 
 | `docs/decisions/ADR-0011-liquid-spot-universe-expansion.md` | liquid spot universe governance | accepted_for_data_qualification_only / PR #67 merged | Freezes point-in-time monthly Top-15 membership without selecting a strategy, scanning outcomes, calculating returns or opening OOS. | no |
-| `reports/m0/LIQUID_SPOT_UNIVERSE_QUALIFICATION_REPORT.md` | liquid spot universe qualification | pass_with_quarantine / PR #68 open | Public run discovered 676 symbols and rebuilt 78 monthly snapshots; all gaps are attributed with zero unresolved observations. | no |
-| `reports/m0/LIQUID_SPOT_UNIVERSE_GAP_ATTRIBUTION_REPORT.md` | universe gap attribution | pass_with_quarantine / PR #68 open | Expands 151 affected symbol-months into 227 exact gap runs: 225 synchronized global-event runs and two isolated symbol-month archive gaps. | no |
+| `reports/m0/LIQUID_SPOT_UNIVERSE_QUALIFICATION_REPORT.md` | liquid spot universe qualification | pass_with_quarantine / PR #68 merged | Public run discovered 676 symbols and rebuilt 78 monthly snapshots; all gaps are attributed with zero unresolved observations. | no |
+| `reports/m0/LIQUID_SPOT_UNIVERSE_GAP_ATTRIBUTION_REPORT.md` | universe gap attribution | pass_with_quarantine / PR #68 merged | Expands 151 affected symbol-months into 227 exact gap runs: 225 synchronized global-event runs and two isolated symbol-month archive gaps. | no |
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
