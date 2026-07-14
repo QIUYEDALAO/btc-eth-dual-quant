@@ -29,6 +29,9 @@ After any task, the agent must update:
 ## Current Stage
 
 - Current phase: ADR-0011 public qualification and gap attribution completed in PR #68; no strategy is authorized.
+- ADR-0012 supersedes the V1 qualification admission decision pending V2 public requalification and independent audit. V1 reports remain historical evidence.
+- Current active task is U-03D V2 correctness hardening. U-03E and U-03F must run in order after predecessor merge; U-04 remains unauthorized.
+- V2 machine JSON manifests are the only future qualification authority. Markdown reports must never be qualification inputs.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.

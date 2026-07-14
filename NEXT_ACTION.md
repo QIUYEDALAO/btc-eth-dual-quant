@@ -1,5 +1,13 @@
 # Next Action
 
+## Immediate Task
+
+Complete and merge U-03D on `codex/liquid-universe-qualification-hardening-v2`. It replaces the V1 admission decision with the frozen V2 correctness contract, versioned asset registry, deterministic machine manifests, complete-grid validation, fail-closed gap attribution, and fault-injection coverage.
+
+After U-03D merges, U-03E may rerun the fixed 2020-01 through 2026-06 public qualification twice for cold/warm determinism. U-03F may start only after U-03E merges and must independently reproduce every month, quarantine scope, and qualified panel row.
+
+U-04 remains unauthorized. No strategy is eligible for M2. Do not enter M2. The architecture remains Freqtrade-first, but this milestone cannot run Freqtrade backtesting, strategies, events, returns, OOS, APIs, or trading.
+
 ## Current Decision
 
 The ADR-0011 public archive run discovered 676 historical USDT spot symbols and

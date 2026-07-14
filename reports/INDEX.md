@@ -76,3 +76,8 @@
 | `docs/decisions/ADR-0006-freqtrade-first-with-audit-sidecar.md` | architecture | accepted | Freqtrade owns single-leg research; M0 and Python remain independent audit/offline accounting sidecars. | no |
 
 No report in this repository currently approves live trading, paper trading with real API, execution/live, order placement, or API trading permissions.
+
+| Path | Phase | Status | Meaning | Trading approval |
+| --- | --- | --- | --- | --- |
+| `reports/m0/LIQUID_SPOT_UNIVERSE_V2_HARDENING_REPORT.md` | U-03D V2 correctness hardening | implementation_pass_pending_public_requalification | V1 admission is superseded pending deterministic V2 public rebuild and independent audit; no hypothesis or outcome work is authorized. | no |
+| `docs/decisions/ADR-0012-liquid-universe-qualification-correctness-v2.md` | U-03D governance | accepted_for_correctness_hardening_only | Freezes V2 correctness and machine-authority rules without changing the ADR-0011 research choices. | no |

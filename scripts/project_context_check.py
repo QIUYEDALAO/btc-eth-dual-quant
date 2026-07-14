@@ -238,6 +238,10 @@ def main() -> int:
         or "liquid_universe_qualification_blocked_151_gaps_no_strategy_no_m2" in current_status
         or "liquid_universe_qualification_pass_gap_attributed_no_strategy_no_m2" in current_status
         or "liquid_universe_qualification_pass_no_strategy_authorized_no_m2" in current_status
+        or current_status == "liquid_universe_v1_superseded_v2_hardening_pending_requalification_no_strategy_no_m2"
+        or current_status == "liquid_universe_v2_requalification_pass_pending_independent_audit_no_strategy_no_m2"
+        or current_status == "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2"
+        or current_status == "liquid_universe_v2_independent_audit_blocked_no_strategy_no_m2"
     ):
         failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
     if "m2" not in current_status and "m1b" not in current_status:
