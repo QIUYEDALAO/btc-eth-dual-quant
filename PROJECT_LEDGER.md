@@ -1401,3 +1401,13 @@ private exchange responses here.
 - Result: `blocked`; processing errors 0, unresolved row conflicts 1, unresolved gaps 0, synthetic fills 0, replacement members 0.
 - Determinism: cold build completed; warm and worker builds were deliberately not run after the unknown-conflict stop, so no three-way determinism claim is made.
 - Decision: preserve evidence and require independent adjudication plus reviewed versioned registry update before rerun. U-03F/U-04, strategy, events, returns, backtesting, OOS, API/trading and M2 remain unauthorized.
+
+## 2026-07-15 - Blocked V3 Requalification Evidence Merged And Closed Out
+
+- Date UTC: 2026-07-15T08:17:51Z
+- Task ID: U-03E-V3-RUN
+- PR / merge commit: #77 / `c6d44d9f8692a9e9cf5b1ff44e36237539b4f4f6`
+- Validation: 84/84 GitHub checks passed on head `7c8c536`; local V3 validation passed 9/0.
+- Result: The fixed-range cold evidence is merged as `blocked_unregistered_official_row_conflict`; it is not a V3 qualification pass and makes no warm/worker determinism claim.
+- Governance: U-03E-V3-RUN leaves `open_work` as a completed blocked milestone. Only independent checksum-bound adjudication of KLAYUSDT 2024-10-30 is authorized next; registry mutation and V3 rerun require later reviewed steps.
+- Safety: U-03F, U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.

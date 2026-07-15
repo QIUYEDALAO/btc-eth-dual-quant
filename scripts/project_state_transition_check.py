@@ -43,6 +43,10 @@ ALLOWED = {
         "liquid_universe_v3_requalification_blocked_unknown_conflict_no_strategy_no_m2",
     ): "U-03E-V3-RUN",
     (
+        "Liquid universe V3 public requalification blocked; independent source adjudication is the only authorized next task",
+        "liquid_universe_v3_requalification_blocked_no_strategy_no_m2",
+    ): "U-03E-V3-ADJ",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -81,7 +85,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03F"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "U-03F"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])

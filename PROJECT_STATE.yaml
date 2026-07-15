@@ -1,10 +1,15 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T07:27:52Z"
-current_phase: Liquid universe V3 public requalification blocked by unregistered official row conflict
-current_status: liquid_universe_v3_requalification_blocked_unknown_conflict_no_strategy_no_m2
+last_updated_utc: "2026-07-15T08:17:51Z"
+current_phase: Liquid universe V3 public requalification blocked; independent source adjudication is the only authorized next task
+current_status: liquid_universe_v3_requalification_blocked_no_strategy_no_m2
 completed_milestones:
+  - phase: Liquid universe V3 public requalification
+    status: blocked_unregistered_official_row_conflict
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V3_QUALIFICATION_REPORT.md
+    merged_pr: 77
+    merge_commit: c6d44d9f8692a9e9cf5b1ff44e36237539b4f4f6
   - phase: Liquid universe V3 generic row-conflict implementation
     status: pass
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V3_IMPLEMENTATION_STATUS.md
@@ -204,15 +209,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03E-V3-RUN
-    phase: Liquid universe V3 public requalification
-    status: blocked_pending_adjudication
-    branch: codex/liquid-universe-v3-public-requalification
-    pr: pending
-    head_sha: runtime_current_pr_head
+  - id: U-03E-V3-ADJ
+    phase: Liquid universe V3 independent source conflict adjudication
+    status: authorized_not_started
+    branch: not_created
+    pr: none
+    head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V3_QUALIFICATION_REPORT.md
-    blocker: "KLAYUSDT 2024-10-30 official monthly and daily 1d archives contain the same unregistered row with close_time before open_time; ADR-0013 requires new adjudication before rerun."
+    evidence: reports/m0/evidence/liquid_universe_v3/requalification_run_manifest.json
+    blocker: "Scope is limited to independently adjudicating the checksum-bound KLAYUSDT 2024-10-30 official monthly/daily conflict; no registry change or rerun is authorized in the adjudication task."
   - id: U-03F
     phase: Liquid universe V3 independent audit
     status: not_authorized
@@ -289,7 +294,6 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Merge the truthful blocked V3 requalification evidence only after all validation and CI checks pass.
   - Public-source diagnostics may independently adjudicate only the checksum-bound KLAYUSDT 2024-10-30 conflict without private data, outcomes, ranking changes, row deletion or silent deduplication.
   - A fixed-range V3 cold/warm/worker rerun may follow only after a separately reviewed versioned registry update is adopted.
   - U-03F and cross-sectional design remain blocked until a future V3 requalification pass merges and U-03F then passes in dependency order.
@@ -625,6 +629,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 77
+    title: Record blocked V3 public requalification
+    merge_commit: c6d44d9f8692a9e9cf5b1ff44e36237539b4f4f6
+    status: merged
   - number: 76
     title: Implement generic V3 row conflict policy
     merge_commit: b3496fe54f3992ffa20bcc0c62316c0bc14db543
