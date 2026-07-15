@@ -1,10 +1,15 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T07:00:00Z"
-current_phase: ADR-0013 conditional adoption pending merge
-current_status: adr0013_accepted_for_v3_implementation_u03e_requalification_only_no_strategy_no_m2
+last_updated_utc: "2026-07-15T06:30:00Z"
+current_phase: Liquid universe V3 generic row-conflict implementation pending review
+current_status: liquid_universe_v3_implementation_pass_fixture_only_public_requalification_not_run_no_strategy_no_m2
 completed_milestones:
+  - phase: ADR-0013 conditional adoption
+    status: accepted_for_v3_implementation_and_u03e_requalification_only
+    evidence: docs/decisions/ADR-0013-official-archive-row-conflict-policy.md
+    merged_pr: 74
+    merge_commit: 20e7ceb7f35366da3afe4859a4168ee1954bd5ae
   - phase: ADR-0013 independent review
     status: approve_with_required_changes
     evidence: reports/expert/ADR_0013_INDEPENDENT_REVIEW.md
@@ -194,17 +199,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: ADR-0013-ADOPT
-    phase: ADR-0013 conditional adoption
-    status: accepted_pending_pr_merge
-    branch: codex/adr-0013-official-archive-row-conflict-policy
-    pr: 74
+  - id: U-03E-V3-IMPL
+    phase: Liquid universe V3 generic row-conflict implementation
+    status: implementation_pass_pending_review
+    branch: codex/liquid-universe-v3-row-conflict-policy
+    pr: pending
     head_sha: runtime_current_pr_head
-    reviewed_head_sha: 8dc9ee034fdd172147485f7718117f8a76713cdf
-    evidence_commit: 4a95a28142d13aa2f03f271baf660ae95ba67e78
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: docs/decisions/ADR-0013-official-archive-row-conflict-policy.md
-    blocker: "PR #74 must merge with all conformance and CI checks successful before generic V3 implementation begins."
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V3_IMPLEMENTATION_STATUS.md
+    blocker: "Fixture implementation must merge with all CI checks successful before the fixed-range public V3 requalification starts."
   - id: U-03F
     phase: Liquid universe V2 independent audit
     status: not_authorized
@@ -609,6 +612,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 74
+    title: Adopt official archive row conflict policy for V3
+    merge_commit: 20e7ceb7f35366da3afe4859a4168ee1954bd5ae
+    status: merged
   - number: 73
     title: Adjudicate liquid universe V2 official-source conflicts
     merged_at_utc: "2026-07-15T04:23:56Z"

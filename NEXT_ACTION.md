@@ -2,14 +2,15 @@
 
 ## Immediate Task
 
-PR #75 merged the independent ADR-0013 review with verdict
-`approve_with_required_changes`. PR #74 now incorporates all mandatory changes
-A1-A10 and is accepted for V3 implementation and fixed-range U-03E
-requalification only, pending conformance checks, CI and merge.
+PR #74 merged ADR-0013 at `20e7ceb` after all 80 checks passed. The generic V3
+row-conflict implementation is now fixture-complete on
+`codex/liquid-universe-v3-row-conflict-policy`; it has not run the public
+qualification range.
 
-Do not implement V3 before PR #74 merges. After merge, the only permitted next
-task is a separate generic offline V3 implementation with a hash-bound
-resolution registry. U-03F and U-04 remain unauthorized.
+The immediate task is to review and merge this implementation. Only after that
+merge may a separate branch run cold, warm-cache and worker-variant V3 public
+requalification for the frozen `2020-01` through `2026-06` range. U-03F and
+U-04 remain unauthorized.
 
 U-04 remains unauthorized. No strategy is eligible for M2. Freqtrade
 backtesting, strategies, events, returns, OOS, APIs and trading remain blocked.
@@ -61,11 +62,11 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Validate and merge PR #74 with all A1-A10 conformance checks successful.
-2. From the merged ADR, implement the generic V3 policy and offline resolution
-   registry in a separate branch using fixtures only.
-3. Run fixed-range public U-03E V3 requalification only after implementation
-   merges; U-03F is still a later dependent task.
+1. Validate and merge the fixture-only generic V3 implementation.
+2. From merged implementation, run the fixed-range public V3 requalification
+   three times with checksum verification and exact artifact comparison.
+3. Stop on any checksum drift, unknown conflict, processing error or
+   deterministic mismatch. Do not run U-03F in the requalification task.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.

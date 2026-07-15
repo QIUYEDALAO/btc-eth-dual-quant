@@ -1378,3 +1378,14 @@ private exchange responses here.
 - Result: A1-A10 are incorporated; status is `Accepted for V3 implementation and U-03E requalification only` pending PR #74 conformance, CI and merge.
 - SHA semantics: `evidence_commit=4a95a28142d13aa2f03f271baf660ae95ba67e78`, `reviewed_head_sha=8dc9ee034fdd172147485f7718117f8a76713cdf`, while current `head_sha` is runtime Git/GitHub metadata.
 - Authorization: generic V3 contract/registry implementation and a dependent U-03E V3 rerun only. U-03F, U-04, strategy, events, returns, OOS, API/trading and M2 remain false.
+# 2026-07-15 - ADR-0013 Adopted And V3 Generic Implementation Started
+
+- Date UTC: 2026-07-15T06:30:00Z
+- Task IDs: ADR-0013-ADOPT, U-03E-V3-IMPL
+- ADR PR / merge: #74 / `20e7ceb7f35366da3afe4859a4168ee1954bd5ae`
+- Branch: `codex/liquid-universe-v3-row-conflict-policy`
+- Decision: ADR-0013 is accepted only for generic V3 implementation and the fixed-range U-03E V3 requalification. U-03F and U-04 remain unauthorized.
+- Implementation: complete-key duplicate classification, exact offline registry binding, invalid-monthly daily correction, canonical provenance, two quarantine scopes and fail-closed drift handling are fixture-tested.
+- Hashes: contract `f41f5fedf6002487c9d576a39927ade4409d55e1bc0442aa097e6b2ed054b3ed`; resolution registry `570b66e32c3a7ac910ba5ef6688eff966304e65a9519f4f8a902b60fbe4957a4`; adjudication evidence `8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b`.
+- Public run: not executed in this task. V2 remains blocked historical evidence.
+- Safety: no strategy, event, return, backtest, OOS, API, trading, U-03F, U-04 or M2 authorization.
