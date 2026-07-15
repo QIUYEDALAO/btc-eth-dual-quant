@@ -33,7 +33,10 @@ class LiquidUniverseContractTests(unittest.TestCase):
 
     def test_asset_categories_and_suffix_false_positive(self):
         effective = date(2026, 6, 1)
-        for symbol in ("USD1USDT", "USDCUSDT", "FDUSDUSDT", "WBTCUSDT", "WBETHUSDT", "BTCUPUSDT"):
+        for symbol in (
+            "USD1USDT", "USDCUSDT", "FDUSDUSDT", "AUDUSDT", "GBPUSDT", "USDSBUSDT",
+            "WBTCUSDT", "WBETHUSDT", "BTCUPUSDT",
+        ):
             self.assertIsNotNone(exclusion_record(symbol, effective, BASE, REGISTRY), symbol)
         self.assertEqual(exclusion_record("PAXGUSDT", effective, BASE, REGISTRY)["category"], "commodity_backed_or_external_reference_asset")
         self.assertIsNone(exclusion_record("JUPUSDT", effective, BASE, REGISTRY))

@@ -11,8 +11,8 @@ from btc_eth_dual_quant.data.liquid_universe import content_hash, validate_regis
 ROOT = Path(__file__).resolve().parents[1]
 PATH = ROOT / "config/liquid_spot_universe_contract_v2.json"
 REGISTRY_PATH = ROOT / "config/liquid_spot_asset_eligibility_v2.json"
-EXPECTED_CONTRACT_HASH = "c66f68574d5b595d2ccde13250007fb2dd8dcb73c0dfad6bf9f5bf7fea687b33"
-EXPECTED_REGISTRY_HASH = "2b23f64a92dec9b597c2f9399f4661cb62073ff54b90e851bc285626d31ad202"
+EXPECTED_CONTRACT_HASH = "051894e89b713f541caa601efab51be22f83461a4e624e1d51d7f576ed8cda51"
+EXPECTED_REGISTRY_HASH = "d8c7fc6b034f1b0c82dc2e41f7b4f2c67122311246b33505f22ad694a3d0b091"
 CONFIRMED_GAPS_PATH = ROOT / "config/liquid_spot_confirmed_archive_gaps_v2.json"
 EXPECTED_CONFIRMED_GAPS_HASH = "0e5d66a3968e0bb6ad89f81db9be8201b97f7e8fe8e257f648db0b5e2ba08f87"
 
@@ -91,7 +91,7 @@ def validate(data: dict[str, Any], registry: dict[str, Any] | None = None) -> li
     if registry_ref != {
         "path": "config/liquid_spot_asset_eligibility_v2.json",
         "registry_id": "LIQUID-SPOT-ASSET-ELIGIBILITY-V2",
-        "registry_version": "2026-07-14.1",
+        "registry_version": "2026-07-15.1",
         "registry_hash": EXPECTED_REGISTRY_HASH,
     }:
         failures.append("exclusion registry reference changed")

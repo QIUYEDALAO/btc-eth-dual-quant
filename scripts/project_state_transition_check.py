@@ -19,6 +19,10 @@ ALLOWED = {
         "liquid_universe_v2_requalification_pass_pending_independent_audit_no_strategy_no_m2",
     ): "U-03E",
     (
+        "Liquid universe V2 public requalification blocked",
+        "liquid_universe_v2_requalification_blocked_data_conflict_no_strategy_no_m2",
+    ): "U-03E",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -56,8 +60,8 @@ def validate(state: dict) -> list[str]:
     for item in open_work:
         if isinstance(item.get("pr"), int) and item["pr"] in merged:
             failures.append(f"open_work references merged PR #{item['pr']}")
-    if pair in list(ALLOWED)[:2] and any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
-        failures.append("U-04 authorized before independent audit")
+    if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
+        failures.append("U-04 authorized without a separate post-audit task")
     return failures
 
 

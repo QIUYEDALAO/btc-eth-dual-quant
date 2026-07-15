@@ -2,26 +2,44 @@
 
 ## Immediate Task
 
-Complete and merge U-03D on `codex/liquid-universe-qualification-hardening-v2`. It replaces the V1 admission decision with the frozen V2 correctness contract, versioned asset registry, deterministic machine manifests, complete-grid validation, fail-closed gap attribution, and fault-injection coverage.
+Record and review the truthful U-03E `blocked_data_conflict` evidence from
+`codex/liquid-universe-v2-requalification`. The fixed 2020-01 through 2026-06
+cold and warm builds are deterministic, but checksum-verified official source
+rows violate the frozen V2 contract.
 
-After U-03D merges, U-03E may rerun the fixed 2020-01 through 2026-06 public qualification twice for cold/warm determinism. U-03F may start only after U-03E merges and must independently reproduce every month, quarantine scope, and qualified panel row.
+Do not start U-03F. The only permitted follow-up is source-owner/public-archive
+evidence work or a separate ADR that explicitly changes the data policy. Silent
+deduplication, dropping negative-volume rows, changing rankings or using the V1
+Markdown report as qualification input is prohibited.
 
-U-04 remains unauthorized. No strategy is eligible for M2. Do not enter M2. The architecture remains Freqtrade-first, but this milestone cannot run Freqtrade backtesting, strategies, events, returns, OOS, APIs, or trading.
+U-04 remains unauthorized. No strategy is eligible for M2. Freqtrade
+backtesting, strategies, events, returns, OOS, APIs and trading remain blocked.
 
 ## Current Decision
 
-The ADR-0011 public archive run discovered 676 historical USDT spot symbols and
-rebuilt 78 monthly Top-15 snapshots with 1,170 membership rows. All 151 original
-blocked symbol-month observations are attributed: 15 unique synchronous Binance
-outage windows produced 225 per-symbol gap runs, while LUNAUSDT 2022-05 and
-RNDRUSDT 2024-07 are isolated without replacement. Processing errors and
-unresolved gaps are zero. Qualification is `pass_with_quarantine`.
+U-03D passed and merged in PR #70 at `5ab69e2`. U-03E then rebuilt the V2
+public evidence twice with different concurrency and identical outputs:
 
-ADR-0011 is frozen pending review. It defines a monthly point-in-time Top-15
-Binance USDT spot universe using the prior 90 complete UTC days' median daily
-quote volume, 365 complete history days, deterministic symbol tie-break and
-conservative asset exclusions. BTC and ETH remain eligible and also serve as
-regime/risk benchmarks.
+- Artifact-set hash: `b7c89f2465f570db0687ed20f81a84d570e8746eb0be95c2767429733c0bdfb7`.
+- Deterministic mismatches: 0.
+- Historical symbols / months / membership rows: 676 / 78 / 1,170.
+- Gap records / unresolved gaps: 227 / 0.
+- Excluded-category members / synthetic fills / replacements: 0 / 0 / 0.
+- Processing blockers: 3.
+
+The three blockers are official-source evidence, not ingestion failures:
+
+- BTTUSDT 2019-01 daily ZIP contains negative base volume.
+- BTTUSDT 2019-02 daily ZIP contains negative base volume.
+- AXSUSDT 2026-02 monthly daily ZIP contains a duplicate 2026-02-10 row.
+
+The relevant files passed official checksum verification. The V2 result is
+therefore `blocked`, as required by ADR-0012. V1 remains superseded historical
+evidence; it cannot override the machine result.
+
+The historical V1/V2 comparison covers all 78 months: 6 months changed, with 7
+additions, 7 removals and 33 rank changes. This comparison is diagnostic only
+and was not an input to V2 qualification.
 
 M1H-03 is complete. Public funding-data qualification passed, then the one
 frozen sealed-IS paper observation failed feasibility without changing the
@@ -41,18 +59,16 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Await a separate approval to preregister exactly one cross-sectional hypothesis family; or
-2. Continue M0 public dual-source audit diagnostics without private data.
+1. Preserve and merge the deterministic U-03E blocked evidence.
+2. Seek official/source-owner clarification or corrected public archives for
+   the exact three blockers.
+3. If the project intentionally wants a different duplicate/invalid-volume
+   policy, create a new ADR and rerun U-03E from scratch under a new contract
+   version.
 
-PR #68 merged at `1996ea3` after 70/70 GitHub checks passed. This qualification
-pass does not itself authorize a cross-sectional hypothesis, strategy code,
-event scan, returns, OOS, backtesting or M2.
-
-ADR-0011 must freeze point-in-time membership, listings and delistings,
-survivorship controls, liquidity admission and cross-sectional UTC alignment.
-It may authorize a later asset-qualification stage only. It does not inherit
-permission to choose a strategy, scan events, calculate returns, access OOS or
-enter M2.
+U-03F may run only after a future U-03E pass. Cross-sectional hypothesis design
+requires U-03F pass plus a separate task; it is not an allowed workaround for
+the current blocker.
 
 ## Prohibited
 

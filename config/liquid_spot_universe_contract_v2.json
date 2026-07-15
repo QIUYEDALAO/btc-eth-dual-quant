@@ -23,8 +23,8 @@
   "exclusion_registry": {
     "path": "config/liquid_spot_asset_eligibility_v2.json",
     "registry_id": "LIQUID-SPOT-ASSET-ELIGIBILITY-V2",
-    "registry_version": "2026-07-14.1",
-    "registry_hash": "2b23f64a92dec9b597c2f9399f4661cb62073ff54b90e851bc285626d31ad202"
+    "registry_version": "2026-07-15.1",
+    "registry_hash": "d8c7fc6b034f1b0c82dc2e41f7b4f2c67122311246b33505f22ad694a3d0b091"
   },
   "data_authority": {
     "daily_primary": "official_monthly_zip",
@@ -67,5 +67,5 @@
     "m2": false,
     "api_or_trading": false
   },
-  "canonical_hash": "c66f68574d5b595d2ccde13250007fb2dd8dcb73c0dfad6bf9f5bf7fea687b33"
+  "canonical_hash": "051894e89b713f541caa601efab51be22f83461a4e624e1d51d7f576ed8cda51"
 }

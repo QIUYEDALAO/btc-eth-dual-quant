@@ -1,0 +1,78 @@
+{
+  "content": {
+    "authorizations": {
+      "api_or_trading": false,
+      "backtesting": false,
+      "event_scan": false,
+      "hypothesis_preregistration": false,
+      "m2": false,
+      "oos_opened": false,
+      "returns": false,
+      "strategy_code": false
+    },
+    "checksum_cache": {
+      "after_cold": 27729,
+      "after_warm": 27729,
+      "before": 27729
+    },
+    "cold": {
+      "artifact_set_hash": "b7c89f2465f570db0687ed20f81a84d570e8746eb0be95c2767429733c0bdfb7",
+      "generated_report_sha256": "959d6ae0fce59189d8308b487a1adef4ba8b20ad4d333f9005c19ba698236a98",
+      "manifest_file_sha256": {
+        "candidate_eligibility_manifest": "0146a9260da50ee09846a5fe494abf123191136e0612c0e6e14fffe8889dc16e",
+        "membership_manifest": "ce41bcf1c5969e50aedeea48a61025fc9cb851e06cf2792e8f680eba492b8cd3",
+        "qualification_summary": "188cef622b6ad2a6e9c2560e38ea8255b653a43530de7fe1740b8574c4829c4e",
+        "qualified_panel_manifest": "5927dda76d101d15393a6f01692adbdcaeafb6b1c14e3325585af7baf873b5a6",
+        "quarantine_manifest": "0fe412d256c2b1e6e5bb2b426a33e87f82fae0e3ab28248e6ea864a32c904824",
+        "source_manifest": "a2c6bc7159ee46bf040330488efb652cddf7a15088e7194c66d9005d689354c4"
+      },
+      "manifest_hashes": {
+        "candidate_eligibility_manifest": "876315816abfb9d1ef3d3ff7d33e269a2757110cb7ba02d9c1a686f6b1d40b5b",
+        "membership_manifest": "5a4ffd1d0898d2d155cacf1bb81b582bf1d06ebca6a2e8e600f19a1c44d8b3f4",
+        "qualification_summary": "80cd0a88b6253f06aeb40bfe4123aa55f874ce31a40d2e94a46859b2aba8380c",
+        "qualified_panel_manifest": "2d20adcd4e7997375c23d84fcc52f6fe4a2dd85f3769dd8a7cde9124e60733c5",
+        "quarantine_manifest": "163c159990deccb0f377dee903f4a4a105f24c695f21bd5f1fe80a3d05f575b0",
+        "source_manifest": "928c3520028ddf5bfc1c03fe3185d5af4b9ad8fea0f327469d60f388a3f638cf"
+      },
+      "workers": 16
+    },
+    "deterministic_mismatches": 0,
+    "generated_utc": "2026-07-15T02:02:44.196533+00:00",
+    "range": {
+      "end": "2026-06",
+      "start": "2020-01"
+    },
+    "status": "blocked",
+    "v1_v2_diff": {
+      "changed_months": 6,
+      "membership_additions": 7,
+      "membership_removals": 7,
+      "months_compared": 78,
+      "rank_changes": 33
+    },
+    "warm": {
+      "artifact_set_hash": "b7c89f2465f570db0687ed20f81a84d570e8746eb0be95c2767429733c0bdfb7",
+      "generated_report_sha256": "959d6ae0fce59189d8308b487a1adef4ba8b20ad4d333f9005c19ba698236a98",
+      "manifest_file_sha256": {
+        "candidate_eligibility_manifest": "0146a9260da50ee09846a5fe494abf123191136e0612c0e6e14fffe8889dc16e",
+        "membership_manifest": "ce41bcf1c5969e50aedeea48a61025fc9cb851e06cf2792e8f680eba492b8cd3",
+        "qualification_summary": "188cef622b6ad2a6e9c2560e38ea8255b653a43530de7fe1740b8574c4829c4e",
+        "qualified_panel_manifest": "5927dda76d101d15393a6f01692adbdcaeafb6b1c14e3325585af7baf873b5a6",
+        "quarantine_manifest": "0fe412d256c2b1e6e5bb2b426a33e87f82fae0e3ab28248e6ea864a32c904824",
+        "source_manifest": "a2c6bc7159ee46bf040330488efb652cddf7a15088e7194c66d9005d689354c4"
+      },
+      "manifest_hashes": {
+        "candidate_eligibility_manifest": "876315816abfb9d1ef3d3ff7d33e269a2757110cb7ba02d9c1a686f6b1d40b5b",
+        "membership_manifest": "5a4ffd1d0898d2d155cacf1bb81b582bf1d06ebca6a2e8e600f19a1c44d8b3f4",
+        "qualification_summary": "80cd0a88b6253f06aeb40bfe4123aa55f874ce31a40d2e94a46859b2aba8380c",
+        "qualified_panel_manifest": "2d20adcd4e7997375c23d84fcc52f6fe4a2dd85f3769dd8a7cde9124e60733c5",
+        "quarantine_manifest": "163c159990deccb0f377dee903f4a4a105f24c695f21bd5f1fe80a3d05f575b0",
+        "source_manifest": "928c3520028ddf5bfc1c03fe3185d5af4b9ad8fea0f327469d60f388a3f638cf"
+      },
+      "workers": 3
+    }
+  },
+  "content_hash": "12ac0bf91f265c6da0df7fb44c4a9b2bed37f8c5a3dceaebb415a378f0e10e88",
+  "manifest_type": "liquid_universe_v2_requalification_run",
+  "schema_version": 1
+}

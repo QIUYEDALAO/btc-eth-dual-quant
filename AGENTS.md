@@ -28,9 +28,10 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: ADR-0011 public qualification and gap attribution completed in PR #68; no strategy is authorized.
+- Current phase: U-03E V2 public requalification is deterministically blocked by three checksum-verified official-source conflicts; no strategy is authorized.
 - ADR-0012 supersedes the V1 qualification admission decision pending V2 public requalification and independent audit. V1 reports remain historical evidence.
-- Current active task is U-03D V2 correctness hardening. U-03E and U-03F must run in order after predecessor merge; U-04 remains unauthorized.
+- U-03D passed and merged in PR #70 at `5ab69e2`. U-03E cold/warm public builds match exactly but qualification is blocked by BTTUSDT negative daily volume in 2019-01/02 and a duplicate AXSUSDT row on 2026-02-10.
+- U-03F must not start while U-03E is blocked. U-04 remains unauthorized. Resolving the blocker requires source-owner evidence or a new ADR; silent deduplication or row deletion is prohibited.
 - V2 machine JSON manifests are the only future qualification authority. Markdown reports must never be qualification inputs.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
