@@ -9,6 +9,8 @@
 | `reports/m0/evidence/liquid_universe_v3/klay_source_conflict_adjudication.json` | U-03E-V3-ADJ machine evidence | deterministic checksum-bound evidence / PR #79 merged / commit `04bbe128fe0c83d8f21a7a34ffcf9c97ab842a7c` | Canonically binds archive checksums, raw rows, normalized REST payloads, intraday scope, lifecycle provenance, local/remote scope statistics and zero downstream authorization. | no |
 | `reports/expert/ADR_0014_INDEPENDENT_REVIEW.md` | ADR-0014 independent policy review | approve_with_required_changes / PR #82 merged / `d507684` | Exact JSON render records 0 critical, 10 high, 1 medium and 1 informational finding plus MC-01 through MC-11. PR #81 remains Draft and unadopted. | no |
 | `reports/expert/evidence/adr0014_independent_review.json` | ADR-0014 independent policy review | deterministic hash-bound evidence | Binds PR #81 head/base, ADR blob/content, changed-file list and KLAY evidence; review time is excluded from content ID and all authorizations are false. | no |
+| `reports/expert/ADR_0014_REQUIRED_CHANGES_REVIEW.md` | ADR-0014 required-changes independent conformance review | approve / exact PR #81 head `31c967c` | MC-01..MC-11 all pass with 0 critical/high findings. PR #81 remains Draft and unadopted; no runtime or downstream authority is created. | no |
+| `reports/expert/evidence/adr0014_required_changes_review.json` | ADR-0014 required-changes independent conformance review | deterministic hash-bound evidence | Binds the exact revised head/base, ADR/model/fault/MC hashes, changed files, prior review and KLAY evidence under content hash `d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7`. | no |
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |

@@ -1,10 +1,21 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T17:40:45Z"
-current_phase: ADR-0014 required-changes Draft revision authorized
-current_status: adr0014_required_changes_revision_authorized_draft_not_adopted_no_requalification_no_strategy_no_m2
+last_updated_utc: "2026-07-15T18:58:50Z"
+current_phase: ADR-0014 required-changes independent conformance review completed
+current_status: adr0014_required_changes_review_approve_pr81_draft_unadopted_no_requalification_no_strategy_no_m2
 completed_milestones:
+  - phase: ADR-0014 required-changes independent conformance review
+    status: approve
+    evidence: reports/expert/ADR_0014_REQUIRED_CHANGES_REVIEW.md
+    evidence_content_hash: d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7
+    reviewed_pr: 81
+    reviewed_head_sha: 31c967c785128671769eb713baed265da8ae0f2a
+    reviewed_base_sha: ab45ba4f12badab8a00faa0181b48c948643e223
+    verdict: approve
+    critical_findings: 0
+    high_findings: 0
+    mandatory_changes: [MC-01, MC-02, MC-03, MC-04, MC-05, MC-06, MC-07, MC-08, MC-09, MC-10, MC-11]
   - phase: ADR-0014 independent policy review
     status: approve_with_required_changes
     evidence: reports/expert/ADR_0014_INDEPENDENT_REVIEW.md
@@ -229,23 +240,28 @@ completed_milestones:
 open_work:
   - id: ADR-0014-DRAFT
     phase: Official lifecycle-boundary placeholder policy design
-    status: draft_revision_authorized_not_started
+    status: independent_conformance_review_approve_draft_unadopted
     branch: codex/adr-0014-lifecycle-boundary-placeholder-policy
     pr: 81
-    head_sha: cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44
+    head_sha: 31c967c785128671769eb713baed265da8ae0f2a
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md
-    scope: revise proposed policy text and docs-only review models against MC-01 through MC-11; no adoption or implementation
+    scope: revised proposed policy and docs-only review models passed exact-head independent conformance review; no adoption or implementation
     prior_review_pr: 82
     prior_review_merge_sha: d507684564fc31812c8e7d4adb06d7ab61c7dab7
     prior_review_content_hash: 3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15
     mandatory_changes: [MC-01, MC-02, MC-03, MC-04, MC-05, MC-06, MC-07, MC-08, MC-09, MC-10, MC-11]
+    mandatory_changes_addressed: [MC-01, MC-02, MC-03, MC-04, MC-05, MC-06, MC-07, MC-08, MC-09, MC-10, MC-11]
+    conformance_review_verdict: approve
+    conformance_review_content_hash: d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7
+    remaining_critical: 0
+    remaining_high: 0
     adopted: false
     implemented: false
     registry_change: false
     v3_rerun: false
     requalification: false
-    blocker: "MC-01 through MC-11 must all be incorporated and independently re-reviewed before any adoption task. PR #81 must remain Draft."
+    blocker: "The conformance verdict is review evidence only. PR #81 remains Draft and unadopted; adoption, merge, V4 implementation and requalification require a separate explicit task."
   - id: U-03F
     phase: Liquid universe V3 independent audit
     status: not_authorized
@@ -322,9 +338,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Revise only PR #81 Draft to address MC-01 through MC-11 while keeping it Draft, unadopted and non-authoritative."
-  - "After the revised PR #81 head is frozen and all checks pass, perform a separate independent conformance review from latest main."
-  - "Do not mark PR #81 Ready, merge it, adopt policy, implement V4, mutate registries or run requalification."
+  - "No adoption, implementation or qualification task is authorized by the ADR-0014 conformance-review milestone."
+  - "PR #81 must remain Draft at exact reviewed head 31c967c785128671769eb713baed265da8ae0f2a unless a future explicit task defines a new review boundary."
+  - "Do not mark PR #81 Ready, merge it, adopt policy, implement V4, mutate contracts/registries or run requalification."
   - U-03F and cross-sectional design remain blocked until a future V3 requalification pass merges and U-03F then passes in dependency order.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
@@ -367,6 +383,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/ADR_0014_REQUIRED_CHANGES_REVIEW.md
+    phase: ADR-0014 required-changes independent conformance review
+    status: approve
+    status_marker: "- Verdict: `approve`"
+  - path: reports/expert/evidence/adr0014_required_changes_review.json
+    phase: ADR-0014 required-changes independent conformance review machine evidence
+    status: deterministic_hash_bound_review
+    status_marker: '"verdict": "approve"'
   - path: reports/expert/ADR_0014_INDEPENDENT_REVIEW.md
     phase: ADR-0014 independent policy review
     status: approve_with_required_changes
@@ -667,6 +691,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 83
+    title: Close ADR-0014 independent review governance
+    merge_commit: ab45ba4f12badab8a00faa0181b48c948643e223
+    status: merged
   - number: 82
     title: Independently review ADR-0014 lifecycle policy
     merge_commit: d507684564fc31812c8e7d4adb06d7ab61c7dab7

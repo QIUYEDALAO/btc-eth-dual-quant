@@ -1457,3 +1457,13 @@ private exchange responses here.
 - Result: Independent review is completed with verdict `approve_with_required_changes`, 0 critical and 10 high findings. MC-01 through MC-11 all remain adoption blockers.
 - Draft authority: PR #81 may be revised only as a proposed, non-authoritative Draft and must undergo a new independent conformance review against its exact revised head.
 - Safety: Adoption, V4 implementation, contract/registry mutation, requalification, U-03F, U-04, strategy, OOS, API/trading and M2 remain unauthorized.
+
+## 2026-07-15 - ADR-0014 Required Changes Independently Re-reviewed
+
+- Task ID: ADR-0014-REQUIRED-CHANGES-REVIEW
+- Reviewed target: PR #81 Draft at exact head `31c967c785128671769eb713baed265da8ae0f2a`, based on main `ab45ba4f12badab8a00faa0181b48c948643e223`.
+- Verdict: `approve`; MC-01 through MC-11 all pass with 0 critical and 0 high findings.
+- Evidence: `reports/expert/evidence/adr0014_required_changes_review.json`, content hash `d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7`; Markdown is an exact deterministic render.
+- Integrity: ADR content, policy model, fault matrix, MC conformance, changed-file list, prior review and KLAY adjudication evidence are hash-bound to the reviewed head.
+- Governance: PR #81 remains Open/Draft and unadopted. Approval is conformance evidence only; it does not mark the Draft Ready, merge it, create runtime authority, mutate V3/V4 contracts or registries, or authorize requalification.
+- Safety: U-03F, U-04, strategy, events, returns, OOS, API/trading, execution/live and M2 remain unauthorized.

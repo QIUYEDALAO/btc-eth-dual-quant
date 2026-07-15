@@ -63,6 +63,10 @@ ALLOWED = {
         "adr0014_required_changes_revision_authorized_draft_not_adopted_no_requalification_no_strategy_no_m2",
     ): "ADR-0014-DRAFT",
     (
+        "ADR-0014 required-changes independent conformance review completed",
+        "adr0014_required_changes_review_approve_pr81_draft_unadopted_no_requalification_no_strategy_no_m2",
+    ): "ADR-0014-DRAFT",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -119,6 +123,25 @@ def validate(state: dict) -> list[str]:
             failures.append("merged blocked U-03E must not remain in open_work")
     elif expected_task and not any(item.get("id") == expected_task for item in active):
         failures.append(f"current V2 task missing from open_work: {expected_task}")
+    if pair[0] == "ADR-0014 required-changes independent conformance review completed":
+        milestones = [
+            item
+            for item in state.get("completed_milestones", [])
+            if item.get("phase") == "ADR-0014 required-changes independent conformance review"
+        ]
+        expected_milestone = {
+            "reviewed_pr": 81,
+            "reviewed_head_sha": "31c967c785128671769eb713baed265da8ae0f2a",
+            "reviewed_base_sha": "ab45ba4f12badab8a00faa0181b48c948643e223",
+            "verdict": "approve",
+            "critical_findings": 0,
+            "high_findings": 0,
+            "evidence_content_hash": "d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7",
+        }
+        if len(milestones) != 1 or any(
+            milestones[0].get(key) != value for key, value in expected_milestone.items()
+        ):
+            failures.append("ADR-0014 conformance milestone binding changed")
     merged = {item.get("number") for item in state.get("latest_merged_prs", [])}
     for item in open_work:
         if isinstance(item.get("pr"), int) and item["pr"] in merged:
@@ -140,7 +163,16 @@ def validate(state: dict) -> list[str]:
             if item.get("verdict") != "approve_with_required_changes":
                 failures.append("ADR-0014 review verdict changed")
         if item.get("id") == "ADR-0014-DRAFT" and expected_task == "ADR-0014-DRAFT":
-            if item.get("status") != "draft_revision_authorized_not_started":
+            if pair[0] == "ADR-0014 required-changes independent conformance review completed":
+                if item.get("status") != "independent_conformance_review_approve_draft_unadopted":
+                    failures.append("ADR-0014 conformance review status changed")
+                if item.get("head_sha") != "31c967c785128671769eb713baed265da8ae0f2a":
+                    failures.append("ADR-0014 conformance reviewed head changed")
+                if item.get("conformance_review_verdict") != "approve":
+                    failures.append("ADR-0014 conformance verdict changed")
+                if item.get("remaining_critical") != 0 or item.get("remaining_high") != 0:
+                    failures.append("ADR-0014 conformance severity changed")
+            elif item.get("status") != "draft_revision_authorized_not_started":
                 failures.append("ADR-0014 Draft revision status changed")
             if item.get("prior_review_pr") != 82:
                 failures.append("ADR-0014 prior review PR changed")
