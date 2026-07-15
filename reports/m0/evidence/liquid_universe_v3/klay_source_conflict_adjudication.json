@@ -1,0 +1,602 @@
+{
+  "adjudication_id": "U-03E-V3-ADJ-KLAYUSDT-1D-2024-10-30",
+  "affected_open_time": "2024-10-30T00:00:00+00:00",
+  "affected_raw_open_time": "1730246400000000",
+  "authorization_matrix": {
+    "api_or_trading": false,
+    "backtesting": false,
+    "contract_change": false,
+    "event_scan": false,
+    "hypothesis_preregistration": false,
+    "m2": false,
+    "oos_opened": false,
+    "registry_change": false,
+    "returns": false,
+    "strategy_code": false,
+    "u03f": false,
+    "u04": false,
+    "v3_rerun": false
+  },
+  "classification": "symbol_lifecycle_boundary_artifact",
+  "content_hash": "6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a",
+  "evidence": {
+    "all_public_klay_daily_scan": {
+      "affected_archives": [
+        {
+          "affected_timestamps_ms": [
+            1730246400000
+          ],
+          "canonical_key": "data/spot/daily/klines/KLAYUSDT/1d/KLAYUSDT-1d-2024-10-30.zip",
+          "zip_sha256": "7256e669015de0d5d401db062338415318bb1091f2e78e16c4a48b5f75d2a642"
+        }
+      ],
+      "archive_count": 1225,
+      "archive_set_hash": "563604866e7de434b55521edeffb90e150b927c4aedc4326831d7be146adc219",
+      "close_time_before_open_time_count": 1,
+      "close_time_equal_open_time_count": 0,
+      "invalid_duration_count": 2,
+      "read_only": true,
+      "row_count": 1225,
+      "statistics_hash": "2c97c9bf383ca7ea7ac4073cdbe0e0af52c06145b06d47d0429860713e010062"
+    },
+    "daily_archive": {
+      "affected_line_number": 1,
+      "affected_occurrences": 1,
+      "affected_raw_fields": [
+        "1730246400000000",
+        "0.12550000",
+        "0.12550000",
+        "0.12550000",
+        "0.12550000",
+        "0.00000000",
+        "1730084399999000",
+        "0.00000000",
+        "0",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "affected_raw_row_sha256": "8c916992e12bcf4318a93c2ecaf4f00571e1ac7251748cef6676cdead535bfa1",
+      "availability": "available",
+      "blocked_build_sha256": "7256e669015de0d5d401db062338415318bb1091f2e78e16c4a48b5f75d2a642",
+      "canonical_key": "data/spot/daily/klines/KLAYUSDT/1d/KLAYUSDT-1d-2024-10-30.zip",
+      "canonical_url": "https://data.binance.vision/data/spot/daily/klines/KLAYUSDT/1d/KLAYUSDT-1d-2024-10-30.zip",
+      "checksum_url": "https://data.binance.vision/data/spot/daily/klines/KLAYUSDT/1d/KLAYUSDT-1d-2024-10-30.zip.CHECKSUM",
+      "crc_valid": true,
+      "csv_column_count": 12,
+      "csv_filename": "KLAYUSDT-1d-2024-10-30.csv",
+      "current_remote_checksum": "7256e669015de0d5d401db062338415318bb1091f2e78e16c4a48b5f75d2a642",
+      "first_raw_timestamp": "1730246400000000",
+      "header_rows": 0,
+      "http_status": 200,
+      "last_raw_timestamp": "1730246400000000",
+      "next_raw_fields": null,
+      "next_raw_row_sha256": null,
+      "official_archive_republished": false,
+      "official_checksum_text": "7256e669015de0d5d401db062338415318bb1091f2e78e16c4a48b5f75d2a642  KLAYUSDT-1d-2024-10-30.zip",
+      "previous_raw_fields": null,
+      "previous_raw_row_sha256": null,
+      "row_count": 1,
+      "same_open_time_duplicate_type": "not_duplicate",
+      "scope_scan": {
+        "affected_timestamps_ms": [
+          1730246400000
+        ],
+        "close_time_before_open_time_count": 1,
+        "close_time_equal_open_time_count": 0,
+        "invalid_duration_count": 1,
+        "row_count": 1
+      },
+      "timestamp_analysis": {
+        "actual_duration_ms": -162000001,
+        "close_time_before_open_time": true,
+        "close_time_belongs_to_prior_bar_or_stage": true,
+        "close_time_digit_count": 16,
+        "close_time_unit": "microseconds",
+        "duration_delta_ms": -248400000,
+        "expected_close_boundary_utc": "2024-10-30T23:59:59.999000+00:00",
+        "expected_day_boundary_utc": "2024-10-30T00:00:00+00:00",
+        "expected_duration_ms": 86399999,
+        "integer_only_normalization": true,
+        "normalized_close_time_ms": 1730084399999,
+        "normalized_close_time_utc": "2024-10-28T02:59:59.999000+00:00",
+        "normalized_open_time_ms": 1730246400000,
+        "normalized_open_time_utc": "2024-10-30T00:00:00+00:00",
+        "open_time_digit_count": 16,
+        "open_time_unit": "microseconds",
+        "parser_created_conflict": false,
+        "raw_close_time": "1730084399999000",
+        "raw_open_time": "1730246400000000"
+      },
+      "zip_byte_size": 190,
+      "zip_crc32": [
+        "1e84cc7d"
+      ],
+      "zip_sha256": "7256e669015de0d5d401db062338415318bb1091f2e78e16c4a48b5f75d2a642"
+    },
+    "daily_correction_candidate_valid": false,
+    "intraday_diagnostics": {
+      "affected_day_has_trading_bars": false,
+      "archives": [
+        {
+          "affected_day_row_count": 0,
+          "affected_line_number": null,
+          "affected_occurrences": 0,
+          "affected_raw_fields": null,
+          "affected_raw_row_sha256": null,
+          "availability": "available",
+          "blocked_build_sha256": null,
+          "canonical_key": "data/spot/monthly/klines/KLAYUSDT/5m/KLAYUSDT-5m-2024-10.zip",
+          "canonical_url": "https://data.binance.vision/data/spot/monthly/klines/KLAYUSDT/5m/KLAYUSDT-5m-2024-10.zip",
+          "checksum_url": "https://data.binance.vision/data/spot/monthly/klines/KLAYUSDT/5m/KLAYUSDT-5m-2024-10.zip.CHECKSUM",
+          "crc_valid": true,
+          "csv_column_count": 12,
+          "csv_filename": "KLAYUSDT-5m-2024-10.csv",
+          "current_remote_checksum": "a1c69174432e9bdba59f8a1618cbe82d26215229e224c1b05ab2dcf298cb09c2",
+          "first_affected_day_row": null,
+          "first_raw_timestamp": "1727740800000",
+          "header_rows": 0,
+          "http_status": 200,
+          "last_affected_day_row": null,
+          "last_available_row": [
+            "1730084100000",
+            "0.12520000",
+            "0.12600000",
+            "0.12500000",
+            "0.12550000",
+            "377992.30000000",
+            "1730084399999",
+            "47328.36331000",
+            "92",
+            "113029.50000000",
+            "14192.03227000",
+            "0"
+          ],
+          "last_raw_timestamp": "1730084100000",
+          "next_raw_fields": null,
+          "next_raw_row_sha256": null,
+          "official_archive_republished": false,
+          "official_checksum_text": "a1c69174432e9bdba59f8a1618cbe82d26215229e224c1b05ab2dcf298cb09c2  KLAYUSDT-5m-2024-10.zip",
+          "previous_raw_fields": null,
+          "previous_raw_row_sha256": null,
+          "row_count": 7812,
+          "same_open_time_duplicate_type": "not_duplicate",
+          "scope_scan": {
+            "affected_timestamps_ms": [],
+            "close_time_before_open_time_count": 0,
+            "close_time_equal_open_time_count": 0,
+            "invalid_duration_count": 0,
+            "row_count": 7812
+          },
+          "timestamp_analysis": null,
+          "zip_byte_size": 277405,
+          "zip_crc32": [
+            "2e1148a1"
+          ],
+          "zip_sha256": "a1c69174432e9bdba59f8a1618cbe82d26215229e224c1b05ab2dcf298cb09c2"
+        },
+        {
+          "availability": "unavailable",
+          "canonical_key": "data/spot/daily/klines/KLAYUSDT/5m/KLAYUSDT-5m-2024-10-30.zip",
+          "canonical_url": "https://data.binance.vision/data/spot/daily/klines/KLAYUSDT/5m/KLAYUSDT-5m-2024-10-30.zip",
+          "http_status": 404,
+          "payload_sha256": "c91464ba1a87425a18c87ac35961c1041ca70690f6a7db8d1465a4f73ccdf0b2"
+        },
+        {
+          "affected_day_row_count": 0,
+          "affected_line_number": null,
+          "affected_occurrences": 0,
+          "affected_raw_fields": null,
+          "affected_raw_row_sha256": null,
+          "availability": "available",
+          "blocked_build_sha256": null,
+          "canonical_key": "data/spot/monthly/klines/KLAYUSDT/1h/KLAYUSDT-1h-2024-10.zip",
+          "canonical_url": "https://data.binance.vision/data/spot/monthly/klines/KLAYUSDT/1h/KLAYUSDT-1h-2024-10.zip",
+          "checksum_url": "https://data.binance.vision/data/spot/monthly/klines/KLAYUSDT/1h/KLAYUSDT-1h-2024-10.zip.CHECKSUM",
+          "crc_valid": true,
+          "csv_column_count": 12,
+          "csv_filename": "KLAYUSDT-1h-2024-10.csv",
+          "current_remote_checksum": "71c79332d5142b934dfdad417f993528686949225ced61a3b0176e25835fe86f",
+          "first_affected_day_row": null,
+          "first_raw_timestamp": "1727740800000",
+          "header_rows": 0,
+          "http_status": 200,
+          "last_affected_day_row": null,
+          "last_available_row": [
+            "1730080800000",
+            "0.12530000",
+            "0.12600000",
+            "0.12500000",
+            "0.12550000",
+            "2022017.40000000",
+            "1730084399999",
+            "253561.17505000",
+            "973",
+            "893386.30000000",
+            "112267.68893000",
+            "0"
+          ],
+          "last_raw_timestamp": "1730080800000",
+          "next_raw_fields": null,
+          "next_raw_row_sha256": null,
+          "official_archive_republished": false,
+          "official_checksum_text": "71c79332d5142b934dfdad417f993528686949225ced61a3b0176e25835fe86f  KLAYUSDT-1h-2024-10.zip",
+          "previous_raw_fields": null,
+          "previous_raw_row_sha256": null,
+          "row_count": 651,
+          "same_open_time_duplicate_type": "not_duplicate",
+          "scope_scan": {
+            "affected_timestamps_ms": [],
+            "close_time_before_open_time_count": 0,
+            "close_time_equal_open_time_count": 0,
+            "invalid_duration_count": 0,
+            "row_count": 651
+          },
+          "timestamp_analysis": null,
+          "zip_byte_size": 28125,
+          "zip_crc32": [
+            "1585a449"
+          ],
+          "zip_sha256": "71c79332d5142b934dfdad417f993528686949225ced61a3b0176e25835fe86f"
+        },
+        {
+          "availability": "unavailable",
+          "canonical_key": "data/spot/daily/klines/KLAYUSDT/1h/KLAYUSDT-1h-2024-10-30.zip",
+          "canonical_url": "https://data.binance.vision/data/spot/daily/klines/KLAYUSDT/1h/KLAYUSDT-1h-2024-10-30.zip",
+          "http_status": 404,
+          "payload_sha256": "272a300514aee3d471304de00ea319eb567283d96b5297d67d0c3b02dbf94d97"
+        }
+      ],
+      "authority": "diagnostic_only",
+      "canonical_replacement_allowed": false,
+      "derived_ohlcv": null,
+      "intraday_derived_row_is_diagnostic_only": true,
+      "latest_intraday_close_matches_1d_raw_close": true,
+      "latest_intraday_close_time_ms": 1730084399999,
+      "latest_intraday_close_time_utc": "2024-10-28T02:59:59.999000+00:00"
+    },
+    "monthly_archive": {
+      "affected_line_number": 30,
+      "affected_occurrences": 1,
+      "affected_raw_fields": [
+        "1730246400000000",
+        "0.12550000",
+        "0.12550000",
+        "0.12550000",
+        "0.12550000",
+        "0.00000000",
+        "1730084399999000",
+        "0.00000000",
+        "0",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "affected_raw_row_sha256": "8c916992e12bcf4318a93c2ecaf4f00571e1ac7251748cef6676cdead535bfa1",
+      "availability": "available",
+      "blocked_build_sha256": "68dce6c6be6ac4e22428771a1402d957becb8e6a1ec9bb7b83507b2029712a59",
+      "canonical_key": "data/spot/monthly/klines/KLAYUSDT/1d/KLAYUSDT-1d-2024-10.zip",
+      "canonical_url": "https://data.binance.vision/data/spot/monthly/klines/KLAYUSDT/1d/KLAYUSDT-1d-2024-10.zip",
+      "checksum_url": "https://data.binance.vision/data/spot/monthly/klines/KLAYUSDT/1d/KLAYUSDT-1d-2024-10.zip.CHECKSUM",
+      "crc_valid": true,
+      "csv_column_count": 12,
+      "csv_filename": "KLAYUSDT-1d-2024-10.csv",
+      "current_remote_checksum": "68dce6c6be6ac4e22428771a1402d957becb8e6a1ec9bb7b83507b2029712a59",
+      "first_raw_timestamp": "1727740800000",
+      "header_rows": 0,
+      "http_status": 200,
+      "last_raw_timestamp": "1730246400000000",
+      "next_raw_fields": null,
+      "next_raw_row_sha256": null,
+      "official_archive_republished": false,
+      "official_checksum_text": "68dce6c6be6ac4e22428771a1402d957becb8e6a1ec9bb7b83507b2029712a59  KLAYUSDT-1d-2024-10.zip",
+      "previous_raw_fields": [
+        "1730160000000000",
+        "0.12550000",
+        "0.12550000",
+        "0.12550000",
+        "0.12550000",
+        "0.00000000",
+        "1730246399999999",
+        "0.00000000",
+        "0",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "previous_raw_row_sha256": "fde7b4044554dff07cc39570082938a67e4c6763d2106e2b94809dd7d85695b7",
+      "row_count": 30,
+      "same_open_time_duplicate_type": "not_duplicate",
+      "scope_scan": {
+        "affected_timestamps_ms": [
+          1730246400000
+        ],
+        "close_time_before_open_time_count": 1,
+        "close_time_equal_open_time_count": 0,
+        "invalid_duration_count": 2,
+        "row_count": 30
+      },
+      "timestamp_analysis": {
+        "actual_duration_ms": -162000001,
+        "close_time_before_open_time": true,
+        "close_time_belongs_to_prior_bar_or_stage": true,
+        "close_time_digit_count": 16,
+        "close_time_unit": "microseconds",
+        "duration_delta_ms": -248400000,
+        "expected_close_boundary_utc": "2024-10-30T23:59:59.999000+00:00",
+        "expected_day_boundary_utc": "2024-10-30T00:00:00+00:00",
+        "expected_duration_ms": 86399999,
+        "integer_only_normalization": true,
+        "normalized_close_time_ms": 1730084399999,
+        "normalized_close_time_utc": "2024-10-28T02:59:59.999000+00:00",
+        "normalized_open_time_ms": 1730246400000,
+        "normalized_open_time_utc": "2024-10-30T00:00:00+00:00",
+        "open_time_digit_count": 16,
+        "open_time_unit": "microseconds",
+        "parser_created_conflict": false,
+        "raw_close_time": "1730084399999000",
+        "raw_open_time": "1730246400000000"
+      },
+      "zip_byte_size": 1684,
+      "zip_crc32": [
+        "84d684ec"
+      ],
+      "zip_sha256": "68dce6c6be6ac4e22428771a1402d957becb8e6a1ec9bb7b83507b2029712a59"
+    },
+    "monthly_daily_comparison": {
+      "invalid_close_time_consistent": true,
+      "normalized_identical": true,
+      "raw_identical": true,
+      "row_hash_identical": true
+    },
+    "parser_analysis": {
+      "float_datetime_call_sites": [],
+      "float_datetime_used_for_decision": false,
+      "independent_timestamp_unit_inference": true,
+      "integer_only_conversion": true,
+      "minimal_fixture_row": [
+        "1730246400000000",
+        "0.12550000",
+        "0.12550000",
+        "0.12550000",
+        "0.12550000",
+        "0.00000000",
+        "1730084399999000",
+        "0.00000000",
+        "0",
+        "0.00000000",
+        "0.00000000",
+        "0"
+      ],
+      "open_unit_reused_for_close": false,
+      "parser_created_conflict": false,
+      "raw_data_conflict": true
+    },
+    "public_rest_comparators": [
+      {
+        "availability": "available",
+        "endpoint_identity": "api.binance.com",
+        "http_status": 200,
+        "normalized_row_hashes": [
+          "7005a28ea597924284c876be635d02a52c885af5665a96c1ae45c2f96f50d04b"
+        ],
+        "normalized_rows": [
+          [
+            "1730246400000",
+            "0.12550000",
+            "0.12550000",
+            "0.12550000",
+            "0.12550000",
+            "0.00000000",
+            "1730084399999",
+            "0.00000000",
+            "0",
+            "0.00000000",
+            "0.00000000",
+            "0"
+          ]
+        ],
+        "payload_sha256": "2ad5825e64bbd0f3cd479f07d1b86cdd22525562a5e58e92d57d562f16a39d12",
+        "raw_payload_utf8": "[[1730246400000,\"0.12550000\",\"0.12550000\",\"0.12550000\",\"0.12550000\",\"0.00000000\",1730084399999,\"0.00000000\",0,\"0.00000000\",\"0.00000000\",\"0\"]]",
+        "row_count": 1,
+        "sanitized_query": "symbol=KLAYUSDT&interval=1d&startTime=1730246400000&endTime=1730332799999&limit=1",
+        "timestamp_analysis": {
+          "actual_duration_ms": -162000001,
+          "close_time_before_open_time": true,
+          "close_time_belongs_to_prior_bar_or_stage": true,
+          "close_time_digit_count": 13,
+          "close_time_unit": "milliseconds",
+          "duration_delta_ms": -248400000,
+          "expected_close_boundary_utc": "2024-10-30T23:59:59.999000+00:00",
+          "expected_day_boundary_utc": "2024-10-30T00:00:00+00:00",
+          "expected_duration_ms": 86399999,
+          "integer_only_normalization": true,
+          "normalized_close_time_ms": 1730084399999,
+          "normalized_close_time_utc": "2024-10-28T02:59:59.999000+00:00",
+          "normalized_open_time_ms": 1730246400000,
+          "normalized_open_time_utc": "2024-10-30T00:00:00+00:00",
+          "open_time_digit_count": 13,
+          "open_time_unit": "milliseconds",
+          "parser_created_conflict": false,
+          "raw_close_time": "1730084399999",
+          "raw_open_time": "1730246400000"
+        }
+      },
+      {
+        "availability": "available",
+        "endpoint_identity": "data-api.binance.vision",
+        "http_status": 200,
+        "normalized_row_hashes": [
+          "7005a28ea597924284c876be635d02a52c885af5665a96c1ae45c2f96f50d04b"
+        ],
+        "normalized_rows": [
+          [
+            "1730246400000",
+            "0.12550000",
+            "0.12550000",
+            "0.12550000",
+            "0.12550000",
+            "0.00000000",
+            "1730084399999",
+            "0.00000000",
+            "0",
+            "0.00000000",
+            "0.00000000",
+            "0"
+          ]
+        ],
+        "payload_sha256": "2ad5825e64bbd0f3cd479f07d1b86cdd22525562a5e58e92d57d562f16a39d12",
+        "raw_payload_utf8": "[[1730246400000,\"0.12550000\",\"0.12550000\",\"0.12550000\",\"0.12550000\",\"0.00000000\",1730084399999,\"0.00000000\",0,\"0.00000000\",\"0.00000000\",\"0\"]]",
+        "row_count": 1,
+        "sanitized_query": "symbol=KLAYUSDT&interval=1d&startTime=1730246400000&endTime=1730332799999&limit=1",
+        "timestamp_analysis": {
+          "actual_duration_ms": -162000001,
+          "close_time_before_open_time": true,
+          "close_time_belongs_to_prior_bar_or_stage": true,
+          "close_time_digit_count": 13,
+          "close_time_unit": "milliseconds",
+          "duration_delta_ms": -248400000,
+          "expected_close_boundary_utc": "2024-10-30T23:59:59.999000+00:00",
+          "expected_day_boundary_utc": "2024-10-30T00:00:00+00:00",
+          "expected_duration_ms": 86399999,
+          "integer_only_normalization": true,
+          "normalized_close_time_ms": 1730084399999,
+          "normalized_close_time_utc": "2024-10-28T02:59:59.999000+00:00",
+          "normalized_open_time_ms": 1730246400000,
+          "normalized_open_time_utc": "2024-10-30T00:00:00+00:00",
+          "open_time_digit_count": 13,
+          "open_time_unit": "milliseconds",
+          "parser_created_conflict": false,
+          "raw_close_time": "1730084399999",
+          "raw_open_time": "1730246400000"
+        }
+      }
+    ],
+    "rest_comparison": {
+      "all_match_archive": false,
+      "all_rows_close_before_open": true,
+      "all_semantically_match_archive": true,
+      "available_count": 2,
+      "comparators_identical": true,
+      "complete": true
+    },
+    "similar_scope_scan": {
+      "affected_months": [
+        "2024-10"
+      ],
+      "affected_symbols": [
+        "KLAYUSDT"
+      ],
+      "affected_timestamps_ms": [
+        1730246400000
+      ],
+      "close_time_before_open_time_count": 2,
+      "close_time_equal_open_time_count": 0,
+      "invalid_duration_count": 5,
+      "invalid_rows": [
+        {
+          "canonical_key": "data/spot/daily/klines/KLAYUSDT/1d/KLAYUSDT-1d-2024-10-30.zip",
+          "close_time_ms": 1730084399999,
+          "close_time_utc": "2024-10-28T02:59:59.999000+00:00",
+          "line_number": 1,
+          "open_time_ms": 1730246400000,
+          "open_time_utc": "2024-10-30T00:00:00+00:00",
+          "raw_row_sha256": "8c916992e12bcf4318a93c2ecaf4f00571e1ac7251748cef6676cdead535bfa1",
+          "symbol": "KLAYUSDT"
+        },
+        {
+          "canonical_key": "data/spot/monthly/klines/KLAYUSDT/1d/KLAYUSDT-1d-2024-10.zip",
+          "close_time_ms": 1730084399999,
+          "close_time_utc": "2024-10-28T02:59:59.999000+00:00",
+          "line_number": 28,
+          "open_time_ms": 1730073600000,
+          "open_time_utc": "2024-10-28T00:00:00+00:00",
+          "raw_row_sha256": "692aa865b2c8924b0b2e64a9128346ac77b1db3d0f1b82fdf7cd79fe0cb96319",
+          "symbol": "KLAYUSDT"
+        },
+        {
+          "canonical_key": "data/spot/monthly/klines/KLAYUSDT/1d/KLAYUSDT-1d-2024-10.zip",
+          "close_time_ms": 1730084399999,
+          "close_time_utc": "2024-10-28T02:59:59.999000+00:00",
+          "line_number": 30,
+          "open_time_ms": 1730246400000,
+          "open_time_utc": "2024-10-30T00:00:00+00:00",
+          "raw_row_sha256": "8c916992e12bcf4318a93c2ecaf4f00571e1ac7251748cef6676cdead535bfa1",
+          "symbol": "KLAYUSDT"
+        },
+        {
+          "canonical_key": "data/spot/monthly/klines/ORNUSDT/1d/ORNUSDT-1d-2024-10.zip",
+          "close_time_ms": 1728961199999,
+          "close_time_utc": "2024-10-15T02:59:59.999000+00:00",
+          "line_number": 15,
+          "open_time_ms": 1728950400000,
+          "open_time_utc": "2024-10-15T00:00:00+00:00",
+          "raw_row_sha256": "6b2a5b61acc41563495f3abbc86db2389d5db004e08f7d669489d2af2177c923",
+          "symbol": "ORNUSDT"
+        },
+        {
+          "canonical_key": "data/spot/monthly/klines/SCRUSDT/1d/SCRUSDT-1d-2024-10.zip",
+          "close_time_ms": 1729501199999,
+          "close_time_utc": "2024-10-21T08:59:59.999000+00:00",
+          "line_number": 11,
+          "open_time_ms": 1729468800000,
+          "open_time_utc": "2024-10-21T00:00:00+00:00",
+          "raw_row_sha256": "a78a6184fa1a266bc5160823a48c46d8147411f6060a2311ded1a1d642fa9575",
+          "symbol": "SCRUSDT"
+        }
+      ],
+      "monthly_daily_overlap": 2,
+      "nonfull_duration_symbols": [
+        "KLAYUSDT",
+        "ORNUSDT",
+        "SCRUSDT"
+      ],
+      "only_klay_close_before_open_class_found": true,
+      "read_only": true,
+      "scanned_archive_set_hash": "6fde9ab5db1d5a6ca8578e42b184f0a44e493dc978a0567d2ff5b6d91e7b55c0",
+      "scope": {
+        "klay_daily_archive_count": 1,
+        "klay_monthly_archive_count": 41,
+        "same_month_other_symbol_archive_count": 386,
+        "scanned_archive_count": 427,
+        "scanned_row_count": 13072
+      },
+      "statistics_hash": "2f23dd3edf1ccfdfec08208a076e9cb4a548e7da171f76b9b3f575ba373bb0fb",
+      "unique_close_before_open_events": 1
+    },
+    "symbol_lifecycle": {
+      "affected_pairs": [
+        "KLAYBTC",
+        "KLAYUSDT"
+      ],
+      "article_code": "f75f933759ee49d0af1dfbce7e32144c",
+      "authority": "provenance_only",
+      "automatic_data_mutation_allowed": false,
+      "effective_time_utc": "2024-10-28T03:00:00+00:00",
+      "http_status": 200,
+      "normalized_evidence_sha256": "26409a7e4f3eecc8fc9332e5ad473f48052d5441b74b70291b718548e6bace42",
+      "public_api_reference": "https://www.binance.com/bapi/composite/v1/public/cms/article/detail/query?articleCode=f75f933759ee49d0af1dfbce7e32144c",
+      "public_url": "https://www.binance.com/en/support/announcement/detail/f75f933759ee49d0af1dfbce7e32144c",
+      "publication_time_utc": "2024-10-16T08:00:03.464000+00:00",
+      "raw_response_payload_sha256": "73570cb9c2f6153337d81f06ad3dac6a208d3b6ae0d89fb45034954979fd2b35",
+      "relationship": "KLAY spot trading ceased exactly one millisecond after the affected raw close_time",
+      "replacement_trading_time_utc": "2024-10-31T08:00:00+00:00",
+      "title": "Binance Will Support the Kaia (KLAY) Rebranding to Kaia (KAIA)"
+    },
+    "v3_rerun_executed": false
+  },
+  "immutable_baseline_hashes": {
+    "blocked_cold_artifact_set": "f661d7abd99adc4067d354afba0c5421e7d1f33c54f768b89c8011ec01eab4f3",
+    "btt_axs_adjudication_evidence": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+    "qualification_summary": "fe236096824fa016be748e67132f225ff02ce4a527fb9b14e67555728c7aa668",
+    "requalification_run_manifest": "057d4d94e277054b8cbd157dbb5ba05f04f1d0c3c2d28160d5b99689b1624e9c",
+    "resolution_registry": "570b66e32c3a7ac910ba5ef6688eff966304e65a9519f4f8a902b60fbe4957a4",
+    "source_manifest": "67529beb72cceeed9aad0baa825cccb5ca1e64c31cf30fdf9a4c076c40fd3bf9",
+    "v3_contract": "f41f5fedf6002487c9d576a39927ade4409d55e1bc0442aa097e6b2ed054b3ed"
+  },
+  "interval": "1d",
+  "manifest_type": "liquid_universe_v3_klay_source_conflict_adjudication",
+  "overall_decision": "new_policy_adr_required",
+  "schema_version": 1,
+  "symbol": "KLAYUSDT"
+}

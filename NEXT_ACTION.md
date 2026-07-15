@@ -2,17 +2,23 @@
 
 ## Immediate Task
 
-PR #77 merged the truthful blocked V3 public requalification at `c6d44d9`
-after all 84 checks passed. The fixed public cold build verified the registered BTT/AXS source checksums,
-admitted all five BTT daily corrections and collapsed the registered AXS exact
-duplicate, but discovered one new unregistered official row conflict.
+The U-03E-V3-ADJ evidence-only investigation and independent-review remediation
+are complete pending final validation and review. The
+official monthly ZIP, daily ZIP and both public REST comparators contain the
+same KLAYUSDT 2024-10-30 zero-volume row with `close_time` before `open_time`.
+Integer timestamp analysis proves the defect is in the official row rather than
+the parser. Official KLAY-to-KAIA lifecycle evidence places the invalid close
+exactly one millisecond before KLAYUSDT delisting.
 
-`KLAYUSDT` 2024-10-30 has the same zero-volume row in the official monthly and
-daily 1d archives, with `close_time` earlier than `open_time`. Both archives
-pass current official checksum verification. ADR-0013 therefore requires a new
-independent adjudication and a versioned registry update before any V3 rerun.
-Warm and worker builds were not run after the cold fail-closed stop. U-03F and
-U-04 remain unauthorized.
+The unique classification is `symbol_lifecycle_boundary_artifact`; the decision
+is `new_policy_adr_required`. ADR-0013 has no legal rule for replacing or
+quarantining a monthly/daily/REST-identical invalid lifecycle row. The evidence
+PR must be reviewed without modifying the contract, registry or existing V3
+qualification artifacts. Its evidence commit is
+`04bbe128fe0c83d8f21a7a34ffcf9c97ab842a7c`, its recomputed content hash is
+`6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a`,
+and the live PR head is `refs/pull/79/head`. No V3 cold, warm or worker build was
+run.
 
 U-04 remains unauthorized. No strategy is eligible for M2. Freqtrade
 backtesting, strategies, events, returns, OOS, APIs and trading remain blocked.
@@ -64,10 +70,14 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Independently adjudicate only the checksum-bound KLAYUSDT 2024-10-30
-   monthly/daily row under ADR-0013 without changing rankings or outcomes.
-2. If and only if a reviewed registry revision is adopted, rerun the frozen
-   cold/warm/worker range from scratch. Do not run U-03F before a merged pass.
+1. Review and merge the checksum-bound KLAYUSDT adjudication evidence if all
+   checks pass.
+2. After PR #79 and any necessary context-only closeout merge, the authorized
+   follow-up may create ADR-0014 as a proposed-only Draft. Drafting it must not
+   adopt or implement a policy, mutate the registry, or rerun V3.
+3. Do not revise the registry or rerun the frozen cold/warm/worker range until
+   a separately reviewed policy and versioned registry update are adopted.
+4. Do not run U-03F before a merged V3 qualification pass.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.

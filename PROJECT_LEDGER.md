@@ -1411,3 +1411,18 @@ private exchange responses here.
 - Result: The fixed-range cold evidence is merged as `blocked_unregistered_official_row_conflict`; it is not a V3 qualification pass and makes no warm/worker determinism claim.
 - Governance: U-03E-V3-RUN leaves `open_work` as a completed blocked milestone. Only independent checksum-bound adjudication of KLAYUSDT 2024-10-30 is authorized next; registry mutation and V3 rerun require later reviewed steps.
 - Safety: U-03F, U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-15 - KLAY Official-Source Conflict Adjudicated Pending Review
+
+- Task ID: U-03E-V3-ADJ
+- Branch: `codex/u03e-v3-klay-source-adjudication`
+- PR: #79 open
+- Scope: Evidence-only adjudication of KLAYUSDT 2024-10-30; no contract, registry, membership, ranking or V3 qualification mutation.
+- Evidence: The checksum-verified monthly and daily ZIP rows are byte-identical and structurally invalid. Both public REST comparators return the same row. Integer parsing independently infers microseconds and proves `close_time < open_time` is raw-source evidence, not a parser-created conflict.
+- Provenance: Binance's official KLAY-to-KAIA announcement delisted KLAYUSDT at 2024-10-28 03:00 UTC; the invalid row closes exactly one millisecond before that boundary. Official intraday archives contain no affected-day bars and are diagnostic only.
+- Similar-scope scan: 427 local archives / 13,072 rows and 1,225 official KLAY daily archives identify one unique close-before-open event, confined to KLAYUSDT 2024-10-30. Other partial lifecycle rows are not this defect class.
+- Classification / decision: `symbol_lifecycle_boundary_artifact` / `new_policy_adr_required`.
+- Independent-review remediation: commit `04bbe128fe0c83d8f21a7a34ffcf9c97ab842a7c` replaces float timestamp conversion and static conclusion trust with integer UTC conversion, full evidence Gate recomputation, REST payload normalization, lifecycle/scope hash verification and fail-closed tamper tests.
+- Evidence content hash: `6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a`; the changing PR head is referenced as `refs/pull/79/head` rather than recorded as a self-referential hash.
+- Governance: A separate new-policy ADR is only a future candidate after review and explicit authorization. No ADR, registry revision or V3 rerun is part of this task.
+- Safety: U-03F, U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
