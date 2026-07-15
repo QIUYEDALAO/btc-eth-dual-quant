@@ -141,8 +141,20 @@ def main() -> int:
     if REPORT.read_text(encoding="utf-8") != render_report(document):
         failures.append("Markdown report does not exactly regenerate from evidence")
     failures.extend(_scan_sources())
-    if (ROOT / "docs/decisions/ADR-0013-official-archive-row-conflict-policy.md").exists():
-        failures.append("PR-A must not adopt or include ADR-0013")
+    adr_path = ROOT / "docs/decisions/ADR-0013-official-archive-row-conflict-policy.md"
+    if adr_path.exists():
+        adr_text = adr_path.read_text(encoding="utf-8")
+        required_policy_markers = (
+            "Status: Accepted for V3 implementation and U-03E requalification only",
+            "V2 contract modified: no",
+            "Policy adopted: yes, for V3 implementation and U-03E requalification only",
+            "U-03F: false",
+            "U-04: false",
+            "M2: false",
+        )
+        for marker in required_policy_markers:
+            if marker not in adr_text:
+                failures.append(f"ADR-0013 is not a fail-closed adopted policy: {marker}")
 
     if failures:
         print("liquid_universe_v2_source_conflict_check FAIL")

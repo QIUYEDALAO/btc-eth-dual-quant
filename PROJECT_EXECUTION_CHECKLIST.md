@@ -82,8 +82,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-03D | Liquid universe V2 correctness hardening | completed | U-03B/U-03C historical evidence | PR #70 merged / `5ab69e2` | ADR-0012, V2 contract/registry, machine authority, fail-closed grid/gap logic, fault tests | Full fixture, fault, contract, state and safety validation pass | none |
 | U-03E | Liquid universe V2 public requalification | blocked | U-03D merged pass | PR #71 merged / `8c4db86` | Cold/warm public rebuild, V1/V2 diff, V2 qualification report | Exact deterministic hashes; blocked evidence merged without claiming qualification pass | Three checksum-verified official-source processing conflicts: BTTUSDT 2019-01/02 negative volume and duplicate AXSUSDT 2026-02-10 |
 | U-03E-ADJ | Liquid universe V2 source conflict adjudication | completed | U-03E truthful blocked evidence merged | PR #73 merged / `7477c34` | Checksum-bound raw-row, daily ZIP and two-host public REST evidence | All three conflicts classified; report exactly regenerates; no contract bypass | Decision is `new_policy_adr_required`; same-contract rerun remains unauthorized |
-| ADR-0013-REVIEW | Independent official-archive conflict-policy review | in_progress | U-03E-ADJ merged | `codex/adr-0013-independent-review` / PR #75 | Hash-bound 15-question review, A1-A10 mandatory changes and deterministic report | Verdict is `approve_with_required_changes`; no production code or authorization | Review must merge before PR #74 may be adopted |
-| ADR-0013-ADOPT | Conditional ADR adoption | not_authorized | ADR-0013-REVIEW merged non-reject | PR #74 Draft | Revised ADR with all A1-A10 requirements and conformance evidence | Accepted for V3 implementation and U-03E requalification only | Independent review not yet merged |
+| ADR-0013-REVIEW | Independent official-archive conflict-policy review | completed | U-03E-ADJ merged | PR #75 merged / `2f92532` | Hash-bound 15-question review, A1-A10 mandatory changes and deterministic report | Verdict `approve_with_required_changes`; 78/78 checks passed | none |
+| ADR-0013-ADOPT | Conditional ADR adoption | in_progress | ADR-0013-REVIEW merged non-reject | PR #74 | Revised ADR with all A1-A10 requirements and conformance evidence | Accepted for V3 implementation and U-03E requalification only | PR #74 conformance, CI and merge pending |
 | U-03E-V3-IMPL | Generic V3 row-conflict implementation | not_authorized | ADR-0013-ADOPT merged | not created | V3 contract, resolution registry and offline generic pipeline | Fixture/fault/full validation, no live REST dependency | ADR-0013 not adopted |
 | U-03E-V3-RUN | V3 fixed-range public requalification | not_authorized | U-03E-V3-IMPL merged | not created | Cold/warm/worker public evidence for 2020-01 through 2026-06 | Exact hashes and zero unresolved/processing/synthetic/replacement blockers | V3 implementation not merged |
 | U-03F | Liquid universe V2 independent audit | not_authorized | U-03E merged pass | not created | Independent membership, gap and panel audit | Exact match for all months and symbol-months | U-03E blocked; no pass evidence exists |
@@ -91,7 +91,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 
 ## Current Gate
 
-- Authorized work: merge the ADR-0013 independent review, then revise PR #74 with mandatory changes A1-A10 only.
+- Authorized work: validate and merge the A1-A10-complete PR #74; only then start generic V3 implementation.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
 - Active implementation: none. M1H produced paper path observations but no strategy return or OOS evidence; the candidate is closed.

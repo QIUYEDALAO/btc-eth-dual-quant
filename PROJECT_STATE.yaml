@@ -1,10 +1,15 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T06:30:00Z"
-current_phase: ADR-0013 independent review pending merge
-current_status: adr0013_approve_with_required_changes_v2_blocked_no_strategy_no_m2
+last_updated_utc: "2026-07-15T07:00:00Z"
+current_phase: ADR-0013 conditional adoption pending merge
+current_status: adr0013_accepted_for_v3_implementation_u03e_requalification_only_no_strategy_no_m2
 completed_milestones:
+  - phase: ADR-0013 independent review
+    status: approve_with_required_changes
+    evidence: reports/expert/ADR_0013_INDEPENDENT_REVIEW.md
+    merged_pr: 75
+    merge_commit: 2f925324bd8c0e92d031e96b7fca3a80adb80b6b
   - phase: Liquid universe V2 public requalification
     status: blocked_data_conflict
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V2_QUALIFICATION_REPORT.md
@@ -189,15 +194,17 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: ADR-0013-REVIEW
-    phase: ADR-0013 independent review
-    status: approve_with_required_changes_pending_merge
-    branch: codex/adr-0013-independent-review
-    pr: 75
-    head_sha: f5ce341ed66396f3239171b935047dddaea90d1a
+  - id: ADR-0013-ADOPT
+    phase: ADR-0013 conditional adoption
+    status: accepted_pending_pr_merge
+    branch: codex/adr-0013-official-archive-row-conflict-policy
+    pr: 74
+    head_sha: runtime_current_pr_head
+    reviewed_head_sha: 8dc9ee034fdd172147485f7718117f8a76713cdf
+    evidence_commit: 4a95a28142d13aa2f03f271baf660ae95ba67e78
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/expert/evidence/adr0013_independent_review.json
-    blocker: "ADR-0013 remains proposed until mandatory changes A1-A10 are incorporated and checked; V3 implementation and U-03E rerun are not yet authorized."
+    evidence: docs/decisions/ADR-0013-official-archive-row-conflict-policy.md
+    blocker: "PR #74 must merge with all conformance and CI checks successful before generic V3 implementation begins."
   - id: U-03F
     phase: Liquid universe V2 independent audit
     status: not_authorized
@@ -227,9 +234,9 @@ open_work:
     blocker: "P3 failed complete-trade, OOS Sharpe, and drawdown gates; P4 and M2 are not allowed for M1C."
 active_decisions:
   - id: ADR-0013
-    decision: A generic official-archive row-conflict policy is conditionally reviewable only after mandatory changes A1-A10.
-    status: proposed_approve_with_required_changes_not_adopted
-    evidence: reports/expert/ADR_0013_INDEPENDENT_REVIEW.md
+    decision: Adopt the generic official-archive row-conflict policy only for V3 implementation and fixed-range U-03E requalification.
+    status: accepted_for_v3_implementation_and_u03e_requalification_only_pending_merge
+    evidence: docs/decisions/ADR-0013-official-archive-row-conflict-policy.md
   - id: ADR-0012
     decision: Supersede the V1 qualification admission decision and rebuild the liquid universe through the V2 machine-authority contract.
     status: accepted_for_correctness_hardening_only
@@ -274,6 +281,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - Merge PR #74 only after ADR-0013 conformance and all CI checks pass; then implement generic V3 in a separate branch.
   - Review and merge the U-03E source-conflict adjudication evidence without changing the V2 contract.
   - After adjudication evidence merges, create a separate Draft ADR for a general official-archive row-conflict policy; do not adopt it automatically.
   - Public-source diagnostics may investigate the exact U-03E official-archive conflicts without private data or outcomes.
@@ -601,6 +609,12 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 73
+    title: Adjudicate liquid universe V2 official-source conflicts
+    merged_at_utc: "2026-07-15T04:23:56Z"
+  - number: 75
+    title: Independently review ADR-0013 conflict policy
+    merged_at_utc: "2026-07-15T05:56:36Z"
   - number: 1
     title: Harden M0 data-run validation and reports
     merged_at_utc: "2026-07-09T02:18:38Z"
