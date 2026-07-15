@@ -280,6 +280,10 @@ def build_artifacts_v3(
         "resolutions": [
             {
                 "status": item.status,
+                "canonical_key": (
+                    item.research_panel_quarantine[0].get("canonical_key")
+                    if item.research_panel_quarantine else None
+                ),
                 "canonical_resolution_id": item.canonical.resolution_id if item.canonical else None,
                 "canonical_source_archive_sha256": item.canonical.source_archive_sha256 if item.canonical else None,
                 "canonical_raw_multiplicity": item.canonical.raw_multiplicity if item.canonical else None,
@@ -301,6 +305,16 @@ def build_artifacts_v3(
     summary_content = dict(base["qualification_summary"]["content"])
     summary_content.update(_resolution_counters(outcomes))
     summary_content["unresolved_row_conflicts"] = unresolved
+    if unresolved:
+        row_conflict_blockers = sorted({
+            "row_conflict:"
+            + ":".join(str(value) for value in item.research_panel_quarantine[0]["canonical_key"])
+            + ":"
+            + str(item.research_panel_quarantine[0]["reason"])
+            for item in outcomes
+            if item.unresolved_row_conflicts and item.research_panel_quarantine
+        })
+        summary_content["blockers"] = sorted(set(summary_content.get("blockers", [])) | set(row_conflict_blockers))
     summary_content["status"] = "pass" if summary_content["status"] == "pass" and unresolved == 0 else "blocked"
     summary_content["authorizations"] = contract["authorizations"]
 

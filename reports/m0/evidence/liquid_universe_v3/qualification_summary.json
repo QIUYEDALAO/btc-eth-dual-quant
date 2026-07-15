@@ -1,0 +1,1620 @@
+{
+  "adjudication_evidence_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+  "content": {
+    "authorizations": {
+      "api_or_trading": false,
+      "asset_data_qualification": true,
+      "event_scan": false,
+      "freqtrade_backtesting": false,
+      "hypothesis_preregistration": false,
+      "m2": false,
+      "oos_access": false,
+      "returns": false,
+      "signals": false,
+      "strategy_selection": false,
+      "u03e_v3_requalification": true,
+      "u03f": false,
+      "u04": false
+    },
+    "blocked_symbol_months": 1,
+    "blockers": [
+      "row_conflict:KLAYUSDT:1d:1730246400000:unregistered row conflict"
+    ],
+    "contract_id": "LIQUID-SPOT-USDT-TOP15-V3",
+    "daily_corrections_admitted": 5,
+    "duplicate_collapses": 1,
+    "end_month": "2026-06",
+    "excluded_category_members": 0,
+    "excluded_invalid_daily_rows": 0,
+    "expected_months": 78,
+    "gap_missing_slots": 15022,
+    "gap_records": 227,
+    "global_windows": 15,
+    "historical_symbols_discovered": 676,
+    "members_by_month": [
+      {
+        "effective_month": "2020-01",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "IOTAUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "ONTUSDT",
+          "QTUMUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-02",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "BTTUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "ONTUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-03",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "BTTUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "ONTUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-04",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DASHUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-05",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DASHUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-06",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DASHUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-07",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DASHUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-08",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "ONTUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-09",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "ONTUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT",
+          "ZECUSDT",
+          "ZILUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-10",
+        "symbols": [
+          "ADAUSDT",
+          "BANDUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "ONTUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XRPUSDT",
+          "XTZUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-11",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "BANDUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XRPUSDT",
+          "XTZUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2020-12",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XMRUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-01",
+        "symbols": [
+          "ADAUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XMRUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-02",
+        "symbols": [
+          "ADAUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DASHUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-03",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT",
+          "ZILUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-04",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-05",
+        "symbols": [
+          "ADAUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "BTTUSDT",
+          "CHZUSDT",
+          "DOGEUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-06",
+        "symbols": [
+          "ADAUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "BTTUSDT",
+          "CHZUSDT",
+          "DOGEUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "THETAUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-07",
+        "symbols": [
+          "ADAUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CHZUSDT",
+          "DOGEUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-08",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CHZUSDT",
+          "DOGEUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "THETAUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-09",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "SOLUSDT",
+          "THETAUSDT",
+          "VETUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-10",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LUNAUSDT",
+          "MATICUSDT",
+          "SOLUSDT",
+          "THETAUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-11",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "FTMUSDT",
+          "LINKUSDT",
+          "LUNAUSDT",
+          "MATICUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2021-12",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "FTMUSDT",
+          "LINKUSDT",
+          "LUNAUSDT",
+          "MATICUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-01",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FTMUSDT",
+          "LUNAUSDT",
+          "MANAUSDT",
+          "MATICUSDT",
+          "SANDUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-02",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FTMUSDT",
+          "LUNAUSDT",
+          "MANAUSDT",
+          "MATICUSDT",
+          "SANDUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-03",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FTMUSDT",
+          "LUNAUSDT",
+          "MANAUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "SANDUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-04",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FTMUSDT",
+          "LUNAUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "SANDUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-05",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FTMUSDT",
+          "LUNAUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "SANDUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-06",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FTMUSDT",
+          "NEARUSDT",
+          "SANDUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "WAVESUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-07",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FTMUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT",
+          "ZILUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-08",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FTMUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "SANDUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-09",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-10",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CHZUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-11",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CHZUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2022-12",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CHZUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-01",
+        "symbols": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CHZUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-02",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CHZUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MASKUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-03",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "FTMUSDT",
+          "GALAUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-04",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CFXUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "FTMUSDT",
+          "GALAUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-05",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CFXUSDT",
+          "DOGEUSDT",
+          "DYDXUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "FTMUSDT",
+          "GALAUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-06",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CFXUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "FTMUSDT",
+          "GALAUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "OPUSDT",
+          "RNDRUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-07",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CFXUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "FTMUSDT",
+          "INJUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "OPUSDT",
+          "RNDRUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-08",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CFXUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FTMUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "OPUSDT",
+          "RNDRUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-09",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FTMUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "OPUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-10",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "OPUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-11",
+        "symbols": [
+          "BCHUSDT",
+          "BLZUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "OPUSDT",
+          "RUNEUSDT",
+          "SOLUSDT",
+          "TRBUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2023-12",
+        "symbols": [
+          "AVAXUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "OPUSDT",
+          "RUNEUSDT",
+          "SOLUSDT",
+          "TRBUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-01",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "DYDXUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "RUNEUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-02",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "INJUSDT",
+          "LINKUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "OPUSDT",
+          "RUNEUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-03",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "INJUSDT",
+          "LINKUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "OPUSDT",
+          "RUNEUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-04",
+        "symbols": [
+          "ADAUSDT",
+          "ARBUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "INJUSDT",
+          "LINKUSDT",
+          "MATICUSDT",
+          "NEARUSDT",
+          "OPUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-05",
+        "symbols": [
+          "ADAUSDT",
+          "ARBUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FETUSDT",
+          "FILUSDT",
+          "LINKUSDT",
+          "NEARUSDT",
+          "RUNEUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-06",
+        "symbols": [
+          "ARBUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FETUSDT",
+          "FLOKIUSDT",
+          "NEARUSDT",
+          "PEPEUSDT",
+          "RNDRUSDT",
+          "RUNEUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-07",
+        "symbols": [
+          "ARBUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FETUSDT",
+          "FLOKIUSDT",
+          "NEARUSDT",
+          "PEPEUSDT",
+          "RNDRUSDT",
+          "RUNEUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-08",
+        "symbols": [
+          "ARBUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FLOKIUSDT",
+          "NEARUSDT",
+          "PEOPLEUSDT",
+          "PEPEUSDT",
+          "RUNEUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "WLDUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-09",
+        "symbols": [
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FETUSDT",
+          "FLOKIUSDT",
+          "NEARUSDT",
+          "PEOPLEUSDT",
+          "PEPEUSDT",
+          "RUNEUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "WLDUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-10",
+        "symbols": [
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FETUSDT",
+          "FLOKIUSDT",
+          "NEARUSDT",
+          "PEOPLEUSDT",
+          "PEPEUSDT",
+          "RUNEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-11",
+        "symbols": [
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FETUSDT",
+          "FLOKIUSDT",
+          "NEARUSDT",
+          "PEPEUSDT",
+          "RUNEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "WLDUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2024-12",
+        "symbols": [
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FETUSDT",
+          "FTMUSDT",
+          "NEARUSDT",
+          "PEPEUSDT",
+          "RUNEUSDT",
+          "SEIUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "WLDUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-01",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "HBARUSDT",
+          "LINKUSDT",
+          "PEPEUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "WLDUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-02",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "HBARUSDT",
+          "LINKUSDT",
+          "PEPEUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "WLDUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-03",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "HBARUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "WLDUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-04",
+        "symbols": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "HBARUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "PEPEUSDT",
+          "RUNEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "WIFUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-05",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ENAUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "WIFUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-06",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ENAUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "WIFUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-07",
+        "symbols": [
+          "AAVEUSDT",
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ENAUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "WIFUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-08",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ENAUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "UNIUSDT",
+          "WIFUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-09",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ENAUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "UNIUSDT",
+          "WIFUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-10",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BONKUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ENAUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "UNIUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-11",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ENAUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "WLDUSDT",
+          "XRPUSDT"
+        ]
+      },
+      {
+        "effective_month": "2025-12",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ENAUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2026-01",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ENAUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2026-02",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ENAUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2026-03",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TRXUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2026-04",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TAOUSDT",
+          "TRXUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2026-05",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "NEARUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TAOUSDT",
+          "TRXUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      },
+      {
+        "effective_month": "2026-06",
+        "symbols": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "NEARUSDT",
+          "PEPEUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "TAOUSDT",
+          "TRXUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ]
+      }
+    ],
+    "membership_rows": 1170,
+    "monthly_memberships": 78,
+    "monthly_rows_quarantined": 5,
+    "panel_status_counts": {
+      "blocked": 0,
+      "clean": 988,
+      "global_window_quarantined": 180,
+      "symbol_month_quarantined": 2
+    },
+    "processing_errors": 0,
+    "replacement_members": 0,
+    "research_start": "2020-01-01",
+    "status": "blocked",
+    "symbol_month_quarantines": 2,
+    "synthetic_fills": 0,
+    "unresolved_gaps": 0,
+    "unresolved_row_conflicts": 1
+  },
+  "content_hash": "fe236096824fa016be748e67132f225ff02ce4a527fb9b14e67555728c7aa668",
+  "contract_hash": "f41f5fedf6002487c9d576a39927ade4409d55e1bc0442aa097e6b2ed054b3ed",
+  "eligibility_registry_hash": "d8c7fc6b034f1b0c82dc2e41f7b4f2c67122311246b33505f22ad694a3d0b091",
+  "manifest_type": "qualification_summary",
+  "resolution_registry_hash": "570b66e32c3a7ac910ba5ef6688eff966304e65a9519f4f8a902b60fbe4957a4",
+  "schema_version": 3
+}

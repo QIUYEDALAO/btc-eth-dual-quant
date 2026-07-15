@@ -2,14 +2,16 @@
 
 ## Immediate Task
 
-PR #74 merged ADR-0013 at `20e7ceb` after all 80 checks passed. The generic V3
-row-conflict implementation is now fixture-complete on
-`codex/liquid-universe-v3-row-conflict-policy`; it has not run the public
-qualification range.
+PR #76 merged the generic V3 row-conflict implementation at `b3496fe`. The
+fixed public cold build then verified the registered BTT/AXS source checksums,
+admitted all five BTT daily corrections and collapsed the registered AXS exact
+duplicate, but discovered one new unregistered official row conflict.
 
-The immediate task is to review and merge this implementation. Only after that
-merge may a separate branch run cold, warm-cache and worker-variant V3 public
-requalification for the frozen `2020-01` through `2026-06` range. U-03F and
+`KLAYUSDT` 2024-10-30 has the same zero-volume row in the official monthly and
+daily 1d archives, with `close_time` earlier than `open_time`. Both archives
+pass current official checksum verification. ADR-0013 therefore requires a new
+independent adjudication and a versioned registry update before any V3 rerun.
+Warm and worker builds were not run after the cold fail-closed stop. U-03F and
 U-04 remain unauthorized.
 
 U-04 remains unauthorized. No strategy is eligible for M2. Freqtrade
@@ -62,11 +64,11 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Validate and merge the fixture-only generic V3 implementation.
-2. From merged implementation, run the fixed-range public V3 requalification
-   three times with checksum verification and exact artifact comparison.
-3. Stop on any checksum drift, unknown conflict, processing error or
-   deterministic mismatch. Do not run U-03F in the requalification task.
+1. Merge the truthful blocked V3 qualification evidence after CI succeeds.
+2. Independently adjudicate only the checksum-bound KLAYUSDT 2024-10-30
+   monthly/daily row under ADR-0013 without changing rankings or outcomes.
+3. If and only if a reviewed registry revision is adopted, rerun the frozen
+   cold/warm/worker range from scratch. Do not run U-03F before a merged pass.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.
