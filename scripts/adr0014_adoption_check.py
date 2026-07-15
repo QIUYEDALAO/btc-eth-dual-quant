@@ -180,14 +180,18 @@ def _verify_reviewed_source() -> list[str]:
     return failures
 
 
-def verify_repository() -> list[str]:
+def verify_repository(*, check_stage_scope: bool = True) -> list[str]:
     failures: list[str] = []
     try:
         manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         return [f"adoption manifest load failed: {exc}"]
     failures.extend(verify_adoption_document(manifest))
-    failures.extend(_verify_reviewed_source())
+    # The adoption stage binds the exact review-branch object before merge. Later
+    # stages validate the merged, hash-bound adoption evidence because a closed
+    # PR head is not guaranteed to be reachable in a clean GitHub checkout.
+    if check_stage_scope:
+        failures.extend(_verify_reviewed_source())
 
     try:
         adr = ADOPTED_ADR_PATH.read_text(encoding="utf-8")
@@ -225,23 +229,25 @@ def verify_repository() -> list[str]:
         if canonical_hash(parsed) != expected["canonical_hash"]:
             failures.append(f"docs-only model semantics changed: {relative_path}")
 
-    try:
-        changed = _git("diff", "--name-only", "origin/main...").decode().splitlines()
-    except subprocess.CalledProcessError:
-        changed = _git("diff", "--name-only").decode().splitlines()
-    forbidden = [
-        path for path in changed
-        if path.startswith(("src/", "config/", "reports/m0/evidence/liquid_universe_v4/"))
-        or "requalification" in path.lower()
-    ]
-    if forbidden:
-        failures.append(f"adoption stage contains forbidden implementation/run artifacts: {forbidden}")
+    if check_stage_scope:
+        try:
+            changed = _git("diff", "--name-only", "origin/main...").decode().splitlines()
+        except subprocess.CalledProcessError:
+            changed = _git("diff", "--name-only").decode().splitlines()
+        forbidden = [
+            path for path in changed
+            if path.startswith(("src/", "config/", "reports/m0/evidence/liquid_universe_v4/"))
+            or "requalification" in path.lower()
+        ]
+        if forbidden:
+            failures.append(f"adoption stage contains forbidden implementation/run artifacts: {forbidden}")
     return sorted(set(failures))
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--write", action="store_true")
+    parser.add_argument("--evidence-only", action="store_true")
     args = parser.parse_args()
     if args.write:
         MANIFEST_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -249,7 +255,7 @@ def main() -> int:
             json.dumps(build_adoption_document(), indent=2, sort_keys=True) + "\n",
             encoding="utf-8",
         )
-    failures = verify_repository()
+    failures = verify_repository(check_stage_scope=not args.evidence_only)
     if failures:
         print("ADR0014_ADOPTION_CHECK FAIL")
         for failure in failures:

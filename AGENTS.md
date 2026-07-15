@@ -28,8 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: ADR-0014 conditional adoption pending merge. The exact reviewed MC-01 through Forbidden Shortcuts semantics are adopted only for V4 implementation, independent implementation review and one fixed `2020-01` through `2026-06` public requalification.
-- PR #84 approved PR #81 exact head `31c967c` with 0 critical/high findings. The adoption manifest binds that target and both review hashes; PR #81 must be closed as superseded without modification or merge after adoption lands.
+- Current phase: Liquid universe V4 lifecycle availability implementation pending independent review. PR #85 adopted the exact reviewed policy at `0f5f76f`; the fixture-only implementation must not merge or run public requalification before an independent exact-head approve verdict.
+- PR #81 is closed as superseded. Its exact reviewed head `31c967c`, semantic hash and three docs-only models remain immutable historical evidence.
 - The reviewed Draft models KLAYUSDT 2024-10-28 partial lifecycle, 2024-10-29 normal-duration post-cessation placeholder and 2024-10-30 malformed placeholder as one versioned availability event instead of one row signature.
 - PR #76 merged the generic V3 implementation at `b3496fe` after 82/82 checks passed.
 - PR #77 merged at `c6d44d9` after 84/84 checks passed. The cold V3 build resolved the six frozen BTT/AXS cases, then blocked on KLAYUSDT 2024-10-30; warm/worker were not run after the stop. U-03F and U-04 remain unauthorized.
@@ -37,7 +37,7 @@ After any task, the agent must update:
 - V3 machine JSON manifests supersede V2 only after a V3 pass. The current cold V3 evidence is blocked and cannot authorize U-03F.
 - U-03D passed and merged in PR #70 at `5ab69e2`. U-03E cold/warm public builds match exactly but qualification is blocked by BTTUSDT negative daily volume in 2019-01/02 and a duplicate AXSUSDT row on 2026-02-10.
 - U-03E truthful blocked evidence merged in PR #71 at `8c4db86`. It is a closed blocked milestone, not a qualification pass or active implementation task.
-- U-03F must not start while V3 is blocked. U-04 remains unauthorized. V4 implementation is authorized only after adoption merges, and public requalification is forbidden until the exact implementation passes independent review and closeout.
+- U-03F must not start while V3/V4 qualification is blocked. U-04 remains unauthorized. Public requalification is forbidden until the exact V4 implementation passes independent review, merges unchanged and completes governance closeout.
 - V3 machine JSON manifests become active qualification authority only after a V3 pass. V1 is superseded, V2 is blocked historical evidence, and Markdown reports must never be qualification inputs.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.

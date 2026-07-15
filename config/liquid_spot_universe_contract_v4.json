@@ -1,0 +1,64 @@
+{
+  "schema_version": 4,
+  "universe_id": "BINANCE-SPOT-USDT-DYNAMIC-TOP15-V4",
+  "status": "implementation_fixture_only_public_requalification_not_run",
+  "market": "binance_spot",
+  "quote_asset": "USDT",
+  "research_start": "2020-01-01",
+  "frozen_end_month": "2026-06",
+  "membership": {
+    "target_size": 15,
+    "ranking_window_complete_utc_days": 90,
+    "minimum_history_complete_utc_days": 365,
+    "ranking_metric": "median_daily_quote_volume",
+    "tie_break": "symbol_lexicographic",
+    "activation": "next_utc_month_first_day",
+    "replacement_after_lifecycle_event": false
+  },
+  "bindings": {
+    "adr0011_adr_sha256": "5e05543cc7019fe7aaa6c90ebf78fb26adf084e33cb78aeccf6089202a1b94df",
+    "adr0013_row_conflict_policy": "ADR-0013-V1",
+    "v3_contract_hash": "f41f5fedf6002487c9d576a39927ade4409d55e1bc0442aa097e6b2ed054b3ed",
+    "v3_row_conflict_registry_hash": "570b66e32c3a7ac910ba5ef6688eff966304e65a9519f4f8a902b60fbe4957a4",
+    "v3_blocked_cold_artifact_set_hash": "f661d7abd99adc4067d354afba0c5421e7d1f33c54f768b89c8011ec01eab4f3",
+    "adopted_adr0014_sha256": "2de88986f6123a0d0ddaa2756b6c665a2fc0d3960f24dba1966bd51332becad9",
+    "adr0014_adoption_manifest_hash": "9c3572bee81edbf1efcc3ca523c9fdd10003adc5f3c3ac5a7211ad673405394a",
+    "lifecycle_policy_model_hash": "bce56a1070ef0690b13cba492bf9619a456af2618be94eb2ecbe03ea7e709d97",
+    "fault_matrix_hash": "90beb680e568ab5bc045556ef728e34cd2827d5bf6005ebb524b6e38ed6a199f",
+    "mc_conformance_hash": "303e4d28ea27575ed7fa46e9d9da459e5c237a0390f36f9c9de9cfcd7c9821d2",
+    "klay_adjudication_evidence_hash": "6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a",
+    "asset_eligibility_registry_hash": "d8c7fc6b034f1b0c82dc2e41f7b4f2c67122311246b33505f22ad694a3d0b091",
+    "lifecycle_policy_config_hash": "7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977",
+    "lifecycle_event_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d"
+  },
+  "lifecycle_policy": {
+    "policy_id": "LIQUID-SPOT-LIFECYCLE-AVAILABILITY-V4",
+    "policy_version": "ADR-0014-V1",
+    "unknown_event_action": "unresolved_blocked",
+    "policy_overlap_action": "blocked_policy_overlap"
+  },
+  "schemas": {
+    "source_manifest": 4,
+    "symbol_availability_manifest": 4,
+    "active_universe_manifest": 4,
+    "complete_day_mask": 4,
+    "expected_grid_manifest": 4
+  },
+  "authorizations": {
+    "v4_fixture_implementation": true,
+    "fixed_range_public_requalification_after_independent_review": true,
+    "u03f": false,
+    "u04": false,
+    "hypothesis": false,
+    "strategy": false,
+    "events": false,
+    "signals": false,
+    "returns": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "canonical_hash": "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83"
+}

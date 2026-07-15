@@ -23,19 +23,25 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_adr0014_adoption_requires_exact_review_and_limited_authority(self):
+    def test_v4_implementation_requires_merged_adoption_and_independent_review(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
-        adoption = next(item for item in state["open_work"] if item.get("id") == "ADR-0014-ADOPT")
-        self.assertEqual(adoption["status"], "accepted_pending_merge_for_v4_implementation_and_fixed_range_requalification_only")
-        self.assertEqual(adoption["reviewed_head_sha"], "31c967c785128671769eb713baed265da8ae0f2a")
-        self.assertEqual(adoption["conformance_review_verdict"], "approve")
-        self.assertTrue(adoption["adopted"])
-        self.assertFalse(adoption["implemented"])
-        self.assertFalse(adoption["registry_change"])
-        self.assertFalse(adoption["requalification"])
+        implementation = next(item for item in state["open_work"] if item.get("id") == "U-03E-V4-IMPL")
+        self.assertEqual(implementation["status"], "implementation_pass_fixture_only_pending_independent_review")
+        self.assertTrue(implementation["implemented"])
+        self.assertFalse(implementation["independent_review_approved"])
+        self.assertFalse(implementation["public_requalification"])
+        self.assertEqual(implementation["contract_hash"], "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83")
+        self.assertFalse(any(item.get("id") == "ADR-0014-ADOPT" for item in state["open_work"]))
         self.assertFalse(any(item.get("id") == "ADR-0014-REVIEW" for item in state["open_work"]))
+        adoption = next(
+            item
+            for item in state["completed_milestones"]
+            if item.get("phase") == "ADR-0014 conditional adoption"
+        )
+        self.assertEqual(adoption["merged_pr"], 85)
+        self.assertEqual(adoption["merge_commit"], "0f5f76f86973316ac66b8e3f9d6e65419b310ec9")
         review = next(
             item
             for item in state["completed_milestones"]
@@ -51,7 +57,7 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
             for item in state["completed_milestones"]
             if item.get("phase") == "ADR-0014 required-changes independent conformance review"
         )
-        self.assertEqual(conformance["reviewed_head_sha"], adoption["reviewed_head_sha"])
+        self.assertEqual(conformance["reviewed_head_sha"], "31c967c785128671769eb713baed265da8ae0f2a")
         self.assertEqual(conformance["verdict"], "approve")
         self.assertEqual(conformance["critical_findings"], 0)
         self.assertEqual(conformance["high_findings"], 0)
@@ -67,10 +73,10 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
 
         changed = copy.deepcopy(state)
         changed["open_work"] = [
-            item for item in changed["open_work"] if item.get("id") != "ADR-0014-ADOPT"
+            item for item in changed["open_work"] if item.get("id") != "U-03E-V4-IMPL"
         ]
         self.assertIn(
-            "current V2 task missing from open_work: ADR-0014-ADOPT",
+            "current V2 task missing from open_work: U-03E-V4-IMPL",
             validate(changed),
         )
 

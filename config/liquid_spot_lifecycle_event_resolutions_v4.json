@@ -1,0 +1,77 @@
+{
+  "schema_version": 4,
+  "registry_id": "LIQUID-SPOT-LIFECYCLE-EVENT-RESOLUTIONS-V4",
+  "status": "implementation_fixture_authority_public_requalification_not_run",
+  "policy_id": "LIQUID-SPOT-LIFECYCLE-AVAILABILITY-V4",
+  "policy_version": "ADR-0014-V1",
+  "reviewed_event_set_hash": "cec621133b06a883d8f0ab6b18131736e4269a77e0888b1375d00e84505f53d2",
+  "entries": [
+    {
+      "event_id": "KLAYUSDT-SPOT-2024-10-28-PERMANENT-CESSATION",
+      "exchange": "binance",
+      "market": "spot",
+      "pair": "KLAY/USDT",
+      "symbol": "KLAYUSDT",
+      "economic_asset_identity": "Klaytn",
+      "identity_version": "KLAY-v1",
+      "event_type": "permanent_trading_cessation",
+      "known_at": "2024-10-16T08:00:03.464000Z",
+      "publication_time": "2024-10-16T08:00:03.464000Z",
+      "effective_at": "2024-10-28T03:00:00Z",
+      "last_valid_market_time": "2024-10-28T02:59:59.999000Z",
+      "availability_end_exclusive": "2024-10-28T03:00:00Z",
+      "affected_interval_start": "2024-10-28T00:00:00Z",
+      "affected_interval_end_exclusive": "2024-10-31T00:00:00Z",
+      "affected_raw_rows": [
+        {
+          "interval": "1d",
+          "open_time_ms": 1730073600000,
+          "raw_row_sha256": "692aa865b2c8924b0b2e64a9128346ac77b1db3d0f1b82fdf7cd79fe0cb96319",
+          "classification": "cessation_day_partial_row",
+          "source_archive_hashes": [
+            "68dce6c6be6ac4e22428771a1402d957becb8e6a1ec9bb7b83507b2029712a59"
+          ]
+        },
+        {
+          "interval": "1d",
+          "open_time_ms": 1730160000000,
+          "raw_row_sha256": "fde7b4044554dff07cc39570082938a67e4c6763d2106e2b94809dd7d85695b7",
+          "classification": "post_cessation_normal_duration_placeholder",
+          "source_archive_hashes": [
+            "68dce6c6be6ac4e22428771a1402d957becb8e6a1ec9bb7b83507b2029712a59"
+          ]
+        },
+        {
+          "interval": "1d",
+          "open_time_ms": 1730246400000,
+          "raw_row_sha256": "8c916992e12bcf4318a93c2ecaf4f00571e1ac7251748cef6676cdead535bfa1",
+          "classification": "post_cessation_malformed_placeholder",
+          "source_archive_hashes": [
+            "68dce6c6be6ac4e22428771a1402d957becb8e6a1ec9bb7b83507b2029712a59",
+            "7256e669015de0d5d401db062338415318bb1091f2e78e16c4a48b5f75d2a642"
+          ]
+        }
+      ],
+      "official_evidence_hashes": [
+        "26409a7e4f3eecc8fc9332e5ad473f48052d5441b74b70291b718548e6bace42",
+        "73570cb9c2f6153337d81f06ad3dac6a208d3b6ae0d89fb45034954979fd2b35"
+      ],
+      "archive_hashes": [
+        "68dce6c6be6ac4e22428771a1402d957becb8e6a1ec9bb7b83507b2029712a59",
+        "7256e669015de0d5d401db062338415318bb1091f2e78e16c4a48b5f75d2a642"
+      ],
+      "intraday_evidence_hashes": [
+        "a1c69174432e9bdba59f8a1618cbe82d26215229e224c1b05ab2dcf298cb09c2",
+        "71c79332d5142b934dfdad417f993528686949225ced61a3b0176e25835fe86f"
+      ],
+      "similar_scope_scan_hash": "2f23dd3edf1ccfdfec08208a076e9cb4a548e7da171f76b9b3f575ba373bb0fb",
+      "announced_successor_symbol": "KAIAUSDT",
+      "successor_authority": "provenance_only",
+      "policy_version": "ADR-0014-V1",
+      "adjudication_hash": "6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a",
+      "authorization_status": "approved_for_v4_data_qualification_only",
+      "resolution_approved_at": "2026-07-16T00:00:00Z"
+    }
+  ],
+  "canonical_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d"
+}

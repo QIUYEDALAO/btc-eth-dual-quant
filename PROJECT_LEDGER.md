@@ -1477,3 +1477,13 @@ private exchange responses here.
 - Integrity: the three reviewed docs-only JSON models remain byte-for-byte unchanged; adoption metadata and generated time are outside the frozen semantic identity.
 - Governance: implementation may start only after adoption merges. Requalification may start only after independent exact-head implementation review and implementation closeout.
 - Safety: U-03F, U-04, hypothesis, strategy, signals, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - ADR-0014 Adopted And V4 Fixture Implementation Prepared
+
+- Task IDs: ADR-0014-ADOPT / U-03E-V4-IMPL
+- Adoption: PR #85 squash-merged at `0f5f76f86973316ac66b8e3f9d6e65419b310ec9`; PR #81 is closed as superseded and its exact reviewed head remains historical evidence.
+- Implementation branch: `codex/liquid-universe-v4-lifecycle-availability`, based on adoption main.
+- Result: `implementation_pass_fixture_only_public_requalification_not_run`; 37/37 reviewed fault cases and all 13 V4 artifact types are covered, with 512/512 unit tests passing.
+- Machine authority: contract `816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83`, policy `7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977`, lifecycle registry `a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d`.
+- Gate: no real public run was performed. The exact implementation head must receive an independent approve verdict before merge, then complete a separate governance closeout before fixed-range requalification.
+- Safety: U-03F, U-04, hypothesis, strategy, events, signals, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
