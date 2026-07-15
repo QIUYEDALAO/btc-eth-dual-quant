@@ -32,6 +32,11 @@ ALLOWED = {
     ): "U-03F",
 }
 
+BLOCKED_REQUALIFICATION_PAIR = (
+    "Liquid universe V2 public requalification blocked",
+    "liquid_universe_v2_requalification_blocked_data_conflict_no_strategy_no_m2",
+)
+
 EXPECTED_AUTH = {
     "hypothesis_preregistration": False,
     "strategy_code": False,
@@ -54,7 +59,21 @@ def validate(state: dict) -> list[str]:
         failures.append("research authorization matrix changed")
     open_work = state.get("open_work", [])
     active = [item for item in open_work if item.get("id") in {"U-03D", "U-03E", "U-03F"}]
-    if expected_task and not any(item.get("id") == expected_task for item in active):
+    if pair == BLOCKED_REQUALIFICATION_PAIR:
+        completed = state.get("completed_milestones", [])
+        merged_prs = {item.get("number") for item in state.get("latest_merged_prs", [])}
+        merged_blocked = any(
+            item.get("phase") == "Liquid universe V2 public requalification"
+            and item.get("status") == "blocked_data_conflict"
+            and isinstance(item.get("merged_pr"), int)
+            and item.get("merged_pr") in merged_prs
+            for item in completed
+        )
+        if not merged_blocked:
+            failures.append("merged blocked U-03E milestone missing")
+        if any(item.get("id") == "U-03E" for item in active):
+            failures.append("merged blocked U-03E must not remain in open_work")
+    elif expected_task and not any(item.get("id") == expected_task for item in active):
         failures.append(f"current V2 task missing from open_work: {expected_task}")
     merged = {item.get("number") for item in state.get("latest_merged_prs", [])}
     for item in open_work:
