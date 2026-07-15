@@ -1,10 +1,15 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T02:02:44Z"
+last_updated_utc: "2026-07-15T02:42:17Z"
 current_phase: Liquid universe V2 public requalification blocked
 current_status: liquid_universe_v2_requalification_blocked_data_conflict_no_strategy_no_m2
 completed_milestones:
+  - phase: Liquid universe V2 public requalification
+    status: blocked_data_conflict
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V2_QUALIFICATION_REPORT.md
+    merged_pr: 71
+    merge_commit: 8c4db86bba3f8910b892e174119eba3a5c5e88c1
   - phase: Liquid universe V2 correctness hardening
     status: pass
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V2_HARDENING_REPORT.md
@@ -184,15 +189,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03E
-    phase: Liquid universe V2 public requalification
-    status: blocked_data_conflict
-    branch: codex/liquid-universe-v2-requalification
-    pr: 71
-    head_sha: 9d04ff8e31fb92024aa24922b183203dc4ec4d9a
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V2_QUALIFICATION_REPORT.md
-    blocker: "Checksum-verified official data contain negative BTTUSDT daily volume in 2019-01/02 and a duplicate AXSUSDT daily row in 2026-02; U-03F cannot start."
   - id: U-03F
     phase: Liquid universe V2 independent audit
     status: not_authorized
@@ -772,6 +768,9 @@ latest_merged_prs:
   - number: 70
     title: Harden liquid universe qualification correctness V2
     merged_at_utc: "2026-07-15T01:17:00Z"
+  - number: 71
+    title: Record liquid universe V2 public requalification evidence
+    merged_at_utc: "2026-07-15T02:39:37Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

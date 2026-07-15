@@ -2,10 +2,10 @@
 
 ## Immediate Task
 
-Record and review the truthful U-03E `blocked_data_conflict` evidence from
-PR #71 on `codex/liquid-universe-v2-requalification`. The fixed 2020-01 through 2026-06
-cold and warm builds are deterministic, but checksum-verified official source
-rows violate the frozen V2 contract.
+PR #71 merged the truthful U-03E `blocked_data_conflict` evidence at
+`8c4db86`. The fixed 2020-01 through 2026-06 cold and warm builds are
+deterministic, but checksum-verified official source rows violate the frozen
+V2 contract.
 
 Do not start U-03F. The only permitted follow-up is source-owner/public-archive
 evidence work or a separate ADR that explicitly changes the data policy. Silent
@@ -59,14 +59,16 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Preserve and merge the deterministic U-03E blocked evidence.
+1. Preserve the merged deterministic U-03E blocked evidence.
 2. Seek official/source-owner clarification or corrected public archives for
    the exact three blockers.
 3. If the project intentionally wants a different duplicate/invalid-volume
    policy, create a new ADR and rerun U-03E from scratch under a new contract
    version.
 
-U-03F may run only after a future U-03E pass. Cross-sectional hypothesis design
+U-03E is closed as a truthful blocked milestone, not an active implementation
+task. U-03F may run only after a future U-03E pass under valid source evidence.
+Cross-sectional hypothesis design
 requires U-03F pass plus a separate task; it is not an allowed workaround for
 the current blocker.
 

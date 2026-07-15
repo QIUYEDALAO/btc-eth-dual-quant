@@ -1327,3 +1327,15 @@ private exchange responses here.
 - V1/V2 comparison: 78 months compared; 6 changed months, 7 additions, 7 removals and 33 rank changes. V1 Markdown was not used as a qualification input.
 - Decision: Keep U-03F and U-04 unauthorized. Do not deduplicate, drop rows, change rankings or continue to strategy research. Resolve source evidence or introduce a separately reviewed data-policy ADR.
 - Safety: No API key, private data, trading API, backtest, OOS, execution/live or M2 authorization was used or created.
+
+## 2026-07-15 - Liquid Universe V2 Blocked Evidence Merged
+
+- Date UTC: 2026-07-15T02:39:37Z
+- Task ID: U-03E-MERGED
+- Phase: Liquid universe V2 public requalification blocked
+- Branch: main
+- PR / merge commit: #71 / `8c4db86bba3f8910b892e174119eba3a5c5e88c1`
+- Result: The deterministic cold/warm public requalification evidence is merged as `blocked_data_conflict`; it is not a qualification pass.
+- Blockers: Checksum-verified BTTUSDT 2019-01/02 daily archives contain negative volume and the AXSUSDT 2026-02 daily archive duplicates 2026-02-10.
+- Governance: U-03E leaves `open_work` as a closed blocked milestone. U-03F and U-04 remain `not_authorized` until a future V2 public requalification passes under reviewed source evidence or a new data-policy ADR.
+- Safety: No strategy, event scan, return, backtest, OOS, API/trading, execution/live or M2 authorization was created.

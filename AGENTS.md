@@ -31,7 +31,7 @@ After any task, the agent must update:
 - Current phase: U-03E V2 public requalification is deterministically blocked by three checksum-verified official-source conflicts; no strategy is authorized.
 - ADR-0012 supersedes the V1 qualification admission decision pending V2 public requalification and independent audit. V1 reports remain historical evidence.
 - U-03D passed and merged in PR #70 at `5ab69e2`. U-03E cold/warm public builds match exactly but qualification is blocked by BTTUSDT negative daily volume in 2019-01/02 and a duplicate AXSUSDT row on 2026-02-10.
-- U-03E truthful blocked evidence is under review in PR #71. Its first evidence commit is `9d04ff8e31fb92024aa24922b183203dc4ec4d9a`; only context-only follow-up commits may change the head without rerunning public data.
+- U-03E truthful blocked evidence merged in PR #71 at `8c4db86`. It is a closed blocked milestone, not a qualification pass or active implementation task.
 - U-03F must not start while U-03E is blocked. U-04 remains unauthorized. Resolving the blocker requires source-owner evidence or a new ADR; silent deduplication or row deletion is prohibited.
 - V2 machine JSON manifests are the only future qualification authority. Markdown reports must never be qualification inputs.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
