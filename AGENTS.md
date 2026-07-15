@@ -28,9 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: ADR-0013 is accepted for V3 implementation and fixed-range U-03E requalification only, pending PR #74 merge; no strategy is authorized.
-- PR #75 merged the independent `approve_with_required_changes` review. PR #74 now contains A1-A10: frozen evidence, fixed processing order and semantics, complete duplicate grouping, candidate validation, fail-closed registry, quarantine accounting, fixed range, hash bindings and SHA meanings.
-- V3 implementation may start only after PR #74 merges. U-03F and U-04 remain unauthorized.
+- Current phase: generic V3 row-conflict implementation is fixture-complete and pending review; no public V3 qualification pass exists and no strategy is authorized.
+- PR #75 merged the independent `approve_with_required_changes` review. PR #74 merged ADR-0013 at `20e7ceb` with A1-A10 complete and all 80 checks successful.
+- V3 public requalification may start only after the generic implementation merges. U-03F and U-04 remain unauthorized.
 - ADR-0012 supersedes the V1 qualification admission decision pending V2 public requalification and independent audit. V1 reports remain historical evidence.
 - U-03D passed and merged in PR #70 at `5ab69e2`. U-03E cold/warm public builds match exactly but qualification is blocked by BTTUSDT negative daily volume in 2019-01/02 and a duplicate AXSUSDT row on 2026-02-10.
 - U-03E truthful blocked evidence merged in PR #71 at `8c4db86`. It is a closed blocked milestone, not a qualification pass or active implementation task.

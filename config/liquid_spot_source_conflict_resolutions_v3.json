@@ -1,0 +1,577 @@
+{
+  "adjudication_evidence_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+  "adjudication_schema_version": 1,
+  "authorizations": {
+    "api_or_trading": false,
+    "backtesting": false,
+    "event_scan": false,
+    "hypothesis_preregistration": false,
+    "m2": false,
+    "oos_opened": false,
+    "returns": false,
+    "strategy_code": false,
+    "u03f": false,
+    "u04": false
+  },
+  "canonical_hash": "570b66e32c3a7ac910ba5ef6688eff966304e65a9519f4f8a902b60fbe4957a4",
+  "entries": [
+    {
+      "adjudication_evidence_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+      "approved_action": "replace_invalid_monthly_with_daily",
+      "conflict_class": "official_monthly_daily_conflict",
+      "conflict_id": "U03E-BTTUSDT-1D-2019-01-NEGATIVE-BASE-VOLUME",
+      "daily_archive": {
+        "canonical_key": "data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-01-31.zip",
+        "raw_multiplicity": 1,
+        "raw_row_hashes": [
+          "fb41503772502b0addebe9ecee7fd3c4c6c4d21bb33165c4a7d101e170b7304d"
+        ],
+        "raw_rows": [
+          [
+            "1548892800000",
+            "0.00040000",
+            "0.00060000",
+            "0.00031990",
+            "0.00047640",
+            "122870499476.00000000",
+            "1548979199999",
+            "62154329.51276230",
+            "81569",
+            "55075450629.00000000",
+            "27674180.32962640",
+            "0"
+          ]
+        ],
+        "sha256": "573a02239f1d674692efe92658e3810dffe5cb75889f3d0f438c1d6cf0c6c708"
+      },
+      "effective_contract_version": "LIQUID-SPOT-USDT-TOP15-V3",
+      "interval": "1d",
+      "invalid_fields": [
+        "base_volume"
+      ],
+      "monthly_archive": {
+        "canonical_key": "data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-01.zip",
+        "raw_multiplicity": 1,
+        "raw_row_hashes": [
+          "bb97429c8567ac3006469af838780c2d646bbf0c139f458c489dbdb81da11a16"
+        ],
+        "raw_rows": [],
+        "sha256": "304382601fa91cd11ecdda83442850b35dd8c072875ef96d9871808179c4c724"
+      },
+      "open_time_utc": "2019-01-31T00:00:00+00:00",
+      "policy_version": "ADR-0013",
+      "resolution_id": "V3-U03E-BTTUSDT-1D-2019-01-NEGATIVE-BASE-VOLUME-2019-01-31",
+      "rest_comparators": [
+        {
+          "endpoint_identity": "api.binance.com",
+          "normalized_rows": [
+            [
+              "1548892800000",
+              "0.00040000",
+              "0.00060000",
+              "0.00031990",
+              "0.00047640",
+              "122870499476.00000000",
+              "1548979199999",
+              "62154329.51276230",
+              "81569",
+              "55075450629.00000000",
+              "27674180.32962640",
+              "0"
+            ]
+          ],
+          "payload_sha256": "dab24b5f245c69413e33e06caa4acddcb31e831ac4cedb4d458a206266085a21"
+        },
+        {
+          "endpoint_identity": "data-api.binance.vision",
+          "normalized_rows": [
+            [
+              "1548892800000",
+              "0.00040000",
+              "0.00060000",
+              "0.00031990",
+              "0.00047640",
+              "122870499476.00000000",
+              "1548979199999",
+              "62154329.51276230",
+              "81569",
+              "55075450629.00000000",
+              "27674180.32962640",
+              "0"
+            ]
+          ],
+          "payload_sha256": "dab24b5f245c69413e33e06caa4acddcb31e831ac4cedb4d458a206266085a21"
+        }
+      ],
+      "symbol": "BTTUSDT"
+    },
+    {
+      "adjudication_evidence_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+      "approved_action": "replace_invalid_monthly_with_daily",
+      "conflict_class": "official_monthly_daily_conflict",
+      "conflict_id": "U03E-BTTUSDT-1D-2019-02-NEGATIVE-BASE-VOLUME",
+      "daily_archive": {
+        "canonical_key": "data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-04.zip",
+        "raw_multiplicity": 1,
+        "raw_row_hashes": [
+          "de4de8eea6ac716a7e6da5cbe5557532c0b9d1d35b4289dbe98fe1986f8c23bf"
+        ],
+        "raw_rows": [
+          [
+            "1549238400000",
+            "0.00061400",
+            "0.00095360",
+            "0.00061070",
+            "0.00086630",
+            "143564344587.00000000",
+            "1549324799999",
+            "110277831.58541880",
+            "212350",
+            "70054616493.00000000",
+            "53850055.79687110",
+            "0"
+          ]
+        ],
+        "sha256": "2911d1124343685e2cbe2ca598ef26cc451e5de174c37655efad39f31ee74b3f"
+      },
+      "effective_contract_version": "LIQUID-SPOT-USDT-TOP15-V3",
+      "interval": "1d",
+      "invalid_fields": [
+        "base_volume"
+      ],
+      "monthly_archive": {
+        "canonical_key": "data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02.zip",
+        "raw_multiplicity": 1,
+        "raw_row_hashes": [
+          "5d2f72e47674c141d45a6ec71ad09ebd3a35c8cd91e85243709a1349e1c1a70a"
+        ],
+        "raw_rows": [],
+        "sha256": "9d396d4bc1995456cf2f37a286c637c623420170e03a9c5c02db32f7c28907a5"
+      },
+      "open_time_utc": "2019-02-04T00:00:00+00:00",
+      "policy_version": "ADR-0013",
+      "resolution_id": "V3-U03E-BTTUSDT-1D-2019-02-NEGATIVE-BASE-VOLUME-2019-02-04",
+      "rest_comparators": [
+        {
+          "endpoint_identity": "api.binance.com",
+          "normalized_rows": [
+            [
+              "1549238400000",
+              "0.00061400",
+              "0.00095360",
+              "0.00061070",
+              "0.00086630",
+              "143564344587.00000000",
+              "1549324799999",
+              "110277831.58541880",
+              "212350",
+              "70054616493.00000000",
+              "53850055.79687110",
+              "0"
+            ]
+          ],
+          "payload_sha256": "56943ad2e18ad11c617450745789a475e470b24c4c134ecbe4c69b69b25d2be1"
+        },
+        {
+          "endpoint_identity": "data-api.binance.vision",
+          "normalized_rows": [
+            [
+              "1549238400000",
+              "0.00061400",
+              "0.00095360",
+              "0.00061070",
+              "0.00086630",
+              "143564344587.00000000",
+              "1549324799999",
+              "110277831.58541880",
+              "212350",
+              "70054616493.00000000",
+              "53850055.79687110",
+              "0"
+            ]
+          ],
+          "payload_sha256": "56943ad2e18ad11c617450745789a475e470b24c4c134ecbe4c69b69b25d2be1"
+        }
+      ],
+      "symbol": "BTTUSDT"
+    },
+    {
+      "adjudication_evidence_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+      "approved_action": "replace_invalid_monthly_with_daily",
+      "conflict_class": "official_monthly_daily_conflict",
+      "conflict_id": "U03E-BTTUSDT-1D-2019-02-NEGATIVE-BASE-VOLUME",
+      "daily_archive": {
+        "canonical_key": "data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-05.zip",
+        "raw_multiplicity": 1,
+        "raw_row_hashes": [
+          "dbca42677ab120fb6063f106f3dd4422f2692cc7228a382e472a7ff7c1e4baba"
+        ],
+        "raw_rows": [
+          [
+            "1549324800000",
+            "0.00086520",
+            "0.00128430",
+            "0.00086520",
+            "0.00101830",
+            "178477158966.00000000",
+            "1549411199999",
+            "191790754.23974620",
+            "346174",
+            "84693921491.00000000",
+            "90975211.88162550",
+            "0"
+          ]
+        ],
+        "sha256": "505d0c5418d5a42b598fa77cefc606971171808b03ba8ee0f37f2f8c6364d761"
+      },
+      "effective_contract_version": "LIQUID-SPOT-USDT-TOP15-V3",
+      "interval": "1d",
+      "invalid_fields": [
+        "base_volume"
+      ],
+      "monthly_archive": {
+        "canonical_key": "data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02.zip",
+        "raw_multiplicity": 1,
+        "raw_row_hashes": [
+          "74483cfd2950dd2b06e79b0ace65a830789029a6988ba7bc8728d922ef29501a"
+        ],
+        "raw_rows": [],
+        "sha256": "9d396d4bc1995456cf2f37a286c637c623420170e03a9c5c02db32f7c28907a5"
+      },
+      "open_time_utc": "2019-02-05T00:00:00+00:00",
+      "policy_version": "ADR-0013",
+      "resolution_id": "V3-U03E-BTTUSDT-1D-2019-02-NEGATIVE-BASE-VOLUME-2019-02-05",
+      "rest_comparators": [
+        {
+          "endpoint_identity": "api.binance.com",
+          "normalized_rows": [
+            [
+              "1549324800000",
+              "0.00086520",
+              "0.00128430",
+              "0.00086520",
+              "0.00101830",
+              "178477158966.00000000",
+              "1549411199999",
+              "191790754.23974620",
+              "346174",
+              "84693921491.00000000",
+              "90975211.88162550",
+              "0"
+            ]
+          ],
+          "payload_sha256": "e8b1abfcef3a2480aca1d3bbeda1afe4bedd1df4b07e66480e744b87a5b7736d"
+        },
+        {
+          "endpoint_identity": "data-api.binance.vision",
+          "normalized_rows": [
+            [
+              "1549324800000",
+              "0.00086520",
+              "0.00128430",
+              "0.00086520",
+              "0.00101830",
+              "178477158966.00000000",
+              "1549411199999",
+              "191790754.23974620",
+              "346174",
+              "84693921491.00000000",
+              "90975211.88162550",
+              "0"
+            ]
+          ],
+          "payload_sha256": "e8b1abfcef3a2480aca1d3bbeda1afe4bedd1df4b07e66480e744b87a5b7736d"
+        }
+      ],
+      "symbol": "BTTUSDT"
+    },
+    {
+      "adjudication_evidence_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+      "approved_action": "replace_invalid_monthly_with_daily",
+      "conflict_class": "official_monthly_daily_conflict",
+      "conflict_id": "U03E-BTTUSDT-1D-2019-02-NEGATIVE-BASE-VOLUME",
+      "daily_archive": {
+        "canonical_key": "data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-06.zip",
+        "raw_multiplicity": 1,
+        "raw_row_hashes": [
+          "90f324251c8b93ba9d1ad74e18f3962f688fb5b8e3e62d762b6875d163e649fb"
+        ],
+        "raw_rows": [
+          [
+            "1549411200000",
+            "0.00101820",
+            "0.00105750",
+            "0.00085700",
+            "0.00096750",
+            "93042300118.00000000",
+            "1549497599999",
+            "88267214.69020920",
+            "190995",
+            "43873513218.00000000",
+            "41634912.46783460",
+            "0"
+          ]
+        ],
+        "sha256": "2cb572432df110e4d777ce7e7109ec8bab5bcf00281b864708b7784aea086f19"
+      },
+      "effective_contract_version": "LIQUID-SPOT-USDT-TOP15-V3",
+      "interval": "1d",
+      "invalid_fields": [
+        "base_volume"
+      ],
+      "monthly_archive": {
+        "canonical_key": "data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02.zip",
+        "raw_multiplicity": 1,
+        "raw_row_hashes": [
+          "beabe38f4638561b9e35247e254461974abb2407c07167fc2f4010a069521ef8"
+        ],
+        "raw_rows": [],
+        "sha256": "9d396d4bc1995456cf2f37a286c637c623420170e03a9c5c02db32f7c28907a5"
+      },
+      "open_time_utc": "2019-02-06T00:00:00+00:00",
+      "policy_version": "ADR-0013",
+      "resolution_id": "V3-U03E-BTTUSDT-1D-2019-02-NEGATIVE-BASE-VOLUME-2019-02-06",
+      "rest_comparators": [
+        {
+          "endpoint_identity": "api.binance.com",
+          "normalized_rows": [
+            [
+              "1549411200000",
+              "0.00101820",
+              "0.00105750",
+              "0.00085700",
+              "0.00096750",
+              "93042300118.00000000",
+              "1549497599999",
+              "88267214.69020920",
+              "190995",
+              "43873513218.00000000",
+              "41634912.46783460",
+              "0"
+            ]
+          ],
+          "payload_sha256": "671d0932801f9d9a1b53200b37a209d7c9a974ede25894a27365b4e17a6bf197"
+        },
+        {
+          "endpoint_identity": "data-api.binance.vision",
+          "normalized_rows": [
+            [
+              "1549411200000",
+              "0.00101820",
+              "0.00105750",
+              "0.00085700",
+              "0.00096750",
+              "93042300118.00000000",
+              "1549497599999",
+              "88267214.69020920",
+              "190995",
+              "43873513218.00000000",
+              "41634912.46783460",
+              "0"
+            ]
+          ],
+          "payload_sha256": "671d0932801f9d9a1b53200b37a209d7c9a974ede25894a27365b4e17a6bf197"
+        }
+      ],
+      "symbol": "BTTUSDT"
+    },
+    {
+      "adjudication_evidence_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+      "approved_action": "replace_invalid_monthly_with_daily",
+      "conflict_class": "official_monthly_daily_conflict",
+      "conflict_id": "U03E-BTTUSDT-1D-2019-02-NEGATIVE-BASE-VOLUME",
+      "daily_archive": {
+        "canonical_key": "data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-12.zip",
+        "raw_multiplicity": 1,
+        "raw_row_hashes": [
+          "6c47e55c539641f55aede4321216c8f20bdb956638b9869f12b25b7bfa7b5d10"
+        ],
+        "raw_rows": [
+          [
+            "1549929600000",
+            "0.00086820",
+            "0.00116500",
+            "0.00086370",
+            "0.00102170",
+            "97549006483.00000000",
+            "1550015999999",
+            "99391188.38483510",
+            "188301",
+            "46603004102.00000000",
+            "47509114.84409810",
+            "0"
+          ]
+        ],
+        "sha256": "b59fc6d1d5aad3953499864f9cf3a5653d05e18330293b93d974b0c3a6eb1676"
+      },
+      "effective_contract_version": "LIQUID-SPOT-USDT-TOP15-V3",
+      "interval": "1d",
+      "invalid_fields": [
+        "base_volume"
+      ],
+      "monthly_archive": {
+        "canonical_key": "data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02.zip",
+        "raw_multiplicity": 1,
+        "raw_row_hashes": [
+          "e0da934841b9500bbc476de7456daeca57bbe67d15c9bfc513185f3bf1698185"
+        ],
+        "raw_rows": [],
+        "sha256": "9d396d4bc1995456cf2f37a286c637c623420170e03a9c5c02db32f7c28907a5"
+      },
+      "open_time_utc": "2019-02-12T00:00:00+00:00",
+      "policy_version": "ADR-0013",
+      "resolution_id": "V3-U03E-BTTUSDT-1D-2019-02-NEGATIVE-BASE-VOLUME-2019-02-12",
+      "rest_comparators": [
+        {
+          "endpoint_identity": "api.binance.com",
+          "normalized_rows": [
+            [
+              "1549929600000",
+              "0.00086820",
+              "0.00116500",
+              "0.00086370",
+              "0.00102170",
+              "97549006483.00000000",
+              "1550015999999",
+              "99391188.38483510",
+              "188301",
+              "46603004102.00000000",
+              "47509114.84409810",
+              "0"
+            ]
+          ],
+          "payload_sha256": "3905524ab63e5995bbafaa07f38fd8e0cfc578400b3f76ae41dbd3760b978f69"
+        },
+        {
+          "endpoint_identity": "data-api.binance.vision",
+          "normalized_rows": [
+            [
+              "1549929600000",
+              "0.00086820",
+              "0.00116500",
+              "0.00086370",
+              "0.00102170",
+              "97549006483.00000000",
+              "1550015999999",
+              "99391188.38483510",
+              "188301",
+              "46603004102.00000000",
+              "47509114.84409810",
+              "0"
+            ]
+          ],
+          "payload_sha256": "3905524ab63e5995bbafaa07f38fd8e0cfc578400b3f76ae41dbd3760b978f69"
+        }
+      ],
+      "symbol": "BTTUSDT"
+    },
+    {
+      "adjudication_evidence_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+      "approved_action": "collapse_byte_identical_duplicate",
+      "conflict_class": "exact_identical_duplicate",
+      "conflict_id": "U03E-AXSUSDT-1D-2026-02-10-DUPLICATE",
+      "daily_archive": {
+        "canonical_key": "data/spot/daily/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02-10.zip",
+        "raw_multiplicity": 2,
+        "raw_row_hashes": [
+          "8749eb1bca53f27088055d90554f6852fbd315c1f3dfa75eb77d923ea9c61761",
+          "8749eb1bca53f27088055d90554f6852fbd315c1f3dfa75eb77d923ea9c61761"
+        ],
+        "raw_rows": [
+          [
+            "1770681600000000",
+            "1.47900000",
+            "1.65400000",
+            "1.44000000",
+            "1.57400000",
+            "18935177.03000000",
+            "1770767999999999",
+            "29141814.85779000",
+            "128555",
+            "9355027.88000000",
+            "14408718.46470000",
+            "0"
+          ],
+          [
+            "1770681600000000",
+            "1.47900000",
+            "1.65400000",
+            "1.44000000",
+            "1.57400000",
+            "18935177.03000000",
+            "1770767999999999",
+            "29141814.85779000",
+            "128555",
+            "9355027.88000000",
+            "14408718.46470000",
+            "0"
+          ]
+        ],
+        "sha256": "5b8f0db037606787404a3019614f3698780da664e51beadd92bba092eeef5c97"
+      },
+      "effective_contract_version": "LIQUID-SPOT-USDT-TOP15-V3",
+      "interval": "1d",
+      "invalid_fields": [],
+      "monthly_archive": {
+        "canonical_key": "data/spot/monthly/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02.zip",
+        "raw_multiplicity": 2,
+        "raw_row_hashes": [
+          "8749eb1bca53f27088055d90554f6852fbd315c1f3dfa75eb77d923ea9c61761",
+          "8749eb1bca53f27088055d90554f6852fbd315c1f3dfa75eb77d923ea9c61761"
+        ],
+        "raw_rows": [],
+        "sha256": "7f18d5a29f2e767389efce407d47a247dac3e0e309cef4a3b377040bddf001bf"
+      },
+      "open_time_utc": "2026-02-10T00:00:00+00:00",
+      "policy_version": "ADR-0013",
+      "resolution_id": "V3-U03E-AXSUSDT-1D-2026-02-10-DUPLICATE-2026-02-10",
+      "rest_comparators": [
+        {
+          "endpoint_identity": "api.binance.com",
+          "normalized_rows": [
+            [
+              "1770681600000",
+              "1.47900000",
+              "1.65400000",
+              "1.44000000",
+              "1.57400000",
+              "18935177.03000000",
+              "1770767999999",
+              "29141814.85779000",
+              "128555",
+              "9355027.88000000",
+              "14408718.46470000",
+              "0"
+            ]
+          ],
+          "payload_sha256": "1ff173d14d3ed86dd97acbe7011fc4da1836f40a22dbf74894e1b8d33d600880"
+        },
+        {
+          "endpoint_identity": "data-api.binance.vision",
+          "normalized_rows": [
+            [
+              "1770681600000",
+              "1.47900000",
+              "1.65400000",
+              "1.44000000",
+              "1.57400000",
+              "18935177.03000000",
+              "1770767999999",
+              "29141814.85779000",
+              "128555",
+              "9355027.88000000",
+              "14408718.46470000",
+              "0"
+            ]
+          ],
+          "payload_sha256": "1ff173d14d3ed86dd97acbe7011fc4da1836f40a22dbf74894e1b8d33d600880"
+        }
+      ],
+      "symbol": "AXSUSDT"
+    }
+  ],
+  "live_rest_dependency": false,
+  "policy_version": "ADR-0013",
+  "registry_id": "LIQUID-SPOT-SOURCE-CONFLICT-RESOLUTIONS-V3",
+  "schema_version": 3
+}

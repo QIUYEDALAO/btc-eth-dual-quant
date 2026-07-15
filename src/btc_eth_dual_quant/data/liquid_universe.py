@@ -241,8 +241,11 @@ def excluded(symbol: str, contract: dict[str, Any], registry: dict[str, Any], ef
 def build_month(effective: date, rows: list[DailyEvidence], contract: dict[str, Any], registry: dict[str, Any]) -> list[MembershipRow]:
     if effective.day != 1:
         raise ValueError("effective month must start on day one")
-    if contract.get("universe_id") != "LIQUID-SPOT-USDT-TOP15-V2":
-        raise ValueError("V2 qualification requires the active V2 contract")
+    if contract.get("universe_id") not in {
+        "LIQUID-SPOT-USDT-TOP15-V2",
+        "LIQUID-SPOT-USDT-TOP15-V3",
+    }:
+        raise ValueError("qualification requires an active V2 or V3 contract")
     if contract["exclusion_registry"]["registry_hash"] != registry.get("canonical_hash"):
         raise ValueError("contract/registry hash mismatch")
     membership = contract["membership"]

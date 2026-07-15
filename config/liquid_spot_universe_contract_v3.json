@@ -1,0 +1,128 @@
+{
+  "asset_roles": {
+    "BTC": [
+      "eligible_trade_asset",
+      "market_regime_benchmark",
+      "risk_benchmark"
+    ],
+    "ETH": [
+      "eligible_trade_asset",
+      "market_regime_benchmark",
+      "risk_benchmark"
+    ]
+  },
+  "authorizations": {
+    "api_or_trading": false,
+    "asset_data_qualification": true,
+    "event_scan": false,
+    "freqtrade_backtesting": false,
+    "hypothesis_preregistration": false,
+    "m2": false,
+    "oos_access": false,
+    "returns": false,
+    "signals": false,
+    "strategy_selection": false,
+    "u03e_v3_requalification": true,
+    "u03f": false,
+    "u04": false
+  },
+  "canonical_hash": "f41f5fedf6002487c9d576a39927ade4409d55e1bc0442aa097e6b2ed054b3ed",
+  "conflict_resolution_policy": {
+    "adjudication_evidence_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+    "adjudication_evidence_path": "reports/m0/evidence/liquid_universe_v2/source_conflict_adjudication.json",
+    "adjudication_schema_version": 1,
+    "adr": "docs/decisions/ADR-0013-official-archive-row-conflict-policy.md",
+    "adr_sha256": "32b0a67d9949fc0a40bf0718cadbf268a9b6ce9a335066a1d56c1a700a6ababe",
+    "canonicalization_schema": {
+      "key": [
+        "symbol",
+        "interval",
+        "open_time_utc"
+      ],
+      "raw_fields": [
+        "open_time",
+        "open",
+        "high",
+        "low",
+        "close",
+        "base_volume",
+        "close_time",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume",
+        "ignore"
+      ],
+      "version": 3
+    },
+    "processing_order": [
+      "verify_archive",
+      "retain_raw",
+      "group_complete_key",
+      "classify_group",
+      "collapse_byte_identical_only",
+      "block_heterogeneous_group",
+      "validate_candidate",
+      "lookup_offline_registry",
+      "validate_daily_candidate",
+      "emit_canonical_provenance",
+      "monthly_primary_daily_fill_merge",
+      "build_qualification"
+    ],
+    "resolution_registry_hash": "570b66e32c3a7ac910ba5ef6688eff966304e65a9519f4f8a902b60fbe4957a4",
+    "resolution_registry_path": "config/liquid_spot_source_conflict_resolutions_v3.json",
+    "source_manifest_schema_version": 3
+  },
+  "data_authority": {
+    "checksum_preference": "official_checksum_else_zip_crc_and_sha256",
+    "complete_grid_required": true,
+    "current_exchange_info_is_historical_authority": false,
+    "daily_conflict_action": "exact_registry_resolution_else_blocked_pending_adjudication",
+    "daily_primary": "official_monthly_zip",
+    "daily_supplement": "official_daily_zip_fill_missing_only",
+    "derived_timeframe": "1h",
+    "detail_timeframe": "5m",
+    "interpolation_allowed": false,
+    "rest_role": "frozen_registry_corroboration_never_runtime_authority",
+    "same_authority_duplicate_action": "collapse_only_registered_complete_byte_identical_group"
+  },
+  "exclusion_registry": {
+    "path": "config/liquid_spot_asset_eligibility_v2.json",
+    "registry_hash": "d8c7fc6b034f1b0c82dc2e41f7b4f2c67122311246b33505f22ad694a3d0b091",
+    "registry_id": "LIQUID-SPOT-ASSET-ELIGIBILITY-V2",
+    "registry_version": "2026-07-15.1"
+  },
+  "frozen_end_month": "2026-06",
+  "gap_handling_policy": {
+    "default_classification": "unresolved",
+    "exchange_wide_documented_or_synchronous_outage": "quarantine_global_window_all_members",
+    "manual_symbol_deletion_allowed": false,
+    "processing_error": "blocked_until_fixed_and_revalidated",
+    "symbol_specific_confirmed_archive_gap": "quarantine_entire_symbol_month_without_replacement",
+    "symbol_specific_unexplained_gap": "blocked_unresolved",
+    "synchronous_outage_minimum_fraction": 0.8,
+    "synchronous_outage_minimum_symbols": 2,
+    "synthetic_fill_or_interpolation_allowed": false,
+    "verified_archive_required_for_synchronous_classification": true
+  },
+  "market": "binance_spot",
+  "membership": {
+    "activation": "first_day_00:00_utc",
+    "allow_fewer_than_target": true,
+    "frequency": "monthly_utc",
+    "history_must_be_immediately_preceding_complete_days": true,
+    "minimum_complete_history_days": 365,
+    "ranking_metric": "median_daily_quote_volume",
+    "ranking_window_complete_days": 90,
+    "ranking_window_excludes_effective_month": true,
+    "replacement_allowed": false,
+    "target_size": 15,
+    "tie_break": "symbol_ascending"
+  },
+  "quote_asset": "USDT",
+  "research_start": "2020-01-01",
+  "schema_version": 3,
+  "status": "active_for_v3_implementation_and_u03e_requalification_only",
+  "supersedes": "LIQUID-SPOT-USDT-TOP15-V2",
+  "universe_id": "LIQUID-SPOT-USDT-TOP15-V3"
+}
