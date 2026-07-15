@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "registry_id": "LIQUID-SPOT-CONFIRMED-ARCHIVE-GAPS-V2",
+  "records": [
+    {
+      "symbol": "LUNAUSDT",
+      "month": "2022-05",
+      "start": "2022-05-13T00:40:00+00:00",
+      "end_exclusive": "2022-06-01T00:00:00+00:00",
+      "classification": "symbol_specific_confirmed_archive_gap",
+      "evidence": "official_monthly_zip_sha256=aa28d021c972ea905abc8adaa2a807e35f409397ced49523d7a56b0a95f3d6ac; archive ends while 14 peer members continue",
+      "decision": "quarantine_entire_symbol_month_without_replacement"
+    },
+    {
+      "symbol": "RNDRUSDT",
+      "month": "2024-07",
+      "start": "2024-07-22T03:00:00+00:00",
+      "end_exclusive": "2024-08-01T00:00:00+00:00",
+      "classification": "symbol_specific_confirmed_archive_gap",
+      "evidence": "official_monthly_zip_sha256=6cc8de6ca67518549eef8068a58d8e8671a133b22f0c455ed99438a686f1302c; archive ends while 14 peer members continue",
+      "decision": "quarantine_entire_symbol_month_without_replacement"
+    }
+  ],
+  "canonical_hash": "0e5d66a3968e0bb6ad89f81db9be8201b97f7e8fe8e257f648db0b5e2ba08f87"
+}

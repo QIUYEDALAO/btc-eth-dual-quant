@@ -1,131 +1,232 @@
 #!/usr/bin/env python3
-"""Run the ADR-0011 public-archive qualification. No strategy outcomes."""
+"""Build V2 liquid-universe qualification from verified public archives only."""
 from __future__ import annotations
-import argparse, csv, hashlib, io, json, urllib.parse, urllib.request, zipfile
+
+import argparse
+import csv
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timezone
 from decimal import Decimal
+import io
+import json
 from pathlib import Path
-import xml.etree.ElementTree as ET
+import urllib.error
+import urllib.parse
+import urllib.request
+import zipfile
 
-from btc_eth_dual_quant.data.liquid_universe import DailyEvidence, MinuteBar, aggregate_one_hour, build_month, membership_hash
+from btc_eth_dual_quant.data.liquid_universe import DailyEvidence, MinuteBar, aggregate_one_hour, merge_daily, validate_symbol_month_grid
+from btc_eth_dual_quant.data.liquid_universe_artifacts import render_qualification_report, write_manifest
+from btc_eth_dual_quant.data.liquid_universe_pipeline import build_artifacts, build_membership_rows
+from btc_eth_dual_quant.data.public_archive import parse_checksum, verify_zip
 
-BUCKET="https://data.binance.vision"
-S3="https://s3-ap-northeast-1.amazonaws.com/data.binance.vision"
-ROOT=Path(__file__).resolve().parents[1]
+BUCKET = "https://data.binance.vision"
+ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_RAW = ROOT / "storage/raw/liquid_universe/data/spot"
+DEFAULT_EVIDENCE = ROOT / "reports/m0/evidence/liquid_universe_v2"
 
-def archive_timestamp(value):
-    raw=int(value)
-    return datetime.fromtimestamp(raw/(1_000_000 if raw>=10**15 else 1_000),timezone.utc)
 
-def list_keys(prefix):
-    token=None; out=[]
-    while True:
-        q={"list-type":"2","prefix":prefix,"max-keys":"1000"}
-        if token: q["continuation-token"]=token
-        root=ET.fromstring(urllib.request.urlopen(S3+"?"+urllib.parse.urlencode(q),timeout=60).read())
-        ns={"s":"http://s3.amazonaws.com/doc/2006-03-01/"}
-        out += [x.text for x in root.findall("s:Contents/s:Key",ns)]
-        node=root.find("s:NextContinuationToken",ns)
-        if node is None: return out
-        token=node.text
+def archive_timestamp(value: str) -> datetime:
+    raw = int(value)
+    return datetime.fromtimestamp(raw / (1_000_000 if raw >= 10**15 else 1_000), timezone.utc)
 
-def list_prefixes(prefix):
-    token=None; out=[]; ns={"s":"http://s3.amazonaws.com/doc/2006-03-01/"}
-    while True:
-        q={"list-type":"2","prefix":prefix,"delimiter":"/","max-keys":"1000"}
-        if token: q["continuation-token"]=token
-        root=ET.fromstring(urllib.request.urlopen(S3+"?"+urllib.parse.urlencode(q),timeout=60).read())
-        out += [x.text for x in root.findall("s:CommonPrefixes/s:Prefix",ns)]
-        node=root.find("s:NextContinuationToken",ns)
-        if node is None: return out
-        token=node.text
 
-def fetch(key, store):
-    path=store/key; path.parent.mkdir(parents=True,exist_ok=True)
-    if not path.exists():
-        data=urllib.request.urlopen(f"{BUCKET}/{urllib.parse.quote(key)}",timeout=90).read()
-        path.write_bytes(data)
-    return path
+def canonical_key(symbol: str, interval: str, month: str, *, frequency: str = "monthly") -> str:
+    return f"data/spot/{frequency}/klines/{symbol}/{interval}/{symbol}-{interval}-{month}.zip"
 
-def csv_rows(path):
-    with zipfile.ZipFile(path) as z:
-        name=next(x for x in z.namelist() if x.endswith('.csv'))
-        return list(csv.reader(io.TextIOWrapper(z.open(name),encoding='utf-8')))
 
-def month_iter(start,end):
-    cur=start
-    while cur<=end:
-        yield cur
-        cur=date(cur.year+(cur.month==12),1 if cur.month==12 else cur.month+1,1)
+def _checksum(path: Path, key: str, *, offline: bool) -> tuple[str | None, str]:
+    checksum_path = path.with_suffix(path.suffix + ".CHECKSUM")
+    if checksum_path.exists():
+        return parse_checksum(checksum_path.read_text(encoding="utf-8")), "official_checksum_verified"
+    if offline:
+        return None, "official_checksum_unavailable_zip_crc_sha256_verified"
+    url = f"{BUCKET}/{urllib.parse.quote(key)}.CHECKSUM"
+    try:
+        text = urllib.request.urlopen(url, timeout=30).read().decode("utf-8")
+    except urllib.error.HTTPError as exc:
+        if exc.code == 404:
+            return None, "official_checksum_unavailable_zip_crc_sha256_verified"
+        raise
+    checksum_path.parent.mkdir(parents=True, exist_ok=True)
+    checksum_path.write_text(text, encoding="utf-8")
+    return parse_checksum(text), "official_checksum_verified"
 
-def main():
-    ap=argparse.ArgumentParser(); ap.add_argument('--end-month',default='2026-06'); ap.add_argument('--workers',type=int,default=12); args=ap.parse_args()
-    end=date.fromisoformat(args.end_month+'-01'); contract=json.loads((ROOT/'config/liquid_spot_universe_contract.json').read_text())
-    store=ROOT/'storage/raw/liquid_universe'; prefix='data/spot/monthly/klines/'
-    symbol_prefixes=[]
-    for p in list_prefixes(prefix):
-        symbol=p.rstrip('/').split('/')[-1]
-        if symbol.isascii() and symbol.isalnum() and symbol.endswith('USDT'): symbol_prefixes.append(p)
-    keys=[]
-    with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        for result in ex.map(lambda p: list_keys(p+'1d/'),symbol_prefixes): keys.extend(result)
-    daily={}
-    for k in keys:
-        parts=k.split('/')
-        if len(parts)>=7 and parts[5]=='1d' and parts[4].endswith('USDT') and k.endswith('.zip'):
-            ym=Path(k).stem.rsplit('-',2)[-2]+'-'+Path(k).stem.rsplit('-',2)[-1]
-            try: md=date.fromisoformat(ym+'-01')
-            except ValueError: continue
-            if date(2019,1,1)<=md<=end: daily[(parts[4],ym)]=k
-    paths={}
-    with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        futures={ex.submit(fetch,k,store):key for key,k in daily.items()}
-        for f,key in futures.items(): paths[key]=f.result()
-    evidence=[]
-    for (symbol,ym),path in paths.items():
-        h=hashlib.sha256(path.read_bytes()).hexdigest()
-        for r in csv_rows(path):
-            if not r or not r[0].isdigit(): continue
-            evidence.append(DailyEvidence(symbol,archive_timestamp(r[0]).date(),Decimal(r[7]),'monthly',h))
-    snapshots=[]
-    for month in month_iter(date(2020,1,1),end): snapshots.extend(build_month(month,evidence,contract))
-    needed={(r.symbol,r.effective_month[:7]) for r in snapshots}; five={}; five_keys=[]
-    selected_symbols=sorted({s for s,_ in needed})
-    with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        prefixes=[prefix+s+'/5m/' for s in selected_symbols]
-        for result in ex.map(list_keys,prefixes): five_keys.extend(result)
-    for k in five_keys:
-        p=k.split('/')
-        if len(p)>=7 and p[5]=='5m' and k.endswith('.zip'):
-            ym=Path(k).stem[-7:]
-            if (p[4],ym) in needed: five[(p[4],ym)]=k
-    five_paths={}
-    with ThreadPoolExecutor(max_workers=args.workers) as ex:
-        futures={ex.submit(fetch,k,store):key for key,k in five.items()}
-        for f,key in futures.items(): five_paths[key]=f.result()
-    blockers=[]; qualified=0; derived=0
-    for key in sorted(needed):
-        path=five_paths.get(key)
-        if not path: blockers.append(f"{key[0]}:{key[1]} missing 5m archive"); continue
-        rows=csv_rows(path); bars=[]
+
+def _archive_rows(path: Path) -> list[list[str]]:
+    with zipfile.ZipFile(path) as archive:
+        names = [name for name in archive.namelist() if name.endswith(".csv")]
+        if len(names) != 1:
+            raise ValueError("archive must contain one CSV")
+        return [row for row in csv.reader(io.TextIOWrapper(archive.open(names[0]), encoding="utf-8")) if row and row[0].isdigit()]
+
+
+def _source_row(path: Path, key: str, symbol: str, interval: str, month: str, role: str, *, offline: bool) -> dict:
+    expected, status = _checksum(path, key, offline=offline)
+    digest, count, first, last = verify_zip(path, expected_sha256=expected)
+    return {
+        "canonical_key": key,
+        "canonical_url": f"{BUCKET}/{key}",
+        "symbol": symbol,
+        "interval": interval,
+        "archive_month": month,
+        "byte_size": path.stat().st_size,
+        "sha256": digest,
+        "verification_status": status,
+        "row_count": count,
+        "first_timestamp": first,
+        "last_timestamp": last,
+        "authority_role": role,
+    }
+
+
+def _daily_rows(path: Path, symbol: str, month: str, source: dict, authority: str) -> list[DailyEvidence]:
+    result = []
+    for row in _archive_rows(path):
+        timestamp = archive_timestamp(row[0])
+        if timestamp.time() != datetime.min.time().replace(tzinfo=None) or timestamp.strftime("%Y-%m") != month:
+            raise ValueError(f"invalid daily UTC boundary: {symbol}:{timestamp.isoformat()}")
+        result.append(DailyEvidence(
+            symbol=symbol,
+            day=timestamp.date(),
+            quote_volume=Decimal(row[7]),
+            authority=authority,
+            archive_sha256=source["sha256"],
+            open=Decimal(row[1]),
+            high=Decimal(row[2]),
+            low=Decimal(row[3]),
+            close=Decimal(row[4]),
+            volume=Decimal(row[5]),
+            archive_key=source["canonical_key"],
+        ))
+    return result
+
+
+def _minute_rows(path: Path, symbol: str) -> list[MinuteBar]:
+    return [
+        MinuteBar(
+            symbol=symbol,
+            open_time=archive_timestamp(row[0]),
+            open=Decimal(row[1]),
+            high=Decimal(row[2]),
+            low=Decimal(row[3]),
+            close=Decimal(row[4]),
+            volume=Decimal(row[5]),
+            quote_volume=Decimal(row[7]),
+            trade_count=int(row[8]),
+            taker_base_volume=Decimal(row[9]),
+            taker_quote_volume=Decimal(row[10]),
+        )
+        for row in _archive_rows(path)
+    ]
+
+
+def _discover_monthly_daily(raw_root: Path, end_month: str) -> list[tuple[str, str, Path]]:
+    discovered = []
+    for path in raw_root.glob("monthly/klines/*/1d/*.zip"):
+        symbol = path.parts[-3]
+        month = path.stem[-7:]
+        if symbol.endswith("USDT") and "2019-01" <= month <= end_month:
+            discovered.append((symbol, month, path))
+    return sorted(discovered)
+
+
+def run(*, raw_root: Path, evidence_dir: Path, end_month: str, report_path: Path, offline: bool) -> dict[str, dict]:
+    contract = json.loads((ROOT / "config/liquid_spot_universe_contract_v2.json").read_text(encoding="utf-8"))
+    registry = json.loads((ROOT / "config/liquid_spot_asset_eligibility_v2.json").read_text(encoding="utf-8"))
+    confirmed = json.loads((ROOT / "config/liquid_spot_confirmed_archive_gaps_v2.json").read_text(encoding="utf-8"))
+    if end_month != contract["frozen_end_month"]:
+        raise ValueError("end month must match frozen V2 contract")
+
+    monthly: list[DailyEvidence] = []
+    supplements: list[DailyEvidence] = []
+    sources: list[dict] = []
+    processing: list[str] = []
+    for symbol, month, path in _discover_monthly_daily(raw_root, end_month):
+        key = canonical_key(symbol, "1d", month)
         try:
-            for r in rows:
-                if not r or not r[0].isdigit(): continue
-                bars.append(MinuteBar(key[0],archive_timestamp(r[0]),*(Decimal(r[i]) for i in (1,2,3,4,5))))
-            grouped=defaultdict(list)
-            for b in bars: grouped[b.open_time.replace(minute=0,second=0,microsecond=0)].append(b)
-            for group in grouped.values(): aggregate_one_hour(group); derived+=1
-            qualified+=1
-        except ValueError as e: blockers.append(f"{key[0]}:{key[1]} {e}")
-    by_month=defaultdict(list)
-    for r in snapshots: by_month[r.effective_month[:7]].append(r)
-    status='pass' if not blockers and by_month else 'blocked'
-    report=['# Liquid Spot Universe Qualification Report','',f'- Status: {status}',f'- Actual range: 2020-01-01 through {args.end_month}-30',f'- Historical symbols discovered: {len({x.symbol for x in evidence})}',f'- Monthly memberships: {len(by_month)}',f'- Membership rows: {len(snapshots)}',f'- Qualified 5m symbol-months: {qualified}',f'- Derived 1h bars: {derived}',f'- Blockers: {len(blockers)}',f'- Membership hash: {membership_hash(snapshots)}','- Strategy/events/signals/returns computed: no','- OOS accessed: no',f'- Strategy design authorized: {"yes" if status=="pass" else "no"}','- M2 authorized: no','- Runtime artifacts committed: no','','## Monthly Top 15','']
-    for m,rs in sorted(by_month.items()): report.append(f'- {m}: '+', '.join(x.symbol for x in rs))
-    report += ['','## Blockers',''] + ([f'- {x}' for x in blockers] or ['- none'])
-    (ROOT/'reports/m0/LIQUID_SPOT_UNIVERSE_QUALIFICATION_REPORT.md').write_text('\n'.join(report)+'\n')
-    print(f'status={status} symbols={len({x.symbol for x in evidence})} months={len(by_month)} blockers={len(blockers)}')
-    return 0 if status=='pass' else 2
-if __name__=='__main__': raise SystemExit(main())
+            source = _source_row(path, key, symbol, "1d", month, "official_monthly_zip_primary", offline=offline)
+            sources.append(source)
+            monthly.extend(_daily_rows(path, symbol, month, source, "official_monthly_zip"))
+        except Exception as exc:
+            processing.append(f"{symbol}:{month}:1d:{type(exc).__name__}:{exc}")
+    for path in sorted(raw_root.glob("daily/klines/*/1d/*.zip")):
+        symbol = path.parts[-3]
+        day = path.stem[-10:]
+        month = day[:7]
+        if not symbol.endswith("USDT") or month > end_month:
+            continue
+        key = canonical_key(symbol, "1d", day, frequency="daily")
+        try:
+            source = _source_row(path, key, symbol, "1d", day, "official_daily_zip_fill_only", offline=offline)
+            sources.append(source)
+            supplements.extend(_daily_rows(path, symbol, month, source, "official_daily_zip"))
+        except Exception as exc:
+            processing.append(f"{symbol}:{day}:daily_1d:{type(exc).__name__}:{exc}")
+    try:
+        daily = merge_daily(monthly, supplements)
+    except ValueError as exc:
+        daily = monthly
+        processing.append(f"daily_merge:{exc}")
+
+    membership = build_membership_rows(contract, registry, daily)
+    needed = sorted({(row.symbol, row.effective_month[:7]) for row in membership})
+    grid_results = {}
+    final_processing = list(processing)
+    for symbol, month in needed:
+        key = canonical_key(symbol, "5m", month)
+        path = raw_root / Path(key).relative_to("data/spot")
+        if not path.exists():
+            final_processing.append(f"missing local archive:{symbol}:{month}:5m")
+            continue
+        try:
+            source = _source_row(path, key, symbol, "5m", month, "official_monthly_zip_detail", offline=offline)
+            sources.append(source)
+            bars = _minute_rows(path, symbol)
+            grid_results[(symbol, month)] = validate_symbol_month_grid(symbol, month, bars)
+            grouped = defaultdict(list)
+            for bar in bars:
+                grouped[bar.open_time.replace(minute=0, second=0, microsecond=0)].append(bar)
+            derived = 0
+            for group in grouped.values():
+                if len(group) == 12:
+                    aggregate_one_hour(group)
+                    derived += 1
+            source["derived_1h_count"] = derived
+        except Exception as exc:
+            final_processing.append(f"{symbol}:{month}:5m:{type(exc).__name__}:{exc}")
+
+    artifacts = build_artifacts(
+        contract=contract,
+        registry=registry,
+        confirmed_gap_registry=confirmed,
+        daily=daily,
+        bars_by_symbol_month={},
+        grid_results=grid_results,
+        source_rows=sources,
+        processing_errors=final_processing,
+    )
+    for name, document in artifacts.items():
+        write_manifest(evidence_dir / f"{name}.json", document)
+    hashes = {name: document["content_hash"] for name, document in artifacts.items()}
+    report = render_qualification_report(artifacts["qualification_summary"]["content"], hashes)
+    report_path.write_text(report, encoding="utf-8")
+    return artifacts
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--end-month", default="2026-06")
+    parser.add_argument("--raw-root", type=Path, default=DEFAULT_RAW)
+    parser.add_argument("--evidence-dir", type=Path, default=DEFAULT_EVIDENCE)
+    parser.add_argument("--report-path", type=Path, default=ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V2_QUALIFICATION_REPORT.md")
+    parser.add_argument("--offline", action="store_true")
+    args = parser.parse_args()
+    artifacts = run(raw_root=args.raw_root, evidence_dir=args.evidence_dir, end_month=args.end_month, report_path=args.report_path, offline=args.offline)
+    status = artifacts["qualification_summary"]["content"]["status"]
+    print(f"status={status} artifact_set={json.dumps({name: doc['content_hash'] for name, doc in artifacts.items()}, sort_keys=True)}")
+    return 0 if status == "pass" else 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

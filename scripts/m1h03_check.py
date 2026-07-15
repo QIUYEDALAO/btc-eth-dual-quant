@@ -61,30 +61,19 @@ def check() -> list[str]:
     ])
 
     state = yaml.safe_load(STATE_PATH.read_text(encoding="utf-8"))
-    allowed_states = {
-        (
-            "M1H failed feasibility; BTC/ETH two-asset indicator research stopped",
-            "m1h_failed_feasibility_candidate_queue_exhausted_oos_sealed_no_m2",
-        ),
-        (
-            "BTC/ETH candidate queue exhausted; liquid-universe ADR authorized",
-            "btc_eth_candidate_queue_exhausted_liquid_universe_adr_authorized_no_m2",
-        ),
-        (
-            "Liquid universe public qualification blocked on unresolved 5m gaps",
-            "liquid_universe_qualification_blocked_151_gaps_no_strategy_no_m2",
-        ),
-        (
-            "Liquid universe qualification passed with quarantined gaps pending PR review",
-            "liquid_universe_qualification_pass_gap_attributed_no_strategy_no_m2",
-        ),
-        (
-            "Liquid universe qualification complete; next research decision pending",
-            "liquid_universe_qualification_pass_no_strategy_authorized_no_m2",
-        ),
+    milestones = {
+        item.get("phase"): item
+        for item in state.get("completed_milestones", [])
+        if isinstance(item, dict)
     }
-    if (state.get("current_phase"), state.get("current_status")) not in allowed_states:
-        failures.append("PROJECT_STATE is not an allowed M1H terminal governance state")
+    expected_milestones = {
+        "M1H public funding-data qualification": "pass",
+        "M1H sealed-IS paper feasibility": "failed_feasibility",
+        "M1H paper research protocol": "frozen_before_result",
+    }
+    for phase, status in expected_milestones.items():
+        if milestones.get(phase, {}).get("status") != status:
+            failures.append(f"PROJECT_STATE M1H milestone changed: {phase}")
 
     ledger = yaml.safe_load(LEDGER_PATH.read_text(encoding="utf-8"))
     candidates = [item for item in ledger.get("candidates", []) if item.get("id") == EXPECTED_CANDIDATE]

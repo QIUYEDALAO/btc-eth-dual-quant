@@ -1,0 +1,40 @@
+{
+  "schema_version": 2,
+  "registry_id": "LIQUID-SPOT-ASSET-ELIGIBILITY-V2",
+  "registry_version": "2026-07-14.1",
+  "allowed_categories": [
+    "stable_value",
+    "fiat_pegged",
+    "commodity_backed_or_external_reference_asset",
+    "leveraged_token",
+    "wrapped_asset",
+    "staked_or_receipt_token",
+    "migrated_or_duplicate_representation"
+  ],
+  "records": [
+    {"base_asset":"AEUR","category":"fiat_pegged","effective_from":"2023-12-04","effective_to":null,"reason":"Euro-referenced stable-value asset","public_evidence_reference":"issuer_and_binance_public_symbol_metadata:AEUR","registry_version":"2026-07-14.1"},
+    {"base_asset":"BETH","category":"staked_or_receipt_token","effective_from":"2021-01-29","effective_to":null,"reason":"Receipt representation of staked ETH","public_evidence_reference":"binance_public_symbol_metadata:BETH","registry_version":"2026-07-14.1"},
+    {"base_asset":"BUSD","category":"fiat_pegged","effective_from":"2019-09-05","effective_to":null,"reason":"USD-pegged stablecoin","public_evidence_reference":"issuer_and_binance_public_symbol_metadata:BUSD","registry_version":"2026-07-14.1"},
+    {"base_asset":"DAI","category":"stable_value","effective_from":"2019-11-22","effective_to":null,"reason":"USD-targeting decentralized stablecoin","public_evidence_reference":"makerdao_public_asset_documentation:DAI","registry_version":"2026-07-14.1"},
+    {"base_asset":"EUR","category":"fiat_pegged","effective_from":"2020-01-03","effective_to":null,"reason":"Fiat currency representation","public_evidence_reference":"binance_public_symbol_metadata:EUR","registry_version":"2026-07-14.1"},
+    {"base_asset":"FDUSD","category":"fiat_pegged","effective_from":"2023-07-26","effective_to":null,"reason":"USD-pegged stablecoin","public_evidence_reference":"first_digital_public_asset_documentation:FDUSD","registry_version":"2026-07-14.1"},
+    {"base_asset":"PAX","category":"fiat_pegged","effective_from":"2018-09-27","effective_to":null,"reason":"USD-pegged stablecoin","public_evidence_reference":"paxos_public_asset_documentation:PAX","registry_version":"2026-07-14.1"},
+    {"base_asset":"PAXG","category":"commodity_backed_or_external_reference_asset","effective_from":"2020-08-26","effective_to":null,"reason":"Gold-backed reference asset, excluded from crypto risk universe","public_evidence_reference":"paxos_public_asset_documentation:PAXG","registry_version":"2026-07-14.1"},
+    {"base_asset":"STETH","category":"staked_or_receipt_token","effective_from":"2022-09-01","effective_to":null,"reason":"Staked ETH receipt token","public_evidence_reference":"lido_public_asset_documentation:STETH","registry_version":"2026-07-14.1"},
+    {"base_asset":"TUSD","category":"fiat_pegged","effective_from":"2018-05-18","effective_to":null,"reason":"USD-pegged stablecoin","public_evidence_reference":"issuer_and_binance_public_symbol_metadata:TUSD","registry_version":"2026-07-14.1"},
+    {"base_asset":"USDC","category":"fiat_pegged","effective_from":"2018-11-15","effective_to":null,"reason":"USD-pegged stablecoin","public_evidence_reference":"circle_public_asset_documentation:USDC","registry_version":"2026-07-14.1"},
+    {"base_asset":"USD1","category":"stable_value","effective_from":"2025-05-22","effective_to":null,"reason":"USD-referenced stable-value asset","public_evidence_reference":"issuer_and_binance_public_symbol_metadata:USD1","registry_version":"2026-07-14.1"},
+    {"base_asset":"USDP","category":"fiat_pegged","effective_from":"2021-08-24","effective_to":null,"reason":"USD-pegged stablecoin","public_evidence_reference":"paxos_public_asset_documentation:USDP","registry_version":"2026-07-14.1"},
+    {"base_asset":"USDS","category":"stable_value","effective_from":"2024-09-18","effective_to":null,"reason":"USD-targeting stable-value asset","public_evidence_reference":"sky_public_asset_documentation:USDS","registry_version":"2026-07-14.1"},
+    {"base_asset":"UST","category":"stable_value","effective_from":"2021-01-08","effective_to":null,"reason":"USD-targeting stable-value asset","public_evidence_reference":"binance_public_symbol_metadata:UST","registry_version":"2026-07-14.1"},
+    {"base_asset":"USTC","category":"stable_value","effective_from":"2022-05-28","effective_to":null,"reason":"Renamed USD-targeting stable-value asset","public_evidence_reference":"binance_public_symbol_metadata:USTC","registry_version":"2026-07-14.1"},
+    {"base_asset":"WBETH","category":"staked_or_receipt_token","effective_from":"2023-04-27","effective_to":null,"reason":"Wrapped staked ETH receipt token","public_evidence_reference":"binance_public_symbol_metadata:WBETH","registry_version":"2026-07-14.1"},
+    {"base_asset":"WBTC","category":"wrapped_asset","effective_from":"2019-01-31","effective_to":null,"reason":"Wrapped representation of BTC","public_evidence_reference":"wbtc_public_asset_documentation:WBTC","registry_version":"2026-07-14.1"},
+    {"base_asset":"WETH","category":"wrapped_asset","effective_from":"2019-01-01","effective_to":null,"reason":"Wrapped representation of ETH","public_evidence_reference":"ethereum_public_token_standard:WETH","registry_version":"2026-07-14.1"},
+    {"base_asset":"BTCUP","category":"leveraged_token","effective_from":"2020-05-14","effective_to":null,"reason":"Binance leveraged token","public_evidence_reference":"binance_public_symbol_metadata:BTCUP","registry_version":"2026-07-14.1"},
+    {"base_asset":"BTCDOWN","category":"leveraged_token","effective_from":"2020-05-14","effective_to":null,"reason":"Binance leveraged token","public_evidence_reference":"binance_public_symbol_metadata:BTCDOWN","registry_version":"2026-07-14.1"},
+    {"base_asset":"ETHUP","category":"leveraged_token","effective_from":"2020-06-17","effective_to":null,"reason":"Binance leveraged token","public_evidence_reference":"binance_public_symbol_metadata:ETHUP","registry_version":"2026-07-14.1"},
+    {"base_asset":"ETHDOWN","category":"leveraged_token","effective_from":"2020-06-17","effective_to":null,"reason":"Binance leveraged token","public_evidence_reference":"binance_public_symbol_metadata:ETHDOWN","registry_version":"2026-07-14.1"}
+  ],
+  "canonical_hash": "2b23f64a92dec9b597c2f9399f4661cb62073ff54b90e851bc285626d31ad202"
+}

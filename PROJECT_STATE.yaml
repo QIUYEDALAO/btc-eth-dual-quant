@@ -1,17 +1,17 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-12T00:00:00Z"
-current_phase: Liquid universe qualification complete; next research decision pending
-current_status: liquid_universe_qualification_pass_no_strategy_authorized_no_m2
+last_updated_utc: "2026-07-14T00:00:00Z"
+current_phase: Liquid universe V2 correctness hardening pending review
+current_status: liquid_universe_v1_superseded_v2_hardening_pending_requalification_no_strategy_no_m2
 completed_milestones:
   - phase: Liquid spot universe gap attribution
-    status: pass_with_quarantine
+    status: superseded_pending_v2_requalification
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_GAP_ATTRIBUTION_REPORT.md
     merged_pr: 68
     merge_commit: 1996ea3e2c891d3ad6a366b5243111950a6968ed
   - phase: Liquid spot universe public qualification
-    status: pass
+    status: superseded_pending_v2_requalification
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_QUALIFICATION_REPORT.md
     merged_pr: 68
     merge_commit: 1996ea3e2c891d3ad6a366b5243111950a6968ed
@@ -179,6 +179,24 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-03D
+    phase: Liquid universe V2 correctness hardening
+    status: in_progress
+    branch: codex/liquid-universe-qualification-hardening-v2
+    pr: none
+    head_sha: pending
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V2_HARDENING_REPORT.md
+    blocker: "V2 public requalification and independent audit have not run; U-04 remains unauthorized."
+  - id: U-04
+    phase: Cross-sectional hypothesis preregistration
+    status: not_authorized
+    branch: not_created
+    pr: none
+    head_sha: none
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: docs/decisions/ADR-0012-liquid-universe-qualification-correctness-v2.md
+    blocker: "Requires merged V2 public requalification and exact independent audit."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -189,6 +207,10 @@ open_work:
     evidence: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
     blocker: "P3 failed complete-trade, OOS Sharpe, and drawdown gates; P4 and M2 are not allowed for M1C."
 active_decisions:
+  - id: ADR-0012
+    decision: Supersede the V1 qualification admission decision and rebuild the liquid universe through the V2 machine-authority contract.
+    status: accepted_for_correctness_hardening_only
+    evidence: docs/decisions/ADR-0012-liquid-universe-qualification-correctness-v2.md
   - id: ADR-0011
     decision: Build a monthly point-in-time Top-15 Binance USDT spot universe from prior public evidence.
     status: accepted_for_data_qualification_only
@@ -229,6 +251,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - Complete U-03D correctness hardening and merge it before starting U-03E public requalification.
+  - After U-03D merges, diagnostics may run the fixed 2020-01 through 2026-06 V2 public rebuild; no outcome or strategy data is allowed.
+  - A cross-sectional design review remains blocked until U-03E and U-03F both pass and merge.
   - Data qualification is complete. A separate explicitly approved task must choose and preregister exactly one cross-sectional hypothesis family before any outcome access.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - ADR-0011 freezes monthly Top 15 by prior-90-day median daily quote volume, 365-day history, deterministic tie-break and conservative exclusions.
@@ -282,6 +307,15 @@ allowed_next_work:
   - Do not enter M2.
   - Do not use API keys.
   - Do not run live or paper trading.
+research_authorizations:
+  hypothesis_preregistration: false
+  strategy_code: false
+  event_scan: false
+  returns: false
+  backtesting: false
+  oos_opened: false
+  m2: false
+  api_or_trading: false
 prohibited:
   - live trading
   - paper trading with real API
@@ -303,6 +337,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V2_HARDENING_REPORT.md
+    phase: Liquid universe V2 correctness hardening
+    status: implementation_pass_pending_public_requalification
+    status_marker: "- Status: implementation_pass_pending_public_requalification"
   - path: reports/m1/M1H_IS_PAPER_FEASIBILITY_REPORT.md
     phase: M1H sealed-IS paper feasibility
     status: failed_feasibility

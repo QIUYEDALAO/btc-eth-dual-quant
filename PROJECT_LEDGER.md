@@ -1302,3 +1302,14 @@ private exchange responses here.
 - Result: Public data qualification and all gap attributions are accepted with quarantine, zero processing errors and zero unresolved gaps.
 - Safety: No strategy, event, return, backtest, OOS, API, trading or M2 authorization was created.
 - Next action: Await a separate explicit decision to preregister one cross-sectional hypothesis family; do not begin implementation automatically.
+
+## 2026-07-14 - Liquid Universe V2 Correctness Hardening Started
+
+- Task ID: U-03D
+- Branch: `codex/liquid-universe-qualification-hardening-v2`
+- PR: pending
+- Basis: A blocking correctness review found that V1 did not fully machine-enforce asset categories, continuous windows, complete 5m grids, fail-closed gap evidence, quarantine scope, artifact authority, or authorization output.
+- Decision: Preserve V1 reports as historical evidence but mark their admission decision `superseded_pending_v2_requalification` under ADR-0012.
+- Implementation: Freeze `LIQUID-SPOT-USDT-TOP15-V2`, a versioned exclusion registry, verified archive provenance, deterministic machine manifests, complete-grid validation, fail-closed attribution, and exact state transitions.
+- Safety: No hypothesis, event scan, strategy, return, OOS, Freqtrade backtest, API/trading, or M2 work is authorized.
+- Next action: Complete U-03D tests and CI, merge it, then perform U-03E public cold/warm requalification before any independent audit.

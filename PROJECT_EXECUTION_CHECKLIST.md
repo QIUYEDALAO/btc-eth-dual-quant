@@ -79,7 +79,10 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-03A | Liquid universe qualification core | completed | U-02 merged | `codex/liquid-spot-universe-qualification` | Deterministic ranking, precedence, exclusion, aggregation and hash tooling | Fixture and safety validation pass | none |
 | U-03B | Liquid universe public archive run | completed | U-03A | PR #68 merged / `1996ea3` | 676 symbols, 78 months, 1170 membership rows and 5m/1h evidence | Point-in-time, no survivorship bias, zero unresolved gaps | none |
 | U-03C | Universe gap attribution | completed | U-03B evidence | PR #68 merged / `1996ea3` | 227 exact runs, 15 global windows, two isolated symbol-months | Zero processing errors and unresolved gaps; no manual deletion | none |
-| U-04 | Cross-sectional hypothesis design | not_authorized | U-03B/U-03C merged and separate approval | future branch | One preregistered cross-sectional hypothesis | Design only, no outcomes or OOS | Requires separate explicit approval |
+| U-03D | Liquid universe V2 correctness hardening | in_progress | U-03B/U-03C historical evidence | `codex/liquid-universe-qualification-hardening-v2` | ADR-0012, V2 contract/registry, machine authority, fail-closed grid/gap logic, fault tests | Full fixture, fault, contract, state and safety validation pass | V2 public requalification not yet run |
+| U-03E | Liquid universe V2 public requalification | not_authorized | U-03D merged pass | future branch | Cold/warm public rebuild, V1/V2 diff, V2 qualification report | Exact deterministic hashes, zero unresolved/processing errors | U-03D not merged |
+| U-03F | Liquid universe V2 independent audit | not_authorized | U-03E merged pass | future branch | Independent membership, gap and panel audit | Exact match for all months and symbol-months | U-03E not merged |
+| U-04 | Cross-sectional hypothesis design | not_authorized | U-03F merged pass and separate task | future branch | One preregistered cross-sectional hypothesis | Design only, no outcomes or OOS | V2 independent audit not complete |
 
 ## Current Gate
 
