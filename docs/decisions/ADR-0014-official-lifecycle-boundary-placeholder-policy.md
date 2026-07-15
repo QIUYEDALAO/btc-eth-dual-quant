@@ -1,111 +1,199 @@
-# ADR-0014: Official Lifecycle-Boundary Placeholder Policy
+# ADR-0014: Lifecycle Availability Event Policy
 
 - Status: Proposed draft; not adopted
 - Date: 2026-07-15
-- Scope: official Binance spot archive rows at a documented symbol cessation boundary
-- Depends on: ADR-0011, ADR-0012, ADR-0013, PR #79 adjudication evidence
+- Scope: official Binance spot lifecycle availability evidence
+- Prior review: PR #82, `approve_with_required_changes`
+- Prior review content hash: `3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15`
 - KLAY adjudication evidence hash: `6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a`
-- Proposed successor contract: `LIQUID-SPOT-USDT-TOP15-V4`
+- Proposed future contract: `LIQUID-SPOT-USDT-TOP15-V4`
 
-## Context
+This revision addresses MC-01 through MC-11. It remains a reviewable Draft,
+not policy authority. The exact docs-only machine semantics are frozen in:
 
-PR #79 proved that KLAYUSDT 2024-10-30 is a checksum-bound official-source
-artifact at the KLAY trading cessation boundary. ADR-0013 has no authority to
-admit, repair, replace or quarantine this monthly/daily/REST-identical invalid
-row. This ADR therefore proposes a generic policy for independent review. It
-does not adopt that policy, change V3, create a registry entry or authorize a
-requalification.
+- `docs/decisions/proposals/adr0014_lifecycle_policy_model.json`
+- `docs/decisions/proposals/adr0014_lifecycle_fault_matrix.json`
+- `docs/decisions/proposals/adr0014_mc_conformance.json`
 
-## B1: Proposed Lifecycle-Boundary Placeholder Category
+Those files are not runtime inputs, registry entries, contracts, or permission
+to implement or requalify anything.
 
-The proposed category is `official_lifecycle_boundary_placeholder`. A future
-version may assign it only when every condition below is machine-proven:
+## MC-01: Versioned Lifecycle Availability Event
 
-- monthly and daily official archives are checksum verified and CRC valid;
-- monthly and daily raw rows and semantic rows are identical;
-- two frozen public REST comparators each return exactly one row identical to the archive row;
-- the row is flat OHLC: open = high = low = close;
-- base volume, quote volume, both taker volumes and trade count are all zero;
-- close_time is less than open_time;
-- affected open_time is not earlier than official cessation_time;
-- close_time equals official cessation_time minus exactly 1 millisecond;
-- the affected UTC day has no official intraday trading bars;
-- the final intraday close equals official cessation_time minus exactly 1 millisecond;
-- official lifecycle evidence is checksum/hash bound;
-- the row is not a parser bug, duplicate or archive republication;
-- similar-scope scan finds no broader unexplained schema defect.
+The policy object is a `versioned_lifecycle_availability_event`, not a rule for
+one malformed row. It binds event identity, exchange, market, symbol, economic
+asset identity, event type, knowledge and effective times, availability
+boundary, affected interval and raw-row set, every affected raw-row hash,
+official evidence, similar-scope scan, policy version, and adjudication hash.
 
-Any missing, unavailable, changed or contradictory condition remains blocked.
-A lifecycle announcement alone is provenance and never data override authority.
+It distinguishes cessation-day partial rows, normal-duration post-cessation
+placeholders, malformed post-cessation placeholders, legitimate zero-volume
+rows, valid pre-cessation rows, and unresolved rows. The frozen KLAY example
+therefore includes all three official daily rows:
 
-## B2: Proposed General Handling Semantics
+- 2024-10-28: cessation-day partial row;
+- 2024-10-29: normal-duration flat zero-volume post-cessation placeholder;
+- 2024-10-30: close-before-open post-cessation malformed placeholder.
 
-If a future adopted version proves all B1 conditions, it would:
+No post-cessation row contributes to complete history, the 90-day ranking
+window, or the 365-day eligibility window. A new post-cessation row or changed
+affected-row hash fails closed and requires a new adjudication. The generic
+event model prohibits production symbol/date exceptions.
 
-- preserve the original monthly, daily and REST evidence permanently;
-- place the invalid source row in `raw_row_quarantine` and exclude it from canonical OHLCV;
-- create no replacement daily row, synthetic fill or normal zero-volume candle;
-- emit a machine-readable `symbol_availability_boundary` containing symbol,
-  cessation time, last valid market time, optional replacement symbol, official
-  lifecycle evidence hash, affected archive hashes, resolution ID and policy version;
-- stop expecting normal bars for the old symbol after cessation;
-- preserve existing point-in-time universe membership and valid pre-cessation panel data;
-- mark post-cessation availability as `lifecycle_terminated`, without adding a replacement member;
-- permit the cross-sectional asset count to fall rather than fabricate continuity;
-- require future ranking windows to use only real, legal and then-tradable complete daily rows.
+## MC-02: Availability Epochs And Expected Grid
 
-There is no automatic KLAY/KAIA history splice. Any replacement-symbol,
-renaming or economic-continuity mapping requires a separate ADR and policy.
+`symbol_availability_epochs` have independent epoch ID, identity version,
+inclusive start, exclusive end, knowledge and effective times, resolution
+reference, and evidence hashes. Qualification order is fixed:
 
-## B3: Required New Version Before Any Implementation
+1. validate raw data;
+2. load and validate lifecycle policy;
+3. load and validate event registry;
+4. build availability epochs;
+5. apply availability mask;
+6. build expected grid;
+7. detect gaps;
+8. build complete timeframes;
+9. build complete-day mask;
+10. rank and evaluate eligibility.
 
-Adoption would require a new `LIQUID-SPOT-USDT-TOP15-V4` contract, never an
-in-place V3 mutation, plus a versioned lifecycle resolution registry. The
-contract hash would bind the lifecycle-policy hash, registry hash, KLAY
-adjudication evidence hash, lifecycle evidence schema and availability-boundary
-schema. V1, V2 and V3 remain immutable historical evidence.
+The expected grid is never built before the availability mask. For 5m, both
+open and actual close must precede `availability_end_exclusive`; a crossing bar
+is partial or blocked and is never truncated or rewritten. A complete 1h bar
+requires 12 contiguous complete 5m bars in one epoch. A complete UTC day must
+fit wholly inside one epoch with complete legal coverage. A partial cessation
+day remains raw evidence but cannot enter complete-day windows.
 
-The first authorized V4 run would remain fixed to `2020-01 through 2026-06` and
-would require deterministic `cold, warm-cache and worker-variant` rebuilds.
-Every unknown or changed conflict would continue to fail closed. Governance
-would require a truthful V4 requalification PASS before U-03F, and U-03F PASS
-and separate authorization before U-04.
+The model separately records `raw_row_quarantine`,
+`lifecycle_event_quarantine`, `research_panel_availability_mask`, and
+`unresolved_data_quarantine`.
 
-## B4: Forbidden Shortcuts
+## MC-03: Point-In-Time Knowledge
 
-- Do not rewrite close_time as open_time plus one day minus 1 millisecond.
-- Do not construct a normal zero-volume candle.
-- Do not replace the daily row with an intraday aggregation.
-- Do not replace the archive row with REST data.
-- Do not delete the raw row.
-- Do not splice KLAY history into KAIA automatically.
-- Do not add a symbol/date special case.
-- Do not ignore the conflict because Top-15 membership is unchanged.
-- Do not add the sixteenth-ranked asset after a mid-month cessation.
-- Do not rewrite historical ranks or membership.
-- Do not mutate a registry before policy adoption.
-- Do not treat a lifecycle announcement as canonical data override authority.
+The model separates `known_at`, `publication_time`, `effective_at`,
+`archive_first_available_at`, `archive_revision_at`, `adjudication_at`, and
+`resolution_approved_at`. Physical market availability follows `effective_at`;
+research knowledge cannot precede `known_at`. Retrospective reconstruction may
+confirm a physical boundary only when it discloses whether that evidence was
+known then. When `known_at > effective_at`, evidence is marked
+`retrospective_evidence_lag` and no feature may use the lifecycle label before
+`known_at`.
 
-## B5: Independent Review And Future Adoption Sequence
+Later announcements or adjudications never rewrite month-start membership.
+Mid-month events alter only timestamped active availability. Later successor
+performance cannot modify old membership.
 
-1. Independently review this proposed ADR-0014 draft.
-2. Record an approve or reject verdict without implementation.
-3. If approved, open a separate policy-adoption PR.
-4. Implement the generic V4 contract and lifecycle-boundary machinery.
-5. Pass deterministic fixtures and fault-injection tests.
-6. Create and hash-bind the versioned lifecycle resolution registry.
-7. Run the fixed-range cold, warm-cache and worker-variant rebuilds.
-8. Record truthful PASS or blocked machine evidence.
-9. Require V4 requalification PASS before U-03F.
-10. Require U-03F PASS and separate authorization before U-04.
+## MC-04: Membership Versus Active Universe
 
-## B6: Draft Authorization Matrix
+`monthly_membership` is frozen at month start. `timestamped_active_universe`
+is independently masked by availability epochs. Outputs disclose both
+`membership_count` and `active_count`, using the states `active_complete`,
+`active_partial`, `lifecycle_terminated`, `data_quarantined`,
+`unresolved_blocked`, and `not_yet_available`.
+
+Lifecycle termination means physical unavailability. It is not missing data,
+zero return, cash, stale price, or automatic replacement. Active count may
+fall mid-month while membership count stays fixed. The sixteenth-ranked asset
+is not inserted.
+
+## MC-05: Data Policy Non-Targets
+
+This data policy defines no exit price, liquidation, settlement, token
+conversion, swap ratio, stale fill, stale-price forward-fill,
+cross-cessation return, minus-100-percent return, zero return, cash treatment,
+position migration, or forced exit.
+
+If a future strategy could hold an asset through a lifecycle event, U-04 may
+design an economic hypothesis, but a fixed-rule contract, Freqtrade backtest,
+or return validation cannot begin until an independent delisting/execution
+policy review passes. This is a machine-checked downstream Gate.
+
+## MC-06: Successor Metadata
+
+The sole field is `announced_successor_symbol`, with `provenance_only`
+authority. It asserts no economic equivalence, price continuity, conversion,
+or automatic swap. A successor inherits no listing age, 90/365-day history,
+volume, rank, or membership and cannot fill the old symbol's gap. It must
+qualify on its own point-in-time data. KLAY/KAIA history splice requires a
+separate ADR.
+
+## MC-07: Policy And Event Registry Separation
+
+The future lifecycle policy contract owns generic rules. A separate lifecycle
+event resolution registry owns evidence-bound event instances. Each registry
+entry binds resolution, venue, pair, symbol, asset identity, event and epoch,
+availability boundaries, knowledge/effective/last-valid times, expected-grid
+end, all announcement/archive/raw/intraday/scope hashes, policy version,
+adjudication evidence, non-authoritative successor metadata, and authorization
+status.
+
+Unregistered events, new post-event rows, checksum or evidence changes,
+cessation-time changes, overlaps, conflicts, registry-hash changes, and event
+type changes all fail closed. Production symbol/date branches are forbidden.
+
+## MC-08: Multiple Epochs And Ticker Reuse
+
+The model supports relisting, reactivation, migration, ticker reuse, and the
+same pair string representing different economic assets. Epochs have distinct
+IDs and identity versions and cannot overlap. A new epoch inherits no
+365-day history, 90-day ranking window, volume, rank, price continuity, or
+membership from an old epoch.
+
+## MC-09: Evidence Sufficiency
+
+Only jointly evidenced permanent cessation, delisting, and migration cessation
+are in scope. Temporary suspension, maintenance, and unknown events never
+become permanent lifecycle events automatically. Archive absence and missing
+intraday archives are not proof. An announcement is provenance, not canonical
+override authority.
+
+Resolution jointly requires official lifecycle evidence, archive integrity,
+intraday interval evidence, event time, and a frozen similar-scope scan. That
+scan binds scope, data authority, intervals, archive set, algorithm, and hash.
+Trading observed after announced cessation blocks resolution.
+
+## MC-10: Future V4 Machine Authority
+
+A future V4 must emit canonical, hash-bound `lifecycle_policy_manifest`,
+`lifecycle_resolution_registry`, `symbol_availability_manifest`,
+`active_universe_manifest`, `complete_day_mask`, `expected_grid_manifest`,
+`raw_row_quarantine_manifest`, `lifecycle_event_quarantine_manifest`,
+`qualification_summary`, and `V3_V4_diff`. Markdown is never an input.
+
+V3 remains active historical authority until V4 passes. A blocked V4 never
+activates. Cold, warm-cache, and worker results must match exactly, and U-03F
+must independently recompute the evidence. The summary discloses lifecycle
+events, terminated symbol-months, partial days, quarantined rows, membership
+and active counts, unresolved rows, overlapping epochs, synthetic fills, and
+replacement members. PASS requires zero synthetic fills, replacement members,
+overlapping epochs, and unresolved lifecycle rows.
+
+## MC-11: Fault-Injection Contract
+
+The docs-only fault matrix freezes unique test IDs, preconditions, mutations,
+expected results and states, and blocking status for every boundary, row class,
+source conflict, event type, epoch/reuse case, evidence revision, membership
+case, gap case, and prohibited execution interpretation required by MC-11.
+The conformance model maps every MC to acceptance criteria and fault IDs.
+
+## Forbidden Shortcuts
+
+- No raw-row deletion, timestamp repair, synthetic candle, REST replacement,
+  stale-price fill, implicit settlement, or cross-boundary return.
+- No KLAY/KAIA splice, successor inheritance, sixteenth-ranked replacement, or
+  retrospective membership rewrite.
+- No symbol/date production branch or Markdown-driven runtime rule.
+- No event or registry mutation before policy adoption and independent review.
+
+## Draft Authorization Matrix
 
 - Policy adopted: false
 - Policy implemented: false
 - Contract modified: false
 - Registry modified: false
+- V4 implementation: false
 - V3/V4 requalification run: false
+- Cold/warm/worker build: false
 - U-03F: false
 - U-04: false
 - Hypothesis preregistration: false
@@ -114,7 +202,9 @@ and separate authorization before U-04.
 - Returns/backtesting: false
 - OOS: false
 - API/trading: false
+- execution/live: false
 - M2: false
 
-This Draft proposes reviewable policy text only. It is not canonical runtime
-authority and must not be parsed as a registry, contract or qualification input.
+The revised exact PR head requires a new independent conformance review. Even
+an `approve` verdict would not adopt this policy, mark the Draft ready, merge
+the Draft, implement V4, mutate a registry, or authorize requalification.

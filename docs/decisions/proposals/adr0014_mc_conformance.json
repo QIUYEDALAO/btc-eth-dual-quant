@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "proposed_draft_non_authoritative",
+  "runtime_authority": false,
+  "policy_adopted": false,
+  "implementation_authorized": false,
+  "prior_review": {
+    "pr": 82,
+    "merge_sha": "d507684564fc31812c8e7d4adb06d7ab61c7dab7",
+    "content_hash": "3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15"
+  },
+  "mandatory_changes": {
+    "MC-01": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["versioned lifecycle event covers all six row classes and all three KLAY rows"],"required_tests":["ADR0014-FI-005","ADR0014-FI-006","ADR0014-FI-007","ADR0014-FI-008","ADR0014-FI-009"]},
+    "MC-02": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["availability mask precedes expected grid and 5m 1h 1d boundaries are deterministic"],"required_tests":["ADR0014-FI-001","ADR0014-FI-002","ADR0014-FI-003","ADR0014-FI-004","ADR0014-FI-031","ADR0014-FI-032","ADR0014-FI-033"]},
+    "MC-03": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["knowledge and market-effective times are separate and retrospective lag is disclosed"],"required_tests":["ADR0014-FI-020"]},
+    "MC-04": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["monthly membership and timestamped active universe have separate counts and states"],"required_tests":["ADR0014-FI-027","ADR0014-FI-028","ADR0014-FI-029","ADR0014-FI-030"]},
+    "MC-05": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["data policy defines no execution settlement or return and held positions require separate review"],"required_tests":["ADR0014-FI-034","ADR0014-FI-035","ADR0014-FI-036"]},
+    "MC-06": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["announced successor is provenance only and inherits nothing"],"required_tests":["ADR0014-FI-017"]},
+    "MC-07": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["generic policy and evidence-bound event registry are separate fail-closed authorities"],"required_tests":["ADR0014-FI-009","ADR0014-FI-010","ADR0014-FI-021","ADR0014-FI-022","ADR0014-FI-023","ADR0014-FI-024","ADR0014-FI-025","ADR0014-FI-037"]},
+    "MC-08": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["non-overlapping identity-versioned epochs represent relisting reactivation migration and ticker reuse"],"required_tests":["ADR0014-FI-018","ADR0014-FI-019","ADR0014-FI-026"]},
+    "MC-09": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["permanent events require joint evidence and temporary maintenance unknown or archive absence cannot qualify"],"required_tests":["ADR0014-FI-010","ADR0014-FI-011","ADR0014-FI-012","ADR0014-FI-013","ADR0014-FI-014","ADR0014-FI-015","ADR0014-FI-016"]},
+    "MC-10": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["future V4 authority is machine-hash-bound and activates only after exact clean rebuilds"],"required_tests":["ADR0014-FI-021","ADR0014-FI-022","ADR0014-FI-023","ADR0014-FI-024"]},
+    "MC-11": {"addressed":true,"blocking_until_independent_review":true,"acceptance_criteria":["complete unique machine-readable fault matrix is frozen before adoption"],"required_tests":["ADR0014-FI-001","ADR0014-FI-002","ADR0014-FI-003","ADR0014-FI-004","ADR0014-FI-005","ADR0014-FI-006","ADR0014-FI-007","ADR0014-FI-008","ADR0014-FI-009","ADR0014-FI-010","ADR0014-FI-011","ADR0014-FI-012","ADR0014-FI-013","ADR0014-FI-014","ADR0014-FI-015","ADR0014-FI-016","ADR0014-FI-017","ADR0014-FI-018","ADR0014-FI-019","ADR0014-FI-020","ADR0014-FI-021","ADR0014-FI-022","ADR0014-FI-023","ADR0014-FI-024","ADR0014-FI-025","ADR0014-FI-026","ADR0014-FI-027","ADR0014-FI-028","ADR0014-FI-029","ADR0014-FI-030","ADR0014-FI-031","ADR0014-FI-032","ADR0014-FI-033","ADR0014-FI-034","ADR0014-FI-035","ADR0014-FI-036","ADR0014-FI-037"]}
+  }
+}

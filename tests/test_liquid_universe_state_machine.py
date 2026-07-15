@@ -23,12 +23,16 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_adr0014_review_closeout_requires_draft_revision_and_zero_authority(self):
+    def test_adr0014_revised_draft_requires_conformance_review_and_zero_authority(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
         draft = next(item for item in state["open_work"] if item.get("id") == "ADR-0014-DRAFT")
-        self.assertEqual(draft["status"], "draft_revision_authorized_not_started")
+        self.assertEqual(draft["status"], "required_changes_completed_pending_conformance_review")
+        self.assertEqual(
+            draft["mandatory_changes_addressed"],
+            [f"MC-{number:02d}" for number in range(1, 12)],
+        )
         self.assertFalse(draft["adopted"])
         self.assertFalse(any(item.get("id") == "ADR-0014-REVIEW" for item in state["open_work"]))
         review = next(

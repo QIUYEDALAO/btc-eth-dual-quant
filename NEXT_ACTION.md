@@ -16,9 +16,10 @@ zero-volume 2024-10-29 row entirely after KLAYUSDT ceased trading, while
 versioned availability lifecycle event with point-in-time knowledge, exact
 epochs, complete-day masks and active-universe semantics.
 
-PR #81 remains `Proposed draft; not adopted`. Only a Draft revision addressing
-MC-01 through MC-11 is authorized, followed by a separate independent
-conformance review against the revised exact head.
+PR #83 merged the context-only review closeout at `ab45ba4`. PR #81 remains
+`Proposed draft; not adopted`; its docs-only revision now addresses MC-01
+through MC-11. The next and only authorized task is a separate independent
+conformance review against the revised exact head after all PR #81 checks pass.
 
 ## Current Decision
 
@@ -67,10 +68,10 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Rebase and revise Draft PR #81 against MC-01 through MC-11 without marking it Ready or merging it.
-2. Freeze the revised head after all PR #81 checks pass.
-3. Independently re-review every MC from a separate latest-main branch.
-4. Do not adopt policy, revise contracts/registries, run V3/V4, or start U-03F/U-04.
+1. Freeze the revised PR #81 exact head after all checks pass.
+2. Independently re-review every MC from a separate latest-main branch.
+3. Merge only the independent review evidence if its checks pass and the target head is unchanged.
+4. Do not mark PR #81 Ready, merge it, adopt policy, revise contracts/registries, run V3/V4, or start U-03F/U-04.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.

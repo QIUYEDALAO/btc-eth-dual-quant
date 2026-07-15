@@ -1,0 +1,366 @@
+{
+  "schema_version": 1,
+  "status": "proposed_draft_non_authoritative",
+  "runtime_authority": false,
+  "policy_adopted": false,
+  "implementation_authorized": false,
+  "policy_id": "ADR-0014-LIFECYCLE-AVAILABILITY-V1-DRAFT",
+  "policy_version": "draft-v1",
+  "klay_evidence_hash": "6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a",
+  "authorization_matrix": {
+    "adr0014_adoption": false,
+    "contract_mutation": false,
+    "registry_mutation": false,
+    "v4_implementation": false,
+    "v3_or_v4_requalification": false,
+    "cold_warm_or_worker_build": false,
+    "u03f": false,
+    "u04": false,
+    "hypothesis_preregistration": false,
+    "strategy_design_or_code": false,
+    "event_scan": false,
+    "returns_or_backtesting": false,
+    "oos_access": false,
+    "api_or_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "lifecycle_event_model": {
+    "object_type": "versioned_lifecycle_availability_event",
+    "required_fields": [
+      "event_id",
+      "exchange",
+      "market",
+      "symbol",
+      "asset_identity",
+      "event_type",
+      "known_at",
+      "effective_at",
+      "availability_boundary",
+      "affected_interval",
+      "affected_raw_row_set",
+      "affected_raw_row_hashes",
+      "official_evidence_hashes",
+      "similar_scope_scan_hash",
+      "policy_version",
+      "adjudication_hash"
+    ],
+    "row_classifications": [
+      "cessation_day_partial_row",
+      "post_cessation_normal_duration_placeholder",
+      "post_cessation_malformed_placeholder",
+      "legitimate_zero_volume_row",
+      "pre_cessation_valid_row",
+      "unresolved_row"
+    ],
+    "post_cessation_rows_complete_history_eligible": false,
+    "post_cessation_rows_ranking_window_eligible": false,
+    "post_cessation_rows_eligibility_window_eligible": false,
+    "new_post_cessation_row_result": "fail_closed_re_adjudication_required",
+    "affected_row_hash_change_result": "fail_closed_re_adjudication_required",
+    "frozen_klay_example": {
+      "event_id": "KLAYUSDT-SPOT-2024-10-28-PERMANENT-CESSATION",
+      "exchange": "binance",
+      "market": "spot",
+      "symbol": "KLAYUSDT",
+      "asset_identity": "KLAY-v1",
+      "event_type": "migration_cessation",
+      "known_at": "2024-10-16T08:00:03.464000+00:00",
+      "effective_at": "2024-10-28T03:00:00+00:00",
+      "availability_boundary": "2024-10-28T03:00:00+00:00",
+      "affected_interval": "2024-10-28T00:00:00+00:00/2024-10-31T00:00:00+00:00",
+      "affected_raw_rows": [
+        {
+          "date": "2024-10-28",
+          "classification": "cessation_day_partial_row",
+          "raw_row_sha256": "692aa865b2c8924b0b2e64a9128346ac77b1db3d0f1b82fdf7cd79fe0cb96319"
+        },
+        {
+          "date": "2024-10-29",
+          "classification": "post_cessation_normal_duration_placeholder",
+          "raw_row_sha256": "fde7b4044554dff07cc39570082938a67e4c6763d2106e2b94809dd7d85695b7"
+        },
+        {
+          "date": "2024-10-30",
+          "classification": "post_cessation_malformed_placeholder",
+          "raw_row_sha256": "8c916992e12bcf4318a93c2ecaf4f00571e1ac7251748cef6676cdead535bfa1"
+        }
+      ],
+      "official_evidence_hashes": [
+        "26409a7e4f3eecc8fc9332e5ad473f48052d5441b74b70291b718548e6bace42",
+        "73570cb9c2f6153337d81f06ad3dac6a208d3b6ae0d89fb45034954979fd2b35"
+      ],
+      "similar_scope_scan_hash": "2f23dd3edf1ccfdfec08208a076e9cb4a548e7da171f76b9b3f575ba373bb0fb",
+      "policy_version": "draft-v1",
+      "adjudication_hash": "6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a"
+    }
+  },
+  "qualification_pipeline_order": [
+    "validate_raw_data",
+    "load_and_validate_lifecycle_policy",
+    "load_and_validate_event_registry",
+    "build_availability_epochs",
+    "apply_availability_mask",
+    "build_expected_grid",
+    "detect_gaps",
+    "build_complete_timeframes",
+    "build_complete_day_mask",
+    "rank_and_evaluate_eligibility"
+  ],
+  "availability_epoch_model": {
+    "name": "symbol_availability_epochs",
+    "required_fields": [
+      "epoch_id",
+      "identity_version",
+      "availability_start_inclusive",
+      "availability_end_exclusive",
+      "known_at",
+      "effective_at",
+      "event_resolution_reference",
+      "source_evidence_hashes"
+    ],
+    "supports": [
+      "relisting",
+      "reactivation",
+      "migration",
+      "ticker_reuse",
+      "same_pair_string_different_asset_identity"
+    ],
+    "overlap_result": "blocked",
+    "new_epoch_inherits": [],
+    "new_epoch_must_not_inherit": [
+      "365_day_history",
+      "90_day_ranking_window",
+      "volume_history",
+      "rank",
+      "price_continuity",
+      "membership"
+    ]
+  },
+  "timeframe_semantics": {
+    "5m": {
+      "complete_when": "open_time < availability_end_exclusive and close_time < availability_end_exclusive",
+      "open_at_or_after_end_expected": false,
+      "cross_boundary_result": "partial_or_blocked_no_truncation_no_rewrite"
+    },
+    "1h": {
+      "required_child_bars": 12,
+      "child_timeframe": "5m",
+      "children_must_be_complete_contiguous_and_same_epoch": true,
+      "cross_epoch_aggregation": false
+    },
+    "1d": {
+      "complete_when": "entire_utc_day_inside_one_epoch_and_complete_legal_coverage",
+      "partial_day_complete_window_eligible": false,
+      "cessation_day_raw_evidence_retained": true,
+      "post_cessation_rows_destination": "lifecycle_raw_row_quarantine"
+    }
+  },
+  "quarantine_layers": [
+    "raw_row_quarantine",
+    "lifecycle_event_quarantine",
+    "research_panel_availability_mask",
+    "unresolved_data_quarantine"
+  ],
+  "point_in_time_knowledge": {
+    "required_times": [
+      "known_at",
+      "publication_time",
+      "effective_at",
+      "archive_first_available_at",
+      "archive_revision_at",
+      "adjudication_at",
+      "resolution_approved_at"
+    ],
+    "physical_market_availability_uses": "effective_at",
+    "research_knowledge_not_before": "known_at",
+    "retrospective_reconstruction_allowed_with_disclosure": true,
+    "month_start_membership_rewritten_by_later_evidence": false,
+    "mid_month_event_changes": "timestamped_active_availability_only",
+    "successor_performance_can_rewrite_old_membership": false,
+    "known_after_effective_label": "retrospective_evidence_lag",
+    "lifecycle_label_feature_before_known_at": false
+  },
+  "universe_views": {
+    "monthly_membership": "frozen_at_month_start_no_intramonth_rewrite",
+    "timestamped_active_universe": "availability_epoch_masked",
+    "separate_counts": true,
+    "required_counts": ["membership_count", "active_count"],
+    "status_vocabulary": [
+      "active_complete",
+      "active_partial",
+      "lifecycle_terminated",
+      "data_quarantined",
+      "unresolved_blocked",
+      "not_yet_available"
+    ],
+    "termination_means": ["physical_unavailability"],
+    "termination_does_not_mean": [
+      "missing_data",
+      "zero_return",
+      "cash",
+      "stale_price",
+      "automatic_replacement"
+    ],
+    "active_count_may_decline": true,
+    "sixteenth_ranked_replacement": false,
+    "membership_count_unchanged_intramonth": true
+  },
+  "non_targets": [
+    "exit_price",
+    "liquidation",
+    "settlement",
+    "token_conversion",
+    "swap_ratio",
+    "stale_fill",
+    "stale_price_forward_fill",
+    "cross_cessation_return",
+    "minus_100_percent_return",
+    "zero_return",
+    "cash_treatment",
+    "position_migration",
+    "forced_exit"
+  ],
+  "held_position_downstream_gate": {
+    "u04_may_design_hypothesis": true,
+    "fixed_rule_contract_before_execution_policy_review": false,
+    "freqtrade_backtest_before_execution_policy_review": false,
+    "returns_validation_before_execution_policy_review": false,
+    "required_review": "independent_delisting_execution_policy_review"
+  },
+  "successor_metadata": {
+    "field": "announced_successor_symbol",
+    "authority": "provenance_only",
+    "economic_equivalence": false,
+    "price_continuity": false,
+    "conversion_relationship": false,
+    "automatic_conversion": false,
+    "inherits_history": false,
+    "inherits": [],
+    "must_not_inherit": [
+      "listing_age",
+      "90_day_history",
+      "365_day_history",
+      "volume",
+      "rank",
+      "membership"
+    ],
+    "fills_old_symbol_gap": false,
+    "history_splice_requires_separate_adr": true,
+    "successor_requalifies_on_own_point_in_time_data": true
+  },
+  "authority_separation": {
+    "separate_authorities": true,
+    "lifecycle_policy_contract_role": "generic_rules",
+    "lifecycle_event_resolution_registry_role": "evidence_bound_events",
+    "production_symbol_date_special_cases": false
+  },
+  "event_registry": {
+    "required_fields": [
+      "resolution_id",
+      "exchange",
+      "market",
+      "pair",
+      "symbol",
+      "base_asset_identity",
+      "event_type",
+      "epoch_id",
+      "availability_start",
+      "availability_end_exclusive",
+      "known_at",
+      "effective_at",
+      "last_valid_market_time",
+      "expected_grid_end",
+      "announcement_evidence_hashes",
+      "archive_hashes",
+      "raw_row_hashes",
+      "intraday_evidence_hashes",
+      "similar_scope_scan_hash",
+      "policy_version",
+      "adjudication_evidence_hash",
+      "announced_successor_symbol",
+      "authorization_status"
+    ],
+    "fail_closed_on": [
+      "unregistered_event",
+      "new_post_event_row",
+      "checksum_change",
+      "evidence_hash_change",
+      "cessation_time_change",
+      "overlapping_entries",
+      "conflicting_entries",
+      "registry_hash_change",
+      "lifecycle_type_change"
+    ]
+  },
+  "evidence_sufficiency": {
+    "permanent_policy_event_types": [
+      "permanent_cessation",
+      "delisting",
+      "migration_cessation"
+    ],
+    "non_permanent_or_unresolved_types": [
+      "temporary_suspension",
+      "maintenance",
+      "unknown_event"
+    ],
+    "archive_absence_is_proof": false,
+    "intraday_archive_absence_is_proof": false,
+    "announcement_is_canonical_override": false,
+    "required_joint_evidence": [
+      "official_lifecycle_evidence",
+      "archive_integrity",
+      "intraday_interval_evidence",
+      "event_time",
+      "similar_scope_scan"
+    ],
+    "similar_scope_scan_required_fields": [
+      "scope",
+      "data_authority",
+      "intervals",
+      "archive_set",
+      "scan_algorithm",
+      "scan_hash"
+    ],
+    "trading_after_announced_cessation_result": "blocked"
+  },
+  "future_v4_authority": {
+    "required_artifacts": [
+      "lifecycle_policy_manifest",
+      "lifecycle_resolution_registry",
+      "symbol_availability_manifest",
+      "active_universe_manifest",
+      "complete_day_mask",
+      "expected_grid_manifest",
+      "raw_row_quarantine_manifest",
+      "lifecycle_event_quarantine_manifest",
+      "qualification_summary",
+      "V3_V4_diff"
+    ],
+    "canonical_serialization": true,
+    "all_artifacts_hash_bound": true,
+    "markdown_is_input": false,
+    "v3_remains_active_until_v4_pass": true,
+    "blocked_v4_becomes_authority": false,
+    "cold_warm_worker_exact_match_required": true,
+    "u03f_independent_recompute_required": true,
+    "qualification_summary_required_fields": [
+      "lifecycle_event_count",
+      "lifecycle_terminated_symbol_months",
+      "partial_lifecycle_days",
+      "post_cessation_rows_quarantined",
+      "membership_count",
+      "active_count",
+      "unresolved_lifecycle_rows",
+      "overlapping_epochs",
+      "synthetic_fills",
+      "replacement_members"
+    ],
+    "pass_requires_zero": [
+      "synthetic_fills",
+      "replacement_members",
+      "overlapping_epochs",
+      "unresolved_lifecycle_rows"
+    ]
+  }
+}

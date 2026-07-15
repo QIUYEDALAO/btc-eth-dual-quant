@@ -1,10 +1,15 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T17:40:45Z"
-current_phase: ADR-0014 required-changes Draft revision authorized
-current_status: adr0014_required_changes_revision_authorized_draft_not_adopted_no_requalification_no_strategy_no_m2
+last_updated_utc: "2026-07-15T18:11:53Z"
+current_phase: ADR-0014 required-changes Draft completed pending independent conformance review
+current_status: adr0014_required_changes_draft_pending_conformance_review_not_adopted_no_requalification_no_strategy_no_m2
 completed_milestones:
+  - phase: ADR-0014 independent policy review governance closeout
+    status: completed
+    evidence: PROJECT_LEDGER.md
+    merged_pr: 83
+    merge_commit: ab45ba4f12badab8a00faa0181b48c948643e223
   - phase: ADR-0014 independent policy review
     status: approve_with_required_changes
     evidence: reports/expert/ADR_0014_INDEPENDENT_REVIEW.md
@@ -229,23 +234,24 @@ completed_milestones:
 open_work:
   - id: ADR-0014-DRAFT
     phase: Official lifecycle-boundary placeholder policy design
-    status: draft_revision_authorized_not_started
+    status: required_changes_completed_pending_conformance_review
     branch: codex/adr-0014-lifecycle-boundary-placeholder-policy
     pr: 81
-    head_sha: cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44
+    head_sha: runtime_current_pr_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md
-    scope: revise proposed policy text and docs-only review models against MC-01 through MC-11; no adoption or implementation
+    scope: revised proposed policy text and docs-only review models address MC-01 through MC-11; exact head requires independent conformance review
     prior_review_pr: 82
     prior_review_merge_sha: d507684564fc31812c8e7d4adb06d7ab61c7dab7
     prior_review_content_hash: 3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15
     mandatory_changes: [MC-01, MC-02, MC-03, MC-04, MC-05, MC-06, MC-07, MC-08, MC-09, MC-10, MC-11]
+    mandatory_changes_addressed: [MC-01, MC-02, MC-03, MC-04, MC-05, MC-06, MC-07, MC-08, MC-09, MC-10, MC-11]
     adopted: false
     implemented: false
     registry_change: false
     v3_rerun: false
     requalification: false
-    blocker: "MC-01 through MC-11 must all be incorporated and independently re-reviewed before any adoption task. PR #81 must remain Draft."
+    blocker: "MC-01 through MC-11 are incorporated but must pass an independent exact-head conformance review. PR #81 must remain Draft and unadopted."
   - id: U-03F
     phase: Liquid universe V3 independent audit
     status: not_authorized
@@ -667,6 +673,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 83
+    title: Close ADR-0014 independent review governance
+    merge_commit: ab45ba4f12badab8a00faa0181b48c948643e223
+    status: merged
   - number: 82
     title: Independently review ADR-0014 lifecycle policy
     merge_commit: d507684564fc31812c8e7d4adb06d7ab61c7dab7

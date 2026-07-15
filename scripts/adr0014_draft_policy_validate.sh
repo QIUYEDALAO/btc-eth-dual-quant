@@ -43,6 +43,8 @@ no_trading_scan() {
 run_check "KLAY frozen evidence and immutable V3 baselines" "$PY_CMD" scripts/liquid_universe_v3_klay_conflict_check.py
 run_check "ADR-0014 Draft tests" "$PY_CMD" -m unittest tests.test_adr0014_draft_policy -v
 run_check "ADR-0014 Draft checker" "$PY_CMD" scripts/adr0014_draft_policy_check.py
+run_check "full unit suite" "$PY_CMD" -m unittest discover -s tests -v
+run_check "project context check" "$PY_CMD" scripts/project_context_check.py
 run_check "project state transition" "$PY_CMD" scripts/project_state_transition_check.py
 run_check "project validation" bash scripts/project_validate.sh
 run_check "compileall" "$PY_CMD" -m compileall -q src scripts

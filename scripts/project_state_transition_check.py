@@ -63,6 +63,10 @@ ALLOWED = {
         "adr0014_required_changes_revision_authorized_draft_not_adopted_no_requalification_no_strategy_no_m2",
     ): "ADR-0014-DRAFT",
     (
+        "ADR-0014 required-changes Draft completed pending independent conformance review",
+        "adr0014_required_changes_draft_pending_conformance_review_not_adopted_no_requalification_no_strategy_no_m2",
+    ): "ADR-0014-DRAFT",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -140,7 +144,12 @@ def validate(state: dict) -> list[str]:
             if item.get("verdict") != "approve_with_required_changes":
                 failures.append("ADR-0014 review verdict changed")
         if item.get("id") == "ADR-0014-DRAFT" and expected_task == "ADR-0014-DRAFT":
-            if item.get("status") != "draft_revision_authorized_not_started":
+            expected_status = (
+                "required_changes_completed_pending_conformance_review"
+                if pair[0] == "ADR-0014 required-changes Draft completed pending independent conformance review"
+                else "draft_revision_authorized_not_started"
+            )
+            if item.get("status") != expected_status:
                 failures.append("ADR-0014 Draft revision status changed")
             if item.get("prior_review_pr") != 82:
                 failures.append("ADR-0014 prior review PR changed")
@@ -148,6 +157,10 @@ def validate(state: dict) -> list[str]:
                 failures.append("ADR-0014 prior review merge changed")
             if item.get("adopted") or item.get("implemented") or item.get("registry_change") or item.get("requalification"):
                 failures.append("ADR-0014 Draft gained authority")
+            if expected_status == "required_changes_completed_pending_conformance_review":
+                expected_mcs = [f"MC-{number:02d}" for number in range(1, 12)]
+                if item.get("mandatory_changes_addressed") != expected_mcs:
+                    failures.append("ADR-0014 mandatory changes are not fully addressed")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
         failures.append("U-04 authorized without a separate post-audit task")
     return failures

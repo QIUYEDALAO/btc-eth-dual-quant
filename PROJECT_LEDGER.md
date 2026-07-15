@@ -1457,3 +1457,13 @@ private exchange responses here.
 - Result: Independent review is completed with verdict `approve_with_required_changes`, 0 critical and 10 high findings. MC-01 through MC-11 all remain adoption blockers.
 - Draft authority: PR #81 may be revised only as a proposed, non-authoritative Draft and must undergo a new independent conformance review against its exact revised head.
 - Safety: Adoption, V4 implementation, contract/registry mutation, requalification, U-03F, U-04, strategy, OOS, API/trading and M2 remain unauthorized.
+
+## 2026-07-15 - ADR-0014 Required Changes Draft Completed
+
+- Date UTC: 2026-07-15T18:11:53Z
+- Task ID: ADR-0014-DRAFT
+- Review closeout: PR #83 merged at `ab45ba4f12badab8a00faa0181b48c948643e223` after 88/88 checks passed.
+- Draft target: PR #81 remains Draft, proposed and unadopted.
+- Result: MC-01 through MC-11 are represented in the revised ADR and three docs-only machine models covering lifecycle events, epochs, point-in-time knowledge, membership/active separation, non-execution semantics, evidence, future V4 outputs and 37 fault cases.
+- Next Gate: freeze the exact revised PR #81 head after CI and independently re-review all mandatory changes from latest main.
+- Safety: no policy adoption, runtime authority, V3/V4 mutation, registry entry, qualification run, U-03F, U-04, strategy, OOS, API/trading or M2 authorization.
