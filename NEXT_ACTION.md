@@ -2,27 +2,22 @@
 
 ## Immediate Task
 
-PR #79 merged the U-03E-V3-ADJ evidence-only investigation and independent-review
-remediation at `bf6993c378527573b6ade82c3f1e9edb8af4c36d` after 86/86 GitHub
-checks passed. The
-official monthly ZIP, daily ZIP and both public REST comparators contain the
-same KLAYUSDT 2024-10-30 zero-volume row with `close_time` before `open_time`.
-Integer timestamp analysis proves the defect is in the official row rather than
-the parser. Official KLAY-to-KAIA lifecycle evidence places the invalid close
-exactly one millisecond before KLAYUSDT delisting.
+ADR-0014 independent policy review is complete against PR #81 head
+`cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44`. The verdict is
+`approve_with_required_changes`: 0 critical, 10 high, 1 medium and 1
+informational finding. Eleven machine-verifiable changes block adoption.
 
-The unique classification is `symbol_lifecycle_boundary_artifact`; the decision
-is `new_policy_adr_required`. ADR-0013 has no legal rule for replacing or
-quarantining a monthly/daily/REST-identical invalid lifecycle row. The evidence
-PR changed no contract, registry or existing V3 qualification artifact. Its
-evidence commit is
-`04bbe128fe0c83d8f21a7a34ffcf9c97ab842a7c`, its recomputed content hash is
-`6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a`,
-and its validated PR head was `ba34119c4b10d666602836dbbe2c04b84e61a5b2`.
-No V3 cold, warm or worker build was run.
+The decisive evidence is broader than the Draft's 2024-10-30 `close<open`
+category. The official monthly archive also contains a normal-duration flat,
+zero-volume 2024-10-29 row entirely after KLAYUSDT ceased trading, while
+2024-10-28 is a real partial lifecycle day. The future policy object must be a
+versioned availability lifecycle event with point-in-time knowledge, exact
+epochs, complete-day masks and active-universe semantics.
 
-U-04 remains unauthorized. No strategy is eligible for M2. Freqtrade
-backtesting, strategies, events, returns, OOS, APIs and trading remain blocked.
+PR #81 remains `Proposed draft; not adopted` and is unchanged. The independent
+review PR may merge only after all checks pass and PR #81 still has the exact
+reviewed head. Its merge grants no policy adoption, implementation, registry
+mutation, qualification run or downstream research permission.
 
 ## Current Decision
 
@@ -71,12 +66,12 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Create ADR-0014 as a proposed-only Draft covering a possible official
-   lifecycle-boundary placeholder policy, with static checks, tests and CI.
-2. Do not adopt or implement the Draft, mutate the registry, or rerun V3/V4.
-3. Do not revise the registry or rerun the frozen cold/warm/worker range until
-   a separately reviewed policy and versioned registry update are adopted.
-4. Do not run U-03F before a merged V3 qualification pass.
+1. Merge only the independent review PR after CI passes and PR #81 head remains
+   exactly `cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44`.
+2. Stop after that merge. Do not modify, mark Ready or merge PR #81 in this task.
+3. A future explicit task may revise the Draft against MC-01 through MC-11;
+   policy adoption remains a later independent Gate.
+4. Do not revise contracts/registries, run V3/V4, or start U-03F/U-04.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.

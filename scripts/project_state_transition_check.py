@@ -55,6 +55,10 @@ ALLOWED = {
         "klay_adjudication_merged_adr0014_draft_authorized_no_strategy_no_m2",
     ): "ADR-0014-DRAFT",
     (
+        "ADR-0014 independent policy review completed pending review",
+        "adr0014_review_approve_with_required_changes_pr81_draft_unmodified_no_requalification_no_strategy_no_m2",
+    ): "ADR-0014-REVIEW",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -93,7 +97,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "U-03F"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "U-03F"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -122,6 +126,15 @@ def validate(state: dict) -> list[str]:
                 failures.append("ADR-0013 reviewed_head_sha changed")
             if item.get("evidence_commit") != "4a95a28142d13aa2f03f271baf660ae95ba67e78":
                 failures.append("ADR-0013 evidence_commit changed")
+        if item.get("id") == "ADR-0014-REVIEW":
+            if item.get("head_sha") != "runtime_current_pr_head":
+                failures.append("ADR-0014 review head_sha must be runtime current PR metadata")
+            if item.get("reviewed_pr") != 81:
+                failures.append("ADR-0014 reviewed PR changed")
+            if item.get("reviewed_head_sha") != "cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44":
+                failures.append("ADR-0014 reviewed_head_sha changed")
+            if item.get("verdict") != "approve_with_required_changes":
+                failures.append("ADR-0014 review verdict changed")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
         failures.append("U-04 authorized without a separate post-audit task")
     return failures

@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T11:03:43Z"
-current_phase: ADR-0014 lifecycle-boundary placeholder policy draft authorized
-current_status: klay_adjudication_merged_adr0014_draft_authorized_no_strategy_no_m2
+last_updated_utc: "2026-07-15T12:45:07Z"
+current_phase: ADR-0014 independent policy review completed pending review
+current_status: adr0014_review_approve_with_required_changes_pr81_draft_unmodified_no_requalification_no_strategy_no_m2
 completed_milestones:
   - phase: Liquid universe V3 KLAY official-source conflict adjudication
     status: completed_new_policy_adr_required
@@ -217,18 +217,30 @@ completed_milestones:
 open_work:
   - id: ADR-0014-DRAFT
     phase: Official lifecycle-boundary placeholder policy design
-    status: authorized_not_started
-    branch: not_created
-    pr: none
-    head_sha: none
+    status: proposed_draft_required_changes_pending
+    branch: codex/adr-0014-lifecycle-boundary-placeholder-policy
+    pr: 81
+    head_sha: cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/evidence/liquid_universe_v3/klay_source_conflict_adjudication.json
-    scope: proposed policy text, static checker, tests and CI only
+    evidence: docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md
+    scope: proposed policy text only; independent review found eleven adoption-blocking changes
     adopted: false
     implemented: false
     registry_change: false
     v3_rerun: false
-    blocker: "ADR-0014 may be drafted for independent review only. Policy adoption, implementation, registry mutation, V3/V4 requalification, U-03F, U-04 and strategy work remain unauthorized."
+    blocker: "Independent verdict is approve_with_required_changes with 0 critical and 10 high findings. PR #81 must remain Draft and unchanged in this task; all eleven MC items block adoption."
+  - id: ADR-0014-REVIEW
+    phase: ADR-0014 independent policy review
+    status: completed_pending_review
+    branch: codex/adr-0014-independent-review
+    pr: pending
+    head_sha: runtime_current_pr_head
+    reviewed_pr: 81
+    reviewed_head_sha: cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44
+    verdict: approve_with_required_changes
+    evidence: reports/expert/evidence/adr0014_independent_review.json
+    evidence_content_hash: 3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15
+    blocker: "Review PR may merge only after all checks pass and PR #81 head is unchanged. Merge grants no policy adoption or downstream authorization."
   - id: U-03F
     phase: Liquid universe V3 independent audit
     status: not_authorized
@@ -305,9 +317,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Draft ADR-0014 as a proposed-only lifecycle-boundary placeholder policy with static checks and tests. Do not adopt or implement it.
-  - Do not change the V3 contract, registry or qualification artifacts and do not run V3/V4 requalification in the Draft task.
-  - A future versioned implementation and fixed-range rerun require separate review and adoption after the Draft PR; neither is authorized now.
+  - "Merge only the independent ADR-0014 review after its CI passes and PR #81 remains at the exact reviewed head; then stop this task."
+  - "PR #81 remains a proposed Draft with eleven adoption-blocking mandatory changes. Do not mark it Ready, modify it, merge it or adopt it in this task."
+  - A future explicit design review may address the mandatory changes; implementation and fixed-range rerun require later separate review and adoption.
   - U-03F and cross-sectional design remain blocked until a future V3 requalification pass merges and U-03F then passes in dependency order.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
@@ -316,6 +328,7 @@ allowed_next_work:
   - Diagnostics and revalidation must not lower validation thresholds.
   - Architecture hardening must not implement execution.
   - Design review must not implement execution.
+  - Independent policy diagnostics and design review only; no lifecycle implementation or qualification build is authorized.
   - Do not enter M2.
   - Do not use API keys.
   - Do not run live or paper trading.
@@ -349,6 +362,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/ADR_0014_INDEPENDENT_REVIEW.md
+    phase: ADR-0014 independent policy review
+    status: approve_with_required_changes
+    status_marker: "- Verdict: `approve_with_required_changes`"
+  - path: reports/expert/evidence/adr0014_independent_review.json
+    phase: ADR-0014 independent policy review machine evidence
+    status: deterministic_hash_bound_review
+    status_marker: '"verdict": "approve_with_required_changes"'
   - path: reports/m0/LIQUID_SPOT_UNIVERSE_V3_QUALIFICATION_REPORT.md
     phase: Liquid universe V3 public requalification
     status: blocked_unregistered_official_row_conflict

@@ -1,0 +1,552 @@
+{
+  "content": {
+    "authorization_matrix": {
+      "adr0014_adopted": false,
+      "api_or_trading": false,
+      "cold_warm_or_worker_build": false,
+      "contract_mutation": false,
+      "event_scan": false,
+      "execution_live": false,
+      "m2": false,
+      "oos_access": false,
+      "pr81_merge": false,
+      "pr81_ready": false,
+      "registry_mutation": false,
+      "returns_or_backtesting": false,
+      "strategy_design_or_code": false,
+      "u03f": false,
+      "u04": false,
+      "v3_or_v4_requalification": false,
+      "v4_implementation": false
+    },
+    "fault_injection_tests": [
+      "cessation exactly at a UTC day boundary",
+      "cessation exactly at a 5m boundary",
+      "cessation exactly at a 1h boundary",
+      "cessation not aligned to any bar boundary",
+      "cessation-day partial daily row",
+      "post-cessation normal-duration zero-volume placeholder",
+      "post-cessation close-before-open placeholder",
+      "multiple post-cessation placeholders",
+      "monthly/daily/REST disagreement",
+      "intraday archive absence without lifecycle announcement",
+      "lifecycle announcement while intraday trading continues",
+      "temporary suspension",
+      "permanent delisting",
+      "migration",
+      "announced successor",
+      "same ticker relisted as a new epoch",
+      "evidence publication later than effective time",
+      "official checksum update",
+      "registry content-hash change",
+      "unregistered lifecycle event",
+      "overlapping availability epochs",
+      "member and non-member lifecycle events",
+      "no replacement member",
+      "active member count decline",
+      "90/365 complete-day windows exclude partial lifecycle day",
+      "post-cessation absence does not create a gap",
+      "pre-cessation gap remains blocking",
+      "no stale-price forward-fill or cross-boundary return",
+      "no symbol/date special case"
+    ],
+    "findings": [
+      {
+        "finding": "The row category is over-fitted. A normal-duration post-cessation placeholder can enter complete-history, 90-day ranking and 365-day eligibility calculations even if the 2024-10-30 row is quarantined.",
+        "resolved": false,
+        "review_id": "Q01",
+        "severity": "high"
+      },
+      {
+        "finding": "The Draft permits multiple incompatible 5m/1h/1d implementations and can misclassify post-cessation absence as gaps or partial days as complete days.",
+        "resolved": false,
+        "review_id": "Q02",
+        "severity": "high"
+      },
+      {
+        "finding": "The Draft does not prevent future information from altering historical availability before it was public or rewriting month-start membership.",
+        "resolved": false,
+        "review_id": "Q03",
+        "severity": "high"
+      },
+      {
+        "finding": "Downstream research could treat lifecycle termination as missing data, zero return, cash or stale-price continuity.",
+        "resolved": false,
+        "review_id": "Q04",
+        "severity": "high"
+      },
+      {
+        "finding": "A future backtest could silently infer a favorable or arbitrary settlement from a data-qualification boundary.",
+        "resolved": false,
+        "review_id": "Q05",
+        "severity": "high"
+      },
+      {
+        "finding": "The current name can be misread as replacement authority even though the prose denies continuity.",
+        "resolved": false,
+        "review_id": "Q06",
+        "severity": "medium"
+      },
+      {
+        "finding": "Unknown events, checksum changes, new rows and conflicting registry entries are not uniquely governed.",
+        "resolved": false,
+        "review_id": "Q07",
+        "severity": "high"
+      },
+      {
+        "finding": "A single terminal boundary can permanently kill a ticker or incorrectly join a new economic asset to old history.",
+        "resolved": false,
+        "review_id": "Q08",
+        "severity": "high"
+      },
+      {
+        "finding": "The Draft does not distinguish permanent cessation, temporary suspension, maintenance, migration and archive absence, nor freeze scope semantics.",
+        "resolved": false,
+        "review_id": "Q09",
+        "severity": "high"
+      },
+      {
+        "finding": "A V4 run could pass without proving active counts, partial-day exclusion, post-cessation quarantine or zero synthetic/replacement artifacts.",
+        "resolved": false,
+        "review_id": "Q10",
+        "severity": "high"
+      },
+      {
+        "finding": "The policy is not adoption-ready without deterministic tests for boundaries, placeholders, source contradictions, event types, epochs and non-execution behavior.",
+        "resolved": false,
+        "review_id": "Q11",
+        "severity": "high"
+      },
+      {
+        "finding": "The Draft is safely proposed-only and does not mutate runtime authority.",
+        "resolved": true,
+        "review_id": "Q12",
+        "severity": "informational"
+      }
+    ],
+    "mandatory_changes": [
+      {
+        "acceptance": [
+          "The KLAY event binds the 2024-10-28 partial day and both 2024-10-29/30 post-cessation rows by raw hash.",
+          "No post-cessation row can contribute to complete-history, 90-day ranking or 365-day eligibility counts.",
+          "A new post-cessation row or changed affected-row hash blocks qualification."
+        ],
+        "blocks_adoption": true,
+        "id": "MC-01",
+        "tests": [
+          "normal-duration zero-volume placeholder is excluded",
+          "close-before-open placeholder is excluded",
+          "multiple/new post-cessation placeholders fail closed"
+        ],
+        "text_requirement": "Replace the close_time<open_time row-only category with a versioned lifecycle event that freezes the affected interval and complete affected-row set. It must distinguish cessation-day partial rows, post-cessation normal-duration placeholders, malformed placeholders and legitimate zero-volume rows. Every newly observed post-cessation row must fail closed until its evidence is bound.",
+        "title": "Promote row category to a lifecycle availability event"
+      },
+      {
+        "acceptance": [
+          "open>=end_exclusive is not expected and never reported as a gap",
+          "a bar crossing end_exclusive is blocked or partial by explicit timeframe rule",
+          "a lifecycle partial UTC day is excluded from complete-day windows while preserved as raw evidence",
+          "pre-boundary gaps continue to block"
+        ],
+        "blocks_adoption": true,
+        "id": "MC-02",
+        "tests": [
+          "UTC-day, 5m, 1h and off-grid boundary fixtures",
+          "12 complete 5m children required for a complete 1h bar",
+          "partial lifecycle day excluded from 90/365 windows",
+          "post-boundary absence does not become a gap"
+        ],
+        "text_requirement": "Define symbol_availability_epochs with availability_start_inclusive and availability_end_exclusive. Apply epochs before expected-grid generation. Define legal partial, crossing and post-boundary behavior for 5m, 1h and 1d; incomplete child sets cannot form complete parents. Separate raw-row quarantine, lifecycle-event quarantine and research-panel availability masks.",
+        "title": "Freeze exact availability and expected-grid semantics"
+      },
+      {
+        "acceptance": [
+          "machine event contains known_at and effective_at",
+          "no event influences state before known_at",
+          "month membership and rank are unchanged by later evidence",
+          "retrospective reconstruction status is explicit"
+        ],
+        "blocks_adoption": true,
+        "id": "MC-03",
+        "tests": [
+          "publication after effective time",
+          "late archive revision",
+          "replacement performance cannot rewrite old membership"
+        ],
+        "text_requirement": "Bind known_at/publication_time separately from effective_at, archive publication/revision time and resolution approval time. Month-start membership remains immutable; mid-month events alter only active availability. Retrospective evidence unavailable at the historical time must be disclosed and cannot be used as if known earlier.",
+        "title": "Add point-in-time lifecycle knowledge semantics"
+      },
+      {
+        "acceptance": [
+          "membership does not change mid-month",
+          "active count decreases after cessation without adding rank 16",
+          "status and count fields are separate and machine checked"
+        ],
+        "blocks_adoption": true,
+        "id": "MC-04",
+        "tests": [
+          "member and non-member event fixtures",
+          "active count decline without replacement",
+          "terminated state cannot be coerced to missing/zero/cash/stale"
+        ],
+        "text_requirement": "Preserve monthly point-in-time membership and derive timestamped active availability separately. Expose distinct membership_count and active_count plus active_complete, active_partial, lifecycle_terminated, data_quarantined and unresolved_blocked states. A terminated member is not missing data, zero return, cash or a stale-price position.",
+        "title": "Separate membership from active universe"
+      },
+      {
+        "acceptance": [
+          "ADR contains an explicit non-target section",
+          "authorization matrix keeps returns and execution false",
+          "downstream Gate is machine represented"
+        ],
+        "blocks_adoption": true,
+        "id": "MC-05",
+        "tests": [
+          "no stale-price forward-fill",
+          "no cross-boundary return",
+          "no implicit -100%, zero or cash settlement"
+        ],
+        "text_requirement": "State that availability does not define exit, liquidation, settlement, conversion, stale fill, cross-cessation return, -100%, zero return or cash treatment. U-04 may design a hypothesis, but fixed-rule or backtest work is blocked by a separately reviewed delisting/execution policy whenever a lifecycle event can intersect a position.",
+        "title": "Keep execution and returns outside the data policy"
+      },
+      {
+        "acceptance": [
+          "field name and schema state provenance_only",
+          "successor cannot fill the old symbol gap or inherit metrics",
+          "economic continuity is separately unauthorized"
+        ],
+        "blocks_adoption": true,
+        "id": "MC-06",
+        "tests": [
+          "announced successor without automatic replacement",
+          "successor receives independent age/rank/volume history"
+        ],
+        "text_requirement": "Rename replacement symbol to announced_successor_symbol and define it as provenance only. It grants no continuity, conversion, equivalence, listing age, volume, rank or complete-history inheritance. Any KLAY/KAIA splice requires a separate ADR; the successor must independently satisfy 365/90-day point-in-time rules.",
+        "title": "Make successor metadata non-authoritative"
+      },
+      {
+        "acceptance": [
+          "new/changed events, hashes, cessation times or post-event rows fail closed",
+          "overlapping/conflicting entries fail closed",
+          "implementation contains no symbol/date branch"
+        ],
+        "blocks_adoption": true,
+        "id": "MC-07",
+        "tests": [
+          "unregistered event",
+          "checksum/evidence/registry hash changes",
+          "cessation-time change",
+          "new post-cessation row",
+          "no symbol/date special case"
+        ],
+        "text_requirement": "Create separate hash-bound lifecycle policy and lifecycle event resolution registries. Event entries must bind exchange, market, symbol/pair, epoch, cessation/effective/known times, last valid time, expected-grid end, official evidence and archive/raw/intraday/scope hashes, policy version, adjudication hash, announced successor metadata and authorization status.",
+        "title": "Split lifecycle policy from event registry"
+      },
+      {
+        "acceptance": [
+          "multiple non-overlapping epochs are representable",
+          "same ticker/different asset identity remains separate",
+          "epoch overlap blocks qualification"
+        ],
+        "blocks_adoption": true,
+        "id": "MC-08",
+        "tests": [
+          "same ticker relisting",
+          "ticker reused for a different economic asset",
+          "overlapping epochs"
+        ],
+        "text_requirement": "Represent relisting, reactivation, migration and ticker reuse as distinct symbol_availability_epochs with identity/version and evidence. A new epoch cannot inherit the prior epoch's 365-day history, volume, rank or price continuity.",
+        "title": "Support multiple availability epochs and ticker identity"
+      },
+      {
+        "acceptance": [
+          "permanent and temporary states have different outcomes",
+          "missing intraday data without announcement remains a data blocker",
+          "continued intraday trading contradicts cessation and blocks",
+          "scope and scan hash are machine bound"
+        ],
+        "blocks_adoption": true,
+        "id": "MC-09",
+        "tests": [
+          "temporary suspension",
+          "maintenance",
+          "archive absence without announcement",
+          "announcement while trading continues",
+          "scope hash change"
+        ],
+        "text_requirement": "Limit this policy to proven permanent cessation/migration events. Archive absence alone is not lifecycle proof. Require validated official lifecycle evidence plus integrity-checked interval evidence, and distinguish temporary suspension, maintenance, delisting and migration. Freeze the similar-scope scan definition and hash.",
+        "title": "Raise lifecycle evidence sufficiency above archive absence"
+      },
+      {
+        "acceptance": [
+          "summary discloses lifecycle events, terminated symbol-months, partial days, quarantined post-cessation rows, membership/active counts and unresolved lifecycle rows",
+          "synthetic fills and replacement members are zero",
+          "V3 remains authority until a V4 pass"
+        ],
+        "blocks_adoption": true,
+        "id": "MC-10",
+        "tests": [
+          "cold/warm/worker machine hash equality",
+          "Markdown mutation cannot affect qualification",
+          "V4 blocked evidence cannot become active authority"
+        ],
+        "text_requirement": "Require lifecycle_policy_manifest, lifecycle_resolution_registry, symbol_availability_manifest, active_universe_manifest, complete_day_mask, expected_grid_manifest, raw_row_quarantine_manifest, qualification_summary and V3/V4 diff. Use canonical serialization and hash bindings; Markdown is never input. V4 becomes active only after cold/warm/worker equality, truthful requalification PASS and later U-03F independent recomputation.",
+        "title": "Define V4 machine authority and disclosures"
+      },
+      {
+        "acceptance": [
+          "every named fault-injection case maps to an automated test ID",
+          "unknown and contradictory cases fail closed",
+          "tests do not run qualification or mutate production evidence during policy adoption review"
+        ],
+        "blocks_adoption": true,
+        "id": "MC-11",
+        "tests": [
+          "cessation exactly at a UTC day boundary",
+          "cessation exactly at a 5m boundary",
+          "cessation exactly at a 1h boundary",
+          "cessation not aligned to any bar boundary",
+          "cessation-day partial daily row",
+          "post-cessation normal-duration zero-volume placeholder",
+          "post-cessation close-before-open placeholder",
+          "multiple post-cessation placeholders",
+          "monthly/daily/REST disagreement",
+          "intraday archive absence without lifecycle announcement",
+          "lifecycle announcement while intraday trading continues",
+          "temporary suspension",
+          "permanent delisting",
+          "migration",
+          "announced successor",
+          "same ticker relisted as a new epoch",
+          "evidence publication later than effective time",
+          "official checksum update",
+          "registry content-hash change",
+          "unregistered lifecycle event",
+          "overlapping availability epochs",
+          "member and non-member lifecycle events",
+          "no replacement member",
+          "active member count decline",
+          "90/365 complete-day windows exclude partial lifecycle day",
+          "post-cessation absence does not create a gap",
+          "pre-cessation gap remains blocking",
+          "no stale-price forward-fill or cross-boundary return",
+          "no symbol/date special case"
+        ],
+        "text_requirement": "Adoption must include the complete fault-injection matrix listed in this independent review. Tests must exercise boundary alignment, partial and placeholder rows, source disagreement, evidence timing, event types, epochs, membership/active counts, complete-day masking and non-execution semantics.",
+        "title": "Freeze lifecycle fault-injection coverage"
+      }
+    ],
+    "questions": [
+      {
+        "evidence": [
+          "ADR B1 requires close_time < open_time and therefore selects only the 2024-10-30 malformed row.",
+          "KLAY monthly archive previous_raw_fields/hash fde7b404... records 2024-10-29 as flat, zero volume/trades and normal daily duration after cessation.",
+          "The 2024-10-28 row ends at 2024-10-28T02:59:59.999Z and is a genuine partial lifecycle day."
+        ],
+        "finding": "The row category is over-fitted. A normal-duration post-cessation placeholder can enter complete-history, 90-day ranking and 365-day eligibility calculations even if the 2024-10-30 row is quarantined.",
+        "mandatory_change": [
+          "MC-01"
+        ],
+        "pass": false,
+        "question": "Does the Draft cover the lifecycle event rather than only one malformed row?",
+        "rationale": "The policy must bind the availability event and all affected rows, not one blocker signature.",
+        "review_id": "Q01",
+        "severity": "high"
+      },
+      {
+        "evidence": [
+          "ADR B2 says stop expecting bars after cessation but defines no inclusive/exclusive epoch, partial-day mask, cross-boundary rule or grid construction order."
+        ],
+        "finding": "The Draft permits multiple incompatible 5m/1h/1d implementations and can misclassify post-cessation absence as gaps or partial days as complete days.",
+        "mandatory_change": [
+          "MC-02"
+        ],
+        "pass": false,
+        "question": "Are availability intervals, timeframe boundaries and expected-grid order uniquely defined?",
+        "rationale": "Exact availability_start_inclusive/end_exclusive and pre-grid application are required for deterministic qualification.",
+        "review_id": "Q02",
+        "severity": "high"
+      },
+      {
+        "evidence": [
+          "KLAY evidence records publication 2024-10-16 and effective cessation 2024-10-28, but B2 has no known_at/effective_at or retrospective reconstruction semantics."
+        ],
+        "finding": "The Draft does not prevent future information from altering historical availability before it was public or rewriting month-start membership.",
+        "mandatory_change": [
+          "MC-03"
+        ],
+        "pass": false,
+        "question": "Does point-in-time reconstruction separate when evidence was known from when cessation became effective?",
+        "rationale": "Knowledge time and market-effective time are distinct facts and must be independently bound.",
+        "review_id": "Q03",
+        "severity": "high"
+      },
+      {
+        "evidence": [
+          "ADR B2 preserves membership and marks termination but defines neither separate counts nor a complete status vocabulary."
+        ],
+        "finding": "Downstream research could treat lifecycle termination as missing data, zero return, cash or stale-price continuity.",
+        "mandatory_change": [
+          "MC-04"
+        ],
+        "pass": false,
+        "question": "Are monthly membership and timestamped active universe separate machine concepts?",
+        "rationale": "Point-in-time membership is fixed monthly while active availability can change intramonth; both must be explicit.",
+        "review_id": "Q04",
+        "severity": "high"
+      },
+      {
+        "evidence": [
+          "ADR B2 describes availability only, but it does not explicitly prohibit exit price, token conversion, stale fill or cross-cessation return semantics."
+        ],
+        "finding": "A future backtest could silently infer a favorable or arbitrary settlement from a data-qualification boundary.",
+        "mandatory_change": [
+          "MC-05"
+        ],
+        "pass": false,
+        "question": "Does the data policy explicitly avoid defining prices, returns or position settlement?",
+        "rationale": "Lifecycle data admissibility and held-position execution are separate policies and review Gates.",
+        "review_id": "Q05",
+        "severity": "high"
+      },
+      {
+        "evidence": [
+          "B2 calls the field optional replacement symbol while separately denying automatic KLAY/KAIA splice."
+        ],
+        "finding": "The current name can be misread as replacement authority even though the prose denies continuity.",
+        "mandatory_change": [
+          "MC-06"
+        ],
+        "pass": false,
+        "question": "Is optional replacement symbol metadata unambiguously non-authoritative?",
+        "rationale": "Rename it announced_successor_symbol and prohibit inheritance or conversion semantics in schema and tests.",
+        "review_id": "Q06",
+        "severity": "medium"
+      },
+      {
+        "evidence": [
+          "B3 requests a versioned lifecycle resolution registry but does not define separate policy/event schemas, required fields or change detection."
+        ],
+        "finding": "Unknown events, checksum changes, new rows and conflicting registry entries are not uniquely governed.",
+        "mandatory_change": [
+          "MC-07"
+        ],
+        "pass": false,
+        "question": "Are lifecycle policy and event resolution records separate and fail closed?",
+        "rationale": "Generic policy and evidence-bound event instances require separate identities and failure modes.",
+        "review_id": "Q07",
+        "severity": "high"
+      },
+      {
+        "evidence": [
+          "B2 emits one symbol_availability_boundary and has no epoch identity or later start boundary."
+        ],
+        "finding": "A single terminal boundary can permanently kill a ticker or incorrectly join a new economic asset to old history.",
+        "mandatory_change": [
+          "MC-08"
+        ],
+        "pass": false,
+        "question": "Can the model represent relisting, reactivation and ticker reuse without history splice?",
+        "rationale": "Availability must be a versioned set of non-overlapping epochs, each with independent identity and eligibility history.",
+        "review_id": "Q08",
+        "severity": "high"
+      },
+      {
+        "evidence": [
+          "B1 combines KLAY-specific flat/zero/close-boundary features with announcement evidence.",
+          "The scope scan found partial-duration ORN/SCR rows, proving non-full duration alone is not a universal cessation class.",
+          "Missing intraday archives can also be a public-archive gap."
+        ],
+        "finding": "The Draft does not distinguish permanent cessation, temporary suspension, maintenance, migration and archive absence, nor freeze scope semantics.",
+        "mandatory_change": [
+          "MC-09"
+        ],
+        "pass": false,
+        "question": "Is lifecycle evidence sufficient and generalized beyond the KLAY signature?",
+        "rationale": "Archive absence is not lifecycle proof; validated lifecycle evidence and interval integrity must agree.",
+        "review_id": "Q09",
+        "severity": "high"
+      },
+      {
+        "evidence": [
+          "B3 mentions contract/registry binding and three rebuilds but omits availability, active-universe, complete-day and expected-grid manifests and required disclosures."
+        ],
+        "finding": "A V4 run could pass without proving active counts, partial-day exclusion, post-cessation quarantine or zero synthetic/replacement artifacts.",
+        "mandatory_change": [
+          "MC-10"
+        ],
+        "pass": false,
+        "question": "Are future V4 machine artifacts, authority activation and counters complete?",
+        "rationale": "Machine evidence, not Markdown, must close every policy consequence before V4 authority can activate.",
+        "review_id": "Q10",
+        "severity": "high"
+      },
+      {
+        "evidence": [
+          "PR #81 CI has 88 passing static/guard tests, but the Draft tests verify markers and zero authority rather than the full lifecycle state machine."
+        ],
+        "finding": "The policy is not adoption-ready without deterministic tests for boundaries, placeholders, source contradictions, event types, epochs and non-execution behavior.",
+        "mandatory_change": [
+          "MC-11"
+        ],
+        "pass": false,
+        "question": "Does the Draft freeze adequate boundary and fault-injection tests before adoption?",
+        "rationale": "Passing Draft CI proves scope safety, not complete lifecycle semantics.",
+        "review_id": "Q11",
+        "severity": "high"
+      },
+      {
+        "evidence": [
+          "ADR B6 keeps every authorization false; PR #81 changes only Draft governance/checker/tests/CI files; all 88 checks passed."
+        ],
+        "finding": "The Draft is safely proposed-only and does not mutate runtime authority.",
+        "mandatory_change": [],
+        "pass": true,
+        "question": "Does the current Draft safely avoid adoption, implementation and downstream authorization?",
+        "rationale": "The review can be merged independently while PR #81 remains Draft and unchanged.",
+        "review_id": "Q12",
+        "severity": "informational"
+      }
+    ],
+    "severity_counts": {
+      "critical": 0,
+      "high": 10,
+      "informational": 1,
+      "low": 0,
+      "medium": 1
+    },
+    "stop_condition": "PR #81 remains Proposed draft and unchanged. No adoption, implementation, registry mutation, requalification or downstream research is authorized by this review.",
+    "verdict": "approve_with_required_changes"
+  },
+  "content_hash": "3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15",
+  "generated_utc": "2026-07-15T12:45:07Z",
+  "manifest_type": "adr0014_independent_policy_review",
+  "reviewed_artifacts": {
+    "adr_blob_sha": "35c492acfb3cbd1af5291ffdd68384429f1d8ce9",
+    "adr_content_sha256": "7350d691e2b7158a9cd985b3e53cf0c504a1147c39791c844d2ad4b4b5ede8a9",
+    "adr_path": "docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md",
+    "changed_file_list_hash_algorithm": "sha256(canonical_json(sorted_utf8_paths)))",
+    "changed_file_list_sha256": "5de2d40f14ab74b905f8a924a3f89acd0e2f10d1350c87665097cbc3bce99315",
+    "changed_files": [
+      ".github/workflows/adr0014-draft-policy-validate.yml",
+      "AGENTS.md",
+      "NEXT_ACTION.md",
+      "PROJECT_EXECUTION_CHECKLIST.md",
+      "PROJECT_LEDGER.md",
+      "PROJECT_STATE.yaml",
+      "docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md",
+      "reports/INDEX.md",
+      "scripts/adr0014_draft_policy_check.py",
+      "scripts/adr0014_draft_policy_validate.sh",
+      "scripts/project_state_transition_check.py",
+      "tests/test_adr0014_draft_policy.py",
+      "tests/test_liquid_universe_v3_klay_conflict.py"
+    ],
+    "klay_adjudication_evidence_hash": "6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a",
+    "reviewed_base_branch": "main",
+    "reviewed_base_sha": "d2d876af192a23ff1879d6a09cb2737c3f12133f",
+    "reviewed_pr_head": "cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44",
+    "reviewed_pr_number": 81,
+    "reviewed_pr_state": "OPEN_DRAFT_MERGEABLE"
+  },
+  "schema_version": 1
+}

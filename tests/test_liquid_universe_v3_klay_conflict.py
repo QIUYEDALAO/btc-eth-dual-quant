@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "ADR-0014 lifecycle-boundary placeholder policy draft authorized",
+            "ADR-0014 independent policy review completed pending review",
         )
         self.assertEqual(
             state["current_status"],
-            "klay_adjudication_merged_adr0014_draft_authorized_no_strategy_no_m2",
+            "adr0014_review_approve_with_required_changes_pr81_draft_unmodified_no_requalification_no_strategy_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -404,11 +404,15 @@ class KlaySourceConflictTests(unittest.TestCase):
         )
         self.assertEqual(milestone["merged_pr"], 79)
         work = next(item for item in state["open_work"] if item["id"] == "ADR-0014-DRAFT")
-        self.assertEqual(work["status"], "authorized_not_started")
+        self.assertEqual(work["status"], "proposed_draft_required_changes_pending")
         self.assertFalse(work["adopted"])
         self.assertFalse(work["implemented"])
         self.assertFalse(work["registry_change"])
         self.assertFalse(work["v3_rerun"])
+        review = next(item for item in state["open_work"] if item["id"] == "ADR-0014-REVIEW")
+        self.assertEqual(review["status"], "completed_pending_review")
+        self.assertEqual(review["reviewed_pr"], 81)
+        self.assertEqual(review["verdict"], "approve_with_required_changes")
         self.assertFalse(any(state["research_authorizations"].values()))
 
 
