@@ -94,10 +94,30 @@ ALLOWED_DECISIONS = {
     "new_policy_adr_required",
     "remain_blocked_insufficient_evidence",
 }
+UTC_EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
+LIFECYCLE_HASH_FIELDS = (
+    "article_code",
+    "title",
+    "public_url",
+    "public_api_reference",
+    "publication_time_utc",
+    "effective_time_utc",
+    "replacement_trading_time_utc",
+    "affected_pairs",
+    "relationship",
+)
 
 
 def canonical_json(document: dict[str, Any]) -> str:
     return json.dumps(document, sort_keys=True, indent=2, ensure_ascii=True) + "\n"
+
+
+def utc_datetime_to_epoch_ms(value: datetime) -> int:
+    """Convert an aware datetime to Unix milliseconds without float arithmetic."""
+    if value.tzinfo is None or value.utcoffset() is None:
+        raise ValueError("datetime must be timezone-aware")
+    delta = value.astimezone(timezone.utc) - UTC_EPOCH
+    return ((delta.days * 86_400 + delta.seconds) * 1_000) + delta.microseconds // 1_000
 
 
 def infer_timestamp_unit(value: str) -> str:
@@ -214,6 +234,7 @@ def inspect_archive(
 def compare_rest_evidence(records: list[dict[str, Any]], archive_row: list[str]) -> dict[str, Any]:
     available = [item for item in records if item.get("availability") == "available" and item.get("row_count") == 1]
     rows = [item["normalized_rows"][0] for item in available]
+    analyses = [timestamp_analysis(item) for item in rows if len(item) == 12]
     return {
         "complete": len(available) == 2,
         "available_count": len(available),
@@ -224,26 +245,184 @@ def compare_rest_evidence(records: list[dict[str, Any]], archive_row: list[str])
             == [normalize_timestamp_ms(archive_row[0]), *archive_row[1:6], normalize_timestamp_ms(archive_row[6]), *archive_row[7:]]
             for item in rows
         ),
+        "all_rows_close_before_open": len(analyses) == 2 and all(
+            item["close_time_before_open_time"] for item in analyses
+        ),
     }
 
 
-def classify_conflict(
-    monthly_row: list[str],
-    daily_row: list[str],
-    lifecycle_evidence: list[dict[str, Any]],
-) -> str:
-    monthly = timestamp_analysis(monthly_row)
-    daily = timestamp_analysis(daily_row)
-    if monthly_row != daily_row:
-        return "official_archive_rest_conflict"
-    if not monthly["close_time_before_open_time"] or not daily["close_time_before_open_time"]:
-        return "no_conflict"
-    for item in lifecycle_evidence:
-        effective = datetime.fromisoformat(item["effective_time_utc"])
-        effective_ms = int(effective.timestamp()) * 1_000
-        if monthly["normalized_close_time_ms"] == effective_ms - 1 and monthly["normalized_open_time_ms"] >= effective_ms:
-            return "symbol_lifecycle_boundary_artifact"
-    return "insufficient_evidence"
+def _is_sha256(value: Any) -> bool:
+    return isinstance(value, str) and len(value) == 64 and all(char in "0123456789abcdef" for char in value)
+
+
+def _semantic_row(fields: list[str]) -> list[Any]:
+    if len(fields) != 12:
+        raise ValueError("kline row must contain 12 fields")
+    return [normalize_timestamp_ms(fields[0]), *fields[1:6], normalize_timestamp_ms(fields[6]), *fields[7:]]
+
+
+def _normalized_lifecycle(lifecycle: dict[str, Any]) -> dict[str, Any]:
+    return {key: lifecycle[key] for key in LIFECYCLE_HASH_FIELDS}
+
+
+def _archive_gate(item: dict[str, Any]) -> bool:
+    fields = item.get("affected_raw_fields")
+    if not isinstance(fields, list) or len(fields) != 12:
+        return False
+    checksum_text = item.get("official_checksum_text", "")
+    checksum = checksum_text.split(maxsplit=1)[0].lower() if checksum_text else ""
+    try:
+        derived_timing = timestamp_analysis(fields)
+    except (TypeError, ValueError):
+        return False
+    return all(
+        (
+            item.get("availability") == "available",
+            item.get("http_status") == 200,
+            _is_sha256(checksum),
+            checksum == item.get("current_remote_checksum") == item.get("zip_sha256"),
+            item.get("crc_valid") is True,
+            bool(item.get("zip_crc32")),
+            item.get("affected_occurrences") == 1,
+            item.get("same_open_time_duplicate_type") == "not_duplicate",
+            item.get("affected_raw_row_sha256") == canonical_hash(fields),
+            item.get("timestamp_analysis") == derived_timing,
+            derived_timing["close_time_before_open_time"],
+        )
+    )
+
+
+def _rest_gate(records: list[dict[str, Any]], archive_row: list[str]) -> bool:
+    if len(records) != 2 or {item.get("endpoint_identity") for item in records} != set(REST_HOSTS):
+        return False
+    normalized_rows: list[list[str]] = []
+    for item in records:
+        if item.get("availability") != "available" or item.get("http_status") != 200 or item.get("row_count") != 1:
+            return False
+        payload_text = item.get("raw_payload_utf8")
+        if not isinstance(payload_text, str) or hashlib.sha256(payload_text.encode("utf-8")).hexdigest() != item.get("payload_sha256"):
+            return False
+        try:
+            decoded = json.loads(payload_text)
+            normalized = [[str(value) for value in row] for row in decoded]
+        except (TypeError, ValueError, json.JSONDecodeError):
+            return False
+        if normalized != item.get("normalized_rows") or len(normalized) != 1:
+            return False
+        if item.get("normalized_row_hashes") != [canonical_hash(normalized[0])]:
+            return False
+        analysis = timestamp_analysis(normalized[0])
+        if item.get("timestamp_analysis") != analysis or not analysis["close_time_before_open_time"]:
+            return False
+        normalized_rows.append(normalized[0])
+    return normalized_rows[0] == normalized_rows[1] and all(
+        _semantic_row(item) == _semantic_row(archive_row) for item in normalized_rows
+    )
+
+
+def _scope_statistics_hash(document: dict[str, Any]) -> str:
+    return canonical_hash({key: value for key, value in document.items() if key != "statistics_hash"})
+
+
+def _similar_scope_gate(local_scope: dict[str, Any], remote_scope: dict[str, Any]) -> bool:
+    if local_scope.get("statistics_hash") != _scope_statistics_hash(local_scope):
+        return False
+    if remote_scope.get("statistics_hash") != _scope_statistics_hash(remote_scope):
+        return False
+    affected = remote_scope.get("affected_archives", [])
+    return all(
+        (
+            local_scope.get("read_only") is True,
+            local_scope.get("only_klay_close_before_open_class_found") is True,
+            local_scope.get("affected_symbols") == ["KLAYUSDT"],
+            local_scope.get("affected_timestamps_ms") == [AFFECTED_OPEN_TIME_MS],
+            local_scope.get("unique_close_before_open_events") == 1,
+            local_scope.get("close_time_before_open_time_count") == 2,
+            local_scope.get("monthly_daily_overlap") == 2,
+            remote_scope.get("read_only") is True,
+            remote_scope.get("close_time_before_open_time_count") == 1,
+            len(affected) == 1,
+            affected[0].get("affected_timestamps_ms") == [AFFECTED_OPEN_TIME_MS],
+            _is_sha256(affected[0].get("zip_sha256")),
+            _is_sha256(remote_scope.get("archive_set_hash")),
+        )
+    )
+
+
+def classify_conflict(evidence: dict[str, Any]) -> str:
+    parser = evidence.get("parser_analysis", {})
+    if parser.get("parser_created_conflict") is True and parser.get("raw_data_conflict") is False:
+        return "parser_or_timestamp_unit_bug"
+    if parser.get("float_datetime_used_for_decision") is not False:
+        return "insufficient_evidence"
+
+    monthly = evidence.get("monthly_archive", {})
+    daily = evidence.get("daily_archive", {})
+    if not _archive_gate(monthly) or not _archive_gate(daily):
+        return "insufficient_evidence"
+    monthly_row = monthly["affected_raw_fields"]
+    daily_row = daily["affected_raw_fields"]
+    monthly_timing = timestamp_analysis(monthly_row)
+    daily_timing = timestamp_analysis(daily_row)
+    if not all(
+        (
+            monthly_row == daily_row,
+            _semantic_row(monthly_row) == _semantic_row(daily_row),
+            monthly["affected_raw_row_sha256"] == daily["affected_raw_row_sha256"],
+            monthly_timing["open_time_unit"] == infer_timestamp_unit(monthly_row[0]),
+            monthly_timing["close_time_unit"] == infer_timestamp_unit(monthly_row[6]),
+            daily_timing["open_time_unit"] == infer_timestamp_unit(daily_row[0]),
+            daily_timing["close_time_unit"] == infer_timestamp_unit(daily_row[6]),
+            parser.get("independent_timestamp_unit_inference") is True,
+            parser.get("integer_only_conversion") is True,
+            parser.get("open_unit_reused_for_close") is False,
+            parser.get("parser_created_conflict") is False,
+            parser.get("raw_data_conflict") is True,
+        )
+    ):
+        return "insufficient_evidence"
+    if not _rest_gate(evidence.get("public_rest_comparators", []), monthly_row):
+        return "insufficient_evidence"
+
+    intraday = evidence.get("intraday_diagnostics", {})
+    close_ms = monthly_timing["normalized_close_time_ms"]
+    if not all(
+        (
+            intraday.get("authority") == "diagnostic_only",
+            intraday.get("canonical_replacement_allowed") is False,
+            intraday.get("intraday_derived_row_is_diagnostic_only") is True,
+            intraday.get("affected_day_has_trading_bars") is False,
+            isinstance(intraday.get("latest_intraday_close_time_ms"), int),
+            intraday.get("latest_intraday_close_time_ms") == close_ms,
+            intraday.get("latest_intraday_close_matches_1d_raw_close") is True,
+        )
+    ):
+        return "insufficient_evidence"
+
+    lifecycle = evidence.get("symbol_lifecycle", {})
+    try:
+        normalized_lifecycle = _normalized_lifecycle(lifecycle)
+        effective = datetime.fromisoformat(lifecycle["effective_time_utc"])
+        effective_ms = utc_datetime_to_epoch_ms(effective)
+    except (KeyError, TypeError, ValueError):
+        return "insufficient_evidence"
+    if not all(
+        (
+            lifecycle.get("authority") == "provenance_only",
+            lifecycle.get("automatic_data_mutation_allowed") is False,
+            _is_sha256(lifecycle.get("normalized_evidence_sha256")),
+            lifecycle.get("normalized_evidence_sha256") == canonical_hash(normalized_lifecycle),
+            close_ms == effective_ms - 1,
+            monthly_timing["normalized_open_time_ms"] >= effective_ms,
+        )
+    ):
+        return "insufficient_evidence"
+    if not _similar_scope_gate(
+        evidence.get("similar_scope_scan", {}),
+        evidence.get("all_public_klay_daily_scan", {}),
+    ):
+        return "insufficient_evidence"
+    return "symbol_lifecycle_boundary_artifact"
 
 
 def overall_decision(classification: str) -> str:
@@ -258,7 +437,8 @@ def overall_decision(classification: str) -> str:
     }.get(classification, "remain_blocked_insufficient_evidence")
 
 
-def build_adjudication_document(*, evidence: dict[str, Any], classification: str) -> dict[str, Any]:
+def build_adjudication_document(*, evidence: dict[str, Any]) -> dict[str, Any]:
+    classification = classify_conflict(evidence)
     unsigned = {
         "schema_version": 1,
         "manifest_type": "liquid_universe_v3_klay_source_conflict_adjudication",
@@ -284,8 +464,11 @@ def verify_document(document: dict[str, Any]) -> list[str]:
     if document.get("schema_version") != 1 or document.get("manifest_type") != "liquid_universe_v3_klay_source_conflict_adjudication":
         failures.append("document identity mismatch")
     classification = document.get("classification")
+    recomputed_classification = classify_conflict(document.get("evidence", {}))
     if classification not in ALLOWED_CLASSIFICATIONS:
         failures.append("classification mismatch")
+    if classification != recomputed_classification:
+        failures.append("classification does not match recomputed evidence")
     if document.get("overall_decision") != overall_decision(str(classification)) or document.get("overall_decision") not in ALLOWED_DECISIONS:
         failures.append("overall decision mismatch")
     if document.get("immutable_baseline_hashes") != BASELINE_HASHES:
@@ -349,6 +532,53 @@ def scan_forbidden_production_repairs(root: Path) -> list[str]:
                 ):
                     failures.append(f"{path}:{node.lineno}: close_time rewrite")
     return sorted(set(failures))
+
+
+def decision_path_float_timestamp_calls(paths: Iterable[Path]) -> list[str]:
+    findings: list[str] = []
+    for path in paths:
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        for node in ast.walk(tree):
+            if (
+                isinstance(node, ast.Call)
+                and isinstance(node.func, ast.Attribute)
+                and node.func.attr == "timestamp"
+            ):
+                findings.append(f"{path.name}:{node.lineno}")
+    return findings
+
+
+def derive_parser_analysis(fields: list[str], decision_paths: Iterable[Path]) -> dict[str, Any]:
+    analysis = timestamp_analysis(fields)
+    mixed = list(fields)
+    mixed[0] = str(normalize_timestamp_ms(fields[0]))
+    mixed_analysis = timestamp_analysis(mixed)
+    float_calls = decision_path_float_timestamp_calls(decision_paths)
+    integer_checks = (
+        normalize_timestamp_ms(fields[0]) == int(fields[0]) // 1_000,
+        normalize_timestamp_ms(fields[6]) == int(fields[6]) // 1_000,
+        utc_datetime_to_epoch_ms(datetime.fromisoformat(analysis["normalized_open_time_utc"]))
+        == analysis["normalized_open_time_ms"],
+        utc_datetime_to_epoch_ms(datetime.fromisoformat(analysis["normalized_close_time_utc"]))
+        == analysis["normalized_close_time_ms"],
+    )
+    return {
+        "independent_timestamp_unit_inference": all(
+            (
+                analysis["open_time_unit"] == infer_timestamp_unit(fields[0]),
+                analysis["close_time_unit"] == infer_timestamp_unit(fields[6]),
+                mixed_analysis["open_time_unit"] == "milliseconds",
+                mixed_analysis["close_time_unit"] == "microseconds",
+            )
+        ),
+        "integer_only_conversion": all(integer_checks),
+        "open_unit_reused_for_close": mixed_analysis["close_time_unit"] == mixed_analysis["open_time_unit"],
+        "float_datetime_used_for_decision": bool(float_calls),
+        "float_datetime_call_sites": float_calls,
+        "parser_created_conflict": analysis["parser_created_conflict"],
+        "raw_data_conflict": analysis["close_time_before_open_time"],
+        "minimal_fixture_row": list(fields),
+    }
 
 
 def _fetch(url: str, *, retries: int = 6, allow_404: bool = False) -> tuple[int, bytes]:
@@ -555,7 +785,7 @@ def _scan_local_scope(raw_root: Path) -> dict[str, Any]:
                     close_before_rows.append(record)
     affected_symbols = sorted({item["symbol"] for item in close_before_rows})
     nonfull_duration_symbols = sorted({item["symbol"] for item in invalid})
-    return {
+    summary = {
         "scope": {
             "klay_monthly_archive_count": len(paths),
             "klay_daily_archive_count": len(daily_paths),
@@ -575,6 +805,7 @@ def _scan_local_scope(raw_root: Path) -> dict[str, Any]:
         "scanned_archive_set_hash": canonical_hash(sorted(archive_fingerprints, key=lambda item: item["canonical_key"])),
         "read_only": True,
     }
+    return {**summary, "statistics_hash": _scope_statistics_hash(summary)}
 
 
 def _list_public_keys(prefix: str) -> list[str]:
@@ -629,7 +860,7 @@ def _scan_all_public_klay_daily() -> dict[str, Any]:
         for item in records
         if item["scan"]["close_time_before_open_time_count"]
     ]
-    return {
+    summary = {
         "archive_count": len(records),
         "row_count": sum(item["row_count"] for item in records),
         "close_time_before_open_time_count": sum(item["scan"]["close_time_before_open_time_count"] for item in records),
@@ -648,6 +879,7 @@ def _scan_all_public_klay_daily() -> dict[str, Any]:
         ),
         "read_only": True,
     }
+    return {**summary, "statistics_hash": _scope_statistics_hash(summary)}
 
 
 def render_report(document: dict[str, Any]) -> str:
@@ -658,6 +890,7 @@ def render_report(document: dict[str, Any]) -> str:
     rest = evidence["public_rest_comparators"]
     intraday = evidence["intraday_diagnostics"]
     lifecycle = evidence["symbol_lifecycle"]
+    parser = evidence["parser_analysis"]
     scope = evidence["similar_scope_scan"]
     lines = [
         "# Liquid Spot Universe V3 KLAY Source Conflict Adjudication Report",
@@ -695,7 +928,8 @@ def render_report(document: dict[str, Any]) -> str:
         f"- Expected close: {timing['expected_close_boundary_utc']}",
         f"- Actual / expected duration / delta ms: {timing['actual_duration_ms']} / {timing['expected_duration_ms']} / {timing['duration_delta_ms']}",
         f"- close_time before open_time: {timing['close_time_before_open_time']}",
-        "- Parser-created conflict: false; both timestamps are independently normalized with integer arithmetic and the raw row is already invalid.",
+        f"- Parser-created / raw-data conflict: {parser['parser_created_conflict']} / {parser['raw_data_conflict']}",
+        f"- Independent units / integer conversion / open unit reused for close / float datetime in decision: {parser['independent_timestamp_unit_inference']} / {parser['integer_only_conversion']} / {parser['open_unit_reused_for_close']} / {parser['float_datetime_used_for_decision']}",
         "",
         "## Public REST Comparators",
         "",
@@ -763,8 +997,11 @@ def execute(*, raw_root: Path, output_path: Path, report_path: Path) -> dict[str
     rest = _rest_comparators()
     intraday = _intraday_diagnostics()
     lifecycle = _lifecycle_evidence()
-    lifecycle_for_classification = [{"effective_time_utc": lifecycle["effective_time_utc"]}]
-    classification = classify_conflict(monthly["affected_raw_fields"], daily["affected_raw_fields"], lifecycle_for_classification)
+    decision_paths = (
+        Path(__file__).resolve(),
+        ROOT / "scripts/liquid_universe_v3_klay_conflict_check.py",
+        ROOT / "tests/test_liquid_universe_v3_klay_conflict.py",
+    )
     evidence = {
         "monthly_archive": monthly,
         "daily_archive": daily,
@@ -779,20 +1016,12 @@ def execute(*, raw_root: Path, output_path: Path, report_path: Path) -> dict[str
         "rest_comparison": compare_rest_evidence(rest, AFFECTED_ROW),
         "intraday_diagnostics": intraday,
         "symbol_lifecycle": lifecycle,
-        "parser_analysis": {
-            "independent_timestamp_unit_inference": True,
-            "integer_only_conversion": True,
-            "open_unit_reused_for_close": False,
-            "float_datetime_used_for_decision": False,
-            "parser_created_conflict": False,
-            "raw_data_conflict": True,
-            "minimal_fixture_row": AFFECTED_ROW,
-        },
+        "parser_analysis": derive_parser_analysis(AFFECTED_ROW, decision_paths),
         "similar_scope_scan": _scan_local_scope(raw_root),
         "all_public_klay_daily_scan": _scan_all_public_klay_daily(),
         "v3_rerun_executed": False,
     }
-    document = build_adjudication_document(evidence=evidence, classification=classification)
+    document = build_adjudication_document(evidence=evidence)
     failures = verify_document(document)
     if failures:
         raise ValueError("; ".join(failures))

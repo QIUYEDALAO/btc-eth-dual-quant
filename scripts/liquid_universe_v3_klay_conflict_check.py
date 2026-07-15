@@ -15,8 +15,13 @@ from scripts.liquid_universe_v3_klay_conflict_probe import (
     EXPECTED_DAILY_SHA256,
     EXPECTED_MONTHLY_SHA256,
     EXPECTED_ROW_SHA256,
+    classify_conflict,
+    compare_rest_evidence,
+    derive_parser_analysis,
+    overall_decision,
     render_report,
     scan_forbidden_production_repairs,
+    timestamp_analysis,
     verify_document,
 )
 
@@ -61,24 +66,34 @@ def _verify_baselines() -> list[str]:
     return failures
 
 
-def validate() -> list[str]:
-    failures = _verify_baselines()
-    document = _load(EVIDENCE)
-    failures.extend(verify_document(document))
+def validate_document(document: dict) -> list[str]:
+    """Re-derive every adjudication conclusion from the frozen machine evidence."""
+    failures = verify_document(document)
     evidence = document.get("evidence", {})
-    for name, expected in (("monthly_archive", EXPECTED_MONTHLY_SHA256), ("daily_archive", EXPECTED_DAILY_SHA256)):
-        item = evidence.get(name, {})
-        checksum_text = item.get("official_checksum_text", "")
-        if checksum_text.split(maxsplit=1)[0].lower() != expected or item.get("current_remote_checksum") != expected:
-            failures.append(f"{name} checksum binding mismatch")
-        if item.get("zip_sha256") != expected or item.get("crc_valid") is not True or not item.get("zip_crc32"):
-            failures.append(f"{name} archive integrity metadata mismatch")
-        if item.get("affected_raw_fields") != AFFECTED_ROW:
-            failures.append(f"{name} raw row changed")
-        if canonical_hash(item.get("affected_raw_fields")) != EXPECTED_ROW_SHA256:
-            failures.append(f"{name} raw row hash mismatch")
-    for item in evidence.get("public_rest_comparators", []):
-        payload = item.get("raw_payload_utf8", "").encode("utf-8")
+    monthly = evidence.get("monthly_archive", {})
+    daily = evidence.get("daily_archive", {})
+    monthly_row = monthly.get("affected_raw_fields")
+    daily_row = daily.get("affected_raw_fields")
+    if not isinstance(monthly_row, list) or not isinstance(daily_row, list):
+        return [*failures, "archive affected rows missing"]
+
+    comparison = {
+        "raw_identical": monthly_row == daily_row,
+        "normalized_identical": timestamp_analysis(monthly_row) == timestamp_analysis(daily_row),
+        "row_hash_identical": canonical_hash(monthly_row) == canonical_hash(daily_row),
+        "invalid_close_time_consistent": timestamp_analysis(monthly_row)["close_time_before_open_time"]
+        and timestamp_analysis(daily_row)["close_time_before_open_time"],
+    }
+    if evidence.get("monthly_daily_comparison") != comparison:
+        failures.append("monthly/daily comparison is not derived from frozen rows")
+
+    records = evidence.get("public_rest_comparators", [])
+    for item in records:
+        payload_text = item.get("raw_payload_utf8")
+        if not isinstance(payload_text, str):
+            failures.append(f"{item.get('endpoint_identity')} frozen payload missing")
+            continue
+        payload = payload_text.encode("utf-8")
         if hashlib.sha256(payload).hexdigest() != item.get("payload_sha256"):
             failures.append(f"{item.get('endpoint_identity')} payload hash mismatch")
         try:
@@ -91,6 +106,12 @@ def validate() -> list[str]:
             failures.append(f"{item.get('endpoint_identity')} normalized payload mismatch")
         if [canonical_hash(row) for row in normalized] != item.get("normalized_row_hashes"):
             failures.append(f"{item.get('endpoint_identity')} normalized row hash mismatch")
+        expected_analysis = timestamp_analysis(normalized[0]) if len(normalized) == 1 else None
+        if item.get("timestamp_analysis") != expected_analysis:
+            failures.append(f"{item.get('endpoint_identity')} timestamp analysis mismatch")
+    if evidence.get("rest_comparison") != compare_rest_evidence(records, monthly_row):
+        failures.append("REST comparison is not derived from frozen rows")
+
     lifecycle = evidence.get("symbol_lifecycle", {})
     normalized_lifecycle = {
         key: lifecycle[key]
@@ -105,9 +126,43 @@ def validate() -> list[str]:
             "affected_pairs",
             "relationship",
         )
+        if key in lifecycle
     }
     if canonical_hash(normalized_lifecycle) != lifecycle.get("normalized_evidence_sha256"):
         failures.append("lifecycle normalized evidence hash mismatch")
+
+    decision_paths = (
+        ROOT / "scripts/liquid_universe_v3_klay_conflict_probe.py",
+        ROOT / "scripts/liquid_universe_v3_klay_conflict_check.py",
+        ROOT / "tests/test_liquid_universe_v3_klay_conflict.py",
+    )
+    if evidence.get("parser_analysis") != derive_parser_analysis(monthly_row, decision_paths):
+        failures.append("parser analysis is not derived from implementation")
+
+    recomputed_classification = classify_conflict(evidence)
+    if document.get("classification") != recomputed_classification:
+        failures.append("classification differs from full evidence Gate")
+    if document.get("overall_decision") != overall_decision(recomputed_classification):
+        failures.append("decision differs from recomputed classification")
+    return sorted(set(failures))
+
+
+def validate() -> list[str]:
+    failures = _verify_baselines()
+    document = _load(EVIDENCE)
+    failures.extend(validate_document(document))
+    evidence = document.get("evidence", {})
+    for name, expected in (("monthly_archive", EXPECTED_MONTHLY_SHA256), ("daily_archive", EXPECTED_DAILY_SHA256)):
+        item = evidence.get(name, {})
+        checksum_text = item.get("official_checksum_text", "")
+        if checksum_text.split(maxsplit=1)[0].lower() != expected or item.get("current_remote_checksum") != expected:
+            failures.append(f"{name} checksum binding mismatch")
+        if item.get("zip_sha256") != expected or item.get("crc_valid") is not True or not item.get("zip_crc32"):
+            failures.append(f"{name} archive integrity metadata mismatch")
+        if item.get("affected_raw_fields") != AFFECTED_ROW:
+            failures.append(f"{name} raw row changed")
+        if canonical_hash(item.get("affected_raw_fields")) != EXPECTED_ROW_SHA256:
+            failures.append(f"{name} raw row hash mismatch")
     if REPORT.read_text(encoding="utf-8") != render_report(document):
         failures.append("Markdown report regeneration mismatch")
     failures.extend(scan_forbidden_production_repairs(ROOT / "src"))

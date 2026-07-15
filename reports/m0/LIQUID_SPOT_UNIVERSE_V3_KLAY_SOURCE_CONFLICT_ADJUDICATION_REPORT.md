@@ -2,7 +2,7 @@
 
 - Classification: `symbol_lifecycle_boundary_artifact`
 - Overall decision: `new_policy_adr_required`
-- Evidence content hash: `3e87f21329f282b48e155e394469de19f4d1d544777ec3461e64651a33279330`
+- Evidence content hash: `6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a`
 - Evidence only: yes
 - Registry / contract mutation: no / no
 - V3 cold, warm or worker rerun: no
@@ -33,7 +33,8 @@
 - Expected close: 2024-10-30T23:59:59.999000+00:00
 - Actual / expected duration / delta ms: -162000001 / 86399999 / -248400000
 - close_time before open_time: True
-- Parser-created conflict: false; both timestamps are independently normalized with integer arithmetic and the raw row is already invalid.
+- Parser-created / raw-data conflict: False / True
+- Independent units / integer conversion / open unit reused for close / float datetime in decision: True / True / False / False
 
 ## Public REST Comparators
 

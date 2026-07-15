@@ -1,6 +1,6 @@
 import ast
 import copy
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import io
 import json
 from pathlib import Path
@@ -19,6 +19,7 @@ from scripts.liquid_universe_v3_klay_conflict_probe import (
     build_adjudication_document,
     classify_conflict,
     compare_rest_evidence,
+    decision_path_float_timestamp_calls,
     infer_timestamp_unit,
     inspect_archive,
     normalize_timestamp_ms,
@@ -26,8 +27,10 @@ from scripts.liquid_universe_v3_klay_conflict_probe import (
     scan_archive_rows,
     scan_forbidden_production_repairs,
     timestamp_analysis,
+    utc_datetime_to_epoch_ms,
     verify_document,
 )
+from scripts.liquid_universe_v3_klay_conflict_check import validate_document
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -79,6 +82,16 @@ def rest(host: str, rows: list[list[str]] | None) -> dict:
         "row_count": len(rows),
         "normalized_rows": rows,
     }
+
+
+def frozen_evidence() -> dict:
+    return copy.deepcopy(json.loads(EVIDENCE.read_text()))
+
+
+def rehash(document: dict) -> dict:
+    unsigned = {key: value for key, value in document.items() if key != "content_hash"}
+    document["content_hash"] = canonical_hash(unsigned)
+    return document
 
 
 class KlaySourceConflictTests(unittest.TestCase):
@@ -134,10 +147,10 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertNotEqual(int(int(raw) / 1000), normalize_timestamp_ms(raw))
 
     def test_10_parser_created_conflict_is_distinct(self):
-        valid = row("1730246400000", "1730332799999")
-        self.assertEqual(classify_conflict(valid, valid, []), "no_conflict")
-        buggy = timestamp_analysis(valid, parser_close_time_ms=AFFECTED_OPEN_TIME_MS - 1)
-        self.assertTrue(buggy["parser_created_conflict"])
+        document = frozen_evidence()
+        document["evidence"]["parser_analysis"]["parser_created_conflict"] = True
+        document["evidence"]["parser_analysis"]["raw_data_conflict"] = False
+        self.assertEqual(classify_conflict(document["evidence"]), "parser_or_timestamp_unit_bug")
 
     def test_11_raw_archive_conflict_is_reproducible(self):
         inspected = inspect_archive(archive([AFFECTED_ROW]), canonical_key="fixture.zip")
@@ -207,7 +220,9 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertFalse(lifecycle["automatic_data_mutation_allowed"])
 
     def test_21_unknown_conflict_remains_blocked(self):
-        classification = classify_conflict(AFFECTED_ROW, AFFECTED_ROW, [])
+        evidence = frozen_evidence()["evidence"]
+        evidence["symbol_lifecycle"]["effective_time_utc"] = "2024-10-29T03:00:00+00:00"
+        classification = classify_conflict(evidence)
         self.assertEqual(classification, "insufficient_evidence")
 
     def test_22_registry_hash_is_unchanged(self):
@@ -275,21 +290,101 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertEqual(result["invalid_duration_count"], 1)
 
     def test_lifecycle_match_is_required_for_lifecycle_classification(self):
-        lifecycle = [{"effective_time_utc": "2024-10-28T03:00:00+00:00"}]
-        self.assertEqual(
-            classify_conflict(AFFECTED_ROW, AFFECTED_ROW, lifecycle),
-            "symbol_lifecycle_boundary_artifact",
-        )
-        changed = copy.deepcopy(lifecycle)
-        changed[0]["effective_time_utc"] = "2024-10-29T03:00:00+00:00"
-        self.assertEqual(classify_conflict(AFFECTED_ROW, AFFECTED_ROW, changed), "insufficient_evidence")
+        evidence = frozen_evidence()["evidence"]
+        self.assertEqual(classify_conflict(evidence), "symbol_lifecycle_boundary_artifact")
+        evidence["symbol_lifecycle"]["effective_time_utc"] = "2024-10-29T03:00:00+00:00"
+        self.assertEqual(classify_conflict(evidence), "insufficient_evidence")
 
     def test_normalized_utc_values_are_exact(self):
         analysis = timestamp_analysis(AFFECTED_ROW)
         self.assertEqual(analysis["normalized_open_time_utc"], "2024-10-30T00:00:00+00:00")
         self.assertEqual(analysis["normalized_close_time_utc"], "2024-10-28T02:59:59.999000+00:00")
         expected = datetime(2024, 10, 28, 3, tzinfo=timezone.utc)
-        self.assertEqual(analysis["normalized_close_time_ms"], int(expected.timestamp() * 1000) - 1)
+        self.assertEqual(analysis["normalized_close_time_ms"], utc_datetime_to_epoch_ms(expected) - 1)
+
+    def test_utc_datetime_to_epoch_ms_is_integer_only_and_rejects_naive(self):
+        with self.assertRaisesRegex(ValueError, "timezone-aware"):
+            utc_datetime_to_epoch_ms(datetime(2024, 1, 1))
+        offset = timezone(timedelta(hours=8))
+        self.assertEqual(
+            utc_datetime_to_epoch_ms(datetime(2024, 10, 28, 11, 0, 0, 999999, tzinfo=offset)),
+            1_730_084_400_999,
+        )
+        self.assertEqual(
+            utc_datetime_to_epoch_ms(datetime(2500, 1, 1, 0, 0, 0, 999999, tzinfo=timezone.utc)),
+            16_725_225_600_999,
+        )
+
+    def test_decision_path_contains_no_float_timestamp_calls(self):
+        paths = [
+            ROOT / "scripts/liquid_universe_v3_klay_conflict_probe.py",
+            ROOT / "scripts/liquid_universe_v3_klay_conflict_check.py",
+            ROOT / "tests/test_liquid_universe_v3_klay_conflict.py",
+        ]
+        self.assertEqual(decision_path_float_timestamp_calls(paths), [])
+        with tempfile.TemporaryDirectory() as tmp:
+            injected = Path(tmp) / "bad.py"
+            injected.write_text("def bad(value):\n    return value." + "timestamp()\n")
+            self.assertTrue(decision_path_float_timestamp_calls([injected]))
+
+    def test_rest_source_unavailable_cannot_lifecycle_pass(self):
+        evidence = frozen_evidence()["evidence"]
+        evidence["public_rest_comparators"][1]["availability"] = "unavailable"
+        self.assertEqual(classify_conflict(evidence), "insufficient_evidence")
+
+    def test_rest_sources_disagree_cannot_lifecycle_pass(self):
+        evidence = frozen_evidence()["evidence"]
+        evidence["public_rest_comparators"][1]["normalized_rows"][0][4] = "0.12600000"
+        self.assertEqual(classify_conflict(evidence), "insufficient_evidence")
+
+    def test_rest_archive_mismatch_cannot_lifecycle_pass(self):
+        evidence = frozen_evidence()["evidence"]
+        for item in evidence["public_rest_comparators"]:
+            item["normalized_rows"][0][4] = "0.12600000"
+        self.assertEqual(classify_conflict(evidence), "insufficient_evidence")
+
+    def test_legal_rest_row_cannot_lifecycle_pass_invalid_archives(self):
+        evidence = frozen_evidence()["evidence"]
+        legal = row("1730246400000", "1730332799999")
+        for item in evidence["public_rest_comparators"]:
+            item["normalized_rows"] = [legal]
+        self.assertNotEqual(classify_conflict(evidence), "symbol_lifecycle_boundary_artifact")
+
+    def test_intraday_bars_or_boundary_mismatch_cannot_lifecycle_pass(self):
+        evidence = frozen_evidence()["evidence"]
+        evidence["intraday_diagnostics"]["affected_day_has_trading_bars"] = True
+        self.assertEqual(classify_conflict(evidence), "insufficient_evidence")
+        evidence = frozen_evidence()["evidence"]
+        evidence["intraday_diagnostics"]["latest_intraday_close_time_ms"] += 1
+        self.assertEqual(classify_conflict(evidence), "insufficient_evidence")
+
+    def test_monthly_or_daily_row_change_cannot_lifecycle_pass(self):
+        evidence = frozen_evidence()["evidence"]
+        evidence["daily_archive"]["affected_raw_fields"][4] = "0.12600000"
+        self.assertEqual(classify_conflict(evidence), "insufficient_evidence")
+
+    def test_checker_rejects_lifecycle_hash_classification_and_decision_tampering(self):
+        for mutation in ("lifecycle_hash", "classification", "decision"):
+            document = frozen_evidence()
+            if mutation == "lifecycle_hash":
+                document["evidence"]["symbol_lifecycle"]["normalized_evidence_sha256"] = "0" * 64
+            elif mutation == "classification":
+                document["classification"] = "insufficient_evidence"
+            else:
+                document["overall_decision"] = "remain_blocked_insufficient_evidence"
+            self.assertTrue(validate_document(rehash(document)), mutation)
+
+    def test_checker_rejects_rest_payload_normalized_row_and_hash_tampering(self):
+        for field in ("raw_payload_utf8", "normalized_rows", "normalized_row_hashes"):
+            document = frozen_evidence()
+            item = document["evidence"]["public_rest_comparators"][0]
+            if field == "raw_payload_utf8":
+                item[field] += " "
+            elif field == "normalized_rows":
+                item[field][0][4] = "0.12600000"
+            else:
+                item[field][0] = "0" * 64
+            self.assertTrue(validate_document(rehash(document)), field)
 
     def test_repository_governance_is_pending_review_and_fail_closed(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())

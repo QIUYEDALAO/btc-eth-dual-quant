@@ -18,7 +18,7 @@
     "v3_rerun": false
   },
   "classification": "symbol_lifecycle_boundary_artifact",
-  "content_hash": "3e87f21329f282b48e155e394469de19f4d1d544777ec3461e64651a33279330",
+  "content_hash": "6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a",
   "evidence": {
     "all_public_klay_daily_scan": {
       "affected_archives": [
@@ -36,7 +36,8 @@
       "close_time_equal_open_time_count": 0,
       "invalid_duration_count": 2,
       "read_only": true,
-      "row_count": 1225
+      "row_count": 1225,
+      "statistics_hash": "2c97c9bf383ca7ea7ac4073cdbe0e0af52c06145b06d47d0429860713e010062"
     },
     "daily_archive": {
       "affected_line_number": 1,
@@ -179,7 +180,7 @@
           "canonical_key": "data/spot/daily/klines/KLAYUSDT/5m/KLAYUSDT-5m-2024-10-30.zip",
           "canonical_url": "https://data.binance.vision/data/spot/daily/klines/KLAYUSDT/5m/KLAYUSDT-5m-2024-10-30.zip",
           "http_status": 404,
-          "payload_sha256": "abef71337d25d61d5e9a79eebbc5e06bde0b8b1450968415a82c91b69cb7a86d"
+          "payload_sha256": "c91464ba1a87425a18c87ac35961c1041ca70690f6a7db8d1465a4f73ccdf0b2"
         },
         {
           "affected_day_row_count": 0,
@@ -243,7 +244,7 @@
           "canonical_key": "data/spot/daily/klines/KLAYUSDT/1h/KLAYUSDT-1h-2024-10-30.zip",
           "canonical_url": "https://data.binance.vision/data/spot/daily/klines/KLAYUSDT/1h/KLAYUSDT-1h-2024-10-30.zip",
           "http_status": 404,
-          "payload_sha256": "b8e94d345446735f242ae17732f966594ecdd085077e3e4607cbea70c9edcc93"
+          "payload_sha256": "272a300514aee3d471304de00ea319eb567283d96b5297d67d0c3b02dbf94d97"
         }
       ],
       "authority": "diagnostic_only",
@@ -349,6 +350,7 @@
       "row_hash_identical": true
     },
     "parser_analysis": {
+      "float_datetime_call_sites": [],
       "float_datetime_used_for_decision": false,
       "independent_timestamp_unit_inference": true,
       "integer_only_conversion": true,
@@ -472,6 +474,7 @@
     ],
     "rest_comparison": {
       "all_match_archive": false,
+      "all_rows_close_before_open": true,
       "all_semantically_match_archive": true,
       "available_count": 2,
       "comparators_identical": true,
@@ -558,6 +561,7 @@
         "scanned_archive_count": 427,
         "scanned_row_count": 13072
       },
+      "statistics_hash": "2f23dd3edf1ccfdfec08208a076e9cb4a548e7da171f76b9b3f575ba373bb0fb",
       "unique_close_before_open_events": 1
     },
     "symbol_lifecycle": {
