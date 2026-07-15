@@ -1,0 +1,201 @@
+{
+  "content": {
+    "authorization_matrix": {
+      "api_trading": false,
+      "backtesting": false,
+      "events": false,
+      "execution_live": false,
+      "fixed_range_v4_public_requalification_after_closeout": true,
+      "hypothesis": false,
+      "implementation_merge": true,
+      "m2": false,
+      "oos": false,
+      "returns": false,
+      "signals": false,
+      "strategy": false,
+      "u03f": false,
+      "u04": false
+    },
+    "checks": [
+      {
+        "evidence": "V4 contract, policy and event registry are separate hash-bound JSON authorities; V3 remains unchanged.",
+        "result": "pass",
+        "review_id": "authority_separation",
+        "tests": [
+          "test_machine_authorities_are_separate_and_hash_bound"
+        ]
+      },
+      {
+        "evidence": "V4 dispatch rejects ADR-0013/ADR-0014 overlap before either policy can win.",
+        "result": "pass",
+        "review_id": "dispatch_precedence",
+        "tests": [
+          "test_policy_overlap_fails_instead_of_first_match_wins"
+        ]
+      },
+      {
+        "evidence": "KLAY times and row hashes occur in the registry and fixtures, not in production control-flow predicates.",
+        "result": "pass",
+        "review_id": "generic_registry_driven_klay",
+        "tests": [
+          "test_production_source_has_no_klay_symbol_or_date_special_case"
+        ]
+      },
+      {
+        "evidence": "Integer UTC epochs, end-exclusive masks and mask-before-grid behavior are implemented.",
+        "result": "pass",
+        "review_id": "availability_epoch_and_grid",
+        "tests": [
+          "test_mask_is_applied_before_expected_grid",
+          "test_crossing_bar_is_partial_and_post_boundary_is_not_expected"
+        ]
+      },
+      {
+        "evidence": "Partial lifecycle days and pre-boundary gaps are excluded or blocked; post-boundary absence is not a gap.",
+        "result": "pass",
+        "review_id": "complete_day_and_windows",
+        "tests": [
+          "test_cessation_day_is_partial_and_excluded_from_windows",
+          "test_pre_boundary_missing_slot_remains_gap"
+        ]
+      },
+      {
+        "evidence": "Month membership remains fixed while timestamped active_count declines without replacement.",
+        "result": "pass",
+        "review_id": "membership_and_active_universe",
+        "tests": [
+          "test_membership_stays_fixed_while_active_count_declines"
+        ]
+      },
+      {
+        "evidence": "known_at, effective_at and retrospective evidence lag are represented separately.",
+        "result": "pass",
+        "review_id": "knowledge_and_effective_time",
+        "tests": [
+          "test_knowledge_and_physical_availability_are_distinct",
+          "test_late_evidence_is_explicitly_disclosed"
+        ]
+      },
+      {
+        "evidence": "Explicit non-overlapping identity epochs are supported and inherit no history or rank.",
+        "result": "pass",
+        "review_id": "multiple_epochs",
+        "tests": [
+          "test_new_identity_epoch_does_not_inherit_history",
+          "test_overlapping_epochs_are_blocked"
+        ]
+      },
+      {
+        "evidence": "The implementation records data availability only and does not compute exits, settlement, fills or returns.",
+        "result": "pass",
+        "review_id": "no_execution_semantics",
+        "tests": [
+          "test_execution_interpretations_and_policy_overlap_fail_closed"
+        ]
+      },
+      {
+        "evidence": "All 13 required canonical, hash-bound V4 fixture artifact classes are emitted deterministically.",
+        "result": "pass",
+        "review_id": "artifact_completeness",
+        "tests": [
+          "test_fixture_build_emits_every_hash_bound_v4_artifact"
+        ]
+      },
+      {
+        "evidence": "All 37 unique reviewed fault IDs have exact automated result/state/blocking mappings and the target validator passes.",
+        "result": "pass",
+        "review_id": "fault_matrix_coverage",
+        "tests": [
+          "test_every_reviewed_fault_case_has_unique_executable_mapping"
+        ]
+      },
+      {
+        "evidence": "The target is fixture-only, performs no public run, reads no Markdown at runtime and leaves every downstream authorization false.",
+        "result": "pass",
+        "review_id": "authorization_and_runtime_authority",
+        "tests": [
+          "test_v4_authorizations_remain_narrow",
+          "test_fixture_build_emits_every_hash_bound_v4_artifact"
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "id": "V4-IR-I01",
+        "severity": "informational",
+        "text": "Fixture artifacts are structural implementation evidence only; fixed-range public requalification remains unrun."
+      },
+      {
+        "id": "V4-IR-I02",
+        "severity": "informational",
+        "text": "Fault cases include policy-dispatch conformance mappings; the fixed-range run remains the required integration evidence for real archives."
+      }
+    ],
+    "severity_counts": {
+      "critical": 0,
+      "high": 0,
+      "informational": 2,
+      "low": 0,
+      "medium": 0
+    },
+    "stop_condition": "Approval authorizes only merge of the exact target, minimal governance closeout, and then fixed-range V4 public requalification. U-03F and every research or trading capability remain blocked.",
+    "verdict": "approve"
+  },
+  "content_hash": "10ae22c84f84c8a33ce7ff235ebbaceaabd29d7060e822e5aafe8e1ae16d257d",
+  "generated_utc": "2026-07-15T21:39:29.791876Z",
+  "manifest_type": "liquid_spot_universe_v4_implementation_review",
+  "reviewed_target": {
+    "artifact_source_blob": "35e3136b208dff29f2487c561c00b5567bdb28bc",
+    "changed_file_list_sha256": "fe84926c5ab26f37feceec262c977b35fc63d73effe0b53f322c694aa10e1857",
+    "changed_files": [
+      ".github/workflows/adr0014-adoption.yml",
+      ".github/workflows/liquid-universe-v4-implementation.yml",
+      "AGENTS.md",
+      "NEXT_ACTION.md",
+      "PROJECT_EXECUTION_CHECKLIST.md",
+      "PROJECT_LEDGER.md",
+      "PROJECT_STATE.yaml",
+      "config/liquid_spot_lifecycle_event_resolutions_v4.json",
+      "config/liquid_spot_lifecycle_policy_v4.json",
+      "config/liquid_spot_universe_contract_v4.json",
+      "reports/INDEX.md",
+      "reports/m0/LIQUID_SPOT_UNIVERSE_V4_IMPLEMENTATION_STATUS.md",
+      "scripts/adr0014_adoption_check.py",
+      "scripts/adr0014_adoption_validate.sh",
+      "scripts/liquid_universe_v4_contract_check.py",
+      "scripts/liquid_universe_v4_implementation_validate.sh",
+      "scripts/project_state_transition_check.py",
+      "src/btc_eth_dual_quant/data/lifecycle_artifacts.py",
+      "src/btc_eth_dual_quant/data/lifecycle_availability.py",
+      "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py",
+      "tests/test_adr0014_adoption.py",
+      "tests/test_liquid_universe_state_machine.py",
+      "tests/test_liquid_universe_v3_klay_conflict.py",
+      "tests/test_liquid_universe_v4_active_universe.py",
+      "tests/test_liquid_universe_v4_complete_day_mask.py",
+      "tests/test_liquid_universe_v4_contract.py",
+      "tests/test_liquid_universe_v4_end_to_end.py",
+      "tests/test_liquid_universe_v4_epochs.py",
+      "tests/test_liquid_universe_v4_expected_grid.py",
+      "tests/test_liquid_universe_v4_fault_injection.py",
+      "tests/test_liquid_universe_v4_lifecycle_policy.py",
+      "tests/test_liquid_universe_v4_registry.py",
+      "tests/v4_lifecycle_fixtures.py"
+    ],
+    "contract_blob": "bf28bde94e56a27fc3cb4867a119f7d4ca393527",
+    "contract_canonical_hash": "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83",
+    "fault_matrix_hash": "90beb680e568ab5bc045556ef728e34cd2827d5bf6005ebb524b6e38ed6a199f",
+    "implementation_base": "0f5f76f86973316ac66b8e3f9d6e65419b310ec9",
+    "implementation_head": "2a745586bff5112d69af45c9a0dd8585f2adab50",
+    "implementation_pr": 86,
+    "implementation_status_blob": "d6596a37d94744b290e73d621e3f3ba05ddcb215",
+    "klay_adjudication_hash": "6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a",
+    "lifecycle_source_blob": "d449cb42043991d7f7628fb793eb4c04cc93be0c",
+    "pipeline_source_blob": "e95afc7ce56fee840617ef5563d7381798465c30",
+    "policy_blob": "453bbff429af74f3f3bbef8cfe4fb7c3a4317456",
+    "policy_canonical_hash": "7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977",
+    "registry_blob": "1976b5bbc9eed064b670aa322a8994d337fa0ec9",
+    "registry_canonical_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d"
+  },
+  "schema_version": 1
+}

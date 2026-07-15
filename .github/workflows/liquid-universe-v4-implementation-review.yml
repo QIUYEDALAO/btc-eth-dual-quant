@@ -1,0 +1,57 @@
+name: Liquid Universe V4 Implementation Review
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  independent-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out independent review branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact implementation target
+        run: git fetch origin 2a745586bff5112d69af45c9a0dd8585f2adab50
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install review branch
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Verify independent review evidence
+        run: |
+          python -m unittest tests.test_liquid_universe_v4_implementation_review -v
+          python scripts/liquid_universe_v4_implementation_review_check.py
+
+      - name: Validate exact implementation target independently
+        run: |
+          git worktree add --detach /tmp/v4-implementation-target 2a745586bff5112d69af45c9a0dd8585f2adab50
+          cd /tmp/v4-implementation-target
+          python -m pip install -e .
+          bash scripts/liquid_universe_v4_implementation_validate.sh
+
+      - name: Ensure review-only scope
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              '.github/workflows/liquid-universe-v4-implementation-review.yml',
+              'reports/expert/LIQUID_SPOT_UNIVERSE_V4_IMPLEMENTATION_REVIEW.md',
+              'reports/expert/evidence/liquid_universe_v4_implementation_review.json',
+              'scripts/liquid_universe_v4_implementation_review_check.py',
+              'tests/test_liquid_universe_v4_implementation_review.py',
+          }
+          base = subprocess.check_output(['git', 'merge-base', 'HEAD', 'origin/main'], text=True).strip()
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only', base, 'HEAD'], text=True).splitlines())
+          extra = changed - allowed
+          if extra:
+              raise SystemExit(f'review-only scope violated: {sorted(extra)}')
+          PY
