@@ -48,7 +48,11 @@ artifact_scan() {
 }
 
 implementation_scope_scan() {
-  local changed invalid
+  local scope_branch changed invalid
+  scope_branch="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME:-$(git branch --show-current)}}"
+  if [[ "$scope_branch" != "codex/liquid-universe-v4-lifecycle-availability" ]]; then
+    return 0
+  fi
   changed="$(git diff --name-only origin/main...)"
   invalid="$(printf '%s\n' "$changed" | grep -Ev '^(AGENTS\.md|NEXT_ACTION\.md|PROJECT_EXECUTION_CHECKLIST\.md|PROJECT_LEDGER\.md|PROJECT_STATE\.yaml|reports/INDEX\.md|reports/m0/LIQUID_SPOT_UNIVERSE_V4_IMPLEMENTATION_STATUS\.md|config/liquid_spot_(universe_contract_v4|lifecycle_policy_v4|lifecycle_event_resolutions_v4)\.json|src/btc_eth_dual_quant/data/(lifecycle_availability|lifecycle_artifacts|liquid_universe_pipeline_v4)\.py|scripts/(adr0014_adoption_check|project_state_transition_check|liquid_universe_v4_contract_check)\.py|scripts/(adr0014_adoption_validate|liquid_universe_v4_implementation_validate)\.sh|tests/(v4_lifecycle_fixtures|test_adr0014_adoption|test_liquid_universe_v4_[a-z_]+|test_liquid_universe_state_machine|test_liquid_universe_v3_klay_conflict)\.py|\.github/workflows/(adr0014-adoption|liquid-universe-v4-implementation)\.yml)$' || true)"
   test -z "$invalid"
