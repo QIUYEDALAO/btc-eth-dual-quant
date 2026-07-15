@@ -872,7 +872,8 @@ private exchange responses here.
 - Task ID: M1E-CANONICAL-5M-V2
 - Phase: M1E canonical 5m requalification
 - Branch: `codex/m1e-canonical-5m-contract-v2`
-- PR: pending
+- PR: #75 open
+- Head SHA: `f5ce341ed66396f3239171b935047dddaea90d1a`
 - Contract: ADR-0009 and machine contract v2 make evidenced official 5m rows canonical; official 1h/4h rows become audit comparators.
 - Evidence: 12 daily 5m revisions are independently supported by public REST; unresolved canonical conflicts `0`; unexpected incomplete child buckets `0`; 146 confirmed-outage child buckets isolated.
 - Runtime: Fixed Freqtrade 2026.6 container read BTC/ETH 5m, 1h, and 4h caches on the VPS using `list-data` only.

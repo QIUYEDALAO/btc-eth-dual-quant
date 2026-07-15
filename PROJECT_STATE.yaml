@@ -193,8 +193,8 @@ open_work:
     phase: ADR-0013 independent review
     status: approve_with_required_changes_pending_merge
     branch: codex/adr-0013-independent-review
-    pr: pending
-    head_sha: pending
+    pr: 75
+    head_sha: f5ce341ed66396f3239171b935047dddaea90d1a
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/expert/evidence/adr0013_independent_review.json
     blocker: "ADR-0013 remains proposed until mandatory changes A1-A10 are incorporated and checked; V3 implementation and U-03E rerun are not yet authorized."
