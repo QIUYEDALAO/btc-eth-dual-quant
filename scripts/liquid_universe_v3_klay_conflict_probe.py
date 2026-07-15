@@ -369,7 +369,7 @@ def _fetch(url: str, *, retries: int = 6, allow_404: bool = False) -> tuple[int,
     raise OSError(f"public evidence fetch failed: {url}") from last_error
 
 
-def _official_archive(key: str, *, blocked_sha256: str | None = None, allow_404: bool = False) -> dict[str, Any]:
+def _official_archive(key: str, blocked_sha256: str | None = None, *, allow_404: bool = False) -> dict[str, Any]:
     url = f"{BUCKET}/{key}"
     status, payload = _fetch(url, allow_404=allow_404)
     if status == 404:
@@ -756,8 +756,8 @@ def render_report(document: dict[str, Any]) -> str:
 
 
 def execute(*, raw_root: Path, output_path: Path, report_path: Path) -> dict[str, Any]:
-    monthly = _official_archive(MONTHLY_KEY, blocked_sha256=EXPECTED_MONTHLY_SHA256)
-    daily = _official_archive(DAILY_KEY, blocked_sha256=EXPECTED_DAILY_SHA256)
+    monthly = _official_archive(MONTHLY_KEY, EXPECTED_MONTHLY_SHA256)
+    daily = _official_archive(DAILY_KEY, EXPECTED_DAILY_SHA256)
     if monthly["affected_raw_fields"] != AFFECTED_ROW or daily["affected_raw_fields"] != AFFECTED_ROW:
         raise ValueError("affected official row changed")
     rest = _rest_comparators()
