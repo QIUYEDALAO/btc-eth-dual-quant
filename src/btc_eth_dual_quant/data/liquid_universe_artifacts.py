@@ -93,6 +93,7 @@ def render_qualification_report(summary: dict[str, Any], manifest_hashes: dict[s
         f"- Processing errors: {summary['processing_errors']}",
         f"- Unresolved gaps: {summary['unresolved_gaps']}",
         f"- Excluded-category members: {summary['excluded_category_members']}",
+        f"- Invalid daily rows isolated after explicit asset exclusion: {summary.get('excluded_invalid_daily_rows', 0)}",
         f"- Synthetic fills: {summary['synthetic_fills']}",
         f"- Replacement members: {summary['replacement_members']}",
         f"- Strategy design authorized: {'yes' if authorizations['strategy_selection'] else 'no'}",

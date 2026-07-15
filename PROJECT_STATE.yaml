@@ -1,10 +1,15 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-14T00:00:00Z"
-current_phase: Liquid universe V2 correctness hardening pending review
-current_status: liquid_universe_v1_superseded_v2_hardening_pending_requalification_no_strategy_no_m2
+last_updated_utc: "2026-07-15T02:02:44Z"
+current_phase: Liquid universe V2 public requalification blocked
+current_status: liquid_universe_v2_requalification_blocked_data_conflict_no_strategy_no_m2
 completed_milestones:
+  - phase: Liquid universe V2 correctness hardening
+    status: pass
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V2_HARDENING_REPORT.md
+    merged_pr: 70
+    merge_commit: 5ab69e2
   - phase: Liquid spot universe gap attribution
     status: superseded_pending_v2_requalification
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_GAP_ATTRIBUTION_REPORT.md
@@ -179,15 +184,24 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03D
-    phase: Liquid universe V2 correctness hardening
-    status: in_progress
-    branch: codex/liquid-universe-qualification-hardening-v2
-    pr: none
-    head_sha: pending
+  - id: U-03E
+    phase: Liquid universe V2 public requalification
+    status: blocked_data_conflict
+    branch: codex/liquid-universe-v2-requalification
+    pr: 71
+    head_sha: 9d04ff8e31fb92024aa24922b183203dc4ec4d9a
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V2_HARDENING_REPORT.md
-    blocker: "V2 public requalification and independent audit have not run; U-04 remains unauthorized."
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V2_QUALIFICATION_REPORT.md
+    blocker: "Checksum-verified official data contain negative BTTUSDT daily volume in 2019-01/02 and a duplicate AXSUSDT daily row in 2026-02; U-03F cannot start."
+  - id: U-03F
+    phase: Liquid universe V2 independent audit
+    status: not_authorized
+    branch: not_created
+    pr: none
+    head_sha: none
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m0/evidence/liquid_universe_v2/requalification_run_manifest.json
+    blocker: "Requires U-03E qualification pass; current official-source conflicts are fail-closed blockers."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -251,56 +265,15 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Complete U-03D correctness hardening and merge it before starting U-03E public requalification.
-  - After U-03D merges, diagnostics may run the fixed 2020-01 through 2026-06 V2 public rebuild; no outcome or strategy data is allowed.
-  - A cross-sectional design review remains blocked until U-03E and U-03F both pass and merge.
-  - Data qualification is complete. A separate explicitly approved task must choose and preregister exactly one cross-sectional hypothesis family before any outcome access.
+  - Public-source diagnostics may investigate the exact U-03E official-archive conflicts without private data or outcomes.
+  - Cross-sectional design review remains blocked until U-03E and U-03F pass in dependency order.
+  - Preserve the deterministic blocked U-03E evidence and resolve the three checksum-verified official-source conflicts through source-owner evidence or a new data-policy ADR.
+  - Do not silently deduplicate AXSUSDT or ignore negative BTTUSDT volume; the frozen V2 contract remains fail closed.
+  - U-03F and cross-sectional design remain blocked until a future U-03E rerun passes and merges.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
-  - ADR-0011 freezes monthly Top 15 by prior-90-day median daily quote volume, 365-day history, deterministic tie-break and conservative exclusions.
-  - Only asset/data qualification may follow after ADR-0011 merges; no strategy family, event scan, return calculation, OOS or M2 is authorized.
-  - PR #65 merged the truthful M1H failure evidence; M1H remains declared_unopened and its OOS remains sealed.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
-  - Only M0 audit work or ADR-0011 design for a historically reconstructable high-liquidity USDT spot universe may follow.
-  - ADR-0011 may define point-in-time membership and data qualification only; it cannot authorize a strategy, event scan, return calculation, OOS access or M2.
-  - M1E-06 failed its frozen IS-only paper cost-coverage Gates and merged in PR #49; do not tune, rescue, or open its OOS.
-  - M1G capability review merged in PR #55; exact strategy implementation is authorized, while performance backtesting remains separately gated.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
-  - Q-01/Q-02 candidate-queue governance merged in PR #44 and M1E-04 design merged in PR #46.
-  - M1E is failed_feasibility with OOS unopened; M1G implementation is authorized but M1G/M1H OOS, performance backtesting, and all trading remain unauthorized.
-  - If M1E fails, only a separately approved transition to M1G is allowed; if M1G then fails, only M1H may follow; three failures stop BTC/ETH two-asset indicator research.
-  - M1E metadata-only sample budget passed in PR #42 and M1E-04 design passed in PR #46.
-  - M1E canonical-5m v2 passed and merged in PR #40; only the metadata-only 1800/540-day sample-budget Gate is authorized next.
-  - Keep Binance source-owner monitoring as evidence follow-up, not as an operational dependency for M1E canonical OHLC.
-  - Review and merge the sanitized Binance source-owner package; do not post it externally without explicit approval.
-  - Review and merge the M1E source-conflict diagnostics without changing the contract.
-  - Preserve the original 2020-07-01 research start and the 1800/540-day sample Gate.
-  - Preserve the original ADR-0008 blocked report as historical evidence; ADR-0009 v2 supersedes only the admission decision.
-  - Do not create strategy code or access OOS returns; after sample-budget merge, only a separately approved IS-only rule-design review may follow.
-  - Freqtrade-first architecture governance completed in PR #8.
-  - M0 correctness hardening completed in PR #9; audit evidence remains blocked and may be investigated without private API access.
-  - Freqtrade primary-framework hardening completed in PR #10.
-  - Strict M1B event-time revalidation completed in PR #11; it remains failed_validation and cannot approve M2.
   - Investigate the M0 public dual-source audit blocker without private API access.
-  - Seek Binance source-owner clarification for the recorded spot and UM revisions, and recheck the missing 2026-06-29 daily reference-price archives after official publication; do not weaken or bypass the dual-source gate.
-  - Review the completed M1A/M1B failure diagnostics.
-  - P0 governance completed in PR #14.
-  - P1 M1C fixed design completed in PR #15.
-  - P2 M1C implementation completed in PR #16 with pinned runtime checks passing.
-  - M1C P3 failed-validation evidence merged in PR #17.
-  - Do not tune or rescue M1C; do not run P4 because P3 failed.
-  - T0 short-horizon product governance completed in PR #19.
-  - T1 canonical public minute-data evidence passed and merged in PR #21.
-  - T2 golden-data and quarantine passed and merged in PR #23.
-  - T3 unified metrics and policy benchmark passed and merged in PR #25.
-  - T4 IS-only feasibility harness passed and merged in PR #27 without candidate evaluation or OOS-return access.
-  - "T5 metadata-only sample-budget precheck merged in PR #29 and is blocked: 302 OOS days versus the fixed 540-day minimum. M1D and T6 are stopped."
-  - Continue monthly public-data accrual and M0 audit diagnostics; a different candidate requires a separately approved design and may not reuse or open this sealed OOS.
-  - Use completed 15m discrete events, authoritative 1m detail, and 5m sensitivity only.
-  - Holding time and trade frequency are strategy outputs; do not impose a daily trade quota.
-  - Do not start M1D strategy implementation unless T5 IS-only feasibility and T6 fixed design pass.
-  - Any future candidate requires a separately approved P1 design.
-  - P1-P4 are authorized sequentially; P5-P8 remain not_authorized.
-  - Extend M1B history only after the relevant M0 data-authority blocker is resolved, without changing thresholds or rules.
   - Diagnostics and revalidation must not lower validation thresholds.
   - Architecture hardening must not implement execution.
   - Design review must not implement execution.
@@ -337,6 +310,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V2_QUALIFICATION_REPORT.md
+    phase: Liquid universe V2 public requalification
+    status: blocked_data_conflict
+    status_marker: "- Status: blocked"
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V1_V2_DIFF_REPORT.md
+    phase: Liquid universe V1/V2 comparison
+    status: deterministic_diff_only
+    status_marker: "- Scope: historical membership comparison only; V1 Markdown is not a V2 qualification input."
   - path: reports/m0/LIQUID_SPOT_UNIVERSE_V2_HARDENING_REPORT.md
     phase: Liquid universe V2 correctness hardening
     status: implementation_pass_pending_public_requalification
@@ -788,6 +769,9 @@ latest_merged_prs:
   - number: 68
     title: Implement liquid spot universe qualification core
     merged_at_utc: "2026-07-11T18:29:38Z"
+  - number: 70
+    title: Harden liquid universe qualification correctness V2
+    merged_at_utc: "2026-07-15T01:17:00Z"
 required_context_files:
   - PROJECT_STATE.yaml
   - PROJECT_LEDGER.md

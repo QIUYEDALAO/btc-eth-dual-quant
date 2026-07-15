@@ -190,60 +190,13 @@ def main() -> int:
         failures.append("PROJECT_STATE.yaml allowed_next_work must include design review")
 
     current_status = str(state.get("current_status", ""))
-    if not (
-        "pr5_suitability_conclusion_b_accepted" in current_status
-        or "m1b_numerical_failed_validation_pending_review" in current_status
-        or "m1b_failed_validation_recorded" in current_status
-        or "no_strategy_eligible_for_m2" in current_status
-        or "freqtrade_first_revalidation_required_no_m2" in current_status
-        or "freqtrade_first_hardening_complete_m0_audit_blocked_no_m2" in current_status
-        or "diagnostics_complete_no_strategy_eligible_no_m2" in current_status
-        or "end_to_end_p0_in_progress_no_m2" in current_status
-        or "m1c_rotation_design_pass_pending_review_no_m2" in current_status
-        or "m1c_rotation_implementation_in_progress_no_m2" in current_status
-        or "m1c_rotation_p2_pass_pending_merge_no_m2" in current_status
-        or "m1c_rotation_p3_in_progress_no_m2" in current_status
-        or "m1c_rotation_failed_validation_no_p4_no_m2" in current_status
-        or "short_horizon_product_t0_in_progress_no_strategy_eligible_for_m2" in current_status
-        or "short_horizon_t0_complete_t1_authorized_no_strategy_eligible_for_m2" in current_status
-        or "short_horizon_t1_pass_pending_review_no_strategy_eligible_for_m2" in current_status
-        or "short_horizon_t1_complete_t2_authorized_no_strategy_eligible_for_m2" in current_status
-        or "m1e_product_data_contract_in_progress_no_strategy_eligible_for_m2" in current_status
-        or "m1e_data_qualification_in_progress_no_strategy_eligible_for_m2" in current_status
-        or "m1e_data_qualification_blocked_no_strategy_eligible_for_m2" in current_status
-        or "m1e_source_conflicts_confirmed_data_gate_blocked_no_strategy_eligible_for_m2" in current_status
-        or "m1e_source_owner_package_ready_not_submitted_data_gate_blocked_no_m2" in current_status
-        or "m1e_source_owner_submitted_awaiting_response_data_gate_blocked_no_m2" in current_status
-        or "m1e_data_qualified_sample_budget_authorized_no_strategy_eligible_for_m2" in current_status
-        or "m1e_blocked_insufficient_oos_calendar_no_strategy_eligible_for_m2" in current_status
-        or "m1e_sample_budget_pass_is_design_only_no_strategy_eligible_for_m2" in current_status
-        or "m1e_failed_feasibility_m1g_design_only_no_strategy_eligible_for_m2" in current_status
-        or "m1g_economic_hypothesis_pass_protocol_only_no_strategy_eligible_for_m2" in current_status
-        or "m1g_paper_protocol_frozen_no_outcome_no_strategy_eligible_for_m2" in current_status
-        or "m1g_paper_feasibility_pass_tail_risk_rule_contract_only_no_m2" in current_status
-        or "m1g_fixed_rule_frozen_preimplementation_no_strategy_eligible_for_m2" in current_status
-        or "m1g_freqtrade_capability_audit_required_no_strategy_eligible_for_m2" in current_status
-        or "m1g_capability_merged_implementation_and_audit_only_no_m2" in current_status
-        or "m1g_implementation_pass_is_protocol_only_no_m2" in current_status
-        or "m1g_is_protocol_frozen_before_result_no_m2" in current_status
-        or "m1g_is_failed_validation_oos_sealed_m1h_design_only_no_m2" in current_status
-        or "m1h_economic_hypothesis_pass_protocol_only_no_strategy_no_m2" in current_status
-        or "m1h_design_merged_paper_protocol_only_no_strategy_no_m2" in current_status
-        or "m1h_paper_protocol_frozen_no_outcome_oos_sealed_no_m2" in current_status
-        or "m1h_protocol_merged_m1h03_authorized_not_started_oos_sealed_no_m2" in current_status
-        or "m1h_failed_feasibility_candidate_queue_exhausted_oos_sealed_no_m2" in current_status
-        or "btc_eth_candidate_queue_exhausted_liquid_universe_adr_authorized_no_m2" in current_status
-        or "liquid_universe_contract_frozen_qualification_only_no_m2" in current_status
-        or "liquid_universe_qualification_runtime_data_pending_no_strategy_no_m2" in current_status
-        or "liquid_universe_qualification_blocked_151_gaps_no_strategy_no_m2" in current_status
-        or "liquid_universe_qualification_pass_gap_attributed_no_strategy_no_m2" in current_status
-        or "liquid_universe_qualification_pass_no_strategy_authorized_no_m2" in current_status
-        or current_status == "liquid_universe_v1_superseded_v2_hardening_pending_requalification_no_strategy_no_m2"
-        or current_status == "liquid_universe_v2_requalification_pass_pending_independent_audit_no_strategy_no_m2"
-        or current_status == "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2"
-        or current_status == "liquid_universe_v2_independent_audit_blocked_no_strategy_no_m2"
-    ):
-        failures.append("PROJECT_STATE.yaml current_status must include PR #5 M1B numerical review status")
+    m1b_history = [
+        item
+        for item in state.get("completed_milestones", [])
+        if isinstance(item, dict) and item.get("phase") == "M1B funding-rate-arbitrage research validation"
+    ]
+    if not m1b_history or m1b_history[-1].get("status") != "failed_validation":
+        failures.append("PROJECT_STATE.yaml must preserve the M1B failed_validation milestone")
     if "m2" not in current_status and "m1b" not in current_status:
         failures.append("PROJECT_STATE.yaml current_status must include m1b or m2")
 

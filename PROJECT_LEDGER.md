@@ -1313,3 +1313,17 @@ private exchange responses here.
 - Implementation: Freeze `LIQUID-SPOT-USDT-TOP15-V2`, a versioned exclusion registry, verified archive provenance, deterministic machine manifests, complete-grid validation, fail-closed attribution, and exact state transitions.
 - Safety: No hypothesis, event scan, strategy, return, OOS, Freqtrade backtest, API/trading, or M2 work is authorized.
 - Next action: Complete U-03D tests and CI, merge it, then perform U-03E public cold/warm requalification before any independent audit.
+
+## 2026-07-15 - Liquid Universe V2 Public Requalification Blocked
+
+- Task IDs: U-03D / U-03E
+- U-03D: PR #70 merged at `5ab69e2`; the V2 contract, registry, machine authority and fail-closed validators passed.
+- U-03E branch: `codex/liquid-universe-v2-requalification`
+- U-03E PR / evidence head: #71 / `9d04ff8e31fb92024aa24922b183203dc4ec4d9a`
+- Scope: Official public archives only, `2020-01` through `2026-06`; no event, signal, return, OOS or strategy data was accessed.
+- Determinism: Cold build with 16 workers and warm build with 3 workers produced the same artifact-set hash `b7c89f2465f570db0687ed20f81a84d570e8746eb0be95c2767429733c0bdfb7`; deterministic mismatches are zero.
+- Result: `blocked_data_conflict`, with 676 discovered symbols, 78 months, 1,170 membership rows, 227 gap records, zero unresolved gaps, zero excluded-category members, zero synthetic fills and zero replacement members.
+- Official-source blockers: BTTUSDT 2019-01 and 2019-02 contain negative daily volume; AXSUSDT 2026-02 contains a duplicate official monthly row for 2026-02-10. All source files passed official checksum verification.
+- V1/V2 comparison: 78 months compared; 6 changed months, 7 additions, 7 removals and 33 rank changes. V1 Markdown was not used as a qualification input.
+- Decision: Keep U-03F and U-04 unauthorized. Do not deduplicate, drop rows, change rankings or continue to strategy research. Resolve source evidence or introduce a separately reviewed data-policy ADR.
+- Safety: No API key, private data, trading API, backtest, OOS, execution/live or M2 authorization was used or created.

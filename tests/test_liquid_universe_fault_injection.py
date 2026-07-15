@@ -7,6 +7,7 @@ import unittest
 import zipfile
 
 from btc_eth_dual_quant.data.public_archive import atomic_store_verified_zip, ensure_archive, fetch_bytes_with_retry, verify_zip
+from scripts.liquid_universe_public_run import _fetch_checksum_text
 
 
 def valid_zip() -> bytes:
@@ -56,6 +57,17 @@ class LiquidUniverseFaultInjectionTests(unittest.TestCase):
             raise OSError("offline")
         with self.assertRaises(OSError):
             fetch_bytes_with_retry("https://example/a.zip", retries=3, opener=fail, sleep=lambda _delay: None)
+        self.assertEqual(len(attempts), 3)
+
+    def test_checksum_connection_reset_retries_and_recovers(self):
+        attempts = []
+        def flaky(*_args, **_kwargs):
+            attempts.append(1)
+            if len(attempts) < 3:
+                raise ConnectionResetError("reset")
+            return Response(b"a" * 64 + b"  archive.zip")
+        text = _fetch_checksum_text("https://example/archive.zip.CHECKSUM", opener=flaky, sleep=lambda _delay: None)
+        self.assertEqual(text, "a" * 64 + "  archive.zip")
         self.assertEqual(len(attempts), 3)
 
     def test_atomic_replace_interruption_preserves_existing_file(self):
