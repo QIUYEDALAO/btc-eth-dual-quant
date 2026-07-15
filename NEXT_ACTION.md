@@ -3,7 +3,7 @@
 ## Immediate Task
 
 Record and review the truthful U-03E `blocked_data_conflict` evidence from
-`codex/liquid-universe-v2-requalification`. The fixed 2020-01 through 2026-06
+PR #71 on `codex/liquid-universe-v2-requalification`. The fixed 2020-01 through 2026-06
 cold and warm builds are deterministic, but checksum-verified official source
 rows violate the frozen V2 contract.
 

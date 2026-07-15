@@ -188,8 +188,8 @@ open_work:
     phase: Liquid universe V2 public requalification
     status: blocked_data_conflict
     branch: codex/liquid-universe-v2-requalification
-    pr: none
-    head_sha: pending
+    pr: 71
+    head_sha: 9d04ff8e31fb92024aa24922b183203dc4ec4d9a
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V2_QUALIFICATION_REPORT.md
     blocker: "Checksum-verified official data contain negative BTTUSDT daily volume in 2019-01/02 and a duplicate AXSUSDT daily row in 2026-02; U-03F cannot start."

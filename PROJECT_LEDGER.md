@@ -1319,6 +1319,7 @@ private exchange responses here.
 - Task IDs: U-03D / U-03E
 - U-03D: PR #70 merged at `5ab69e2`; the V2 contract, registry, machine authority and fail-closed validators passed.
 - U-03E branch: `codex/liquid-universe-v2-requalification`
+- U-03E PR / evidence head: #71 / `9d04ff8e31fb92024aa24922b183203dc4ec4d9a`
 - Scope: Official public archives only, `2020-01` through `2026-06`; no event, signal, return, OOS or strategy data was accessed.
 - Determinism: Cold build with 16 workers and warm build with 3 workers produced the same artifact-set hash `b7c89f2465f570db0687ed20f81a84d570e8746eb0be95c2767429733c0bdfb7`; deterministic mismatches are zero.
 - Result: `blocked_data_conflict`, with 676 discovered symbols, 78 months, 1,170 membership rows, 227 gap records, zero unresolved gaps, zero excluded-category members, zero synthetic fills and zero replacement members.
