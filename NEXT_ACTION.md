@@ -2,17 +2,14 @@
 
 ## Immediate Task
 
-ADR-0013 independent review is complete with verdict
-`approve_with_required_changes` and is pending merge. The review binds PR #74
-head `8dc9ee034fdd172147485f7718117f8a76713cdf`, ADR text SHA256
-`c285a6cfea04c127ca17a537d9c97d4a8931400c3aefe0c2c7c19654e2bcecfc`, and
-PR #73 adjudication evidence hash
-`8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b`.
+PR #75 merged the independent ADR-0013 review with verdict
+`approve_with_required_changes`. PR #74 now incorporates all mandatory changes
+A1-A10 and is accepted for V3 implementation and fixed-range U-03E
+requalification only, pending conformance checks, CI and merge.
 
-After the review merges, revise PR #74 with mandatory changes A1-A10. The ADR
-remains proposed and cannot authorize V3 or a U-03E rerun until conformance is
-checked and it is explicitly accepted for V3 implementation and U-03E
-requalification only.
+Do not implement V3 before PR #74 merges. After merge, the only permitted next
+task is a separate generic offline V3 implementation with a hash-bound
+resolution registry. U-03F and U-04 remain unauthorized.
 
 U-04 remains unauthorized. No strategy is eligible for M2. Freqtrade
 backtesting, strategies, events, returns, OOS, APIs and trading remain blocked.
@@ -64,10 +61,11 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Merge the independent review with no production-code changes.
-2. Rebase PR #74 and incorporate A1-A10 without implementing V3.
-3. Only after the revised ADR is accepted and merged may generic V3
-   implementation begin; the public rerun remains a later dependent task.
+1. Validate and merge PR #74 with all A1-A10 conformance checks successful.
+2. From the merged ADR, implement the generic V3 policy and offline resolution
+   registry in a separate branch using fixtures only.
+3. Run fixed-range public U-03E V3 requalification only after implementation
+   merges; U-03F is still a later dependent task.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.

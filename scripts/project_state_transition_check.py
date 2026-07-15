@@ -31,6 +31,10 @@ ALLOWED = {
         "adr0013_approve_with_required_changes_v2_blocked_no_strategy_no_m2",
     ): "ADR-0013-REVIEW",
     (
+        "ADR-0013 conditional adoption pending merge",
+        "adr0013_accepted_for_v3_implementation_u03e_requalification_only_no_strategy_no_m2",
+    ): "ADR-0013-ADOPT",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -69,7 +73,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "U-03F"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03F"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -91,6 +95,13 @@ def validate(state: dict) -> list[str]:
     for item in open_work:
         if isinstance(item.get("pr"), int) and item["pr"] in merged:
             failures.append(f"open_work references merged PR #{item['pr']}")
+        if item.get("id") == "ADR-0013-ADOPT":
+            if item.get("head_sha") != "runtime_current_pr_head":
+                failures.append("ADR-0013 head_sha must be runtime current PR metadata")
+            if item.get("reviewed_head_sha") != "8dc9ee034fdd172147485f7718117f8a76713cdf":
+                failures.append("ADR-0013 reviewed_head_sha changed")
+            if item.get("evidence_commit") != "4a95a28142d13aa2f03f271baf660ae95ba67e78":
+                failures.append("ADR-0013 evidence_commit changed")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
         failures.append("U-04 authorized without a separate post-audit task")
     return failures

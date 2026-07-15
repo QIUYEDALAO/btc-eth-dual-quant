@@ -1,182 +1,229 @@
 # ADR-0013: Official Archive Row Conflict Policy
 
-- Status: Proposed draft; not adopted
+- Status: Accepted for V3 implementation and U-03E requalification only
 - Date: 2026-07-15
 - Scope: Binance public spot kline monthly/daily archives used by liquid-universe qualification
-- Depends on: ADR-0011, ADR-0012, PR #73 adjudication evidence
-- Proposed successor contract: `LIQUID-SPOT-USDT-TOP15-V3`
+- Depends on: ADR-0011, ADR-0012, PR #73 adjudication evidence, PR #75 independent review
+- Successor contract: `LIQUID-SPOT-USDT-TOP15-V3`
+- Independent review verdict: `approve_with_required_changes`
+- Independent review evidence hash: `c964048091870270344a9139b7656b3f35cb02925fc725a7c03fa0b2c65dd7d3`
+- Adjudication evidence hash: `8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b`
 
-## Context
+## Context And Decision
 
-ADR-0012 correctly makes the V2 qualification contract fail closed on every
-invalid or duplicated official row. The U-03E public run then found three
-checksum-verified blockers that are not project parser defects and have not
-been corrected by archive republication:
+V2 correctly blocks five BTTUSDT 1d rows with negative monthly
+`base_volume` and the byte-identical AXSUSDT 2026-02-10 duplicate. PR #73
+proved that the archives are checksum-valid, that the BTT daily rows agree
+with two public REST comparators, and that the AXS monthly/daily duplicates are
+byte-identical. The unsigned-overflow signature is explanatory only and may
+never generate a replacement value.
 
-- BTTUSDT 2019-01 monthly 1d contains one negative `base_volume` row.
-- BTTUSDT 2019-02 monthly 1d contains four negative `base_volume` rows.
-- AXSUSDT 2026-02 monthly and daily 1d each contain two byte-identical rows for
-  2026-02-10.
+This ADR adopts a generic, asset-neutral, time-neutral, deterministic,
+checksum-bound and fail-closed policy for a new V3 contract. It does not alter
+V2 historical evidence. It authorizes only generic V3 implementation, a
+versioned conflict-resolution registry, and a fixed-range U-03E V3 public
+requalification. It does not itself resolve a row or assert a qualification
+pass.
 
-The bound machine evidence is
-`reports/m0/evidence/liquid_universe_v2/source_conflict_adjudication.json`
-with content hash
-`8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b`.
-The current official archive checksums are unchanged. For the BTT rows,
-official daily ZIPs and both public REST hosts agree on positive rows while all
-other authoritative fields match the monthly rows. The volume delta has an
-unsigned 64-bit, eight-decimal overflow signature, but that signature is
-explanatory evidence only. For AXS, both public REST hosts return one row that
-matches the byte-identical archive rows.
+## Covered Data
 
-V2 gives monthly archives primary authority, allows daily archives to fill
-only missing dates, and never permits REST to overwrite an archive. It also
-does not permit duplicate collapse. Therefore V2 cannot admit these rows
-without a policy change.
+The policy covers official Binance spot kline monthly and daily archives at
+intervals consumed by liquid-universe qualification. It does not apply to
+futures, funding, trades, orderbooks, account data or private endpoints.
 
-## Draft Decision
+## A1: Frozen Comparator Evidence And Resolution Registry
 
-This ADR proposes a general kline-row conflict policy for independent review.
-It is asset-neutral, time-neutral, deterministic, checksum-bound, and
-fail-closed. This document does **not** adopt the policy, modify V2, authorize a
-rerun, or grant any research permission.
+V3 must use `config/liquid_spot_source_conflict_resolutions_v3.json`. Every
+resolution must be versioned and bound by a canonical hash. Each entry contains:
 
-### Covered Data
+- `resolution_id`, `conflict_id`, symbol, interval and UTC open timestamp;
+- conflict class;
+- monthly archive key, checksum and raw-row hash;
+- daily archive key, checksum and raw-row hash;
+- both REST endpoint identities, frozen normalized rows and payload hashes;
+- adjudication evidence hash;
+- approved action, policy version and effective contract version.
 
-The proposal applies to official Binance spot kline monthly and daily archives
-at every interval consumed by liquid-universe qualification, including 1d
-ranking rows and 5m qualified-panel rows. Derived 1h rows inherit the resulting
-canonical 5m provenance. It does not apply to futures, funding, trades,
-orderbooks, account data, or private endpoints without another ADR.
+Qualification must never query live REST and immediately adopt the response.
+REST is frozen corroboration only, not historical primary authority. An absent entry or any changed source/evidence hash is `blocked_pending_adjudication`.
 
-### Row Validity
+## A2: Normative Processing Order
 
-A source row is structurally invalid when any of these conditions holds:
+V3 must execute this order without reordering:
 
-- the schema is not the expected 12-column kline schema;
-- timestamps are invalid, off-grid, or inconsistent with the archive scope;
-- OHLC ordering is illegal;
-- any numeric field is non-finite;
-- base volume, quote volume, taker-buy base volume, or taker-buy quote volume is
-  negative;
-- trade count is negative or non-integral.
+1. verify ZIP bytes, official checksum, CRC and CSV schema;
+2. retain every raw row and line number;
+3. group all rows by the canonical row key;
+4. classify the complete duplicate group;
+5. collapse only a group whose every member is byte-identical;
+6. block the complete key if any member differs;
+7. structurally validate the single canonical candidate;
+8. for an invalid monthly candidate, query only the approved offline registry;
+9. validate the daily correction candidate;
+10. emit one canonical row with complete provenance and `resolution_id`;
+11. execute monthly-primary / daily-fill-only merge;
+12. build eligibility, membership and qualified panel.
 
-An invalid value must never be replaced with zero, absolute-valued, inferred from another field, dropped silently, or repaired with an asset/date special case.
+No earlier collapse, merge, ranking or membership result may hide a conflict.
 
-### Duplicate Definitions
+## A3: Canonical Key And Field Semantics
 
-- `byte_identical_duplicate`: same normalized timestamp and identical raw
-  12-field CSV values.
-- `semantic_identical_duplicate`: same normalized timestamp and equal parsed
-  authoritative values, but raw formatting differs.
-- `conflicting_duplicate`: same normalized timestamp with any different parsed
-  authoritative value.
-- `parser_created_duplicate`: distinct raw timestamps collide only after an
-  incorrect conversion or merge.
+The canonical row key is `(symbol, interval, open_time UTC)`. The raw CSV has
+exactly these 12 fields in order:
 
-The draft permits collapse only for `byte_identical_duplicate`, and only in a
-derived canonical layer after the verified raw archive is retained unchanged.
-The evidence manifest must record archive checksum, raw row hashes, line
-numbers, multiplicity, canonical retained-row hash, and the collapse decision.
-This is not `drop_duplicates`: the duplicate remains visible in quarantine and
-provenance. Semantic-identical and conflicting duplicates remain blocked.
-Parser-created duplicates require a general parser fix and a same-contract
-fault-tested rebuild, not this policy.
+1. `open_time`
+2. `open`
+3. `high`
+4. `low`
+5. `close`
+6. `base_volume`
+7. `close_time`
+8. `quote_volume`
+9. `trade_count`
+10. `taker_buy_base_volume`
+11. `taker_buy_quote_volume`
+12. `ignore`
 
-### Authority And Invalid Monthly Rows
+Timestamps are unsigned integer epochs normalized to UTC milliseconds for
+semantic comparison. Prices and volumes are finite `Decimal` values.
+`trade_count` is a non-negative integer. `ignore` is an authoritative equality field and is compared as its exact raw string; differing values conflict.
 
-The proposed authority order is:
+`byte_identical_duplicate` means all original 12 strings match exactly.
+`semantic_identical_duplicate` means timestamps, Decimals, integer trade count
+and `ignore` normalize equal while raw formatting differs. `conflicting_duplicate`
+means any authoritative normalized field differs. Correction comparison uses
+parsed canonical equality, never textual decimal formatting.
 
-1. A currently published monthly ZIP with matching official checksum is the
-   default primary source when its row is valid and unique.
-2. A currently published daily ZIP with matching official checksum may become
-   a correction candidate only when the monthly row is structurally invalid.
-3. Both official public REST comparators must independently return exactly one
-   row for the timestamp and agree with the daily row in every authoritative
-   field. REST is corroboration and never a standalone replacement authority.
-4. A source-owner statement is provenance only. It cannot automatically
-   override row evidence or the active contract.
+A row is invalid for malformed schema/timestamps, wrong grid/scope, illegal
+OHLC ordering, non-finite numeric values, negative volume fields, or negative
+or non-integral trade count. No value may be absolute-valued, zeroed,
+algebraically inferred, silently dropped, or repaired by symbol/date logic.
 
-An invalid monthly row may be quarantined and replaced in the derived canonical
-layer by the daily row only if all of the following hold:
+## A4: Complete Duplicate Groups
 
-- monthly and daily archives and checksums are available and valid;
-- the monthly timestamp has no valid alternative row in the same archive;
-- daily ZIP and both REST comparators agree exactly in all authoritative fields;
-- monthly and daily rows agree in every field except the structurally invalid
-  field or fields;
-- the current monthly checksum has not changed during the evidence run;
-- the manifest binds every source URL, checksum, payload hash, row hash, line
-  number and field-level difference;
-- no data value is derived algebraically from the invalid monthly value.
+- The complete canonical-key group is classified before any collapse.
+- Multiplicity of at least two is collapsible only when every original 12-field
+  row is byte-identical.
+- Canonical output contains one row; raw storage retains every row.
+- Provenance records multiplicity, line numbers, every raw-row hash and the
+  retained canonical hash.
+- Two identical rows plus one different row block the entire key.
+- Semantic-identical and conflicting duplicates remain blocked.
+- Parser-created duplicates require a parser fix and cannot use this policy.
+- Generic `drop_duplicates`, keep-first and keep-last behavior is prohibited.
 
-If any condition is absent, unavailable, contradictory, or non-deterministic,
-qualification remains blocked. A later corrected monthly archive takes
-precedence only after its new checksum and full row contents are frozen and the
-entire qualification is rebuilt from scratch.
+## A5: Daily Correction Candidate Qualification
 
-### Isolation And Blocking
+A daily correction is eligible only when all conditions pass:
 
-An exact duplicate or invalid row cannot be ignored because the asset misses
-the final Top-15. Source qualification occurs before membership is trusted.
-Conflicting duplicates, semantic-only duplicates, unsupported schema changes,
-missing comparison evidence, REST disagreement, and any unclassified source
-revision are blocking. No replacement member, interpolation, synthetic bar,
-or manual symbol exclusion is allowed.
+- its official ZIP checksum, CRC and 12-column schema are valid;
+- its canonical timestamp is unique, or its complete group is an allowed
+  byte-identical duplicate processed by the same pipeline;
+- timestamps, OHLCV, trade count and all structural fields are legal;
+- it equals both frozen official REST normalized rows by parsed canonical
+  equality;
+- it equals the invalid monthly row in every field except the field or fields
+  whose invalidity triggered resolution;
+- no other conflict or missing evidence exists.
 
-## Historical Reconstruction Impact
+Semantic/conflicting duplicates, invalid daily values, a missing comparator or
+one REST disagreement block the candidate. Canonical values come only from the
+checksum-verified daily row, never from an overflow formula.
 
-If adopted in a future task, the policy would change canonical source handling
-and therefore requires a new contract and manifest schema version. The project
-must rebuild source, eligibility, membership, quarantine, qualified-panel and
-summary manifests for the full 2020-01 through latest-complete-month range.
-Cold, warm-cache, and worker-variant builds must match exactly.
+## A6: Fail-Closed Resolution
 
-The rerun must regenerate both V2/V3 and historical V1/V3 diagnostic diffs.
-No membership outcome is assumed by this ADR. Top 15, prior 90 days, minimum
-365 days, category exclusions, UTC activation, and deterministic tie-break
-remain unchanged.
+Canonical resolution is permitted only when ADR-0013 is accepted, the V3
+contract hash and registry hash match, the `conflict_id` is registered, every
+row/source checksum matches, and frozen evidence hashes match. A broad policy
+match alone is insufficient. Every unknown or changed conflict is
+`blocked_pending_adjudication`; the runtime cannot extend the registry.
+
+## A7: Quarantine And Counters
+
+V3 keeps two separate scopes:
+
+- `raw_row_quarantine`: retained invalid or duplicate source rows that do not
+  directly enter the canonical layer;
+- `research_panel_quarantine`: a full window or symbol-month excluded because
+  a conflict/gap remains unresolved.
+
+An approved replacement is `canonical_source_resolution`, not a synthetic
+fill. Reports and manifests must expose `duplicate_collapses`,
+`monthly_rows_quarantined`, `daily_corrections_admitted`,
+`unresolved_row_conflicts`, `blocked_symbol_months`, and
+`synthetic_fills = 0`.
+
+## A8: Fixed First V3 Range
+
+The first V3 public run is fixed to `2020-01-01` through `2026-06` inclusive.
+It may not add later months. Data accrual requires a separate post-audit task.
+
+## A9: Contract Hash Bindings
+
+The V3 contract hash must bind all of the following:
+
+- asset eligibility registry hash;
+- conflict policy hash;
+- conflict resolution registry hash;
+- adjudication evidence hash and schema;
+- source manifest schema;
+- canonicalization schema;
+- authorization matrix.
+
+Changing any binding changes the V3 contract hash. Cold, warm-cache and
+worker-variant builds must produce byte-identical and hash-identical source,
+resolution, eligibility, membership, quarantine, panel, summary and report
+artifacts.
+
+## A10: Governance SHA Semantics
+
+`evidence_commit` is the first commit that froze the reviewed ADR content:
+`4a95a28142d13aa2f03f271baf660ae95ba67e78`. The independent review examined
+PR #74 at `reviewed_head_sha = 8dc9ee034fdd172147485f7718117f8a76713cdf`.
+
+`head_sha` means the current PR head obtained from Git/GitHub at validation
+time. It is runtime metadata and must never be populated with
+`evidence_commit` or the old `reviewed_head_sha`. A committed document cannot
+self-contain its own final commit identity; the state checker must resolve and
+report the current head externally while keeping the two immutable evidence
+fields distinct.
+
+## Unchanged Universe Policy
+
+ADR-0011 membership remains unchanged: monthly Top 15, prior 90 complete UTC days median quote volume, 365 complete history days, UTC month activation,
+category exclusions and ascending-symbol tie-break. No excluded symbol,
+replacement member, result-dependent rule or strategy outcome may influence
+source resolution.
+
+## Required V3 Evidence
+
+V3 must preserve V1 and blocked V2 evidence, use only registry-driven generic
+code, add duplicate/correction/fault fixtures, and run the fixed range from
+scratch. A V3 qualification failure remains truthful blocked evidence. U-03F
+may be authorized only by a later governance closeout after a V3 pass; it is
+not run by this ADR.
 
 ## Alternatives Rejected
 
-- Keep V2 permanently blocked: safe but leaves checksum-verified official
-  defects unusable even when independent official evidence is exact.
-- Prefer daily over monthly globally: weakens the frozen primary authority and
-  may introduce a different source revision without proof.
-- Use REST as primary history: not archive-replayable and may vary over time.
-- Take absolute values or infer overflow corrections: manufactures data and is
-  prohibited.
-- Silently keep one duplicate: destroys multiplicity evidence and is
-  prohibited.
-- Exclude the affected symbols or dates: creates a hidden outcome-dependent
-  universe rule and is prohibited.
-
-## Adoption Gate
-
-Before this proposal can become active, a separate explicit review must:
-
-1. approve or reject the general policy;
-2. assign a new contract/schema version and canonical hash;
-3. implement generic code without symbol/date conditions;
-4. add fault fixtures for all duplicate, invalid-row and evidence-availability
-   cases;
-5. rerun U-03E from scratch with cold, warm and worker variants;
-6. merge truthful requalification evidence;
-7. run U-03F only in a later independent task if requalification passes.
-
-Merging or reviewing this Draft ADR alone does not satisfy any adoption Gate.
+- Global daily-over-monthly precedence.
+- Live REST as primary or runtime repair authority.
+- Absolute-value, zero, inferred overflow or synthetic values.
+- Silent deduplication, keep-first/last or symbol/date conditions.
+- Excluding BTT/AXS, adding replacement members or changing ranking rules.
 
 ## Authorization
 
 - V2 contract modified: no
-- Policy adopted: no
-- U-03E rerun authorized: no
-- U-03F authorized: no
-- U-04 authorized: no
-- Hypothesis preregistration: no
-- Strategy code: no
-- Event scan: no
-- Returns/backtesting: no
-- OOS opened: no
-- API/trading: no
-- M2: no
+- Policy adopted: yes, for V3 implementation and U-03E requalification only
+- V3 contract implementation: true
+- Conflict resolution registry implementation: true
+- U-03E V3 rerun: true
+- U-03F: false
+- U-04: false
+- Hypothesis preregistration: false
+- Strategy code: false
+- Event scan: false
+- Returns/backtesting: false
+- OOS: false
+- API/trading: false
+- M2: false

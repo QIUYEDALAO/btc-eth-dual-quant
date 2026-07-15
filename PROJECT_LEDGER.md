@@ -1367,3 +1367,14 @@ private exchange responses here.
 - Evidence: `reports/expert/evidence/adr0013_independent_review.json`.
 - Mandatory changes: A1-A10 cover frozen comparator evidence, fixed processing order, field semantics, complete duplicate groups, daily-candidate validation, fail-closed registry, quarantine layers, fixed first range, hash bindings and governance SHA meanings.
 - Authorization: ADR remains proposed; V3 implementation, U-03E rerun, U-03F, U-04, strategy, outcomes, OOS, API/trading and M2 remain false.
+
+## 2026-07-15 - ADR-0013 Mandatory Changes Completed Pending Merge
+
+- Date UTC: 2026-07-15T07:00:00Z
+- Task ID: ADR-0013-ADOPT
+- Phase: ADR-0013 conditional adoption
+- Branch / PR: `codex/adr-0013-official-archive-row-conflict-policy` / #74
+- Independent review: PR #75 merged at `2f925324bd8c0e92d031e96b7fca3a80adb80b6b` with 78/78 checks successful.
+- Result: A1-A10 are incorporated; status is `Accepted for V3 implementation and U-03E requalification only` pending PR #74 conformance, CI and merge.
+- SHA semantics: `evidence_commit=4a95a28142d13aa2f03f271baf660ae95ba67e78`, `reviewed_head_sha=8dc9ee034fdd172147485f7718117f8a76713cdf`, while current `head_sha` is runtime Git/GitHub metadata.
+- Authorization: generic V3 contract/registry implementation and a dependent U-03E V3 rerun only. U-03F, U-04, strategy, events, returns, OOS, API/trading and M2 remain false.
