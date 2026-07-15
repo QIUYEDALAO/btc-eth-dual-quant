@@ -1422,5 +1422,7 @@ private exchange responses here.
 - Provenance: Binance's official KLAY-to-KAIA announcement delisted KLAYUSDT at 2024-10-28 03:00 UTC; the invalid row closes exactly one millisecond before that boundary. Official intraday archives contain no affected-day bars and are diagnostic only.
 - Similar-scope scan: 427 local archives / 13,072 rows and 1,225 official KLAY daily archives identify one unique close-before-open event, confined to KLAYUSDT 2024-10-30. Other partial lifecycle rows are not this defect class.
 - Classification / decision: `symbol_lifecycle_boundary_artifact` / `new_policy_adr_required`.
+- Independent-review remediation: commit `04bbe128fe0c83d8f21a7a34ffcf9c97ab842a7c` replaces float timestamp conversion and static conclusion trust with integer UTC conversion, full evidence Gate recomputation, REST payload normalization, lifecycle/scope hash verification and fail-closed tamper tests.
+- Evidence content hash: `6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a`; the changing PR head is referenced as `refs/pull/79/head` rather than recorded as a self-referential hash.
 - Governance: A separate new-policy ADR is only a future candidate after review and explicit authorization. No ADR, registry revision or V3 rerun is part of this task.
 - Safety: U-03F, U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
