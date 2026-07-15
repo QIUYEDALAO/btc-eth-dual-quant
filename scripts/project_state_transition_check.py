@@ -75,6 +75,10 @@ ALLOWED = {
         "liquid_universe_v4_implementation_pass_fixture_only_public_requalification_not_run_no_strategy_no_m2",
     ): "U-03E-V4-IMPL",
     (
+        "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
+        "liquid_universe_v4_implementation_merged_requalification_authorized_not_started_no_strategy_no_m2",
+    ): "U-03E-V4-RUN",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -113,7 +117,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03F"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -135,6 +139,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0014 required-changes independent conformance review completed",
         "ADR-0014 conditional adoption pending merge",
         "Liquid universe V4 lifecycle availability implementation pending independent review",
+        "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
     }:
         milestones = [
             item
@@ -154,7 +159,10 @@ def validate(state: dict) -> list[str]:
             milestones[0].get(key) != value for key, value in expected_milestone.items()
         ):
             failures.append("ADR-0014 conformance milestone binding changed")
-    if pair[0] == "Liquid universe V4 lifecycle availability implementation pending independent review":
+    if pair[0] in {
+        "Liquid universe V4 lifecycle availability implementation pending independent review",
+        "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
+    }:
         adoption = [
             item
             for item in state.get("completed_milestones", [])
@@ -169,6 +177,41 @@ def validate(state: dict) -> list[str]:
             adoption[0].get(key) != value for key, value in expected_adoption.items()
         ):
             failures.append("ADR-0014 adoption milestone binding changed")
+    if pair[0] == "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started":
+        implementation = [
+            item
+            for item in state.get("completed_milestones", [])
+            if item.get("phase") == "Liquid universe V4 lifecycle availability implementation"
+        ]
+        implementation_review = [
+            item
+            for item in state.get("completed_milestones", [])
+            if item.get("phase") == "Liquid universe V4 implementation independent review"
+        ]
+        expected_implementation = {
+            "merged_pr": 86,
+            "merge_commit": "fccc9972502732319d38eb36775d007396df25db",
+            "reviewed_head_sha": "2a745586bff5112d69af45c9a0dd8585f2adab50",
+        }
+        expected_review = {
+            "merged_pr": 87,
+            "merge_commit": "f250975e3f95cafc3066f0344727f575922dbe9c",
+            "reviewed_pr": 86,
+            "reviewed_head_sha": "2a745586bff5112d69af45c9a0dd8585f2adab50",
+            "verdict": "approve",
+            "critical_findings": 0,
+            "high_findings": 0,
+        }
+        if len(implementation) != 1 or any(
+            implementation[0].get(key) != value
+            for key, value in expected_implementation.items()
+        ):
+            failures.append("V4 implementation milestone binding changed")
+        if len(implementation_review) != 1 or any(
+            implementation_review[0].get(key) != value
+            for key, value in expected_review.items()
+        ):
+            failures.append("V4 implementation review milestone binding changed")
     merged = {item.get("number") for item in state.get("latest_merged_prs", [])}
     for item in open_work:
         if isinstance(item.get("pr"), int) and item["pr"] in merged:
@@ -229,6 +272,21 @@ def validate(state: dict) -> list[str]:
                 failures.append("V4 lifecycle registry hash changed")
             if item.get("implemented") is not True or item.get("independent_review_approved") or item.get("public_requalification"):
                 failures.append("V4 implementation authority widened before independent review")
+        if item.get("id") == "U-03E-V4-RUN":
+            if item.get("status") != "authorized_not_started":
+                failures.append("V4 public requalification status changed before the run")
+            if item.get("base_sha") != "fccc9972502732319d38eb36775d007396df25db":
+                failures.append("V4 public requalification base changed")
+            if item.get("contract_hash") != "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83":
+                failures.append("V4 contract hash changed")
+            if item.get("policy_hash") != "7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977":
+                failures.append("V4 policy hash changed")
+            if item.get("lifecycle_registry_hash") != "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d":
+                failures.append("V4 lifecycle registry hash changed")
+            if item.get("implementation_merged") is not True or item.get("independent_review_approved") is not True:
+                failures.append("V4 public requalification lacks merged implementation review authority")
+            if item.get("public_requalification") is not False:
+                failures.append("V4 public requalification was marked complete before evidence exists")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
         failures.append("U-04 authorized without a separate post-audit task")
     return failures

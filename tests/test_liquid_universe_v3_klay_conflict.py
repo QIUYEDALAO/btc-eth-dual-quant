@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "Liquid universe V4 lifecycle availability implementation pending independent review",
+            "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
         )
         self.assertEqual(
             state["current_status"],
-            "liquid_universe_v4_implementation_pass_fixture_only_public_requalification_not_run_no_strategy_no_m2",
+            "liquid_universe_v4_implementation_merged_requalification_authorized_not_started_no_strategy_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -413,10 +413,10 @@ class KlaySourceConflictTests(unittest.TestCase):
             adoption["merge_commit"],
             "0f5f76f86973316ac66b8e3f9d6e65419b310ec9",
         )
-        work = next(item for item in state["open_work"] if item["id"] == "U-03E-V4-IMPL")
-        self.assertEqual(work["status"], "implementation_pass_fixture_only_pending_independent_review")
-        self.assertTrue(work["implemented"])
-        self.assertFalse(work["independent_review_approved"])
+        work = next(item for item in state["open_work"] if item["id"] == "U-03E-V4-RUN")
+        self.assertEqual(work["status"], "authorized_not_started")
+        self.assertTrue(work["implementation_merged"])
+        self.assertTrue(work["independent_review_approved"])
         self.assertFalse(work["public_requalification"])
         self.assertFalse(any(item["id"] == "ADR-0014-ADOPT" for item in state["open_work"]))
         self.assertFalse(any(item["id"] == "ADR-0014-REVIEW" for item in state["open_work"]))

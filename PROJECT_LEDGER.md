@@ -1487,3 +1487,12 @@ private exchange responses here.
 - Machine authority: contract `816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83`, policy `7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977`, lifecycle registry `a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d`.
 - Gate: no real public run was performed. The exact implementation head must receive an independent approve verdict before merge, then complete a separate governance closeout before fixed-range requalification.
 - Safety: U-03F, U-04, hypothesis, strategy, events, signals, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - V4 Implementation Independently Approved And Merged
+
+- Task IDs: U-03E-V4-IMPL-REVIEW / U-03E-V4-IMPL
+- Review: PR #87 independently bound PR #86 exact head `2a745586bff5112d69af45c9a0dd8585f2adab50`, returned `approve` with 0 critical/high findings, and squash-merged at `f250975e3f95cafc3066f0344727f575922dbe9c`.
+- Implementation: the unchanged PR #86 head retained 94/94 successful checks and squash-merged at `fccc9972502732319d38eb36775d007396df25db`.
+- Authority: V4 remains fixture-only and is not active qualification authority until the fixed-range public requalification passes and its evidence merges.
+- Next Gate: only the fixed `2020-01` through `2026-06` cold/warm/worker V4 public requalification is authorized. Cold must stop before warm/worker on any unknown conflict, source revision, overlap or hash drift.
+- Safety: U-03F, U-04, hypothesis, strategy, events, signals, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
