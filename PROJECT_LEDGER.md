@@ -1441,7 +1441,7 @@ private exchange responses here.
 
 - Date UTC: 2026-07-15T12:45:07Z
 - Task ID: ADR-0014-REVIEW
-- Branch / PR: `codex/adr-0014-independent-review` / pending
+- Branch / PR: `codex/adr-0014-independent-review` / #82
 - Reviewed target: PR #81 Draft at `cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44`, based on `d2d876af192a23ff1879d6a09cb2737c3f12133f`.
 - Verdict: `approve_with_required_changes`; severity counts are 0 critical, 10 high, 1 medium, 0 low and 1 informational.
 - Evidence: `reports/expert/evidence/adr0014_independent_review.json`, content hash `3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15`; Markdown is an exact JSON render.

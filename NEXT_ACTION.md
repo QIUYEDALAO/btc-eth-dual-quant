@@ -6,6 +6,7 @@ ADR-0014 independent policy review is complete against PR #81 head
 `cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44`. The verdict is
 `approve_with_required_changes`: 0 critical, 10 high, 1 medium and 1
 informational finding. Eleven machine-verifiable changes block adoption.
+The review evidence is open in PR #82.
 
 The decisive evidence is broader than the Draft's 2024-10-30 `close<open`
 category. The official monthly archive also contains a normal-duration flat,
@@ -66,7 +67,7 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Merge only the independent review PR after CI passes and PR #81 head remains
+1. Merge only independent review PR #82 after CI passes and PR #81 head remains
    exactly `cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44`.
 2. Stop after that merge. Do not modify, mark Ready or merge PR #81 in this task.
 3. A future explicit task may revise the Draft against MC-01 through MC-11;

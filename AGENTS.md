@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: ADR-0014 independent policy review is complete pending review. It binds PR #81 head `cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44` and returns `approve_with_required_changes` with 0 critical and 10 high findings. PR #81 remains Draft and unchanged; all eleven mandatory changes block adoption.
+- Current phase: ADR-0014 independent policy review is complete in PR #82 pending merge. It binds PR #81 head `cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44` and returns `approve_with_required_changes` with 0 critical and 10 high findings. PR #81 remains Draft and unchanged; all eleven mandatory changes block adoption.
 - The review proves the Draft's `close_time < open_time` category is too narrow: KLAYUSDT 2024-10-29 is a normal-duration flat zero-volume post-cessation placeholder, while 2024-10-28 is a partial lifecycle day. Future policy must govern versioned availability events, not one row signature.
 - PR #76 merged the generic V3 implementation at `b3496fe` after 82/82 checks passed.
 - PR #77 merged at `c6d44d9` after 84/84 checks passed. The cold V3 build resolved the six frozen BTT/AXS cases, then blocked on KLAYUSDT 2024-10-30; warm/worker were not run after the stop. U-03F and U-04 remain unauthorized.
