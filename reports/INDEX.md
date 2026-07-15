@@ -7,6 +7,8 @@
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
+| `reports/expert/ADR_0013_INDEPENDENT_REVIEW.md` | ADR-0013 independent review | approve_with_required_changes / pending merge | Binds the Draft ADR and PR #73 evidence, answers 15 safety questions, and requires A1-A10 before adoption. It authorizes no V3 implementation or rerun. | no |
+| `reports/expert/evidence/adr0013_independent_review.json` | ADR-0013 independent review | deterministic machine evidence | Hash-bound review checklist, mandatory-change set and zero-authorization matrix. | no |
 | `reports/m1/M1H_IS_PAPER_FEASIBILITY_REPORT.md` | M1H sealed-IS paper feasibility | failed_feasibility / PR #65 merged | The one frozen observation had sufficient projected episodes but failed combined/BTC/ETH 24h close-displacement and single-year concentration Gates. MFE remained diagnostic only; OOS stayed sealed. | no |
 | `reports/m1/M1H_FUNDING_DATA_QUALIFICATION_REPORT.md` | M1H public funding qualification | pass / PR #65 merged | Qualifies public funding lineage, adjacent per-event intervals, settlement continuity and sealed canonical 5m dependency without event scanning, path metrics, returns or OOS-value parsing. | no |
 | `reports/m1/M1H_IS_ONLY_RULE_DESIGN.md` | M1H design | economic_hypothesis_pass_paper_protocol_only / PR #61 merged | Selects the settled-negative-funding crowding hypothesis route, strict post-settlement timing and public lineage without selecting rules, reading returns or opening OOS. | no |

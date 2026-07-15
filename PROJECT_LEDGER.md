@@ -1351,3 +1351,18 @@ private exchange responses here.
 - Decision: `new_policy_adr_required`. The V2 contract remains unchanged and fail closed; no U-03E rerun is authorized.
 - Next action: After this evidence merges, create a separate Draft ADR for a general archive-row conflict policy. Do not adopt it or rerun qualification without independent review and explicit approval.
 - Safety: U-03F/U-04, strategy, event scan, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-15 - ADR-0013 Independent Review Completed Pending Merge
+
+- Date UTC: 2026-07-15T06:30:00Z
+- Task ID: ADR-0013-REVIEW
+- Phase: ADR-0013 independent review
+- Branch: `codex/adr-0013-independent-review`
+- PR: pending
+- Base main: `7477c34a403cdbdcf0a7dcc36c4646d32e6d5b83`
+- Reviewed PR #74 head: `8dc9ee034fdd172147485f7718117f8a76713cdf`
+- ADR evidence commit: `4a95a28142d13aa2f03f271baf660ae95ba67e78`
+- Verdict: `approve_with_required_changes`.
+- Evidence: `reports/expert/evidence/adr0013_independent_review.json`.
+- Mandatory changes: A1-A10 cover frozen comparator evidence, fixed processing order, field semantics, complete duplicate groups, daily-candidate validation, fail-closed registry, quarantine layers, fixed first range, hash bindings and governance SHA meanings.
+- Authorization: ADR remains proposed; V3 implementation, U-03E rerun, U-03F, U-04, strategy, outcomes, OOS, API/trading and M2 remain false.

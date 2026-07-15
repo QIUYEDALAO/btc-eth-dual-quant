@@ -2,16 +2,17 @@
 
 ## Immediate Task
 
-U-03E source-conflict adjudication is complete and pending review. The
-checksum-bound evidence classifies BTTUSDT 2019-01/02 as official
-monthly/daily conflicts and AXSUSDT 2026-02-10 as an exact identical official
-duplicate. Current remote checksums are unchanged and no project parser bug was
-found.
+ADR-0013 independent review is complete with verdict
+`approve_with_required_changes` and is pending merge. The review binds PR #74
+head `8dc9ee034fdd172147485f7718117f8a76713cdf`, ADR text SHA256
+`c285a6cfea04c127ca17a537d9c97d4a8931400c3aefe0c2c7c19654e2bcecfc`, and
+PR #73 adjudication evidence hash
+`8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b`.
 
-The decision is `new_policy_adr_required`. Do not rerun U-03E under the current
-contract and do not start U-03F. After this evidence merges, the only permitted
-follow-up is a separate Draft ADR defining a general, asset- and time-neutral
-archive-conflict policy. The ADR must not be adopted automatically.
+After the review merges, revise PR #74 with mandatory changes A1-A10. The ADR
+remains proposed and cannot authorize V3 or a U-03E rerun until conformance is
+checked and it is explicitly accepted for V3 implementation and U-03E
+requalification only.
 
 U-04 remains unauthorized. No strategy is eligible for M2. Freqtrade
 backtesting, strategies, events, returns, OOS, APIs and trading remain blocked.
@@ -63,11 +64,10 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Review and merge the checksum-bound U-03E adjudication evidence.
-2. Create a separate Draft ADR for a general official-archive row-conflict
-   policy; do not modify the current contract or machine authority.
-3. Only after independent ADR review and explicit adoption may a new contract
-   version be implemented and U-03E rerun from scratch.
+1. Merge the independent review with no production-code changes.
+2. Rebase PR #74 and incorporate A1-A10 without implementing V3.
+3. Only after the revised ADR is accepted and merged may generic V3
+   implementation begin; the public rerun remains a later dependent task.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.
