@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: ADR-0014 independent policy review is complete in PR #82 pending merge. It binds PR #81 head `cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44` and returns `approve_with_required_changes` with 0 critical and 10 high findings. PR #81 remains Draft and unchanged; all eleven mandatory changes block adoption.
+- Current phase: PR #82 merged the ADR-0014 independent review at `d507684`; only revision of Draft PR #81 against MC-01..MC-11 and a later independent conformance review are authorized. PR #81 remains Draft and unadopted.
 - The review proves the Draft's `close_time < open_time` category is too narrow: KLAYUSDT 2024-10-29 is a normal-duration flat zero-volume post-cessation placeholder, while 2024-10-28 is a partial lifecycle day. Future policy must govern versioned availability events, not one row signature.
 - PR #76 merged the generic V3 implementation at `b3496fe` after 82/82 checks passed.
 - PR #77 merged at `c6d44d9` after 84/84 checks passed. The cold V3 build resolved the six frozen BTT/AXS cases, then blocked on KLAYUSDT 2024-10-30; warm/worker were not run after the stop. U-03F and U-04 remain unauthorized.
@@ -36,7 +36,7 @@ After any task, the agent must update:
 - V3 machine JSON manifests supersede V2 only after a V3 pass. The current cold V3 evidence is blocked and cannot authorize U-03F.
 - U-03D passed and merged in PR #70 at `5ab69e2`. U-03E cold/warm public builds match exactly but qualification is blocked by BTTUSDT negative daily volume in 2019-01/02 and a duplicate AXSUSDT row on 2026-02-10.
 - U-03E truthful blocked evidence merged in PR #71 at `8c4db86`. It is a closed blocked milestone, not a qualification pass or active implementation task.
-- U-03F must not start while V3 is blocked. U-04 remains unauthorized. The independent review changes no ADR Draft, contract, registry or qualification artifact and runs no V3/V4 build. Merging the review cannot create active policy or rerun authority.
+- U-03F must not start while V3 is blocked. U-04 remains unauthorized. Draft revision may change only proposed policy/docs checks and governance; it cannot change contracts, registries, qualification artifacts or run V3/V4.
 - V3 machine JSON manifests become active qualification authority only after a V3 pass. V1 is superseded, V2 is blocked historical evidence, and Markdown reports must never be qualification inputs.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.

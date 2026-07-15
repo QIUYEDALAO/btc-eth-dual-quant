@@ -59,6 +59,10 @@ ALLOWED = {
         "adr0014_review_approve_with_required_changes_pr81_draft_unmodified_no_requalification_no_strategy_no_m2",
     ): "ADR-0014-REVIEW",
     (
+        "ADR-0014 required-changes Draft revision authorized",
+        "adr0014_required_changes_revision_authorized_draft_not_adopted_no_requalification_no_strategy_no_m2",
+    ): "ADR-0014-DRAFT",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -135,6 +139,15 @@ def validate(state: dict) -> list[str]:
                 failures.append("ADR-0014 reviewed_head_sha changed")
             if item.get("verdict") != "approve_with_required_changes":
                 failures.append("ADR-0014 review verdict changed")
+        if item.get("id") == "ADR-0014-DRAFT" and expected_task == "ADR-0014-DRAFT":
+            if item.get("status") != "draft_revision_authorized_not_started":
+                failures.append("ADR-0014 Draft revision status changed")
+            if item.get("prior_review_pr") != 82:
+                failures.append("ADR-0014 prior review PR changed")
+            if item.get("prior_review_merge_sha") != "d507684564fc31812c8e7d4adb06d7ab61c7dab7":
+                failures.append("ADR-0014 prior review merge changed")
+            if item.get("adopted") or item.get("implemented") or item.get("registry_change") or item.get("requalification"):
+                failures.append("ADR-0014 Draft gained authority")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
         failures.append("U-04 authorized without a separate post-audit task")
     return failures

@@ -23,20 +23,31 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_adr0014_review_state_requires_open_review_and_zero_authority(self):
+    def test_adr0014_review_closeout_requires_draft_revision_and_zero_authority(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
         draft = next(item for item in state["open_work"] if item.get("id") == "ADR-0014-DRAFT")
-        self.assertEqual(draft["status"], "proposed_draft_required_changes_pending")
+        self.assertEqual(draft["status"], "draft_revision_authorized_not_started")
         self.assertFalse(draft["adopted"])
+        self.assertFalse(any(item.get("id") == "ADR-0014-REVIEW" for item in state["open_work"]))
+        review = next(
+            item
+            for item in state["completed_milestones"]
+            if item.get("phase") == "ADR-0014 independent policy review"
+        )
+        self.assertEqual(review["merged_pr"], 82)
+        self.assertEqual(
+            review["merge_commit"],
+            "d507684564fc31812c8e7d4adb06d7ab61c7dab7",
+        )
 
         changed = copy.deepcopy(state)
         changed["open_work"] = [
-            item for item in changed["open_work"] if item.get("id") != "ADR-0014-REVIEW"
+            item for item in changed["open_work"] if item.get("id") != "ADR-0014-DRAFT"
         ]
         self.assertIn(
-            "current V2 task missing from open_work: ADR-0014-REVIEW",
+            "current V2 task missing from open_work: ADR-0014-DRAFT",
             validate(changed),
         )
 
