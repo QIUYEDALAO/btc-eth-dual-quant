@@ -2,8 +2,8 @@
 
 ## Immediate Task
 
-PR #76 merged the generic V3 row-conflict implementation at `b3496fe`. The
-fixed public cold build then verified the registered BTT/AXS source checksums,
+PR #77 merged the truthful blocked V3 public requalification at `c6d44d9`
+after all 84 checks passed. The fixed public cold build verified the registered BTT/AXS source checksums,
 admitted all five BTT daily corrections and collapsed the registered AXS exact
 duplicate, but discovered one new unregistered official row conflict.
 
@@ -64,10 +64,9 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Merge the truthful blocked V3 qualification evidence after CI succeeds.
-2. Independently adjudicate only the checksum-bound KLAYUSDT 2024-10-30
+1. Independently adjudicate only the checksum-bound KLAYUSDT 2024-10-30
    monthly/daily row under ADR-0013 without changing rankings or outcomes.
-3. If and only if a reviewed registry revision is adopted, rerun the frozen
+2. If and only if a reviewed registry revision is adopted, rerun the frozen
    cold/warm/worker range from scratch. Do not run U-03F before a merged pass.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation

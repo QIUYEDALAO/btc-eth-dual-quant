@@ -28,15 +28,15 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: V3 public requalification stopped fail-closed on an unregistered KLAYUSDT official row conflict; no strategy is authorized.
+- Current phase: PR #77 merged the truthful blocked V3 requalification; independent KLAYUSDT source adjudication is the only authorized next task and no strategy is authorized.
 - PR #76 merged the generic V3 implementation at `b3496fe` after 82/82 checks passed.
-- The cold V3 build resolved the six frozen BTT/AXS cases, then blocked on KLAYUSDT 2024-10-30. Warm/worker were not run after the stop. U-03F and U-04 remain unauthorized.
+- PR #77 merged at `c6d44d9` after 84/84 checks passed. The cold V3 build resolved the six frozen BTT/AXS cases, then blocked on KLAYUSDT 2024-10-30; warm/worker were not run after the stop. U-03F and U-04 remain unauthorized.
 - ADR-0012 supersedes the V1 qualification admission decision pending V2 public requalification and independent audit. V1 reports remain historical evidence.
 - V3 machine JSON manifests supersede V2 only after a V3 pass. The current cold V3 evidence is blocked and cannot authorize U-03F.
 - U-03D passed and merged in PR #70 at `5ab69e2`. U-03E cold/warm public builds match exactly but qualification is blocked by BTTUSDT negative daily volume in 2019-01/02 and a duplicate AXSUSDT row on 2026-02-10.
 - U-03E truthful blocked evidence merged in PR #71 at `8c4db86`. It is a closed blocked milestone, not a qualification pass or active implementation task.
-- U-03F must not start while U-03E is blocked. U-04 remains unauthorized. Resolving the blocker requires source-owner evidence or a new ADR; silent deduplication or row deletion is prohibited.
-- V2 machine JSON manifests are the only future qualification authority. Markdown reports must never be qualification inputs.
+- U-03F must not start while V3 is blocked. U-04 remains unauthorized. The next task may adjudicate the KLAY conflict only; silent deduplication, row deletion, registry mutation and rerun are prohibited there.
+- V3 machine JSON manifests become active qualification authority only after a V3 pass. V1 is superseded, V2 is blocked historical evidence, and Markdown reports must never be qualification inputs.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.
 - M0 final status: accepted.
