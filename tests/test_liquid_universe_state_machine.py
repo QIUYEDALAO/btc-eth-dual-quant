@@ -23,17 +23,18 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_adr0014_conformance_review_requires_exact_draft_and_zero_authority(self):
+    def test_adr0014_adoption_requires_exact_review_and_limited_authority(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
-        draft = next(item for item in state["open_work"] if item.get("id") == "ADR-0014-DRAFT")
-        self.assertEqual(draft["status"], "independent_conformance_review_approve_draft_unadopted")
-        self.assertEqual(draft["head_sha"], "31c967c785128671769eb713baed265da8ae0f2a")
-        self.assertEqual(draft["conformance_review_verdict"], "approve")
-        self.assertEqual(draft["remaining_critical"], 0)
-        self.assertEqual(draft["remaining_high"], 0)
-        self.assertFalse(draft["adopted"])
+        adoption = next(item for item in state["open_work"] if item.get("id") == "ADR-0014-ADOPT")
+        self.assertEqual(adoption["status"], "accepted_pending_merge_for_v4_implementation_and_fixed_range_requalification_only")
+        self.assertEqual(adoption["reviewed_head_sha"], "31c967c785128671769eb713baed265da8ae0f2a")
+        self.assertEqual(adoption["conformance_review_verdict"], "approve")
+        self.assertTrue(adoption["adopted"])
+        self.assertFalse(adoption["implemented"])
+        self.assertFalse(adoption["registry_change"])
+        self.assertFalse(adoption["requalification"])
         self.assertFalse(any(item.get("id") == "ADR-0014-REVIEW" for item in state["open_work"]))
         review = next(
             item
@@ -50,7 +51,7 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
             for item in state["completed_milestones"]
             if item.get("phase") == "ADR-0014 required-changes independent conformance review"
         )
-        self.assertEqual(conformance["reviewed_head_sha"], draft["head_sha"])
+        self.assertEqual(conformance["reviewed_head_sha"], adoption["reviewed_head_sha"])
         self.assertEqual(conformance["verdict"], "approve")
         self.assertEqual(conformance["critical_findings"], 0)
         self.assertEqual(conformance["high_findings"], 0)
@@ -66,10 +67,10 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
 
         changed = copy.deepcopy(state)
         changed["open_work"] = [
-            item for item in changed["open_work"] if item.get("id") != "ADR-0014-DRAFT"
+            item for item in changed["open_work"] if item.get("id") != "ADR-0014-ADOPT"
         ]
         self.assertIn(
-            "current V2 task missing from open_work: ADR-0014-DRAFT",
+            "current V2 task missing from open_work: ADR-0014-ADOPT",
             validate(changed),
         )
 

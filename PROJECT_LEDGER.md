@@ -1467,3 +1467,13 @@ private exchange responses here.
 - Integrity: ADR content, policy model, fault matrix, MC conformance, changed-file list, prior review and KLAY adjudication evidence are hash-bound to the reviewed head.
 - Governance: PR #81 remains Open/Draft and unadopted. Approval is conformance evidence only; it does not mark the Draft Ready, merge it, create runtime authority, mutate V3/V4 contracts or registries, or authorize requalification.
 - Safety: U-03F, U-04, strategy, events, returns, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - ADR-0014 Conditional Adoption Prepared
+
+- Task ID: ADR-0014-ADOPT
+- Reviewed target: PR #81 exact head `31c967c785128671769eb713baed265da8ae0f2a`; MC-01 through Forbidden Shortcuts semantic hash `5c2113edbb7a69b52c1e78e3a6c3f223dac36d21769a9e1c5b815894945f8e99`.
+- Review evidence: PR #84 merged at `5c839cdf8b825e18546a5bdbfe3fd9ca1f2f1328`; conformance content hash `d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7`.
+- Adoption scope: generic V4 contract/policy/registry implementation, fixtures, fault injection and one fixed `2020-01` through `2026-06` public requalification, in A-B-C-D-E dependency order.
+- Integrity: the three reviewed docs-only JSON models remain byte-for-byte unchanged; adoption metadata and generated time are outside the frozen semantic identity.
+- Governance: implementation may start only after adoption merges. Requalification may start only after independent exact-head implementation review and implementation closeout.
+- Safety: U-03F, U-04, hypothesis, strategy, signals, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.

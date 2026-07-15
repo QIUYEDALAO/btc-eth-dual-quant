@@ -1,0 +1,68 @@
+{
+  "content": {
+    "adopted_semantic_body_hash": "5c2113edbb7a69b52c1e78e3a6c3f223dac36d21769a9e1c5b815894945f8e99",
+    "adoption_status": "accepted_for_v4_implementation_and_fixed_range_public_requalification_only",
+    "authorization_matrix": {
+      "api_or_trading": false,
+      "backtesting": false,
+      "event_scan": false,
+      "execution_live": false,
+      "fault_injection": true,
+      "fixed_range_v4_public_requalification": true,
+      "fixture_validation": true,
+      "hypothesis_preregistration": false,
+      "lifecycle_policy_adopted": true,
+      "m2": false,
+      "oos": false,
+      "returns": false,
+      "signals": false,
+      "strategy_code": false,
+      "u03f_execution": false,
+      "u04": false,
+      "v4_contract_implementation": true,
+      "v4_lifecycle_event_registry_implementation": true,
+      "v4_lifecycle_policy_implementation": true
+    },
+    "dependency_order": [
+      "A_conditional_adoption",
+      "B_v4_implementation",
+      "C_independent_implementation_review",
+      "D_fixed_range_public_requalification",
+      "E_governance_closeout"
+    ],
+    "model_bindings": {
+      "docs/decisions/proposals/adr0014_lifecycle_fault_matrix.json": {
+        "canonical_hash": "90beb680e568ab5bc045556ef728e34cd2827d5bf6005ebb524b6e38ed6a199f",
+        "raw_sha256": "c30bd234dc44257f302a641c15b10bcc94a4ef7641db41d588dfa4b884c7dfd3"
+      },
+      "docs/decisions/proposals/adr0014_lifecycle_policy_model.json": {
+        "canonical_hash": "bce56a1070ef0690b13cba492bf9619a456af2618be94eb2ecbe03ea7e709d97",
+        "raw_sha256": "6686fa5e666145b6fb3c9487f4f3749cb7d6cd6c95ff6448497d264fa64c2549"
+      },
+      "docs/decisions/proposals/adr0014_mc_conformance.json": {
+        "canonical_hash": "303e4d28ea27575ed7fa46e9d9da459e5c237a0390f36f9c9de9cfcd7c9821d2",
+        "raw_sha256": "8e93d333a0f0c32a14df6d151a7506bd1071d6d285997f4e3b7012b49f2edbdd"
+      }
+    },
+    "stop_condition": "No U-03F, U-04, research, strategy, returns, OOS, API/trading, execution/live or M2 authority is created."
+  },
+  "content_hash": "9c3572bee81edbf1efcc3ca523c9fdd10003adc5f3c3ac5a7211ad673405394a",
+  "generated_utc": "2026-07-15T19:42:53.683798Z",
+  "manifest_type": "adr0014_conditional_adoption",
+  "review_bindings": {
+    "conformance_review_content_hash": "d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7",
+    "conformance_review_merge_sha": "5c839cdf8b825e18546a5bdbfe3fd9ca1f2f1328",
+    "conformance_review_pr": 84,
+    "fault_matrix_hash": "90beb680e568ab5bc045556ef728e34cd2827d5bf6005ebb524b6e38ed6a199f",
+    "klay_adjudication_evidence_hash": "6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a",
+    "mc_conformance_hash": "303e4d28ea27575ed7fa46e9d9da459e5c237a0390f36f9c9de9cfcd7c9821d2",
+    "policy_model_hash": "bce56a1070ef0690b13cba492bf9619a456af2618be94eb2ecbe03ea7e709d97",
+    "prior_review_content_hash": "3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15",
+    "reviewed_adr_sha256": "a8c57bec6ee31342d0a9dd8e14deb4fd0ed28202aa838705d699522fa58d6790",
+    "reviewed_pr_base": "ab45ba4f12badab8a00faa0181b48c948643e223",
+    "reviewed_pr_head": "31c967c785128671769eb713baed265da8ae0f2a",
+    "reviewed_pr_number": 81,
+    "reviewed_semantic_body_hash": "5c2113edbb7a69b52c1e78e3a6c3f223dac36d21769a9e1c5b815894945f8e99"
+  },
+  "schema_version": 1
+}

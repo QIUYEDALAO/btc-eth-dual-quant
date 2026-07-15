@@ -67,6 +67,10 @@ ALLOWED = {
         "adr0014_required_changes_review_approve_pr81_draft_unadopted_no_requalification_no_strategy_no_m2",
     ): "ADR-0014-DRAFT",
     (
+        "ADR-0014 conditional adoption pending merge",
+        "adr0014_adopted_for_v4_implementation_requalification_only_no_strategy_no_m2",
+    ): "ADR-0014-ADOPT",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -105,7 +109,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "U-03F"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03F"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -123,7 +127,10 @@ def validate(state: dict) -> list[str]:
             failures.append("merged blocked U-03E must not remain in open_work")
     elif expected_task and not any(item.get("id") == expected_task for item in active):
         failures.append(f"current V2 task missing from open_work: {expected_task}")
-    if pair[0] == "ADR-0014 required-changes independent conformance review completed":
+    if pair[0] in {
+        "ADR-0014 required-changes independent conformance review completed",
+        "ADR-0014 conditional adoption pending merge",
+    }:
         milestones = [
             item
             for item in state.get("completed_milestones", [])
@@ -180,6 +187,17 @@ def validate(state: dict) -> list[str]:
                 failures.append("ADR-0014 prior review merge changed")
             if item.get("adopted") or item.get("implemented") or item.get("registry_change") or item.get("requalification"):
                 failures.append("ADR-0014 Draft gained authority")
+        if item.get("id") == "ADR-0014-ADOPT":
+            if item.get("head_sha") != "runtime_current_pr_head":
+                failures.append("ADR-0014 adoption head_sha must be runtime current PR metadata")
+            if item.get("reviewed_pr") != 81 or item.get("reviewed_head_sha") != "31c967c785128671769eb713baed265da8ae0f2a":
+                failures.append("ADR-0014 adoption reviewed target changed")
+            if item.get("conformance_review_pr") != 84 or item.get("conformance_review_verdict") != "approve":
+                failures.append("ADR-0014 adoption conformance evidence changed")
+            if item.get("adoption_content_hash") != "9c3572bee81edbf1efcc3ca523c9fdd10003adc5f3c3ac5a7211ad673405394a":
+                failures.append("ADR-0014 adoption manifest hash changed")
+            if item.get("adopted") is not True or item.get("implemented") or item.get("registry_change") or item.get("requalification"):
+                failures.append("ADR-0014 adoption authority widened beyond Stage A")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
         failures.append("U-04 authorized without a separate post-audit task")
     return failures

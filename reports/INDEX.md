@@ -89,6 +89,7 @@ No report in this repository currently approves live trading, paper trading with
 
 | Path | Phase | Status | Meaning | Trading approval |
 | --- | --- | --- | --- | --- |
+| `reports/expert/evidence/adr0014_adoption_manifest.json` | ADR-0014 conditional adoption | accepted_for_v4_implementation_and_fixed_range_public_requalification_only | Binds PR #81 exact reviewed semantics, PR #84 conformance evidence, unchanged docs-only models, limited authorization matrix and A-B-C-D-E dependency order. U-03F and all research/trading remain unauthorized. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_V2_HARDENING_REPORT.md` | U-03D V2 correctness hardening | implementation_pass_pending_public_requalification | V1 admission is superseded pending deterministic V2 public rebuild and independent audit; no hypothesis or outcome work is authorized. | no |
 | `docs/decisions/ADR-0012-liquid-universe-qualification-correctness-v2.md` | U-03D governance | accepted_for_correctness_hardening_only | Freezes V2 correctness and machine-authority rules without changing the ADR-0011 research choices. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_V2_QUALIFICATION_REPORT.md` | U-03E V2 public requalification | blocked_data_conflict_merged | PR #71 merged the deterministic cold/warm evidence at `8c4db86`; three checksum-verified official-source conflicts still block qualification and all downstream work. | no |
