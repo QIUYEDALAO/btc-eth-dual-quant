@@ -1339,3 +1339,15 @@ private exchange responses here.
 - Blockers: Checksum-verified BTTUSDT 2019-01/02 daily archives contain negative volume and the AXSUSDT 2026-02 daily archive duplicates 2026-02-10.
 - Governance: U-03E leaves `open_work` as a closed blocked milestone. U-03F and U-04 remain `not_authorized` until a future V2 public requalification passes under reviewed source evidence or a new data-policy ADR.
 - Safety: No strategy, event scan, return, backtest, OOS, API/trading, execution/live or M2 authorization was created.
+
+## 2026-07-15 - Liquid Universe V2 Source Conflicts Adjudicated
+
+- Task ID: U-03E-ADJ
+- Branch: `codex/u03e-source-conflict-adjudication`
+- PR / evidence commit: #73 / `b9d3a30a94ddaa24a753ba6fb966f8491ba34d69`
+- Evidence: `reports/m0/evidence/liquid_universe_v2/source_conflict_adjudication.json`, content hash `8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b`.
+- BTT result: Current official monthly checksums are unchanged. One January and four February rows have negative `base_volume`; official daily ZIPs and both public REST hosts agree on positive rows, with all other authoritative fields equal. The exact delta has a `2^64 / 1e8` overflow signature, but no algebraic repair is authorized.
+- AXS result: The current official monthly checksum is unchanged. Monthly and daily ZIPs each contain two byte-identical 2026-02-10 rows; both public REST hosts return one matching row. The conflict is not parser-created and is not waived by AXS having no V2 Top-15 membership month.
+- Decision: `new_policy_adr_required`. The V2 contract remains unchanged and fail closed; no U-03E rerun is authorized.
+- Next action: After this evidence merges, create a separate Draft ADR for a general archive-row conflict policy. Do not adopt it or rerun qualification without independent review and explicit approval.
+- Safety: U-03F/U-04, strategy, event scan, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
