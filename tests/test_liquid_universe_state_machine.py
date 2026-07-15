@@ -25,6 +25,11 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
 
     def test_merged_blocked_requalification_requires_closed_milestone(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
+        state["current_phase"] = "Liquid universe V2 public requalification blocked"
+        state["current_status"] = "liquid_universe_v2_requalification_blocked_data_conflict_no_strategy_no_m2"
+        state["open_work"] = [
+            item for item in state["open_work"] if item.get("id") != "U-03E-ADJ"
+        ]
         changed = copy.deepcopy(state)
         changed["completed_milestones"] = [
             item

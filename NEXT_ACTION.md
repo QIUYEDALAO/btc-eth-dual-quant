@@ -2,15 +2,16 @@
 
 ## Immediate Task
 
-PR #71 merged the truthful U-03E `blocked_data_conflict` evidence at
-`8c4db86`. The fixed 2020-01 through 2026-06 cold and warm builds are
-deterministic, but checksum-verified official source rows violate the frozen
-V2 contract.
+U-03E source-conflict adjudication is complete and pending review. The
+checksum-bound evidence classifies BTTUSDT 2019-01/02 as official
+monthly/daily conflicts and AXSUSDT 2026-02-10 as an exact identical official
+duplicate. Current remote checksums are unchanged and no project parser bug was
+found.
 
-Do not start U-03F. The only permitted follow-up is source-owner/public-archive
-evidence work or a separate ADR that explicitly changes the data policy. Silent
-deduplication, dropping negative-volume rows, changing rankings or using the V1
-Markdown report as qualification input is prohibited.
+The decision is `new_policy_adr_required`. Do not rerun U-03E under the current
+contract and do not start U-03F. After this evidence merges, the only permitted
+follow-up is a separate Draft ADR defining a general, asset- and time-neutral
+archive-conflict policy. The ADR must not be adopted automatically.
 
 U-04 remains unauthorized. No strategy is eligible for M2. Freqtrade
 backtesting, strategies, events, returns, OOS, APIs and trading remain blocked.
@@ -27,11 +28,14 @@ public evidence twice with different concurrency and identical outputs:
 - Excluded-category members / synthetic fills / replacements: 0 / 0 / 0.
 - Processing blockers: 3.
 
-The three blockers are official-source evidence, not ingestion failures:
+The adjudicated blockers are official-source evidence, not ingestion failures:
 
-- BTTUSDT 2019-01 daily ZIP contains negative base volume.
-- BTTUSDT 2019-02 daily ZIP contains negative base volume.
-- AXSUSDT 2026-02 monthly daily ZIP contains a duplicate 2026-02-10 row.
+- BTTUSDT 2019-01 monthly ZIP contains one negative `base_volume`; the official
+  daily ZIP and both public REST hosts agree on the positive row.
+- BTTUSDT 2019-02 monthly ZIP contains four negative `base_volume` rows; the
+  official daily ZIPs and both public REST hosts agree on positive rows.
+- AXSUSDT 2026-02 monthly and daily ZIPs both contain two byte-identical
+  2026-02-10 rows; both public REST hosts return one matching row.
 
 The relevant files passed official checksum verification. The V2 result is
 therefore `blocked`, as required by ADR-0012. V1 remains superseded historical
@@ -59,12 +63,11 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Preserve the merged deterministic U-03E blocked evidence.
-2. Seek official/source-owner clarification or corrected public archives for
-   the exact three blockers.
-3. If the project intentionally wants a different duplicate/invalid-volume
-   policy, create a new ADR and rerun U-03E from scratch under a new contract
-   version.
+1. Review and merge the checksum-bound U-03E adjudication evidence.
+2. Create a separate Draft ADR for a general official-archive row-conflict
+   policy; do not modify the current contract or machine authority.
+3. Only after independent ADR review and explicit adoption may a new contract
+   version be implemented and U-03E rerun from scratch.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.

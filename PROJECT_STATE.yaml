@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T02:42:17Z"
-current_phase: Liquid universe V2 public requalification blocked
-current_status: liquid_universe_v2_requalification_blocked_data_conflict_no_strategy_no_m2
+last_updated_utc: "2026-07-15T03:50:19Z"
+current_phase: Liquid universe V2 source conflict adjudication pending review
+current_status: liquid_universe_v2_source_conflict_adjudication_new_policy_adr_required_no_strategy_no_m2
 completed_milestones:
   - phase: Liquid universe V2 public requalification
     status: blocked_data_conflict
@@ -189,6 +189,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-03E-ADJ
+    phase: Liquid universe V2 source conflict adjudication
+    status: new_policy_adr_required_pending_review
+    branch: codex/u03e-source-conflict-adjudication
+    pr: pending
+    head_sha: pending
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m0/evidence/liquid_universe_v2/source_conflict_adjudication.json
+    blocker: "Current V2 policy cannot replace invalid official monthly rows or collapse exact official duplicates; a separately reviewed versioned ADR is required before any rerun."
   - id: U-03F
     phase: Liquid universe V2 independent audit
     status: not_authorized
@@ -261,6 +270,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - Review and merge the U-03E source-conflict adjudication evidence without changing the V2 contract.
+  - After adjudication evidence merges, create a separate Draft ADR for a general official-archive row-conflict policy; do not adopt it automatically.
   - Public-source diagnostics may investigate the exact U-03E official-archive conflicts without private data or outcomes.
   - Cross-sectional design review remains blocked until U-03E and U-03F pass in dependency order.
   - Preserve the deterministic blocked U-03E evidence and resolve the three checksum-verified official-source conflicts through source-owner evidence or a new data-policy ADR.
@@ -306,6 +317,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V2_SOURCE_CONFLICT_ADJUDICATION_REPORT.md
+    phase: Liquid universe V2 source conflict adjudication
+    status: new_policy_adr_required
+    status_marker: "- Overall decision: new_policy_adr_required"
   - path: reports/m0/LIQUID_SPOT_UNIVERSE_V2_QUALIFICATION_REPORT.md
     phase: Liquid universe V2 public requalification
     status: blocked_data_conflict

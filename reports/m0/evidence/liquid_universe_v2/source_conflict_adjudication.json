@@ -1,0 +1,1302 @@
+{
+  "content": {
+    "authorizations": {
+      "api_or_trading": false,
+      "backtesting": false,
+      "event_scan": false,
+      "hypothesis_preregistration": false,
+      "m2": false,
+      "oos_opened": false,
+      "returns": false,
+      "strategy_code": false
+    },
+    "conflicts": [
+      {
+        "adjudication_status": "confirmed_requires_general_data_policy",
+        "affected_rows": [
+          {
+            "line_number": 1,
+            "next_raw_fields": null,
+            "parsed": {
+              "base_volume": "-61596941261.09551616",
+              "close": "0.00047640",
+              "close_time": "1548979199999",
+              "close_time_ms": 1548979199999,
+              "high": "0.00060000",
+              "ignore": "0",
+              "low": "0.00031990",
+              "negative_fields": [
+                "base_volume"
+              ],
+              "open": "0.00040000",
+              "open_time": "1548892800000",
+              "open_time_ms": 1548892800000,
+              "quote_asset_volume": "62154329.51276230",
+              "taker_buy_base_volume": "55075450629.00000000",
+              "taker_buy_quote_volume": "27674180.32962640",
+              "timestamp_unit": "milliseconds",
+              "trade_count": "81569"
+            },
+            "previous_raw_fields": null,
+            "raw_fields": [
+              "1548892800000",
+              "0.00040000",
+              "0.00060000",
+              "0.00031990",
+              "0.00047640",
+              "-61596941261.09551616",
+              "1548979199999",
+              "62154329.51276230",
+              "81569",
+              "55075450629.00000000",
+              "27674180.32962640",
+              "0"
+            ],
+            "row_sha256": "bb97429c8567ac3006469af838780c2d646bbf0c139f458c489dbdb81da11a16"
+          }
+        ],
+        "affected_timestamps": [
+          "2019-01-31T00:00:00+00:00"
+        ],
+        "archive_month": "2019-01",
+        "classification": "official_monthly_daily_conflict",
+        "comparisons": [
+          {
+            "affected_timestamp": "2019-01-31T00:00:00+00:00",
+            "monthly_daily_comparison": {
+              "authoritative_fields_equal": false,
+              "differing_fields": [
+                "base_volume"
+              ],
+              "left_row_sha256": "bb97429c8567ac3006469af838780c2d646bbf0c139f458c489dbdb81da11a16",
+              "right_row_sha256": "fb41503772502b0addebe9ecee7fd3c4c6c4d21bb33165c4a7d101e170b7304d"
+            },
+            "official_daily_archive": {
+              "actual_sha256": "573a02239f1d674692efe92658e3810dffe5cb75889f3d0f438c1d6cf0c6c708",
+              "canonical_key": "data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-01-31.zip",
+              "canonical_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-01-31.zip",
+              "checksum_file_content": "573a02239f1d674692efe92658e3810dffe5cb75889f3d0f438c1d6cf0c6c708  BTTUSDT-1d-2019-01-31.zip",
+              "checksum_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-01-31.zip.CHECKSUM",
+              "crc_valid": true,
+              "csv_column_count": 12,
+              "csv_filename": "BTTUSDT-1d-2019-01-31.csv",
+              "expected_sha256": "573a02239f1d674692efe92658e3810dffe5cb75889f3d0f438c1d6cf0c6c708",
+              "header_rows": 0,
+              "matches": true,
+              "row_count": 1,
+              "zip_byte_size": 234,
+              "zip_sha256": "573a02239f1d674692efe92658e3810dffe5cb75889f3d0f438c1d6cf0c6c708"
+            },
+            "official_daily_rows": [
+              [
+                "1548892800000",
+                "0.00040000",
+                "0.00060000",
+                "0.00031990",
+                "0.00047640",
+                "122870499476.00000000",
+                "1548979199999",
+                "62154329.51276230",
+                "81569",
+                "55075450629.00000000",
+                "27674180.32962640",
+                "0"
+              ]
+            ],
+            "public_rest": [
+              {
+                "availability": "available",
+                "host": "api.binance.com",
+                "monthly_comparison": {
+                  "authoritative_fields_equal": false,
+                  "differing_fields": [
+                    "base_volume"
+                  ],
+                  "left_row_sha256": "bb97429c8567ac3006469af838780c2d646bbf0c139f458c489dbdb81da11a16",
+                  "right_row_sha256": "fb41503772502b0addebe9ecee7fd3c4c6c4d21bb33165c4a7d101e170b7304d"
+                },
+                "payload_sha256": "dab24b5f245c69413e33e06caa4acddcb31e831ac4cedb4d458a206266085a21",
+                "row_count": 1,
+                "rows": [
+                  [
+                    "1548892800000",
+                    "0.00040000",
+                    "0.00060000",
+                    "0.00031990",
+                    "0.00047640",
+                    "122870499476.00000000",
+                    "1548979199999",
+                    "62154329.51276230",
+                    "81569",
+                    "55075450629.00000000",
+                    "27674180.32962640",
+                    "0"
+                  ]
+                ],
+                "url": "https://api.binance.com/api/v3/klines?symbol=BTTUSDT&interval=1d&startTime=1548892800000&endTime=1548979199999&limit=10"
+              },
+              {
+                "availability": "available",
+                "host": "data-api.binance.vision",
+                "monthly_comparison": {
+                  "authoritative_fields_equal": false,
+                  "differing_fields": [
+                    "base_volume"
+                  ],
+                  "left_row_sha256": "bb97429c8567ac3006469af838780c2d646bbf0c139f458c489dbdb81da11a16",
+                  "right_row_sha256": "fb41503772502b0addebe9ecee7fd3c4c6c4d21bb33165c4a7d101e170b7304d"
+                },
+                "payload_sha256": "dab24b5f245c69413e33e06caa4acddcb31e831ac4cedb4d458a206266085a21",
+                "row_count": 1,
+                "rows": [
+                  [
+                    "1548892800000",
+                    "0.00040000",
+                    "0.00060000",
+                    "0.00031990",
+                    "0.00047640",
+                    "122870499476.00000000",
+                    "1548979199999",
+                    "62154329.51276230",
+                    "81569",
+                    "55075450629.00000000",
+                    "27674180.32962640",
+                    "0"
+                  ]
+                ],
+                "url": "https://data-api.binance.vision/api/v3/klines?symbol=BTTUSDT&interval=1d&startTime=1548892800000&endTime=1548979199999&limit=10"
+              }
+            ],
+            "unsigned_64bit_eight_decimal_overflow_signature": true
+          }
+        ],
+        "conflict_id": "U03E-BTTUSDT-1D-2019-01-NEGATIVE-BASE-VOLUME",
+        "csv_schema": {
+          "column_order": [
+            "open_time",
+            "open",
+            "high",
+            "low",
+            "close",
+            "base_volume",
+            "close_time",
+            "quote_asset_volume",
+            "trade_count",
+            "taker_buy_base_volume",
+            "taker_buy_quote_volume",
+            "ignore"
+          ],
+          "columns": 12,
+          "header_rows": 0,
+          "historical_format_difference": false,
+          "same_month_symbol_comparator": {
+            "canonical_key": "data/spot/monthly/klines/BTCUSDT/1d/BTCUSDT-1d-2019-01.zip",
+            "csv_column_count": 12,
+            "header_rows": 0,
+            "symbol": "BTCUSDT",
+            "timestamp_unit": "milliseconds",
+            "zip_sha256": "445904985d35f847c5c0cb4dc582c10e07967aaa6a424ee30373194b2f815519"
+          },
+          "timestamp_unit": "milliseconds"
+        },
+        "current_remote_checksum_changed": false,
+        "duplicate_type": "not_duplicate",
+        "findings": {
+          "affected_timestamp_duplicate_count": 1,
+          "daily_and_two_rest_hosts_agree_on_positive_volume": true,
+          "later_asset_migration_used_as_authority": false,
+          "legal_same_timestamp_alternative_found": false,
+          "negative_field": "base_volume",
+          "official_archive_republished": false,
+          "other_authoritative_fields_valid": true,
+          "parser_schema_bug_found": false,
+          "same_month_schema_matches": true,
+          "unsigned_64bit_eight_decimal_overflow_signature_all_rows": true
+        },
+        "interval": "1d",
+        "local_cache_sha256": "304382601fa91cd11ecdda83442850b35dd8c072875ef96d9871808179c4c724",
+        "monthly_archive": {
+          "actual_sha256": "304382601fa91cd11ecdda83442850b35dd8c072875ef96d9871808179c4c724",
+          "canonical_key": "data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-01.zip",
+          "canonical_url": "https://data.binance.vision/data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-01.zip",
+          "checksum_file_content": "304382601fa91cd11ecdda83442850b35dd8c072875ef96d9871808179c4c724  BTTUSDT-1d-2019-01.zip",
+          "checksum_url": "https://data.binance.vision/data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-01.zip.CHECKSUM",
+          "crc_valid": true,
+          "csv_column_count": 12,
+          "csv_filename": "BTTUSDT-1d-2019-01.csv",
+          "expected_sha256": "304382601fa91cd11ecdda83442850b35dd8c072875ef96d9871808179c4c724",
+          "header_rows": 0,
+          "matches": true,
+          "row_count": 1,
+          "zip_byte_size": 232,
+          "zip_sha256": "304382601fa91cd11ecdda83442850b35dd8c072875ef96d9871808179c4c724"
+        },
+        "qualification_decision": "blocked",
+        "same_contract_rerun_allowed": false,
+        "symbol": "BTTUSDT"
+      },
+      {
+        "adjudication_status": "confirmed_requires_general_data_policy",
+        "affected_rows": [
+          {
+            "line_number": 4,
+            "next_raw_fields": [
+              "1549324800000",
+              "0.00086520",
+              "0.00128430",
+              "0.00086520",
+              "0.00101830",
+              "-5990281771.09551616",
+              "1549411199999",
+              "191790754.23974620",
+              "346174",
+              "84693921491.00000000",
+              "90975211.88162550",
+              "0"
+            ],
+            "parsed": {
+              "base_volume": "-40903096150.09551616",
+              "close": "0.00086630",
+              "close_time": "1549324799999",
+              "close_time_ms": 1549324799999,
+              "high": "0.00095360",
+              "ignore": "0",
+              "low": "0.00061070",
+              "negative_fields": [
+                "base_volume"
+              ],
+              "open": "0.00061400",
+              "open_time": "1549238400000",
+              "open_time_ms": 1549238400000,
+              "quote_asset_volume": "110277831.58541880",
+              "taker_buy_base_volume": "70054616493.00000000",
+              "taker_buy_quote_volume": "53850055.79687110",
+              "timestamp_unit": "milliseconds",
+              "trade_count": "212350"
+            },
+            "previous_raw_fields": [
+              "1549152000000",
+              "0.00042910",
+              "0.00062700",
+              "0.00042380",
+              "0.00061300",
+              "59498027646.00000000",
+              "1549238399999",
+              "32069223.82780180",
+              "68162",
+              "30374609755.00000000",
+              "16337680.10892490",
+              "0"
+            ],
+            "raw_fields": [
+              "1549238400000",
+              "0.00061400",
+              "0.00095360",
+              "0.00061070",
+              "0.00086630",
+              "-40903096150.09551616",
+              "1549324799999",
+              "110277831.58541880",
+              "212350",
+              "70054616493.00000000",
+              "53850055.79687110",
+              "0"
+            ],
+            "row_sha256": "5d2f72e47674c141d45a6ec71ad09ebd3a35c8cd91e85243709a1349e1c1a70a"
+          },
+          {
+            "line_number": 5,
+            "next_raw_fields": [
+              "1549411200000",
+              "0.00101820",
+              "0.00105750",
+              "0.00085700",
+              "0.00096750",
+              "-91425140619.09551616",
+              "1549497599999",
+              "88267214.69020920",
+              "190995",
+              "43873513218.00000000",
+              "41634912.46783460",
+              "0"
+            ],
+            "parsed": {
+              "base_volume": "-5990281771.09551616",
+              "close": "0.00101830",
+              "close_time": "1549411199999",
+              "close_time_ms": 1549411199999,
+              "high": "0.00128430",
+              "ignore": "0",
+              "low": "0.00086520",
+              "negative_fields": [
+                "base_volume"
+              ],
+              "open": "0.00086520",
+              "open_time": "1549324800000",
+              "open_time_ms": 1549324800000,
+              "quote_asset_volume": "191790754.23974620",
+              "taker_buy_base_volume": "84693921491.00000000",
+              "taker_buy_quote_volume": "90975211.88162550",
+              "timestamp_unit": "milliseconds",
+              "trade_count": "346174"
+            },
+            "previous_raw_fields": [
+              "1549238400000",
+              "0.00061400",
+              "0.00095360",
+              "0.00061070",
+              "0.00086630",
+              "-40903096150.09551616",
+              "1549324799999",
+              "110277831.58541880",
+              "212350",
+              "70054616493.00000000",
+              "53850055.79687110",
+              "0"
+            ],
+            "raw_fields": [
+              "1549324800000",
+              "0.00086520",
+              "0.00128430",
+              "0.00086520",
+              "0.00101830",
+              "-5990281771.09551616",
+              "1549411199999",
+              "191790754.23974620",
+              "346174",
+              "84693921491.00000000",
+              "90975211.88162550",
+              "0"
+            ],
+            "row_sha256": "74483cfd2950dd2b06e79b0ace65a830789029a6988ba7bc8728d922ef29501a"
+          },
+          {
+            "line_number": 6,
+            "next_raw_fields": [
+              "1549497600000",
+              "0.00096710",
+              "0.00100780",
+              "0.00090030",
+              "0.00092000",
+              "36759562564.00000000",
+              "1549583999999",
+              "34701349.91452770",
+              "81893",
+              "17146183900.00000000",
+              "16209847.82345100",
+              "0"
+            ],
+            "parsed": {
+              "base_volume": "-91425140619.09551616",
+              "close": "0.00096750",
+              "close_time": "1549497599999",
+              "close_time_ms": 1549497599999,
+              "high": "0.00105750",
+              "ignore": "0",
+              "low": "0.00085700",
+              "negative_fields": [
+                "base_volume"
+              ],
+              "open": "0.00101820",
+              "open_time": "1549411200000",
+              "open_time_ms": 1549411200000,
+              "quote_asset_volume": "88267214.69020920",
+              "taker_buy_base_volume": "43873513218.00000000",
+              "taker_buy_quote_volume": "41634912.46783460",
+              "timestamp_unit": "milliseconds",
+              "trade_count": "190995"
+            },
+            "previous_raw_fields": [
+              "1549324800000",
+              "0.00086520",
+              "0.00128430",
+              "0.00086520",
+              "0.00101830",
+              "-5990281771.09551616",
+              "1549411199999",
+              "191790754.23974620",
+              "346174",
+              "84693921491.00000000",
+              "90975211.88162550",
+              "0"
+            ],
+            "raw_fields": [
+              "1549411200000",
+              "0.00101820",
+              "0.00105750",
+              "0.00085700",
+              "0.00096750",
+              "-91425140619.09551616",
+              "1549497599999",
+              "88267214.69020920",
+              "190995",
+              "43873513218.00000000",
+              "41634912.46783460",
+              "0"
+            ],
+            "row_sha256": "beabe38f4638561b9e35247e254461974abb2407c07167fc2f4010a069521ef8"
+          },
+          {
+            "line_number": 12,
+            "next_raw_fields": [
+              "1550016000000",
+              "0.00102080",
+              "0.00108520",
+              "0.00096030",
+              "0.00100140",
+              "67193273596.00000000",
+              "1550102399999",
+              "68321620.75988890",
+              "127101",
+              "30585764792.00000000",
+              "31170725.80963530",
+              "0"
+            ],
+            "parsed": {
+              "base_volume": "-86918434254.09551616",
+              "close": "0.00102170",
+              "close_time": "1550015999999",
+              "close_time_ms": 1550015999999,
+              "high": "0.00116500",
+              "ignore": "0",
+              "low": "0.00086370",
+              "negative_fields": [
+                "base_volume"
+              ],
+              "open": "0.00086820",
+              "open_time": "1549929600000",
+              "open_time_ms": 1549929600000,
+              "quote_asset_volume": "99391188.38483510",
+              "taker_buy_base_volume": "46603004102.00000000",
+              "taker_buy_quote_volume": "47509114.84409810",
+              "timestamp_unit": "milliseconds",
+              "trade_count": "188301"
+            },
+            "previous_raw_fields": [
+              "1549843200000",
+              "0.00087730",
+              "0.00091590",
+              "0.00079200",
+              "0.00086800",
+              "44008782719.00000000",
+              "1549929599999",
+              "37545215.70958960",
+              "92090",
+              "20367468229.00000000",
+              "17405731.61834840",
+              "0"
+            ],
+            "raw_fields": [
+              "1549929600000",
+              "0.00086820",
+              "0.00116500",
+              "0.00086370",
+              "0.00102170",
+              "-86918434254.09551616",
+              "1550015999999",
+              "99391188.38483510",
+              "188301",
+              "46603004102.00000000",
+              "47509114.84409810",
+              "0"
+            ],
+            "row_sha256": "e0da934841b9500bbc476de7456daeca57bbe67d15c9bfc513185f3bf1698185"
+          }
+        ],
+        "affected_timestamps": [
+          "2019-02-04T00:00:00+00:00",
+          "2019-02-05T00:00:00+00:00",
+          "2019-02-06T00:00:00+00:00",
+          "2019-02-12T00:00:00+00:00"
+        ],
+        "archive_month": "2019-02",
+        "classification": "official_monthly_daily_conflict",
+        "comparisons": [
+          {
+            "affected_timestamp": "2019-02-04T00:00:00+00:00",
+            "monthly_daily_comparison": {
+              "authoritative_fields_equal": false,
+              "differing_fields": [
+                "base_volume"
+              ],
+              "left_row_sha256": "5d2f72e47674c141d45a6ec71ad09ebd3a35c8cd91e85243709a1349e1c1a70a",
+              "right_row_sha256": "de4de8eea6ac716a7e6da5cbe5557532c0b9d1d35b4289dbe98fe1986f8c23bf"
+            },
+            "official_daily_archive": {
+              "actual_sha256": "2911d1124343685e2cbe2ca598ef26cc451e5de174c37655efad39f31ee74b3f",
+              "canonical_key": "data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-04.zip",
+              "canonical_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-04.zip",
+              "checksum_file_content": "2911d1124343685e2cbe2ca598ef26cc451e5de174c37655efad39f31ee74b3f  BTTUSDT-1d-2019-02-04.zip",
+              "checksum_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-04.zip.CHECKSUM",
+              "crc_valid": true,
+              "csv_column_count": 12,
+              "csv_filename": "BTTUSDT-1d-2019-02-04.csv",
+              "expected_sha256": "2911d1124343685e2cbe2ca598ef26cc451e5de174c37655efad39f31ee74b3f",
+              "header_rows": 0,
+              "matches": true,
+              "row_count": 1,
+              "zip_byte_size": 237,
+              "zip_sha256": "2911d1124343685e2cbe2ca598ef26cc451e5de174c37655efad39f31ee74b3f"
+            },
+            "official_daily_rows": [
+              [
+                "1549238400000",
+                "0.00061400",
+                "0.00095360",
+                "0.00061070",
+                "0.00086630",
+                "143564344587.00000000",
+                "1549324799999",
+                "110277831.58541880",
+                "212350",
+                "70054616493.00000000",
+                "53850055.79687110",
+                "0"
+              ]
+            ],
+            "public_rest": [
+              {
+                "availability": "available",
+                "host": "api.binance.com",
+                "monthly_comparison": {
+                  "authoritative_fields_equal": false,
+                  "differing_fields": [
+                    "base_volume"
+                  ],
+                  "left_row_sha256": "5d2f72e47674c141d45a6ec71ad09ebd3a35c8cd91e85243709a1349e1c1a70a",
+                  "right_row_sha256": "de4de8eea6ac716a7e6da5cbe5557532c0b9d1d35b4289dbe98fe1986f8c23bf"
+                },
+                "payload_sha256": "56943ad2e18ad11c617450745789a475e470b24c4c134ecbe4c69b69b25d2be1",
+                "row_count": 1,
+                "rows": [
+                  [
+                    "1549238400000",
+                    "0.00061400",
+                    "0.00095360",
+                    "0.00061070",
+                    "0.00086630",
+                    "143564344587.00000000",
+                    "1549324799999",
+                    "110277831.58541880",
+                    "212350",
+                    "70054616493.00000000",
+                    "53850055.79687110",
+                    "0"
+                  ]
+                ],
+                "url": "https://api.binance.com/api/v3/klines?symbol=BTTUSDT&interval=1d&startTime=1549238400000&endTime=1549324799999&limit=10"
+              },
+              {
+                "availability": "available",
+                "host": "data-api.binance.vision",
+                "monthly_comparison": {
+                  "authoritative_fields_equal": false,
+                  "differing_fields": [
+                    "base_volume"
+                  ],
+                  "left_row_sha256": "5d2f72e47674c141d45a6ec71ad09ebd3a35c8cd91e85243709a1349e1c1a70a",
+                  "right_row_sha256": "de4de8eea6ac716a7e6da5cbe5557532c0b9d1d35b4289dbe98fe1986f8c23bf"
+                },
+                "payload_sha256": "56943ad2e18ad11c617450745789a475e470b24c4c134ecbe4c69b69b25d2be1",
+                "row_count": 1,
+                "rows": [
+                  [
+                    "1549238400000",
+                    "0.00061400",
+                    "0.00095360",
+                    "0.00061070",
+                    "0.00086630",
+                    "143564344587.00000000",
+                    "1549324799999",
+                    "110277831.58541880",
+                    "212350",
+                    "70054616493.00000000",
+                    "53850055.79687110",
+                    "0"
+                  ]
+                ],
+                "url": "https://data-api.binance.vision/api/v3/klines?symbol=BTTUSDT&interval=1d&startTime=1549238400000&endTime=1549324799999&limit=10"
+              }
+            ],
+            "unsigned_64bit_eight_decimal_overflow_signature": true
+          },
+          {
+            "affected_timestamp": "2019-02-05T00:00:00+00:00",
+            "monthly_daily_comparison": {
+              "authoritative_fields_equal": false,
+              "differing_fields": [
+                "base_volume"
+              ],
+              "left_row_sha256": "74483cfd2950dd2b06e79b0ace65a830789029a6988ba7bc8728d922ef29501a",
+              "right_row_sha256": "dbca42677ab120fb6063f106f3dd4422f2692cc7228a382e472a7ff7c1e4baba"
+            },
+            "official_daily_archive": {
+              "actual_sha256": "505d0c5418d5a42b598fa77cefc606971171808b03ba8ee0f37f2f8c6364d761",
+              "canonical_key": "data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-05.zip",
+              "canonical_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-05.zip",
+              "checksum_file_content": "505d0c5418d5a42b598fa77cefc606971171808b03ba8ee0f37f2f8c6364d761  BTTUSDT-1d-2019-02-05.zip",
+              "checksum_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-05.zip.CHECKSUM",
+              "crc_valid": true,
+              "csv_column_count": 12,
+              "csv_filename": "BTTUSDT-1d-2019-02-05.csv",
+              "expected_sha256": "505d0c5418d5a42b598fa77cefc606971171808b03ba8ee0f37f2f8c6364d761",
+              "header_rows": 0,
+              "matches": true,
+              "row_count": 1,
+              "zip_byte_size": 236,
+              "zip_sha256": "505d0c5418d5a42b598fa77cefc606971171808b03ba8ee0f37f2f8c6364d761"
+            },
+            "official_daily_rows": [
+              [
+                "1549324800000",
+                "0.00086520",
+                "0.00128430",
+                "0.00086520",
+                "0.00101830",
+                "178477158966.00000000",
+                "1549411199999",
+                "191790754.23974620",
+                "346174",
+                "84693921491.00000000",
+                "90975211.88162550",
+                "0"
+              ]
+            ],
+            "public_rest": [
+              {
+                "availability": "available",
+                "host": "api.binance.com",
+                "monthly_comparison": {
+                  "authoritative_fields_equal": false,
+                  "differing_fields": [
+                    "base_volume"
+                  ],
+                  "left_row_sha256": "74483cfd2950dd2b06e79b0ace65a830789029a6988ba7bc8728d922ef29501a",
+                  "right_row_sha256": "dbca42677ab120fb6063f106f3dd4422f2692cc7228a382e472a7ff7c1e4baba"
+                },
+                "payload_sha256": "e8b1abfcef3a2480aca1d3bbeda1afe4bedd1df4b07e66480e744b87a5b7736d",
+                "row_count": 1,
+                "rows": [
+                  [
+                    "1549324800000",
+                    "0.00086520",
+                    "0.00128430",
+                    "0.00086520",
+                    "0.00101830",
+                    "178477158966.00000000",
+                    "1549411199999",
+                    "191790754.23974620",
+                    "346174",
+                    "84693921491.00000000",
+                    "90975211.88162550",
+                    "0"
+                  ]
+                ],
+                "url": "https://api.binance.com/api/v3/klines?symbol=BTTUSDT&interval=1d&startTime=1549324800000&endTime=1549411199999&limit=10"
+              },
+              {
+                "availability": "available",
+                "host": "data-api.binance.vision",
+                "monthly_comparison": {
+                  "authoritative_fields_equal": false,
+                  "differing_fields": [
+                    "base_volume"
+                  ],
+                  "left_row_sha256": "74483cfd2950dd2b06e79b0ace65a830789029a6988ba7bc8728d922ef29501a",
+                  "right_row_sha256": "dbca42677ab120fb6063f106f3dd4422f2692cc7228a382e472a7ff7c1e4baba"
+                },
+                "payload_sha256": "e8b1abfcef3a2480aca1d3bbeda1afe4bedd1df4b07e66480e744b87a5b7736d",
+                "row_count": 1,
+                "rows": [
+                  [
+                    "1549324800000",
+                    "0.00086520",
+                    "0.00128430",
+                    "0.00086520",
+                    "0.00101830",
+                    "178477158966.00000000",
+                    "1549411199999",
+                    "191790754.23974620",
+                    "346174",
+                    "84693921491.00000000",
+                    "90975211.88162550",
+                    "0"
+                  ]
+                ],
+                "url": "https://data-api.binance.vision/api/v3/klines?symbol=BTTUSDT&interval=1d&startTime=1549324800000&endTime=1549411199999&limit=10"
+              }
+            ],
+            "unsigned_64bit_eight_decimal_overflow_signature": true
+          },
+          {
+            "affected_timestamp": "2019-02-06T00:00:00+00:00",
+            "monthly_daily_comparison": {
+              "authoritative_fields_equal": false,
+              "differing_fields": [
+                "base_volume"
+              ],
+              "left_row_sha256": "beabe38f4638561b9e35247e254461974abb2407c07167fc2f4010a069521ef8",
+              "right_row_sha256": "90f324251c8b93ba9d1ad74e18f3962f688fb5b8e3e62d762b6875d163e649fb"
+            },
+            "official_daily_archive": {
+              "actual_sha256": "2cb572432df110e4d777ce7e7109ec8bab5bcf00281b864708b7784aea086f19",
+              "canonical_key": "data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-06.zip",
+              "canonical_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-06.zip",
+              "checksum_file_content": "2cb572432df110e4d777ce7e7109ec8bab5bcf00281b864708b7784aea086f19  BTTUSDT-1d-2019-02-06.zip",
+              "checksum_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-06.zip.CHECKSUM",
+              "crc_valid": true,
+              "csv_column_count": 12,
+              "csv_filename": "BTTUSDT-1d-2019-02-06.csv",
+              "expected_sha256": "2cb572432df110e4d777ce7e7109ec8bab5bcf00281b864708b7784aea086f19",
+              "header_rows": 0,
+              "matches": true,
+              "row_count": 1,
+              "zip_byte_size": 235,
+              "zip_sha256": "2cb572432df110e4d777ce7e7109ec8bab5bcf00281b864708b7784aea086f19"
+            },
+            "official_daily_rows": [
+              [
+                "1549411200000",
+                "0.00101820",
+                "0.00105750",
+                "0.00085700",
+                "0.00096750",
+                "93042300118.00000000",
+                "1549497599999",
+                "88267214.69020920",
+                "190995",
+                "43873513218.00000000",
+                "41634912.46783460",
+                "0"
+              ]
+            ],
+            "public_rest": [
+              {
+                "availability": "available",
+                "host": "api.binance.com",
+                "monthly_comparison": {
+                  "authoritative_fields_equal": false,
+                  "differing_fields": [
+                    "base_volume"
+                  ],
+                  "left_row_sha256": "beabe38f4638561b9e35247e254461974abb2407c07167fc2f4010a069521ef8",
+                  "right_row_sha256": "90f324251c8b93ba9d1ad74e18f3962f688fb5b8e3e62d762b6875d163e649fb"
+                },
+                "payload_sha256": "671d0932801f9d9a1b53200b37a209d7c9a974ede25894a27365b4e17a6bf197",
+                "row_count": 1,
+                "rows": [
+                  [
+                    "1549411200000",
+                    "0.00101820",
+                    "0.00105750",
+                    "0.00085700",
+                    "0.00096750",
+                    "93042300118.00000000",
+                    "1549497599999",
+                    "88267214.69020920",
+                    "190995",
+                    "43873513218.00000000",
+                    "41634912.46783460",
+                    "0"
+                  ]
+                ],
+                "url": "https://api.binance.com/api/v3/klines?symbol=BTTUSDT&interval=1d&startTime=1549411200000&endTime=1549497599999&limit=10"
+              },
+              {
+                "availability": "available",
+                "host": "data-api.binance.vision",
+                "monthly_comparison": {
+                  "authoritative_fields_equal": false,
+                  "differing_fields": [
+                    "base_volume"
+                  ],
+                  "left_row_sha256": "beabe38f4638561b9e35247e254461974abb2407c07167fc2f4010a069521ef8",
+                  "right_row_sha256": "90f324251c8b93ba9d1ad74e18f3962f688fb5b8e3e62d762b6875d163e649fb"
+                },
+                "payload_sha256": "671d0932801f9d9a1b53200b37a209d7c9a974ede25894a27365b4e17a6bf197",
+                "row_count": 1,
+                "rows": [
+                  [
+                    "1549411200000",
+                    "0.00101820",
+                    "0.00105750",
+                    "0.00085700",
+                    "0.00096750",
+                    "93042300118.00000000",
+                    "1549497599999",
+                    "88267214.69020920",
+                    "190995",
+                    "43873513218.00000000",
+                    "41634912.46783460",
+                    "0"
+                  ]
+                ],
+                "url": "https://data-api.binance.vision/api/v3/klines?symbol=BTTUSDT&interval=1d&startTime=1549411200000&endTime=1549497599999&limit=10"
+              }
+            ],
+            "unsigned_64bit_eight_decimal_overflow_signature": true
+          },
+          {
+            "affected_timestamp": "2019-02-12T00:00:00+00:00",
+            "monthly_daily_comparison": {
+              "authoritative_fields_equal": false,
+              "differing_fields": [
+                "base_volume"
+              ],
+              "left_row_sha256": "e0da934841b9500bbc476de7456daeca57bbe67d15c9bfc513185f3bf1698185",
+              "right_row_sha256": "6c47e55c539641f55aede4321216c8f20bdb956638b9869f12b25b7bfa7b5d10"
+            },
+            "official_daily_archive": {
+              "actual_sha256": "b59fc6d1d5aad3953499864f9cf3a5653d05e18330293b93d974b0c3a6eb1676",
+              "canonical_key": "data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-12.zip",
+              "canonical_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-12.zip",
+              "checksum_file_content": "b59fc6d1d5aad3953499864f9cf3a5653d05e18330293b93d974b0c3a6eb1676  BTTUSDT-1d-2019-02-12.zip",
+              "checksum_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02-12.zip.CHECKSUM",
+              "crc_valid": true,
+              "csv_column_count": 12,
+              "csv_filename": "BTTUSDT-1d-2019-02-12.csv",
+              "expected_sha256": "b59fc6d1d5aad3953499864f9cf3a5653d05e18330293b93d974b0c3a6eb1676",
+              "header_rows": 0,
+              "matches": true,
+              "row_count": 1,
+              "zip_byte_size": 235,
+              "zip_sha256": "b59fc6d1d5aad3953499864f9cf3a5653d05e18330293b93d974b0c3a6eb1676"
+            },
+            "official_daily_rows": [
+              [
+                "1549929600000",
+                "0.00086820",
+                "0.00116500",
+                "0.00086370",
+                "0.00102170",
+                "97549006483.00000000",
+                "1550015999999",
+                "99391188.38483510",
+                "188301",
+                "46603004102.00000000",
+                "47509114.84409810",
+                "0"
+              ]
+            ],
+            "public_rest": [
+              {
+                "availability": "available",
+                "host": "api.binance.com",
+                "monthly_comparison": {
+                  "authoritative_fields_equal": false,
+                  "differing_fields": [
+                    "base_volume"
+                  ],
+                  "left_row_sha256": "e0da934841b9500bbc476de7456daeca57bbe67d15c9bfc513185f3bf1698185",
+                  "right_row_sha256": "6c47e55c539641f55aede4321216c8f20bdb956638b9869f12b25b7bfa7b5d10"
+                },
+                "payload_sha256": "3905524ab63e5995bbafaa07f38fd8e0cfc578400b3f76ae41dbd3760b978f69",
+                "row_count": 1,
+                "rows": [
+                  [
+                    "1549929600000",
+                    "0.00086820",
+                    "0.00116500",
+                    "0.00086370",
+                    "0.00102170",
+                    "97549006483.00000000",
+                    "1550015999999",
+                    "99391188.38483510",
+                    "188301",
+                    "46603004102.00000000",
+                    "47509114.84409810",
+                    "0"
+                  ]
+                ],
+                "url": "https://api.binance.com/api/v3/klines?symbol=BTTUSDT&interval=1d&startTime=1549929600000&endTime=1550015999999&limit=10"
+              },
+              {
+                "availability": "available",
+                "host": "data-api.binance.vision",
+                "monthly_comparison": {
+                  "authoritative_fields_equal": false,
+                  "differing_fields": [
+                    "base_volume"
+                  ],
+                  "left_row_sha256": "e0da934841b9500bbc476de7456daeca57bbe67d15c9bfc513185f3bf1698185",
+                  "right_row_sha256": "6c47e55c539641f55aede4321216c8f20bdb956638b9869f12b25b7bfa7b5d10"
+                },
+                "payload_sha256": "3905524ab63e5995bbafaa07f38fd8e0cfc578400b3f76ae41dbd3760b978f69",
+                "row_count": 1,
+                "rows": [
+                  [
+                    "1549929600000",
+                    "0.00086820",
+                    "0.00116500",
+                    "0.00086370",
+                    "0.00102170",
+                    "97549006483.00000000",
+                    "1550015999999",
+                    "99391188.38483510",
+                    "188301",
+                    "46603004102.00000000",
+                    "47509114.84409810",
+                    "0"
+                  ]
+                ],
+                "url": "https://data-api.binance.vision/api/v3/klines?symbol=BTTUSDT&interval=1d&startTime=1549929600000&endTime=1550015999999&limit=10"
+              }
+            ],
+            "unsigned_64bit_eight_decimal_overflow_signature": true
+          }
+        ],
+        "conflict_id": "U03E-BTTUSDT-1D-2019-02-NEGATIVE-BASE-VOLUME",
+        "csv_schema": {
+          "column_order": [
+            "open_time",
+            "open",
+            "high",
+            "low",
+            "close",
+            "base_volume",
+            "close_time",
+            "quote_asset_volume",
+            "trade_count",
+            "taker_buy_base_volume",
+            "taker_buy_quote_volume",
+            "ignore"
+          ],
+          "columns": 12,
+          "header_rows": 0,
+          "historical_format_difference": false,
+          "same_month_symbol_comparator": {
+            "canonical_key": "data/spot/monthly/klines/BTCUSDT/1d/BTCUSDT-1d-2019-02.zip",
+            "csv_column_count": 12,
+            "header_rows": 0,
+            "symbol": "BTCUSDT",
+            "timestamp_unit": "milliseconds",
+            "zip_sha256": "9bcdcbc003cce89ba5917367cd617bdd5abf17e427e4f7625b62f9ab9cc7439c"
+          },
+          "timestamp_unit": "milliseconds"
+        },
+        "current_remote_checksum_changed": false,
+        "duplicate_type": "not_duplicate",
+        "findings": {
+          "affected_timestamp_duplicate_count": 1,
+          "daily_and_two_rest_hosts_agree_on_positive_volume": true,
+          "later_asset_migration_used_as_authority": false,
+          "legal_same_timestamp_alternative_found": false,
+          "negative_field": "base_volume",
+          "official_archive_republished": false,
+          "other_authoritative_fields_valid": true,
+          "parser_schema_bug_found": false,
+          "same_month_schema_matches": true,
+          "unsigned_64bit_eight_decimal_overflow_signature_all_rows": true
+        },
+        "interval": "1d",
+        "local_cache_sha256": "9d396d4bc1995456cf2f37a286c637c623420170e03a9c5c02db32f7c28907a5",
+        "monthly_archive": {
+          "actual_sha256": "9d396d4bc1995456cf2f37a286c637c623420170e03a9c5c02db32f7c28907a5",
+          "canonical_key": "data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02.zip",
+          "canonical_url": "https://data.binance.vision/data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02.zip",
+          "checksum_file_content": "9d396d4bc1995456cf2f37a286c637c623420170e03a9c5c02db32f7c28907a5  BTTUSDT-1d-2019-02.zip",
+          "checksum_url": "https://data.binance.vision/data/spot/monthly/klines/BTTUSDT/1d/BTTUSDT-1d-2019-02.zip.CHECKSUM",
+          "crc_valid": true,
+          "csv_column_count": 12,
+          "csv_filename": "BTTUSDT-1d-2019-02.csv",
+          "expected_sha256": "9d396d4bc1995456cf2f37a286c637c623420170e03a9c5c02db32f7c28907a5",
+          "header_rows": 0,
+          "matches": true,
+          "row_count": 28,
+          "zip_byte_size": 1842,
+          "zip_sha256": "9d396d4bc1995456cf2f37a286c637c623420170e03a9c5c02db32f7c28907a5"
+        },
+        "qualification_decision": "blocked",
+        "same_contract_rerun_allowed": false,
+        "symbol": "BTTUSDT"
+      },
+      {
+        "adjudication_status": "confirmed_requires_general_data_policy",
+        "affected_rows": [
+          {
+            "line_number": 10,
+            "next_raw_fields": [
+              "1770681600000000",
+              "1.47900000",
+              "1.65400000",
+              "1.44000000",
+              "1.57400000",
+              "18935177.03000000",
+              "1770767999999999",
+              "29141814.85779000",
+              "128555",
+              "9355027.88000000",
+              "14408718.46470000",
+              "0"
+            ],
+            "parsed": {
+              "base_volume": "18935177.03000000",
+              "close": "1.57400000",
+              "close_time": "1770767999999999",
+              "close_time_ms": 1770767999999,
+              "high": "1.65400000",
+              "ignore": "0",
+              "low": "1.44000000",
+              "negative_fields": [],
+              "open": "1.47900000",
+              "open_time": "1770681600000000",
+              "open_time_ms": 1770681600000,
+              "quote_asset_volume": "29141814.85779000",
+              "taker_buy_base_volume": "9355027.88000000",
+              "taker_buy_quote_volume": "14408718.46470000",
+              "timestamp_unit": "microseconds",
+              "trade_count": "128555"
+            },
+            "previous_raw_fields": [
+              "1770595200000000",
+              "1.26300000",
+              "1.59500000",
+              "1.25300000",
+              "1.48100000",
+              "20090441.15000000",
+              "1770681599999999",
+              "29437074.61495000",
+              "146156",
+              "10094691.73000000",
+              "14779004.29454000",
+              "0"
+            ],
+            "raw_fields": [
+              "1770681600000000",
+              "1.47900000",
+              "1.65400000",
+              "1.44000000",
+              "1.57400000",
+              "18935177.03000000",
+              "1770767999999999",
+              "29141814.85779000",
+              "128555",
+              "9355027.88000000",
+              "14408718.46470000",
+              "0"
+            ],
+            "row_sha256": "8749eb1bca53f27088055d90554f6852fbd315c1f3dfa75eb77d923ea9c61761"
+          },
+          {
+            "line_number": 11,
+            "next_raw_fields": [
+              "1770768000000000",
+              "1.57300000",
+              "1.63200000",
+              "1.45400000",
+              "1.54700000",
+              "7306107.80000000",
+              "1770854399999999",
+              "11163438.81907000",
+              "60242",
+              "3605328.22000000",
+              "5513680.08006000",
+              "0"
+            ],
+            "parsed": {
+              "base_volume": "18935177.03000000",
+              "close": "1.57400000",
+              "close_time": "1770767999999999",
+              "close_time_ms": 1770767999999,
+              "high": "1.65400000",
+              "ignore": "0",
+              "low": "1.44000000",
+              "negative_fields": [],
+              "open": "1.47900000",
+              "open_time": "1770681600000000",
+              "open_time_ms": 1770681600000,
+              "quote_asset_volume": "29141814.85779000",
+              "taker_buy_base_volume": "9355027.88000000",
+              "taker_buy_quote_volume": "14408718.46470000",
+              "timestamp_unit": "microseconds",
+              "trade_count": "128555"
+            },
+            "previous_raw_fields": [
+              "1770681600000000",
+              "1.47900000",
+              "1.65400000",
+              "1.44000000",
+              "1.57400000",
+              "18935177.03000000",
+              "1770767999999999",
+              "29141814.85779000",
+              "128555",
+              "9355027.88000000",
+              "14408718.46470000",
+              "0"
+            ],
+            "raw_fields": [
+              "1770681600000000",
+              "1.47900000",
+              "1.65400000",
+              "1.44000000",
+              "1.57400000",
+              "18935177.03000000",
+              "1770767999999999",
+              "29141814.85779000",
+              "128555",
+              "9355027.88000000",
+              "14408718.46470000",
+              "0"
+            ],
+            "row_sha256": "8749eb1bca53f27088055d90554f6852fbd315c1f3dfa75eb77d923ea9c61761"
+          }
+        ],
+        "affected_timestamps": [
+          "2026-02-10T00:00:00+00:00"
+        ],
+        "archive_month": "2026-02",
+        "classification": "exact_identical_duplicate",
+        "comparisons": {
+          "official_daily_archive": {
+            "actual_sha256": "5b8f0db037606787404a3019614f3698780da664e51beadd92bba092eeef5c97",
+            "canonical_key": "data/spot/daily/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02-10.zip",
+            "canonical_url": "https://data.binance.vision/data/spot/daily/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02-10.zip",
+            "checksum_file_content": "5b8f0db037606787404a3019614f3698780da664e51beadd92bba092eeef5c97  AXSUSDT-1d-2026-02-10.zip",
+            "checksum_url": "https://data.binance.vision/data/spot/daily/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02-10.zip.CHECKSUM",
+            "crc_valid": true,
+            "csv_column_count": 12,
+            "csv_filename": "AXSUSDT-1d-2026-02-10.csv",
+            "expected_sha256": "5b8f0db037606787404a3019614f3698780da664e51beadd92bba092eeef5c97",
+            "header_rows": 0,
+            "matches": true,
+            "row_count": 2,
+            "zip_byte_size": 232,
+            "zip_sha256": "5b8f0db037606787404a3019614f3698780da664e51beadd92bba092eeef5c97"
+          },
+          "official_daily_duplicate_type": "byte_identical_duplicate",
+          "official_daily_rows": [
+            [
+              "1770681600000000",
+              "1.47900000",
+              "1.65400000",
+              "1.44000000",
+              "1.57400000",
+              "18935177.03000000",
+              "1770767999999999",
+              "29141814.85779000",
+              "128555",
+              "9355027.88000000",
+              "14408718.46470000",
+              "0"
+            ],
+            [
+              "1770681600000000",
+              "1.47900000",
+              "1.65400000",
+              "1.44000000",
+              "1.57400000",
+              "18935177.03000000",
+              "1770767999999999",
+              "29141814.85779000",
+              "128555",
+              "9355027.88000000",
+              "14408718.46470000",
+              "0"
+            ]
+          ],
+          "public_rest": [
+            {
+              "availability": "available",
+              "host": "api.binance.com",
+              "payload_sha256": "1ff173d14d3ed86dd97acbe7011fc4da1836f40a22dbf74894e1b8d33d600880",
+              "row_count": 1,
+              "rows": [
+                [
+                  "1770681600000",
+                  "1.47900000",
+                  "1.65400000",
+                  "1.44000000",
+                  "1.57400000",
+                  "18935177.03000000",
+                  "1770767999999",
+                  "29141814.85779000",
+                  "128555",
+                  "9355027.88000000",
+                  "14408718.46470000",
+                  "0"
+                ]
+              ],
+              "url": "https://api.binance.com/api/v3/klines?symbol=AXSUSDT&interval=1d&startTime=1770681600000&endTime=1770767999999&limit=10"
+            },
+            {
+              "availability": "available",
+              "host": "data-api.binance.vision",
+              "payload_sha256": "1ff173d14d3ed86dd97acbe7011fc4da1836f40a22dbf74894e1b8d33d600880",
+              "row_count": 1,
+              "rows": [
+                [
+                  "1770681600000",
+                  "1.47900000",
+                  "1.65400000",
+                  "1.44000000",
+                  "1.57400000",
+                  "18935177.03000000",
+                  "1770767999999",
+                  "29141814.85779000",
+                  "128555",
+                  "9355027.88000000",
+                  "14408718.46470000",
+                  "0"
+                ]
+              ],
+              "url": "https://data-api.binance.vision/api/v3/klines?symbol=AXSUSDT&interval=1d&startTime=1770681600000&endTime=1770767999999&limit=10"
+            }
+          ]
+        },
+        "conflict_id": "U03E-AXSUSDT-1D-2026-02-10-DUPLICATE",
+        "csv_schema": {
+          "columns": 12,
+          "header_rows": 0,
+          "timestamp_unit": "microseconds"
+        },
+        "current_remote_checksum_changed": false,
+        "duplicate_type": "byte_identical_duplicate",
+        "findings": {
+          "affects_365_day_presence": false,
+          "affects_ranking_windows": [
+            "2026-03",
+            "2026-04",
+            "2026-05"
+          ],
+          "daily_duplicate_type": "byte_identical_duplicate",
+          "ignored_because_not_top15": false,
+          "monthly_duplicate_type": "byte_identical_duplicate",
+          "official_archive_republished": false,
+          "parser_created_duplicate": false,
+          "rest_hosts_return_one_matching_row": true,
+          "v2_membership_months": []
+        },
+        "interval": "1d",
+        "local_cache_sha256": "7f18d5a29f2e767389efce407d47a247dac3e0e309cef4a3b377040bddf001bf",
+        "monthly_archive": {
+          "actual_sha256": "7f18d5a29f2e767389efce407d47a247dac3e0e309cef4a3b377040bddf001bf",
+          "canonical_key": "data/spot/monthly/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02.zip",
+          "canonical_url": "https://data.binance.vision/data/spot/monthly/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02.zip",
+          "checksum_file_content": "7f18d5a29f2e767389efce407d47a247dac3e0e309cef4a3b377040bddf001bf  AXSUSDT-1d-2026-02.zip",
+          "checksum_url": "https://data.binance.vision/data/spot/monthly/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02.zip.CHECKSUM",
+          "crc_valid": true,
+          "csv_column_count": 12,
+          "csv_filename": "AXSUSDT-1d-2026-02.csv",
+          "expected_sha256": "7f18d5a29f2e767389efce407d47a247dac3e0e309cef4a3b377040bddf001bf",
+          "header_rows": 0,
+          "matches": true,
+          "row_count": 29,
+          "zip_byte_size": 1666,
+          "zip_sha256": "7f18d5a29f2e767389efce407d47a247dac3e0e309cef4a3b377040bddf001bf"
+        },
+        "qualification_decision": "blocked",
+        "same_contract_rerun_allowed": false,
+        "symbol": "AXSUSDT"
+      }
+    ],
+    "overall_decision": "new_policy_adr_required",
+    "same_contract_rerun_authorized": false
+  },
+  "content_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+  "contract_hash": "051894e89b713f541caa601efab51be22f83461a4e624e1d51d7f576ed8cda51",
+  "manifest_type": "liquid_universe_v2_source_conflict_adjudication",
+  "qualification_summary_hash": "80cd0a88b6253f06aeb40bfe4123aa55f874ce31a40d2e94a46859b2aba8380c",
+  "schema_version": 1,
+  "source_manifest_hash": "928c3520028ddf5bfc1c03fe3185d5af4b9ad8fea0f327469d60f388a3f638cf"
+}
