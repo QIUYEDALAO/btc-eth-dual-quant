@@ -1,6 +1,7 @@
 # Reports Index
 
 | `docs/decisions/ADR-0011-liquid-spot-universe-expansion.md` | liquid spot universe governance | accepted_for_data_qualification_only / PR #67 merged | Freezes point-in-time monthly Top-15 membership without selecting a strategy, scanning outcomes, calculating returns or opening OOS. | no |
+| `docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md` | lifecycle-boundary placeholder policy | proposed_draft_not_adopted / Draft PR pending creation | Proposes fail-closed lifecycle-boundary quarantine and availability semantics for independent review only; no policy, registry, contract or rerun authority exists. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_QUALIFICATION_REPORT.md` | liquid spot universe qualification V1 | superseded_pending_v2_requalification / PR #68 merged | Historical V1 evidence only; ADR-0012 withdrew its admission authority pending V2 requalification and audit. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_GAP_ATTRIBUTION_REPORT.md` | universe gap attribution V1 | superseded_pending_v2_requalification / PR #68 merged | Historical V1 attribution only; it cannot authorize research or override V2 blockers. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_V2_SOURCE_CONFLICT_ADJUDICATION_REPORT.md` | V2 source conflict adjudication | new_policy_adr_required / PR #73 | Three checksum-bound official-source conflicts are fully classified; no corrected archive or parser bug permits a same-contract rerun. | no |
