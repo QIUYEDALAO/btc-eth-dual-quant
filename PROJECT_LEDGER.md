@@ -1416,6 +1416,7 @@ private exchange responses here.
 
 - Task ID: U-03E-V3-ADJ
 - Branch: `codex/u03e-v3-klay-source-adjudication`
+- PR: #79 open
 - Scope: Evidence-only adjudication of KLAYUSDT 2024-10-30; no contract, registry, membership, ranking or V3 qualification mutation.
 - Evidence: The checksum-verified monthly and daily ZIP rows are byte-identical and structurally invalid. Both public REST comparators return the same row. Integer parsing independently infers microseconds and proves `close_time < open_time` is raw-source evidence, not a parser-created conflict.
 - Provenance: Binance's official KLAY-to-KAIA announcement delisted KLAYUSDT at 2024-10-28 03:00 UTC; the invalid row closes exactly one millisecond before that boundary. Official intraday archives contain no affected-day bars and are diagnostic only.
