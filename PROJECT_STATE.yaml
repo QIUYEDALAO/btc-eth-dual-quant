@@ -2,9 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-16T00:00:00Z"
-current_phase: Liquid universe V4 lifecycle availability implementation pending independent review
-current_status: liquid_universe_v4_implementation_pass_fixture_only_public_requalification_not_run_no_strategy_no_m2
+current_phase: Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started
+current_status: liquid_universe_v4_implementation_merged_requalification_authorized_not_started_no_strategy_no_m2
 completed_milestones:
+  - phase: Liquid universe V4 lifecycle availability implementation
+    status: implementation_pass_fixture_only_public_requalification_not_run
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_IMPLEMENTATION_STATUS.md
+    merged_pr: 86
+    merge_commit: fccc9972502732319d38eb36775d007396df25db
+    reviewed_head_sha: 2a745586bff5112d69af45c9a0dd8585f2adab50
+  - phase: Liquid universe V4 implementation independent review
+    status: approve
+    evidence: reports/expert/LIQUID_SPOT_UNIVERSE_V4_IMPLEMENTATION_REVIEW.md
+    merged_pr: 87
+    merge_commit: f250975e3f95cafc3066f0344727f575922dbe9c
+    reviewed_pr: 86
+    reviewed_head_sha: 2a745586bff5112d69af45c9a0dd8585f2adab50
+    verdict: approve
+    critical_findings: 0
+    high_findings: 0
   - phase: ADR-0014 conditional adoption
     status: accepted_for_v4_implementation_and_fixed_range_public_requalification_only
     evidence: docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md
@@ -244,22 +260,22 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03E-V4-IMPL
-    phase: Liquid universe V4 lifecycle availability implementation
-    status: implementation_pass_fixture_only_pending_independent_review
-    branch: codex/liquid-universe-v4-lifecycle-availability
-    pr: pending
-    head_sha: runtime_current_pr_head
+  - id: U-03E-V4-RUN
+    phase: Liquid universe V4 fixed-range public requalification
+    status: authorized_not_started
+    branch: not_created
+    pr: none
+    head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_IMPLEMENTATION_STATUS.md
-    base_sha: 0f5f76f86973316ac66b8e3f9d6e65419b310ec9
+    evidence: pending
+    base_sha: fccc9972502732319d38eb36775d007396df25db
     contract_hash: 816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83
     policy_hash: 7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977
     lifecycle_registry_hash: a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d
-    implemented: true
-    independent_review_approved: false
+    implementation_merged: true
+    independent_review_approved: true
     public_requalification: false
-    blocker: "The exact implementation head must pass an independent review from the adoption main before merge. Public requalification remains unauthorized until implementation closeout."
+    blocker: "Run only the fixed 2020-01 through 2026-06 cold build first; any source revision, unknown conflict, overlap or hash drift must stop before warm/worker."
   - id: U-03F
     phase: Liquid universe V3 independent audit
     status: not_authorized
@@ -340,9 +356,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Freeze the exact V4 implementation head after local and GitHub validation."
-  - "Independently review that exact implementation from adoption main before merging it or running fixed-range public requalification."
-  - "After implementation closeout, run only the fixed 2020-01 through 2026-06 cold/warm/worker public requalification and stop after cold on any unknown conflict."
+  - "Run only the fixed 2020-01 through 2026-06 cold/warm/worker V4 public requalification and stop after cold on any unknown conflict or source revision."
   - U-03F and cross-sectional design remain blocked even after a V4 pass until a separate future task explicitly authorizes U-03F.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
@@ -701,6 +715,14 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 86
+    title: Implement V4 lifecycle availability qualification
+    merge_commit: fccc9972502732319d38eb36775d007396df25db
+    status: merged
+  - number: 87
+    title: Independently review V4 lifecycle implementation
+    merge_commit: f250975e3f95cafc3066f0344727f575922dbe9c
+    status: merged
   - number: 85
     title: Conditionally adopt ADR-0014 for V4 qualification
     merge_commit: 0f5f76f86973316ac66b8e3f9d6e65419b310ec9

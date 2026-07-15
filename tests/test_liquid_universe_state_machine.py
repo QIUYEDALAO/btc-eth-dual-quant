@@ -23,16 +23,16 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_v4_implementation_requires_merged_adoption_and_independent_review(self):
+    def test_v4_requalification_requires_merged_implementation_and_review(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
-        implementation = next(item for item in state["open_work"] if item.get("id") == "U-03E-V4-IMPL")
-        self.assertEqual(implementation["status"], "implementation_pass_fixture_only_pending_independent_review")
-        self.assertTrue(implementation["implemented"])
-        self.assertFalse(implementation["independent_review_approved"])
-        self.assertFalse(implementation["public_requalification"])
-        self.assertEqual(implementation["contract_hash"], "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83")
+        requalification = next(item for item in state["open_work"] if item.get("id") == "U-03E-V4-RUN")
+        self.assertEqual(requalification["status"], "authorized_not_started")
+        self.assertTrue(requalification["implementation_merged"])
+        self.assertTrue(requalification["independent_review_approved"])
+        self.assertFalse(requalification["public_requalification"])
+        self.assertEqual(requalification["contract_hash"], "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83")
         self.assertFalse(any(item.get("id") == "ADR-0014-ADOPT" for item in state["open_work"]))
         self.assertFalse(any(item.get("id") == "ADR-0014-REVIEW" for item in state["open_work"]))
         adoption = next(
@@ -61,6 +61,22 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         self.assertEqual(conformance["verdict"], "approve")
         self.assertEqual(conformance["critical_findings"], 0)
         self.assertEqual(conformance["high_findings"], 0)
+        implementation = next(
+            item
+            for item in state["completed_milestones"]
+            if item.get("phase") == "Liquid universe V4 lifecycle availability implementation"
+        )
+        self.assertEqual(implementation["merged_pr"], 86)
+        self.assertEqual(implementation["merge_commit"], "fccc9972502732319d38eb36775d007396df25db")
+        implementation_review = next(
+            item
+            for item in state["completed_milestones"]
+            if item.get("phase") == "Liquid universe V4 implementation independent review"
+        )
+        self.assertEqual(implementation_review["merged_pr"], 87)
+        self.assertEqual(implementation_review["verdict"], "approve")
+        self.assertEqual(implementation_review["critical_findings"], 0)
+        self.assertEqual(implementation_review["high_findings"], 0)
 
         changed = copy.deepcopy(state)
         milestone = next(
@@ -73,10 +89,20 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
 
         changed = copy.deepcopy(state)
         changed["open_work"] = [
-            item for item in changed["open_work"] if item.get("id") != "U-03E-V4-IMPL"
+            item for item in changed["open_work"] if item.get("id") != "U-03E-V4-RUN"
         ]
         self.assertIn(
-            "current V2 task missing from open_work: U-03E-V4-IMPL",
+            "current V2 task missing from open_work: U-03E-V4-RUN",
+            validate(changed),
+        )
+
+        changed = copy.deepcopy(state)
+        requalification = next(
+            item for item in changed["open_work"] if item.get("id") == "U-03E-V4-RUN"
+        )
+        requalification["public_requalification"] = True
+        self.assertIn(
+            "V4 public requalification was marked complete before evidence exists",
             validate(changed),
         )
 

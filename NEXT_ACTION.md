@@ -2,14 +2,14 @@
 
 ## Immediate Task
 
-ADR-0014 was conditionally adopted in PR #85 at `0f5f76f`. The generic V4
-lifecycle implementation is fixture-complete on
-`codex/liquid-universe-v4-lifecycle-availability`, with no public run.
+ADR-0014 was conditionally adopted in PR #85 at `0f5f76f`. PR #87 independently
+approved PR #86 exact head `2a745586bff5112d69af45c9a0dd8585f2adab50`
+with 0 critical/high findings and merged at `f250975e`; the unchanged
+implementation then merged in PR #86 at `fccc997e`.
 
-The immediate task is to validate and freeze the exact implementation head,
-then create an independent review from adoption main. The implementation must
-not merge and the fixed `2020-01` through `2026-06` public requalification must
-not run until that review approves the unchanged target and governance closes.
+The only immediate task is the fixed `2020-01` through `2026-06` V4 public
+requalification. Run cold first and stop before warm/worker on any unknown
+conflict, source revision, overlap, hash drift or other fail-closed Gate.
 
 ## Current Decision
 
@@ -58,12 +58,11 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Freeze the exact implementation head after all local and GitHub checks pass.
-2. Review that exact head independently from adoption main; review evidence must not modify implementation code or governance.
-3. Merge implementation only after an `approve` verdict with zero critical/high findings and an unchanged target head.
-4. Complete a minimal implementation governance closeout.
-5. Only then run fixed-range cold/warm/worker public requalification.
-6. Preserve all V3 evidence and keep U-03F, U-04, strategy work and M2 blocked.
+1. Freeze all V4 contract, policy, registry and source hashes before the run.
+2. Run only the fixed-range cold public rebuild first.
+3. Stop before warm/worker and record truthful blocked evidence on any unknown conflict or source revision.
+4. If cold passes, run warm-cache and worker-variant rebuilds and require exact artifact equality.
+5. Preserve all V3 evidence and keep U-03F, U-04, strategy work and M2 blocked.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.
