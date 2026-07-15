@@ -23,16 +23,20 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_adr0014_draft_state_requires_open_draft_and_zero_authority(self):
+    def test_adr0014_review_state_requires_open_review_and_zero_authority(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
+        draft = next(item for item in state["open_work"] if item.get("id") == "ADR-0014-DRAFT")
+        self.assertEqual(draft["status"], "proposed_draft_required_changes_pending")
+        self.assertFalse(draft["adopted"])
+
         changed = copy.deepcopy(state)
         changed["open_work"] = [
-            item for item in changed["open_work"] if item.get("id") != "ADR-0014-DRAFT"
+            item for item in changed["open_work"] if item.get("id") != "ADR-0014-REVIEW"
         ]
         self.assertIn(
-            "current V2 task missing from open_work: ADR-0014-DRAFT",
+            "current V2 task missing from open_work: ADR-0014-REVIEW",
             validate(changed),
         )
 

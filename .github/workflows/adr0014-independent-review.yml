@@ -1,0 +1,30 @@
+name: ADR-0014 Independent Review
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  independent-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out review branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact reviewed PR head
+        run: git fetch origin cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Run independent review validation
+        run: bash scripts/adr0014_independent_review_validate.sh

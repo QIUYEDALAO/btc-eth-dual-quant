@@ -1436,3 +1436,15 @@ private exchange responses here.
 - Result: The independently recomputed evidence is merged with classification `symbol_lifecycle_boundary_artifact` and decision `new_policy_adr_required`. It does not qualify V3 or authorize data mutation.
 - Next authorization: ADR-0014 may be created only as a proposed Draft for independent review. Drafting does not adopt or implement policy and cannot mutate the registry or trigger V3/V4 requalification.
 - Safety: U-03F, U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-15 - ADR-0014 Independent Policy Review Completed
+
+- Date UTC: 2026-07-15T12:45:07Z
+- Task ID: ADR-0014-REVIEW
+- Branch / PR: `codex/adr-0014-independent-review` / #82
+- Reviewed target: PR #81 Draft at `cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44`, based on `d2d876af192a23ff1879d6a09cb2737c3f12133f`.
+- Verdict: `approve_with_required_changes`; severity counts are 0 critical, 10 high, 1 medium, 0 low and 1 informational.
+- Evidence: `reports/expert/evidence/adr0014_independent_review.json`, content hash `3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15`; Markdown is an exact JSON render.
+- Finding: The Draft is safely proposed-only but over-fits the 2024-10-30 malformed row. The official archive also contains a normal-duration 2024-10-29 post-cessation placeholder, and 2024-10-28 is a partial lifecycle day. A future policy must model versioned availability lifecycle events.
+- Mandatory changes: MC-01 through MC-11 cover affected-row sets, exact epochs/grid semantics, point-in-time knowledge, membership versus active universe, execution non-targets, successor provenance, split registries, multiple epochs, evidence sufficiency, V4 machine authority and fault injection.
+- Governance: PR #81 remains Draft and unchanged. No ADR adoption, contract/registry mutation, lifecycle implementation, qualification run, U-03F, U-04 or research authorization is granted.
