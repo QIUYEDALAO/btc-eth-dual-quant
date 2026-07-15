@@ -1,0 +1,313 @@
+import ast
+import copy
+from datetime import datetime, timezone
+import io
+import json
+from pathlib import Path
+import tempfile
+import unittest
+import zipfile
+
+import yaml
+
+from btc_eth_dual_quant.data.liquid_universe import canonical_hash
+from scripts.liquid_universe_v3_klay_conflict_probe import (
+    AFFECTED_OPEN_TIME_MS,
+    AFFECTED_ROW,
+    AUTHORIZATIONS,
+    BASELINE_HASHES,
+    build_adjudication_document,
+    classify_conflict,
+    compare_rest_evidence,
+    infer_timestamp_unit,
+    inspect_archive,
+    normalize_timestamp_ms,
+    render_report,
+    scan_archive_rows,
+    scan_forbidden_production_repairs,
+    timestamp_analysis,
+    verify_document,
+)
+
+
+ROOT = Path(__file__).resolve().parents[1]
+EVIDENCE = ROOT / "reports/m0/evidence/liquid_universe_v3/klay_source_conflict_adjudication.json"
+REPORT = ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V3_KLAY_SOURCE_CONFLICT_ADJUDICATION_REPORT.md"
+
+
+def row(
+    open_time: str = "1730246400000000",
+    close_time: str = "1730084399999000",
+) -> list[str]:
+    return [
+        open_time,
+        "0.12550000",
+        "0.12550000",
+        "0.12550000",
+        "0.12550000",
+        "0.00000000",
+        close_time,
+        "0.00000000",
+        "0",
+        "0.00000000",
+        "0.00000000",
+        "0",
+    ]
+
+
+def archive(rows: list[list[str]], name: str = "fixture.csv") -> bytes:
+    output = io.BytesIO()
+    with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as bundle:
+        bundle.writestr(name, "\n".join(",".join(item) for item in rows) + "\n")
+    return output.getvalue()
+
+
+def rest(host: str, rows: list[list[str]] | None) -> dict:
+    if rows is None:
+        return {
+            "endpoint_identity": host,
+            "availability": "unavailable",
+            "http_status": 404,
+            "row_count": 0,
+            "normalized_rows": [],
+        }
+    return {
+        "endpoint_identity": host,
+        "availability": "available",
+        "http_status": 200,
+        "payload_sha256": canonical_hash(rows),
+        "row_count": len(rows),
+        "normalized_rows": rows,
+    }
+
+
+class KlaySourceConflictTests(unittest.TestCase):
+    def test_01_affected_monthly_row_is_exact(self):
+        document = json.loads(EVIDENCE.read_text())
+        item = document["evidence"]["monthly_archive"]
+        self.assertEqual(item["affected_line_number"], 30)
+        self.assertEqual(item["affected_raw_fields"], AFFECTED_ROW)
+
+    def test_02_affected_daily_row_is_exact(self):
+        document = json.loads(EVIDENCE.read_text())
+        item = document["evidence"]["daily_archive"]
+        self.assertEqual(item["affected_line_number"], 1)
+        self.assertEqual(item["affected_raw_fields"], AFFECTED_ROW)
+
+    def test_03_monthly_and_daily_rows_are_identical(self):
+        document = json.loads(EVIDENCE.read_text())
+        comparison = document["evidence"]["monthly_daily_comparison"]
+        self.assertTrue(comparison["raw_identical"])
+        self.assertTrue(comparison["normalized_identical"])
+        self.assertTrue(comparison["row_hash_identical"])
+
+    def test_04_timestamp_units_are_inferred_independently(self):
+        analysis = timestamp_analysis(AFFECTED_ROW)
+        self.assertEqual(analysis["open_time_unit"], "microseconds")
+        self.assertEqual(analysis["close_time_unit"], "microseconds")
+        self.assertEqual(analysis["open_time_digit_count"], 16)
+        self.assertEqual(analysis["close_time_digit_count"], 16)
+
+    def test_05_close_time_is_before_open_time(self):
+        analysis = timestamp_analysis(AFFECTED_ROW)
+        self.assertTrue(analysis["close_time_before_open_time"])
+        self.assertLess(analysis["actual_duration_ms"], 0)
+
+    def test_06_milliseconds_fixture(self):
+        self.assertEqual(infer_timestamp_unit("1730246400000"), "milliseconds")
+        self.assertEqual(normalize_timestamp_ms("1730246400000"), AFFECTED_OPEN_TIME_MS)
+
+    def test_07_microseconds_fixture(self):
+        self.assertEqual(infer_timestamp_unit("1730246400000000"), "microseconds")
+        self.assertEqual(normalize_timestamp_ms("1730246400000000"), AFFECTED_OPEN_TIME_MS)
+
+    def test_08_mixed_units_are_normalized_independently(self):
+        mixed = row("1730246400000", "1730332799999000")
+        analysis = timestamp_analysis(mixed)
+        self.assertEqual(analysis["open_time_unit"], "milliseconds")
+        self.assertEqual(analysis["close_time_unit"], "microseconds")
+        self.assertEqual(analysis["actual_duration_ms"], 86_399_999)
+
+    def test_09_integer_normalization_avoids_float_precision(self):
+        raw = "99999999999999999"
+        self.assertEqual(normalize_timestamp_ms(raw), 99_999_999_999_999)
+        self.assertNotEqual(int(int(raw) / 1000), normalize_timestamp_ms(raw))
+
+    def test_10_parser_created_conflict_is_distinct(self):
+        valid = row("1730246400000", "1730332799999")
+        self.assertEqual(classify_conflict(valid, valid, []), "no_conflict")
+        buggy = timestamp_analysis(valid, parser_close_time_ms=AFFECTED_OPEN_TIME_MS - 1)
+        self.assertTrue(buggy["parser_created_conflict"])
+
+    def test_11_raw_archive_conflict_is_reproducible(self):
+        inspected = inspect_archive(archive([AFFECTED_ROW]), canonical_key="fixture.zip")
+        self.assertEqual(inspected["row_count"], 1)
+        self.assertTrue(inspected["affected"]["timestamp_analysis"]["close_time_before_open_time"])
+
+    def test_12_current_checksum_change_is_detected(self):
+        inspected = inspect_archive(archive([AFFECTED_ROW]), canonical_key="fixture.zip")
+        inspected["blocked_build_sha256"] = "0" * 64
+        self.assertTrue(inspected["zip_sha256"] != inspected["blocked_build_sha256"])
+
+    def test_13_monthly_checksum_mismatch_fails(self):
+        with self.assertRaisesRegex(ValueError, "checksum mismatch"):
+            inspect_archive(
+                archive([AFFECTED_ROW]),
+                canonical_key="fixture.zip",
+                expected_sha256="0" * 64,
+            )
+
+    def test_14_daily_checksum_mismatch_fails(self):
+        with self.assertRaisesRegex(ValueError, "checksum mismatch"):
+            inspect_archive(
+                archive([AFFECTED_ROW]),
+                canonical_key="daily.zip",
+                expected_sha256="f" * 64,
+            )
+
+    def test_15_rest_comparators_agree(self):
+        evidence = [rest("api.binance.com", [AFFECTED_ROW]), rest("data-api.binance.vision", [AFFECTED_ROW])]
+        result = compare_rest_evidence(evidence, AFFECTED_ROW)
+        self.assertTrue(result["comparators_identical"])
+        self.assertTrue(result["all_match_archive"])
+
+    def test_16_rest_comparators_disagree(self):
+        changed = row(close_time="1730332799999000")
+        result = compare_rest_evidence(
+            [rest("api.binance.com", [AFFECTED_ROW]), rest("data-api.binance.vision", [changed])],
+            AFFECTED_ROW,
+        )
+        self.assertFalse(result["comparators_identical"])
+
+    def test_17_one_rest_source_unavailable(self):
+        result = compare_rest_evidence(
+            [rest("api.binance.com", [AFFECTED_ROW]), rest("data-api.binance.vision", None)],
+            AFFECTED_ROW,
+        )
+        self.assertEqual(result["available_count"], 1)
+        self.assertFalse(result["complete"])
+
+    def test_18_both_rest_sources_unavailable(self):
+        result = compare_rest_evidence(
+            [rest("api.binance.com", None), rest("data-api.binance.vision", None)],
+            AFFECTED_ROW,
+        )
+        self.assertEqual(result["available_count"], 0)
+        self.assertFalse(result["complete"])
+
+    def test_19_intraday_evidence_is_diagnostic_only(self):
+        document = json.loads(EVIDENCE.read_text())
+        self.assertEqual(document["evidence"]["intraday_diagnostics"]["authority"], "diagnostic_only")
+        self.assertFalse(document["evidence"]["intraday_diagnostics"]["canonical_replacement_allowed"])
+
+    def test_20_lifecycle_announcement_is_diagnostic_only(self):
+        document = json.loads(EVIDENCE.read_text())
+        lifecycle = document["evidence"]["symbol_lifecycle"]
+        self.assertEqual(lifecycle["authority"], "provenance_only")
+        self.assertFalse(lifecycle["automatic_data_mutation_allowed"])
+
+    def test_21_unknown_conflict_remains_blocked(self):
+        classification = classify_conflict(AFFECTED_ROW, AFFECTED_ROW, [])
+        self.assertEqual(classification, "insufficient_evidence")
+
+    def test_22_registry_hash_is_unchanged(self):
+        self.assertEqual(BASELINE_HASHES["resolution_registry"], "570b66e32c3a7ac910ba5ef6688eff966304e65a9519f4f8a902b60fbe4957a4")
+
+    def test_23_contract_hash_is_unchanged(self):
+        self.assertEqual(BASELINE_HASHES["v3_contract"], "f41f5fedf6002487c9d576a39927ade4409d55e1bc0442aa097e6b2ed054b3ed")
+
+    def test_24_cold_artifact_hash_is_unchanged(self):
+        self.assertEqual(BASELINE_HASHES["blocked_cold_artifact_set"], "f661d7abd99adc4067d354afba0c5421e7d1f33c54f768b89c8011ec01eab4f3")
+
+    def test_25_run_manifest_hash_is_unchanged(self):
+        self.assertEqual(BASELINE_HASHES["requalification_run_manifest"], "057d4d94e277054b8cbd157dbb5ba05f04f1d0c3c2d28160d5b99689b1624e9c")
+
+    def test_26_production_source_has_no_special_case(self):
+        failures = scan_forbidden_production_repairs(ROOT / "src")
+        self.assertFalse(any("special-case" in item for item in failures), failures)
+
+    def test_27_silent_deduplication_is_forbidden(self):
+        tree = ast.parse("frame.drop_duplicates(keep='first')")
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bad.py"
+            path.write_text(ast.unparse(tree))
+            failures = scan_forbidden_production_repairs(Path(tmp))
+        self.assertTrue(any("silent deduplication" in item for item in failures))
+
+    def test_28_close_time_rewrite_is_forbidden(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bad.py"
+            path.write_text("def bad(row):\n    row['close_time'] = row['open_time'] + 86400000 - 1\n")
+            failures = scan_forbidden_production_repairs(Path(tmp))
+        self.assertTrue(any("close_time rewrite" in item for item in failures))
+
+    def test_29_v3_rerun_is_not_authorized(self):
+        document = json.loads(EVIDENCE.read_text())
+        self.assertFalse(document["evidence"]["v3_rerun_executed"])
+        self.assertFalse(document["authorization_matrix"]["v3_rerun"])
+
+    def test_30_all_downstream_authorizations_are_false(self):
+        self.assertFalse(any(AUTHORIZATIONS.values()))
+        document = json.loads(EVIDENCE.read_text())
+        self.assertEqual(document["authorization_matrix"], AUTHORIZATIONS)
+
+    def test_31_report_is_exactly_regenerated_from_json(self):
+        document = json.loads(EVIDENCE.read_text())
+        self.assertEqual(REPORT.read_text(), render_report(document))
+
+    def test_32_canonical_hash_is_order_independent(self):
+        document = json.loads(EVIDENCE.read_text())
+        unsigned = {key: value for key, value in document.items() if key != "content_hash"}
+        reordered = dict(reversed(list(unsigned.items())))
+        self.assertEqual(canonical_hash(unsigned), canonical_hash(reordered))
+        self.assertEqual(document["content_hash"], canonical_hash(unsigned))
+
+    def test_repository_evidence_has_unique_classification_and_decision(self):
+        document = json.loads(EVIDENCE.read_text())
+        self.assertEqual(document["classification"], "symbol_lifecycle_boundary_artifact")
+        self.assertEqual(document["overall_decision"], "new_policy_adr_required")
+        self.assertEqual(verify_document(document), [])
+
+    def test_similar_scope_scan_counts_raw_invalid_rows(self):
+        rows = [row("1730160000000000", "1730246399999999"), AFFECTED_ROW]
+        result = scan_archive_rows(rows, interval="1d")
+        self.assertEqual(result["close_time_before_open_time_count"], 1)
+        self.assertEqual(result["invalid_duration_count"], 1)
+
+    def test_lifecycle_match_is_required_for_lifecycle_classification(self):
+        lifecycle = [{"effective_time_utc": "2024-10-28T03:00:00+00:00"}]
+        self.assertEqual(
+            classify_conflict(AFFECTED_ROW, AFFECTED_ROW, lifecycle),
+            "symbol_lifecycle_boundary_artifact",
+        )
+        changed = copy.deepcopy(lifecycle)
+        changed[0]["effective_time_utc"] = "2024-10-29T03:00:00+00:00"
+        self.assertEqual(classify_conflict(AFFECTED_ROW, AFFECTED_ROW, changed), "insufficient_evidence")
+
+    def test_normalized_utc_values_are_exact(self):
+        analysis = timestamp_analysis(AFFECTED_ROW)
+        self.assertEqual(analysis["normalized_open_time_utc"], "2024-10-30T00:00:00+00:00")
+        self.assertEqual(analysis["normalized_close_time_utc"], "2024-10-28T02:59:59.999000+00:00")
+        expected = datetime(2024, 10, 28, 3, tzinfo=timezone.utc)
+        self.assertEqual(analysis["normalized_close_time_ms"], int(expected.timestamp() * 1000) - 1)
+
+    def test_repository_governance_is_pending_review_and_fail_closed(self):
+        state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
+        self.assertEqual(
+            state["current_phase"],
+            "Liquid universe V3 KLAY official-source conflict adjudication pending review",
+        )
+        self.assertEqual(
+            state["current_status"],
+            "liquid_universe_v3_klay_source_adjudication_new_policy_adr_required_no_strategy_no_m2",
+        )
+        work = next(item for item in state["open_work"] if item["id"] == "U-03E-V3-ADJ")
+        self.assertEqual(work["status"], "adjudication_completed_pending_review")
+        self.assertEqual(work["scope"], "KLAY evidence only")
+        self.assertFalse(work["registry_change"])
+        self.assertFalse(work["v3_rerun"])
+        self.assertFalse(any(state["research_authorizations"].values()))
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T08:17:51Z"
-current_phase: Liquid universe V3 public requalification blocked; independent source adjudication is the only authorized next task
-current_status: liquid_universe_v3_requalification_blocked_no_strategy_no_m2
+last_updated_utc: "2026-07-15T09:24:29Z"
+current_phase: Liquid universe V3 KLAY official-source conflict adjudication pending review
+current_status: liquid_universe_v3_klay_source_adjudication_new_policy_adr_required_no_strategy_no_m2
 completed_milestones:
   - phase: Liquid universe V3 public requalification
     status: blocked_unregistered_official_row_conflict
@@ -211,13 +211,18 @@ completed_milestones:
 open_work:
   - id: U-03E-V3-ADJ
     phase: Liquid universe V3 independent source conflict adjudication
-    status: authorized_not_started
-    branch: not_created
-    pr: none
-    head_sha: none
+    status: adjudication_completed_pending_review
+    branch: codex/u03e-v3-klay-source-adjudication
+    pr: pending
+    head_sha: runtime_current_pr_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/evidence/liquid_universe_v3/requalification_run_manifest.json
-    blocker: "Scope is limited to independently adjudicating the checksum-bound KLAYUSDT 2024-10-30 official monthly/daily conflict; no registry change or rerun is authorized in the adjudication task."
+    evidence: reports/m0/evidence/liquid_universe_v3/klay_source_conflict_adjudication.json
+    scope: KLAY evidence only
+    registry_change: false
+    v3_rerun: false
+    classification: symbol_lifecycle_boundary_artifact
+    decision: new_policy_adr_required
+    blocker: "Monthly ZIP, daily ZIP and both public REST comparators preserve the same invalid lifecycle-boundary row. ADR-0013 has no legal canonicalization or quarantine rule; a separate policy ADR is only a future candidate and is not authorized by this task."
   - id: U-03F
     phase: Liquid universe V3 independent audit
     status: not_authorized
@@ -294,8 +299,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Public-source diagnostics may independently adjudicate only the checksum-bound KLAYUSDT 2024-10-30 conflict without private data, outcomes, ranking changes, row deletion or silent deduplication.
-  - A fixed-range V3 cold/warm/worker rerun may follow only after a separately reviewed versioned registry update is adopted.
+  - Review the checksum-bound KLAYUSDT adjudication evidence; no registry, contract or qualification artifact may change in this task.
+  - A separate new-policy ADR is only a candidate after this evidence merges and requires explicit authorization; it is not created or adopted here.
+  - A fixed-range V3 cold/warm/worker rerun may follow only after a separately reviewed policy and versioned registry update are adopted.
   - U-03F and cross-sectional design remain blocked until a future V3 requalification pass merges and U-03F then passes in dependency order.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.

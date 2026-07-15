@@ -47,6 +47,10 @@ ALLOWED = {
         "liquid_universe_v3_requalification_blocked_no_strategy_no_m2",
     ): "U-03E-V3-ADJ",
     (
+        "Liquid universe V3 KLAY official-source conflict adjudication pending review",
+        "liquid_universe_v3_klay_source_adjudication_new_policy_adr_required_no_strategy_no_m2",
+    ): "U-03E-V3-ADJ",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
