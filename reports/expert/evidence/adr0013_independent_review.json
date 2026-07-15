@@ -1,0 +1,213 @@
+{
+  "content": {
+    "authorizations": {
+      "api_or_trading": false,
+      "event_scan": false,
+      "hypothesis_preregistration": false,
+      "m2": false,
+      "oos": false,
+      "returns_or_backtesting": false,
+      "strategy_code": false,
+      "u03e_v3_rerun": false,
+      "u03f": false,
+      "u04": false,
+      "v3_implementation": false
+    },
+    "mandatory_changes": [
+      {
+        "draft_status": "missing_or_incomplete",
+        "id": "A1",
+        "required": true,
+        "requirement": "Create a versioned hash-bound resolution registry; qualification must not query live REST to adopt a row.",
+        "title": "Frozen comparator evidence"
+      },
+      {
+        "draft_status": "missing_or_incomplete",
+        "id": "A2",
+        "required": true,
+        "requirement": "Freeze ZIP/schema verification, raw retention, full-key grouping, duplicate classification, candidate validation, registry resolution, provenance, merge, eligibility and panel order.",
+        "title": "Fixed processing order"
+      },
+      {
+        "draft_status": "missing_or_incomplete",
+        "id": "A3",
+        "required": true,
+        "requirement": "Freeze symbol/interval/open_time UTC key, exact field names/types, Decimal equality and the equality role of ignore.",
+        "title": "Canonical key and 12-field semantics"
+      },
+      {
+        "draft_status": "missing_or_incomplete",
+        "id": "A4",
+        "required": true,
+        "requirement": "Collapse only complete groups whose every raw 12-field string is identical; preserve all members; block semantic, conflicting and parser-created groups.",
+        "title": "Complete duplicate-group rules"
+      },
+      {
+        "draft_status": "missing_or_incomplete",
+        "id": "A5",
+        "required": true,
+        "requirement": "Require checksum/schema/uniqueness/validity, complete duplicate processing, two frozen REST matches, monthly equality except invalid fields and no unresolved conflict.",
+        "title": "Daily correction candidate qualification"
+      },
+      {
+        "draft_status": "missing_or_incomplete",
+        "id": "A6",
+        "required": true,
+        "requirement": "Resolve only exact registered conflict/source/evidence hashes under an adopted V3 contract; every unknown conflict becomes blocked_pending_adjudication.",
+        "title": "Fail-closed resolution registry"
+      },
+      {
+        "draft_status": "missing_or_incomplete",
+        "id": "A7",
+        "required": true,
+        "requirement": "Separate raw_row_quarantine from research_panel_quarantine and report duplicate collapses, monthly quarantine, admitted corrections, unresolved conflicts, blocked months and zero synthetic fills.",
+        "title": "Two quarantine layers"
+      },
+      {
+        "draft_status": "missing_or_incomplete",
+        "id": "A8",
+        "required": true,
+        "requirement": "Freeze the first V3 public comparison to 2020-01-01 through 2026-06; later accrual is a separate task.",
+        "title": "Fixed first V3 range"
+      },
+      {
+        "draft_status": "missing_or_incomplete",
+        "id": "A9",
+        "required": true,
+        "requirement": "Bind eligibility registry, conflict policy, resolution registry, adjudication evidence/schema, source/canonical schemas and authorization matrix into the V3 contract hash.",
+        "title": "Contract hash bindings"
+      },
+      {
+        "draft_status": "missing_or_incomplete",
+        "id": "A10",
+        "required": true,
+        "requirement": "Store current PR head_sha separately from the first frozen evidence_commit and validate that neither field impersonates the other.",
+        "title": "Governance SHA semantics"
+      }
+    ],
+    "policy_adopted": false,
+    "review_questions": [
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "Canonical collapse can be lossless only when every raw row, line number, multiplicity and hash remains immutable provenance.",
+        "id": "Q01",
+        "required_change": "Freeze the raw-preservation and canonical-collapse manifest contract in A4/A7.",
+        "topic": "Exact duplicate collapse is information-lossless"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "The draft states retention but does not define a machine schema that proves all raw members remain present.",
+        "id": "Q02",
+        "required_change": "Bind multiplicity, all raw-row hashes and retained canonical hash in A4.",
+        "topic": "Raw multiplicity is permanently retained"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "The five BTT rows have checksum-verified daily ZIP evidence and two agreeing public REST comparators, but runtime use must not depend on mutable REST.",
+        "id": "Q03",
+        "required_change": "Freeze comparator payloads and row evidence in the A1 registry and enforce A5 candidate qualification.",
+        "topic": "Invalid monthly to daily replacement has sufficient official evidence"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "The draft correctly rejects REST as primary history.",
+        "id": "Q04",
+        "required_change": "Make frozen REST evidence registry-only and prohibit live REST adoption during qualification under A1/A6.",
+        "topic": "REST remains corroboration"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "The draft is not replay-complete because it has no versioned resolution registry or hash binding.",
+        "id": "Q05",
+        "required_change": "Add A1, A6 and A9 before adoption.",
+        "topic": "Offline deterministic replay"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "The evidence probe is networked and current REST can change; using it during qualification would make results time-dependent.",
+        "id": "Q06",
+        "required_change": "Qualification must consume only frozen comparator evidence and fail on binding mismatch.",
+        "topic": "Live REST drift"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "The classifier distinguishes exact, semantic and conflicting groups, but the policy must classify the complete key group rather than a selected pair.",
+        "id": "Q07",
+        "required_change": "Freeze the complete-group rule, including two-identical-plus-one-conflicting, in A2/A4.",
+        "topic": "Conflicting duplicate cannot be misclassified"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "Collapsing before complete-key grouping can hide a third differing row.",
+        "id": "Q08",
+        "required_change": "Group all raw rows before any collapse and block any heterogeneous group under A2.",
+        "topic": "Collapse cannot hide a later conflict"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "The proposed result is deterministic in principle, but the exact processing order and order-independent hashes are not specified.",
+        "id": "Q09",
+        "required_change": "Freeze A2 and require cold/warm/worker equality in the first V3 rerun.",
+        "topic": "No source-order or thread-order dependency"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "The proposal is asset- and time-neutral and rejects special cases.",
+        "id": "Q10",
+        "required_change": "V3 must enforce registry-driven generic resolution and static fault tests under A6.",
+        "topic": "No asset or date special cases"
+      },
+      {
+        "assessment": "pass",
+        "finding": "Top-15, prior-90-day median, 365-day history, UTC activation and tie-break are explicitly unchanged.",
+        "id": "Q11",
+        "required_change": null,
+        "topic": "Membership rules remain unchanged"
+      },
+      {
+        "assessment": "pass",
+        "finding": "The policy uses source validity and frozen provenance, not membership or strategy outcomes.",
+        "id": "Q12",
+        "required_change": null,
+        "topic": "No outcome dependence"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "The draft intends fail-closed behavior but an unknown conflict could still match a broad rule without a registry.",
+        "id": "Q13",
+        "required_change": "Require exact conflict/source/evidence bindings and blocked_pending_adjudication in A6.",
+        "topic": "Fail-closed behavior"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "V2 cannot represent approved canonical source resolutions without changing authority semantics.",
+        "id": "Q14",
+        "required_change": "Create V3 contract, resolution registry, canonicalization and manifest schemas bound by A9.",
+        "topic": "New schemas are required"
+      },
+      {
+        "assessment": "approve_with_required_changes",
+        "finding": "Independent audit is feasible if raw and canonical quarantines, resolution IDs, source hashes and deterministic manifests are separately exposed.",
+        "id": "Q15",
+        "required_change": "Implement A7/A9; U-03F remains unauthorized until a truthful V3 qualification pass.",
+        "topic": "Future U-03F auditability"
+      }
+    ],
+    "stop_condition": "ADR-0013 remains proposed and V2 remains blocked until every mandatory change is implemented and independently checked.",
+    "verdict": "approve_with_required_changes"
+  },
+  "content_hash": "c964048091870270344a9139b7656b3f35cb02925fc725a7c03fa0b2c65dd7d3",
+  "manifest_type": "adr0013_independent_review",
+  "reviewed_artifacts": {
+    "adjudication_evidence_hash": "8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b",
+    "adr_draft_content_sha256": "c285a6cfea04c127ca17a537d9c97d4a8931400c3aefe0c2c7c19654e2bcecfc",
+    "adr_draft_evidence_commit": "4a95a28142d13aa2f03f271baf660ae95ba67e78",
+    "adr_draft_head_sha": "8dc9ee034fdd172147485f7718117f8a76713cdf",
+    "adr_pr": 74,
+    "base_main_sha": "7477c34a403cdbdcf0a7dcc36c4646d32e6d5b83",
+    "v2_contract_hash": "051894e89b713f541caa601efab51be22f83461a4e624e1d51d7f576ed8cda51",
+    "v2_qualification_summary_hash": "80cd0a88b6253f06aeb40bfe4123aa55f874ce31a40d2e94a46859b2aba8380c",
+    "v2_source_manifest_hash": "928c3520028ddf5bfc1c03fe3185d5af4b9ad8fea0f327469d60f388a3f638cf"
+  },
+  "schema_version": 1
+}

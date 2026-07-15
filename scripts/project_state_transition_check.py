@@ -27,6 +27,10 @@ ALLOWED = {
         "liquid_universe_v2_source_conflict_adjudication_new_policy_adr_required_no_strategy_no_m2",
     ): "U-03E-ADJ",
     (
+        "ADR-0013 independent review pending merge",
+        "adr0013_approve_with_required_changes_v2_blocked_no_strategy_no_m2",
+    ): "ADR-0013-REVIEW",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -62,7 +66,11 @@ def validate(state: dict) -> list[str]:
     if state.get("research_authorizations") != EXPECTED_AUTH:
         failures.append("research authorization matrix changed")
     open_work = state.get("open_work", [])
-    active = [item for item in open_work if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "U-03F"}]
+    active = [
+        item
+        for item in open_work
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "U-03F"}
+    ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
         merged_prs = {item.get("number") for item in state.get("latest_merged_prs", [])}

@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T03:50:19Z"
-current_phase: Liquid universe V2 source conflict adjudication pending review
-current_status: liquid_universe_v2_source_conflict_adjudication_new_policy_adr_required_no_strategy_no_m2
+last_updated_utc: "2026-07-15T06:30:00Z"
+current_phase: ADR-0013 independent review pending merge
+current_status: adr0013_approve_with_required_changes_v2_blocked_no_strategy_no_m2
 completed_milestones:
   - phase: Liquid universe V2 public requalification
     status: blocked_data_conflict
@@ -189,15 +189,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03E-ADJ
-    phase: Liquid universe V2 source conflict adjudication
-    status: new_policy_adr_required_pending_review
-    branch: codex/u03e-source-conflict-adjudication
-    pr: 73
-    head_sha: b9d3a30a94ddaa24a753ba6fb966f8491ba34d69
+  - id: ADR-0013-REVIEW
+    phase: ADR-0013 independent review
+    status: approve_with_required_changes_pending_merge
+    branch: codex/adr-0013-independent-review
+    pr: 75
+    head_sha: f5ce341ed66396f3239171b935047dddaea90d1a
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/evidence/liquid_universe_v2/source_conflict_adjudication.json
-    blocker: "Current V2 policy cannot replace invalid official monthly rows or collapse exact official duplicates; a separately reviewed versioned ADR is required before any rerun."
+    evidence: reports/expert/evidence/adr0013_independent_review.json
+    blocker: "ADR-0013 remains proposed until mandatory changes A1-A10 are incorporated and checked; V3 implementation and U-03E rerun are not yet authorized."
   - id: U-03F
     phase: Liquid universe V2 independent audit
     status: not_authorized
@@ -226,6 +226,10 @@ open_work:
     evidence: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
     blocker: "P3 failed complete-trade, OOS Sharpe, and drawdown gates; P4 and M2 are not allowed for M1C."
 active_decisions:
+  - id: ADR-0013
+    decision: A generic official-archive row-conflict policy is conditionally reviewable only after mandatory changes A1-A10.
+    status: proposed_approve_with_required_changes_not_adopted
+    evidence: reports/expert/ADR_0013_INDEPENDENT_REVIEW.md
   - id: ADR-0012
     decision: Supersede the V1 qualification admission decision and rebuild the liquid universe through the V2 machine-authority contract.
     status: accepted_for_correctness_hardening_only
