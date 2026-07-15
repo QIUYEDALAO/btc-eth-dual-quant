@@ -23,6 +23,23 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
+    def test_adr0014_draft_state_requires_open_draft_and_zero_authority(self):
+        state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
+        self.assertEqual(validate(state), [])
+
+        changed = copy.deepcopy(state)
+        changed["open_work"] = [
+            item for item in changed["open_work"] if item.get("id") != "ADR-0014-DRAFT"
+        ]
+        self.assertIn(
+            "current V2 task missing from open_work: ADR-0014-DRAFT",
+            validate(changed),
+        )
+
+        changed = copy.deepcopy(state)
+        changed["research_authorizations"]["backtesting"] = True
+        self.assertIn("research authorization matrix changed", validate(changed))
+
     def test_merged_blocked_requalification_requires_closed_milestone(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         state["current_phase"] = "Liquid universe V2 public requalification blocked"
