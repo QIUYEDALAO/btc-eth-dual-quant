@@ -1426,3 +1426,13 @@ private exchange responses here.
 - Evidence content hash: `6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a`; the changing PR head is referenced as `refs/pull/79/head` rather than recorded as a self-referential hash.
 - Governance: A separate new-policy ADR is only a future candidate after review and explicit authorization. No ADR, registry revision or V3 rerun is part of this task.
 - Safety: U-03F, U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-15 - KLAY Adjudication Merged And ADR-0014 Draft Authorized
+
+- Date UTC: 2026-07-15T11:03:43Z
+- Task ID: U-03E-V3-ADJ
+- PR / merge commit: #79 / `bf6993c378527573b6ade82c3f1e9edb8af4c36d`
+- Validation: 86/86 GitHub checks passed on head `ba34119c4b10d666602836dbbe2c04b84e61a5b2`; local validation passed 15/0.
+- Result: The independently recomputed evidence is merged with classification `symbol_lifecycle_boundary_artifact` and decision `new_policy_adr_required`. It does not qualify V3 or authorize data mutation.
+- Next authorization: ADR-0014 may be created only as a proposed Draft for independent review. Drafting does not adopt or implement policy and cannot mutate the registry or trigger V3/V4 requalification.
+- Safety: U-03F, U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.

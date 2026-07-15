@@ -386,19 +386,27 @@ class KlaySourceConflictTests(unittest.TestCase):
                 item[field][0] = "0" * 64
             self.assertTrue(validate_document(rehash(document)), field)
 
-    def test_repository_governance_is_pending_review_and_fail_closed(self):
+    def test_repository_governance_closes_adjudication_and_keeps_draft_fail_closed(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "Liquid universe V3 KLAY official-source conflict adjudication pending review",
+            "ADR-0014 lifecycle-boundary placeholder policy draft authorized",
         )
         self.assertEqual(
             state["current_status"],
-            "liquid_universe_v3_klay_source_adjudication_new_policy_adr_required_no_strategy_no_m2",
+            "klay_adjudication_merged_adr0014_draft_authorized_no_strategy_no_m2",
         )
-        work = next(item for item in state["open_work"] if item["id"] == "U-03E-V3-ADJ")
-        self.assertEqual(work["status"], "adjudication_completed_pending_review")
-        self.assertEqual(work["scope"], "KLAY evidence only")
+        self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
+        milestone = next(
+            item
+            for item in state["completed_milestones"]
+            if item["phase"] == "Liquid universe V3 KLAY official-source conflict adjudication"
+        )
+        self.assertEqual(milestone["merged_pr"], 79)
+        work = next(item for item in state["open_work"] if item["id"] == "ADR-0014-DRAFT")
+        self.assertEqual(work["status"], "authorized_not_started")
+        self.assertFalse(work["adopted"])
+        self.assertFalse(work["implemented"])
         self.assertFalse(work["registry_change"])
         self.assertFalse(work["v3_rerun"])
         self.assertFalse(any(state["research_authorizations"].values()))

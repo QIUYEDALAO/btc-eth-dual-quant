@@ -1,10 +1,16 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T10:34:46Z"
-current_phase: Liquid universe V3 KLAY official-source conflict adjudication pending review
-current_status: liquid_universe_v3_klay_source_adjudication_new_policy_adr_required_no_strategy_no_m2
+last_updated_utc: "2026-07-15T11:03:43Z"
+current_phase: ADR-0014 lifecycle-boundary placeholder policy draft authorized
+current_status: klay_adjudication_merged_adr0014_draft_authorized_no_strategy_no_m2
 completed_milestones:
+  - phase: Liquid universe V3 KLAY official-source conflict adjudication
+    status: completed_new_policy_adr_required
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V3_KLAY_SOURCE_CONFLICT_ADJUDICATION_REPORT.md
+    evidence_content_hash: 6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a
+    merged_pr: 79
+    merge_commit: bf6993c378527573b6ade82c3f1e9edb8af4c36d
   - phase: Liquid universe V3 public requalification
     status: blocked_unregistered_official_row_conflict
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V3_QUALIFICATION_REPORT.md
@@ -209,22 +215,20 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03E-V3-ADJ
-    phase: Liquid universe V3 independent source conflict adjudication
-    status: adjudication_completed_pending_review
-    branch: codex/u03e-v3-klay-source-adjudication
-    pr: 79
-    evidence_commit: 04bbe128fe0c83d8f21a7a34ffcf9c97ab842a7c
-    current_pr_head_ref: refs/pull/79/head
-    evidence_content_hash: 6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a
+  - id: ADR-0014-DRAFT
+    phase: Official lifecycle-boundary placeholder policy design
+    status: authorized_not_started
+    branch: not_created
+    pr: none
+    head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/evidence/liquid_universe_v3/klay_source_conflict_adjudication.json
-    scope: KLAY evidence only
+    scope: proposed policy text, static checker, tests and CI only
+    adopted: false
+    implemented: false
     registry_change: false
     v3_rerun: false
-    classification: symbol_lifecycle_boundary_artifact
-    decision: new_policy_adr_required
-    blocker: "Monthly ZIP, daily ZIP and both public REST comparators preserve the same invalid lifecycle-boundary row. ADR-0013 has no legal canonicalization or quarantine rule; a separate policy ADR is only a future candidate and is not authorized by this task."
+    blocker: "ADR-0014 may be drafted for independent review only. Policy adoption, implementation, registry mutation, V3/V4 requalification, U-03F, U-04 and strategy work remain unauthorized."
   - id: U-03F
     phase: Liquid universe V3 independent audit
     status: not_authorized
@@ -301,9 +305,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Review and merge the independently hardened checksum-bound KLAYUSDT adjudication evidence if every check passes; no registry, contract or qualification artifact may change in this task.
-  - "After PR #79 and any required context-only closeout merge, a separate proposed-only ADR-0014 Draft may document a future lifecycle-boundary placeholder policy. Drafting does not adopt or implement the policy."
-  - A fixed-range V3 cold/warm/worker rerun may follow only after a separately reviewed policy and versioned registry update are adopted.
+  - Draft ADR-0014 as a proposed-only lifecycle-boundary placeholder policy with static checks and tests. Do not adopt or implement it.
+  - Do not change the V3 contract, registry or qualification artifacts and do not run V3/V4 requalification in the Draft task.
+  - A future versioned implementation and fixed-range rerun require separate review and adoption after the Draft PR; neither is authorized now.
   - U-03F and cross-sectional design remain blocked until a future V3 requalification pass merges and U-03F then passes in dependency order.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
