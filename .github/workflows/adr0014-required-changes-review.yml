@@ -1,0 +1,30 @@
+name: ADR-0014 Required Changes Review
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  required-changes-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out independent review branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact revised PR head
+        run: git fetch origin 31c967c785128671769eb713baed265da8ae0f2a
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Run independent conformance review validation
+        run: bash scripts/adr0014_required_changes_review_validate.sh

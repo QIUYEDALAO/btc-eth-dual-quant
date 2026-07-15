@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "ADR-0014 required-changes Draft revision authorized",
+            "ADR-0014 required-changes independent conformance review completed",
         )
         self.assertEqual(
             state["current_status"],
-            "adr0014_required_changes_revision_authorized_draft_not_adopted_no_requalification_no_strategy_no_m2",
+            "adr0014_required_changes_review_approve_pr81_draft_unadopted_no_requalification_no_strategy_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -404,7 +404,9 @@ class KlaySourceConflictTests(unittest.TestCase):
         )
         self.assertEqual(milestone["merged_pr"], 79)
         work = next(item for item in state["open_work"] if item["id"] == "ADR-0014-DRAFT")
-        self.assertEqual(work["status"], "draft_revision_authorized_not_started")
+        self.assertEqual(work["status"], "independent_conformance_review_approve_draft_unadopted")
+        self.assertEqual(work["head_sha"], "31c967c785128671769eb713baed265da8ae0f2a")
+        self.assertEqual(work["conformance_review_verdict"], "approve")
         self.assertFalse(work["adopted"])
         self.assertFalse(work["implemented"])
         self.assertFalse(work["registry_change"])

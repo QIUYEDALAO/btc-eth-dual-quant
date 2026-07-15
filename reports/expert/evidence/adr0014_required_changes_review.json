@@ -1,0 +1,309 @@
+{
+  "content": {
+    "authorization_matrix": {
+      "adr0014_adopted": false,
+      "api_or_trading": false,
+      "cold_warm_or_worker_build": false,
+      "contract_mutation": false,
+      "event_scan": false,
+      "execution_live": false,
+      "m2": false,
+      "oos_access": false,
+      "pr81_merge": false,
+      "pr81_ready": false,
+      "registry_mutation": false,
+      "returns_or_backtesting": false,
+      "strategy_design_or_code": false,
+      "u03f": false,
+      "u04": false,
+      "v3_or_v4_requalification": false,
+      "v4_implementation": false
+    },
+    "checker_assessment": {
+      "adr_model_consistent": true,
+      "deep_structured_validation": true,
+      "fault_matrix_complete": true,
+      "marker_only_validation": false,
+      "pr81_remains_draft": true,
+      "runtime_authority": false
+    },
+    "mandatory_change_reviews": [
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "Versioned lifecycle event binds all six row classes and KLAY 2024-10-28/29/30 raw hashes."
+        ],
+        "mandatory_change_id": "MC-01",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-01",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-005",
+          "ADR0014-FI-006",
+          "ADR0014-FI-007",
+          "ADR0014-FI-009"
+        ]
+      },
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "Availability epochs and mask-before-grid order uniquely define 5m, 1h and 1d completeness."
+        ],
+        "mandatory_change_id": "MC-02",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-02",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-001",
+          "ADR0014-FI-002",
+          "ADR0014-FI-003",
+          "ADR0014-FI-004",
+          "ADR0014-FI-031",
+          "ADR0014-FI-032",
+          "ADR0014-FI-033"
+        ]
+      },
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "Seven knowledge/effective/archive/adjudication times are separate; retrospective lag is explicit."
+        ],
+        "mandatory_change_id": "MC-03",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-03",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-020",
+          "ADR0014-FI-021"
+        ]
+      },
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "Monthly membership and timestamped active universe expose separate counts and closed state vocabulary."
+        ],
+        "mandatory_change_id": "MC-04",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-04",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-027",
+          "ADR0014-FI-028",
+          "ADR0014-FI-029",
+          "ADR0014-FI-030"
+        ]
+      },
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "Data policy denies execution, settlement and return semantics and requires independent held-position review."
+        ],
+        "mandatory_change_id": "MC-05",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-05",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-034",
+          "ADR0014-FI-035",
+          "ADR0014-FI-036"
+        ]
+      },
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "announced_successor_symbol is provenance-only and inherits no history, rank, membership or continuity."
+        ],
+        "mandatory_change_id": "MC-06",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-06",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-017"
+        ]
+      },
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "Generic policy and evidence-bound registry are separate; drift, conflicts and special cases fail closed."
+        ],
+        "mandatory_change_id": "MC-07",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-07",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-009",
+          "ADR0014-FI-010",
+          "ADR0014-FI-022",
+          "ADR0014-FI-023",
+          "ADR0014-FI-024",
+          "ADR0014-FI-025",
+          "ADR0014-FI-037"
+        ]
+      },
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "Multiple identity-versioned non-overlapping epochs cover relisting, reactivation, migration and ticker reuse."
+        ],
+        "mandatory_change_id": "MC-08",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-08",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-018",
+          "ADR0014-FI-019",
+          "ADR0014-FI-026"
+        ]
+      },
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "Permanent lifecycle evidence requires joint official, archive, intraday, event-time and scope evidence."
+        ],
+        "mandatory_change_id": "MC-09",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-09",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-011",
+          "ADR0014-FI-012",
+          "ADR0014-FI-013",
+          "ADR0014-FI-014",
+          "ADR0014-FI-015",
+          "ADR0014-FI-016"
+        ]
+      },
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "Future V4 machine artifacts, hash bindings, activation order, counters and zero-Gates are complete."
+        ],
+        "mandatory_change_id": "MC-10",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-10",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-021",
+          "ADR0014-FI-022",
+          "ADR0014-FI-023",
+          "ADR0014-FI-024"
+        ]
+      },
+      {
+        "acceptance_result": "pass",
+        "evidence": [
+          "The docs-only fault matrix contains unique ADR0014-FI-001 through ADR0014-FI-037 cases."
+        ],
+        "mandatory_change_id": "MC-11",
+        "pass": true,
+        "remaining_gap": "none",
+        "review_id": "ADR0014-RC-11",
+        "severity": "resolved",
+        "test_mapping": [
+          "ADR0014-FI-001",
+          "ADR0014-FI-002",
+          "ADR0014-FI-003",
+          "ADR0014-FI-004",
+          "ADR0014-FI-005",
+          "ADR0014-FI-006",
+          "ADR0014-FI-007",
+          "ADR0014-FI-008",
+          "ADR0014-FI-009",
+          "ADR0014-FI-010",
+          "ADR0014-FI-011",
+          "ADR0014-FI-012",
+          "ADR0014-FI-013",
+          "ADR0014-FI-014",
+          "ADR0014-FI-015",
+          "ADR0014-FI-016",
+          "ADR0014-FI-017",
+          "ADR0014-FI-018",
+          "ADR0014-FI-019",
+          "ADR0014-FI-020",
+          "ADR0014-FI-021",
+          "ADR0014-FI-022",
+          "ADR0014-FI-023",
+          "ADR0014-FI-024",
+          "ADR0014-FI-025",
+          "ADR0014-FI-026",
+          "ADR0014-FI-027",
+          "ADR0014-FI-028",
+          "ADR0014-FI-029",
+          "ADR0014-FI-030",
+          "ADR0014-FI-031",
+          "ADR0014-FI-032",
+          "ADR0014-FI-033",
+          "ADR0014-FI-034",
+          "ADR0014-FI-035",
+          "ADR0014-FI-036",
+          "ADR0014-FI-037"
+        ]
+      }
+    ],
+    "severity_counts": {
+      "critical": 0,
+      "high": 0,
+      "informational": 1,
+      "low": 0,
+      "medium": 0
+    },
+    "stop_condition": "Review approval is conformance evidence only. PR #81 remains Draft and unadopted; no downstream task is authorized.",
+    "verdict": "approve"
+  },
+  "content_hash": "d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7",
+  "generated_utc": "2026-07-15T18:57:56.719305Z",
+  "manifest_type": "adr0014_required_changes_conformance_review",
+  "reviewed_artifacts": {
+    "adr_blob_sha": "0e9cedc8a1cfa50d5c4d6457da78c9154a75390f",
+    "adr_content_sha256": "a8c57bec6ee31342d0a9dd8e14deb4fd0ed28202aa838705d699522fa58d6790",
+    "adr_path": "docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md",
+    "changed_file_list_hash_algorithm": "sha256(canonical_json(sorted_utf8_paths)))",
+    "changed_file_list_sha256": "1f9999545d237072eea41daec96579ab02ab265cedf4a9dfc71de5c5cd88f841",
+    "changed_files": [
+      ".github/workflows/adr0014-draft-policy-validate.yml",
+      "AGENTS.md",
+      "NEXT_ACTION.md",
+      "PROJECT_EXECUTION_CHECKLIST.md",
+      "PROJECT_LEDGER.md",
+      "PROJECT_STATE.yaml",
+      "docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md",
+      "docs/decisions/proposals/adr0014_lifecycle_fault_matrix.json",
+      "docs/decisions/proposals/adr0014_lifecycle_policy_model.json",
+      "docs/decisions/proposals/adr0014_mc_conformance.json",
+      "reports/INDEX.md",
+      "scripts/adr0014_draft_policy_check.py",
+      "scripts/adr0014_draft_policy_validate.sh",
+      "scripts/project_state_transition_check.py",
+      "tests/test_adr0014_draft_policy.py",
+      "tests/test_liquid_universe_state_machine.py",
+      "tests/test_liquid_universe_v3_klay_conflict.py"
+    ],
+    "fault_matrix_blob_sha": "ffaf2e791aef5694d132217db4d55df7fe96bc52",
+    "fault_matrix_hash": "90beb680e568ab5bc045556ef728e34cd2827d5bf6005ebb524b6e38ed6a199f",
+    "fault_matrix_path": "docs/decisions/proposals/adr0014_lifecycle_fault_matrix.json",
+    "klay_adjudication_evidence_hash": "6d31fa1f6fe01d16d3a7f00ae67ce114faa370ddb269b57406ea98af7c416f0a",
+    "mc_conformance_blob_sha": "62b77c6964fe7a3c3541d67e5532dafe7e0ae354",
+    "mc_conformance_hash": "303e4d28ea27575ed7fa46e9d9da459e5c237a0390f36f9c9de9cfcd7c9821d2",
+    "mc_conformance_path": "docs/decisions/proposals/adr0014_mc_conformance.json",
+    "policy_model_blob_sha": "e920a2e3d915422860e37e79590b5576549777ed",
+    "policy_model_hash": "bce56a1070ef0690b13cba492bf9619a456af2618be94eb2ecbe03ea7e709d97",
+    "policy_model_path": "docs/decisions/proposals/adr0014_lifecycle_policy_model.json",
+    "prior_review_content_hash": "3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15",
+    "reviewed_base_branch": "main",
+    "reviewed_base_sha": "ab45ba4f12badab8a00faa0181b48c948643e223",
+    "reviewed_pr_head": "31c967c785128671769eb713baed265da8ae0f2a",
+    "reviewed_pr_number": 81,
+    "reviewed_pr_state": "OPEN_DRAFT_MERGEABLE"
+  },
+  "schema_version": 1
+}

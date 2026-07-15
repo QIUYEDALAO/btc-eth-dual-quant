@@ -2,23 +2,17 @@
 
 ## Immediate Task
 
-ADR-0014 independent policy review merged in PR #82 at
-`d507684564fc31812c8e7d4adb06d7ab61c7dab7` against PR #81 head
-`cd4a1d8fb53870cdf8a3a683a4942a2c81b58f44`. The verdict is
-`approve_with_required_changes`: 0 critical, 10 high, 1 medium and 1
-informational finding. Eleven machine-verifiable changes block adoption.
-The review evidence is merged and immutable.
+PR #81's required-changes Draft at exact head
+`31c967c785128671769eb713baed265da8ae0f2a` passed independent conformance
+review against main `ab45ba4f12badab8a00faa0181b48c948643e223`. MC-01 through
+MC-11 all pass; remaining critical/high findings are 0/0. The deterministic
+review evidence hash is
+`d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7`.
 
-The decisive evidence is broader than the Draft's 2024-10-30 `close<open`
-category. The official monthly archive also contains a normal-duration flat,
-zero-volume 2024-10-29 row entirely after KLAYUSDT ceased trading, while
-2024-10-28 is a real partial lifecycle day. The future policy object must be a
-versioned availability lifecycle event with point-in-time knowledge, exact
-epochs, complete-day masks and active-universe semantics.
-
-PR #81 remains `Proposed draft; not adopted`. Only a Draft revision addressing
-MC-01 through MC-11 is authorized, followed by a separate independent
-conformance review against the revised exact head.
+PR #81 remains Open/Draft, `Proposed draft; not adopted`. The review verdict
+does not mark it Ready, merge it, adopt ADR-0014, create V4 authority, modify a
+registry, or authorize any qualification run. This milestone stops after the
+independent review PR merges; no downstream implementation is authorized.
 
 ## Current Decision
 
@@ -67,10 +61,10 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Rebase and revise Draft PR #81 against MC-01 through MC-11 without marking it Ready or merging it.
-2. Freeze the revised head after all PR #81 checks pass.
-3. Independently re-review every MC from a separate latest-main branch.
-4. Do not adopt policy, revise contracts/registries, run V3/V4, or start U-03F/U-04.
+1. Keep PR #81 Draft and unadopted at the exact independently reviewed head.
+2. Do not start an adoption, V4 implementation, registry or requalification task without a new explicit authorization.
+3. Preserve the deterministic review, prior review and KLAY evidence hashes.
+4. Keep U-03F, U-04, strategy work and M2 blocked.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.

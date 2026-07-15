@@ -23,12 +23,16 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_adr0014_review_closeout_requires_draft_revision_and_zero_authority(self):
+    def test_adr0014_conformance_review_requires_exact_draft_and_zero_authority(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
         draft = next(item for item in state["open_work"] if item.get("id") == "ADR-0014-DRAFT")
-        self.assertEqual(draft["status"], "draft_revision_authorized_not_started")
+        self.assertEqual(draft["status"], "independent_conformance_review_approve_draft_unadopted")
+        self.assertEqual(draft["head_sha"], "31c967c785128671769eb713baed265da8ae0f2a")
+        self.assertEqual(draft["conformance_review_verdict"], "approve")
+        self.assertEqual(draft["remaining_critical"], 0)
+        self.assertEqual(draft["remaining_high"], 0)
         self.assertFalse(draft["adopted"])
         self.assertFalse(any(item.get("id") == "ADR-0014-REVIEW" for item in state["open_work"]))
         review = next(
@@ -41,6 +45,24 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
             review["merge_commit"],
             "d507684564fc31812c8e7d4adb06d7ab61c7dab7",
         )
+        conformance = next(
+            item
+            for item in state["completed_milestones"]
+            if item.get("phase") == "ADR-0014 required-changes independent conformance review"
+        )
+        self.assertEqual(conformance["reviewed_head_sha"], draft["head_sha"])
+        self.assertEqual(conformance["verdict"], "approve")
+        self.assertEqual(conformance["critical_findings"], 0)
+        self.assertEqual(conformance["high_findings"], 0)
+
+        changed = copy.deepcopy(state)
+        milestone = next(
+            item
+            for item in changed["completed_milestones"]
+            if item.get("phase") == "ADR-0014 required-changes independent conformance review"
+        )
+        milestone["reviewed_head_sha"] = "0" * 40
+        self.assertIn("ADR-0014 conformance milestone binding changed", validate(changed))
 
         changed = copy.deepcopy(state)
         changed["open_work"] = [
