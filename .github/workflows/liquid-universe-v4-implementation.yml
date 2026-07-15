@@ -1,11 +1,11 @@
-name: ADR-0014 Adoption Validate
+name: Liquid Universe V4 Implementation Validate
 
 on:
   pull_request:
   push:
 
 jobs:
-  adr0014-adoption:
+  liquid-universe-v4-implementation:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -23,8 +23,5 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .
 
-      - name: Fetch frozen reviewed head
-        run: git fetch origin 31c967c785128671769eb713baed265da8ae0f2a
-
-      - name: Validate conditional adoption
-        run: bash scripts/adr0014_adoption_validate.sh --evidence-only
+      - name: Validate fixture-only V4 implementation
+        run: bash scripts/liquid_universe_v4_implementation_validate.sh

@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "ADR-0014 conditional adoption pending merge",
+            "Liquid universe V4 lifecycle availability implementation pending independent review",
         )
         self.assertEqual(
             state["current_status"],
-            "adr0014_adopted_for_v4_implementation_requalification_only_no_strategy_no_m2",
+            "liquid_universe_v4_implementation_pass_fixture_only_public_requalification_not_run_no_strategy_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -403,14 +403,22 @@ class KlaySourceConflictTests(unittest.TestCase):
             if item["phase"] == "Liquid universe V3 KLAY official-source conflict adjudication"
         )
         self.assertEqual(milestone["merged_pr"], 79)
-        work = next(item for item in state["open_work"] if item["id"] == "ADR-0014-ADOPT")
-        self.assertEqual(work["status"], "accepted_pending_merge_for_v4_implementation_and_fixed_range_requalification_only")
-        self.assertEqual(work["reviewed_head_sha"], "31c967c785128671769eb713baed265da8ae0f2a")
-        self.assertEqual(work["conformance_review_verdict"], "approve")
-        self.assertTrue(work["adopted"])
-        self.assertFalse(work["implemented"])
-        self.assertFalse(work["registry_change"])
-        self.assertFalse(work["requalification"])
+        adoption = next(
+            item
+            for item in state["completed_milestones"]
+            if item["phase"] == "ADR-0014 conditional adoption"
+        )
+        self.assertEqual(adoption["merged_pr"], 85)
+        self.assertEqual(
+            adoption["merge_commit"],
+            "0f5f76f86973316ac66b8e3f9d6e65419b310ec9",
+        )
+        work = next(item for item in state["open_work"] if item["id"] == "U-03E-V4-IMPL")
+        self.assertEqual(work["status"], "implementation_pass_fixture_only_pending_independent_review")
+        self.assertTrue(work["implemented"])
+        self.assertFalse(work["independent_review_approved"])
+        self.assertFalse(work["public_requalification"])
+        self.assertFalse(any(item["id"] == "ADR-0014-ADOPT" for item in state["open_work"]))
         self.assertFalse(any(item["id"] == "ADR-0014-REVIEW" for item in state["open_work"]))
         self.assertFalse(any(state["research_authorizations"].values()))
 

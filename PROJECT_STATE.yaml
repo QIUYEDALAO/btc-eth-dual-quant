@@ -2,9 +2,15 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-16T00:00:00Z"
-current_phase: ADR-0014 conditional adoption pending merge
-current_status: adr0014_adopted_for_v4_implementation_requalification_only_no_strategy_no_m2
+current_phase: Liquid universe V4 lifecycle availability implementation pending independent review
+current_status: liquid_universe_v4_implementation_pass_fixture_only_public_requalification_not_run_no_strategy_no_m2
 completed_milestones:
+  - phase: ADR-0014 conditional adoption
+    status: accepted_for_v4_implementation_and_fixed_range_public_requalification_only
+    evidence: docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md
+    evidence_content_hash: 9c3572bee81edbf1efcc3ca523c9fdd10003adc5f3c3ac5a7211ad673405394a
+    merged_pr: 85
+    merge_commit: 0f5f76f86973316ac66b8e3f9d6e65419b310ec9
   - phase: ADR-0014 required-changes independent conformance review
     status: approve
     evidence: reports/expert/ADR_0014_REQUIRED_CHANGES_REVIEW.md
@@ -238,32 +244,22 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: ADR-0014-ADOPT
-    phase: ADR-0014 conditional adoption
-    status: accepted_pending_merge_for_v4_implementation_and_fixed_range_requalification_only
-    branch: codex/adr-0014-adoption
+  - id: U-03E-V4-IMPL
+    phase: Liquid universe V4 lifecycle availability implementation
+    status: implementation_pass_fixture_only_pending_independent_review
+    branch: codex/liquid-universe-v4-lifecycle-availability
     pr: pending
     head_sha: runtime_current_pr_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md
-    scope: exact reviewed semantics adopted only for V4 implementation, independent implementation review and fixed-range public requalification
-    reviewed_pr: 81
-    reviewed_head_sha: 31c967c785128671769eb713baed265da8ae0f2a
-    reviewed_base_sha: ab45ba4f12badab8a00faa0181b48c948643e223
-    prior_review_pr: 82
-    prior_review_merge_sha: d507684564fc31812c8e7d4adb06d7ab61c7dab7
-    prior_review_content_hash: 3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15
-    conformance_review_pr: 84
-    conformance_review_merge_sha: 5c839cdf8b825e18546a5bdbfe3fd9ca1f2f1328
-    conformance_review_verdict: approve
-    conformance_review_content_hash: d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7
-    adoption_manifest: reports/expert/evidence/adr0014_adoption_manifest.json
-    adoption_content_hash: 9c3572bee81edbf1efcc3ca523c9fdd10003adc5f3c3ac5a7211ad673405394a
-    adopted: true
-    implemented: false
-    registry_change: false
-    requalification: false
-    blocker: "Adoption PR must merge before V4 implementation. Implementation must then pass independent review before the fixed-range public requalification. U-03F remains unauthorized."
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_IMPLEMENTATION_STATUS.md
+    base_sha: 0f5f76f86973316ac66b8e3f9d6e65419b310ec9
+    contract_hash: 816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83
+    policy_hash: 7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977
+    lifecycle_registry_hash: a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d
+    implemented: true
+    independent_review_approved: false
+    public_requalification: false
+    blocker: "The exact implementation head must pass an independent review from the adoption main before merge. Public requalification remains unauthorized until implementation closeout."
   - id: U-03F
     phase: Liquid universe V3 independent audit
     status: not_authorized
@@ -272,7 +268,7 @@ open_work:
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/evidence/liquid_universe_v3/requalification_run_manifest.json
-    blocker: "Requires a merged V3 public requalification pass; the unregistered KLAYUSDT official row conflict keeps U-03F unauthorized."
+    blocker: "Requires a merged V4 public requalification pass after independent implementation review and closeout; no V4 public run has occurred."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -281,7 +277,7 @@ open_work:
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: docs/decisions/ADR-0012-liquid-universe-qualification-correctness-v2.md
-    blocker: "Requires a merged V3 public requalification pass, a merged U-03F independent audit pass, and a separate explicit design task."
+    blocker: "Requires a merged V4 public requalification pass, a merged U-03F independent audit pass, and a separate explicit design task."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -344,9 +340,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Merge the conditional ADR-0014 adoption only after its machine Gate and CI pass."
-  - "After adoption merges, implement the generic V4 policy and lifecycle registry without running public requalification."
-  - "Independently review the exact V4 implementation before merging it or running fixed-range public requalification."
+  - "Freeze the exact V4 implementation head after local and GitHub validation."
+  - "Independently review that exact implementation from adoption main before merging it or running fixed-range public requalification."
   - "After implementation closeout, run only the fixed 2020-01 through 2026-06 cold/warm/worker public requalification and stop after cold on any unknown conflict."
   - U-03F and cross-sectional design remain blocked even after a V4 pass until a separate future task explicitly authorizes U-03F.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
@@ -390,6 +385,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V4_IMPLEMENTATION_STATUS.md
+    phase: Liquid universe V4 lifecycle availability implementation
+    status: implementation_pass_fixture_only_public_requalification_not_run
+    status_marker: "- Status: `implementation_pass_fixture_only_public_requalification_not_run`"
   - path: reports/expert/evidence/adr0014_adoption_manifest.json
     phase: ADR-0014 conditional adoption
     status: accepted_for_v4_implementation_and_fixed_range_public_requalification_only
@@ -702,6 +701,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 85
+    title: Conditionally adopt ADR-0014 for V4 qualification
+    merge_commit: 0f5f76f86973316ac66b8e3f9d6e65419b310ec9
+    status: merged
   - number: 84
     title: Independently re-review ADR-0014 required changes
     merge_commit: 5c839cdf8b825e18546a5bdbfe3fd9ca1f2f1328

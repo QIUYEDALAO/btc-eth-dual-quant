@@ -2,16 +2,14 @@
 
 ## Immediate Task
 
-ADR-0014 is conditionally adopted from PR #81 exact reviewed head
-`31c967c785128671769eb713baed265da8ae0f2a`. Its MC-01 through Forbidden
-Shortcuts semantic body and three docs-only models remain hash-identical to
-the independent review evidence merged in PR #84 at `5c839cdf`.
+ADR-0014 was conditionally adopted in PR #85 at `0f5f76f`. The generic V4
+lifecycle implementation is fixture-complete on
+`codex/liquid-universe-v4-lifecycle-availability`, with no public run.
 
-The adoption authorizes only the ordered A-B-C-D-E lifecycle: merge adoption,
-implement V4 without a public run, independently review that exact
-implementation, run one fixed `2020-01` through `2026-06` public
-requalification, then close governance. It does not authorize U-03F or any
-research, strategy, return, OOS, API/trading, execution/live or M2 work.
+The immediate task is to validate and freeze the exact implementation head,
+then create an independent review from adoption main. The implementation must
+not merge and the fixed `2020-01` through `2026-06` public requalification must
+not run until that review approves the unchanged target and governance closes.
 
 ## Current Decision
 
@@ -60,11 +58,11 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Merge the conditional adoption only after its adoption checker and CI pass.
-2. Close PR #81 as superseded without modifying or merging its exact head.
-3. Implement V4 only after adoption merges; do not run public requalification in the implementation PR.
-4. Require an independent exact-head implementation review before merging V4.
-5. Run the fixed-range cold/warm/worker public requalification only after implementation closeout.
+1. Freeze the exact implementation head after all local and GitHub checks pass.
+2. Review that exact head independently from adoption main; review evidence must not modify implementation code or governance.
+3. Merge implementation only after an `approve` verdict with zero critical/high findings and an unchanged target head.
+4. Complete a minimal implementation governance closeout.
+5. Only then run fixed-range cold/warm/worker public requalification.
 6. Preserve all V3 evidence and keep U-03F, U-04, strategy work and M2 blocked.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation

@@ -4,6 +4,13 @@ set -u
 PY_CMD="${PYTHON:-python3}"
 export PYTHONPATH="${PYTHONPATH:-.deps:src:.}"
 TARGET_SHA="31c967c785128671769eb713baed265da8ae0f2a"
+EVIDENCE_ONLY=false
+if [[ "${1:-}" == "--evidence-only" ]]; then
+  EVIDENCE_ONLY=true
+elif [[ -n "${1:-}" ]]; then
+  echo "unknown argument: $1" >&2
+  exit 2
+fi
 PASS_COUNT=0
 FAIL_COUNT=0
 RESULTS=()
@@ -61,7 +68,11 @@ adoption_scope_scan() {
 
 run_check "frozen Draft structured checks" reviewed_draft_checks
 run_check "ADR-0014 adoption tests" "$PY_CMD" -m unittest tests.test_adr0014_adoption -v
-run_check "ADR-0014 adoption manifest and repository Gate" "$PY_CMD" scripts/adr0014_adoption_check.py
+if [[ "$EVIDENCE_ONLY" == true ]]; then
+  run_check "ADR-0014 adoption manifest and evidence Gate" "$PY_CMD" scripts/adr0014_adoption_check.py --evidence-only
+else
+  run_check "ADR-0014 adoption manifest and repository Gate" "$PY_CMD" scripts/adr0014_adoption_check.py
+fi
 run_check "required-changes review regression" "$PY_CMD" -m unittest tests.test_adr0014_required_changes_review -v
 run_check "KLAY adjudication regression" "$PY_CMD" -m unittest tests.test_liquid_universe_v3_klay_conflict -v
 run_check "full unit suite" "$PY_CMD" -m unittest discover -s tests -v
@@ -73,7 +84,9 @@ run_check "secret scan" "$PY_CMD" scripts/m0_secret_scan.py
 run_check "no-trading scan" no_trading_scan
 run_check "execution/live scan" execution_scan
 run_check "runtime artifact scan" artifact_scan
-run_check "adoption-only changed-path scan" adoption_scope_scan
+if [[ "$EVIDENCE_ONLY" == false ]]; then
+  run_check "adoption-only changed-path scan" adoption_scope_scan
+fi
 run_check "git diff --check" git diff --check
 
 echo

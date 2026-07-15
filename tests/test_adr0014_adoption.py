@@ -10,6 +10,7 @@ from scripts.adr0014_adoption_check import (
     content_identity,
     extract_semantic_body,
     verify_adoption_document,
+    verify_repository,
 )
 
 
@@ -80,6 +81,9 @@ class ADR0014AdoptionTests(unittest.TestCase):
             ADOPTED_ADR_PATH.as_posix().split("/docs/", 1)[1],
             "decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md",
         )
+
+    def test_later_stages_can_recheck_evidence_without_reopening_adoption_scope(self):
+        self.assertEqual(verify_repository(check_stage_scope=False), [])
 
 
 if __name__ == "__main__":

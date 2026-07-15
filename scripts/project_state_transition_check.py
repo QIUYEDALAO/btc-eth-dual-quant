@@ -71,6 +71,10 @@ ALLOWED = {
         "adr0014_adopted_for_v4_implementation_requalification_only_no_strategy_no_m2",
     ): "ADR-0014-ADOPT",
     (
+        "Liquid universe V4 lifecycle availability implementation pending independent review",
+        "liquid_universe_v4_implementation_pass_fixture_only_public_requalification_not_run_no_strategy_no_m2",
+    ): "U-03E-V4-IMPL",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -109,7 +113,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03F"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03F"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -130,6 +134,7 @@ def validate(state: dict) -> list[str]:
     if pair[0] in {
         "ADR-0014 required-changes independent conformance review completed",
         "ADR-0014 conditional adoption pending merge",
+        "Liquid universe V4 lifecycle availability implementation pending independent review",
     }:
         milestones = [
             item
@@ -149,6 +154,21 @@ def validate(state: dict) -> list[str]:
             milestones[0].get(key) != value for key, value in expected_milestone.items()
         ):
             failures.append("ADR-0014 conformance milestone binding changed")
+    if pair[0] == "Liquid universe V4 lifecycle availability implementation pending independent review":
+        adoption = [
+            item
+            for item in state.get("completed_milestones", [])
+            if item.get("phase") == "ADR-0014 conditional adoption"
+        ]
+        expected_adoption = {
+            "merged_pr": 85,
+            "merge_commit": "0f5f76f86973316ac66b8e3f9d6e65419b310ec9",
+            "evidence_content_hash": "9c3572bee81edbf1efcc3ca523c9fdd10003adc5f3c3ac5a7211ad673405394a",
+        }
+        if len(adoption) != 1 or any(
+            adoption[0].get(key) != value for key, value in expected_adoption.items()
+        ):
+            failures.append("ADR-0014 adoption milestone binding changed")
     merged = {item.get("number") for item in state.get("latest_merged_prs", [])}
     for item in open_work:
         if isinstance(item.get("pr"), int) and item["pr"] in merged:
@@ -198,6 +218,17 @@ def validate(state: dict) -> list[str]:
                 failures.append("ADR-0014 adoption manifest hash changed")
             if item.get("adopted") is not True or item.get("implemented") or item.get("registry_change") or item.get("requalification"):
                 failures.append("ADR-0014 adoption authority widened beyond Stage A")
+        if item.get("id") == "U-03E-V4-IMPL":
+            if item.get("head_sha") != "runtime_current_pr_head":
+                failures.append("V4 implementation head_sha must be runtime current PR metadata")
+            if item.get("contract_hash") != "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83":
+                failures.append("V4 contract hash changed")
+            if item.get("policy_hash") != "7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977":
+                failures.append("V4 policy hash changed")
+            if item.get("lifecycle_registry_hash") != "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d":
+                failures.append("V4 lifecycle registry hash changed")
+            if item.get("implemented") is not True or item.get("independent_review_approved") or item.get("public_requalification"):
+                failures.append("V4 implementation authority widened before independent review")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
         failures.append("U-04 authorized without a separate post-audit task")
     return failures

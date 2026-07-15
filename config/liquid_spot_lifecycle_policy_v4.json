@@ -1,0 +1,85 @@
+{
+  "schema_version": 4,
+  "policy_id": "LIQUID-SPOT-LIFECYCLE-AVAILABILITY-V4",
+  "policy_version": "ADR-0014-V1",
+  "status": "implementation_fixture_authority_public_requalification_not_run",
+  "adopted_adr": {
+    "path": "docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md",
+    "sha256": "2de88986f6123a0d0ddaa2756b6c665a2fc0d3960f24dba1966bd51332becad9",
+    "reviewed_semantic_body_sha256": "5c2113edbb7a69b52c1e78e3a6c3f223dac36d21769a9e1c5b815894945f8e99",
+    "adoption_manifest_content_hash": "9c3572bee81edbf1efcc3ca523c9fdd10003adc5f3c3ac5a7211ad673405394a"
+  },
+  "reviewed_models": {
+    "policy_model_sha256": "bce56a1070ef0690b13cba492bf9619a456af2618be94eb2ecbe03ea7e709d97",
+    "fault_matrix_sha256": "90beb680e568ab5bc045556ef728e34cd2827d5bf6005ebb524b6e38ed6a199f",
+    "mc_conformance_sha256": "303e4d28ea27575ed7fa46e9d9da459e5c237a0390f36f9c9de9cfcd7c9821d2"
+  },
+  "processing_order": [
+    "verify_checksum_crc_schema",
+    "collect_raw_rows_and_classify_defects",
+    "load_adr0013_row_registry",
+    "load_adr0014_lifecycle_policy_and_registry",
+    "reject_policy_overlap",
+    "resolve_registered_row_conflicts",
+    "build_lifecycle_availability_epochs",
+    "quarantine_registered_lifecycle_rows",
+    "apply_availability_mask",
+    "build_expected_grid",
+    "detect_gaps",
+    "aggregate_timeframes",
+    "build_complete_day_mask",
+    "compute_eligibility_and_ranking",
+    "freeze_monthly_membership",
+    "build_timestamped_active_universe",
+    "emit_hash_bound_artifacts"
+  ],
+  "states": [
+    "active_complete",
+    "active_partial",
+    "lifecycle_terminated",
+    "data_quarantined",
+    "unresolved_blocked",
+    "not_yet_available"
+  ],
+  "semantics": {
+    "availability_bounds": "start_inclusive_end_exclusive",
+    "integer_epoch_only": true,
+    "availability_mask_before_expected_grid": true,
+    "post_boundary_absence_is_gap": false,
+    "partial_days_enter_ranking_or_history": false,
+    "month_start_membership_rewritten_mid_month": false,
+    "active_universe_changes_at_effective_at": true,
+    "successor_inherits_history_or_rank": false,
+    "close_time_repair_allowed": false
+  },
+  "non_targets": [
+    "exit_price",
+    "liquidation",
+    "settlement",
+    "token_swap",
+    "stale_fill",
+    "stale_price_forward_fill",
+    "cross_cessation_return",
+    "forced_exit",
+    "cash_mapping",
+    "replacement_asset"
+  ],
+  "authorizations": {
+    "fixture_validation": true,
+    "fault_injection": true,
+    "fixed_range_v4_public_requalification_after_independent_review": true,
+    "u03f": false,
+    "u04": false,
+    "hypothesis": false,
+    "strategy": false,
+    "events": false,
+    "signals": false,
+    "returns": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "canonical_hash": "7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977"
+}
