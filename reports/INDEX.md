@@ -4,6 +4,7 @@
 | `reports/m0/LIQUID_SPOT_UNIVERSE_QUALIFICATION_REPORT.md` | liquid spot universe qualification V1 | superseded_pending_v2_requalification / PR #68 merged | Historical V1 evidence only; ADR-0012 withdrew its admission authority pending V2 requalification and audit. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_GAP_ATTRIBUTION_REPORT.md` | universe gap attribution V1 | superseded_pending_v2_requalification / PR #68 merged | Historical V1 attribution only; it cannot authorize research or override V2 blockers. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_V2_SOURCE_CONFLICT_ADJUDICATION_REPORT.md` | V2 source conflict adjudication | new_policy_adr_required / PR #73 | Three checksum-bound official-source conflicts are fully classified; no corrected archive or parser bug permits a same-contract rerun. | no |
+| `docs/decisions/ADR-0013-official-archive-row-conflict-policy.md` | official archive row-conflict policy | proposed_draft_not_adopted | General policy proposal only; V2 remains unchanged, U-03E remains blocked, and no implementation or rerun is authorized. | no |
 
 | Report | Phase | Status | Meaning | Approves Trading |
 | --- | --- | --- | --- | --- |
