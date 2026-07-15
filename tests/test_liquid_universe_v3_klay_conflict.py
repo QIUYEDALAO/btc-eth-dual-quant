@@ -386,15 +386,15 @@ class KlaySourceConflictTests(unittest.TestCase):
                 item[field][0] = "0" * 64
             self.assertTrue(validate_document(rehash(document)), field)
 
-    def test_repository_governance_closes_adjudication_and_keeps_draft_fail_closed(self):
+    def test_repository_governance_closes_adjudication_and_limits_adoption(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "ADR-0014 required-changes independent conformance review completed",
+            "ADR-0014 conditional adoption pending merge",
         )
         self.assertEqual(
             state["current_status"],
-            "adr0014_required_changes_review_approve_pr81_draft_unadopted_no_requalification_no_strategy_no_m2",
+            "adr0014_adopted_for_v4_implementation_requalification_only_no_strategy_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -403,14 +403,14 @@ class KlaySourceConflictTests(unittest.TestCase):
             if item["phase"] == "Liquid universe V3 KLAY official-source conflict adjudication"
         )
         self.assertEqual(milestone["merged_pr"], 79)
-        work = next(item for item in state["open_work"] if item["id"] == "ADR-0014-DRAFT")
-        self.assertEqual(work["status"], "independent_conformance_review_approve_draft_unadopted")
-        self.assertEqual(work["head_sha"], "31c967c785128671769eb713baed265da8ae0f2a")
+        work = next(item for item in state["open_work"] if item["id"] == "ADR-0014-ADOPT")
+        self.assertEqual(work["status"], "accepted_pending_merge_for_v4_implementation_and_fixed_range_requalification_only")
+        self.assertEqual(work["reviewed_head_sha"], "31c967c785128671769eb713baed265da8ae0f2a")
         self.assertEqual(work["conformance_review_verdict"], "approve")
-        self.assertFalse(work["adopted"])
+        self.assertTrue(work["adopted"])
         self.assertFalse(work["implemented"])
         self.assertFalse(work["registry_change"])
-        self.assertFalse(work["v3_rerun"])
+        self.assertFalse(work["requalification"])
         self.assertFalse(any(item["id"] == "ADR-0014-REVIEW" for item in state["open_work"]))
         self.assertFalse(any(state["research_authorizations"].values()))
 

@@ -2,17 +2,16 @@
 
 ## Immediate Task
 
-PR #81's required-changes Draft at exact head
-`31c967c785128671769eb713baed265da8ae0f2a` passed independent conformance
-review against main `ab45ba4f12badab8a00faa0181b48c948643e223`. MC-01 through
-MC-11 all pass; remaining critical/high findings are 0/0. The deterministic
-review evidence hash is
-`d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7`.
+ADR-0014 is conditionally adopted from PR #81 exact reviewed head
+`31c967c785128671769eb713baed265da8ae0f2a`. Its MC-01 through Forbidden
+Shortcuts semantic body and three docs-only models remain hash-identical to
+the independent review evidence merged in PR #84 at `5c839cdf`.
 
-PR #81 remains Open/Draft, `Proposed draft; not adopted`. The review verdict
-does not mark it Ready, merge it, adopt ADR-0014, create V4 authority, modify a
-registry, or authorize any qualification run. This milestone stops after the
-independent review PR merges; no downstream implementation is authorized.
+The adoption authorizes only the ordered A-B-C-D-E lifecycle: merge adoption,
+implement V4 without a public run, independently review that exact
+implementation, run one fixed `2020-01` through `2026-06` public
+requalification, then close governance. It does not authorize U-03F or any
+research, strategy, return, OOS, API/trading, execution/live or M2 work.
 
 ## Current Decision
 
@@ -61,10 +60,12 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Keep PR #81 Draft and unadopted at the exact independently reviewed head.
-2. Do not start an adoption, V4 implementation, registry or requalification task without a new explicit authorization.
-3. Preserve the deterministic review, prior review and KLAY evidence hashes.
-4. Keep U-03F, U-04, strategy work and M2 blocked.
+1. Merge the conditional adoption only after its adoption checker and CI pass.
+2. Close PR #81 as superseded without modifying or merging its exact head.
+3. Implement V4 only after adoption merges; do not run public requalification in the implementation PR.
+4. Require an independent exact-head implementation review before merging V4.
+5. Run the fixed-range cold/warm/worker public requalification only after implementation closeout.
+6. Preserve all V3 evidence and keep U-03F, U-04, strategy work and M2 blocked.
 
 U-03E is closed as a truthful blocked milestone, not an active implementation
 task. U-03F may run only after a future U-03E pass under valid source evidence.

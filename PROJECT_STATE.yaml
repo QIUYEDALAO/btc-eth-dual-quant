@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T18:58:50Z"
-current_phase: ADR-0014 required-changes independent conformance review completed
-current_status: adr0014_required_changes_review_approve_pr81_draft_unadopted_no_requalification_no_strategy_no_m2
+last_updated_utc: "2026-07-16T00:00:00Z"
+current_phase: ADR-0014 conditional adoption pending merge
+current_status: adr0014_adopted_for_v4_implementation_requalification_only_no_strategy_no_m2
 completed_milestones:
   - phase: ADR-0014 required-changes independent conformance review
     status: approve
@@ -238,30 +238,32 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: ADR-0014-DRAFT
-    phase: Official lifecycle-boundary placeholder policy design
-    status: independent_conformance_review_approve_draft_unadopted
-    branch: codex/adr-0014-lifecycle-boundary-placeholder-policy
-    pr: 81
-    head_sha: 31c967c785128671769eb713baed265da8ae0f2a
+  - id: ADR-0014-ADOPT
+    phase: ADR-0014 conditional adoption
+    status: accepted_pending_merge_for_v4_implementation_and_fixed_range_requalification_only
+    branch: codex/adr-0014-adoption
+    pr: pending
+    head_sha: runtime_current_pr_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md
-    scope: revised proposed policy and docs-only review models passed exact-head independent conformance review; no adoption or implementation
+    scope: exact reviewed semantics adopted only for V4 implementation, independent implementation review and fixed-range public requalification
+    reviewed_pr: 81
+    reviewed_head_sha: 31c967c785128671769eb713baed265da8ae0f2a
+    reviewed_base_sha: ab45ba4f12badab8a00faa0181b48c948643e223
     prior_review_pr: 82
     prior_review_merge_sha: d507684564fc31812c8e7d4adb06d7ab61c7dab7
     prior_review_content_hash: 3d7e089e3322970a8602dda8a4c4c82d01f5604276688567754d77319c932a15
-    mandatory_changes: [MC-01, MC-02, MC-03, MC-04, MC-05, MC-06, MC-07, MC-08, MC-09, MC-10, MC-11]
-    mandatory_changes_addressed: [MC-01, MC-02, MC-03, MC-04, MC-05, MC-06, MC-07, MC-08, MC-09, MC-10, MC-11]
+    conformance_review_pr: 84
+    conformance_review_merge_sha: 5c839cdf8b825e18546a5bdbfe3fd9ca1f2f1328
     conformance_review_verdict: approve
     conformance_review_content_hash: d2b0dfa7fdd9c8cc5bef2c716600f6e79ec6272651fa067dc23a3d0915271bc7
-    remaining_critical: 0
-    remaining_high: 0
-    adopted: false
+    adoption_manifest: reports/expert/evidence/adr0014_adoption_manifest.json
+    adoption_content_hash: 9c3572bee81edbf1efcc3ca523c9fdd10003adc5f3c3ac5a7211ad673405394a
+    adopted: true
     implemented: false
     registry_change: false
-    v3_rerun: false
     requalification: false
-    blocker: "The conformance verdict is review evidence only. PR #81 remains Draft and unadopted; adoption, merge, V4 implementation and requalification require a separate explicit task."
+    blocker: "Adoption PR must merge before V4 implementation. Implementation must then pass independent review before the fixed-range public requalification. U-03F remains unauthorized."
   - id: U-03F
     phase: Liquid universe V3 independent audit
     status: not_authorized
@@ -290,6 +292,10 @@ open_work:
     evidence: reports/m1/M1C_BTC_ETH_ROTATION_BACKTEST_REPORT.md
     blocker: "P3 failed complete-trade, OOS Sharpe, and drawdown gates; P4 and M2 are not allowed for M1C."
 active_decisions:
+  - id: ADR-0014
+    decision: Adopt lifecycle availability policy only for generic V4 implementation, independent implementation review and one fixed-range public requalification.
+    status: accepted_for_v4_implementation_and_fixed_range_public_requalification_only
+    evidence: docs/decisions/ADR-0014-official-lifecycle-boundary-placeholder-policy.md
   - id: ADR-0013
     decision: Adopt the generic official-archive row-conflict policy only for V3 implementation and fixed-range U-03E requalification.
     status: accepted_for_v3_implementation_and_u03e_requalification_only
@@ -338,10 +344,11 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "No adoption, implementation or qualification task is authorized by the ADR-0014 conformance-review milestone."
-  - "PR #81 must remain Draft at exact reviewed head 31c967c785128671769eb713baed265da8ae0f2a unless a future explicit task defines a new review boundary."
-  - "Do not mark PR #81 Ready, merge it, adopt policy, implement V4, mutate contracts/registries or run requalification."
-  - U-03F and cross-sectional design remain blocked until a future V3 requalification pass merges and U-03F then passes in dependency order.
+  - "Merge the conditional ADR-0014 adoption only after its machine Gate and CI pass."
+  - "After adoption merges, implement the generic V4 policy and lifecycle registry without running public requalification."
+  - "Independently review the exact V4 implementation before merging it or running fixed-range public requalification."
+  - "After implementation closeout, run only the fixed 2020-01 through 2026-06 cold/warm/worker public requalification and stop after cold on any unknown conflict."
+  - U-03F and cross-sectional design remain blocked even after a V4 pass until a separate future task explicitly authorizes U-03F.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -349,7 +356,7 @@ allowed_next_work:
   - Diagnostics and revalidation must not lower validation thresholds.
   - Architecture hardening must not implement execution.
   - Design review must not implement execution.
-  - Independent policy diagnostics and design review only; no lifecycle implementation or qualification build is authorized.
+  - Diagnostics and design review remain allowed; lifecycle implementation and fixed-range requalification must follow the adopted A-B-C-D-E dependency order.
   - Do not enter M2.
   - Do not use API keys.
   - Do not run live or paper trading.
@@ -383,6 +390,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/evidence/adr0014_adoption_manifest.json
+    phase: ADR-0014 conditional adoption
+    status: accepted_for_v4_implementation_and_fixed_range_public_requalification_only
+    status_marker: '"adoption_status": "accepted_for_v4_implementation_and_fixed_range_public_requalification_only"'
   - path: reports/expert/ADR_0014_REQUIRED_CHANGES_REVIEW.md
     phase: ADR-0014 required-changes independent conformance review
     status: approve
@@ -691,6 +702,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 84
+    title: Independently re-review ADR-0014 required changes
+    merge_commit: 5c839cdf8b825e18546a5bdbfe3fd9ca1f2f1328
+    status: merged
   - number: 83
     title: Close ADR-0014 independent review governance
     merge_commit: ab45ba4f12badab8a00faa0181b48c948643e223
@@ -914,6 +929,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/adr0014_adoption_validate.sh
   - bash scripts/m1h_paper_protocol_validate.sh
   - bash scripts/m1h_is_design_validate.sh
   - bash scripts/m1g_is_validate.sh
