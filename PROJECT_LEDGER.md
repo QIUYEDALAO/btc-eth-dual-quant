@@ -1389,3 +1389,15 @@ private exchange responses here.
 - Hashes: contract `f41f5fedf6002487c9d576a39927ade4409d55e1bc0442aa097e6b2ed054b3ed`; resolution registry `570b66e32c3a7ac910ba5ef6688eff966304e65a9519f4f8a902b60fbe4957a4`; adjudication evidence `8214079900d311c232ecde4b348712f2a5a6d958c8cd98270b9501a71f77330b`.
 - Public run: not executed in this task. V2 remains blocked historical evidence.
 - Safety: no strategy, event, return, backtest, OOS, API, trading, U-03F, U-04 or M2 authorization.
+
+## 2026-07-15 - Liquid Universe V3 Public Requalification Stopped Fail-Closed
+
+- Task ID: U-03E-V3-RUN
+- Branch: `codex/liquid-universe-v3-public-requalification`
+- Predecessor: PR #76 merged at `b3496fe54f3992ffa20bcc0c62316c0bc14db543` after 82/82 checks passed.
+- Frozen range: `2020-01` through `2026-06`; public ZIP data only, no live REST qualification dependency.
+- Registered resolutions: five BTT invalid monthly rows replaced by checksum-bound daily evidence; one AXS byte-identical duplicate collapsed with raw multiplicity retained.
+- New blocker: KLAYUSDT 2024-10-30 official monthly and daily 1d ZIPs contain the same zero-volume row whose `close_time` precedes `open_time`. Both current official checksums match the downloaded archives, but no ADR-0013 registry entry exists.
+- Result: `blocked`; processing errors 0, unresolved row conflicts 1, unresolved gaps 0, synthetic fills 0, replacement members 0.
+- Determinism: cold build completed; warm and worker builds were deliberately not run after the unknown-conflict stop, so no three-way determinism claim is made.
+- Decision: preserve evidence and require independent adjudication plus reviewed versioned registry update before rerun. U-03F/U-04, strategy, events, returns, backtesting, OOS, API/trading and M2 remain unauthorized.

@@ -1,10 +1,15 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-15T06:30:00Z"
-current_phase: Liquid universe V3 generic row-conflict implementation pending review
-current_status: liquid_universe_v3_implementation_pass_fixture_only_public_requalification_not_run_no_strategy_no_m2
+last_updated_utc: "2026-07-15T07:27:52Z"
+current_phase: Liquid universe V3 public requalification blocked by unregistered official row conflict
+current_status: liquid_universe_v3_requalification_blocked_unknown_conflict_no_strategy_no_m2
 completed_milestones:
+  - phase: Liquid universe V3 generic row-conflict implementation
+    status: pass
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V3_IMPLEMENTATION_STATUS.md
+    merged_pr: 76
+    merge_commit: b3496fe54f3992ffa20bcc0c62316c0bc14db543
   - phase: ADR-0013 conditional adoption
     status: accepted_for_v3_implementation_and_u03e_requalification_only
     evidence: docs/decisions/ADR-0013-official-archive-row-conflict-policy.md
@@ -199,24 +204,24 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03E-V3-IMPL
-    phase: Liquid universe V3 generic row-conflict implementation
-    status: implementation_pass_pending_review
-    branch: codex/liquid-universe-v3-row-conflict-policy
+  - id: U-03E-V3-RUN
+    phase: Liquid universe V3 public requalification
+    status: blocked_pending_adjudication
+    branch: codex/liquid-universe-v3-public-requalification
     pr: pending
     head_sha: runtime_current_pr_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V3_IMPLEMENTATION_STATUS.md
-    blocker: "Fixture implementation must merge with all CI checks successful before the fixed-range public V3 requalification starts."
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V3_QUALIFICATION_REPORT.md
+    blocker: "KLAYUSDT 2024-10-30 official monthly and daily 1d archives contain the same unregistered row with close_time before open_time; ADR-0013 requires new adjudication before rerun."
   - id: U-03F
-    phase: Liquid universe V2 independent audit
+    phase: Liquid universe V3 independent audit
     status: not_authorized
     branch: not_created
     pr: none
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/evidence/liquid_universe_v2/requalification_run_manifest.json
-    blocker: "Requires U-03E qualification pass; current official-source conflicts are fail-closed blockers."
+    evidence: reports/m0/evidence/liquid_universe_v3/requalification_run_manifest.json
+    blocker: "Requires a merged V3 public requalification pass; the unregistered KLAYUSDT official row conflict keeps U-03F unauthorized."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -225,7 +230,7 @@ open_work:
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: docs/decisions/ADR-0012-liquid-universe-qualification-correctness-v2.md
-    blocker: "Requires merged V2 public requalification and exact independent audit."
+    blocker: "Requires a merged V3 public requalification pass, a merged U-03F independent audit pass, and a separate explicit design task."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -238,7 +243,7 @@ open_work:
 active_decisions:
   - id: ADR-0013
     decision: Adopt the generic official-archive row-conflict policy only for V3 implementation and fixed-range U-03E requalification.
-    status: accepted_for_v3_implementation_and_u03e_requalification_only_pending_merge
+    status: accepted_for_v3_implementation_and_u03e_requalification_only
     evidence: docs/decisions/ADR-0013-official-archive-row-conflict-policy.md
   - id: ADR-0012
     decision: Supersede the V1 qualification admission decision and rebuild the liquid universe through the V2 machine-authority contract.
@@ -284,14 +289,10 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - Merge PR #74 only after ADR-0013 conformance and all CI checks pass; then implement generic V3 in a separate branch.
-  - Review and merge the U-03E source-conflict adjudication evidence without changing the V2 contract.
-  - After adjudication evidence merges, create a separate Draft ADR for a general official-archive row-conflict policy; do not adopt it automatically.
-  - Public-source diagnostics may investigate the exact U-03E official-archive conflicts without private data or outcomes.
-  - Cross-sectional design review remains blocked until U-03E and U-03F pass in dependency order.
-  - Preserve the deterministic blocked U-03E evidence and resolve the three checksum-verified official-source conflicts through source-owner evidence or a new data-policy ADR.
-  - Do not silently deduplicate AXSUSDT or ignore negative BTTUSDT volume; the frozen V2 contract remains fail closed.
-  - U-03F and cross-sectional design remain blocked until a future U-03E rerun passes and merges.
+  - Merge the truthful blocked V3 requalification evidence only after all validation and CI checks pass.
+  - Public-source diagnostics may independently adjudicate only the checksum-bound KLAYUSDT 2024-10-30 conflict without private data, outcomes, ranking changes, row deletion or silent deduplication.
+  - A fixed-range V3 cold/warm/worker rerun may follow only after a separately reviewed versioned registry update is adopted.
+  - U-03F and cross-sectional design remain blocked until a future V3 requalification pass merges and U-03F then passes in dependency order.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -332,6 +333,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V3_QUALIFICATION_REPORT.md
+    phase: Liquid universe V3 public requalification
+    status: blocked_unregistered_official_row_conflict
+    status_marker: "- Status: blocked"
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V2_V3_DIFF_REPORT.md
+    phase: Liquid universe V2/V3 comparison
+    status: deterministic_diff_only
+    status_marker: "- Scope: historical membership comparison only; prior authority is not a V3 qualification input."
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V1_V3_DIFF_REPORT.md
+    phase: Liquid universe V1/V3 comparison
+    status: deterministic_diff_only
+    status_marker: "- Scope: historical membership comparison only; prior authority is not a V3 qualification input."
   - path: reports/m0/LIQUID_SPOT_UNIVERSE_V2_SOURCE_CONFLICT_ADJUDICATION_REPORT.md
     phase: Liquid universe V2 source conflict adjudication
     status: new_policy_adr_required
@@ -612,6 +625,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 76
+    title: Implement generic V3 row conflict policy
+    merge_commit: b3496fe54f3992ffa20bcc0c62316c0bc14db543
+    status: merged
   - number: 74
     title: Adopt official archive row conflict policy for V3
     merge_commit: 20e7ceb7f35366da3afe4859a4168ee1954bd5ae

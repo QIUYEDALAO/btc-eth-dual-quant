@@ -6,6 +6,7 @@ from btc_eth_dual_quant.data.kline_row_conflicts import (
     RawKlineRow,
     classify_complete_group,
     normalize_kline_fields,
+    structural_errors,
 )
 
 
@@ -28,6 +29,15 @@ def raw(fields: list[str] | None = None, *, line: int = 1) -> RawKlineRow:
 
 
 class CompleteGroupPolicyTests(unittest.TestCase):
+    def test_partial_daily_bar_is_valid_but_interval_overrun_is_not(self):
+        fields = [
+            "1775001600000000", "1", "2", "0.5", "1.5", "10",
+            "1775012399999000", "15", "2", "5", "7", "0",
+        ]
+        self.assertEqual(structural_errors(fields, interval="1d"), ())
+        fields[6] = "1775088000000000"
+        self.assertIn("close_time outside interval", structural_errors(fields, interval="1d"))
+
     def test_exact_two_and_n_row_groups_are_collapsible(self):
         two = classify_complete_group([raw(line=1), raw(line=2)])
         many = classify_complete_group([raw(line=index) for index in range(1, 6)])

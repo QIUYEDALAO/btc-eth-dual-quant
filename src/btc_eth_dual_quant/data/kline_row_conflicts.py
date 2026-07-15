@@ -69,7 +69,11 @@ def structural_errors(fields: Iterable[str], *, interval: str) -> tuple[str, ...
     else:
         if open_time % step_ms:
             errors.append("off-grid open_time")
-        if close_time != open_time + step_ms - 1:
+        interval_end = open_time + step_ms - 1
+        if interval == "1d":
+            if not open_time <= close_time <= interval_end:
+                errors.append("close_time outside interval")
+        elif close_time != interval_end:
             errors.append("invalid close_time")
     if low > min(open_, close) or high < max(open_, close) or low > high:
         errors.append("invalid OHLC ordering")

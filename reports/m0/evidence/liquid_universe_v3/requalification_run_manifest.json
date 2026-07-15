@@ -1,0 +1,64 @@
+{
+  "content": {
+    "authorizations": {
+      "api_or_trading": false,
+      "backtesting": false,
+      "event_scan": false,
+      "m2": false,
+      "oos_access": false,
+      "returns": false,
+      "strategy_code": false,
+      "u03f": false,
+      "u04": false
+    },
+    "builds": {
+      "cold": {
+        "artifact_set_hash": "f661d7abd99adc4067d354afba0c5421e7d1f33c54f768b89c8011ec01eab4f3",
+        "manifest_file_sha256": {
+          "candidate_eligibility_manifest": "cb12b49da788e45328a34efc42eb6a5a904e1bc9174c490e7db55feed3486487",
+          "conflict_resolution_manifest": "9c3111fcb8c9df1577aa498bcbd2a616a034ffe6b304464e86b7cc9891de17e0",
+          "membership_manifest": "359b339b7138da8f2e5905752ab93cda83a7e4695656a5116d979826e0b127af",
+          "qualification_summary": "d8d2e3aa5e9a5b070226a69a7a5cd67d4f73446aea495eedb37adcf6b787136b",
+          "qualified_panel_manifest": "32e669ff1f1238eb4234daf30e9dd70d89073a3f5fedae6a288e63515f9ba46d",
+          "quarantine_manifest": "45a26681d72df91c9dd51e18c2648c0acf1751998463ed8f2965e2576dfafb25",
+          "source_manifest": "714645928506eb36ef94942f7f030e31b4a07f45085365f174026e3f29b853ec"
+        },
+        "manifest_hashes": {
+          "candidate_eligibility_manifest": "a92ce384a596ba99c2a8032000982a2295aa62c05b2a92d074fd89b6e97a463a",
+          "conflict_resolution_manifest": "31bee72d4aa64efd331f319f0832a55d8ce5c1b4e12acdcaf3b21a065f5c39ee",
+          "membership_manifest": "d3ffe7fc5b7da764053cdee8f3269ee3819723ea5381896559245cc8ce61c9ab",
+          "qualification_summary": "fe236096824fa016be748e67132f225ff02ce4a527fb9b14e67555728c7aa668",
+          "qualified_panel_manifest": "1fcfb90deeca7603dac77196592e31fcfcadd167854f6b4cc4eee5ec858e4524",
+          "quarantine_manifest": "52dee8af2139aa6016bcd8997f654dae68889c3a2292b4b386e5b3219cee3f46",
+          "source_manifest": "67529beb72cceeed9aad0baa825cccb5ca1e64c31cf30fdf9a4c076c40fd3bf9"
+        },
+        "qualification_report_sha256": "c37936e56cc41202e4e91b283ae6b1870f5b2c88305985feefa5aad979a430ae",
+        "v1_v3_diff_sha256": "30464270319c1f7b639cd4b0975d1938ff8c53c32504dcee9dcbccd499839b36",
+        "v2_v3_diff_sha256": "e8052e7ca346342bad11dd87fe714b4aa439cd08f084cbb696c5a3700b0628db",
+        "workers": 16
+      }
+    },
+    "builds_completed": [
+      "cold"
+    ],
+    "determinism_status": "not_run_due_fail_closed_cold_block",
+    "deterministic_mismatches": null,
+    "generated_utc": "2026-07-15T07:40:16.083694+00:00",
+    "processing_errors": 0,
+    "range": {
+      "end": "2026-06",
+      "start": "2020-01"
+    },
+    "replacement_members": 0,
+    "status": "blocked",
+    "stop_reasons": [
+      "row_conflict:KLAYUSDT:1d:1730246400000:unregistered row conflict"
+    ],
+    "synthetic_fills": 0,
+    "unresolved_gaps": 0,
+    "unresolved_row_conflicts": 1
+  },
+  "content_hash": "057d4d94e277054b8cbd157dbb5ba05f04f1d0c3c2d28160d5b99689b1624e9c",
+  "manifest_type": "liquid_universe_v3_requalification_run",
+  "schema_version": 3
+}
