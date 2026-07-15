@@ -193,8 +193,8 @@ open_work:
     phase: Liquid universe V2 source conflict adjudication
     status: new_policy_adr_required_pending_review
     branch: codex/u03e-source-conflict-adjudication
-    pr: pending
-    head_sha: pending
+    pr: 73
+    head_sha: b9d3a30a94ddaa24a753ba6fb966f8491ba34d69
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/evidence/liquid_universe_v2/source_conflict_adjudication.json
     blocker: "Current V2 policy cannot replace invalid official monthly rows or collapse exact official duplicates; a separately reviewed versioned ADR is required before any rerun."
