@@ -39,6 +39,7 @@ jobs:
           bash scripts/liquid_universe_v4_implementation_validate.sh
 
       - name: Ensure review-only scope
+        if: github.head_ref == 'codex/liquid-universe-v4-implementation-review' || github.ref_name == 'codex/liquid-universe-v4-implementation-review'
         run: |
           python - <<'PY'
           import subprocess
