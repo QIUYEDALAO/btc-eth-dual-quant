@@ -67,6 +67,16 @@ class U03FV4RepairImplementationTests(unittest.TestCase):
         self.assertEqual(bars, [])
         self.assertEqual(errors, ["5m interval boundary is invalid"])
 
+    def test_malformed_first_record_is_not_silently_treated_as_a_header(self) -> None:
+        opened = 1_580_515_200_000
+        malformed = "open_time,open,high,low,close,volume,close_time,quote,trades,taker_base,taker_quote,ignore\n"
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "SOLUSDT-5m-2020-02.zip"
+            archive(path, [malformed, kline(opened)], symbol="SOLUSDT")
+            bars, errors = _valid_five_minute_rows(path, "SOLUSDT", "2020-02")
+        self.assertEqual(len(bars), 1)
+        self.assertEqual(errors, ["kline timestamp must be an unsigned integer"])
+
     def test_ft_run_manifest_binds_exact_final_report_bytes(self) -> None:
         records = {"cold": {"artifact_set_hash": "a" * 64}}
         payload = render_bound_report(

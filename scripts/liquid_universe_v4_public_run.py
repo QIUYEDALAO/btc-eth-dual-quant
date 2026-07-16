@@ -88,8 +88,6 @@ def _physical_kline_rows(path: Path) -> list[list[str]]:
         if len(names) != 1:
             raise ValueError("archive must contain one CSV")
         rows = [row for row in csv.reader(io.TextIOWrapper(archive.open(names[0]), encoding="utf-8-sig")) if row]
-    if rows and rows[0] and not rows[0][0].strip().isdigit():
-        rows = rows[1:]
     return rows
 
 
