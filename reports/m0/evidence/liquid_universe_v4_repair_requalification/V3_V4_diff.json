@@ -1,0 +1,20 @@
+{
+  "content": {
+    "lifecycle_events_added": 1,
+    "membership": {
+      "changed_months": 0,
+      "details": [],
+      "months_compared": 78
+    },
+    "v3_mutated": false,
+    "v3_status": "blocked",
+    "v3_unresolved_row_conflicts": 1,
+    "v4_status": "blocked",
+    "v4_unresolved_row_conflicts": 0
+  },
+  "content_hash": "7e2dadbeba85bca25afdb28207d8a71393c02c1d16151a84eee29913c4e0033f",
+  "contract_hash": "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83",
+  "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+  "manifest_type": "V3_V4_diff",
+  "schema_version": 4
+}

@@ -1,12 +1,37 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-16T13:45:32Z"
-current_phase: Liquid universe V4 independent audit failed or blocked
-current_status: liquid_universe_v4_independent_audit_failed_no_strategy_no_m2
+last_updated_utc: "2026-07-16T17:10:38Z"
+current_phase: U-03F V4 repair public requalification blocked
+current_status: liquid_universe_v4_repair_requalification_blocked_no_new_audit_no_u04_no_m2
 completed_milestones:
+  - phase: U-03F V4 repair public requalification
+    status: blocked_invalid_5m_interval_boundaries_pending_pr_merge
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md
+    machine_evidence: reports/m0/evidence/liquid_universe_v4_repair_requalification/requalification_run_manifest.json
+    base_main_sha: 9f1480f544d3bde90ad4f5c55c79dc441001162c
+    branch: codex/u03f-v4-repair-public-requalification
+    source_mode: frozen_local_only
+    source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+    cold_artifact_set_hash: b7cac049c6ab339f52fc29c7f31d275db09b3a4c47e2f62b38175cea219b2f83
+    run_manifest_hash: 0792ec7b52dbabb6057f0c238d963ed774c1e9e838b42cb21a03bc7e334f68cf
+    builds_completed: [cold]
+    determinism_status: not_run_due_fail_closed_cold_block
+    processing_errors: 119
+    public_requalification_executed: true
+    new_independent_audit_executed: false
+  - phase: U-03F V4 repair exact-head independent review
+    status: approve_merged
+    evidence: reports/expert/U03F_V4_REPAIR_EXACT_HEAD_REVIEW.md
+    reviewed_pr: 98
+    reviewed_head_sha: 27e6436c0a4b00ca7c8055bc763d533fcbcc9743
+    review_pr: 99
+    review_merge_commit: 9f1480f544d3bde90ad4f5c55c79dc441001162c
+    verdict: approve
+    critical_findings: 0
+    high_findings: 0
   - phase: U-03F V4 repair implementation
-    status: implementation_fixture_pass_pending_exact_head_review
+    status: implementation_fixture_pass_exact_head_approved_merged
     evidence: reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md
     protocol_content_hash: 9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1
     repair_implementation_hash: 9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a
@@ -14,10 +39,12 @@ completed_milestones:
     base_main_sha: 0e65cd41bfac590d40ae5cb0590cc7102019018c
     branch: codex/u03f-v4-repair-implementation
     pr: 98
-    public_requalification_executed: false
+    merge_commit: 1ccfd409669e4bdb028d656a34e7da4d867fdba3
+    reviewed_head_sha: 27e6436c0a4b00ca7c8055bc763d533fcbcc9743
+    public_requalification_executed: true
     future_requalification_source_mode: frozen_local_only
     new_independent_audit_executed: false
-    exact_head_review_status: pending
+    exact_head_review_status: approve_merged
   - phase: U-03F V4 repair and requalification protocol
     status: frozen_before_repair_implementation_merged
     evidence: reports/m0/U03F_V4_REPAIR_REQUALIFICATION_PROTOCOL.md
@@ -332,15 +359,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03F-REPAIR-IMPLEMENTATION
-    phase: U-03F V4 repair implementation and exact-head review
-    status: in_progress
-    branch: codex/u03f-v4-repair-implementation
-    pr: 98
+  - id: U-03F-REPAIR-REQUALIFICATION
+    phase: U-03F V4 repair public requalification
+    status: blocked_pending_evidence_pr_merge
+    branch: codex/u03f-v4-repair-public-requalification
+    pr: pending
     head_sha: runtime_current_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md
-    blocker: "Implementation CI and a separate exact-head approve verdict with zero critical/high findings are required before implementation merge or public requalification."
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md
+    blocker: "Cold stopped fail-closed on 119 frozen-source 5m interval-boundary errors. Warm/worker and the new independent audit are blocked; only truthful evidence merge and governance closeout may follow."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -412,8 +439,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete CI for the exact U-03F repair implementation head, then obtain a separate exact-head approve verdict with zero critical/high findings before implementation merge."
-  - "Only after exact-head approval and repair merge, run the fixed-range public requalification and a new independent audit under the frozen authority."
+  - "Merge the truthful blocked U-03F repair-requalification evidence only after all PR checks pass."
+  - "After that evidence merges, perform a governance-only closeout; do not start a new independent audit because the requalification pass dependency failed."
   - "Diagnostics are limited to reproducing and repairing the merged U-03F findings; they cannot authorize research or mutate historical evidence."
   - "Design review is limited to the independent repair/requalification contract and cannot select a strategy or authorize U-04."
   - Cross-sectional design remains blocked because U-03F failed; U-04 is not authorized.
@@ -453,9 +480,17 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md
+    phase: U-03F V4 repair public requalification
+    status: blocked_invalid_5m_interval_boundaries
+    status_marker: "- Status: blocked"
+  - path: reports/m0/evidence/liquid_universe_v4_repair_requalification/requalification_run_manifest.json
+    phase: U-03F V4 repair public requalification machine evidence
+    status: cold_blocked_warm_worker_not_run
+    status_marker: '"status": "blocked"'
   - path: reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md
     phase: U-03F V4 repair implementation
-    status: implementation_fixture_pass_pending_exact_head_review
+    status: implementation_fixture_pass_exact_head_approved_merged
     status_marker: "- Status: `implementation_fixture_pass_pending_exact_head_review`"
   - path: reports/m0/U03F_V4_REPAIR_REQUALIFICATION_PROTOCOL.md
     phase: U-03F V4 repair and requalification protocol
@@ -797,6 +832,14 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 99
+    title: Independently review U-03F V4 repair exact head
+    merge_commit: 9f1480f544d3bde90ad4f5c55c79dc441001162c
+    status: merged
+  - number: 98
+    title: Implement U-03F V4 audit repair
+    merge_commit: 1ccfd409669e4bdb028d656a34e7da4d867fdba3
+    status: merged
   - number: 97
     title: Freeze U-03F V4 repair and requalification protocol
     merge_commit: 0e65cd41bfac590d40ae5cb0590cc7102019018c
@@ -1101,7 +1144,7 @@ validation_commands:
   - bash scripts/m1e_source_owner_validate.sh
   - git diff --check
 u03f_v4_repair_exact_head_review:
-  status: approve_pending_review_pr_ci
+  status: approve_merged
   target_pr: 98
   target_base_sha: 0e65cd41bfac590d40ae5cb0590cc7102019018c
   target_head_sha: 27e6436c0a4b00ca7c8055bc763d533fcbcc9743
@@ -1111,7 +1154,24 @@ u03f_v4_repair_exact_head_review:
   review_content_hash: c60b1f8b451ea60ac8da267e90917b8c560655089bb1cd20dfb12999004bf1b4
   remaining_critical: 0
   remaining_high: 0
-  public_requalification_executed: false
+  review_pr: 99
+  review_pr_checks_success: 112
+  review_merge_commit: 9f1480f544d3bde90ad4f5c55c79dc441001162c
+  implementation_merge_commit: 1ccfd409669e4bdb028d656a34e7da4d867fdba3
+  public_requalification_executed: true
   new_independent_audit_executed: false
+  u04_authorized: false
+  m2_authorized: false
+u03f_v4_repair_public_requalification:
+  status: blocked_pending_evidence_pr_merge
+  base_main_sha: 9f1480f544d3bde90ad4f5c55c79dc441001162c
+  source_mode: frozen_local_only
+  source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+  cold_artifact_set_hash: b7cac049c6ab339f52fc29c7f31d275db09b3a4c47e2f62b38175cea219b2f83
+  run_manifest_hash: 0792ec7b52dbabb6057f0c238d963ed774c1e9e838b42cb21a03bc7e334f68cf
+  builds_completed: [cold]
+  determinism_status: not_run_due_fail_closed_cold_block
+  processing_errors: 119
+  new_independent_audit_authorized: false
   u04_authorized: false
   m2_authorized: false

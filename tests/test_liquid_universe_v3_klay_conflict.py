@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "Liquid universe V4 independent audit failed or blocked",
+            "U-03F V4 repair public requalification blocked",
         )
         self.assertEqual(
             state["current_status"],
-            "liquid_universe_v4_independent_audit_failed_no_strategy_no_m2",
+            "liquid_universe_v4_repair_requalification_blocked_no_new_audit_no_u04_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(

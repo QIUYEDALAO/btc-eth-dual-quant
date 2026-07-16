@@ -107,6 +107,10 @@ ALLOWED = {
         "liquid_universe_v4_independent_audit_failed_no_strategy_no_m2",
     ): "U-03F",
     (
+        "U-03F V4 repair public requalification blocked",
+        "liquid_universe_v4_repair_requalification_blocked_no_new_audit_no_u04_no_m2",
+    ): "U-03F-REPAIR-REQUALIFICATION",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -125,6 +129,16 @@ FAILED_U03F_CLOSEOUT_PAIR = (
     "Liquid universe V4 independent audit failed or blocked",
     "liquid_universe_v4_independent_audit_failed_no_strategy_no_m2",
 )
+
+REPAIR_REQUALIFICATION_BLOCKED_PAIR = (
+    "U-03F V4 repair public requalification blocked",
+    "liquid_universe_v4_repair_requalification_blocked_no_new_audit_no_u04_no_m2",
+)
+
+AUDIT_BLOCKED_PAIRS = {
+    FAILED_U03F_CLOSEOUT_PAIR,
+    REPAIR_REQUALIFICATION_BLOCKED_PAIR,
+}
 
 EXPECTED_AUTH = {
     "hypothesis_preregistration": False,
@@ -150,7 +164,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -188,6 +202,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
         "U-03F V4 independent audit failed pending truthful result review",
         "Liquid universe V4 independent audit failed or blocked",
+        "U-03F V4 repair public requalification blocked",
     }:
         milestones = [
             item
@@ -367,6 +382,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
         "U-03F V4 independent audit failed pending truthful result review",
         "Liquid universe V4 independent audit failed or blocked",
+        "U-03F V4 repair public requalification blocked",
     }:
         milestones = [
             item
@@ -376,7 +392,7 @@ def validate(state: dict) -> list[str]:
         expected_milestone = {
             "status": (
                 "pass_revalidation_required_after_failed_independent_audit"
-                if pair == FAILED_U03F_CLOSEOUT_PAIR
+                if pair in AUDIT_BLOCKED_PAIRS
                 else "pass_active_qualification_authority"
             ),
             "merged_pr": 89,
@@ -391,7 +407,7 @@ def validate(state: dict) -> list[str]:
             failures.append("merged V4 requalification milestone binding changed")
         if any(item.get("id") == "U-03E-V4-RUN" for item in open_work):
             failures.append("merged V4 requalification must not remain in open_work")
-        if pair != FAILED_U03F_CLOSEOUT_PAIR:
+        if pair not in AUDIT_BLOCKED_PAIRS:
             audit = [item for item in open_work if item.get("id") == "U-03F"]
             expected_audit_status = {
                 "U-03F V4 independent audit protocol frozen pending review": "protocol_frozen_pending_review",
@@ -408,7 +424,7 @@ def validate(state: dict) -> list[str]:
             )
             if not audit or audit[0].get("evidence") != expected_evidence:
                 failures.append("U-03F must audit the V4 machine authority")
-    if pair == FAILED_U03F_CLOSEOUT_PAIR:
+    if pair in AUDIT_BLOCKED_PAIRS:
         if any(item.get("id") == "U-03F" for item in open_work):
             failures.append("merged failed U-03F must not remain in open_work")
         audit_milestones = [
@@ -449,6 +465,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
         "U-03F V4 independent audit failed pending truthful result review",
         "Liquid universe V4 independent audit failed or blocked",
+        "U-03F V4 repair public requalification blocked",
     }:
         reviews = [
             item for item in state.get("completed_milestones", [])
