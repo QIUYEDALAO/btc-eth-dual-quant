@@ -1,0 +1,21 @@
+{
+  "content": {
+    "active_count_distribution": {
+      "14": 0,
+      "15": 78
+    },
+    "lifecycle_terminated_symbol_months": [
+      [
+        "KLAYUSDT",
+        "2024-10"
+      ]
+    ],
+    "membership_replacement": false,
+    "month_start_membership_rows": 1170
+  },
+  "content_hash": "416941b6c8f50472c4ec6fe0edf5070982f508bc68d803e03b7f94995898379d",
+  "contract_hash": "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83",
+  "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+  "manifest_type": "active_universe_manifest",
+  "schema_version": 4
+}

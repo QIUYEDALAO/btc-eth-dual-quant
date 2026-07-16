@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md` | V4 fixed-range public requalification | pass_pending_review / PR #89 | Three exact cold/warm/worker builds cover 78 months and 1,170 membership rows with zero processing, conflict, lifecycle, overlap or gap blockers. This does not itself authorize U-03F. | no |
+| `reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json` | V4 public requalification machine authority | deterministic_three_way_pass_pending_review / PR #89 | Binds source freeze `c86310f...ec6c`, artifact set `4cfca060...65fde6`, all manifest hashes and false downstream authorizations. | no |
+| `reports/m0/LIQUID_SPOT_UNIVERSE_V3_V4_DIFF_REPORT.md` | V3/V4 diagnostic comparison | deterministic_diff_only | Preserves V3 as blocked historical evidence and records zero changed membership months plus the V4 lifecycle-policy resolution. | no |
+
 | `docs/decisions/ADR-0011-liquid-spot-universe-expansion.md` | liquid spot universe governance | accepted_for_data_qualification_only / PR #67 merged | Freezes point-in-time monthly Top-15 membership without selecting a strategy, scanning outcomes, calculating returns or opening OOS. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_QUALIFICATION_REPORT.md` | liquid spot universe qualification V1 | superseded_pending_v2_requalification / PR #68 merged | Historical V1 evidence only; ADR-0012 withdrew its admission authority pending V2 requalification and audit. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_GAP_ATTRIBUTION_REPORT.md` | universe gap attribution V1 | superseded_pending_v2_requalification / PR #68 merged | Historical V1 attribution only; it cannot authorize research or override V2 blockers. | no |

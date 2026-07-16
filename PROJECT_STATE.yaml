@@ -2,8 +2,8 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-16T00:00:00Z"
-current_phase: Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started
-current_status: liquid_universe_v4_implementation_merged_requalification_authorized_not_started_no_strategy_no_m2
+current_phase: Liquid universe V4 public requalification passed pending review and merge
+current_status: liquid_universe_v4_requalification_pass_pending_review_u03f_not_authorized_no_strategy_no_m2
 completed_milestones:
   - phase: Liquid universe V4 lifecycle availability implementation
     status: implementation_pass_fixture_only_public_requalification_not_run
@@ -262,20 +262,24 @@ completed_milestones:
 open_work:
   - id: U-03E-V4-RUN
     phase: Liquid universe V4 fixed-range public requalification
-    status: authorized_not_started
-    branch: not_created
-    pr: none
-    head_sha: none
+    status: completed_pass_pending_review
+    branch: codex/liquid-universe-v4-public-requalification
+    pr: 89
+    head_sha: runtime_current_pr_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: pending
-    base_sha: fccc9972502732319d38eb36775d007396df25db
+    evidence: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
+    base_sha: c52a5d1bd9564ad471c38a631fa3897b01801547
     contract_hash: 816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83
     policy_hash: 7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977
     lifecycle_registry_hash: a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d
     implementation_merged: true
     independent_review_approved: true
-    public_requalification: false
-    blocker: "Run only the fixed 2020-01 through 2026-06 cold build first; any source revision, unknown conflict, overlap or hash drift must stop before warm/worker."
+    public_requalification: true
+    result: pass
+    source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+    artifact_set_hash: 4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6
+    run_manifest_hash: f55f2829be39445a8489a0863ee5e013c481351d64797251bd79bc199376b127
+    blocker: "Evidence must pass PR review and merge before a separate governance closeout may activate V4 authority or authorize U-03F."
   - id: U-03F
     phase: Liquid universe V3 independent audit
     status: not_authorized
@@ -284,7 +288,7 @@ open_work:
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/evidence/liquid_universe_v3/requalification_run_manifest.json
-    blocker: "Requires a merged V4 public requalification pass after independent implementation review and closeout; no V4 public run has occurred."
+    blocker: "Requires this V4 public requalification pass to merge and a separate governance closeout; U-03F is not authorized by the run itself."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -356,8 +360,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Run only the fixed 2020-01 through 2026-06 cold/warm/worker V4 public requalification and stop after cold on any unknown conflict or source revision."
-  - U-03F and cross-sectional design remain blocked even after a V4 pass until a separate future task explicitly authorizes U-03F.
+  - "Review and merge only the fixed-range V4 public requalification evidence, then perform a separate governance closeout."
+  - U-03F and cross-sectional design remain blocked until the requalification PR merges and the closeout explicitly authorizes U-03F.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -399,6 +403,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md
+    phase: Liquid universe V4 fixed-range public requalification
+    status: pass_pending_review
+    status_marker: "- Status: pass"
+  - path: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
+    phase: Liquid universe V4 fixed-range public requalification machine evidence
+    status: deterministic_three_way_pass_pending_review
+    status_marker: '"status": "pass"'
+  - path: reports/m0/LIQUID_SPOT_UNIVERSE_V3_V4_DIFF_REPORT.md
+    phase: Liquid universe V3/V4 diagnostic comparison
+    status: deterministic_diff_only
+    status_marker: "- V4 status: pass"
   - path: reports/m0/LIQUID_SPOT_UNIVERSE_V4_IMPLEMENTATION_STATUS.md
     phase: Liquid universe V4 lifecycle availability implementation
     status: implementation_pass_fixture_only_public_requalification_not_run
@@ -954,6 +970,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/liquid_universe_v4_requalification_validate.sh
   - bash scripts/adr0014_adoption_validate.sh
   - bash scripts/m1h_paper_protocol_validate.sh
   - bash scripts/m1h_is_design_validate.sh

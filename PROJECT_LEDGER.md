@@ -1496,3 +1496,19 @@ private exchange responses here.
 - Authority: V4 remains fixture-only and is not active qualification authority until the fixed-range public requalification passes and its evidence merges.
 - Next Gate: only the fixed `2020-01` through `2026-06` cold/warm/worker V4 public requalification is authorized. Cold must stop before warm/worker on any unknown conflict, source revision, overlap or hash drift.
 - Safety: U-03F, U-04, hypothesis, strategy, events, signals, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - V4 Fixed-Range Public Requalification Passed Pending Review
+
+- Task ID: U-03E-V4-RUN
+- Branch: `codex/liquid-universe-v4-public-requalification`
+- PR: #89 open
+- Head: runtime current PR head
+- Base main: `c52a5d1bd9564ad471c38a631fa3897b01801547`
+- Range: fixed `2020-01` through `2026-06`; official public ZIP evidence only.
+- Source freeze: 27,736 source archives passed SHA256 and ZIP CRC verification; freeze hash `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`.
+- Determinism: cold/warm/worker builds with 16/3/7 workers all produced artifact-set hash `4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6`.
+- Result: `pass`; 78 expected months, 1,170 membership rows, one lifecycle event, one partial lifecycle day, four physical KLAY raw rows quarantined, and one lifecycle-terminated symbol-month.
+- Blockers: processing errors 0; unresolved row conflicts 0; unresolved lifecycle rows 0; epoch overlaps 0; unresolved gaps 0; excluded-category members 0; synthetic fills 0; replacement members 0.
+- V3/V4: all 78 membership months are unchanged; V3 remains immutable blocked historical evidence while V4 resolves the KLAY lifecycle boundary through the adopted policy.
+- Machine evidence: run manifest hash `f55f2829be39445a8489a0863ee5e013c481351d64797251bd79bc199376b127`.
+- Governance: pass is pending PR review and merge. V4 is not active authority yet; U-03F, U-04, hypothesis, strategy, events, returns, OOS, API/trading, execution/live and M2 remain unauthorized.

@@ -44,7 +44,7 @@ execution_scan() {
 }
 
 artifact_scan() {
-  ! git ls-files | grep -E '(^|/)(storage/(raw|duckdb|logs)|freqtrade_lab/user_data/(data|logs|backtest_results)|reports/m0/evidence/liquid_universe_v4|.*\.env($|\.)|.*\.sqlite$)'
+  ! git ls-files | grep -E '(^|/)(storage/(raw|duckdb|logs)|freqtrade_lab/user_data/(data|logs|backtest_results)|.*\.env($|\.)|.*\.sqlite$)'
 }
 
 implementation_scope_scan() {

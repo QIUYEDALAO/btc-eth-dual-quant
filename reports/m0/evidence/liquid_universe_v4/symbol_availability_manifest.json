@@ -1,0 +1,16 @@
+{
+  "content": [
+    {
+      "end_exclusive": "2024-10-28T03:00:00+00:00",
+      "event_id": "KLAYUSDT-SPOT-2024-10-28-PERMANENT-CESSATION",
+      "identity_version": "KLAY-v1",
+      "start_inclusive": "2020-01-01T00:00:00Z",
+      "symbol": "KLAYUSDT"
+    }
+  ],
+  "content_hash": "1bf3eb5bfb403fbddb12970a2ea4c53963219766a49f0737e5f113023ef39f19",
+  "contract_hash": "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83",
+  "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+  "manifest_type": "symbol_availability_manifest",
+  "schema_version": 4
+}

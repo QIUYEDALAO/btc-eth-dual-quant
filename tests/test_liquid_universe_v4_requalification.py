@@ -1,0 +1,49 @@
+from __future__ import annotations
+
+import tempfile
+from pathlib import Path
+import unittest
+
+from btc_eth_dual_quant.data.lifecycle_artifacts import V4_MANIFEST_TYPES
+from scripts.liquid_universe_v4_requalification import assert_three_way
+
+
+def artifacts(value: str = "same") -> dict:
+    return {name: {"content_hash": f"{value}:{name}"} for name in V4_MANIFEST_TYPES}
+
+
+class LiquidUniverseV4RequalificationTests(unittest.TestCase):
+    def test_three_way_exact_match_passes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            reports, diffs = {}, {}
+            for name in ("cold", "warm", "worker"):
+                reports[name] = root / f"{name}.md"
+                diffs[name] = root / f"{name}-diff.md"
+                reports[name].write_text("report\n")
+                diffs[name].write_text("diff\n")
+            same = artifacts()
+            assert_three_way({name: same for name in reports}, reports, diffs)
+
+    def test_three_way_hash_drift_blocks(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            reports, diffs = {}, {}
+            for name in ("cold", "warm", "worker"):
+                reports[name] = root / f"{name}.md"
+                diffs[name] = root / f"{name}-diff.md"
+                reports[name].write_text("report\n")
+                diffs[name].write_text("diff\n")
+            builds = {"cold": artifacts(), "warm": artifacts(), "worker": artifacts()}
+            first = sorted(V4_MANIFEST_TYPES)[0]
+            builds["worker"] = {**builds["worker"], first: {"content_hash": "changed"}}
+            with self.assertRaisesRegex(ValueError, "artifact-set mismatch"):
+                assert_three_way(builds, reports, diffs)
+
+    def test_missing_worker_build_blocks(self):
+        with self.assertRaisesRegex(ValueError, "cold/warm/worker"):
+            assert_three_way({"cold": artifacts(), "warm": artifacts()}, {}, {})
+
+
+if __name__ == "__main__":
+    unittest.main()
