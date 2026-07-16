@@ -11,7 +11,7 @@ The repair is now implemented fixture-only in Draft PR #98 on
 `codex/u03f-v4-repair-implementation`, based on that exact merged main. Integer-
 only UTC conversion, strict 5m close-boundary filtering and atomic final-report/
 run-manifest binding pass all six frozen fault tests. The repair implementation
-hash is `ec1c561940c0163a795ad8324d4bc403cd6b9c3083f90ad45860051c5b32a084`;
+hash is `f0c0394e519cfe68b37930a12bbe2cb35abcda1b7aa91ac565e18caa2ad49700`;
 the independent auditor algorithm remains frozen at
 `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`.
 
@@ -23,7 +23,8 @@ hash drift stops the chain.
 
 The later requalification authority is fixed to `frozen_local_only`: it may
 read the existing 27,736 hash-bound archives but cannot download or replace a
-missing or changed source. Any absence or source drift stops before warm/worker.
+missing or changed source. Every consumed key, SHA256 and byte size must match
+the freeze exactly; any extra, absence or drift stops before warm/worker.
 
 V4 remains `audit_blocked` / `revalidation_required`; U-04 remains
 unauthorized.

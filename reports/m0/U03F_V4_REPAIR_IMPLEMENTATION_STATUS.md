@@ -5,7 +5,7 @@
 - Branch: `codex/u03f-v4-repair-implementation`
 - Draft PR: `#98`
 - Frozen protocol content hash: `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`
-- Repair implementation hash: `ec1c561940c0163a795ad8324d4bc403cd6b9c3083f90ad45860051c5b32a084`
+- Repair implementation hash: `f0c0394e519cfe68b37930a12bbe2cb35abcda1b7aa91ac565e18caa2ad49700`
 - Frozen independent auditor algorithm hash: `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`
 - Real public requalification run: `not run`
 - New independent audit run: `not run`
@@ -33,8 +33,10 @@ cold result. Unknown statuses or inconsistent markers fail closed.
 
 The authoritative V4 public builder and requalification wrapper now require
 the existing frozen local archive set. Download, remote replacement and
-download-on-missing paths are rejected; a missing archive or source hash drift
-therefore stops the later requalification instead of mutating its inputs.
+download-on-missing paths are rejected. The builder also requires its complete
+consumed canonical-key set, SHA256 values and byte sizes to match all 27,736
+frozen entries exactly; an extra, duplicate, missing or drifted input therefore
+stops the later requalification before artifacts are built.
 
 New requalification evidence is routed to
 `reports/m0/evidence/liquid_universe_v4_repair_requalification` and new repair-

@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md"
 PROTOCOL_HASH = "9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1"
 AUDITOR_HASH = "7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1"
-IMPLEMENTATION_HASH = "ec1c561940c0163a795ad8324d4bc403cd6b9c3083f90ad45860051c5b32a084"
+IMPLEMENTATION_HASH = "f0c0394e519cfe68b37930a12bbe2cb35abcda1b7aa91ac565e18caa2ad49700"
 IMPLEMENTATION_FILES = (
     "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py",
     "scripts/liquid_universe_v4_public_run.py",
@@ -29,7 +29,7 @@ AUDITOR_FILES = (
 )
 EXPECTED_FILE_HASHES = {
     "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py": "54487fb676df99e5f761a96caf988f6d30a62878c4334a201761a95726337e4a",
-    "scripts/liquid_universe_v4_public_run.py": "e62c637c57285cf7d10b06dce447028a05169c00876038b08823b2c4c9bb9283",
+    "scripts/liquid_universe_v4_public_run.py": "fc05e318753e29c229a01e54a59e3b940c953de1c9ec5d101a2d9a763ddd7cd7",
     "scripts/liquid_universe_v4_requalification.py": "a5e554fe7dcbeb482f4e852631c8ba224b4b83abe7577ba1f71796aa7828a567",
     "scripts/liquid_universe_v4_requalification_check.py": "d01414e272913928d5c8bdd1ca7cb2cd82adbaa8967ad060572fcb04c4a7aef6",
 }

@@ -50,6 +50,7 @@ from scripts.liquid_universe_v3_public_run import (
 
 DEFAULT_PREVIEW_ROOT = ROOT / "storage/logs/liquid_universe_v4_repair_preview"
 DEFAULT_EVIDENCE = DEFAULT_PREVIEW_ROOT / "evidence"
+REQUIRED_SOURCE_FREEZE_HASH = "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
 AUTHORIZATIONS = {
     "u03f": False,
     "u04": False,
@@ -68,6 +69,44 @@ AUTHORIZATIONS = {
 
 def _load(name: str) -> dict[str, Any]:
     return json.loads((ROOT / name).read_text(encoding="utf-8"))
+
+
+def _frozen_source_bindings() -> dict[str, dict[str, Any]]:
+    freeze = _load("reports/m0/evidence/liquid_universe_v4/source_freeze_manifest.json")
+    content = freeze.get("content", {})
+    if freeze.get("content_hash") != canonical_hash(content):
+        raise ValueError("source freeze manifest hash mismatch")
+    if freeze.get("content_hash") != REQUIRED_SOURCE_FREEZE_HASH:
+        raise ValueError("source freeze content hash drift")
+    archives = content.get("archives", [])
+    if content.get("archive_count") != 27_736 or len(archives) != 27_736:
+        raise ValueError("source freeze archive count drift")
+    bindings = {str(row["canonical_key"]): dict(row) for row in archives}
+    if len(bindings) != len(archives):
+        raise ValueError("source freeze contains duplicate canonical keys")
+    return bindings
+
+
+def _validate_frozen_source_rows(
+    rows: list[dict[str, Any]],
+    bindings: dict[str, dict[str, Any]],
+    *,
+    require_complete: bool,
+) -> None:
+    observed = {str(row["canonical_key"]): row for row in rows}
+    if len(observed) != len(rows):
+        raise ValueError("consumed source inventory contains duplicate canonical keys")
+    unexpected = sorted(set(observed) - set(bindings))
+    if unexpected:
+        raise ValueError(f"unfrozen source consumed: {unexpected[0]}")
+    for key, row in observed.items():
+        frozen = bindings[key]
+        if row.get("sha256") != frozen.get("sha256") or row.get("byte_size") != frozen.get("byte_size"):
+            raise ValueError(f"consumed source binding drift: {key}")
+    if require_complete:
+        missing = sorted(set(bindings) - set(observed))
+        if missing:
+            raise ValueError(f"frozen source not consumed: {missing[0]}")
 
 
 def _event_row_source_is_bound(row: Any, lifecycle: LifecycleEventRegistry) -> bool:
@@ -265,6 +304,7 @@ def run(
 ) -> dict[str, dict[str, Any]]:
     if offline is not True or verify_remote_registry is not False:
         raise ValueError("V4 requalification requires frozen local sources and forbids downloads")
+    frozen_sources = _frozen_source_bindings()
     v4_contract = _load("config/liquid_spot_universe_contract_v4.json")
     policy = _load("config/liquid_spot_lifecycle_policy_v4.json")
     lifecycle = LifecycleEventRegistry.from_path(ROOT / "config/liquid_spot_lifecycle_event_resolutions_v4.json")
@@ -290,6 +330,7 @@ def run(
     monthly, supplements, sources, processing = _collect_daily_sources(
         raw_root=raw_root, end_month=end_month, offline=True, workers=workers,
     )
+    _validate_frozen_source_rows(sources, frozen_sources, require_complete=False)
     daily, row_outcomes, lifecycle_outcomes, lifecycle_blockers = build_daily_v4(
         monthly_groups=monthly, daily_groups=supplements, row_registry=row_registry,
         lifecycle_registry=lifecycle, v3_contract=v3_contract, eligibility_registry=eligibility,
@@ -331,6 +372,8 @@ def run(
             source["derived_1h_count"] = sum(1 for group in grouped.values() if len(group) == 12 and aggregate_one_hour(group))
         except Exception as exc:
             processing.append(f"{symbol}:{month}:5m:{type(exc).__name__}:{exc}")
+
+    _validate_frozen_source_rows(sources, frozen_sources, require_complete=True)
 
     v3_base = build_artifacts_v3(
         contract=v3_contract, eligibility_registry=eligibility, resolution_registry=row_registry,

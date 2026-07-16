@@ -29,7 +29,7 @@ After any task, the agent must update:
 ## Current Stage
 
 - PR #97 merged the U-03F V4 repair/requalification protocol at `0e65cd41bfac590d40ae5cb0590cc7102019018c` after 108/108 checks passed; content hash `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1` remains frozen.
-- The fixture-only repair implementation is in Draft PR #98 on `codex/u03f-v4-repair-implementation` with repair hash `ec1c561940c0163a795ad8324d4bc403cd6b9c3083f90ad45860051c5b32a084`. All six frozen fault tests pass; the future requalification entry is frozen-local-only, its checker preserves truthful cold-blocked evidence, and no public requalification or new audit has run.
+- The fixture-only repair implementation is in Draft PR #98 on `codex/u03f-v4-repair-implementation` with repair hash `f0c0394e519cfe68b37930a12bbe2cb35abcda1b7aa91ac565e18caa2ad49700`. All six frozen fault tests pass; the future requalification entry is frozen-local-only, binds the exact consumed source inventory, preserves truthful cold-blocked evidence, and no public requalification or new audit has run.
 - The repair implementation may not merge before a separate exact-head `approve` verdict with zero critical/high findings. Head drift fails closed.
 - The frozen dependency order is protocol merge, exact repair implementation, exact-head independent approval, fixed `2020-01` through `2026-06` requalification, new 15/15 independent audit, then governance closeout. Any mismatch, critical/high finding or hash drift fails closed.
 - The repair protocol does not restore V4 authority and does not authorize U-04. Historical PR #89/#95 evidence and the 27,736-archive source freeze are immutable.
