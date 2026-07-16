@@ -1620,3 +1620,17 @@ private exchange responses here.
 - Execution status: public requalification not run; new independent audit not run.
 - Gate: the review PR itself must pass all CI. Any target/head/hash drift invalidates approval and stops the chain.
 - Safety: V4 remains `audit_blocked` / `revalidation_required`; U-04, strategy, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - U-03F Repair Approved, Merged And Requalification Blocked
+
+- Date UTC: 2026-07-16T17:10:38Z
+- Task IDs: U-03F-RI / U-03F-RR / U-03F-RQ
+- Implementation merge: PR #98 exact reviewed head `27e6436c0a4b00ca7c8055bc763d533fcbcc9743` squash-merged at `1ccfd409669e4bdb028d656a34e7da4d867fdba3`; target CI was 110/110.
+- Independent review merge: PR #99 verdict `approve`, remaining critical/high 0/0, squash-merged at `9f1480f544d3bde90ad4f5c55c79dc441001162c` after the rebased review head passed 112/112 checks.
+- Requalification branch/base: `codex/u03f-v4-repair-public-requalification` / `9f1480f544d3bde90ad4f5c55c79dc441001162c`.
+- Source integrity: exactly 27,736 existing local archives; source mode `frozen_local_only`; freeze hash `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`; no download or replacement occurred.
+- Result: cold is `blocked` with 119 strict 5m interval-boundary processing errors. Cold artifact-set hash is `b7cac049c6ab339f52fc29c7f31d275db09b3a4c47e2f62b38175cea219b2f83`; run-manifest hash is `0792ec7b52dbabb6057f0c238d963ed774c1e9e838b42cb21a03bc7e334f68cf`.
+- Fail-closed stop: warm and worker are `not_run_due_fail_closed_cold_block`. The fixed all-blockers-zero Gate failed, so the new independent audit is not authorized and was not started.
+- Historical integrity: original PR #89 qualification and PR #95 failed-audit evidence hashes remain byte-for-byte unchanged. V1/V2/V3 and prior V4 evidence remain historical only.
+- Next action: merge this truthful blocked evidence only after all PR checks pass, then perform a governance-only closeout. Do not create the new-audit PR.
+- Safety: V4 remains `audit_blocked` / `revalidation_required`; U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.

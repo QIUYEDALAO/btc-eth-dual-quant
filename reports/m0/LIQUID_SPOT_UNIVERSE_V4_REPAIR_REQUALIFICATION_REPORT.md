@@ -1,0 +1,171 @@
+# Liquid Spot Universe V4 Qualification Report
+
+- Status: blocked
+- Range: 2020-01 through 2026-06
+- Expected months: 78
+- Membership rows: 1170
+- Lifecycle events: 1
+- Lifecycle-terminated symbol-months: 1
+- Partial lifecycle days: 1
+- Post-cessation raw rows quarantined: 3
+- Active count distribution: {"14": 0, "15": 78}
+- Unresolved lifecycle rows: 0
+- Epoch overlaps: 0
+- Unresolved row conflicts: 0
+- Unresolved gaps: 0
+- Processing errors: 119
+- Excluded-category members: 0
+- Synthetic fills: 0
+- Replacement members: 0
+- Runtime artifacts committed: no
+- Strategy/events/signals/returns computed: no
+- OOS accessed: no
+- U-03F executed: no
+- U-04 authorized: no
+- M2 authorized: no
+
+## Manifest Hashes
+
+- V3_V4_diff: `7e2dadbeba85bca25afdb28207d8a71393c02c1d16151a84eee29913c4e0033f`
+- active_universe_manifest: `416941b6c8f50472c4ec6fe0edf5070982f508bc68d803e03b7f94995898379d`
+- candidate_eligibility_manifest: `2d116eb8c22419f124a6865937b3a3e5adad4c6c3fefd4f81a3f93719b389d06`
+- complete_day_mask: `c7c497147ce5d00081dae5c4e5dd993447507ffe596fbfea10dc28880595a95f`
+- expected_grid_manifest: `8ffd3771bef44f71cea7542b58dcdbdaa1a95dacb16edbd78b360884f09d328f`
+- lifecycle_event_quarantine_manifest: `c4930bb769c70e2f26cdd2cff25c80391fa254afc0d26d5dd1eca939d27f20a4`
+- lifecycle_policy_manifest: `9ba2dfdd310319475a719291c81eaf93930273732db169d997c9c8252a107f13`
+- lifecycle_resolution_registry: `adccc1f752c171096e6906057225710dd58632744d80927f53f7a1e4a587fbef`
+- membership_manifest: `bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5`
+- qualification_summary: `278c1a04b84d92f3f365f9091d2febcad95664f794647713d6bef343cc46773b`
+- qualified_panel_manifest: `54a5b9630e9b30c1f068c9e40433066af8c1fbceb02d430504c395052f91eb64`
+- raw_row_quarantine_manifest: `ce97b4826e8305b7d28a27b6693dc120b5b1a8ce5a5cc8462581ace8f68bb4e3`
+- row_conflict_resolution_manifest: `0ed070e44351864473f13e1b127a3ab04464be13477776ec32abbedaf2beac15`
+- source_manifest: `b84842ff6023efd66ca76dd3ec63e7565d31502eb51a229ef75f180e718caf59`
+- symbol_availability_manifest: `1bf3eb5bfb403fbddb12970a2ea4c53963219766a49f0737e5f113023ef39f19`
+
+## Blockers
+
+- ADAUSDT:2020-02:5m interval boundary is invalid
+- ADAUSDT:2020-03:5m interval boundary is invalid
+- ADAUSDT:2020-12:5m interval boundary is invalid
+- ADAUSDT:2021-02:5m interval boundary is invalid
+- ADAUSDT:2021-04:5m interval boundary is invalid
+- ADAUSDT:2021-08:5m interval boundary is invalid
+- ADAUSDT:2021-12:5m interval boundary is invalid
+- ADAUSDT:2023-03:5m interval boundary is invalid
+- ATOMUSDT:2020-12:5m interval boundary is invalid
+- ATOMUSDT:2021-04:5m interval boundary is invalid
+- AVAXUSDT:2021-12:5m interval boundary is invalid
+- AVAXUSDT:2023-03:5m interval boundary is invalid
+- BCHUSDT:2020-12:5m interval boundary is invalid
+- BCHUSDT:2021-02:5m interval boundary is invalid
+- BCHUSDT:2021-04:5m interval boundary is invalid
+- BNBUSDT:2020-02:5m interval boundary is invalid
+- BNBUSDT:2020-03:5m interval boundary is invalid
+- BNBUSDT:2020-12:5m interval boundary is invalid
+- BNBUSDT:2021-02:5m interval boundary is invalid
+- BNBUSDT:2021-04:5m interval boundary is invalid
+- BNBUSDT:2021-08:5m interval boundary is invalid
+- BNBUSDT:2021-12:5m interval boundary is invalid
+- BNBUSDT:2023-03:5m interval boundary is invalid
+- BTCUSDT:2020-02:5m interval boundary is invalid
+- BTCUSDT:2020-03:5m interval boundary is invalid
+- BTCUSDT:2020-12:5m interval boundary is invalid
+- BTCUSDT:2021-02:5m interval boundary is invalid
+- BTCUSDT:2021-04:5m interval boundary is invalid
+- BTCUSDT:2021-08:5m interval boundary is invalid
+- BTCUSDT:2021-12:5m interval boundary is invalid
+- BTCUSDT:2023-03:5m interval boundary is invalid
+- BTTUSDT:2020-02:5m interval boundary is invalid
+- BTTUSDT:2020-03:5m interval boundary is invalid
+- CHZUSDT:2021-08:5m interval boundary is invalid
+- DASHUSDT:2021-02:5m interval boundary is invalid
+- DOGEUSDT:2021-04:5m interval boundary is invalid
+- DOGEUSDT:2021-08:5m interval boundary is invalid
+- DOGEUSDT:2021-12:5m interval boundary is invalid
+- DOGEUSDT:2023-03:5m interval boundary is invalid
+- DOTUSDT:2021-12:5m interval boundary is invalid
+- EOSUSDT:2020-02:5m interval boundary is invalid
+- EOSUSDT:2020-03:5m interval boundary is invalid
+- EOSUSDT:2020-12:5m interval boundary is invalid
+- EOSUSDT:2021-02:5m interval boundary is invalid
+- EOSUSDT:2021-04:5m interval boundary is invalid
+- EOSUSDT:2021-08:5m interval boundary is invalid
+- ETCUSDT:2020-02:5m interval boundary is invalid
+- ETCUSDT:2020-03:5m interval boundary is invalid
+- ETCUSDT:2021-02:5m interval boundary is invalid
+- ETCUSDT:2021-08:5m interval boundary is invalid
+- ETHUSDT:2020-02:5m interval boundary is invalid
+- ETHUSDT:2020-03:5m interval boundary is invalid
+- ETHUSDT:2020-12:5m interval boundary is invalid
+- ETHUSDT:2021-02:5m interval boundary is invalid
+- ETHUSDT:2021-04:5m interval boundary is invalid
+- ETHUSDT:2021-08:5m interval boundary is invalid
+- ETHUSDT:2021-12:5m interval boundary is invalid
+- ETHUSDT:2023-03:5m interval boundary is invalid
+- FILUSDT:2021-12:5m interval boundary is invalid
+- FILUSDT:2023-03:5m interval boundary is invalid
+- FTMUSDT:2021-12:5m interval boundary is invalid
+- FTMUSDT:2023-03:5m interval boundary is invalid
+- GALAUSDT:2023-03:5m interval boundary is invalid
+- LINKUSDT:2020-02:5m interval boundary is invalid
+- LINKUSDT:2020-03:5m interval boundary is invalid
+- LINKUSDT:2020-12:5m interval boundary is invalid
+- LINKUSDT:2021-02:5m interval boundary is invalid
+- LINKUSDT:2021-04:5m interval boundary is invalid
+- LINKUSDT:2021-08:5m interval boundary is invalid
+- LINKUSDT:2021-12:5m interval boundary is invalid
+- LINKUSDT:2023-03:5m interval boundary is invalid
+- LTCUSDT:2020-02:5m interval boundary is invalid
+- LTCUSDT:2020-03:5m interval boundary is invalid
+- LTCUSDT:2020-12:5m interval boundary is invalid
+- LTCUSDT:2021-02:5m interval boundary is invalid
+- LTCUSDT:2021-04:5m interval boundary is invalid
+- LTCUSDT:2021-08:5m interval boundary is invalid
+- LTCUSDT:2023-03:5m interval boundary is invalid
+- LUNAUSDT:2021-12:5m interval boundary is invalid
+- MATICUSDT:2021-04:5m interval boundary is invalid
+- MATICUSDT:2021-08:5m interval boundary is invalid
+- MATICUSDT:2021-12:5m interval boundary is invalid
+- MATICUSDT:2023-03:5m interval boundary is invalid
+- NEOUSDT:2020-02:5m interval boundary is invalid
+- NEOUSDT:2020-03:5m interval boundary is invalid
+- NEOUSDT:2020-12:5m interval boundary is invalid
+- ONTUSDT:2020-02:5m interval boundary is invalid
+- ONTUSDT:2020-03:5m interval boundary is invalid
+- SHIBUSDT:2023-03:5m interval boundary is invalid
+- SOLUSDT:2021-12:5m interval boundary is invalid
+- SOLUSDT:2023-03:5m interval boundary is invalid
+- THETAUSDT:2021-08:5m interval boundary is invalid
+- TRXUSDT:2020-02:5m interval boundary is invalid
+- TRXUSDT:2020-03:5m interval boundary is invalid
+- TRXUSDT:2020-12:5m interval boundary is invalid
+- TRXUSDT:2021-02:5m interval boundary is invalid
+- TRXUSDT:2021-04:5m interval boundary is invalid
+- TRXUSDT:2021-08:5m interval boundary is invalid
+- TRXUSDT:2021-12:5m interval boundary is invalid
+- VETUSDT:2020-02:5m interval boundary is invalid
+- VETUSDT:2020-03:5m interval boundary is invalid
+- VETUSDT:2020-12:5m interval boundary is invalid
+- VETUSDT:2021-02:5m interval boundary is invalid
+- VETUSDT:2021-04:5m interval boundary is invalid
+- VETUSDT:2021-08:5m interval boundary is invalid
+- XLMUSDT:2020-02:5m interval boundary is invalid
+- XLMUSDT:2020-03:5m interval boundary is invalid
+- XLMUSDT:2021-02:5m interval boundary is invalid
+- XLMUSDT:2021-04:5m interval boundary is invalid
+- XMRUSDT:2020-12:5m interval boundary is invalid
+- XRPUSDT:2020-02:5m interval boundary is invalid
+- XRPUSDT:2020-03:5m interval boundary is invalid
+- XRPUSDT:2020-12:5m interval boundary is invalid
+- XRPUSDT:2021-02:5m interval boundary is invalid
+- XRPUSDT:2021-04:5m interval boundary is invalid
+- XRPUSDT:2021-08:5m interval boundary is invalid
+- XRPUSDT:2023-03:5m interval boundary is invalid
+- ZECUSDT:2020-12:5m interval boundary is invalid
+- ZECUSDT:2021-02:5m interval boundary is invalid
+
+## Build Hashes
+
+- cold: `b7cac049c6ab339f52fc29c7f31d275db09b3a4c47e2f62b38175cea219b2f83`
+- Source freeze: `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`
+- Determinism: not_run_due_fail_closed_cold_block

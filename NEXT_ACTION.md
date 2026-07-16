@@ -2,34 +2,29 @@
 
 ## Immediate Task
 
-PR #97 merged the frozen U-03F V4 repair and requalification protocol at
-`0e65cd41bfac590d40ae5cb0590cc7102019018c` after 108/108 checks passed.
-The exact protocol content hash remains
-`9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`.
+PR #98 merged the unchanged reviewed repair head `27e6436c...9743` at
+`1ccfd409669e4bdb028d656a34e7da4d867fdba3`. PR #99 merged the independent
+`approve` review with zero critical/high findings at
+`9f1480f544d3bde90ad4f5c55c79dc441001162c` after 112/112 checks passed.
+The repair implementation hash remains
+`9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a`.
 
-The repair is now implemented fixture-only in Draft PR #98 on
-`codex/u03f-v4-repair-implementation`, based on that exact merged main. Integer-
-only UTC conversion, strict 5m close-boundary filtering and atomic final-report/
-run-manifest binding pass all six frozen fault tests. The repair implementation
-hash is `9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a`;
-the independent auditor algorithm remains frozen at
-`7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`.
+The one authorized fixed-range repair requalification has now run from that
+main using only the 27,736 frozen local archives. Source freeze hash
+`c86310f8...ec6c` remained exact, but cold stopped as `blocked` on 119 physical
+5m interval-boundary errors. Its artifact-set hash is
+`b7cac049c6ab339f52fc29c7f31d275db09b3a4c47e2f62b38175cea219b2f83` and
+run-manifest hash is
+`0792ec7b52dbabb6057f0c238d963ed774c1e9e838b42cb21a03bc7e334f68cf`.
 
-No public requalification or new audit has run. The immediate Gate is PR #98 CI,
-followed by a separate exact-head independent review. The implementation cannot
-merge unless that unchanged head receives `approve` with zero critical and zero
-high findings. Any head, historical-evidence, source-freeze, protocol or auditor
-hash drift stops the chain.
+Warm and worker were not run and are recorded as
+`not_run_due_fail_closed_cold_block`. This failed the frozen requalification
+pass dependency, so a new independent audit is not authorized and must not be
+started. The immediate task is only to merge the truthful blocked evidence
+after CI, then perform a governance-only closeout.
 
-The later requalification authority is fixed to `frozen_local_only`: it may
-read the existing 27,736 hash-bound archives but cannot download or replace a
-missing or changed source. Every consumed key, SHA256 and byte size must match
-the freeze exactly; any extra, absence or drift stops before warm/worker.
-Prior work-root outputs cannot be resumed; the authorized command always starts
-fresh and must execute cold, warm and worker under the current merged code.
-
-V4 remains `audit_blocked` / `revalidation_required`; U-04 remains
-unauthorized.
+V4 remains `audit_blocked` / `revalidation_required`; U-04, research and M2
+remain unauthorized.
 
 ## Historical Failed Audit
 
@@ -111,15 +106,13 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Finish implementation PR CI without running public requalification.
-2. Obtain exact-head independent approval with zero critical/high findings
-   before merging the repair implementation.
-3. Only after that approval and merge, repeat the fixed-range public
-   requalification and a new independent audit
-   without lowering any Gate.
-4. Preserve V1/V2/V3/V4 prior runs as historical evidence; none is an alternative active
+1. Merge the truthful blocked repair-requalification evidence only after every
+   PR check passes.
+2. After that merge, perform only a governance closeout recording that the new
+   audit dependency failed; do not run the new audit.
+3. Preserve V1/V2/V3/V4 prior runs as historical evidence; none is an alternative active
    qualification authority.
-5. Keep U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
+4. Keep U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
 
 U-03E V2 and V3 remain truthful blocked historical milestones. V4 supersedes
 their admission authority through a separately adopted lifecycle policy and
@@ -142,13 +135,11 @@ design still requires U-03F pass plus a separate task.
 
 ## U-03F Repair Exact-Head Review
 
-Draft PR #98 exact head `27e6436c0a4b00ca7c8055bc763d533fcbcc9743`
-passed 110/110 GitHub checks and received a separate review verdict of `approve`
-with zero remaining critical/high findings. The reviewed repair implementation
-hash is `9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a`.
+PR #98 exact head `27e6436c0a4b00ca7c8055bc763d533fcbcc9743`
+passed 110/110 checks and remained unchanged through merge. PR #99 independently
+approved it with zero remaining critical/high findings and passed 112/112 checks
+after rebasing onto the implementation merge. Both PRs are merged.
 
-The immediate Gate is CI and merge handling for the review evidence, followed
-by a final unchanged-head check before implementation merge. Fixed-range public
-requalification remains unexecuted and unauthorized until both review and exact
-implementation merge requirements are satisfied. U-04 and all downstream work
+That approval authorized only the fixed repair requalification. The resulting
+cold block terminates the chain before a new audit. U-04 and all downstream work
 remain unauthorized.

@@ -1,0 +1,29 @@
+name: U03F V4 Repair Requalification Result
+
+on: [pull_request, push]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .:src
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Fetch frozen historical review target
+        run: git fetch origin +refs/pull/92/head:refs/remotes/origin/u03f-v4-auditor-reviewed-head
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - name: Install validator dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ripgrep
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+      - name: Validate blocked repair requalification result
+        run: |
+          python scripts/u03f_v4_repair_requalification_result_check.py
+          python -m unittest tests.test_u03f_v4_repair_requalification_result -v
+          bash scripts/liquid_universe_v4_requalification_validate.sh
+          python scripts/m0_secret_scan.py
+          git diff --check
