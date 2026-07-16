@@ -18,7 +18,7 @@ from scripts.u03f_v4_repair_exact_head_review_check import (
 )
 
 
-class U03FV4RepairExactHeadReviewTests(unittest.TestCase):
+class RepairReviewTests(unittest.TestCase):
     def setUp(self) -> None:
         self.document = build_document("2026-07-16T15:10:00Z")
 
