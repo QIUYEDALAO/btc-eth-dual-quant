@@ -164,3 +164,10 @@ After any task, the agent must update:
 - Do not commit `.env`, `.env.*`, API keys, secrets, PEM/key files, `storage/raw/`, DuckDB files/databases, `storage/logs/`, Freqtrade runtime data, or private smoke raw output.
 - `reports/m0/M0_PRIVATE_SMOKE_REPORT.local.md` is local-only and must not be committed.
 - All future development must start from a new branch. Do not push directly to `main`.
+
+## U-03F Repair Exact-Head Review Gate
+
+- Draft PR #98 exact head `27e6436c0a4b00ca7c8055bc763d533fcbcc9743` passed 110/110 GitHub checks and is the only reviewed repair target.
+- The review verdict is `approve` with zero remaining critical/high findings and review hash `c60b1f8b451ea60ac8da267e90917b8c560655089bb1cd20dfb12999004bf1b4`.
+- Any target head, implementation, protocol, auditor, historical evidence or source-freeze drift invalidates approval and stops the chain.
+- Public requalification and the new audit have not run. U-04, strategy, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.

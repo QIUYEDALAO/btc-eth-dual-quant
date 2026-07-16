@@ -122,3 +122,11 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - M2 status: blocked.
 - Trading approval: none.
 - Short-horizon product: discrete 15m events, 1m authoritative detail, 5m sensitivity, no fixed holding time or daily trade quota.
+
+## U-03F Repair Exact-Head Review Supplemental Gate
+
+- Target: PR #98 exact head `27e6436c0a4b00ca7c8055bc763d533fcbcc9743`; implementation hash `9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a`.
+- Evidence: `reports/expert/U03F_V4_REPAIR_EXACT_HEAD_REVIEW.md` and its machine JSON.
+- Target CI: 110/110 success. Verdict: `approve`; remaining critical/high: 0/0.
+- Review PR Gate: all review-branch CI must pass and the target must remain unchanged before implementation merge.
+- Public requalification, new audit, U-04, strategy, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
