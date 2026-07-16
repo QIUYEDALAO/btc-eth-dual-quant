@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "U-03F V4 independent audit protocol frozen pending review",
+            "U-03F V4 independent auditor implementation pending independent review",
         )
         self.assertEqual(
             state["current_status"],
-            "u03f_v4_audit_protocol_frozen_before_result_no_strategy_no_m2",
+            "u03f_v4_auditor_fixture_implementation_pending_review_no_full_audit_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -415,7 +415,7 @@ class KlaySourceConflictTests(unittest.TestCase):
         )
         self.assertFalse(any(item["id"] == "U-03E-V4-RUN" for item in state["open_work"]))
         audit = next(item for item in state["open_work"] if item["id"] == "U-03F")
-        self.assertEqual(audit["status"], "protocol_frozen_pending_review")
+        self.assertEqual(audit["status"], "auditor_implementation_pending_independent_review")
         self.assertEqual(
             audit["evidence"],
             "reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json",

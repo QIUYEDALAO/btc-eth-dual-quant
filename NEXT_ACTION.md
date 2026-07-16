@@ -2,6 +2,16 @@
 
 ## Immediate Task
 
+The fixture-only U-03F independent auditor is implemented on
+`codex/u03f-v4-independent-auditor`. It imports no production builder and has
+not run the full public audit. Freeze its exact head and obtain a separate
+independent implementation review from the protocol-merged main. Do not merge
+the implementation before an `approve` verdict with zero critical/high.
+
+The checker identifies six float-timestamp candidates in the production V4
+authority path. They are not repaired here and must be adjudicated by the real
+audit's frozen integer-time Gate. U-04 remains unauthorized.
+
 The U-03F independent-audit protocol is frozen before results on
 `codex/u03f-v4-independent-audit-protocol`. It binds main `1b602649...`, the
 fixed V4 source and machine evidence, all 15 manifest identities, exact and

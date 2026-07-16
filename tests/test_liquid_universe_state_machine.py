@@ -23,14 +23,14 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_u03f_protocol_freeze_authorizes_only_protocol_review(self):
+    def test_u03f_auditor_implementation_authorizes_only_exact_head_review(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
         self.assertFalse(any(item.get("id") == "U-03E-V4-RUN" for item in state["open_work"]))
         audit = next(item for item in state["open_work"] if item.get("id") == "U-03F")
-        self.assertEqual(audit["status"], "protocol_frozen_pending_review")
-        self.assertEqual(audit["branch"], "codex/u03f-v4-independent-audit-protocol")
+        self.assertEqual(audit["status"], "auditor_implementation_pending_independent_review")
+        self.assertEqual(audit["branch"], "codex/u03f-v4-independent-auditor")
         self.assertEqual(
             audit["evidence"],
             "reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json",
