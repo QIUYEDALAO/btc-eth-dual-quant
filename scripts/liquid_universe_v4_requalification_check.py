@@ -11,7 +11,8 @@ from btc_eth_dual_quant.data.liquid_universe import canonical_hash
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EVIDENCE = ROOT / "reports/m0/evidence/liquid_universe_v4"
+EVIDENCE = ROOT / "reports/m0/evidence/liquid_universe_v4_repair_requalification"
+REPORT = ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md"
 REQUIRED_SOURCE_FREEZE_HASH = "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
 
 
@@ -89,12 +90,12 @@ def check() -> dict:
     diff = artifacts["V3_V4_diff"]["content"]
     if diff["v3_mutated"] or diff["v3_status"] != "blocked" or diff["v4_status"] != summary["status"]:
         raise ValueError("V3/V4 authority diff mismatch")
-    report = (ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md").read_text()
+    report = REPORT.read_text()
     for marker in (f"- Status: {summary['status']}", "- Determinism: pass", "- M2 authorized: no"):
         if marker not in report:
             raise ValueError(f"V4 report marker missing: {marker}")
     report_sha256 = hashlib.sha256(
-        (ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md").read_bytes()
+        REPORT.read_bytes()
     ).hexdigest()
     bindings = {record.get("qualification_report_sha256") for record in content["builds"].values()}
     if bindings != {report_sha256}:

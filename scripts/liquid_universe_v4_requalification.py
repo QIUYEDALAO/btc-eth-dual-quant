@@ -21,6 +21,9 @@ from scripts.liquid_universe_v4_public_run import run
 
 
 REQUIRED_SOURCE_FREEZE_HASH = "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
+REPAIRED_EVIDENCE = ROOT / "reports/m0/evidence/liquid_universe_v4_repair_requalification"
+REPAIRED_REPORT = ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md"
+REPAIRED_DIFF_REPORT = ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_V3_V4_DIFF_REPORT.md"
 
 
 def file_sha256(path: Path) -> str:
@@ -261,10 +264,10 @@ def execute(
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw-root", type=Path, default=DEFAULT_RAW)
-    parser.add_argument("--work-root", type=Path, default=ROOT / "storage/logs/liquid_universe_v4_requalification")
-    parser.add_argument("--evidence-dir", type=Path, default=ROOT / "reports/m0/evidence/liquid_universe_v4")
-    parser.add_argument("--report", type=Path, default=ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md")
-    parser.add_argument("--diff-report", type=Path, default=ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V3_V4_DIFF_REPORT.md")
+    parser.add_argument("--work-root", type=Path, default=ROOT / "storage/logs/liquid_universe_v4_repair_requalification")
+    parser.add_argument("--evidence-dir", type=Path, default=REPAIRED_EVIDENCE)
+    parser.add_argument("--report", type=Path, default=REPAIRED_REPORT)
+    parser.add_argument("--diff-report", type=Path, default=REPAIRED_DIFF_REPORT)
     parser.add_argument("--workers-cold", type=int, default=16)
     parser.add_argument("--workers-warm", type=int, default=3)
     parser.add_argument("--workers-variant", type=int, default=7)

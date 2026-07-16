@@ -48,7 +48,8 @@ from scripts.liquid_universe_v3_public_run import (
 )
 
 
-DEFAULT_EVIDENCE = ROOT / "reports/m0/evidence/liquid_universe_v4"
+DEFAULT_PREVIEW_ROOT = ROOT / "storage/logs/liquid_universe_v4_repair_preview"
+DEFAULT_EVIDENCE = DEFAULT_PREVIEW_ROOT / "evidence"
 AUTHORIZATIONS = {
     "u03f": False,
     "u04": False,
@@ -435,8 +436,8 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw-root", type=Path, default=DEFAULT_RAW)
     parser.add_argument("--evidence-dir", type=Path, default=DEFAULT_EVIDENCE)
-    parser.add_argument("--report-path", type=Path, default=ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md")
-    parser.add_argument("--diff-report-path", type=Path, default=ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V3_V4_DIFF_REPORT.md")
+    parser.add_argument("--report-path", type=Path, default=DEFAULT_PREVIEW_ROOT / "qualification_report.md")
+    parser.add_argument("--diff-report-path", type=Path, default=DEFAULT_PREVIEW_ROOT / "v3_v4_diff_report.md")
     parser.add_argument("--end-month", default="2026-06")
     parser.add_argument("--workers", type=int, default=8)
     args = parser.parse_args()

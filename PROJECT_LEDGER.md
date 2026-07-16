@@ -1600,7 +1600,7 @@ private exchange responses here.
 - Implementation branch / PR / base: `codex/u03f-v4-repair-implementation` / Draft #98 / exact merged protocol main `0e65cd41bfac590d40ae5cb0590cc7102019018c`.
 - Result: integer-only epoch handling, exact 5m open/close boundary validation, invalid-row exclusion and fail-closed propagation, atomic final-report/run-manifest hash binding, and a frozen-local-only requalification entry with no download/replacement path are implemented fixture-only.
 - Fault Gate: FT-INT-PRECISION, FT-STATIC-FLOAT-PATH, FT-ADA-INVALID-INTERVAL, FT-INVALID-CLOSE-BOUNDARY, FT-REPORT-BYTE-DRIFT and FT-RUN-MANIFEST-BINDING all pass. The ADA fixture preserves 8,270 physical rows while admitting exactly 8,269 valid rows.
-- Repair implementation hash: `3a0a40c26f4132ec2ec57e5a43e4f8438660fbff4767d0187c37b377841d3424`.
+- Repair implementation hash: `b3c17ef6b84c0c09798dd7add12ed869622a50963ab7dc99fc8d951bea063c6e`.
 - Integrity: repair protocol hash remains `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`; independent auditor algorithm remains `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`; historical qualification/audit evidence and source freeze remain unchanged.
 - Execution status: fixed-range public requalification not run; new independent audit not run.
 - Next Gate: PR CI, then a separate exact-head independent `approve` verdict with 0 critical and 0 high findings. The implementation must not merge before that Gate.

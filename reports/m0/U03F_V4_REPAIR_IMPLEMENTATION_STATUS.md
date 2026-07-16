@@ -5,7 +5,7 @@
 - Branch: `codex/u03f-v4-repair-implementation`
 - Draft PR: `#98`
 - Frozen protocol content hash: `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`
-- Repair implementation hash: `3a0a40c26f4132ec2ec57e5a43e4f8438660fbff4767d0187c37b377841d3424`
+- Repair implementation hash: `b3c17ef6b84c0c09798dd7add12ed869622a50963ab7dc99fc8d951bea063c6e`
 - Frozen independent auditor algorithm hash: `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`
 - Real public requalification run: `not run`
 - New independent audit run: `not run`
@@ -31,6 +31,11 @@ The authoritative V4 public builder and requalification wrapper now require
 the existing frozen local archive set. Download, remote replacement and
 download-on-missing paths are rejected; a missing archive or source hash drift
 therefore stops the later requalification instead of mutating its inputs.
+
+New requalification evidence is routed to
+`reports/m0/evidence/liquid_universe_v4_repair_requalification` and new repair-
+specific report paths. The historical PR #89 evidence and reports remain
+read-only; standalone previews default to ignored `storage/logs` paths.
 
 ## Frozen Fault Tests
 

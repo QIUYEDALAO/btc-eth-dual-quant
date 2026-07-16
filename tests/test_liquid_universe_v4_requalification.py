@@ -21,6 +21,14 @@ class LiquidUniverseV4RequalificationTests(unittest.TestCase):
         self.assertIn("verify_remote_registry=False", source)
         self.assertNotIn("offline=False", source)
 
+    def test_repaired_evidence_paths_do_not_overwrite_historical_v4(self):
+        self.assertIn("liquid_universe_v4_repair_requalification", str(requalification.REPAIRED_EVIDENCE))
+        self.assertNotEqual(
+            requalification.REPAIRED_EVIDENCE,
+            requalification.ROOT / "reports/m0/evidence/liquid_universe_v4",
+        )
+        self.assertIn("REPAIR_REQUALIFICATION", requalification.REPAIRED_REPORT.name)
+
     def test_three_way_exact_match_passes(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
