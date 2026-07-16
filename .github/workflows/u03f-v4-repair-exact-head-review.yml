@@ -16,7 +16,9 @@ jobs:
           fetch-depth: 0
 
       - name: Fetch exact PR 98 target
-        run: git fetch origin +refs/pull/98/head:refs/remotes/origin/u03f-v4-repair-reviewed-head
+        run: |
+          git fetch origin +refs/pull/98/head:refs/remotes/origin/u03f-v4-repair-reviewed-head
+          git fetch origin +refs/pull/92/head:refs/remotes/origin/u03f-v4-auditor-reviewed-head
 
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
