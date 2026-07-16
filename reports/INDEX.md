@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md` | U-03F real V4 independent audit | failed_audit / pending truthful result review | Three offline orders are deterministic, but only 10/15 production manifests match; one critical and seven high findings block U-04. | no |
+| `reports/expert/evidence/liquid_universe_v4_independent_audit/` | U-03F real-audit machine evidence | deterministic self-consistent failed-audit evidence | Twelve sanitized JSON artifacts bind source, membership, lifecycle, grid, panel, comparisons and three-run identities without committing raw data. | no |
 | `reports/expert/U03F_V4_AUDITOR_IMPLEMENTATION_REVIEW.md` | U-03F auditor exact-head independent review | approve / PR #93 merged | Approves PR #92 exact head `d055efc1...9bd7f9e` with zero critical/high after independence, hash, fixture and fault review; no full audit or U-04 authorization. | no |
 | `reports/expert/evidence/u03f_v4_auditor_implementation_review.json` | U-03F auditor review machine evidence | deterministic exact-head approve | Binds protocol, algorithm and changed-file hashes plus the narrow merge-only authorization matrix. | no |
 | `reports/m0/U03F_V4_AUDITOR_IMPLEMENTATION_STATUS.md` | U-03F independent auditor implementation | implementation_fixture_only_approved_and_merged / PR #92 | Independent integer-time, source authority, lifecycle, ranking, grid and artifact primitives with fixture/fault tests; no full public audit was run. | no |

@@ -2,29 +2,31 @@
 
 ## Immediate Task
 
-The U-03F independent auditor review merged in PR #93 at `80f603b`, approving
-exact implementation head `d055efc1e46fb90b60a4553b9c5e2d1589bd7f9e`
-with zero critical/high findings. The unchanged auditor implementation then
-merged in PR #92 at `d107894`. The full fixed-range public audit has not run.
+U-03F Stage D has run over all 27,736 frozen archives in normal, reverse and
+deterministically shuffled order. All three independent runs produced the same
+artifact-set hash, but the verdict is `failed_audit` with one critical and seven
+high findings.
 
-The checker identifies six float-timestamp candidates in the production V4
-authority path. They are not repaired here and must be adjudicated by the real
-audit's frozen integer-time Gate. U-04 remains unauthorized.
+Only 10 of 15 production manifests match exactly. The expected-grid, source,
+qualified-panel, qualification-summary and V3/V4-diff artifacts differ. The
+first minimal grid counterexample is ADAUSDT 2020-02 (`8270` production rows
+versus `8269` independently valid rows). The independent parser rejects invalid
+5m interval boundaries that the production authority path does not validate.
+The production qualification-report hash recorded in the run manifest also
+differs from the committed report hash.
 
-The frozen protocol, approved exact-head review and merged fixture auditor now
-authorize one separate Stage D offline audit from the closeout-merged main. It
-must use the frozen ignored raw evidence without downloads, production builder
-calls or production evidence mutation. Any integer-time authority violation or
-artifact mismatch must be reported truthfully and cannot be repaired in the
-audit-result PR.
+The current task is to review and merge this truthful audit-result evidence.
+Do not repair the production implementation or mutate any V4 authority artifact
+in this PR. After merge, only a separate failed-audit governance closeout may
+follow. U-04 remains unauthorized.
 
 The fixed `2020-01` through `2026-06` V4 public requalification passed and
 merged in PR #89 at `77cb0969980978e65f3560f38f50924c73dfee6e`.
 V4 is now the active liquid-universe qualification authority.
 
-The only authorized next task is U-03F Stage D: the real independent offline
-audit of merged V4 machine evidence. It is authorized but not started. Do not
-begin it from this governance-closeout branch.
+The audit-result PR may prove evidence self-consistency in CI even though the
+audit verdict is failure. A green CI result must not be described as a V4 audit
+pass.
 
 - Source freeze: `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`.
 - Cold/warm/worker artifact set: `4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6`.
@@ -78,13 +80,12 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Create `codex/u03f-v4-independent-audit-run` from the closeout-merged main.
-2. Audit membership, lifecycle availability, expected grid, gaps, quarantine,
-   active-universe and qualified-panel evidence without changing V4 artifacts.
-3. Preserve V1/V2/V3 as historical evidence; V3 remains blocked and is not an
-   alternative qualification authority.
-4. Keep U-04, hypothesis/strategy work, returns, OOS and M2 blocked unless
-   U-03F independently passes and a later separate task authorizes U-04.
+1. Complete review and merge of the truthful U-03F failed-audit result.
+2. Create a separate governance closeout that marks V4 `audit_blocked` or
+   `revalidation_required` without changing production evidence.
+3. Preserve V1/V2/V3 as historical evidence; none is an alternative active
+   qualification authority.
+4. Keep U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
 
 U-03E V2 and V3 remain truthful blocked historical milestones. V4 supersedes
 their admission authority through a separately adopted lifecycle policy and

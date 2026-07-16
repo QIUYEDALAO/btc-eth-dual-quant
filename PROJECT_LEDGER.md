@@ -1555,3 +1555,16 @@ private exchange responses here.
 - Scope: fixture/fault auditor only. The real fixed-range audit has not run and no production qualification evidence was modified.
 - Next authorization: after this closeout merges, one separate offline U-03F Stage D audit may run from latest main under the frozen protocol.
 - Safety: U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - U-03F Real Independent Audit Failed Pending Review
+
+- Task ID: U-03F
+- Branch: `codex/u03f-v4-independent-audit-run`
+- Base: `79cb7426267c283baec30243e2e9665af1f518d5`
+- Evidence: `reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md` and `reports/expert/evidence/liquid_universe_v4_independent_audit/`
+- Execution: 27,736 frozen archives were recomputed offline in normal, reverse and deterministic shuffled order; all run identities match.
+- Result: `failed_audit`; 10/15 production manifests exact, 5 mismatched, 1 critical and 7 high findings.
+- Minimal evidence: ADAUSDT 2020-02 expected-grid actual count is 8270 in production versus 8269 independently valid rows; qualification summary has 0 production blockers versus 119 independently detected blockers.
+- Integrity: source freeze and production evidence were not modified, no network was accessed, and no strategy/event/return/OOS data was processed.
+- Decision: merge truthful evidence if CI proves self-consistency, then perform a separate failed-audit governance closeout. Production repair and requalification are separate future work.
+- Safety: U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
