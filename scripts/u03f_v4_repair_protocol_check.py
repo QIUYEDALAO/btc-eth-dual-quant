@@ -24,6 +24,7 @@ ORIGINAL_PRODUCTION_FILES = {
     "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py": "6a9a3c11c749f3db5059119de70012eec0b5339a0b0b46f69022c71272f2a9f0",
     "scripts/liquid_universe_v4_public_run.py": "5622df8000c3cdd8f70a345536ed1530d954848781a6f6d7228d675c7d176623",
 }
+STARTING_MAIN_SHA = "513d321b69750d6c8bb47bddbf006d4caac04828"
 
 FINDING_IDS = {
     "F-CRITICAL-INTEGER-RECOMPUTATION",
@@ -51,12 +52,21 @@ def _sha256(path: Path) -> str:
 
 
 def _historical_sha256(revision: str, relative: str) -> str:
-    result = subprocess.run(
-        ["git", "show", f"{revision}:{relative}"],
-        cwd=ROOT,
-        capture_output=True,
-        check=False,
-    )
+    if revision != STARTING_MAIN_SHA:
+        raise ValueError(f"historical repair binding revision changed: {revision}")
+
+    show_command = ["git", "show", f"{revision}:{relative}"]
+    result = subprocess.run(show_command, cwd=ROOT, capture_output=True, check=False)
+    if result.returncode:
+        fetch = subprocess.run(
+            ["git", "fetch", "--no-tags", "--depth=1", "origin", revision],
+            cwd=ROOT,
+            capture_output=True,
+            check=False,
+        )
+        if fetch.returncode:
+            raise ValueError(f"historical repair binding unavailable: {revision}:{relative}")
+        result = subprocess.run(show_command, cwd=ROOT, capture_output=True, check=False)
     if result.returncode:
         raise ValueError(f"historical repair binding unavailable: {revision}:{relative}")
     return hashlib.sha256(result.stdout).hexdigest()
@@ -86,7 +96,7 @@ def validate_protocol(protocol: dict[str, Any]) -> list[str]:
         failures.append("protocol is not frozen before implementation")
     if protocol.get("repository_binding") != {
         "repository": "QIUYEDALAO/btc-eth-dual-quant",
-        "starting_main_sha": "513d321b69750d6c8bb47bddbf006d4caac04828",
+        "starting_main_sha": STARTING_MAIN_SHA,
         "failed_audit_pr": 95,
         "failed_audit_merge_sha": "36b81649fbdaf4f54aea7027f3e9325b0ea80de0",
         "failed_audit_result_head_sha": "fed6aa929d952a9d4744728d398dfa51fe399df1",
