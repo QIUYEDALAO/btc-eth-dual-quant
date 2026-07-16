@@ -3,19 +3,25 @@
 from __future__ import annotations
 
 import argparse
+import csv
 from collections import defaultdict
-from datetime import datetime, timezone
+from decimal import Decimal
+import io
 import json
 from pathlib import Path
 from typing import Any
+import zipfile
 
-from btc_eth_dual_quant.data.kline_row_conflicts import ResolutionRegistry
+from btc_eth_dual_quant.data.kline_row_conflicts import ResolutionRegistry, normalize_kline_fields
 from btc_eth_dual_quant.data.lifecycle_artifacts import V4_MANIFEST_TYPES, make_v4_manifest
 from btc_eth_dual_quant.data.lifecycle_availability import LifecycleEventRegistry, utc_epoch_ms
 from btc_eth_dual_quant.data.liquid_universe import (
     aggregate_one_hour,
     canonical_hash,
     exclusion_record,
+    GridResult,
+    MinuteBar,
+    month_bounds,
     validate_symbol_month_grid,
 )
 from btc_eth_dual_quant.data.liquid_universe_artifacts import write_manifest
@@ -23,13 +29,12 @@ from btc_eth_dual_quant.data.liquid_universe_pipeline import build_membership_ro
 from btc_eth_dual_quant.data.liquid_universe_pipeline_v3 import build_artifacts_v3, resolve_daily_key
 from btc_eth_dual_quant.data.liquid_universe_pipeline_v4 import (
     dispatch_daily_rows,
+    utc_datetime_from_epoch_ms,
     validate_lifecycle_symbol_month_grid,
 )
 from scripts.liquid_universe_public_run import (
     DEFAULT_RAW,
     ROOT,
-    _download_missing_archive,
-    _minute_rows,
     _prefetch_checksums,
     _source_row,
     canonical_key,
@@ -39,13 +44,13 @@ from scripts.liquid_universe_v3_public_run import (
     _daily_evidence,
     _excluded_result,
     archive_path,
-    assert_registered_archive_bindings,
-    current_remote_checksum,
     ensure_registered_archives,
 )
 
 
-DEFAULT_EVIDENCE = ROOT / "reports/m0/evidence/liquid_universe_v4"
+DEFAULT_PREVIEW_ROOT = ROOT / "storage/logs/liquid_universe_v4_repair_preview"
+DEFAULT_EVIDENCE = DEFAULT_PREVIEW_ROOT / "evidence"
+REQUIRED_SOURCE_FREEZE_HASH = "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
 AUTHORIZATIONS = {
     "u03f": False,
     "u04": False,
@@ -66,6 +71,44 @@ def _load(name: str) -> dict[str, Any]:
     return json.loads((ROOT / name).read_text(encoding="utf-8"))
 
 
+def _frozen_source_bindings() -> dict[str, dict[str, Any]]:
+    freeze = _load("reports/m0/evidence/liquid_universe_v4/source_freeze_manifest.json")
+    content = freeze.get("content", {})
+    if freeze.get("content_hash") != canonical_hash(content):
+        raise ValueError("source freeze manifest hash mismatch")
+    if freeze.get("content_hash") != REQUIRED_SOURCE_FREEZE_HASH:
+        raise ValueError("source freeze content hash drift")
+    archives = content.get("archives", [])
+    if content.get("archive_count") != 27_736 or len(archives) != 27_736:
+        raise ValueError("source freeze archive count drift")
+    bindings = {str(row["canonical_key"]): dict(row) for row in archives}
+    if len(bindings) != len(archives):
+        raise ValueError("source freeze contains duplicate canonical keys")
+    return bindings
+
+
+def _validate_frozen_source_rows(
+    rows: list[dict[str, Any]],
+    bindings: dict[str, dict[str, Any]],
+    *,
+    require_complete: bool,
+) -> None:
+    observed = {str(row["canonical_key"]): row for row in rows}
+    if len(observed) != len(rows):
+        raise ValueError("consumed source inventory contains duplicate canonical keys")
+    unexpected = sorted(set(observed) - set(bindings))
+    if unexpected:
+        raise ValueError(f"unfrozen source consumed: {unexpected[0]}")
+    for key, row in observed.items():
+        frozen = bindings[key]
+        if row.get("sha256") != frozen.get("sha256") or row.get("byte_size") != frozen.get("byte_size"):
+            raise ValueError(f"consumed source binding drift: {key}")
+    if require_complete:
+        missing = sorted(set(bindings) - set(observed))
+        if missing:
+            raise ValueError(f"frozen source not consumed: {missing[0]}")
+
+
 def _event_row_source_is_bound(row: Any, lifecycle: LifecycleEventRegistry) -> bool:
     for event in lifecycle.events:
         if event.symbol != row.symbol:
@@ -77,6 +120,62 @@ def _event_row_source_is_bound(row: Any, lifecycle: LifecycleEventRegistry) -> b
                     and row.archive_sha256 in affected.source_archive_hashes
                 )
     return True
+
+
+def _physical_kline_rows(path: Path) -> list[list[str]]:
+    with zipfile.ZipFile(path) as archive:
+        names = [name for name in archive.namelist() if name.endswith(".csv")]
+        if len(names) != 1:
+            raise ValueError("archive must contain one CSV")
+        rows = [row for row in csv.reader(io.TextIOWrapper(archive.open(names[0]), encoding="utf-8-sig")) if row]
+    return rows
+
+
+def _valid_five_minute_rows(path: Path, symbol: str, month: str) -> tuple[list[MinuteBar], list[str]]:
+    """Parse physical rows and exclude every row that is not a strict 5m kline."""
+    start, end = month_bounds(month)
+    start_ms, end_ms = utc_epoch_ms(start), utc_epoch_ms(end)
+    bars: list[MinuteBar] = []
+    errors: list[str] = []
+    for raw_fields in _physical_kline_rows(path):
+        try:
+            values = normalize_kline_fields(field.strip() for field in raw_fields)
+            open_ms, open_, high, low, close, volume, close_ms, quote_volume, trades, taker_base, taker_quote, _ = values
+            if open_ms % 300_000 or close_ms != open_ms + 299_999:
+                raise ValueError("5m interval boundary is invalid")
+            if not start_ms <= open_ms < end_ms:
+                raise ValueError("5m timestamp outside archive month")
+            if low > min(open_, close) or high < max(open_, close) or low > high:
+                raise ValueError("invalid 5m OHLC ordering")
+            if any(value < Decimal(0) for value in (volume, quote_volume, taker_base, taker_quote)):
+                raise ValueError("5m volume must be finite and non-negative")
+            bars.append(MinuteBar(
+                symbol=symbol,
+                open_time=utc_datetime_from_epoch_ms(open_ms),
+                open=open_,
+                high=high,
+                low=low,
+                close=close,
+                volume=volume,
+                quote_volume=quote_volume,
+                trade_count=trades,
+                taker_base_volume=taker_base,
+                taker_quote_volume=taker_quote,
+            ))
+        except ValueError as exc:
+            errors.append(str(exc))
+    return bars, sorted(set(errors))
+
+
+def _with_parse_errors(result: GridResult, parse_errors: list[str]) -> GridResult:
+    return GridResult(
+        result.symbol,
+        result.month,
+        result.expected_count,
+        result.actual_count,
+        result.missing,
+        tuple(sorted(set(result.errors) | set(parse_errors))),
+    )
 
 
 def build_daily_v4(
@@ -115,7 +214,7 @@ def build_daily_v4(
         result = resolve_daily_key(monthly, supplement, row_registry)
         if result.unresolved_row_conflicts:
             rows = monthly + supplement
-            event_day = datetime.fromtimestamp(key[2] / 1_000, timezone.utc).date()
+            event_day = utc_datetime_from_epoch_ms(key[2]).date()
             excluded = exclusion_record(key[0], event_day, v3_contract, eligibility_registry)
             if excluded is not None and rows and all(row.errors for row in rows):
                 result = _excluded_result(rows, excluded["category"])
@@ -200,9 +299,12 @@ def render_diff_report(content: dict[str, Any]) -> str:
 
 def run(
     *, raw_root: Path, evidence_dir: Path, end_month: str, report_path: Path,
-    diff_report_path: Path, offline: bool, workers: int = 8,
-    verify_remote_registry: bool = True,
+    diff_report_path: Path, offline: bool = True, workers: int = 8,
+    verify_remote_registry: bool = False,
 ) -> dict[str, dict[str, Any]]:
+    if offline is not True or verify_remote_registry is not False:
+        raise ValueError("V4 requalification requires frozen local sources and forbids downloads")
+    frozen_sources = _frozen_source_bindings()
     v4_contract = _load("config/liquid_spot_universe_contract_v4.json")
     policy = _load("config/liquid_spot_lifecycle_policy_v4.json")
     lifecycle = LifecycleEventRegistry.from_path(ROOT / "config/liquid_spot_lifecycle_event_resolutions_v4.json")
@@ -224,14 +326,11 @@ def run(
     if any(bindings.get(key) != value for key, value in required.items()):
         raise ValueError("V4 authority binding mismatch")
 
-    ensure_registered_archives(raw_root, row_registry, offline=offline)
-    if verify_remote_registry:
-        if offline:
-            raise ValueError("remote registered checksum verification required for public V4 run")
-        assert_registered_archive_bindings(raw_root, row_registry, current_remote_checksum)
+    ensure_registered_archives(raw_root, row_registry, offline=True)
     monthly, supplements, sources, processing = _collect_daily_sources(
-        raw_root=raw_root, end_month=end_month, offline=offline, workers=workers,
+        raw_root=raw_root, end_month=end_month, offline=True, workers=workers,
     )
+    _validate_frozen_source_rows(sources, frozen_sources, require_complete=False)
     daily, row_outcomes, lifecycle_outcomes, lifecycle_blockers = build_daily_v4(
         monthly_groups=monthly, daily_groups=supplements, row_registry=row_registry,
         lifecycle_registry=lifecycle, v3_contract=v3_contract, eligibility_registry=eligibility,
@@ -239,18 +338,12 @@ def run(
     processing.extend(lifecycle_blockers)
     membership = build_membership_rows(v3_contract, eligibility, daily)
     needed = sorted({(row.symbol, row.effective_month[:7]) for row in membership})
-    if not offline:
-        for symbol, month in needed:
-            key = canonical_key(symbol, "5m", month)
-            path = archive_path(raw_root, key)
-            if not path.exists():
-                _download_missing_archive(path, key)
     jobs = [
         (archive_path(raw_root, canonical_key(symbol, "5m", month)), canonical_key(symbol, "5m", month))
         for symbol, month in needed
         if archive_path(raw_root, canonical_key(symbol, "5m", month)).exists()
     ]
-    _prefetch_checksums(jobs, offline=offline, workers=workers)
+    _prefetch_checksums(jobs, offline=True, workers=workers)
     grid_results: dict[Any, Any] = {}
     for symbol, month in needed:
         key = canonical_key(symbol, "5m", month)
@@ -259,25 +352,28 @@ def run(
             processing.append(f"missing local archive:{symbol}:{month}:5m")
             continue
         try:
-            source = _source_row(path, key, symbol, "5m", month, "official_monthly_zip_detail", offline=offline)
+            source = _source_row(path, key, symbol, "5m", month, "official_monthly_zip_detail", offline=True)
             sources.append(source)
-            bars = _minute_rows(path, symbol)
+            bars, row_errors = _valid_five_minute_rows(path, symbol, month)
             events = [event for event in lifecycle.events if event.symbol == symbol and event.effective_at.strftime("%Y-%m") == month]
             if events:
                 boundary_ms = utc_epoch_ms(events[0].availability_end_exclusive)
-                grid_results[(symbol, month)] = validate_lifecycle_symbol_month_grid(
+                grid_result = validate_lifecycle_symbol_month_grid(
                     symbol, month, bars, availability_end_exclusive_ms=boundary_ms,
                 )
-                active_bars = [bar for bar in bars if int(bar.open_time.timestamp() * 1_000) < boundary_ms]
+                active_bars = [bar for bar in bars if utc_epoch_ms(bar.open_time) < boundary_ms]
             else:
-                grid_results[(symbol, month)] = validate_symbol_month_grid(symbol, month, bars)
+                grid_result = validate_symbol_month_grid(symbol, month, bars)
                 active_bars = bars
+            grid_results[(symbol, month)] = _with_parse_errors(grid_result, row_errors)
             grouped: dict[Any, list[Any]] = defaultdict(list)
             for bar in active_bars:
                 grouped[bar.open_time.replace(minute=0, second=0, microsecond=0)].append(bar)
             source["derived_1h_count"] = sum(1 for group in grouped.values() if len(group) == 12 and aggregate_one_hour(group))
         except Exception as exc:
             processing.append(f"{symbol}:{month}:5m:{type(exc).__name__}:{exc}")
+
+    _validate_frozen_source_rows(sources, frozen_sources, require_complete=True)
 
     v3_base = build_artifacts_v3(
         contract=v3_contract, eligibility_registry=eligibility, resolution_registry=row_registry,
@@ -383,16 +479,15 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw-root", type=Path, default=DEFAULT_RAW)
     parser.add_argument("--evidence-dir", type=Path, default=DEFAULT_EVIDENCE)
-    parser.add_argument("--report-path", type=Path, default=ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md")
-    parser.add_argument("--diff-report-path", type=Path, default=ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V3_V4_DIFF_REPORT.md")
+    parser.add_argument("--report-path", type=Path, default=DEFAULT_PREVIEW_ROOT / "qualification_report.md")
+    parser.add_argument("--diff-report-path", type=Path, default=DEFAULT_PREVIEW_ROOT / "v3_v4_diff_report.md")
     parser.add_argument("--end-month", default="2026-06")
     parser.add_argument("--workers", type=int, default=8)
-    parser.add_argument("--offline", action="store_true")
     args = parser.parse_args()
     artifacts = run(
         raw_root=args.raw_root, evidence_dir=args.evidence_dir, end_month=args.end_month,
         report_path=args.report_path, diff_report_path=args.diff_report_path,
-        offline=args.offline, workers=args.workers, verify_remote_registry=not args.offline,
+        offline=True, workers=args.workers, verify_remote_registry=False,
     )
     status = artifacts["qualification_summary"]["content"]["status"]
     print(f"status={status} artifact_set={canonical_hash({name: doc['content_hash'] for name, doc in artifacts.items()})}")

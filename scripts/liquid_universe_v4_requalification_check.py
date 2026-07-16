@@ -2,6 +2,7 @@
 """Validate committed fixed-range V4 public requalification evidence."""
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -10,7 +11,23 @@ from btc_eth_dual_quant.data.liquid_universe import canonical_hash
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EVIDENCE = ROOT / "reports/m0/evidence/liquid_universe_v4"
+EVIDENCE = ROOT / "reports/m0/evidence/liquid_universe_v4_repair_requalification"
+REPORT = ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md"
+REQUIRED_SOURCE_FREEZE_HASH = "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
+
+
+def required_report_markers(status: str) -> tuple[str, ...]:
+    if status == "pass":
+        determinism = "pass"
+    elif status == "blocked":
+        determinism = "not_run_due_fail_closed_cold_block"
+    else:
+        raise ValueError(f"unsupported V4 requalification status: {status}")
+    return (
+        f"- Status: {status}",
+        f"- Determinism: {determinism}",
+        "- M2 authorized: no",
+    )
 
 
 def _load_v4(path: Path) -> dict:
@@ -37,10 +54,16 @@ def check() -> dict:
     freeze = json.loads((EVIDENCE / "source_freeze_manifest.json").read_text())
     if freeze.get("content_hash") != canonical_hash(freeze.get("content")):
         raise ValueError("source freeze hash mismatch")
+    if freeze.get("content_hash") != REQUIRED_SOURCE_FREEZE_HASH:
+        raise ValueError("source freeze content hash drift")
+    if freeze.get("content", {}).get("archive_count") != 27_736:
+        raise ValueError("source freeze archive count drift")
     content = run["content"]
     summary = artifacts["qualification_summary"]["content"]
     if content["range"] != {"start": "2020-01", "end": "2026-06"}:
         raise ValueError("V4 frozen range mismatch")
+    if content.get("source_mode") != "frozen_local_only":
+        raise ValueError("V4 requalification must use only frozen local sources")
     if content["source_freeze_hash"] != freeze["content_hash"]:
         raise ValueError("run/source freeze mismatch")
     if content["status"] != summary["status"]:
@@ -81,10 +104,16 @@ def check() -> dict:
     diff = artifacts["V3_V4_diff"]["content"]
     if diff["v3_mutated"] or diff["v3_status"] != "blocked" or diff["v4_status"] != summary["status"]:
         raise ValueError("V3/V4 authority diff mismatch")
-    report = (ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md").read_text()
-    for marker in (f"- Status: {summary['status']}", "- Determinism: pass", "- M2 authorized: no"):
+    report = REPORT.read_text()
+    for marker in required_report_markers(summary["status"]):
         if marker not in report:
             raise ValueError(f"V4 report marker missing: {marker}")
+    report_sha256 = hashlib.sha256(
+        REPORT.read_bytes()
+    ).hexdigest()
+    bindings = {record.get("qualification_report_sha256") for record in content["builds"].values()}
+    if bindings != {report_sha256}:
+        raise ValueError("V4 qualification report/run-manifest binding mismatch")
     return {"status": summary["status"], "content_hash": run["content_hash"]}
 
 

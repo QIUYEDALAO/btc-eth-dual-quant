@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import importlib.util
+import subprocess
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,6 +26,42 @@ class U03FV4RepairProtocolTests(unittest.TestCase):
         self.assertEqual(MODULE.validate_protocol(self.protocol), [])
         self.assertEqual(MODULE.validate_immutable_inputs(self.protocol), [])
         self.assertEqual(MODULE.validate_docs(), [])
+
+    def test_historical_binding_fetches_only_the_exact_frozen_commit(self) -> None:
+        payload = b"historical production bytes"
+        results = [
+            subprocess.CompletedProcess([], 128, b"", b"missing"),
+            subprocess.CompletedProcess([], 0, b"", b""),
+            subprocess.CompletedProcess([], 0, payload, b""),
+        ]
+        with mock.patch.object(MODULE.subprocess, "run", side_effect=results) as run:
+            actual = MODULE._historical_sha256(
+                MODULE.STARTING_MAIN_SHA,
+                "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py",
+            )
+        self.assertEqual(actual, hashlib.sha256(payload).hexdigest())
+        self.assertEqual(
+            run.call_args_list[1].args[0],
+            ["git", "fetch", "--no-tags", "--depth=1", "origin", MODULE.STARTING_MAIN_SHA],
+        )
+
+    def test_historical_binding_fetch_failure_remains_fail_closed(self) -> None:
+        results = [
+            subprocess.CompletedProcess([], 128, b"", b"missing"),
+            subprocess.CompletedProcess([], 128, b"", b"unavailable"),
+        ]
+        with mock.patch.object(MODULE.subprocess, "run", side_effect=results):
+            with self.assertRaisesRegex(ValueError, "historical repair binding unavailable"):
+                MODULE._historical_sha256(
+                    MODULE.STARTING_MAIN_SHA,
+                    "scripts/liquid_universe_v4_public_run.py",
+                )
+
+    def test_historical_binding_rejects_unfrozen_revision_without_fetch(self) -> None:
+        with mock.patch.object(MODULE.subprocess, "run") as run:
+            with self.assertRaisesRegex(ValueError, "historical repair binding revision changed"):
+                MODULE._historical_sha256("0" * 40, "scripts/liquid_universe_v4_public_run.py")
+        run.assert_not_called()
 
     def test_findings_and_faults_are_complete(self) -> None:
         for finding in MODULE.FINDING_IDS:

@@ -1592,3 +1592,19 @@ private exchange responses here.
 - Execution status: repair implementation no; public requalification no; new independent audit no.
 - Gate: local checks, PR CI and merge are required before production repair implementation.
 - Safety: V4 remains `audit_blocked` / `revalidation_required`; U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - U-03F Repair Protocol Merged And Fixture Implementation Completed
+
+- Task IDs: U-03F-RP / U-03F-RI
+- Protocol PR / merge: #97 / `0e65cd41bfac590d40ae5cb0590cc7102019018c`; 108/108 GitHub checks passed before merge.
+- Implementation branch / PR / base: `codex/u03f-v4-repair-implementation` / Draft #98 / exact merged protocol main `0e65cd41bfac590d40ae5cb0590cc7102019018c`.
+- Result: integer-only epoch handling, exact 5m open/close boundary validation, invalid-row exclusion and fail-closed propagation, atomic final-report/run-manifest hash binding, and a frozen-local-only requalification entry with no download/replacement path are implemented fixture-only.
+- Fault Gate: FT-INT-PRECISION, FT-STATIC-FLOAT-PATH, FT-ADA-INVALID-INTERVAL, FT-INVALID-CLOSE-BOUNDARY, FT-REPORT-BYTE-DRIFT and FT-RUN-MANIFEST-BINDING all pass. The ADA fixture preserves 8,270 physical rows while admitting exactly 8,269 valid rows.
+- Repair implementation hash: `9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a`.
+- Review correction: the requalification checker now accepts the truthful `not_run_due_fail_closed_cold_block` determinism marker only when status is `blocked`; it still requires `pass` for a successful three-way run and rejects unknown statuses.
+- Source-set correction: the production builder now binds every consumed canonical key, SHA256 and byte size to the exact 27,736-entry freeze, rejecting extra, missing, duplicate or drifted inputs before artifacts are built.
+- Fresh-run correction: resumable work-root reuse was removed; every authorized run must delete prior work output and execute cold, warm and worker builds under the current merged code.
+- Integrity: repair protocol hash remains `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`; independent auditor algorithm remains `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`; historical qualification/audit evidence and source freeze remain unchanged.
+- Execution status: fixed-range public requalification not run; new independent audit not run.
+- Next Gate: PR CI, then a separate exact-head independent `approve` verdict with 0 critical and 0 high findings. The implementation must not merge before that Gate.
+- Safety: V4 remains `audit_blocked` / `revalidation_required`; U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
