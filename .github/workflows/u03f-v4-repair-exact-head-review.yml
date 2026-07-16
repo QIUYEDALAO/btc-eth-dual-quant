@@ -23,6 +23,12 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install validator system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ripgrep
+          rg --version
+
       - name: Install review branch
         run: |
           python -m pip install --upgrade pip
