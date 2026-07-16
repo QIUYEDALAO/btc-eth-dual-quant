@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- Current phase: the U-03F fixture-only independent auditor is implemented on `codex/u03f-v4-independent-auditor`, pending an exact-head independent review.
+- The implementation algorithm hash is `d6c72b79751a42b4f92775a97d12730e0d589129d2b0ff12a831591325ad934d`; no real fixed-range audit has run.
+- Six production float-timestamp candidates are disclosed for the future real-audit Gate. Do not repair production authority in this implementation or review task.
 - Current phase: U-03F V4 independent-audit protocol is frozen before results on `codex/u03f-v4-independent-audit-protocol`, pending review and merge.
 - The protocol content hash is `0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157`. It changes no V4 production authority and authorizes no full audit, U-04, strategy, outcomes, OOS or M2.
 - After protocol merge, only a fixture/synthetic independent auditor implementation may start. The real fixed-range audit requires a separate exact-head implementation review and approval first.

@@ -1,5 +1,6 @@
 # Reports Index
 
+| `reports/m0/U03F_V4_AUDITOR_IMPLEMENTATION_STATUS.md` | U-03F independent auditor implementation | implementation_fixture_only_pending_independent_review | Independent integer-time, source authority, lifecycle, ranking, grid and artifact primitives with fixture/fault tests; no full public audit was run. | no |
 | `reports/m0/U03F_V4_INDEPENDENT_AUDIT_PROTOCOL.md` | U-03F independent-audit protocol | frozen_before_independent_audit_result / pending review | Binds the merged V4 source, policy, registries, 15 manifests, reports, run manifest, exact comparison Gates and zero downstream authorization before any result. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md` | V4 fixed-range public requalification | pass_active_qualification_authority / PR #89 merged | Three exact cold/warm/worker builds cover 78 months and 1,170 membership rows with zero processing, conflict, lifecycle, overlap or gap blockers. Governance closeout authorizes only U-03F independent audit. | no |
 | `reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json` | V4 public requalification machine authority | deterministic_three_way_pass_active_authority / PR #89 merged | Binds source freeze `c86310f...ec6c`, artifact set `4cfca060...65fde6`, all manifest hashes and false research/trading authorizations. | no |
