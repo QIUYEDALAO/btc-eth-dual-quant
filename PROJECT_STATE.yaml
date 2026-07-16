@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-16T13:17:00Z"
+last_updated_utc: "2026-07-16T13:45:32Z"
 current_phase: Liquid universe V4 independent audit failed or blocked
 current_status: liquid_universe_v4_independent_audit_failed_no_strategy_no_m2
 completed_milestones:
@@ -9,12 +9,13 @@ completed_milestones:
     status: implementation_fixture_pass_pending_exact_head_review
     evidence: reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md
     protocol_content_hash: 9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1
-    repair_implementation_hash: 882b0149d99b30f35118ce85b9db72083a2093428e0e0fa4e19603f0f458af5d
+    repair_implementation_hash: 2a3efe7d6afd1446e87cdac5dcbeba91e758d24f5af8d473abc0a1f3c96d6b41
     auditor_algorithm_hash: 7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1
     base_main_sha: 0e65cd41bfac590d40ae5cb0590cc7102019018c
     branch: codex/u03f-v4-repair-implementation
     pr: 98
     public_requalification_executed: false
+    future_requalification_source_mode: frozen_local_only
     new_independent_audit_executed: false
     exact_head_review_status: pending
   - phase: U-03F V4 repair and requalification protocol

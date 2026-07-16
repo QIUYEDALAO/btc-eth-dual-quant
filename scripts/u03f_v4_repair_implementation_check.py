@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md"
 PROTOCOL_HASH = "9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1"
 AUDITOR_HASH = "7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1"
-IMPLEMENTATION_HASH = "882b0149d99b30f35118ce85b9db72083a2093428e0e0fa4e19603f0f458af5d"
+IMPLEMENTATION_HASH = "2a3efe7d6afd1446e87cdac5dcbeba91e758d24f5af8d473abc0a1f3c96d6b41"
 IMPLEMENTATION_FILES = (
     "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py",
     "scripts/liquid_universe_v4_public_run.py",
@@ -29,9 +29,9 @@ AUDITOR_FILES = (
 )
 EXPECTED_FILE_HASHES = {
     "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py": "54487fb676df99e5f761a96caf988f6d30a62878c4334a201761a95726337e4a",
-    "scripts/liquid_universe_v4_public_run.py": "e6da1d1cd1204ab98f2882eb8aeb4acf7421c6933d379afc06ef48285b0dd1b5",
-    "scripts/liquid_universe_v4_requalification.py": "8303bcad64e758308ac3cc9186e4ca668156f84a8fda42c12aca57d5f4448f5a",
-    "scripts/liquid_universe_v4_requalification_check.py": "f902e4f90b2a3380c00ecc43468003256a5626523220402de1cabbd28f25e874",
+    "scripts/liquid_universe_v4_public_run.py": "dc4777488a4307a54b7ccc317616a881a58a7f9f4b6a5ae55f39c93573fe7002",
+    "scripts/liquid_universe_v4_requalification.py": "146aa28abd58de817b873606a3da7809c44106a063a54ec59645da2edc9935ba",
+    "scripts/liquid_universe_v4_requalification_check.py": "a1efeb31fe0af6ef6b6b1d0adb805785c9b48dded05dabf3457228cf40f427b6",
 }
 IMMUTABLE_EVIDENCE = {
     "reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md": "ad414f760655645e20c6bc20c49c0f25bf3aea1d5f47b373fc254364aab91e2a",
@@ -103,6 +103,17 @@ def validate() -> list[str]:
     for relative in IMPLEMENTATION_FILES[:2]:
         for finding in scan_float_timestamp_paths((ROOT / relative).read_text(encoding="utf-8")):
             failures.append(f"integer-time violation: {relative}:{finding}")
+
+    public_source = (ROOT / "scripts/liquid_universe_v4_public_run.py").read_text(encoding="utf-8")
+    requalification_source = (ROOT / "scripts/liquid_universe_v4_requalification.py").read_text(encoding="utf-8")
+    if "_download_missing_archive" in public_source:
+        failures.append("V4 public authority retains a source-download path")
+    if "offline=False" in requalification_source or "verify_remote_registry=True" in requalification_source:
+        failures.append("V4 requalification is not frozen-source-only")
+    if '"source_mode": "frozen_local_only"' not in requalification_source:
+        failures.append("V4 requalification run manifest lacks frozen source mode")
+    if "REQUIRED_SOURCE_FREEZE_HASH" not in requalification_source:
+        failures.append("V4 requalification does not bind the exact source freeze")
 
     tests = (ROOT / "tests/test_u03f_v4_repair_implementation.py").read_text(encoding="utf-8")
     report = REPORT.read_text(encoding="utf-8")

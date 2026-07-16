@@ -20,6 +20,9 @@ from scripts.liquid_universe_public_run import DEFAULT_RAW, ROOT
 from scripts.liquid_universe_v4_public_run import run
 
 
+REQUIRED_SOURCE_FREEZE_HASH = "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
+
+
 def file_sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -157,6 +160,10 @@ def execute(
     if not resume:
         shutil.rmtree(work_root, ignore_errors=True)
     source_before = freeze_sources(raw_root)
+    if source_before["content"].get("archive_count") != 27_736:
+        raise ValueError("source freeze archive count drift")
+    if source_before.get("content_hash") != REQUIRED_SOURCE_FREEZE_HASH:
+        raise ValueError("source freeze content hash drift before requalification")
     builds: dict[str, dict] = {}
     reports: dict[str, Path] = {}
     diffs: dict[str, Path] = {}
@@ -173,8 +180,8 @@ def execute(
         print(f"build={name} workers={workers[name]} status=started", flush=True)
         builds[name] = run(
             raw_root=raw_root, evidence_dir=build_dir, end_month="2026-06",
-            report_path=reports[name], diff_report_path=diffs[name], offline=False,
-            workers=workers[name], verify_remote_registry=True,
+            report_path=reports[name], diff_report_path=diffs[name], offline=True,
+            workers=workers[name], verify_remote_registry=False,
         )
         summary = builds[name]["qualification_summary"]["content"]
         print(f"build={name} status={summary['status']} artifact_set={artifact_set_hash(builds[name])}", flush=True)
@@ -186,6 +193,8 @@ def execute(
     if completed:
         assert_three_way(builds, reports, diffs)
     source_after = freeze_sources(raw_root)
+    if source_after.get("content_hash") != REQUIRED_SOURCE_FREEZE_HASH:
+        raise ValueError("source freeze content hash drift during requalification")
     if source_before["content_hash"] != source_after["content_hash"]:
         raise ValueError("source freeze drift during requalification")
 
@@ -221,6 +230,7 @@ def execute(
     run_content = {
         "status": summary["status"],
         "range": {"start": "2020-01", "end": "2026-06"},
+        "source_mode": "frozen_local_only",
         "source_freeze_hash": source_before["content_hash"],
         "builds": records,
         "builds_completed": list(builds),

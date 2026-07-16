@@ -2,10 +2,12 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal
+from pathlib import Path
 import unittest
 
 from btc_eth_dual_quant.data.liquid_universe import MinuteBar
 from btc_eth_dual_quant.data.liquid_universe_pipeline_v4 import validate_lifecycle_symbol_month_grid
+from scripts.liquid_universe_v4_public_run import run
 
 
 UTC = timezone.utc
@@ -16,6 +18,19 @@ def bar(at: datetime) -> MinuteBar:
 
 
 class LiquidUniverseV4PublicRunTests(unittest.TestCase):
+    def test_authority_run_rejects_download_or_remote_replacement_mode(self):
+        arguments = {
+            "raw_root": Path("unused"),
+            "evidence_dir": Path("unused"),
+            "end_month": "2026-06",
+            "report_path": Path("unused"),
+            "diff_report_path": Path("unused"),
+        }
+        with self.assertRaisesRegex(ValueError, "frozen local sources"):
+            run(**arguments, offline=False, verify_remote_registry=False)
+        with self.assertRaisesRegex(ValueError, "frozen local sources"):
+            run(**arguments, offline=True, verify_remote_registry=True)
+
     def test_lifecycle_grid_stops_at_boundary_without_creating_gap(self):
         start = datetime(2024, 10, 1, tzinfo=UTC)
         boundary = datetime(2024, 10, 1, 1, tzinfo=UTC)

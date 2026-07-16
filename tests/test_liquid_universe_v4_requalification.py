@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import inspect
 import tempfile
 from pathlib import Path
 import unittest
 
 from btc_eth_dual_quant.data.lifecycle_artifacts import V4_MANIFEST_TYPES
+from scripts import liquid_universe_v4_requalification as requalification
 from scripts.liquid_universe_v4_requalification import assert_three_way
 
 
@@ -13,6 +15,12 @@ def artifacts(value: str = "same") -> dict:
 
 
 class LiquidUniverseV4RequalificationTests(unittest.TestCase):
+    def test_authoritative_wrapper_is_frozen_source_only(self):
+        source = inspect.getsource(requalification.execute)
+        self.assertIn("offline=True", source)
+        self.assertIn("verify_remote_registry=False", source)
+        self.assertNotIn("offline=False", source)
+
     def test_three_way_exact_match_passes(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

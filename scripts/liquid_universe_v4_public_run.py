@@ -35,7 +35,6 @@ from btc_eth_dual_quant.data.liquid_universe_pipeline_v4 import (
 from scripts.liquid_universe_public_run import (
     DEFAULT_RAW,
     ROOT,
-    _download_missing_archive,
     _prefetch_checksums,
     _source_row,
     canonical_key,
@@ -45,8 +44,6 @@ from scripts.liquid_universe_v3_public_run import (
     _daily_evidence,
     _excluded_result,
     archive_path,
-    assert_registered_archive_bindings,
-    current_remote_checksum,
     ensure_registered_archives,
 )
 
@@ -264,9 +261,11 @@ def render_diff_report(content: dict[str, Any]) -> str:
 
 def run(
     *, raw_root: Path, evidence_dir: Path, end_month: str, report_path: Path,
-    diff_report_path: Path, offline: bool, workers: int = 8,
-    verify_remote_registry: bool = True,
+    diff_report_path: Path, offline: bool = True, workers: int = 8,
+    verify_remote_registry: bool = False,
 ) -> dict[str, dict[str, Any]]:
+    if offline is not True or verify_remote_registry is not False:
+        raise ValueError("V4 requalification requires frozen local sources and forbids downloads")
     v4_contract = _load("config/liquid_spot_universe_contract_v4.json")
     policy = _load("config/liquid_spot_lifecycle_policy_v4.json")
     lifecycle = LifecycleEventRegistry.from_path(ROOT / "config/liquid_spot_lifecycle_event_resolutions_v4.json")
@@ -288,13 +287,9 @@ def run(
     if any(bindings.get(key) != value for key, value in required.items()):
         raise ValueError("V4 authority binding mismatch")
 
-    ensure_registered_archives(raw_root, row_registry, offline=offline)
-    if verify_remote_registry:
-        if offline:
-            raise ValueError("remote registered checksum verification required for public V4 run")
-        assert_registered_archive_bindings(raw_root, row_registry, current_remote_checksum)
+    ensure_registered_archives(raw_root, row_registry, offline=True)
     monthly, supplements, sources, processing = _collect_daily_sources(
-        raw_root=raw_root, end_month=end_month, offline=offline, workers=workers,
+        raw_root=raw_root, end_month=end_month, offline=True, workers=workers,
     )
     daily, row_outcomes, lifecycle_outcomes, lifecycle_blockers = build_daily_v4(
         monthly_groups=monthly, daily_groups=supplements, row_registry=row_registry,
@@ -303,18 +298,12 @@ def run(
     processing.extend(lifecycle_blockers)
     membership = build_membership_rows(v3_contract, eligibility, daily)
     needed = sorted({(row.symbol, row.effective_month[:7]) for row in membership})
-    if not offline:
-        for symbol, month in needed:
-            key = canonical_key(symbol, "5m", month)
-            path = archive_path(raw_root, key)
-            if not path.exists():
-                _download_missing_archive(path, key)
     jobs = [
         (archive_path(raw_root, canonical_key(symbol, "5m", month)), canonical_key(symbol, "5m", month))
         for symbol, month in needed
         if archive_path(raw_root, canonical_key(symbol, "5m", month)).exists()
     ]
-    _prefetch_checksums(jobs, offline=offline, workers=workers)
+    _prefetch_checksums(jobs, offline=True, workers=workers)
     grid_results: dict[Any, Any] = {}
     for symbol, month in needed:
         key = canonical_key(symbol, "5m", month)
@@ -323,7 +312,7 @@ def run(
             processing.append(f"missing local archive:{symbol}:{month}:5m")
             continue
         try:
-            source = _source_row(path, key, symbol, "5m", month, "official_monthly_zip_detail", offline=offline)
+            source = _source_row(path, key, symbol, "5m", month, "official_monthly_zip_detail", offline=True)
             sources.append(source)
             bars, row_errors = _valid_five_minute_rows(path, symbol, month)
             events = [event for event in lifecycle.events if event.symbol == symbol and event.effective_at.strftime("%Y-%m") == month]
@@ -452,12 +441,11 @@ def main() -> int:
     parser.add_argument("--diff-report-path", type=Path, default=ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V3_V4_DIFF_REPORT.md")
     parser.add_argument("--end-month", default="2026-06")
     parser.add_argument("--workers", type=int, default=8)
-    parser.add_argument("--offline", action="store_true")
     args = parser.parse_args()
     artifacts = run(
         raw_root=args.raw_root, evidence_dir=args.evidence_dir, end_month=args.end_month,
         report_path=args.report_path, diff_report_path=args.diff_report_path,
-        offline=args.offline, workers=args.workers, verify_remote_registry=not args.offline,
+        offline=True, workers=args.workers, verify_remote_registry=False,
     )
     status = artifacts["qualification_summary"]["content"]["status"]
     print(f"status={status} artifact_set={canonical_hash({name: doc['content_hash'] for name, doc in artifacts.items()})}")

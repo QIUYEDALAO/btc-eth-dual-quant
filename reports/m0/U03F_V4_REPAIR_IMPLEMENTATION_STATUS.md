@@ -5,7 +5,7 @@
 - Branch: `codex/u03f-v4-repair-implementation`
 - Draft PR: `#98`
 - Frozen protocol content hash: `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`
-- Repair implementation hash: `882b0149d99b30f35118ce85b9db72083a2093428e0e0fa4e19603f0f458af5d`
+- Repair implementation hash: `2a3efe7d6afd1446e87cdac5dcbeba91e758d24f5af8d473abc0a1f3c96d6b41`
 - Frozen independent auditor algorithm hash: `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`
 - Real public requalification run: `not run`
 - New independent audit run: `not run`
@@ -26,6 +26,11 @@ Requalification finalization now writes the final report bytes atomically,
 hashes those exact bytes into every completed build record, writes the run
 manifest atomically and immediately verifies the binding. Any later report-byte
 change invalidates the run.
+
+The authoritative V4 public builder and requalification wrapper now require
+the existing frozen local archive set. Download, remote replacement and
+download-on-missing paths are rejected; a missing archive or source hash drift
+therefore stops the later requalification instead of mutating its inputs.
 
 ## Frozen Fault Tests
 
@@ -52,6 +57,8 @@ pass all CI, then a separate reviewer must bind its exact unchanged head and
 return `approve` with zero critical and zero high findings. The implementation
 must not merge before that review Gate. Public requalification remains a later,
 separate PR and must use the unchanged fixed source range and source freeze.
+It must run with `source_mode=frozen_local_only`; no archive download or
+replacement is permitted.
 
 Any head drift, protocol/auditor/source/history hash drift, failed fault test,
 mismatch or critical/high review finding stops the chain. Even later successful
