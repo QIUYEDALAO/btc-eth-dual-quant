@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-16T18:58:31Z"
-current_phase: U-03F V4 repair chain closed blocked
-current_status: u03f_v4_repair_chain_closed_requalification_blocked_no_new_audit_no_u04_no_m2
+last_updated_utc: "2026-07-17T00:00:00Z"
+current_phase: U-03F V4 invalid-interval adjudication protocol frozen pending review
+current_status: u03f_v4_invalid_interval_protocol_frozen_diagnostic_not_run_no_u04_no_m2
 completed_milestones:
   - phase: U-03F V4 repair public requalification
     status: blocked_invalid_5m_interval_boundaries_merged_closed
@@ -363,6 +363,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-03F-R2-PROTOCOL
+    phase: V4 invalid-interval adjudication protocol
+    status: protocol_frozen_pending_review
+    branch: codex/u03f-v4-invalid-interval-protocol
+    pr: pending
+    head_sha: runtime_current_branch_head
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_PROTOCOL.md
+    protocol: config/liquid_universe_v4_invalid_interval_adjudication_protocol.json
+    protocol_content_hash: 9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190
+    diagnostic_executed: false
+    production_pipeline_modified: false
+    blocker: "Protocol review, CI and merge are required before the exact frozen-source diagnostic may run."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -434,10 +447,10 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Merge the truthful blocked U-03F repair-requalification evidence only after all PR checks pass."
-  - "After that evidence merges, perform a governance-only closeout; do not start a new independent audit because the requalification pass dependency failed."
-  - "Diagnostics are limited to reproducing and repairing the merged U-03F findings; they cannot authorize research or mutate historical evidence."
-  - "Design review is limited to the independent repair/requalification contract and cannot select a strategy or authorize U-04."
+  - "Review and merge only the frozen U-03F invalid-interval adjudication protocol after all checks pass."
+  - "Diagnostics may run only after protocol merge: one deterministic normal/reverse/shuffled diagnostic using only the exact frozen local archives."
+  - "Design review is limited to a separate Draft policy ADR after synchronized diagnostic evidence merges; it cannot directly modify the production pipeline."
+  - "Any source/hash/order mismatch stops as blocked_evidence_mismatch; no exception registry, source replacement or Gate reduction is allowed."
   - Cross-sectional design remains blocked because U-03F failed; U-04 is not authorized.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
@@ -475,6 +488,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_PROTOCOL.md
+    phase: U-03F V4 invalid-interval adjudication protocol
+    status: frozen_before_diagnostic_run_pending_review
+    status_marker: "- Status: frozen_before_diagnostic_run"
+  - path: config/liquid_universe_v4_invalid_interval_adjudication_protocol.json
+    phase: U-03F V4 invalid-interval adjudication machine protocol
+    status: deterministic_frozen_contract
+    status_marker: '"status": "frozen_before_diagnostic_run"'
   - path: reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md
     phase: U-03F V4 repair public requalification
     status: blocked_invalid_5m_interval_boundaries
@@ -827,6 +848,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 101
+    title: Close blocked U-03F V4 repair chain governance
+    merge_commit: 3ba411d28563526a5357e3882a1e5759311f6179
+    status: merged
   - number: 100
     title: Record blocked U-03F V4 repair requalification
     merge_commit: 927f121651d6e1e07f174410a39595f6d09e9a5d
@@ -1114,6 +1139,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/u03f_v4_invalid_interval_protocol_validate.sh
   - bash scripts/u03f_v4_repair_protocol_validate.sh
   - bash scripts/u03f_v4_independent_audit_result_validate.sh
   - bash scripts/u03f_v4_independent_audit_validate.sh
@@ -1175,6 +1201,24 @@ u03f_v4_repair_public_requalification:
   evidence_head_sha: a0e680fbfb4415bb25871aa0cb3ed8b873d6c810
   evidence_merge_commit: 927f121651d6e1e07f174410a39595f6d09e9a5d
   evidence_pr_checks_success: 114
+  new_independent_audit_authorized: false
+  u04_authorized: false
+  m2_authorized: false
+u03f_v4_invalid_interval_adjudication_protocol:
+  status: frozen_before_diagnostic_run_pending_review
+  starting_main_sha: 3ba411d28563526a5357e3882a1e5759311f6179
+  branch: codex/u03f-v4-invalid-interval-protocol
+  pr: pending
+  protocol_content_hash: 9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190
+  source_mode: frozen_local_only
+  source_archive_count: 27736
+  source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+  blocked_input_processing_errors: 119
+  diagnostic_orders: [normal, reverse, deterministic_shuffled]
+  diagnostic_executed: false
+  policy_adopted: false
+  production_pipeline_modified: false
+  public_requalification_authorized: false
   new_independent_audit_authorized: false
   u04_authorized: false
   m2_authorized: false
