@@ -6,6 +6,7 @@ from __future__ import annotations
 import ast
 import hashlib
 import json
+import os
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -92,6 +93,16 @@ PRODUCTION_TIME_RISKS = [
 
 def _git(*args: str) -> str:
     return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
+
+
+def target_available() -> bool:
+    return subprocess.run(
+        ["git", "cat-file", "-e", f"{TARGET_HEAD}^{{commit}}"],
+        cwd=ROOT,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    ).returncode == 0
 
 
 def _show(path: str) -> str:
@@ -280,25 +291,27 @@ def render(document: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def validate() -> list[str]:
+def validate(*, require_target: bool | None = None) -> list[str]:
     failures: list[str] = []
-    try:
-        _git("cat-file", "-e", f"{TARGET_HEAD}^{{commit}}")
-    except subprocess.CalledProcessError:
-        return ["exact target head is unavailable"]
-    paths = _git("diff", "--name-only", f"{TARGET_BASE}..{TARGET_HEAD}").splitlines()
-    if paths != CHANGED_FILES or changed_file_hash(paths) != CHANGED_FILE_LIST_HASH:
-        failures.append("target changed-file set or hash changed")
-    if algorithm_hash() != ALGORITHM_HASH:
-        failures.append("target audit algorithm hash changed")
+    if require_target is None:
+        require_target = os.environ.get("U03F_REQUIRE_TARGET_HEAD") == "1"
+    exact_target_available = target_available()
+    if require_target and not exact_target_available:
+        failures.append("exact target head is unavailable")
+    if exact_target_available:
+        paths = _git("diff", "--name-only", f"{TARGET_BASE}..{TARGET_HEAD}").splitlines()
+        if paths != CHANGED_FILES or changed_file_hash(paths) != CHANGED_FILE_LIST_HASH:
+            failures.append("target changed-file set or hash changed")
+        if algorithm_hash() != ALGORITHM_HASH:
+            failures.append("target audit algorithm hash changed")
+        failures.extend(independence_findings())
+        if auditor_test_count() != 34:
+            failures.append("auditor fixture/fault test count changed")
+        target_entry = _show("scripts/u03f_v4_independent_audit.py")
+        if "stage B permits --fixture-smoke only" not in target_entry:
+            failures.append("stage B target no longer fails closed against a full audit run")
     if protocol_hash() != PROTOCOL_HASH:
         failures.append("frozen protocol hash changed")
-    failures.extend(independence_findings())
-    if auditor_test_count() != 34:
-        failures.append("auditor fixture/fault test count changed")
-    target_entry = _show("scripts/u03f_v4_independent_audit.py")
-    if "stage B permits --fixture-smoke only" not in target_entry:
-        failures.append("stage B target no longer fails closed against a full audit run")
     document = json.loads(EVIDENCE.read_text(encoding="utf-8"))
     expected = build_document(str(document.get("generated_utc")))
     if document != expected:
@@ -326,6 +339,7 @@ def main() -> int:
     document = json.loads(EVIDENCE.read_text(encoding="utf-8"))
     print("u03f_v4_auditor_review_check PASS")
     print(f"target_head={TARGET_HEAD}")
+    print(f"exact_target_source_check={'yes' if target_available() else 'frozen_evidence_only'}")
     print(f"verdict={document['verdict']} critical=0 high=0")
     print("full_audit=no u04=no strategy=no oos=no m2=no")
     return 0

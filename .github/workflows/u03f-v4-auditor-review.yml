@@ -7,6 +7,8 @@ on:
 jobs:
   review:
     runs-on: ubuntu-latest
+    env:
+      U03F_REQUIRE_TARGET_HEAD: "1"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -14,7 +16,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: git fetch origin codex/u03f-v4-independent-auditor
+      - run: git fetch origin +refs/pull/92/head:refs/remotes/origin/u03f-v4-auditor-reviewed-head
       - run: python -m pip install -e .
       - run: python scripts/u03f_v4_auditor_review_check.py
       - run: python -m unittest tests.test_u03f_v4_auditor_review -v
