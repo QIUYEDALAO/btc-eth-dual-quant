@@ -3,7 +3,7 @@
 ## Immediate Task
 
 The fixed `2020-01` through `2026-06` V4 public requalification has completed
-with a deterministic machine `pass` and is pending PR review and merge.
+with a deterministic machine `pass` in PR #89 and is pending review and merge.
 
 The only immediate task is to validate and merge that evidence. After merge,
 create a separate governance closeout. Do not run U-03F from this branch.

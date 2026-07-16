@@ -264,8 +264,8 @@ open_work:
     phase: Liquid universe V4 fixed-range public requalification
     status: completed_pass_pending_review
     branch: codex/liquid-universe-v4-public-requalification
-    pr: none
-    head_sha: none
+    pr: 89
+    head_sha: runtime_current_pr_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
     base_sha: c52a5d1bd9564ad471c38a631fa3897b01801547

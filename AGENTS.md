@@ -28,7 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: Liquid universe V4 fixed-range public requalification passed and is pending PR review/merge. Cold/warm/worker all produced artifact set `4cfca060...65fde6`; the run manifest is `f55f2829...76b127`.
+- Current phase: Liquid universe V4 fixed-range public requalification passed in PR #89 and is pending review/merge. Cold/warm/worker all produced artifact set `4cfca060...65fde6`; the run manifest is `f55f2829...76b127`.
 - V4 is not active qualification authority until this evidence merges and a separate governance closeout completes. U-03F remains unauthorized on this branch.
 - PR #81 is closed as superseded. Its exact reviewed head `31c967c`, semantic hash and three docs-only models remain immutable historical evidence.
 - The reviewed Draft models KLAYUSDT 2024-10-28 partial lifecycle, 2024-10-29 normal-duration post-cessation placeholder and 2024-10-30 malformed placeholder as one versioned availability event instead of one row signature.

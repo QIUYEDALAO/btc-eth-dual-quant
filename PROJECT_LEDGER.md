@@ -1501,6 +1501,8 @@ private exchange responses here.
 
 - Task ID: U-03E-V4-RUN
 - Branch: `codex/liquid-universe-v4-public-requalification`
+- PR: #89 open
+- Head: runtime current PR head
 - Base main: `c52a5d1bd9564ad471c38a631fa3897b01801547`
 - Range: fixed `2020-01` through `2026-06`; official public ZIP evidence only.
 - Source freeze: 27,736 source archives passed SHA256 and ZIP CRC verification; freeze hash `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`.
