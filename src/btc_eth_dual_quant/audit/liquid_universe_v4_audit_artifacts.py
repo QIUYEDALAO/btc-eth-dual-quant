@@ -27,18 +27,23 @@ PROHIBITED_CALLS = frozenset({
 
 
 def make_manifest(manifest_type: str, content: Any, schema_version: int = 1) -> dict[str, Any]:
-    return {
+    document = {
         "schema_version": schema_version,
         "manifest_type": manifest_type,
         "content": content,
-        "content_hash": audit_content_hash(content),
     }
+    return {**document, "content_hash": audit_content_hash(document)}
 
 
 def audit_manifest_hash(manifest: Mapping[str, Any]) -> str:
-    if manifest.get("content_hash") != audit_content_hash(manifest.get("content")):
+    unsigned = {key: value for key, value in manifest.items() if key != "content_hash"}
+    if manifest.get("manifest_type") == "liquid_universe_v4_source_freeze":
+        expected = audit_content_hash(manifest.get("content"))
+    else:
+        expected = audit_content_hash(unsigned)
+    if manifest.get("content_hash") != expected:
         raise ValueError("manifest content hash is invalid")
-    return audit_content_hash(dict(manifest))
+    return expected
 
 
 def verify_manifest_wrapper(
@@ -63,35 +68,39 @@ def verify_manifest_wrapper(
 
 
 def audit_artifact_set_hash(manifests: Mapping[str, Mapping[str, Any]]) -> str:
-    rows = [{"name": name, "manifest_hash": audit_manifest_hash(value)} for name, value in sorted(manifests.items())]
-    return audit_content_hash(rows)
+    hashes = {name: audit_manifest_hash(value) for name, value in sorted(manifests.items())}
+    return audit_content_hash(hashes)
 
 
-def _first_difference(left: Any, right: Any, path: str = "$") -> str | None:
+def _difference_summary(left: Any, right: Any, path: str = "$") -> tuple[int, str | None]:
     if type(left) is not type(right):
-        return f"{path}: type {type(left).__name__} != {type(right).__name__}"
+        return 1, f"{path}: type {type(left).__name__} != {type(right).__name__}"
     if isinstance(left, dict):
-        if list(left) != list(right):
-            return f"{path}: key/order mismatch"
-        for key in left:
-            difference = _first_difference(left[key], right[key], f"{path}.{key}")
-            if difference:
-                return difference
-        return None
+        count = int(list(left) != list(right))
+        first = f"{path}: key/order mismatch" if count else None
+        common = [key for key in left if key in right]
+        count += len(set(left) ^ set(right))
+        for key in common:
+            child_count, child_first = _difference_summary(left[key], right[key], f"{path}.{key}")
+            count += child_count
+            first = first or child_first
+        return count, first
     if isinstance(left, list):
-        if len(left) != len(right):
-            return f"{path}: length {len(left)} != {len(right)}"
+        count = abs(len(left) - len(right))
+        first = f"{path}: length {len(left)} != {len(right)}" if count else None
         for index, (one, two) in enumerate(zip(left, right)):
-            difference = _first_difference(one, two, f"{path}[{index}]")
-            if difference:
-                return difference
-        return None
-    return None if left == right else f"{path}: {left!r} != {right!r}"
+            child_count, child_first = _difference_summary(one, two, f"{path}[{index}]")
+            count += child_count
+            first = first or child_first
+        return count, first
+    if left == right:
+        return 0, None
+    return 1, f"{path}: {left!r} != {right!r}"
 
 
 def compare_manifest(production: Mapping[str, Any], independent: Mapping[str, Any]) -> dict[str, Any]:
-    first = _first_difference(production, independent)
-    exact = first is None
+    mismatch_count, first = _difference_summary(production, independent)
+    exact = mismatch_count == 0
     return {
         "exact_content_match": exact,
         "row_count_match": _row_count(production.get("content")) == _row_count(independent.get("content")),
@@ -99,7 +108,7 @@ def compare_manifest(production: Mapping[str, Any], independent: Mapping[str, An
         "production_content_hash": production.get("content_hash"),
         "independent_content_hash": independent.get("content_hash"),
         "first_mismatch": first,
-        "mismatch_count": 0 if exact else 1,
+        "mismatch_count": mismatch_count,
     }
 
 
@@ -135,13 +144,13 @@ def build_audit_artifacts(
     output: dict[str, dict[str, Any]] = {}
     for name in REQUIRED_AUDIT_ARTIFACTS:
         output[name] = {
-            "schema_version": 1,
+            "schema_version": 4,
             "manifest_type": name,
             "contract_hash": contract_hash,
             "lifecycle_registry_hash": lifecycle_registry_hash,
             "content": contents[name],
-            "content_hash": audit_content_hash(contents[name]),
         }
+        output[name]["content_hash"] = audit_content_hash(output[name])
     return output
 
 

@@ -2,7 +2,7 @@
 
 - Status: implementation_fixture_only_pending_independent_review
 - Protocol content hash: `0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157`
-- Audit algorithm hash: `5200444878298ed6460ae73718684c708f35bd6fe93ddc9a37fe73dc17c22264`
+- Audit algorithm hash: `a20da081dff753ba9091c91b91205bf9bf55781c7e1e04ea67e16b83a65469d8`
 - Production builder imported or called: no
 - Full `2020-01` through `2026-06` audit executed: no
 - Production evidence modified: no

@@ -38,7 +38,6 @@ def _canonical_value(value: Any) -> Any:
         return {
             str(key): _canonical_value(item)
             for key, item in sorted(value.items(), key=lambda pair: str(pair[0]))
-            if str(key) not in IDENTITY_METADATA_KEYS
         }
     if isinstance(value, (list, tuple)):
         return [_canonical_value(item) for item in value]
@@ -56,6 +55,21 @@ def audit_canonical_json(value: Any) -> str:
 
 def audit_content_hash(value: Any) -> str:
     return hashlib.sha256(audit_canonical_json(value).encode("utf-8")).hexdigest()
+
+
+def audit_identity_hash(value: Any) -> str:
+    def without_runtime_metadata(item: Any) -> Any:
+        if isinstance(item, Mapping):
+            return {
+                str(key): without_runtime_metadata(child)
+                for key, child in item.items()
+                if str(key) not in IDENTITY_METADATA_KEYS
+            }
+        if isinstance(item, (list, tuple)):
+            return [without_runtime_metadata(child) for child in item]
+        return item
+
+    return audit_content_hash(without_runtime_metadata(value))
 
 
 def strict_json_loads(text: str) -> Any:
@@ -168,14 +182,23 @@ class ParsedArchive:
     last_timestamp_ms: int | None
 
 
-def parse_official_kline_zip(
+@dataclass(frozen=True)
+class RawArchive:
+    sha256: str
+    byte_size: int
+    member_name: str
+    rows: tuple[tuple[str, ...], ...]
+    timestamps_ms: tuple[int, ...]
+
+
+def collect_official_kline_zip_rows(
     payload: bytes,
     *,
     symbol: str,
     interval: str,
     archive_period: str,
-) -> ParsedArchive:
-    """Parse one official archive without trusting its filename or row order."""
+) -> RawArchive:
+    """Collect exact rows before structural defect and registry adjudication."""
 
     try:
         with zipfile.ZipFile(io.BytesIO(payload)) as archive:
@@ -194,17 +217,40 @@ def parse_official_kline_zip(
     records = list(csv.reader(io.StringIO(text)))
     if records and records[0] and not records[0][0].strip().isdigit():
         records = records[1:]
-    rows = tuple(KlineRow.from_fields(record) for record in records if record)
-    times = [item.open_time_ms for item in rows]
-    if times != sorted(times) or len(times) != len(set(times)):
-        raise ValueError("archive rows must be ordered and unique")
+    rows = tuple(tuple(str(item).strip() for item in record) for record in records if record)
+    if any(len(record) != 12 for record in rows):
+        raise ValueError("Binance kline must contain exactly 12 fields")
+    try:
+        times = tuple(normalize_raw_timestamp(record[0]) for record in rows)
+    except (IndexError, ValueError) as exc:
+        raise ValueError("invalid archive timestamp") from exc
+    if list(times) != sorted(times):
+        raise ValueError("archive rows must be ordered")
     start, end = day_bounds_ms(archive_period) if len(archive_period) == 10 else month_bounds_ms(archive_period)
     if any(timestamp < start or timestamp >= end for timestamp in times):
         raise ValueError("archive row lies outside declared period")
+    return RawArchive(hashlib.sha256(payload).hexdigest(), len(payload), member.filename, rows, times)
+
+
+def parse_official_kline_zip(
+    payload: bytes,
+    *,
+    symbol: str,
+    interval: str,
+    archive_period: str,
+) -> ParsedArchive:
+    """Parse one official archive without trusting its filename or row order."""
+    raw = collect_official_kline_zip_rows(
+        payload, symbol=symbol, interval=interval, archive_period=archive_period
+    )
+    rows = tuple(KlineRow.from_fields(record) for record in raw.rows)
+    times = [item.open_time_ms for item in rows]
+    if len(times) != len(set(times)):
+        raise ValueError("archive rows must be unique after registry adjudication")
     return ParsedArchive(
-        hashlib.sha256(payload).hexdigest(),
-        len(payload),
-        member.filename,
+        raw.sha256,
+        raw.byte_size,
+        raw.member_name,
         rows,
         times[0] if times else None,
         times[-1] if times else None,
@@ -234,7 +280,7 @@ def verify_source_freeze(
 
 
 def raw_row_hash(fields: Sequence[str]) -> str:
-    return hashlib.sha256(",".join(str(item) for item in fields).encode("utf-8")).hexdigest()
+    return audit_content_hash([str(item) for item in fields])
 
 
 def apply_resolution_registry(
@@ -270,8 +316,8 @@ def apply_resolution_registry(
         monthly = monthly_by_time.get(timestamp, [])
         daily = daily_by_time.get(timestamp, [])
         rule = rules.get(timestamp)
-        needs_rule = len(monthly) != 1
-        if not needs_rule and daily:
+        needs_rule = len(monthly) > 1 or len(daily) > 1
+        if not needs_rule and monthly and daily:
             try:
                 needs_rule = KlineRow.from_fields(monthly[0]).semantic_tuple() != KlineRow.from_fields(daily[0]).semantic_tuple()
             except ValueError:
@@ -469,6 +515,18 @@ def validate_lifecycle_registry(
         raise ValueError("lifecycle registry hash changed")
     if expected_reviewed_event_set_hash is not None and registry.get("reviewed_event_set_hash") != expected_reviewed_event_set_hash:
         raise ValueError("reviewed lifecycle event set changed")
+    if policy.get("canonical_hash") is not None and policy.get("canonical_hash") != audit_content_hash(
+        {key: value for key, value in policy.items() if key != "canonical_hash"}
+    ):
+        raise ValueError("lifecycle policy canonical hash is invalid")
+    if registry.get("canonical_hash") is not None and registry.get("canonical_hash") != audit_content_hash(
+        {key: value for key, value in registry.items() if key != "canonical_hash"}
+    ):
+        raise ValueError("lifecycle registry canonical hash is invalid")
+    if registry.get("reviewed_event_set_hash") is not None and registry.get("reviewed_event_set_hash") != audit_content_hash(
+        registry.get("entries", [])
+    ):
+        raise ValueError("reviewed lifecycle event-set hash is invalid")
     if policy.get("policy_id") != registry.get("policy_id") or policy.get("policy_version") != registry.get("policy_version"):
         raise ValueError("lifecycle policy/registry mismatch")
     semantics = policy.get("semantics", {})

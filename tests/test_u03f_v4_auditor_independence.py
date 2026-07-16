@@ -6,6 +6,7 @@ from decimal import Decimal
 from btc_eth_dual_quant.audit.liquid_universe_v4_independent import (
     audit_canonical_json,
     audit_content_hash,
+    audit_identity_hash,
     milliseconds_from_utc,
 )
 from btc_eth_dual_quant.audit.liquid_universe_v4_audit_artifacts import scan_independence
@@ -15,8 +16,9 @@ class IndependentAuditorTests(unittest.TestCase):
     def test_canonicalization_is_order_independent_and_strict(self):
         left = {"b": Decimal("1.00"), "a": [2, 1], "generated_at": "x"}
         right = {"generated_at": "y", "a": [2, 1], "b": Decimal("1.00")}
-        self.assertEqual(audit_content_hash(left), audit_content_hash(right))
-        self.assertNotIn("generated_at", audit_canonical_json(left))
+        self.assertNotEqual(audit_content_hash(left), audit_content_hash(right))
+        self.assertEqual(audit_identity_hash(left), audit_identity_hash(right))
+        self.assertIn("generated_at", audit_canonical_json(left))
         with self.assertRaises(ValueError):
             audit_canonical_json({"value": float("nan")})
 

@@ -22,9 +22,12 @@ from btc_eth_dual_quant.audit.liquid_universe_v4_independent import (
     active_universe_at,
     apply_resolution_registry,
     audit_canonical_json,
+    audit_content_hash,
+    audit_identity_hash,
     audit_five_minute_grid,
     classify_lifecycle_rows,
     classify_member_gaps,
+    collect_official_kline_zip_rows,
     complete_day_mask,
     eligibility_and_membership,
     milliseconds_from_utc,
@@ -103,7 +106,11 @@ class CanonicalAndArchiveCoverageTests(unittest.TestCase):
             strict_json_loads('{"a":NaN}')
         self.assertEqual(
             audit_canonical_json({"b": Decimal("1.00"), "generated_utc": "later", "a": 2}),
-            '{"a":2,"b":"1.00"}',
+            '{"a":2,"b":"1.00","generated_utc":"later"}',
+        )
+        self.assertEqual(
+            audit_identity_hash({"b": Decimal("1.00"), "generated_utc": "later", "a": 2}),
+            audit_identity_hash({"b": Decimal("1.00"), "generated_utc": "earlier", "a": 2}),
         )
 
     def test_official_zip_crc_schema_identity_and_freeze(self):
@@ -120,8 +127,19 @@ class CanonicalAndArchiveCoverageTests(unittest.TestCase):
 
     def test_archive_duplicate_or_out_of_period_row_fails(self):
         duplicate = zip_payload("BTCUSDT", "1d", "2020-01", [raw_row(), raw_row()])
+        self.assertEqual(
+            len(collect_official_kline_zip_rows(duplicate, symbol="BTCUSDT", interval="1d", archive_period="2020-01").rows),
+            2,
+        )
         with self.assertRaises(ValueError):
             parse_official_kline_zip(duplicate, symbol="BTCUSDT", interval="1d", archive_period="2020-01")
+        invalid = zip_payload("BTCUSDT", "1d", "2020-01", [raw_row(volume="-1")])
+        self.assertEqual(
+            len(collect_official_kline_zip_rows(invalid, symbol="BTCUSDT", interval="1d", archive_period="2020-01").rows),
+            1,
+        )
+        with self.assertRaises(ValueError):
+            parse_official_kline_zip(invalid, symbol="BTCUSDT", interval="1d", archive_period="2020-01")
         outside = zip_payload("BTCUSDT", "1d", "2020-01", [raw_row(1_580_515_200_000)])
         with self.assertRaises(ValueError):
             parse_official_kline_zip(outside, symbol="BTCUSDT", interval="1d", archive_period="2020-01")
@@ -132,6 +150,15 @@ class CanonicalAndArchiveCoverageTests(unittest.TestCase):
 
 
 class RegistryAndLifecycleCoverageTests(unittest.TestCase):
+    def test_daily_fills_missing_monthly_without_override(self):
+        row = raw_row()
+        rows, quarantine, resolutions = apply_resolution_registry(
+            symbol="BTCUSDT", monthly_rows=[], daily_rows=[row], registry_entries=[], archive_hashes={}
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(quarantine, [])
+        self.assertEqual(resolutions, [])
+
     def test_registry_driven_daily_correction_and_source_tamper(self):
         invalid = raw_row(volume="-1")
         corrected = raw_row(volume="1")
@@ -168,6 +195,18 @@ class RegistryAndLifecycleCoverageTests(unittest.TestCase):
                 symbol="BTTUSDT", monthly_rows=[invalid], daily_rows=[corrected], registry_entries=[rule],
                 archive_hashes={monthly_key: "0" * 64, daily_key: "b" * 64},
             )
+
+    def test_independent_raw_row_hash_matches_frozen_registry_fixture(self):
+        frozen_row = [
+            "1548892800000", "0.00040000", "0.00060000", "0.00031990",
+            "0.00047640", "122870499476.00000000", "1548979199999",
+            "62154329.51276230", "81569", "55075450629.00000000",
+            "27674180.32962640", "0",
+        ]
+        self.assertEqual(
+            raw_row_hash(frozen_row),
+            "fb41503772502b0addebe9ecee7fd3c4c6c4d21bb33165c4a7d101e170b7304d",
+        )
 
     def test_registry_driven_duplicate_and_unknown_duplicate(self):
         row = raw_row(1_770_681_600_000)
@@ -230,26 +269,41 @@ class RegistryAndLifecycleCoverageTests(unittest.TestCase):
 
     def test_lifecycle_frozen_hash_bindings_fail_closed(self):
         policy, registry = lifecycle_fixture()
-        policy["canonical_hash"] = "a" * 64
-        registry["canonical_hash"] = "b" * 64
-        registry["reviewed_event_set_hash"] = "c" * 64
+        policy["canonical_hash"] = audit_content_hash(policy)
+        registry["reviewed_event_set_hash"] = audit_content_hash(registry["entries"])
+        registry["canonical_hash"] = audit_content_hash(registry)
         validate_lifecycle_registry(
             policy,
             registry,
             research_start="2020-01-01T00:00:00Z",
-            expected_policy_hash="a" * 64,
-            expected_registry_hash="b" * 64,
-            expected_reviewed_event_set_hash="c" * 64,
+            expected_policy_hash=policy["canonical_hash"],
+            expected_registry_hash=registry["canonical_hash"],
+            expected_reviewed_event_set_hash=registry["reviewed_event_set_hash"],
         )
         with self.assertRaises(ValueError):
             validate_lifecycle_registry(
                 policy,
                 registry,
                 research_start="2020-01-01T00:00:00Z",
-                expected_policy_hash="a" * 64,
+                expected_policy_hash=policy["canonical_hash"],
                 expected_registry_hash="0" * 64,
-                expected_reviewed_event_set_hash="c" * 64,
+                expected_reviewed_event_set_hash=registry["reviewed_event_set_hash"],
             )
+
+    def test_committed_lifecycle_policy_and_registry_verify_independently(self):
+        root = Path(__file__).resolve().parents[1]
+        policy = json.loads((root / "config/liquid_spot_lifecycle_policy_v4.json").read_text(encoding="utf-8"))
+        registry = json.loads((root / "config/liquid_spot_lifecycle_event_resolutions_v4.json").read_text(encoding="utf-8"))
+        events = validate_lifecycle_registry(
+            policy,
+            registry,
+            research_start="2020-01-01T00:00:00Z",
+            expected_policy_hash="7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977",
+            expected_registry_hash="a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+            expected_reviewed_event_set_hash="cec621133b06a883d8f0ab6b18131736e4269a77e0888b1375d00e84505f53d2",
+        )
+        self.assertEqual(len(events), 1)
+        self.assertEqual(events[0].availability_end_exclusive_ms, 1_730_084_400_000)
 
 
 class MembershipGridAndAvailabilityCoverageTests(unittest.TestCase):
@@ -337,6 +391,16 @@ class ArtifactAndFaultCoverageTests(unittest.TestCase):
             path.write_text("changed", encoding="utf-8")
             with self.assertRaises(ValueError):
                 verify_file_hash(path, digest)
+
+    def test_committed_v4_manifest_wrapper_hash_is_independently_verified(self):
+        root = Path(__file__).resolve().parents[1]
+        manifest = json.loads(
+            (root / "reports/m0/evidence/liquid_universe_v4/membership_manifest.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            verify_manifest_wrapper(manifest, expected_type="membership_manifest"),
+            "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+        )
 
     def test_copied_function_body_is_detected(self):
         production = "def prod(x):\n    y = x + 1\n    return y * 2\n"

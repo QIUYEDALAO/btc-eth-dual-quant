@@ -9,7 +9,7 @@ completed_milestones:
     status: implementation_fixture_only_pending_independent_review
     evidence: reports/m0/U03F_V4_AUDITOR_IMPLEMENTATION_STATUS.md
     branch: codex/u03f-v4-independent-auditor
-    audit_algorithm_hash: 5200444878298ed6460ae73718684c708f35bd6fe93ddc9a37fe73dc17c22264
+    audit_algorithm_hash: a20da081dff753ba9091c91b91205bf9bf55781c7e1e04ea67e16b83a65469d8
     full_public_audit_executed: false
   - phase: U-03F V4 independent audit protocol
     status: frozen_before_independent_audit_result_pending_review
