@@ -1,10 +1,18 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-16T00:00:00Z"
-current_phase: Liquid universe V4 public requalification passed pending review and merge
-current_status: liquid_universe_v4_requalification_pass_pending_review_u03f_not_authorized_no_strategy_no_m2
+last_updated_utc: "2026-07-16T01:02:28Z"
+current_phase: Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task
+current_status: liquid_universe_v4_requalification_pass_u03f_authorized_not_started_no_strategy_no_m2
 completed_milestones:
+  - phase: Liquid universe V4 fixed-range public requalification
+    status: pass_active_qualification_authority
+    evidence: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
+    merged_pr: 89
+    merge_commit: 77cb0969980978e65f3560f38f50924c73dfee6e
+    source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+    artifact_set_hash: 4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6
+    run_manifest_hash: f55f2829be39445a8489a0863ee5e013c481351d64797251bd79bc199376b127
   - phase: Liquid universe V4 lifecycle availability implementation
     status: implementation_pass_fixture_only_public_requalification_not_run
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_IMPLEMENTATION_STATUS.md
@@ -260,35 +268,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03E-V4-RUN
-    phase: Liquid universe V4 fixed-range public requalification
-    status: completed_pass_pending_review
-    branch: codex/liquid-universe-v4-public-requalification
-    pr: 89
-    head_sha: runtime_current_pr_head
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
-    base_sha: c52a5d1bd9564ad471c38a631fa3897b01801547
-    contract_hash: 816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83
-    policy_hash: 7dc02e719f6e41839a1aff8002befd117b2daa7b426edeed9ebb4bd42c303977
-    lifecycle_registry_hash: a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d
-    implementation_merged: true
-    independent_review_approved: true
-    public_requalification: true
-    result: pass
-    source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
-    artifact_set_hash: 4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6
-    run_manifest_hash: f55f2829be39445a8489a0863ee5e013c481351d64797251bd79bc199376b127
-    blocker: "Evidence must pass PR review and merge before a separate governance closeout may activate V4 authority or authorize U-03F."
   - id: U-03F
-    phase: Liquid universe V3 independent audit
-    status: not_authorized
+    phase: Liquid universe V4 independent audit
+    status: authorized_not_started
     branch: not_created
     pr: none
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/evidence/liquid_universe_v3/requalification_run_manifest.json
-    blocker: "Requires this V4 public requalification pass to merge and a separate governance closeout; U-03F is not authorized by the run itself."
+    evidence: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
+    blocker: "Only an independent audit of the merged V4 machine evidence is authorized; this closeout does not execute U-03F or authorize U-04."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -297,7 +285,7 @@ open_work:
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: docs/decisions/ADR-0012-liquid-universe-qualification-correctness-v2.md
-    blocker: "Requires a merged V4 public requalification pass, a merged U-03F independent audit pass, and a separate explicit design task."
+    blocker: "Requires a merged U-03F independent audit pass over V4 and a separate explicit design task."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -360,8 +348,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Review and merge only the fixed-range V4 public requalification evidence, then perform a separate governance closeout."
-  - U-03F and cross-sectional design remain blocked until the requalification PR merges and the closeout explicitly authorizes U-03F.
+  - "U-03F may start only as an independent audit of the merged V4 machine evidence; do not perform it as part of this closeout."
+  - Cross-sectional design remains blocked until U-03F independently passes and a separate task authorizes U-04.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -405,11 +393,11 @@ prohibited:
 latest_reports:
   - path: reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md
     phase: Liquid universe V4 fixed-range public requalification
-    status: pass_pending_review
+    status: pass_active_qualification_authority
     status_marker: "- Status: pass"
   - path: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
     phase: Liquid universe V4 fixed-range public requalification machine evidence
-    status: deterministic_three_way_pass_pending_review
+    status: deterministic_three_way_pass_active_authority
     status_marker: '"status": "pass"'
   - path: reports/m0/LIQUID_SPOT_UNIVERSE_V3_V4_DIFF_REPORT.md
     phase: Liquid universe V3/V4 diagnostic comparison
@@ -731,6 +719,14 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 89
+    title: Pass V4 lifecycle public requalification
+    merge_commit: 77cb0969980978e65f3560f38f50924c73dfee6e
+    status: merged
+  - number: 88
+    title: Close V4 lifecycle implementation governance
+    merge_commit: c52a5d1bd9564ad471c38a631fa3897b01801547
+    status: merged
   - number: 86
     title: Implement V4 lifecycle availability qualification
     merge_commit: fccc9972502732319d38eb36775d007396df25db

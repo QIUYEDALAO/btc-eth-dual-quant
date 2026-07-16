@@ -1512,3 +1512,14 @@ private exchange responses here.
 - V3/V4: all 78 membership months are unchanged; V3 remains immutable blocked historical evidence while V4 resolves the KLAY lifecycle boundary through the adopted policy.
 - Machine evidence: run manifest hash `f55f2829be39445a8489a0863ee5e013c481351d64797251bd79bc199376b127`.
 - Governance: pass is pending PR review and merge. V4 is not active authority yet; U-03F, U-04, hypothesis, strategy, events, returns, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - V4 Public Requalification Merged And Governance Closed
+
+- Date UTC: 2026-07-16T01:02:28Z
+- Task ID: U-03E-V4-RUN-CLOSEOUT
+- PR / merge commit: #89 / `77cb0969980978e65f3560f38f50924c73dfee6e`
+- Validation: latest head `8a8cdccbd361766a88bb00f0f31e56c8b6b74cd6` passed 98/98 GitHub Actions; local full suite passed 529 tests, V4 implementation 18/0 and V4 requalification Gate.
+- Authority: V4 is the active liquid-universe qualification authority. V3 remains immutable blocked historical evidence.
+- Evidence: source freeze `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`; cold/warm/worker artifact set `4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6`; run manifest `f55f2829be39445a8489a0863ee5e013c481351d64797251bd79bc199376b127`.
+- Next authorization: U-03F is `authorized_not_started` only for a separate independent audit of merged V4 machine evidence. The audit is not executed by this closeout.
+- Safety: U-04, hypothesis, strategy, events, signals, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.

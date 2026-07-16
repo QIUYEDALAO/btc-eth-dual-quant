@@ -2,11 +2,13 @@
 
 ## Immediate Task
 
-The fixed `2020-01` through `2026-06` V4 public requalification has completed
-with a deterministic machine `pass` in PR #89 and is pending review and merge.
+The fixed `2020-01` through `2026-06` V4 public requalification passed and
+merged in PR #89 at `77cb0969980978e65f3560f38f50924c73dfee6e`.
+V4 is now the active liquid-universe qualification authority.
 
-The only immediate task is to validate and merge that evidence. After merge,
-create a separate governance closeout. Do not run U-03F from this branch.
+The only authorized next task is U-03F: an independent audit of the merged V4
+machine evidence. U-03F is authorized but not started. Do not begin it from
+this governance-closeout branch.
 
 - Source freeze: `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`.
 - Cold/warm/worker artifact set: `4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6`.
@@ -60,16 +62,18 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Run the committed V4 requalification checker and full validation.
-2. Review and merge the V4 requalification PR only if all GitHub checks pass.
-3. From merged main, create the separate V4 governance closeout.
-4. Preserve all V3 evidence and keep U-03F, U-04, strategy work and M2 blocked until closeout.
+1. Create a separate U-03F independent-audit task from the closeout-merged main.
+2. Audit membership, lifecycle availability, expected grid, gaps, quarantine,
+   active-universe and qualified-panel evidence without changing V4 artifacts.
+3. Preserve V1/V2/V3 as historical evidence; V3 remains blocked and is not an
+   alternative qualification authority.
+4. Keep U-04, hypothesis/strategy work, returns, OOS and M2 blocked unless
+   U-03F independently passes and a later separate task authorizes U-04.
 
-U-03E is closed as a truthful blocked milestone, not an active implementation
-task. U-03F may run only after a future U-03E pass under valid source evidence.
-Cross-sectional hypothesis design
-requires U-03F pass plus a separate task; it is not an allowed workaround for
-the current blocker.
+U-03E V2 and V3 remain truthful blocked historical milestones. V4 supersedes
+their admission authority through a separately adopted lifecycle policy and
+the merged deterministic public requalification. Cross-sectional hypothesis
+design still requires U-03F pass plus a separate task.
 
 ## Prohibited
 

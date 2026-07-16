@@ -83,6 +83,10 @@ ALLOWED = {
         "liquid_universe_v4_requalification_pass_pending_review_u03f_not_authorized_no_strategy_no_m2",
     ): "U-03E-V4-RUN",
     (
+        "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
+        "liquid_universe_v4_requalification_pass_u03f_authorized_not_started_no_strategy_no_m2",
+    ): "U-03F",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -145,6 +149,7 @@ def validate(state: dict) -> list[str]:
         "Liquid universe V4 lifecycle availability implementation pending independent review",
         "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
         "Liquid universe V4 public requalification passed pending review and merge",
+        "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
     }:
         milestones = [
             item
@@ -168,6 +173,7 @@ def validate(state: dict) -> list[str]:
         "Liquid universe V4 lifecycle availability implementation pending independent review",
         "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
         "Liquid universe V4 public requalification passed pending review and merge",
+        "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
     }:
         adoption = [
             item
@@ -186,6 +192,7 @@ def validate(state: dict) -> list[str]:
     if pair[0] in {
         "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
         "Liquid universe V4 public requalification passed pending review and merge",
+        "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
     }:
         implementation = [
             item
@@ -311,6 +318,31 @@ def validate(state: dict) -> list[str]:
                 }
                 if any(item.get(key) != value for key, value in expected_evidence.items()):
                     failures.append("V4 public requalification evidence binding changed")
+    if pair[0] == "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task":
+        milestones = [
+            item
+            for item in state.get("completed_milestones", [])
+            if item.get("phase") == "Liquid universe V4 fixed-range public requalification"
+        ]
+        expected_milestone = {
+            "status": "pass_active_qualification_authority",
+            "merged_pr": 89,
+            "merge_commit": "77cb0969980978e65f3560f38f50924c73dfee6e",
+            "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+            "artifact_set_hash": "4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6",
+            "run_manifest_hash": "f55f2829be39445a8489a0863ee5e013c481351d64797251bd79bc199376b127",
+        }
+        if len(milestones) != 1 or any(
+            milestones[0].get(key) != value for key, value in expected_milestone.items()
+        ):
+            failures.append("merged V4 requalification milestone binding changed")
+        if any(item.get("id") == "U-03E-V4-RUN" for item in open_work):
+            failures.append("merged V4 requalification must not remain in open_work")
+        audit = [item for item in open_work if item.get("id") == "U-03F"]
+        if len(audit) != 1 or audit[0].get("status") != "authorized_not_started":
+            failures.append("U-03F must be authorized_not_started after V4 closeout")
+        if not audit or audit[0].get("evidence") != "reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json":
+            failures.append("U-03F must audit the V4 machine authority")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
         failures.append("U-04 authorized without a separate post-audit task")
     return failures
