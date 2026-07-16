@@ -28,12 +28,11 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: the U-03F fixture-only independent auditor is implemented on `codex/u03f-v4-independent-auditor`, pending an exact-head independent review.
+- Current phase: PR #93 independently approved exact auditor head `d055efc1e46fb90b60a4553b9c5e2d1589bd7f9e` with zero critical/high; PR #92 merged the unchanged fixture-only auditor at `d107894`.
 - The implementation algorithm hash is `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`; no real fixed-range audit has run.
-- Six production float-timestamp candidates are disclosed for the future real-audit Gate. Do not repair production authority in this implementation or review task.
-- Current phase: U-03F V4 independent-audit protocol is frozen before results on `codex/u03f-v4-independent-audit-protocol`, pending review and merge.
-- The protocol content hash is `0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157`. It changes no V4 production authority and authorizes no full audit, U-04, strategy, outcomes, OOS or M2.
-- After protocol merge, only a fixture/synthetic independent auditor implementation may start. The real fixed-range audit requires a separate exact-head implementation review and approval first.
+- Six production float-timestamp candidates are disclosed for the real-audit Gate. Do not repair production authority in the Stage D audit-result task.
+- U-03F V4 independent-audit protocol merged in PR #91 and remains frozen before results. Its content hash is `0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157`.
+- After this governance closeout merges, only one separate offline Stage D real audit may start. U-04, strategy, outcomes, OOS and M2 remain unauthorized.
 - Current phase: Liquid universe V4 public requalification passed and merged in PR #89 at `77cb096`; U-03F independent audit is the only authorized next task.
 - V4 is the active qualification authority. Cold/warm/worker all produced artifact set `4cfca060...65fde6`; the run manifest is `f55f2829...76b127`.
 - PR #81 is closed as superseded. Its exact reviewed head `31c967c`, semantic hash and three docs-only models remain immutable historical evidence.
