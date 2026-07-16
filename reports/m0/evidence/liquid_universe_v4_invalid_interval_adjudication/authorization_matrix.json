@@ -1,0 +1,24 @@
+{
+  "content": {
+    "api_trading": false,
+    "backtesting": false,
+    "diagnostic_executed": true,
+    "draft_policy_adr_after_diagnostic_merge": false,
+    "event_scan": false,
+    "execution_live": false,
+    "hypothesis": false,
+    "m2": false,
+    "new_independent_audit": false,
+    "oos": false,
+    "policy_adoption": false,
+    "public_requalification": false,
+    "repair_implementation": false,
+    "returns": false,
+    "strategy": false,
+    "u04": false
+  },
+  "content_hash": "3188ac4696e74ad8c7bb2b0971b589b8c2d5c569db803fb56c557cdfd281418c",
+  "generated_utc": "2026-07-17T00:00:00Z",
+  "manifest_type": "u03f_v4_authorization_matrix",
+  "schema_version": 1
+}

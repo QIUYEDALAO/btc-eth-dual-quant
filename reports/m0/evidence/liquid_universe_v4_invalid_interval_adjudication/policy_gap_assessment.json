@@ -1,0 +1,19 @@
+{
+  "content": {
+    "all_invalid_rows_exact": true,
+    "all_windows_synchronous": true,
+    "decision": "new_policy_adr_required",
+    "direct_existing_gap_policy_adoption_allowed": false,
+    "existing_v2_gap_policy_contract_hash": "051894e89b713f541caa601efab51be22f83461a4e624e1d51d7f576ed8cda51",
+    "invalid_physical_row_count": 119,
+    "per_row_exception_registry_allowed": false,
+    "production_pipeline_change_allowed": false,
+    "synchronized_window_count": 8,
+    "total_window_count": 8,
+    "v4_policy_currently_authorizes_invalid_row_to_gap_conversion": false
+  },
+  "content_hash": "28ee2769a103d36435a8988fab94860e33833e618e1fb0071adfdf4a45432d26",
+  "generated_utc": "2026-07-17T00:00:00Z",
+  "manifest_type": "u03f_v4_policy_gap_assessment",
+  "schema_version": 1
+}

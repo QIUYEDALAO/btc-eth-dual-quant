@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "U-03F V4 invalid-interval adjudication protocol frozen pending review",
+            "U-03F V4 invalid-interval diagnostic completed pending review",
         )
         self.assertEqual(
             state["current_status"],
-            "u03f_v4_invalid_interval_protocol_frozen_diagnostic_not_run_no_u04_no_m2",
+            "u03f_v4_invalid_interval_diagnostic_new_policy_adr_required_pending_review_no_u04_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -418,14 +418,20 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertFalse(
             any(item["id"] == "U-03F-REPAIR-REQUALIFICATION" for item in state["open_work"])
         )
-        protocol = next(item for item in state["open_work"] if item["id"] == "U-03F-R2-PROTOCOL")
-        self.assertEqual(protocol["status"], "protocol_frozen_pending_review")
+        diagnostic = next(
+            item for item in state["open_work"]
+            if item["id"] == "U-03F-R2-DIAGNOSTIC"
+        )
         self.assertEqual(
-            protocol["protocol_content_hash"],
+            diagnostic["status"], "completed_new_policy_adr_required_pending_review"
+        )
+        self.assertEqual(
+            diagnostic["protocol_content_hash"],
             "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
         )
-        self.assertFalse(protocol["diagnostic_executed"])
-        self.assertFalse(protocol["production_pipeline_modified"])
+        self.assertEqual(diagnostic["decision"], "new_policy_adr_required")
+        self.assertTrue(diagnostic["diagnostic_executed"])
+        self.assertFalse(diagnostic["production_pipeline_modified"])
         repair = next(
             item
             for item in state["completed_milestones"]

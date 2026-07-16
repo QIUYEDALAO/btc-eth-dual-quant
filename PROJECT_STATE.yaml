@@ -2,9 +2,23 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-17T00:00:00Z"
-current_phase: U-03F V4 invalid-interval adjudication protocol frozen pending review
-current_status: u03f_v4_invalid_interval_protocol_frozen_diagnostic_not_run_no_u04_no_m2
+current_phase: U-03F V4 invalid-interval diagnostic completed pending review
+current_status: u03f_v4_invalid_interval_diagnostic_new_policy_adr_required_pending_review_no_u04_no_m2
 completed_milestones:
+  - phase: U-03F V4 invalid-interval adjudication protocol
+    status: frozen_before_diagnostic_run_merged
+    evidence: reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_PROTOCOL.md
+    protocol: config/liquid_universe_v4_invalid_interval_adjudication_protocol.json
+    protocol_content_hash: 9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190
+    starting_main_sha: 3ba411d28563526a5357e3882a1e5759311f6179
+    branch: codex/u03f-v4-invalid-interval-protocol
+    merged_pr: 102
+    result_head_sha: 07e4fc13d4a6d027e4881863b9224906be776e9a
+    merge_commit: 70c784b1573de8437e189672c89e9c00b6505978
+    github_checks_success: 116
+    diagnostic_executed_before_merge: false
+    policy_adopted: false
+    production_pipeline_modified: false
   - phase: U-03F V4 repair public requalification
     status: blocked_invalid_5m_interval_boundaries_merged_closed
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md
@@ -363,19 +377,24 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03F-R2-PROTOCOL
-    phase: V4 invalid-interval adjudication protocol
-    status: protocol_frozen_pending_review
-    branch: codex/u03f-v4-invalid-interval-protocol
-    pr: 102
+  - id: U-03F-R2-DIAGNOSTIC
+    phase: V4 invalid-interval deterministic diagnostic
+    status: completed_new_policy_adr_required_pending_review
+    branch: codex/u03f-v4-invalid-interval-diagnostic
+    pr: none
     head_sha: runtime_current_branch_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_PROTOCOL.md
-    protocol: config/liquid_universe_v4_invalid_interval_adjudication_protocol.json
+    evidence: reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_REPORT.md
+    machine_evidence: reports/m0/evidence/liquid_universe_v4_invalid_interval_adjudication/diagnostic_run_manifest.json
     protocol_content_hash: 9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190
-    diagnostic_executed: false
+    diagnostic_content_hash: ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677
+    run_manifest_hash: df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33
+    diagnostic_executed: true
+    decision: new_policy_adr_required
+    invalid_physical_rows: 119
+    synchronized_windows: 8
     production_pipeline_modified: false
-    blocker: "Protocol review, CI and merge are required before the exact frozen-source diagnostic may run."
+    blocker: "Diagnostic evidence review, all-green CI and merge are required before a separate Draft policy ADR may start."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -447,9 +466,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Review and merge only the frozen U-03F invalid-interval adjudication protocol after all checks pass."
-  - "Diagnostics may run only after protocol merge: one deterministic normal/reverse/shuffled diagnostic using only the exact frozen local archives."
-  - "Design review is limited to a separate Draft policy ADR after synchronized diagnostic evidence merges; it cannot directly modify the production pipeline."
+  - "Review and merge only the deterministic U-03F invalid-interval diagnostic evidence after all checks pass."
+  - "After that evidence merges, only a separately versioned Draft policy ADR may start; the diagnostic itself does not adopt policy."
+  - "The future Draft policy ADR cannot directly modify the production pipeline or authorize implementation, requalification, audit or U-04."
   - "Any source/hash/order mismatch stops as blocked_evidence_mismatch; no exception registry, source replacement or Gate reduction is allowed."
   - Cross-sectional design remains blocked because U-03F failed; U-04 is not authorized.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
@@ -488,9 +507,17 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_REPORT.md
+    phase: U-03F V4 invalid-interval deterministic diagnostic
+    status: completed_new_policy_adr_required_pending_review
+    status_marker: "- Status: completed_new_policy_adr_required"
+  - path: reports/m0/evidence/liquid_universe_v4_invalid_interval_adjudication/diagnostic_run_manifest.json
+    phase: U-03F V4 invalid-interval diagnostic machine evidence
+    status: deterministic_three_order_new_policy_adr_required
+    status_marker: '"status": "completed_new_policy_adr_required"'
   - path: reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_PROTOCOL.md
     phase: U-03F V4 invalid-interval adjudication protocol
-    status: frozen_before_diagnostic_run_pending_review
+    status: frozen_before_diagnostic_run_merged_pr102
     status_marker: "- Status: frozen_before_diagnostic_run"
   - path: config/liquid_universe_v4_invalid_interval_adjudication_protocol.json
     phase: U-03F V4 invalid-interval adjudication machine protocol
@@ -848,6 +875,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 102
+    title: Freeze U-03F V4 invalid-interval adjudication protocol
+    merge_commit: 70c784b1573de8437e189672c89e9c00b6505978
+    status: merged
   - number: 101
     title: Close blocked U-03F V4 repair chain governance
     merge_commit: 3ba411d28563526a5357e3882a1e5759311f6179
@@ -1205,19 +1236,42 @@ u03f_v4_repair_public_requalification:
   u04_authorized: false
   m2_authorized: false
 u03f_v4_invalid_interval_adjudication_protocol:
-  status: frozen_before_diagnostic_run_pending_review
+  status: frozen_before_diagnostic_run_merged
   starting_main_sha: 3ba411d28563526a5357e3882a1e5759311f6179
   branch: codex/u03f-v4-invalid-interval-protocol
   pr: 102
+  result_head_sha: 07e4fc13d4a6d027e4881863b9224906be776e9a
+  merge_commit: 70c784b1573de8437e189672c89e9c00b6505978
+  github_checks_success: 116
   protocol_content_hash: 9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190
   source_mode: frozen_local_only
   source_archive_count: 27736
   source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
   blocked_input_processing_errors: 119
   diagnostic_orders: [normal, reverse, deterministic_shuffled]
-  diagnostic_executed: false
+  diagnostic_executed: true
   policy_adopted: false
   production_pipeline_modified: false
+  public_requalification_authorized: false
+  new_independent_audit_authorized: false
+  u04_authorized: false
+  m2_authorized: false
+u03f_v4_invalid_interval_adjudication_diagnostic:
+  status: completed_new_policy_adr_required_pending_review
+  base_main_sha: 70c784b1573de8437e189672c89e9c00b6505978
+  branch: codex/u03f-v4-invalid-interval-diagnostic
+  source_mode: frozen_local_only
+  source_archive_count_per_order: 27736
+  source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+  diagnostic_orders: [normal, reverse, deterministic_shuffled]
+  diagnostic_content_hash: ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677
+  run_manifest_hash: df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33
+  invalid_physical_rows: 119
+  synchronized_windows: 8
+  decision: new_policy_adr_required
+  policy_adopted: false
+  production_pipeline_modified: false
+  draft_policy_adr_authorized_before_evidence_merge: false
   public_requalification_authorized: false
   new_independent_audit_authorized: false
   u04_authorized: false

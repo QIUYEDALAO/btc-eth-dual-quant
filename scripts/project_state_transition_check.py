@@ -119,6 +119,10 @@ ALLOWED = {
         "u03f_v4_invalid_interval_protocol_frozen_diagnostic_not_run_no_u04_no_m2",
     ): "U-03F-R2-PROTOCOL",
     (
+        "U-03F V4 invalid-interval diagnostic completed pending review",
+        "u03f_v4_invalid_interval_diagnostic_new_policy_adr_required_pending_review_no_u04_no_m2",
+    ): "U-03F-R2-DIAGNOSTIC",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -153,6 +157,11 @@ INVALID_INTERVAL_PROTOCOL_PAIR = (
     "u03f_v4_invalid_interval_protocol_frozen_diagnostic_not_run_no_u04_no_m2",
 )
 
+INVALID_INTERVAL_DIAGNOSTIC_PAIR = (
+    "U-03F V4 invalid-interval diagnostic completed pending review",
+    "u03f_v4_invalid_interval_diagnostic_new_policy_adr_required_pending_review_no_u04_no_m2",
+)
+
 CLOSED_TASK_PAIRS = {
     FAILED_U03F_CLOSEOUT_PAIR,
     REPAIR_CHAIN_CLOSED_PAIR,
@@ -163,6 +172,7 @@ AUDIT_BLOCKED_PAIRS = {
     REPAIR_REQUALIFICATION_BLOCKED_PAIR,
     REPAIR_CHAIN_CLOSED_PAIR,
     INVALID_INTERVAL_PROTOCOL_PAIR,
+    INVALID_INTERVAL_DIAGNOSTIC_PAIR,
 }
 
 EXPECTED_AUTH = {
@@ -189,7 +199,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -230,6 +240,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 repair public requalification blocked",
         "U-03F V4 repair chain closed blocked",
         "U-03F V4 invalid-interval adjudication protocol frozen pending review",
+        "U-03F V4 invalid-interval diagnostic completed pending review",
     }:
         milestones = [
             item
@@ -372,6 +383,19 @@ def validate(state: dict) -> list[str]:
                 failures.append("invalid-interval diagnostic ran before protocol merge")
             if item.get("production_pipeline_modified") is not False:
                 failures.append("production pipeline changed in protocol task")
+        if item.get("id") == "U-03F-R2-DIAGNOSTIC":
+            if item.get("status") != "completed_new_policy_adr_required_pending_review":
+                failures.append("invalid-interval diagnostic status changed")
+            if item.get("diagnostic_content_hash") != "ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677":
+                failures.append("invalid-interval diagnostic content hash changed")
+            if item.get("run_manifest_hash") != "df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33":
+                failures.append("invalid-interval diagnostic run hash changed")
+            if item.get("decision") != "new_policy_adr_required":
+                failures.append("invalid-interval diagnostic decision changed")
+            if item.get("invalid_physical_rows") != 119 or item.get("synchronized_windows") != 8:
+                failures.append("invalid-interval diagnostic counts changed")
+            if item.get("production_pipeline_modified") is not False:
+                failures.append("production pipeline changed in diagnostic task")
         if item.get("id") == "U-03E-V4-IMPL":
             if item.get("head_sha") != "runtime_current_pr_head":
                 failures.append("V4 implementation head_sha must be runtime current PR metadata")
@@ -423,6 +447,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 repair public requalification blocked",
         "U-03F V4 repair chain closed blocked",
         "U-03F V4 invalid-interval adjudication protocol frozen pending review",
+        "U-03F V4 invalid-interval diagnostic completed pending review",
     }:
         milestones = [
             item
@@ -538,6 +563,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 repair public requalification blocked",
         "U-03F V4 repair chain closed blocked",
         "U-03F V4 invalid-interval adjudication protocol frozen pending review",
+        "U-03F V4 invalid-interval diagnostic completed pending review",
     }:
         reviews = [
             item for item in state.get("completed_milestones", [])
@@ -593,6 +619,75 @@ def validate(state: dict) -> list[str]:
         }
         if protocol != expected_protocol:
             failures.append("invalid-interval protocol state binding changed")
+    if pair == INVALID_INTERVAL_DIAGNOSTIC_PAIR:
+        protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
+        expected_protocol = {
+            "status": "frozen_before_diagnostic_run_merged",
+            "starting_main_sha": "3ba411d28563526a5357e3882a1e5759311f6179",
+            "branch": "codex/u03f-v4-invalid-interval-protocol",
+            "pr": 102,
+            "result_head_sha": "07e4fc13d4a6d027e4881863b9224906be776e9a",
+            "merge_commit": "70c784b1573de8437e189672c89e9c00b6505978",
+            "github_checks_success": 116,
+            "protocol_content_hash": "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
+            "source_mode": "frozen_local_only",
+            "source_archive_count": 27736,
+            "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+            "blocked_input_processing_errors": 119,
+            "diagnostic_orders": ["normal", "reverse", "deterministic_shuffled"],
+            "diagnostic_executed": True,
+            "policy_adopted": False,
+            "production_pipeline_modified": False,
+            "public_requalification_authorized": False,
+            "new_independent_audit_authorized": False,
+            "u04_authorized": False,
+            "m2_authorized": False,
+        }
+        if protocol != expected_protocol:
+            failures.append("merged invalid-interval protocol state binding changed")
+        diagnostic = state.get("u03f_v4_invalid_interval_adjudication_diagnostic", {})
+        expected_diagnostic = {
+            "status": "completed_new_policy_adr_required_pending_review",
+            "base_main_sha": "70c784b1573de8437e189672c89e9c00b6505978",
+            "branch": "codex/u03f-v4-invalid-interval-diagnostic",
+            "source_mode": "frozen_local_only",
+            "source_archive_count_per_order": 27736,
+            "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+            "diagnostic_orders": ["normal", "reverse", "deterministic_shuffled"],
+            "diagnostic_content_hash": "ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677",
+            "run_manifest_hash": "df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33",
+            "invalid_physical_rows": 119,
+            "synchronized_windows": 8,
+            "decision": "new_policy_adr_required",
+            "policy_adopted": False,
+            "production_pipeline_modified": False,
+            "draft_policy_adr_authorized_before_evidence_merge": False,
+            "public_requalification_authorized": False,
+            "new_independent_audit_authorized": False,
+            "u04_authorized": False,
+            "m2_authorized": False,
+        }
+        if diagnostic != expected_diagnostic:
+            failures.append("invalid-interval diagnostic state binding changed")
+        milestones = [
+            item for item in state.get("completed_milestones", [])
+            if item.get("phase") == "U-03F V4 invalid-interval adjudication protocol"
+        ]
+        expected_milestone = {
+            "status": "frozen_before_diagnostic_run_merged",
+            "merged_pr": 102,
+            "result_head_sha": "07e4fc13d4a6d027e4881863b9224906be776e9a",
+            "merge_commit": "70c784b1573de8437e189672c89e9c00b6505978",
+            "github_checks_success": 116,
+            "protocol_content_hash": "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
+            "diagnostic_executed_before_merge": False,
+            "policy_adopted": False,
+            "production_pipeline_modified": False,
+        }
+        if len(milestones) != 1 or any(
+            milestones[0].get(key) != value for key, value in expected_milestone.items()
+        ):
+            failures.append("merged invalid-interval protocol milestone changed")
     return failures
 
 

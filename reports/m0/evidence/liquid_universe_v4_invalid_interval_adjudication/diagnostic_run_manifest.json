@@ -1,0 +1,59 @@
+{
+  "content": {
+    "authorizations": {
+      "api_trading": false,
+      "backtesting": false,
+      "diagnostic_executed": true,
+      "draft_policy_adr_after_diagnostic_merge": false,
+      "event_scan": false,
+      "execution_live": false,
+      "hypothesis": false,
+      "m2": false,
+      "new_independent_audit": false,
+      "oos": false,
+      "policy_adoption": false,
+      "public_requalification": false,
+      "repair_implementation": false,
+      "returns": false,
+      "strategy": false,
+      "u04": false
+    },
+    "component_hashes": {
+      "authorization_matrix": "3188ac4696e74ad8c7bb2b0971b589b8c2d5c569db803fb56c557cdfd281418c",
+      "input_binding_summary": "d07c7b0066976f0581163a3705897e29a12f7c4751cec8d6a74b54e77ad86468",
+      "invalid_interval_rows": "d93f1004e082f42dcf13ed57f6b129949d092c7d73b0fc700001ec72c685623c",
+      "order_determinism_summary": "1cd7b74215b701783f9879029bb9ecda095b8f7ff1a770f6190191841f02bf2e",
+      "policy_gap_assessment": "28ee2769a103d36435a8988fab94860e33833e618e1fb0071adfdf4a45432d26",
+      "synchronized_window_summary": "05a531735a326fa5c2472a322a9618559ca76472fb917a9c957ffaae2779ae98"
+    },
+    "decision": "new_policy_adr_required",
+    "diagnostic_content_hash": "ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677",
+    "invalid_physical_rows": 119,
+    "orders": [
+      {
+        "content_hash": "ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677",
+        "name": "normal",
+        "status": "pass"
+      },
+      {
+        "content_hash": "ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677",
+        "name": "reverse",
+        "status": "pass"
+      },
+      {
+        "content_hash": "ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677",
+        "name": "deterministic_shuffled",
+        "status": "pass"
+      }
+    ],
+    "protocol_content_hash": "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
+    "source_archive_count": 27736,
+    "source_freeze_content_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "status": "completed_new_policy_adr_required",
+    "synchronized_windows": 8
+  },
+  "content_hash": "df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33",
+  "generated_utc": "2026-07-17T00:00:00Z",
+  "manifest_type": "u03f_v4_invalid_interval_adjudication_run",
+  "schema_version": 1
+}
