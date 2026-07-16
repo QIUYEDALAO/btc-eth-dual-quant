@@ -111,6 +111,10 @@ ALLOWED = {
         "liquid_universe_v4_repair_requalification_blocked_no_new_audit_no_u04_no_m2",
     ): "U-03F-REPAIR-REQUALIFICATION",
     (
+        "U-03F V4 repair chain closed blocked",
+        "u03f_v4_repair_chain_closed_requalification_blocked_no_new_audit_no_u04_no_m2",
+    ): "U-03F-RC",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -135,9 +139,20 @@ REPAIR_REQUALIFICATION_BLOCKED_PAIR = (
     "liquid_universe_v4_repair_requalification_blocked_no_new_audit_no_u04_no_m2",
 )
 
+REPAIR_CHAIN_CLOSED_PAIR = (
+    "U-03F V4 repair chain closed blocked",
+    "u03f_v4_repair_chain_closed_requalification_blocked_no_new_audit_no_u04_no_m2",
+)
+
+CLOSED_TASK_PAIRS = {
+    FAILED_U03F_CLOSEOUT_PAIR,
+    REPAIR_CHAIN_CLOSED_PAIR,
+}
+
 AUDIT_BLOCKED_PAIRS = {
     FAILED_U03F_CLOSEOUT_PAIR,
     REPAIR_REQUALIFICATION_BLOCKED_PAIR,
+    REPAIR_CHAIN_CLOSED_PAIR,
 }
 
 EXPECTED_AUTH = {
@@ -182,7 +197,7 @@ def validate(state: dict) -> list[str]:
             failures.append("merged blocked U-03E must not remain in open_work")
     elif (
         expected_task
-        and pair != FAILED_U03F_CLOSEOUT_PAIR
+        and pair not in CLOSED_TASK_PAIRS
         and not any(item.get("id") == expected_task for item in active)
     ):
         failures.append(f"current V2 task missing from open_work: {expected_task}")
@@ -203,6 +218,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 independent audit failed pending truthful result review",
         "Liquid universe V4 independent audit failed or blocked",
         "U-03F V4 repair public requalification blocked",
+        "U-03F V4 repair chain closed blocked",
     }:
         milestones = [
             item
@@ -383,6 +399,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 independent audit failed pending truthful result review",
         "Liquid universe V4 independent audit failed or blocked",
         "U-03F V4 repair public requalification blocked",
+        "U-03F V4 repair chain closed blocked",
     }:
         milestones = [
             item
@@ -450,6 +467,36 @@ def validate(state: dict) -> list[str]:
             for key, value in expected_failed_audit.items()
         ):
             failures.append("merged failed U-03F milestone binding changed")
+        if pair == REPAIR_CHAIN_CLOSED_PAIR:
+            repair_milestones = [
+                item
+                for item in state.get("completed_milestones", [])
+                if item.get("phase") == "U-03F V4 repair public requalification"
+            ]
+            expected_repair_closeout = {
+                "status": "blocked_invalid_5m_interval_boundaries_merged_closed",
+                "source_mode": "frozen_local_only",
+                "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+                "cold_artifact_set_hash": "b7cac049c6ab339f52fc29c7f31d275db09b3a4c47e2f62b38175cea219b2f83",
+                "run_manifest_hash": "0792ec7b52dbabb6057f0c238d963ed774c1e9e838b42cb21a03bc7e334f68cf",
+                "determinism_status": "not_run_due_fail_closed_cold_block",
+                "processing_errors": 119,
+                "new_independent_audit_executed": False,
+                "merged_pr": 100,
+                "result_head_sha": "a0e680fbfb4415bb25871aa0cb3ed8b873d6c810",
+                "merge_commit": "927f121651d6e1e07f174410a39595f6d09e9a5d",
+                "github_checks_success": 114,
+            }
+            if len(repair_milestones) != 1 or any(
+                repair_milestones[0].get(key) != value
+                for key, value in expected_repair_closeout.items()
+            ):
+                failures.append("merged blocked repair requalification binding changed")
+            if any(
+                item.get("id") == "U-03F-REPAIR-REQUALIFICATION"
+                for item in open_work
+            ):
+                failures.append("closed repair requalification must not remain in open_work")
         v4_milestones = [
             item
             for item in state.get("completed_milestones", [])
@@ -466,6 +513,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 independent audit failed pending truthful result review",
         "Liquid universe V4 independent audit failed or blocked",
         "U-03F V4 repair public requalification blocked",
+        "U-03F V4 repair chain closed blocked",
     }:
         reviews = [
             item for item in state.get("completed_milestones", [])

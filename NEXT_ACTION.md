@@ -2,29 +2,22 @@
 
 ## Immediate Task
 
-PR #98 merged the unchanged reviewed repair head `27e6436c...9743` at
-`1ccfd409669e4bdb028d656a34e7da4d867fdba3`. PR #99 merged the independent
-`approve` review with zero critical/high findings at
-`9f1480f544d3bde90ad4f5c55c79dc441001162c` after 112/112 checks passed.
-The repair implementation hash remains
-`9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a`.
+The U-03F repair chain is closed as blocked. PR #100 merged the truthful
+fixed-range repair-requalification evidence at
+`927f121651d6e1e07f174410a39595f6d09e9a5d` after 114/114 checks passed.
+Its exact evidence head was `a0e680fbfb4415bb25871aa0cb3ed8b873d6c810`.
 
-The one authorized fixed-range repair requalification has now run from that
-main using only the 27,736 frozen local archives. Source freeze hash
-`c86310f8...ec6c` remained exact, but cold stopped as `blocked` on 119 physical
-5m interval-boundary errors. Its artifact-set hash is
-`b7cac049c6ab339f52fc29c7f31d275db09b3a4c47e2f62b38175cea219b2f83` and
-run-manifest hash is
-`0792ec7b52dbabb6057f0c238d963ed774c1e9e838b42cb21a03bc7e334f68cf`.
+Cold consumed only the exact 27,736 frozen local archives and stopped on 119 physical
+5m interval-boundary errors. Source freeze hash `c86310f8...ec6c`, cold
+artifact-set hash `b7cac049...b2f83` and run-manifest hash
+`0792ec7b...f68cf` remain exact. Warm and worker are
+`not_run_due_fail_closed_cold_block`.
 
-Warm and worker were not run and are recorded as
-`not_run_due_fail_closed_cold_block`. This failed the frozen requalification
-pass dependency, so a new independent audit is not authorized and must not be
-started. The immediate task is only to merge the truthful blocked evidence
-after CI, then perform a governance-only closeout.
-
-V4 remains `audit_blocked` / `revalidation_required`; U-04, research and M2
-remain unauthorized.
+There is no currently authorized follow-on U-03F repair or audit task. A future
+attempt would require a new, explicitly scoped and independently reviewed
+repair/requalification protocol. It may not reuse this blocked result as a pass
+or automatically start a new audit. V4 remains `audit_blocked` /
+`revalidation_required`; U-04, research, OOS and M2 remain unauthorized.
 
 ## Historical Failed Audit
 
@@ -106,13 +99,12 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Merge the truthful blocked repair-requalification evidence only after every
-   PR check passes.
-2. After that merge, perform only a governance closeout recording that the new
-   audit dependency failed; do not run the new audit.
-3. Preserve V1/V2/V3/V4 prior runs as historical evidence; none is an alternative active
-   qualification authority.
-4. Keep U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
+1. Preserve PR #89, PR #95 and PR #100 evidence and the frozen source byte for
+   byte; none is an alternative active qualification authority.
+2. Keep the repair chain closed. Any future attempt requires a separately
+   approved protocol and must begin from its own explicit task.
+3. Keep the new independent audit, U-04, hypothesis/strategy work, returns, OOS
+   and M2 blocked.
 
 U-03E V2 and V3 remain truthful blocked historical milestones. V4 supersedes
 their admission authority through a separately adopted lifecycle policy and
@@ -140,6 +132,7 @@ passed 110/110 checks and remained unchanged through merge. PR #99 independently
 approved it with zero remaining critical/high findings and passed 112/112 checks
 after rebasing onto the implementation merge. Both PRs are merged.
 
-That approval authorized only the fixed repair requalification. The resulting
-cold block terminates the chain before a new audit. U-04 and all downstream work
-remain unauthorized.
+That approval authorized only the fixed repair requalification. PR #100 merged
+its truthful cold-blocked evidence after 114/114 checks. The resulting 119
+source-row errors terminate and close the chain before a new audit. U-04 and all
+downstream work remain unauthorized.

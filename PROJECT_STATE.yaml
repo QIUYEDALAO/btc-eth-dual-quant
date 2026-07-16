@@ -1,12 +1,12 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-16T17:10:38Z"
-current_phase: U-03F V4 repair public requalification blocked
-current_status: liquid_universe_v4_repair_requalification_blocked_no_new_audit_no_u04_no_m2
+last_updated_utc: "2026-07-16T18:58:31Z"
+current_phase: U-03F V4 repair chain closed blocked
+current_status: u03f_v4_repair_chain_closed_requalification_blocked_no_new_audit_no_u04_no_m2
 completed_milestones:
   - phase: U-03F V4 repair public requalification
-    status: blocked_invalid_5m_interval_boundaries_pending_pr_merge
+    status: blocked_invalid_5m_interval_boundaries_merged_closed
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md
     machine_evidence: reports/m0/evidence/liquid_universe_v4_repair_requalification/requalification_run_manifest.json
     base_main_sha: 9f1480f544d3bde90ad4f5c55c79dc441001162c
@@ -20,6 +20,10 @@ completed_milestones:
     processing_errors: 119
     public_requalification_executed: true
     new_independent_audit_executed: false
+    merged_pr: 100
+    result_head_sha: a0e680fbfb4415bb25871aa0cb3ed8b873d6c810
+    merge_commit: 927f121651d6e1e07f174410a39595f6d09e9a5d
+    github_checks_success: 114
   - phase: U-03F V4 repair exact-head independent review
     status: approve_merged
     evidence: reports/expert/U03F_V4_REPAIR_EXACT_HEAD_REVIEW.md
@@ -359,15 +363,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03F-REPAIR-REQUALIFICATION
-    phase: U-03F V4 repair public requalification
-    status: blocked_pending_evidence_pr_merge
-    branch: codex/u03f-v4-repair-public-requalification
-    pr: pending
-    head_sha: runtime_current_head
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md
-    blocker: "Cold stopped fail-closed on 119 frozen-source 5m interval-boundary errors. Warm/worker and the new independent audit are blocked; only truthful evidence merge and governance closeout may follow."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -832,6 +827,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 100
+    title: Record blocked U-03F V4 repair requalification
+    merge_commit: 927f121651d6e1e07f174410a39595f6d09e9a5d
+    status: merged
   - number: 99
     title: Independently review U-03F V4 repair exact head
     merge_commit: 9f1480f544d3bde90ad4f5c55c79dc441001162c
@@ -1163,7 +1162,7 @@ u03f_v4_repair_exact_head_review:
   u04_authorized: false
   m2_authorized: false
 u03f_v4_repair_public_requalification:
-  status: blocked_pending_evidence_pr_merge
+  status: blocked_evidence_merged_chain_closed
   base_main_sha: 9f1480f544d3bde90ad4f5c55c79dc441001162c
   source_mode: frozen_local_only
   source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
@@ -1172,6 +1171,10 @@ u03f_v4_repair_public_requalification:
   builds_completed: [cold]
   determinism_status: not_run_due_fail_closed_cold_block
   processing_errors: 119
+  evidence_pr: 100
+  evidence_head_sha: a0e680fbfb4415bb25871aa0cb3ed8b873d6c810
+  evidence_merge_commit: 927f121651d6e1e07f174410a39595f6d09e9a5d
+  evidence_pr_checks_success: 114
   new_independent_audit_authorized: false
   u04_authorized: false
   m2_authorized: false
