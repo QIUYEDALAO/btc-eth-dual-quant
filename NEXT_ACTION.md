@@ -13,7 +13,7 @@ source, strict integer 5m boundaries, normal/reverse/deterministic-shuffled
 traversal, the existing 80% synchronous evidence threshold and zero downstream
 authorization.
 
-The immediate action is protocol validation, PR review, all-green CI and merge.
+The immediate action is PR #102 exact-head review, all-green CI and merge.
 Only after that merge may one evidence-only diagnostic read the exact frozen
 local archives. Even a fully synchronized result may authorize only a separate
 Draft policy ADR after its evidence merges; it cannot directly change the

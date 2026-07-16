@@ -29,7 +29,7 @@ After any task, the agent must update:
 ## Current Stage
 
 - A new protocol-only U-03F follow-on is active on `codex/u03f-v4-invalid-interval-protocol`, based on main `3ba411d28563526a5357e3882a1e5759311f6179`.
-- Protocol `U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1` is frozen pending review with content hash `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190`.
+- Draft PR #102 freezes protocol `U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1` pending exact-head review, with content hash `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190`.
 - This protocol authorizes no diagnostic before merge. After merge it may authorize one normal/reverse/deterministic-shuffled offline diagnostic using only the exact 27,736 frozen local archives.
 - The diagnostic may classify exact synchronized invalid intervals and recommend a new Draft policy ADR. It may not create per-row exceptions, adopt the existing gap policy directly, modify production, rerun requalification or start a new audit.
 - Any source/hash/order mismatch, unexpected/missing/duplicate/non-member row, network/substitution attempt or authorization expansion must fail closed.

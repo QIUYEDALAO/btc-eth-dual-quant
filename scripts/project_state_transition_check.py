@@ -364,6 +364,8 @@ def validate(state: dict) -> list[str]:
         if item.get("id") == "U-03F-R2-PROTOCOL":
             if item.get("status") != "protocol_frozen_pending_review":
                 failures.append("invalid-interval protocol status changed")
+            if item.get("pr") != 102:
+                failures.append("invalid-interval protocol PR binding changed")
             if item.get("protocol_content_hash") != "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190":
                 failures.append("invalid-interval protocol hash changed")
             if item.get("diagnostic_executed") is not False:
@@ -574,7 +576,7 @@ def validate(state: dict) -> list[str]:
             "status": "frozen_before_diagnostic_run_pending_review",
             "starting_main_sha": "3ba411d28563526a5357e3882a1e5759311f6179",
             "branch": "codex/u03f-v4-invalid-interval-protocol",
-            "pr": "pending",
+            "pr": 102,
             "protocol_content_hash": "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
             "source_mode": "frozen_local_only",
             "source_archive_count": 27736,

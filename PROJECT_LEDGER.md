@@ -1651,12 +1651,12 @@ private exchange responses here.
 ## 2026-07-17 - U-03F Invalid-Interval Adjudication Protocol Frozen
 
 - Task ID: U-03F-R2-P
-- Branch: `codex/u03f-v4-invalid-interval-protocol`
+- Branch: `codex/u03f-v4-invalid-interval-protocol`; Draft PR #102.
 - Starting main: `3ba411d28563526a5357e3882a1e5759311f6179`.
 - Protocol: `U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1`; content hash `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190`.
 - Known input: PR #100 merged 119 unique invalid-interval stop reasons from the exact 27,736-archive frozen source; warm/worker and a new audit did not run.
 - Decision: protocol-first, evidence-second. A later diagnostic must use integer-only parsing in normal, reverse and deterministic-shuffled order and preserve archive, line and raw-row hashes.
 - Policy boundary: synchronized evidence may produce only `new_policy_adr_required`; direct existing-gap-policy adoption and per-row exception registries are forbidden.
 - Execution status: diagnostic no; production pipeline change no; requalification no; new audit no; U-04 no.
-- Next action: validate, review and merge the protocol PR. Only then may one evidence-only frozen-source diagnostic start.
+- Next action: review PR #102 exact head and merge only after all CI passes. Only then may one evidence-only frozen-source diagnostic start.
 - Safety: no source download/replacement/substitution, historical mutation, Gate reduction, strategy, returns, OOS, API/trading, execution/live or M2.

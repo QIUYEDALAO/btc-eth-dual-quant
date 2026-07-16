@@ -367,7 +367,7 @@ open_work:
     phase: V4 invalid-interval adjudication protocol
     status: protocol_frozen_pending_review
     branch: codex/u03f-v4-invalid-interval-protocol
-    pr: pending
+    pr: 102
     head_sha: runtime_current_branch_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_PROTOCOL.md
@@ -1208,7 +1208,7 @@ u03f_v4_invalid_interval_adjudication_protocol:
   status: frozen_before_diagnostic_run_pending_review
   starting_main_sha: 3ba411d28563526a5357e3882a1e5759311f6179
   branch: codex/u03f-v4-invalid-interval-protocol
-  pr: pending
+  pr: 102
   protocol_content_hash: 9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190
   source_mode: frozen_local_only
   source_archive_count: 27736

@@ -16,7 +16,7 @@ assert SPEC.loader is not None
 SPEC.loader.exec_module(MODULE)
 
 
-class U03FV4InvalidIntervalProtocolTests(unittest.TestCase):
+class InvalidIntervalProtocolTests(unittest.TestCase):
     def setUp(self) -> None:
         self.protocol = MODULE.load_protocol()
 
