@@ -2,12 +2,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Any, Iterable
 
 from btc_eth_dual_quant.data.kline_row_conflicts import RawKlineRow, ResolutionRegistry
 from btc_eth_dual_quant.data.lifecycle_artifacts import V4_MANIFEST_TYPES, make_v4_manifest
-from btc_eth_dual_quant.data.lifecycle_availability import LifecycleEventRegistry
+from btc_eth_dual_quant.data.lifecycle_availability import LifecycleEventRegistry, UTC_EPOCH, utc_epoch_ms
 from btc_eth_dual_quant.data.liquid_universe import GridResult, MinuteBar, month_bounds, validate_minute_bar
 from btc_eth_dual_quant.data.liquid_universe_pipeline_v3 import resolve_daily_key
 
@@ -21,6 +21,13 @@ class V4DispatchResult:
     close_time_rewritten: bool = False
 
 
+def utc_datetime_from_epoch_ms(value: int) -> datetime:
+    """Reconstruct a UTC datetime without routing epoch identity through a float."""
+    if not isinstance(value, int):
+        raise TypeError("epoch milliseconds must be an integer")
+    return UTC_EPOCH + timedelta(milliseconds=value)
+
+
 def validate_lifecycle_symbol_month_grid(
     symbol: str,
     month: str,
@@ -30,19 +37,21 @@ def validate_lifecycle_symbol_month_grid(
 ) -> GridResult:
     """Validate only the physically available part of a lifecycle-ending month."""
     start, month_end = month_bounds(month)
-    end = datetime.fromtimestamp(availability_end_exclusive_ms / 1_000, timezone.utc)
-    if not start < end <= month_end or availability_end_exclusive_ms % 300_000:
+    start_ms = utc_epoch_ms(start)
+    month_end_ms = utc_epoch_ms(month_end)
+    if not start_ms < availability_end_exclusive_ms <= month_end_ms or availability_end_exclusive_ms % 300_000:
         raise ValueError("lifecycle boundary must be an aligned instant inside the month")
-    expected_count = int((end - start).total_seconds() // 300)
-    expected = {start.timestamp() * 1_000 + index * 300_000 for index in range(expected_count)}
-    seen: set[float] = set()
+    expected_count = (availability_end_exclusive_ms - start_ms) // 300_000
+    expected = {start_ms + index * 300_000 for index in range(expected_count)}
+    seen: set[int] = set()
     errors: list[str] = []
     for bar in bars:
         try:
             validate_minute_bar(bar, expected_symbol=symbol, expected_month=month)
         except ValueError as exc:
             errors.append(str(exc))
-        timestamp_ms = bar.open_time.timestamp() * 1_000
+            continue
+        timestamp_ms = utc_epoch_ms(bar.open_time)
         if timestamp_ms >= availability_end_exclusive_ms:
             errors.append(f"unexpected post-lifecycle 5m row: {bar.open_time.isoformat()}")
             continue
@@ -50,7 +59,7 @@ def validate_lifecycle_symbol_month_grid(
             errors.append(f"duplicate 5m timestamp: {bar.open_time.isoformat()}")
         seen.add(timestamp_ms)
     missing_ms = sorted(expected - seen)
-    missing = tuple(datetime.fromtimestamp(value / 1_000, timezone.utc) for value in missing_ms)
+    missing = tuple(utc_datetime_from_epoch_ms(value) for value in missing_ms)
     return GridResult(symbol, month, expected_count, len(seen), missing, tuple(sorted(set(errors))))
 
 

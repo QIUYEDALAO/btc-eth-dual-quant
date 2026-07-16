@@ -7,6 +7,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 from typing import Any
 
 
@@ -18,6 +19,8 @@ DESIGN_PATH = ROOT / "docs/superpowers/specs/2026-07-16-u03f-v4-repair-requalifi
 IMMUTABLE_FILES = {
     "reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md": "dab79b1224e1c1f8be4c6f6e018b9ce6f40e751af58d380fd4d872d3f442045c",
     "reports/expert/evidence/liquid_universe_v4_independent_audit/audit_summary.json": "d11af8c2fdc54cac699909b0b418dd90a5f1c87e6a5e91e892770924c2184003",
+}
+ORIGINAL_PRODUCTION_FILES = {
     "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py": "6a9a3c11c749f3db5059119de70012eec0b5339a0b0b46f69022c71272f2a9f0",
     "scripts/liquid_universe_v4_public_run.py": "5622df8000c3cdd8f70a345536ed1530d954848781a6f6d7228d675c7d176623",
 }
@@ -45,6 +48,18 @@ FALSE_AUTHORIZATIONS = {
 
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _historical_sha256(revision: str, relative: str) -> str:
+    result = subprocess.run(
+        ["git", "show", f"{revision}:{relative}"],
+        cwd=ROOT,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode:
+        raise ValueError(f"historical repair binding unavailable: {revision}:{relative}")
+    return hashlib.sha256(result.stdout).hexdigest()
 
 
 def load_protocol(path: Path = PROTOCOL_PATH) -> dict[str, Any]:
@@ -152,6 +167,15 @@ def validate_immutable_inputs(protocol: dict[str, Any]) -> list[str]:
         actual = _sha256(ROOT / relative)
         if actual != expected:
             failures.append(f"immutable input changed: {relative}: {actual}")
+    starting_main = protocol.get("repository_binding", {}).get("starting_main_sha", "")
+    for relative, expected in ORIGINAL_PRODUCTION_FILES.items():
+        try:
+            actual = _historical_sha256(starting_main, relative)
+        except ValueError as exc:
+            failures.append(str(exc))
+            continue
+        if actual != expected:
+            failures.append(f"original production binding changed: {relative}: {actual}")
     audit = json.loads(
         (ROOT / "reports/expert/evidence/liquid_universe_v4_independent_audit/audit_summary.json").read_text()
     )

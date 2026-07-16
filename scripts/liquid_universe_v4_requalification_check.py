@@ -2,6 +2,7 @@
 """Validate committed fixed-range V4 public requalification evidence."""
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -85,6 +86,10 @@ def check() -> dict:
     for marker in (f"- Status: {summary['status']}", "- Determinism: pass", "- M2 authorized: no"):
         if marker not in report:
             raise ValueError(f"V4 report marker missing: {marker}")
+    report_sha256 = hashlib.sha256(report.encode("utf-8")).hexdigest()
+    bindings = {record.get("qualification_report_sha256") for record in content["builds"].values()}
+    if bindings != {report_sha256}:
+        raise ValueError("V4 qualification report/run-manifest binding mismatch")
     return {"status": summary["status"], "content_hash": run["content_hash"]}
 
 

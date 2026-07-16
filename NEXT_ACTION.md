@@ -2,23 +2,24 @@
 
 ## Immediate Task
 
-The U-03F V4 repair and requalification protocol is frozen on
-`codex/u03f-v4-repair-requalification-protocol`, based on GitHub main
-`513d321b69750d6c8bb47bddbf006d4caac04828`. Its machine content hash is
+PR #97 merged the frozen U-03F V4 repair and requalification protocol at
+`0e65cd41bfac590d40ae5cb0590cc7102019018c` after 108/108 checks passed.
+The exact protocol content hash remains
 `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`.
-No production repair or public rerun has occurred.
 
-The protocol maps the merged one critical and seven high findings into three
-repair requirements and six mandatory fault tests. It freezes integer-only UTC
-conversion, exact 5m open/close interval validation, propagation through grid,
-source, panel, summary and diff artifacts, and atomic qualification-report/run-
-manifest binding. It also freezes the exact-head review, fixed `2020-01`
-through `2026-06` requalification and new 15/15 independent-audit Gates.
+The repair is now implemented fixture-only on
+`codex/u03f-v4-repair-implementation`, based on that exact merged main. Integer-
+only UTC conversion, strict 5m close-boundary filtering and atomic final-report/
+run-manifest binding pass all six frozen fault tests. The repair implementation
+hash is `882b0149d99b30f35118ce85b9db72083a2093428e0e0fa4e19603f0f458af5d`;
+the independent auditor algorithm remains frozen at
+`7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`.
 
-The immediate Gate is local validation, PR review and CI merge for the protocol
-only. Production implementation must not begin before protocol merge. Any
-historical evidence hash drift, source-freeze drift, Gate reduction or
-authorization expansion stops the chain.
+No public requalification or new audit has run. The immediate Gate is PR-B CI,
+followed by a separate exact-head independent review. The implementation cannot
+merge unless that unchanged head receives `approve` with zero critical and zero
+high findings. Any head, historical-evidence, source-freeze, protocol or auditor
+hash drift stops the chain.
 
 V4 remains `audit_blocked` / `revalidation_required`; U-04 remains
 unauthorized.
@@ -103,11 +104,11 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Merge the frozen repair/requalification protocol after every local and
-   GitHub check passes.
-2. Implement only the frozen repair, then require exact-head independent
-   approval with zero critical/high findings before merge.
-3. Repeat the fixed-range public requalification and a new independent audit
+1. Finish implementation PR CI without running public requalification.
+2. Obtain exact-head independent approval with zero critical/high findings
+   before merging the repair implementation.
+3. Only after that approval and merge, repeat the fixed-range public
+   requalification and a new independent audit
    without lowering any Gate.
 4. Preserve V1/V2/V3/V4 prior runs as historical evidence; none is an alternative active
    qualification authority.

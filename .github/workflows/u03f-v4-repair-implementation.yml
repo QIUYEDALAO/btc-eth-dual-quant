@@ -1,4 +1,4 @@
-name: U03F V4 Repair Protocol
+name: U03F V4 Repair Implementation
 on: [pull_request, push]
 jobs:
   validate:
@@ -10,4 +10,4 @@ jobs:
         with: {python-version: "3.11"}
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -e .
-      - run: bash scripts/u03f_v4_repair_protocol_validate.sh
+      - run: bash scripts/u03f_v4_repair_implementation_validate.sh

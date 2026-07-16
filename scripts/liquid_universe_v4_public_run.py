@@ -3,19 +3,25 @@
 from __future__ import annotations
 
 import argparse
+import csv
 from collections import defaultdict
-from datetime import datetime, timezone
+from decimal import Decimal
+import io
 import json
 from pathlib import Path
 from typing import Any
+import zipfile
 
-from btc_eth_dual_quant.data.kline_row_conflicts import ResolutionRegistry
+from btc_eth_dual_quant.data.kline_row_conflicts import ResolutionRegistry, normalize_kline_fields
 from btc_eth_dual_quant.data.lifecycle_artifacts import V4_MANIFEST_TYPES, make_v4_manifest
 from btc_eth_dual_quant.data.lifecycle_availability import LifecycleEventRegistry, utc_epoch_ms
 from btc_eth_dual_quant.data.liquid_universe import (
     aggregate_one_hour,
     canonical_hash,
     exclusion_record,
+    GridResult,
+    MinuteBar,
+    month_bounds,
     validate_symbol_month_grid,
 )
 from btc_eth_dual_quant.data.liquid_universe_artifacts import write_manifest
@@ -23,13 +29,13 @@ from btc_eth_dual_quant.data.liquid_universe_pipeline import build_membership_ro
 from btc_eth_dual_quant.data.liquid_universe_pipeline_v3 import build_artifacts_v3, resolve_daily_key
 from btc_eth_dual_quant.data.liquid_universe_pipeline_v4 import (
     dispatch_daily_rows,
+    utc_datetime_from_epoch_ms,
     validate_lifecycle_symbol_month_grid,
 )
 from scripts.liquid_universe_public_run import (
     DEFAULT_RAW,
     ROOT,
     _download_missing_archive,
-    _minute_rows,
     _prefetch_checksums,
     _source_row,
     canonical_key,
@@ -79,6 +85,64 @@ def _event_row_source_is_bound(row: Any, lifecycle: LifecycleEventRegistry) -> b
     return True
 
 
+def _physical_kline_rows(path: Path) -> list[list[str]]:
+    with zipfile.ZipFile(path) as archive:
+        names = [name for name in archive.namelist() if name.endswith(".csv")]
+        if len(names) != 1:
+            raise ValueError("archive must contain one CSV")
+        rows = [row for row in csv.reader(io.TextIOWrapper(archive.open(names[0]), encoding="utf-8-sig")) if row]
+    if rows and rows[0] and not rows[0][0].strip().isdigit():
+        rows = rows[1:]
+    return rows
+
+
+def _valid_five_minute_rows(path: Path, symbol: str, month: str) -> tuple[list[MinuteBar], list[str]]:
+    """Parse physical rows and exclude every row that is not a strict 5m kline."""
+    start, end = month_bounds(month)
+    start_ms, end_ms = utc_epoch_ms(start), utc_epoch_ms(end)
+    bars: list[MinuteBar] = []
+    errors: list[str] = []
+    for raw_fields in _physical_kline_rows(path):
+        try:
+            values = normalize_kline_fields(field.strip() for field in raw_fields)
+            open_ms, open_, high, low, close, volume, close_ms, quote_volume, trades, taker_base, taker_quote, _ = values
+            if open_ms % 300_000 or close_ms != open_ms + 299_999:
+                raise ValueError("5m interval boundary is invalid")
+            if not start_ms <= open_ms < end_ms:
+                raise ValueError("5m timestamp outside archive month")
+            if low > min(open_, close) or high < max(open_, close) or low > high:
+                raise ValueError("invalid 5m OHLC ordering")
+            if any(value < Decimal(0) for value in (volume, quote_volume, taker_base, taker_quote)):
+                raise ValueError("5m volume must be finite and non-negative")
+            bars.append(MinuteBar(
+                symbol=symbol,
+                open_time=utc_datetime_from_epoch_ms(open_ms),
+                open=open_,
+                high=high,
+                low=low,
+                close=close,
+                volume=volume,
+                quote_volume=quote_volume,
+                trade_count=trades,
+                taker_base_volume=taker_base,
+                taker_quote_volume=taker_quote,
+            ))
+        except ValueError as exc:
+            errors.append(str(exc))
+    return bars, sorted(set(errors))
+
+
+def _with_parse_errors(result: GridResult, parse_errors: list[str]) -> GridResult:
+    return GridResult(
+        result.symbol,
+        result.month,
+        result.expected_count,
+        result.actual_count,
+        result.missing,
+        tuple(sorted(set(result.errors) | set(parse_errors))),
+    )
+
+
 def build_daily_v4(
     *,
     monthly_groups: dict,
@@ -115,7 +179,7 @@ def build_daily_v4(
         result = resolve_daily_key(monthly, supplement, row_registry)
         if result.unresolved_row_conflicts:
             rows = monthly + supplement
-            event_day = datetime.fromtimestamp(key[2] / 1_000, timezone.utc).date()
+            event_day = utc_datetime_from_epoch_ms(key[2]).date()
             excluded = exclusion_record(key[0], event_day, v3_contract, eligibility_registry)
             if excluded is not None and rows and all(row.errors for row in rows):
                 result = _excluded_result(rows, excluded["category"])
@@ -261,17 +325,18 @@ def run(
         try:
             source = _source_row(path, key, symbol, "5m", month, "official_monthly_zip_detail", offline=offline)
             sources.append(source)
-            bars = _minute_rows(path, symbol)
+            bars, row_errors = _valid_five_minute_rows(path, symbol, month)
             events = [event for event in lifecycle.events if event.symbol == symbol and event.effective_at.strftime("%Y-%m") == month]
             if events:
                 boundary_ms = utc_epoch_ms(events[0].availability_end_exclusive)
-                grid_results[(symbol, month)] = validate_lifecycle_symbol_month_grid(
+                grid_result = validate_lifecycle_symbol_month_grid(
                     symbol, month, bars, availability_end_exclusive_ms=boundary_ms,
                 )
-                active_bars = [bar for bar in bars if int(bar.open_time.timestamp() * 1_000) < boundary_ms]
+                active_bars = [bar for bar in bars if utc_epoch_ms(bar.open_time) < boundary_ms]
             else:
-                grid_results[(symbol, month)] = validate_symbol_month_grid(symbol, month, bars)
+                grid_result = validate_symbol_month_grid(symbol, month, bars)
                 active_bars = bars
+            grid_results[(symbol, month)] = _with_parse_errors(grid_result, row_errors)
             grouped: dict[Any, list[Any]] = defaultdict(list)
             for bar in active_bars:
                 grouped[bar.open_time.replace(minute=0, second=0, microsecond=0)].append(bar)

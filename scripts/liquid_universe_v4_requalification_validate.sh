@@ -8,7 +8,11 @@ bash scripts/liquid_universe_v4_implementation_validate.sh
 "$PYTHON_BIN" -m unittest \
   tests.test_liquid_universe_v4_public_run \
   tests.test_liquid_universe_v4_requalification -v
-"$PYTHON_BIN" scripts/liquid_universe_v4_requalification_check.py
+if grep -q '^current_status: liquid_universe_v4_independent_audit_failed_no_strategy_no_m2$' PROJECT_STATE.yaml; then
+  "$PYTHON_BIN" scripts/liquid_universe_v4_historical_audit_blocked_check.py
+else
+  "$PYTHON_BIN" scripts/liquid_universe_v4_requalification_check.py
+fi
 "$PYTHON_BIN" -m compileall src scripts
 bash scripts/project_validate.sh
 

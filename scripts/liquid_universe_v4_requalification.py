@@ -6,8 +6,10 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
+import tempfile
 import zipfile
 
 from btc_eth_dual_quant.data.liquid_universe import canonical_hash
@@ -82,8 +84,52 @@ def assert_three_way(builds: dict, reports: dict, diffs: dict) -> None:
 
 
 def _write_json(path: Path, document: dict) -> None:
+    payload = (json.dumps(document, sort_keys=True, indent=2, ensure_ascii=True) + "\n").encode("utf-8")
+    _atomic_write_bytes(path, payload)
+
+
+def _atomic_write_bytes(path: Path, payload: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(document, sort_keys=True, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+    temporary: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=path.parent, prefix=f".{path.name}.", suffix=".tmp", delete=False) as handle:
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+            temporary = Path(handle.name)
+        os.replace(temporary, path)
+        temporary = None
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
+def render_bound_report(
+    base_report: bytes,
+    records: dict[str, dict],
+    *,
+    source_freeze_hash: str,
+    determinism_status: str,
+) -> bytes:
+    suffix = ["", "## Build Hashes", ""]
+    suffix.extend(f"- {name}: `{records[name]['artifact_set_hash']}`" for name in records)
+    suffix.extend([
+        f"- Source freeze: `{source_freeze_hash}`",
+        f"- Determinism: {determinism_status}",
+        "",
+    ])
+    return base_report.rstrip(b"\n") + b"\n" + "\n".join(suffix).encode("utf-8")
+
+
+def verify_report_binding(report_path: Path, run_manifest: dict) -> str:
+    actual = file_sha256(report_path)
+    records = run_manifest.get("content", {}).get("builds", {})
+    if not records:
+        raise ValueError("run manifest contains no report binding")
+    mismatches = [name for name, record in records.items() if record.get("qualification_report_sha256") != actual]
+    if mismatches:
+        raise ValueError(f"qualification report binding mismatch: {','.join(sorted(mismatches))}")
+    return actual
 
 
 def _load_completed_build(work_root: Path, name: str) -> tuple[dict, Path, Path] | None:
@@ -156,18 +202,29 @@ def execute(
             "workers": workers[name],
             "artifact_set_hash": artifact_set_hash(builds[name]),
             "manifest_hashes": {key: builds[name][key]["content_hash"] for key in sorted(builds[name])},
-            "qualification_report_sha256": file_sha256(reports[name]),
+            "build_qualification_report_sha256": file_sha256(reports[name]),
             "v3_v4_diff_sha256": file_sha256(diffs[name]),
         }
         for name in builds
     }
+    determinism_status = "pass" if completed else "not_run_due_fail_closed_cold_block"
+    final_report = render_bound_report(
+        reports["cold"].read_bytes(),
+        records,
+        source_freeze_hash=source_before["content_hash"],
+        determinism_status=determinism_status,
+    )
+    _atomic_write_bytes(report_path, final_report)
+    final_report_sha256 = file_sha256(report_path)
+    for record in records.values():
+        record["qualification_report_sha256"] = final_report_sha256
     run_content = {
         "status": summary["status"],
         "range": {"start": "2020-01", "end": "2026-06"},
         "source_freeze_hash": source_before["content_hash"],
         "builds": records,
         "builds_completed": list(builds),
-        "determinism_status": "pass" if completed else "not_run_due_fail_closed_cold_block",
+        "determinism_status": determinism_status,
         "deterministic_mismatches": 0 if completed else None,
         "stop_reasons": [] if completed else summary.get("blockers", []),
         "processing_errors": summary["processing_errors"],
@@ -187,15 +244,7 @@ def execute(
     }
     run_manifest["content_hash"] = canonical_hash(run_manifest)
     _write_json(evidence_dir / "requalification_run_manifest.json", run_manifest)
-
-    final_report = reports["cold"].read_text(encoding="utf-8")
-    final_report += "\n## Build Hashes\n\n"
-    final_report += "\n".join(
-        f"- {name}: `{records[name]['artifact_set_hash']}`" for name in builds
-    ) + "\n"
-    final_report += f"- Source freeze: `{source_before['content_hash']}`\n"
-    final_report += f"- Determinism: {run_content['determinism_status']}\n"
-    report_path.write_text(final_report, encoding="utf-8")
+    verify_report_binding(report_path, run_manifest)
     return run_manifest
 
 

@@ -1,17 +1,30 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-16T10:00:00Z"
+last_updated_utc: "2026-07-16T13:02:39Z"
 current_phase: Liquid universe V4 independent audit failed or blocked
 current_status: liquid_universe_v4_independent_audit_failed_no_strategy_no_m2
 completed_milestones:
+  - phase: U-03F V4 repair implementation
+    status: implementation_fixture_pass_pending_exact_head_review
+    evidence: reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md
+    protocol_content_hash: 9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1
+    repair_implementation_hash: 882b0149d99b30f35118ce85b9db72083a2093428e0e0fa4e19603f0f458af5d
+    auditor_algorithm_hash: 7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1
+    base_main_sha: 0e65cd41bfac590d40ae5cb0590cc7102019018c
+    branch: codex/u03f-v4-repair-implementation
+    public_requalification_executed: false
+    new_independent_audit_executed: false
+    exact_head_review_status: pending
   - phase: U-03F V4 repair and requalification protocol
-    status: frozen_before_repair_implementation_pending_review
+    status: frozen_before_repair_implementation_merged
     evidence: reports/m0/U03F_V4_REPAIR_REQUALIFICATION_PROTOCOL.md
     protocol: config/liquid_universe_v4_repair_requalification_protocol.json
     protocol_content_hash: 9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1
     starting_main_sha: 513d321b69750d6c8bb47bddbf006d4caac04828
     branch: codex/u03f-v4-repair-requalification-protocol
+    merged_pr: 97
+    merge_commit: 0e65cd41bfac590d40ae5cb0590cc7102019018c
     public_requalification_executed: false
     new_independent_audit_executed: false
   - phase: U-03F V4 independent audit
@@ -317,15 +330,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03F-REPAIR-PROTOCOL
-    phase: U-03F V4 repair and requalification protocol review
+  - id: U-03F-REPAIR-IMPLEMENTATION
+    phase: U-03F V4 repair implementation and exact-head review
     status: in_progress
-    branch: codex/u03f-v4-repair-requalification-protocol
+    branch: codex/u03f-v4-repair-implementation
     pr: none
     head_sha: runtime_current_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/U03F_V4_REPAIR_REQUALIFICATION_PROTOCOL.md
-    blocker: "Protocol must pass local validation, PR CI and merge before any production repair implementation."
+    evidence: reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md
+    blocker: "Implementation CI and a separate exact-head approve verdict with zero critical/high findings are required before implementation merge or public requalification."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -397,8 +410,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Review and merge the frozen U-03F repair/requalification protocol; only then implement the exact integer-time, 5m row-validity and report-binding repair."
-  - "After exact-head independent approval and repair merge, run the fixed-range public requalification and a new independent audit under the frozen authority."
+  - "Complete CI for the exact U-03F repair implementation head, then obtain a separate exact-head approve verdict with zero critical/high findings before implementation merge."
+  - "Only after exact-head approval and repair merge, run the fixed-range public requalification and a new independent audit under the frozen authority."
   - "Diagnostics are limited to reproducing and repairing the merged U-03F findings; they cannot authorize research or mutate historical evidence."
   - "Design review is limited to the independent repair/requalification contract and cannot select a strategy or authorize U-04."
   - Cross-sectional design remains blocked because U-03F failed; U-04 is not authorized.
@@ -438,9 +451,13 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md
+    phase: U-03F V4 repair implementation
+    status: implementation_fixture_pass_pending_exact_head_review
+    status_marker: "- Status: `implementation_fixture_pass_pending_exact_head_review`"
   - path: reports/m0/U03F_V4_REPAIR_REQUALIFICATION_PROTOCOL.md
     phase: U-03F V4 repair and requalification protocol
-    status: frozen_before_repair_implementation_pending_review
+    status: frozen_before_repair_implementation_merged_pr97
     status_marker: "- Status: frozen_before_repair_implementation"
   - path: reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md
     phase: U-03F V4 independent audit
@@ -778,6 +795,10 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 97
+    title: Freeze U-03F V4 repair and requalification protocol
+    merge_commit: 0e65cd41bfac590d40ae5cb0590cc7102019018c
+    status: merged
   - number: 95
     title: Record U-03F V4 independent audit failure
     merge_commit: 36b81649fbdaf4f54aea7027f3e9325b0ea80de0
