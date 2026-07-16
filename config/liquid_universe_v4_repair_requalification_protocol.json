@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "protocol_id": "U03F-V4-REPAIR-REQUALIFICATION-V1",
+  "status": "frozen_before_repair_implementation",
+  "generated_utc": "2026-07-16T10:00:00Z",
+  "repository_binding": {
+    "repository": "QIUYEDALAO/btc-eth-dual-quant",
+    "starting_main_sha": "513d321b69750d6c8bb47bddbf006d4caac04828",
+    "failed_audit_pr": 95,
+    "failed_audit_merge_sha": "36b81649fbdaf4f54aea7027f3e9325b0ea80de0",
+    "failed_audit_result_head_sha": "fed6aa929d952a9d4744728d398dfa51fe399df1"
+  },
+  "immutable_historical_bindings": {
+    "original_audit_protocol_content_hash": "0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157",
+    "original_auditor_algorithm_hash": "7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1",
+    "original_source_freeze_content_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "original_artifact_set_hash": "4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6",
+    "original_run_manifest_content_hash": "f55f2829be39445a8489a0863ee5e013c481351d64797251bd79bc199376b127",
+    "failed_audit_independent_artifact_set_hash": "c7c8e564db713c9268fcd907f8b28cf3f5f595fa08d0755d96c40d91fe237236",
+    "failed_audit_summary_content_hash": "3422f1cc9bdfe12a7ca2a67755b56654213152926834bfc4e9ae936f4f66107e",
+    "failed_audit_report_sha256": "dab79b1224e1c1f8be4c6f6e018b9ce6f40e751af58d380fd4d872d3f442045c",
+    "failed_audit_summary_file_sha256": "d11af8c2fdc54cac699909b0b418dd90a5f1c87e6a5e91e892770924c2184003",
+    "original_production_pipeline_sha256": "6a9a3c11c749f3db5059119de70012eec0b5339a0b0b46f69022c71272f2a9f0",
+    "original_public_run_sha256": "5622df8000c3cdd8f70a345536ed1530d954848781a6f6d7228d675c7d176623"
+  },
+  "repair_scope": {
+    "allowed_production_files": [
+      "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py",
+      "scripts/liquid_universe_v4_public_run.py",
+      "scripts/liquid_universe_v4_requalification.py",
+      "scripts/liquid_universe_v4_requalification_check.py"
+    ],
+    "integer_time_only": true,
+    "strict_5m_row_validation": true,
+    "report_binding_atomic_with_run_manifest": true,
+    "historical_evidence_mutation_allowed": false,
+    "source_download_or_replacement_allowed": false,
+    "validation_gate_reduction_allowed": false,
+    "public_requalification_in_implementation_pr_allowed": false
+  },
+  "finding_requirements": [
+    {
+      "finding_id": "F-CRITICAL-INTEGER-RECOMPUTATION",
+      "source_severity": "critical",
+      "requirement": "Production expected-grid, source, qualified-panel, qualification-summary and V3/V4-diff artifacts must be derived only from integer-time-valid 5m rows.",
+      "required_fault_tests": ["FT-INT-PRECISION", "FT-ADA-INVALID-INTERVAL", "FT-INVALID-CLOSE-BOUNDARY"]
+    },
+    {
+      "finding_id": "F-HIGH-INTEGER-TIME-PATHS",
+      "source_severity": "high",
+      "source_finding_count": 6,
+      "requirement": "No datetime.timestamp, float epoch division or float epoch multiplication may remain in the two V4 production authority paths.",
+      "required_fault_tests": ["FT-INT-PRECISION", "FT-STATIC-FLOAT-PATH"]
+    },
+    {
+      "finding_id": "F-HIGH-REPORT-BINDING",
+      "source_severity": "high",
+      "requirement": "The committed qualification report bytes and run-manifest qualification_report_sha256 must be produced and verified in one deterministic finalization step.",
+      "required_fault_tests": ["FT-REPORT-BYTE-DRIFT", "FT-RUN-MANIFEST-BINDING"]
+    }
+  ],
+  "required_fault_tests": {
+    "FT-INT-PRECISION": "A microsecond epoch beyond exact IEEE-754 integer range must retain its exact integer millisecond identity.",
+    "FT-STATIC-FLOAT-PATH": "The V4 production authority files must fail validation if float epoch or datetime.timestamp authority code reappears.",
+    "FT-ADA-INVALID-INTERVAL": "ADAUSDT 2020-02 must count 8269 valid 5m rows rather than the historical 8270 physical rows.",
+    "FT-INVALID-CLOSE-BOUNDARY": "A row whose close time is not exactly open time plus 299999 milliseconds must be excluded and reported fail closed.",
+    "FT-REPORT-BYTE-DRIFT": "Changing report bytes after manifest finalization must invalidate the run binding.",
+    "FT-RUN-MANIFEST-BINDING": "The final committed report SHA256 must exactly equal the run-manifest binding."
+  },
+  "exact_head_review_gate": {
+    "required": true,
+    "reviewed_head_must_be_unchanged": true,
+    "allowed_verdict": "approve",
+    "critical_findings_required": 0,
+    "high_findings_required": 0,
+    "implementation_merge_before_review_allowed": false
+  },
+  "public_requalification_gate": {
+    "range_start": "2020-01",
+    "range_end": "2026-06",
+    "months_expected": 78,
+    "membership_rows_expected": 1170,
+    "source_archive_count_expected": 27736,
+    "source_freeze_content_hash_required": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "orders": ["cold", "warm", "worker"],
+    "artifact_set_hashes_must_match": true,
+    "all_blocking_counters_must_be_zero": true,
+    "qualification_report_binding_must_match": true,
+    "stop_before_later_orders_on_first_failure": true
+  },
+  "new_independent_audit_gate": {
+    "protocol_must_bind_merged_requalification_exactly": true,
+    "orders": ["normal", "reverse", "shuffled"],
+    "production_manifests_expected": 15,
+    "exact_production_manifests_required": 15,
+    "critical_findings_required": 0,
+    "high_findings_required": 0,
+    "allowed_pass_verdict": "pass",
+    "any_mismatch_must_fail_closed": true,
+    "auditor_algorithm_hash_drift_allowed": false
+  },
+  "stop_conditions": [
+    "historical_evidence_hash_drift",
+    "source_freeze_hash_drift",
+    "unmapped_critical_or_high_finding",
+    "exact_head_drift",
+    "review_verdict_not_approve",
+    "review_critical_or_high_finding",
+    "public_requalification_mismatch_or_blocker",
+    "new_audit_mismatch_or_critical_or_high",
+    "authorization_expansion"
+  ],
+  "authorization": {
+    "repair_implementation_after_protocol_merge": true,
+    "exact_head_review_after_implementation_ci": true,
+    "public_requalification_after_approved_repair_merge": true,
+    "new_independent_audit_after_requalification_merge": true,
+    "u04": false,
+    "hypothesis": false,
+    "strategy": false,
+    "event_scan": false,
+    "returns": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  }
+}

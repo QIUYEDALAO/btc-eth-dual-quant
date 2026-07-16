@@ -1579,3 +1579,16 @@ private exchange responses here.
 - Authority: V4 production evidence is unchanged but its qualification authority is now `audit_blocked` / `revalidation_required`. V1, V2 and V3 remain historical evidence and cannot substitute as active authority.
 - Next Gate: only a separately scoped independent repair of integer-time, 5m row-validity and report-binding defects may follow, then a new fixed-range requalification and independent audit. No repair is included in this closeout.
 - Safety: U-04, hypothesis, strategy, events, signals, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - U-03F V4 Repair And Requalification Protocol Frozen
+
+- Task ID: U-03F-RP
+- Branch: `codex/u03f-v4-repair-requalification-protocol`
+- Starting GitHub main: `513d321b69750d6c8bb47bddbf006d4caac04828`.
+- Protocol: `config/liquid_universe_v4_repair_requalification_protocol.json`; content hash `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`.
+- Scope: Maps the merged one critical and seven high findings into integer-only time, strict 5m row validity, artifact propagation and atomic report/run-manifest binding requirements with six mandatory fault tests.
+- Dependency chain: protocol merge -> implementation -> exact-head independent approve with 0 critical/high -> fixed-range cold/warm/worker public requalification -> new normal/reverse/shuffled 15/15 audit -> governance closeout.
+- Immutable evidence: PR #89/#95 artifacts, original audit protocol/algorithm hashes and the 27,736-archive source freeze remain unchanged; no source download or replacement is permitted.
+- Execution status: repair implementation no; public requalification no; new independent audit no.
+- Gate: local checks, PR CI and merge are required before production repair implementation.
+- Safety: V4 remains `audit_blocked` / `revalidation_required`; U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.

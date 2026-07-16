@@ -2,6 +2,29 @@
 
 ## Immediate Task
 
+The U-03F V4 repair and requalification protocol is frozen on
+`codex/u03f-v4-repair-requalification-protocol`, based on GitHub main
+`513d321b69750d6c8bb47bddbf006d4caac04828`. Its machine content hash is
+`9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`.
+No production repair or public rerun has occurred.
+
+The protocol maps the merged one critical and seven high findings into three
+repair requirements and six mandatory fault tests. It freezes integer-only UTC
+conversion, exact 5m open/close interval validation, propagation through grid,
+source, panel, summary and diff artifacts, and atomic qualification-report/run-
+manifest binding. It also freezes the exact-head review, fixed `2020-01`
+through `2026-06` requalification and new 15/15 independent-audit Gates.
+
+The immediate Gate is local validation, PR review and CI merge for the protocol
+only. Production implementation must not begin before protocol merge. Any
+historical evidence hash drift, source-freeze drift, Gate reduction or
+authorization expansion stops the chain.
+
+V4 remains `audit_blocked` / `revalidation_required`; U-04 remains
+unauthorized.
+
+## Historical Failed Audit
+
 U-03F is closed as `failed_audit`. PR #95 merged the truthful evidence at
 `36b81649fbdaf4f54aea7027f3e9325b0ea80de0` after 106/106 GitHub Actions
 passed. The green checks prove evidence self-consistency; they do not change the
@@ -80,13 +103,15 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Create a separately scoped and independently reviewed repair task for the
-   U-03F findings.
-2. After repair approval, repeat the fixed-range public requalification and a
-   new independent audit without lowering any Gate.
-3. Preserve V1/V2/V3/V4 prior runs as historical evidence; none is an alternative active
+1. Merge the frozen repair/requalification protocol after every local and
+   GitHub check passes.
+2. Implement only the frozen repair, then require exact-head independent
+   approval with zero critical/high findings before merge.
+3. Repeat the fixed-range public requalification and a new independent audit
+   without lowering any Gate.
+4. Preserve V1/V2/V3/V4 prior runs as historical evidence; none is an alternative active
    qualification authority.
-4. Keep U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
+5. Keep U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
 
 U-03E V2 and V3 remain truthful blocked historical milestones. V4 supersedes
 their admission authority through a separately adopted lifecycle policy and

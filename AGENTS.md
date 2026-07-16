@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- The U-03F V4 repair/requalification protocol is frozen on `codex/u03f-v4-repair-requalification-protocol` with content hash `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`, pending PR review and CI. No production repair or rerun has occurred.
+- The frozen dependency order is protocol merge, exact repair implementation, exact-head independent approval, fixed `2020-01` through `2026-06` requalification, new 15/15 independent audit, then governance closeout. Any mismatch, critical/high finding or hash drift fails closed.
+- The repair protocol does not restore V4 authority and does not authorize U-04. Historical PR #89/#95 evidence and the 27,736-archive source freeze are immutable.
 - Current phase: Liquid universe V4 independent audit failed or blocked. PR #95 merged the truthful `failed_audit` evidence at `36b81649fbdaf4f54aea7027f3e9325b0ea80de0` after 106/106 checks passed.
 - The implementation algorithm hash remains `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`; production V4 authority code and evidence were not modified by the audit.
 - U-03F V4 independent-audit protocol merged in PR #91 and remains frozen. Its content hash is `0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157`.
