@@ -1634,3 +1634,16 @@ private exchange responses here.
 - Historical integrity: original PR #89 qualification and PR #95 failed-audit evidence hashes remain byte-for-byte unchanged. V1/V2/V3 and prior V4 evidence remain historical only.
 - Next action: merge this truthful blocked evidence only after all PR checks pass, then perform a governance-only closeout. Do not create the new-audit PR.
 - Safety: V4 remains `audit_blocked` / `revalidation_required`; U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - U-03F Repair Requalification Evidence Merged And Chain Closed
+
+- Date UTC: 2026-07-16T18:58:31Z
+- Task IDs: U-03F-RQ / U-03F-RC
+- Governance closeout: `codex/u03f-v4-repair-governance-closeout` / PR #101.
+- Evidence PR / head / merge: #100 / `a0e680fbfb4415bb25871aa0cb3ed8b873d6c810` / `927f121651d6e1e07f174410a39595f6d09e9a5d`.
+- Validation: 114/114 GitHub Actions passed. Green CI proves the blocked evidence and bindings are self-consistent; it does not turn the requalification into a pass.
+- Result: cold remains `blocked` on 119 strict frozen-source 5m interval-boundary errors. Warm and worker remain `not_run_due_fail_closed_cold_block`.
+- Integrity: source freeze `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`, cold artifact set `b7cac049c6ab339f52fc29c7f31d275db09b3a4c47e2f62b38175cea219b2f83` and run manifest `0792ec7b52dbabb6057f0c238d963ed774c1e9e838b42cb21a03bc7e334f68cf` remain exact. Historical PR #89/#95 evidence is unchanged.
+- Governance: the U-03F repair chain is closed as blocked. The new independent audit is not authorized and was not created. There is no open repair/requalification task.
+- Future Gate: any future attempt requires a new, separately approved repair/requalification protocol and cannot automatically enter an audit or U-04.
+- Safety: V4 remains `audit_blocked` / `revalidation_required`; U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.

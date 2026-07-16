@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "U-03F V4 repair public requalification blocked",
+            "U-03F V4 repair chain closed blocked",
         )
         self.assertEqual(
             state["current_status"],
-            "liquid_universe_v4_repair_requalification_blocked_no_new_audit_no_u04_no_m2",
+            "u03f_v4_repair_chain_closed_requalification_blocked_no_new_audit_no_u04_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -415,6 +415,20 @@ class KlaySourceConflictTests(unittest.TestCase):
         )
         self.assertFalse(any(item["id"] == "U-03E-V4-RUN" for item in state["open_work"]))
         self.assertFalse(any(item["id"] == "U-03F" for item in state["open_work"]))
+        self.assertFalse(
+            any(item["id"] == "U-03F-REPAIR-REQUALIFICATION" for item in state["open_work"])
+        )
+        repair = next(
+            item
+            for item in state["completed_milestones"]
+            if item["phase"] == "U-03F V4 repair public requalification"
+        )
+        self.assertEqual(repair["status"], "blocked_invalid_5m_interval_boundaries_merged_closed")
+        self.assertEqual(repair["merged_pr"], 100)
+        self.assertEqual(
+            repair["merge_commit"],
+            "927f121651d6e1e07f174410a39595f6d09e9a5d",
+        )
         audit = next(
             item
             for item in state["completed_milestones"]

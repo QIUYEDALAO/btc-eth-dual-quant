@@ -28,12 +28,15 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- PR #100 merged the truthful blocked repair-requalification evidence at `927f121651d6e1e07f174410a39595f6d09e9a5d` after 114/114 checks. Its exact evidence head is `a0e680fbfb4415bb25871aa0cb3ed8b873d6c810`.
+- The U-03F repair chain is closed as blocked. Cold consumed the exact 27,736 frozen local archives and found 119 strict 5m interval-boundary errors; warm/worker and the new independent audit were not run.
+- There is no currently authorized repair, requalification or new-audit task. Any future attempt requires a separately approved protocol; it must not auto-enter U-04 or reinterpret PR #100 as a pass.
 - PR #98 merged the unchanged repair head `27e6436c0a4b00ca7c8055bc763d533fcbcc9743` at `1ccfd409669e4bdb028d656a34e7da4d867fdba3` after 110/110 target checks. Repair hash `9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a` remains exact.
 - PR #99 merged the exact-head independent `approve` review at `9f1480f544d3bde90ad4f5c55c79dc441001162c` after 112/112 checks; remaining critical/high findings are 0/0.
 - The fixed `2020-01` through `2026-06` repair requalification ran fresh from that main using only the exact 27,736-archive frozen source. Cold is truthfully `blocked` on 119 strict 5m interval-boundary errors; run-manifest hash `0792ec7b52dbabb6057f0c238d963ed774c1e9e838b42cb21a03bc7e334f68cf`.
-- Warm/worker are `not_run_due_fail_closed_cold_block`. The requalification pass dependency failed, so no new independent audit is authorized. Only evidence PR review/merge and governance closeout may follow.
+- Warm/worker are `not_run_due_fail_closed_cold_block`. The requalification pass dependency failed, so no new independent audit is authorized.
 - V4 remains `audit_blocked` / `revalidation_required`. U-04, strategy, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized. Historical PR #89/#95 evidence and source freeze `c86310f8...ec6c` are immutable.
-- Current phase: U-03F V4 repair public requalification blocked. PR #95 remains the immutable truthful `failed_audit` evidence at `36b81649fbdaf4f54aea7027f3e9325b0ea80de0` after 106/106 checks passed.
+- Current phase: U-03F V4 repair chain closed blocked. PR #95 remains the immutable truthful `failed_audit` evidence at `36b81649fbdaf4f54aea7027f3e9325b0ea80de0` after 106/106 checks passed.
 - The implementation algorithm hash remains `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`; production V4 authority code and evidence were not modified by the audit.
 - U-03F V4 independent-audit protocol merged in PR #91 and remains frozen. Its content hash is `0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157`.
 - Stage D processed all 27,736 frozen archives in normal, reverse and deterministic shuffled order. The truthful verdict is `failed_audit`.
@@ -170,4 +173,4 @@ After any task, the agent must update:
 - Draft PR #98 exact head `27e6436c0a4b00ca7c8055bc763d533fcbcc9743` passed 110/110 GitHub checks and is the only reviewed repair target.
 - The review verdict is `approve` with zero remaining critical/high findings and review hash `c60b1f8b451ea60ac8da267e90917b8c560655089bb1cd20dfb12999004bf1b4`.
 - Any target head, implementation, protocol, auditor, historical evidence or source-freeze drift invalidates approval and stops the chain.
-- Public requalification and the new audit have not run. U-04, strategy, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+- Public repair requalification ran cold-only and PR #100 merged its blocked evidence after 114/114 checks. The new audit did not run. U-04, strategy, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
