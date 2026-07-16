@@ -1568,3 +1568,14 @@ private exchange responses here.
 - Integrity: source freeze and production evidence were not modified, no network was accessed, and no strategy/event/return/OOS data was processed.
 - Decision: merge truthful evidence if CI proves self-consistency, then perform a separate failed-audit governance closeout. Production repair and requalification are separate future work.
 - Safety: U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - U-03F Failed Audit Evidence Merged And Governance Closed
+
+- Date UTC: 2026-07-16T08:39:53Z
+- Task ID: U-03F-CLOSEOUT
+- Result PR / head / merge: #95 / `fed6aa929d952a9d4744728d398dfa51fe399df1` / `36b81649fbdaf4f54aea7027f3e9325b0ea80de0`.
+- Validation: 106/106 GitHub Actions passed. Green CI proves the committed audit evidence is self-consistent; the audit verdict remains `failed_audit`.
+- Result: three offline traversal orders remain deterministic, 10/15 production manifests are exact, and the merged evidence records 1 critical plus 7 high findings.
+- Authority: V4 production evidence is unchanged but its qualification authority is now `audit_blocked` / `revalidation_required`. V1, V2 and V3 remain historical evidence and cannot substitute as active authority.
+- Next Gate: only a separately scoped independent repair of integer-time, 5m row-validity and report-binding defects may follow, then a new fixed-range requalification and independent audit. No repair is included in this closeout.
+- Safety: U-04, hypothesis, strategy, events, signals, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.

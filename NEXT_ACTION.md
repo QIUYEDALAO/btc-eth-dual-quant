@@ -2,10 +2,10 @@
 
 ## Immediate Task
 
-U-03F Stage D has run over all 27,736 frozen archives in normal, reverse and
-deterministically shuffled order. All three independent runs produced the same
-artifact-set hash, but the verdict is `failed_audit` with one critical and seven
-high findings.
+U-03F is closed as `failed_audit`. PR #95 merged the truthful evidence at
+`36b81649fbdaf4f54aea7027f3e9325b0ea80de0` after 106/106 GitHub Actions
+passed. The green checks prove evidence self-consistency; they do not change the
+audit verdict.
 
 Only 10 of 15 production manifests match exactly. The expected-grid, source,
 qualified-panel, qualification-summary and V3/V4-diff artifacts differ. The
@@ -15,14 +15,14 @@ versus `8269` independently valid rows). The independent parser rejects invalid
 The production qualification-report hash recorded in the run manifest also
 differs from the committed report hash.
 
-The current task is to review and merge this truthful audit-result evidence.
-Do not repair the production implementation or mutate any V4 authority artifact
-in this PR. After merge, only a separate failed-audit governance closeout may
-follow. U-04 remains unauthorized.
+V4 is now `audit_blocked` and `revalidation_required`. Its prior deterministic
+public requalification remains immutable historical evidence, but it is no
+longer research-admission authority. U-04 remains unauthorized.
 
-The fixed `2020-01` through `2026-06` V4 public requalification passed and
-merged in PR #89 at `77cb0969980978e65f3560f38f50924c73dfee6e`.
-V4 is now the active liquid-universe qualification authority.
+The next task, if separately started, may only repair the independently found
+integer-time, 5m row-validity and report-binding defects, then repeat fixed-range
+requalification and independent audit. This closeout does not implement that
+repair.
 
 The audit-result PR may prove evidence self-consistency in CI even though the
 audit verdict is failure. A green CI result must not be described as a V4 audit
@@ -80,10 +80,11 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Complete review and merge of the truthful U-03F failed-audit result.
-2. Create a separate governance closeout that marks V4 `audit_blocked` or
-   `revalidation_required` without changing production evidence.
-3. Preserve V1/V2/V3 as historical evidence; none is an alternative active
+1. Create a separately scoped and independently reviewed repair task for the
+   U-03F findings.
+2. After repair approval, repeat the fixed-range public requalification and a
+   new independent audit without lowering any Gate.
+3. Preserve V1/V2/V3/V4 prior runs as historical evidence; none is an alternative active
    qualification authority.
 4. Keep U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
 
