@@ -1597,7 +1597,7 @@ private exchange responses here.
 
 - Task IDs: U-03F-RP / U-03F-RI
 - Protocol PR / merge: #97 / `0e65cd41bfac590d40ae5cb0590cc7102019018c`; 108/108 GitHub checks passed before merge.
-- Implementation branch / base: `codex/u03f-v4-repair-implementation` / exact merged protocol main `0e65cd41bfac590d40ae5cb0590cc7102019018c`.
+- Implementation branch / PR / base: `codex/u03f-v4-repair-implementation` / Draft #98 / exact merged protocol main `0e65cd41bfac590d40ae5cb0590cc7102019018c`.
 - Result: integer-only epoch handling, exact 5m open/close boundary validation, invalid-row exclusion and fail-closed propagation, plus atomic final-report/run-manifest hash binding are implemented fixture-only.
 - Fault Gate: FT-INT-PRECISION, FT-STATIC-FLOAT-PATH, FT-ADA-INVALID-INTERVAL, FT-INVALID-CLOSE-BOUNDARY, FT-REPORT-BYTE-DRIFT and FT-RUN-MANIFEST-BINDING all pass. The ADA fixture preserves 8,270 physical rows while admitting exactly 8,269 valid rows.
 - Repair implementation hash: `882b0149d99b30f35118ce85b9db72083a2093428e0e0fa4e19603f0f458af5d`.

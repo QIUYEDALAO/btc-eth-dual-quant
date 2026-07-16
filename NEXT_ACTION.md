@@ -7,7 +7,7 @@ PR #97 merged the frozen U-03F V4 repair and requalification protocol at
 The exact protocol content hash remains
 `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`.
 
-The repair is now implemented fixture-only on
+The repair is now implemented fixture-only in Draft PR #98 on
 `codex/u03f-v4-repair-implementation`, based on that exact merged main. Integer-
 only UTC conversion, strict 5m close-boundary filtering and atomic final-report/
 run-manifest binding pass all six frozen fault tests. The repair implementation
@@ -15,7 +15,7 @@ hash is `882b0149d99b30f35118ce85b9db72083a2093428e0e0fa4e19603f0f458af5d`;
 the independent auditor algorithm remains frozen at
 `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`.
 
-No public requalification or new audit has run. The immediate Gate is PR-B CI,
+No public requalification or new audit has run. The immediate Gate is PR #98 CI,
 followed by a separate exact-head independent review. The implementation cannot
 merge unless that unchanged head receives `approve` with zero critical and zero
 high findings. Any head, historical-evidence, source-freeze, protocol or auditor
