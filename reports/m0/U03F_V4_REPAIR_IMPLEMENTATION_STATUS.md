@@ -5,7 +5,7 @@
 - Branch: `codex/u03f-v4-repair-implementation`
 - Draft PR: `#98`
 - Frozen protocol content hash: `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`
-- Repair implementation hash: `f0c0394e519cfe68b37930a12bbe2cb35abcda1b7aa91ac565e18caa2ad49700`
+- Repair implementation hash: `9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a`
 - Frozen independent auditor algorithm hash: `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`
 - Real public requalification run: `not run`
 - New independent audit run: `not run`
@@ -37,6 +37,10 @@ download-on-missing paths are rejected. The builder also requires its complete
 consumed canonical-key set, SHA256 values and byte sizes to match all 27,736
 frozen entries exactly; an extra, duplicate, missing or drifted input therefore
 stops the later requalification before artifacts are built.
+
+Requalification has no resume mode. It removes the previous work-root before
+execution, so cold, warm and worker evidence must be regenerated under the
+current merged repair instead of reusing a stale or fabricated local build.
 
 New requalification evidence is routed to
 `reports/m0/evidence/liquid_universe_v4_repair_requalification` and new repair-

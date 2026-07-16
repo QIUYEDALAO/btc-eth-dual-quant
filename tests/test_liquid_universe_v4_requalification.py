@@ -21,6 +21,9 @@ class LiquidUniverseV4RequalificationTests(unittest.TestCase):
         self.assertIn("offline=True", source)
         self.assertIn("verify_remote_registry=False", source)
         self.assertNotIn("offline=False", source)
+        self.assertNotIn("resume", source)
+        self.assertNotIn("--resume", inspect.getsource(requalification.main))
+        self.assertIn("shutil.rmtree(work_root", source)
 
     def test_repaired_evidence_paths_do_not_overwrite_historical_v4(self):
         self.assertIn("liquid_universe_v4_repair_requalification", str(requalification.REPAIRED_EVIDENCE))

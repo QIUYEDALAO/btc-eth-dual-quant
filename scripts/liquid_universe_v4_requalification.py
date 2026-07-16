@@ -138,30 +138,11 @@ def verify_report_binding(report_path: Path, run_manifest: dict) -> str:
     return actual
 
 
-def _load_completed_build(work_root: Path, name: str) -> tuple[dict, Path, Path] | None:
-    build_dir = work_root / name
-    report = work_root / f"{name}.md"
-    diff = work_root / f"{name}-v3-v4.md"
-    paths = [build_dir / f"{manifest}.json" for manifest in V4_MANIFEST_TYPES]
-    if not report.exists() or not diff.exists() or not all(path.exists() for path in paths):
-        return None
-    artifacts = {}
-    for path in paths:
-        document = json.loads(path.read_text(encoding="utf-8"))
-        unsigned = {key: value for key, value in document.items() if key != "content_hash"}
-        if document.get("content_hash") != canonical_hash(unsigned):
-            raise ValueError(f"resume artifact hash mismatch: {path}")
-        artifacts[path.stem] = document
-    return artifacts, report, diff
-
-
 def execute(
     *, raw_root: Path, work_root: Path, evidence_dir: Path, report_path: Path,
     diff_report_path: Path, workers_cold: int, workers_warm: int, workers_variant: int,
-    resume: bool = False,
 ) -> dict:
-    if not resume:
-        shutil.rmtree(work_root, ignore_errors=True)
+    shutil.rmtree(work_root, ignore_errors=True)
     source_before = freeze_sources(raw_root)
     if source_before["content"].get("archive_count") != 27_736:
         raise ValueError("source freeze archive count drift")
@@ -172,11 +153,6 @@ def execute(
     diffs: dict[str, Path] = {}
     workers = {"cold": workers_cold, "warm": workers_warm, "worker": workers_variant}
     for name in ("cold", "warm", "worker"):
-        completed_build = _load_completed_build(work_root, name) if resume else None
-        if completed_build is not None:
-            builds[name], reports[name], diffs[name] = completed_build
-            print(f"build={name} status=resumed artifact_set={artifact_set_hash(builds[name])}", flush=True)
-            continue
         build_dir = work_root / name
         reports[name] = work_root / f"{name}.md"
         diffs[name] = work_root / f"{name}-v3-v4.md"
@@ -271,13 +247,12 @@ def main() -> int:
     parser.add_argument("--workers-cold", type=int, default=16)
     parser.add_argument("--workers-warm", type=int, default=3)
     parser.add_argument("--workers-variant", type=int, default=7)
-    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     document = execute(
         raw_root=args.raw_root, work_root=args.work_root, evidence_dir=args.evidence_dir,
         report_path=args.report, diff_report_path=args.diff_report,
         workers_cold=args.workers_cold, workers_warm=args.workers_warm,
-        workers_variant=args.workers_variant, resume=args.resume,
+        workers_variant=args.workers_variant,
     )
     print(f"status={document['content']['status']} content_hash={document['content_hash']}")
     return 0 if document["content"]["status"] == "pass" else 2
