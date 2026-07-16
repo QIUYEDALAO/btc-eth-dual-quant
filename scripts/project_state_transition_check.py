@@ -87,6 +87,10 @@ ALLOWED = {
         "liquid_universe_v4_requalification_pass_u03f_authorized_not_started_no_strategy_no_m2",
     ): "U-03F",
     (
+        "U-03F V4 independent audit protocol frozen pending review",
+        "u03f_v4_audit_protocol_frozen_before_result_no_strategy_no_m2",
+    ): "U-03F",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -150,6 +154,8 @@ def validate(state: dict) -> list[str]:
         "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
         "Liquid universe V4 public requalification passed pending review and merge",
         "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
+        "U-03F V4 independent audit protocol frozen pending review",
+        "U-03F V4 independent audit protocol frozen pending review",
     }:
         milestones = [
             item
@@ -174,6 +180,7 @@ def validate(state: dict) -> list[str]:
         "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
         "Liquid universe V4 public requalification passed pending review and merge",
         "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
+        "U-03F V4 independent audit protocol frozen pending review",
     }:
         adoption = [
             item
@@ -318,7 +325,10 @@ def validate(state: dict) -> list[str]:
                 }
                 if any(item.get(key) != value for key, value in expected_evidence.items()):
                     failures.append("V4 public requalification evidence binding changed")
-    if pair[0] == "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task":
+    if pair[0] in {
+        "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
+        "U-03F V4 independent audit protocol frozen pending review",
+    }:
         milestones = [
             item
             for item in state.get("completed_milestones", [])
@@ -339,8 +349,13 @@ def validate(state: dict) -> list[str]:
         if any(item.get("id") == "U-03E-V4-RUN" for item in open_work):
             failures.append("merged V4 requalification must not remain in open_work")
         audit = [item for item in open_work if item.get("id") == "U-03F"]
-        if len(audit) != 1 or audit[0].get("status") != "authorized_not_started":
-            failures.append("U-03F must be authorized_not_started after V4 closeout")
+        expected_audit_status = (
+            "protocol_frozen_pending_review"
+            if pair[0] == "U-03F V4 independent audit protocol frozen pending review"
+            else "authorized_not_started"
+        )
+        if len(audit) != 1 or audit[0].get("status") != expected_audit_status:
+            failures.append("U-03F state does not match the frozen transition")
         if not audit or audit[0].get("evidence") != "reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json":
             failures.append("U-03F must audit the V4 machine authority")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):

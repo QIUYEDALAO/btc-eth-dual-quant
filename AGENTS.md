@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- Current phase: U-03F V4 independent-audit protocol is frozen before results on `codex/u03f-v4-independent-audit-protocol`, pending review and merge.
+- The protocol content hash is `0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157`. It changes no V4 production authority and authorizes no full audit, U-04, strategy, outcomes, OOS or M2.
+- After protocol merge, only a fixture/synthetic independent auditor implementation may start. The real fixed-range audit requires a separate exact-head implementation review and approval first.
 - Current phase: Liquid universe V4 public requalification passed and merged in PR #89 at `77cb096`; U-03F independent audit is the only authorized next task.
 - V4 is the active qualification authority. Cold/warm/worker all produced artifact set `4cfca060...65fde6`; the run manifest is `f55f2829...76b127`.
 - PR #81 is closed as superseded. Its exact reviewed head `31c967c`, semantic hash and three docs-only models remain immutable historical evidence.

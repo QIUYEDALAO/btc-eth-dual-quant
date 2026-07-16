@@ -1,10 +1,16 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-16T01:02:28Z"
-current_phase: Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task
-current_status: liquid_universe_v4_requalification_pass_u03f_authorized_not_started_no_strategy_no_m2
+last_updated_utc: "2026-07-16T02:00:00Z"
+current_phase: U-03F V4 independent audit protocol frozen pending review
+current_status: u03f_v4_audit_protocol_frozen_before_result_no_strategy_no_m2
 completed_milestones:
+  - phase: U-03F V4 independent audit protocol
+    status: frozen_before_independent_audit_result_pending_review
+    evidence: reports/m0/U03F_V4_INDEPENDENT_AUDIT_PROTOCOL.md
+    protocol: config/liquid_universe_v4_independent_audit_protocol.json
+    protocol_content_hash: 0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157
+    branch: codex/u03f-v4-independent-audit-protocol
   - phase: Liquid universe V4 fixed-range public requalification
     status: pass_active_qualification_authority
     evidence: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
@@ -270,13 +276,13 @@ completed_milestones:
 open_work:
   - id: U-03F
     phase: Liquid universe V4 independent audit
-    status: authorized_not_started
-    branch: not_created
+    status: protocol_frozen_pending_review
+    branch: codex/u03f-v4-independent-audit-protocol
     pr: none
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
-    blocker: "Only an independent audit of the merged V4 machine evidence is authorized; this closeout does not execute U-03F or authorize U-04."
+    blocker: "Protocol PR must merge before the fixture-only independent auditor implementation may start; no real full audit or U-04 is authorized yet."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -966,6 +972,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/u03f_v4_audit_protocol_validate.sh
   - bash scripts/liquid_universe_v4_requalification_validate.sh
   - bash scripts/adr0014_adoption_validate.sh
   - bash scripts/m1h_paper_protocol_validate.sh

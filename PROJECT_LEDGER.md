@@ -1524,3 +1524,13 @@ private exchange responses here.
 - Evidence: source freeze `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`; cold/warm/worker artifact set `4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6`; run manifest `f55f2829be39445a8489a0863ee5e013c481351d64797251bd79bc199376b127`.
 - Next authorization: U-03F is `authorized_not_started` only for a separate independent audit of merged V4 machine evidence. The audit is not executed by this closeout.
 - Safety: U-04, hypothesis, strategy, events, signals, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - U-03F Independent Audit Protocol Frozen
+
+- Task ID: U-03F-PROTOCOL
+- Branch: `codex/u03f-v4-independent-audit-protocol`
+- Starting main: `1b6026499cb247f02f0a471eb5a33370769376d9`
+- Protocol: `config/liquid_universe_v4_independent_audit_protocol.json`; content hash `0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157`.
+- Scope: freezes all V4 authority bindings, 15 manifest identities, exact and semantic comparison, allowed verdicts and zero downstream authorization before any result.
+- Evidence note: the committed qualification report SHA and the different run-recorded report SHA are both frozen for later adjudication; neither production artifact is modified here.
+- Gate: protocol review and merge are required before fixture-only auditor implementation. No real full audit, U-04, strategy, events, returns, OOS, API/trading, execution/live or M2 is authorized.
