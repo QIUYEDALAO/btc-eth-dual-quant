@@ -9,7 +9,7 @@ completed_milestones:
     status: implementation_fixture_only_pending_independent_review
     evidence: reports/m0/U03F_V4_AUDITOR_IMPLEMENTATION_STATUS.md
     branch: codex/u03f-v4-independent-auditor
-    audit_algorithm_hash: d6c72b79751a42b4f92775a97d12730e0d589129d2b0ff12a831591325ad934d
+    audit_algorithm_hash: 5200444878298ed6460ae73718684c708f35bd6fe93ddc9a37fe73dc17c22264
     full_public_audit_executed: false
   - phase: U-03F V4 independent audit protocol
     status: frozen_before_independent_audit_result_pending_review
@@ -284,7 +284,7 @@ open_work:
     phase: Liquid universe V4 independent audit
     status: auditor_implementation_pending_independent_review
     branch: codex/u03f-v4-independent-auditor
-    pr: none
+    pr: 92
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json

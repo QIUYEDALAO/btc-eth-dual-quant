@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 
 from btc_eth_dual_quant.audit.liquid_universe_v4_audit_artifacts import (
+    scan_copied_production_functions,
     scan_files,
     scan_float_timestamp_paths,
 )
@@ -24,6 +25,24 @@ PRODUCTION_TIME_PATHS = [
     ROOT / "src/btc_eth_dual_quant/data/lifecycle_availability.py",
     ROOT / "scripts/liquid_universe_v4_public_run.py",
 ]
+PRODUCTION_IMPLEMENTATION_PATHS = [
+    path
+    for path in (
+        ROOT / "src/btc_eth_dual_quant/data/liquid_universe.py",
+        ROOT / "src/btc_eth_dual_quant/data/liquid_universe_pipeline.py",
+        ROOT / "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v3.py",
+        ROOT / "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py",
+        ROOT / "src/btc_eth_dual_quant/data/lifecycle_availability.py",
+        ROOT / "src/btc_eth_dual_quant/data/lifecycle_artifacts.py",
+        ROOT / "src/btc_eth_dual_quant/data/kline_row_conflicts.py",
+        ROOT / "src/btc_eth_dual_quant/data/public_archive.py",
+        ROOT / "scripts/liquid_universe_public_run.py",
+        ROOT / "scripts/liquid_universe_v3_public_run.py",
+        ROOT / "scripts/liquid_universe_v4_public_run.py",
+        ROOT / "scripts/liquid_universe_v4_requalification.py",
+    )
+    if path.exists()
+]
 PROTOCOL = ROOT / "config/liquid_universe_v4_independent_audit_protocol.json"
 
 
@@ -39,6 +58,12 @@ def algorithm_hash() -> str:
 
 def validate() -> tuple[list[str], list[str]]:
     failures = scan_files(AUDITOR_FILES)
+    production_sources = [path.read_text(encoding="utf-8") for path in PRODUCTION_IMPLEMENTATION_PATHS]
+    for path in AUDITOR_FILES:
+        failures.extend(
+            f"{path.relative_to(ROOT)}:{item}"
+            for item in scan_copied_production_functions(path.read_text(encoding="utf-8"), production_sources)
+        )
     protocol = json.loads(PROTOCOL.read_text(encoding="utf-8"))
     if protocol.get("status") != "frozen_before_independent_audit_result":
         failures.append("frozen protocol status changed")
