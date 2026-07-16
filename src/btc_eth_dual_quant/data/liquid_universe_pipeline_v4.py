@@ -2,11 +2,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from typing import Any, Iterable
 
 from btc_eth_dual_quant.data.kline_row_conflicts import RawKlineRow, ResolutionRegistry
 from btc_eth_dual_quant.data.lifecycle_artifacts import V4_MANIFEST_TYPES, make_v4_manifest
 from btc_eth_dual_quant.data.lifecycle_availability import LifecycleEventRegistry
+from btc_eth_dual_quant.data.liquid_universe import GridResult, MinuteBar, month_bounds, validate_minute_bar
 from btc_eth_dual_quant.data.liquid_universe_pipeline_v3 import resolve_daily_key
 
 
@@ -17,6 +19,39 @@ class V4DispatchResult:
     raw_row_quarantine: tuple[dict[str, Any], ...]
     count_as_gap: bool
     close_time_rewritten: bool = False
+
+
+def validate_lifecycle_symbol_month_grid(
+    symbol: str,
+    month: str,
+    bars: Iterable[MinuteBar],
+    *,
+    availability_end_exclusive_ms: int,
+) -> GridResult:
+    """Validate only the physically available part of a lifecycle-ending month."""
+    start, month_end = month_bounds(month)
+    end = datetime.fromtimestamp(availability_end_exclusive_ms / 1_000, timezone.utc)
+    if not start < end <= month_end or availability_end_exclusive_ms % 300_000:
+        raise ValueError("lifecycle boundary must be an aligned instant inside the month")
+    expected_count = int((end - start).total_seconds() // 300)
+    expected = {start.timestamp() * 1_000 + index * 300_000 for index in range(expected_count)}
+    seen: set[float] = set()
+    errors: list[str] = []
+    for bar in bars:
+        try:
+            validate_minute_bar(bar, expected_symbol=symbol, expected_month=month)
+        except ValueError as exc:
+            errors.append(str(exc))
+        timestamp_ms = bar.open_time.timestamp() * 1_000
+        if timestamp_ms >= availability_end_exclusive_ms:
+            errors.append(f"unexpected post-lifecycle 5m row: {bar.open_time.isoformat()}")
+            continue
+        if timestamp_ms in seen:
+            errors.append(f"duplicate 5m timestamp: {bar.open_time.isoformat()}")
+        seen.add(timestamp_ms)
+    missing_ms = sorted(expected - seen)
+    missing = tuple(datetime.fromtimestamp(value / 1_000, timezone.utc) for value in missing_ms)
+    return GridResult(symbol, month, expected_count, len(seen), missing, tuple(sorted(set(errors))))
 
 
 def _quarantine(row: RawKlineRow, reason: str, event_id: str | None) -> dict[str, Any]:
@@ -128,6 +163,8 @@ def build_fixture_artifacts_v4(
         "m2": False,
     }
     contents: dict[str, Any] = {
+        "source_manifest": {"fixture_only": True, "sources": []},
+        "row_conflict_resolution_manifest": {"fixture_only": True, "resolutions": []},
         "lifecycle_policy_manifest": {"policy_id": contract["lifecycle_policy"]["policy_id"]},
         "lifecycle_resolution_registry": events,
         "symbol_availability_manifest": [

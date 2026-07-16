@@ -28,10 +28,10 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         self.assertEqual(validate(state), [])
 
         requalification = next(item for item in state["open_work"] if item.get("id") == "U-03E-V4-RUN")
-        self.assertEqual(requalification["status"], "authorized_not_started")
+        self.assertEqual(requalification["status"], "completed_pass_pending_review")
         self.assertTrue(requalification["implementation_merged"])
         self.assertTrue(requalification["independent_review_approved"])
-        self.assertFalse(requalification["public_requalification"])
+        self.assertTrue(requalification["public_requalification"])
         self.assertEqual(requalification["contract_hash"], "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83")
         self.assertFalse(any(item.get("id") == "ADR-0014-ADOPT" for item in state["open_work"]))
         self.assertFalse(any(item.get("id") == "ADR-0014-REVIEW" for item in state["open_work"]))
@@ -100,9 +100,9 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         requalification = next(
             item for item in changed["open_work"] if item.get("id") == "U-03E-V4-RUN"
         )
-        requalification["public_requalification"] = True
+        requalification["source_freeze_hash"] = "0" * 64
         self.assertIn(
-            "V4 public requalification was marked complete before evidence exists",
+            "V4 public requalification evidence binding changed",
             validate(changed),
         )
 

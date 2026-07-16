@@ -7,6 +7,8 @@ from btc_eth_dual_quant.data.liquid_universe import canonical_hash
 
 
 V4_MANIFEST_TYPES = {
+    "source_manifest",
+    "row_conflict_resolution_manifest",
     "lifecycle_policy_manifest",
     "lifecycle_resolution_registry",
     "symbol_availability_manifest",

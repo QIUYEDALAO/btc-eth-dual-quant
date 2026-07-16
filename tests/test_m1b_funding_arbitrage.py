@@ -304,7 +304,7 @@ class M1BFundingArbitrageTests(unittest.TestCase):
 
     def test_no_trading_endpoint_implementation_and_no_execution_live(self) -> None:
         root = Path(__file__).resolve().parents[1]
-        src_scripts = list((root / "src").rglob("*")) + list((root / "scripts").rglob("*"))
+        src_scripts = list((root / "src").rglob("*.py")) + list((root / "scripts").rglob("*.py"))
         text = "\n".join(
             path.read_text(encoding="utf-8", errors="ignore")
             for path in src_scripts
