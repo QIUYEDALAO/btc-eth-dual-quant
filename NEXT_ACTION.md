@@ -2,6 +2,18 @@
 
 ## Immediate Task
 
+The U-03F independent-audit protocol is frozen before results on
+`codex/u03f-v4-independent-audit-protocol`. It binds main `1b602649...`, the
+fixed V4 source and machine evidence, all 15 manifest identities, exact and
+semantic comparison Gates, and a completely false downstream authorization
+matrix. The protocol must pass review and merge before any auditor code or
+full audit run starts.
+
+After protocol merge, the only permitted work is the fixture-only independent
+auditor implementation described by the frozen protocol. The real `2020-01`
+through `2026-06` audit remains unauthorized until that implementation receives
+an independent exact-head approval and merges. U-04 remains separately gated.
+
 The fixed `2020-01` through `2026-06` V4 public requalification passed and
 merged in PR #89 at `77cb0969980978e65f3560f38f50924c73dfee6e`.
 V4 is now the active liquid-universe qualification authority.
