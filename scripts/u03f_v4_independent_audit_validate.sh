@@ -5,7 +5,7 @@ export PYTHONPATH="${PYTHONPATH:-.deps:src}"
 PASS_COUNT=0; FAIL_COUNT=0; RESULTS=()
 run_check(){ local name="$1"; shift; echo "==> $name"; if "$@"; then RESULTS+=("PASS $name"); PASS_COUNT=$((PASS_COUNT+1)); else RESULTS+=("FAIL $name"); FAIL_COUNT=$((FAIL_COUNT+1)); fi; }
 artifact_scan(){ [[ -z "$(git ls-files | grep -E '(^|/)\.env($|\.)|^storage/(raw|duckdb|logs)/|^freqtrade_lab/user_data/(data|logs|backtest_results)/|\.duckdb$|\.sqlite($|-)|M0_PRIVATE_SMOKE_REPORT\.local\.md$' || true)" ]]; }
-read_only_scan(){ local o="order" p="PO""ST" d="DE""LETE" sim="simulate_""fill" engine="matching_""engine"; local pattern="(/api/v3/${o}|/fapi/v1/${o}|${p}|${d}|place_${o}|cancel_${o}|create_${o}|${sim}|${engine}|freqtrade[[:space:]]+trade)"; if command -v rg >/dev/null; then ! rg -n "$pattern" src scripts; else ! grep -R -n -E "$pattern" src scripts; fi; }
+read_only_scan(){ local o="order" p="PO""ST" d="DE""LETE" sim="simulate_""fill" engine="matching_""engine"; local pattern="(/api/v3/${o}|/fapi/v1/${o}|${p}|${d}|place_${o}|cancel_${o}|create_${o}|${sim}|${engine}|freqtrade[[:space:]]+trade)"; if command -v rg >/dev/null; then ! rg -n "$pattern" src scripts; else ! grep -R -n -E --binary-files=without-match --exclude='*.pyc' --exclude-dir='__pycache__' "$pattern" src scripts; fi; }
 run_check "frozen protocol" bash scripts/u03f_v4_audit_protocol_validate.sh
 run_check "auditor fixture/fault tests" "$PY_CMD" -m unittest discover -s tests -p 'test_u03f_v4_auditor*.py' -v
 run_check "auditor independence checker" "$PY_CMD" scripts/u03f_v4_independent_audit_check.py
