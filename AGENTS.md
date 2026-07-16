@@ -28,12 +28,11 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Current phase: PR #93 independently approved exact auditor head `d055efc1e46fb90b60a4553b9c5e2d1589bd7f9e` with zero critical/high; PR #92 merged the unchanged fixture-only auditor at `d107894`.
-- The implementation algorithm hash is `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`; no real fixed-range audit has run.
-- Six production float-timestamp candidates are disclosed for the real-audit Gate. Do not repair production authority in the Stage D audit-result task.
-- U-03F V4 independent-audit protocol merged in PR #91 and remains frozen before results. Its content hash is `0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157`.
-- After this governance closeout merges, only one separate offline Stage D real audit may start. U-04, strategy, outcomes, OOS and M2 remain unauthorized.
-- Current phase: Liquid universe V4 public requalification passed and merged in PR #89 at `77cb096`; U-03F independent audit is the only authorized next task.
+- Current phase: U-03F V4 independent audit failed pending truthful result review. Three offline runs are deterministic, but only 10/15 production manifests match and the result has 1 critical / 7 high findings.
+- The implementation algorithm hash remains `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`; production V4 authority code and evidence were not modified by the audit.
+- U-03F V4 independent-audit protocol merged in PR #91 and remains frozen. Its content hash is `0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157`.
+- Stage D processed all 27,736 frozen archives in normal, reverse and deterministic shuffled order. The truthful verdict is `failed_audit`.
+- Only the audit-result review and subsequent separate failed-audit governance closeout may follow. U-04, strategy, outcomes, OOS and M2 remain unauthorized.
 - V4 is the active qualification authority. Cold/warm/worker all produced artifact set `4cfca060...65fde6`; the run manifest is `f55f2829...76b127`.
 - PR #81 is closed as superseded. Its exact reviewed head `31c967c`, semantic hash and three docs-only models remain immutable historical evidence.
 - The reviewed Draft models KLAYUSDT 2024-10-28 partial lifecycle, 2024-10-29 normal-duration post-cessation placeholder and 2024-10-30 malformed placeholder as one versioned availability event instead of one row signature.
@@ -43,7 +42,7 @@ After any task, the agent must update:
 - V3 machine JSON manifests supersede V2 only after a V3 pass. The current cold V3 evidence is blocked and cannot authorize U-03F.
 - U-03D passed and merged in PR #70 at `5ab69e2`. U-03E cold/warm public builds match exactly but qualification is blocked by BTTUSDT negative daily volume in 2019-01/02 and a duplicate AXSUSDT row on 2026-02-10.
 - U-03E truthful blocked evidence merged in PR #71 at `8c4db86`. It is a closed blocked milestone, not a qualification pass or active implementation task.
-- U-03F is `authorized_not_started` and must run only as a separate independent audit of merged V4 evidence. U-04 remains unauthorized; do not run U-03F from a requalification or closeout branch.
+- U-03F is `completed_failed_audit_pending_review`. Do not fix production logic in the result PR; U-04 remains unauthorized.
 - V3 machine JSON manifests become active qualification authority only after a V3 pass. V1 is superseded, V2 is blocked historical evidence, and Markdown reports must never be qualification inputs.
 - Architecture: Freqtrade-first with an independent M0 and event-time audit sidecar.
 - The four Freqtrade-first hardening PRs (#8-#11) are merged.

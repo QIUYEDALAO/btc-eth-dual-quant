@@ -23,17 +23,17 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_u03f_approved_auditor_authorizes_only_real_offline_audit(self):
+    def test_u03f_failed_audit_keeps_only_truthful_closeout_open(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
         self.assertFalse(any(item.get("id") == "U-03E-V4-RUN" for item in state["open_work"]))
         audit = next(item for item in state["open_work"] if item.get("id") == "U-03F")
-        self.assertEqual(audit["status"], "real_offline_audit_authorized_not_started")
-        self.assertEqual(audit["branch"], "not_created")
+        self.assertEqual(audit["status"], "completed_failed_audit_pending_review")
+        self.assertEqual(audit["branch"], "codex/u03f-v4-independent-audit-run")
         self.assertEqual(
             audit["evidence"],
-            "reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json",
+            "reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md",
         )
         requalification = next(
             item

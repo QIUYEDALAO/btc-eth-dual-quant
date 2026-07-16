@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
+            "U-03F V4 independent audit failed pending truthful result review",
         )
         self.assertEqual(
             state["current_status"],
-            "u03f_v4_auditor_approved_real_audit_authorized_not_started_no_m2",
+            "u03f_v4_independent_audit_failed_pending_review_no_strategy_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -415,10 +415,10 @@ class KlaySourceConflictTests(unittest.TestCase):
         )
         self.assertFalse(any(item["id"] == "U-03E-V4-RUN" for item in state["open_work"]))
         audit = next(item for item in state["open_work"] if item["id"] == "U-03F")
-        self.assertEqual(audit["status"], "real_offline_audit_authorized_not_started")
+        self.assertEqual(audit["status"], "completed_failed_audit_pending_review")
         self.assertEqual(
             audit["evidence"],
-            "reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json",
+            "reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md",
         )
         self.assertFalse(any(item["id"] == "ADR-0014-ADOPT" for item in state["open_work"]))
         self.assertFalse(any(item["id"] == "ADR-0014-REVIEW" for item in state["open_work"]))

@@ -1,9 +1,9 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-16T06:00:00Z"
-current_phase: U-03F V4 independent auditor approved and merged; real offline audit authorized not started
-current_status: u03f_v4_auditor_approved_real_audit_authorized_not_started_no_m2
+last_updated_utc: "2026-07-16T08:30:00Z"
+current_phase: U-03F V4 independent audit failed pending truthful result review
+current_status: u03f_v4_independent_audit_failed_pending_review_no_strategy_no_m2
 completed_milestones:
   - phase: U-03F V4 independent auditor implementation review
     status: approve
@@ -294,15 +294,16 @@ completed_milestones:
 open_work:
   - id: U-03F
     phase: Liquid universe V4 independent audit
-    status: real_offline_audit_authorized_not_started
-    branch: not_created
-    pr: none
-    head_sha: none
+    status: completed_failed_audit_pending_review
+    branch: codex/u03f-v4-independent-audit-run
+    pr: pending
+    head_sha: runtime_current_pr_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
+    evidence: reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md
+    machine_evidence: reports/expert/evidence/liquid_universe_v4_independent_audit/audit_summary.json
     implementation_evidence: reports/m0/U03F_V4_AUDITOR_IMPLEMENTATION_STATUS.md
     review_evidence: reports/expert/U03F_V4_AUDITOR_IMPLEMENTATION_REVIEW.md
-    blocker: "The real fixed-range offline audit has not run. U-04 requires a truthful U-03F pass and separate explicit authorization."
+    blocker: "The truthful real audit found one critical and seven high findings. Merge the result evidence, then perform a separate failed-audit governance closeout; U-04 remains unauthorized."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -374,8 +375,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "After this closeout merges, U-03F Stage D may start only as an offline independent audit of the frozen merged V4 machine evidence."
-  - Cross-sectional design remains blocked until U-03F independently passes and a separate task authorizes U-04.
+  - "Review and merge the truthful U-03F failed-audit evidence without modifying production V4 authority in the same PR."
+  - "After the result merges, create only the separate failed-audit governance closeout; any production repair/requalification requires a later independent task."
+  - Cross-sectional design remains blocked because U-03F did not pass; U-04 is not authorized.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
@@ -417,6 +419,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md
+    phase: U-03F V4 independent audit
+    status: failed_audit_pending_review
+    status_marker: "- Verdict: failed_audit"
+  - path: reports/expert/evidence/liquid_universe_v4_independent_audit/audit_summary.json
+    phase: U-03F V4 independent audit machine evidence
+    status: deterministic_three_way_failed_audit
+    status_marker: '"verdict":"failed_audit"'
   - path: reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md
     phase: Liquid universe V4 fixed-range public requalification
     status: pass_active_qualification_authority

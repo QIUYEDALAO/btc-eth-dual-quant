@@ -99,6 +99,10 @@ ALLOWED = {
         "u03f_v4_auditor_approved_real_audit_authorized_not_started_no_m2",
     ): "U-03F",
     (
+        "U-03F V4 independent audit failed pending truthful result review",
+        "u03f_v4_independent_audit_failed_pending_review_no_strategy_no_m2",
+    ): "U-03F",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -165,9 +169,11 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 independent audit protocol frozen pending review",
         "U-03F V4 independent auditor implementation pending independent review",
         "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
+        "U-03F V4 independent audit failed pending truthful result review",
         "U-03F V4 independent audit protocol frozen pending review",
         "U-03F V4 independent auditor implementation pending independent review",
         "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
+        "U-03F V4 independent audit failed pending truthful result review",
     }:
         milestones = [
             item
@@ -195,6 +201,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 independent audit protocol frozen pending review",
         "U-03F V4 independent auditor implementation pending independent review",
         "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
+        "U-03F V4 independent audit failed pending truthful result review",
     }:
         adoption = [
             item
@@ -344,6 +351,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 independent audit protocol frozen pending review",
         "U-03F V4 independent auditor implementation pending independent review",
         "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
+        "U-03F V4 independent audit failed pending truthful result review",
     }:
         milestones = [
             item
@@ -369,12 +377,21 @@ def validate(state: dict) -> list[str]:
             "U-03F V4 independent audit protocol frozen pending review": "protocol_frozen_pending_review",
             "U-03F V4 independent auditor implementation pending independent review": "auditor_implementation_pending_independent_review",
             "U-03F V4 independent auditor approved and merged; real offline audit authorized not started": "real_offline_audit_authorized_not_started",
+            "U-03F V4 independent audit failed pending truthful result review": "completed_failed_audit_pending_review",
         }.get(pair[0], "authorized_not_started")
         if len(audit) != 1 or audit[0].get("status") != expected_audit_status:
             failures.append("U-03F state does not match the frozen transition")
-        if not audit or audit[0].get("evidence") != "reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json":
+        expected_evidence = (
+            "reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md"
+            if pair[0] == "U-03F V4 independent audit failed pending truthful result review"
+            else "reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json"
+        )
+        if not audit or audit[0].get("evidence") != expected_evidence:
             failures.append("U-03F must audit the V4 machine authority")
-    if pair[0] == "U-03F V4 independent auditor approved and merged; real offline audit authorized not started":
+    if pair[0] in {
+        "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
+        "U-03F V4 independent audit failed pending truthful result review",
+    }:
         reviews = [
             item for item in state.get("completed_milestones", [])
             if item.get("phase") == "U-03F V4 independent auditor implementation review"
