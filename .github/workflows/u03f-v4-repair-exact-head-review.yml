@@ -56,7 +56,7 @@ jobs:
           python scripts/m0_secret_scan.py
           git diff --check
 
-      - name: Enforce review-only scope
+      - name: Enforce review-only scope or immutable historical review
         run: |
           python - <<'PY'
           import subprocess
@@ -73,10 +73,19 @@ jobs:
               'scripts/u03f_v4_repair_exact_head_review_check.py',
               'tests/test_u03f_v4_repair_exact_head_review.py',
           }
+          immutable_review_artifacts = {
+              'reports/expert/U03F_V4_REPAIR_EXACT_HEAD_REVIEW.md',
+              'reports/expert/evidence/u03f_v4_repair_exact_head_review.json',
+              'scripts/u03f_v4_repair_exact_head_review_check.py',
+              'tests/test_u03f_v4_repair_exact_head_review.py',
+          }
           base = subprocess.check_output(['git', 'merge-base', 'HEAD', 'origin/main'], text=True).strip()
           changed = set(subprocess.check_output(['git', 'diff', '--name-only', base, 'HEAD'], text=True).splitlines())
-          extra = changed - allowed
-          missing = allowed - changed
-          if extra or missing:
-              raise SystemExit(f'review-only scope mismatch: extra={sorted(extra)} missing={sorted(missing)}')
+          if changed & immutable_review_artifacts:
+              extra = changed - allowed
+              missing = allowed - changed
+              if extra or missing:
+                  raise SystemExit(f'review-only scope mismatch: extra={sorted(extra)} missing={sorted(missing)}')
+          else:
+              print('historical exact-head review artifacts are unchanged')
           PY
