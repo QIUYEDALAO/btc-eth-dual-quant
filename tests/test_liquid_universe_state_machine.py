@@ -23,14 +23,14 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_u03f_auditor_implementation_authorizes_only_exact_head_review(self):
+    def test_u03f_approved_auditor_authorizes_only_real_offline_audit(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
         self.assertFalse(any(item.get("id") == "U-03E-V4-RUN" for item in state["open_work"]))
         audit = next(item for item in state["open_work"] if item.get("id") == "U-03F")
-        self.assertEqual(audit["status"], "auditor_implementation_pending_independent_review")
-        self.assertEqual(audit["branch"], "codex/u03f-v4-independent-auditor")
+        self.assertEqual(audit["status"], "real_offline_audit_authorized_not_started")
+        self.assertEqual(audit["branch"], "not_created")
         self.assertEqual(
             audit["evidence"],
             "reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json",
@@ -90,6 +90,28 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         self.assertEqual(implementation_review["verdict"], "approve")
         self.assertEqual(implementation_review["critical_findings"], 0)
         self.assertEqual(implementation_review["high_findings"], 0)
+        auditor_review = next(
+            item
+            for item in state["completed_milestones"]
+            if item.get("phase") == "U-03F V4 independent auditor implementation review"
+        )
+        self.assertEqual(auditor_review["merged_pr"], 93)
+        self.assertEqual(auditor_review["reviewed_pr"], 92)
+        self.assertEqual(
+            auditor_review["reviewed_head_sha"],
+            "d055efc1e46fb90b60a4553b9c5e2d1589bd7f9e",
+        )
+        self.assertEqual(auditor_review["verdict"], "approve")
+        auditor_implementation = next(
+            item
+            for item in state["completed_milestones"]
+            if item.get("phase") == "U-03F V4 independent auditor implementation"
+        )
+        self.assertEqual(auditor_implementation["merged_pr"], 92)
+        self.assertEqual(
+            auditor_implementation["merge_commit"],
+            "d107894f393de01b2a046a8ffd2ee937a07bdc2b",
+        )
 
         changed = copy.deepcopy(state)
         milestone = next(

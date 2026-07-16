@@ -95,6 +95,10 @@ ALLOWED = {
         "u03f_v4_auditor_fixture_implementation_pending_review_no_full_audit_no_m2",
     ): "U-03F",
     (
+        "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
+        "u03f_v4_auditor_approved_real_audit_authorized_not_started_no_m2",
+    ): "U-03F",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -160,8 +164,10 @@ def validate(state: dict) -> list[str]:
         "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
         "U-03F V4 independent audit protocol frozen pending review",
         "U-03F V4 independent auditor implementation pending independent review",
+        "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
         "U-03F V4 independent audit protocol frozen pending review",
         "U-03F V4 independent auditor implementation pending independent review",
+        "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
     }:
         milestones = [
             item
@@ -188,6 +194,7 @@ def validate(state: dict) -> list[str]:
         "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
         "U-03F V4 independent audit protocol frozen pending review",
         "U-03F V4 independent auditor implementation pending independent review",
+        "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
     }:
         adoption = [
             item
@@ -336,6 +343,7 @@ def validate(state: dict) -> list[str]:
         "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
         "U-03F V4 independent audit protocol frozen pending review",
         "U-03F V4 independent auditor implementation pending independent review",
+        "U-03F V4 independent auditor approved and merged; real offline audit authorized not started",
     }:
         milestones = [
             item
@@ -360,11 +368,42 @@ def validate(state: dict) -> list[str]:
         expected_audit_status = {
             "U-03F V4 independent audit protocol frozen pending review": "protocol_frozen_pending_review",
             "U-03F V4 independent auditor implementation pending independent review": "auditor_implementation_pending_independent_review",
+            "U-03F V4 independent auditor approved and merged; real offline audit authorized not started": "real_offline_audit_authorized_not_started",
         }.get(pair[0], "authorized_not_started")
         if len(audit) != 1 or audit[0].get("status") != expected_audit_status:
             failures.append("U-03F state does not match the frozen transition")
         if not audit or audit[0].get("evidence") != "reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json":
             failures.append("U-03F must audit the V4 machine authority")
+    if pair[0] == "U-03F V4 independent auditor approved and merged; real offline audit authorized not started":
+        reviews = [
+            item for item in state.get("completed_milestones", [])
+            if item.get("phase") == "U-03F V4 independent auditor implementation review"
+        ]
+        implementations = [
+            item for item in state.get("completed_milestones", [])
+            if item.get("phase") == "U-03F V4 independent auditor implementation"
+        ]
+        expected_review = {
+            "merged_pr": 93,
+            "merge_commit": "80f603b341a638a9f20475218582e4c7575c42e3",
+            "reviewed_pr": 92,
+            "reviewed_head_sha": "d055efc1e46fb90b60a4553b9c5e2d1589bd7f9e",
+            "verdict": "approve",
+            "critical_findings": 0,
+            "high_findings": 0,
+        }
+        expected_implementation = {
+            "status": "implementation_fixture_only_approved_and_merged",
+            "merged_pr": 92,
+            "merge_commit": "d107894f393de01b2a046a8ffd2ee937a07bdc2b",
+            "reviewed_head_sha": "d055efc1e46fb90b60a4553b9c5e2d1589bd7f9e",
+            "audit_algorithm_hash": "7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1",
+            "full_public_audit_executed": False,
+        }
+        if len(reviews) != 1 or any(reviews[0].get(key) != value for key, value in expected_review.items()):
+            failures.append("U-03F auditor review milestone binding changed")
+        if len(implementations) != 1 or any(implementations[0].get(key) != value for key, value in expected_implementation.items()):
+            failures.append("U-03F auditor implementation milestone binding changed")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
         failures.append("U-04 authorized without a separate post-audit task")
     return failures

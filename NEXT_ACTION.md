@@ -2,35 +2,29 @@
 
 ## Immediate Task
 
-The fixture-only U-03F independent auditor is implemented on
-`codex/u03f-v4-independent-auditor`. It imports no production builder and has
-not run the full public audit. Freeze its exact head and obtain a separate
-independent implementation review from the protocol-merged main. Do not merge
-the implementation before an `approve` verdict with zero critical/high.
+The U-03F independent auditor review merged in PR #93 at `80f603b`, approving
+exact implementation head `d055efc1e46fb90b60a4553b9c5e2d1589bd7f9e`
+with zero critical/high findings. The unchanged auditor implementation then
+merged in PR #92 at `d107894`. The full fixed-range public audit has not run.
 
 The checker identifies six float-timestamp candidates in the production V4
 authority path. They are not repaired here and must be adjudicated by the real
 audit's frozen integer-time Gate. U-04 remains unauthorized.
 
-The U-03F independent-audit protocol is frozen before results on
-`codex/u03f-v4-independent-audit-protocol`. It binds main `1b602649...`, the
-fixed V4 source and machine evidence, all 15 manifest identities, exact and
-semantic comparison Gates, and a completely false downstream authorization
-matrix. The protocol must pass review and merge before any auditor code or
-full audit run starts.
-
-After protocol merge, the only permitted work is the fixture-only independent
-auditor implementation described by the frozen protocol. The real `2020-01`
-through `2026-06` audit remains unauthorized until that implementation receives
-an independent exact-head approval and merges. U-04 remains separately gated.
+The frozen protocol, approved exact-head review and merged fixture auditor now
+authorize one separate Stage D offline audit from the closeout-merged main. It
+must use the frozen ignored raw evidence without downloads, production builder
+calls or production evidence mutation. Any integer-time authority violation or
+artifact mismatch must be reported truthfully and cannot be repaired in the
+audit-result PR.
 
 The fixed `2020-01` through `2026-06` V4 public requalification passed and
 merged in PR #89 at `77cb0969980978e65f3560f38f50924c73dfee6e`.
 V4 is now the active liquid-universe qualification authority.
 
-The only authorized next task is U-03F: an independent audit of the merged V4
-machine evidence. U-03F is authorized but not started. Do not begin it from
-this governance-closeout branch.
+The only authorized next task is U-03F Stage D: the real independent offline
+audit of merged V4 machine evidence. It is authorized but not started. Do not
+begin it from this governance-closeout branch.
 
 - Source freeze: `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`.
 - Cold/warm/worker artifact set: `4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6`.
@@ -84,7 +78,7 @@ BTC/ETH two-asset candidate queue.
 
 ## Allowed Next Work
 
-1. Create a separate U-03F independent-audit task from the closeout-merged main.
+1. Create `codex/u03f-v4-independent-audit-run` from the closeout-merged main.
 2. Audit membership, lifecycle availability, expected grid, gaps, quarantine,
    active-universe and qualified-panel evidence without changing V4 artifacts.
 3. Preserve V1/V2/V3 as historical evidence; V3 remains blocked and is not an
