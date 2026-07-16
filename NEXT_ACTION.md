@@ -131,3 +131,16 @@ design still requires U-03F pass plus a separate task.
 - Do not access API keys, private data, private smoke, dry-run/live, orders, cancellation, matching, wallets, trading permissions or `execution/live`.
 - Do not commit raw, DuckDB, Freqtrade runtime data, logs, SQLite, `.env` or private payloads.
 - M2 remains blocked and no strategy is approved for trading.
+
+## U-03F Repair Exact-Head Review
+
+Draft PR #98 exact head `27e6436c0a4b00ca7c8055bc763d533fcbcc9743`
+passed 110/110 GitHub checks and received a separate review verdict of `approve`
+with zero remaining critical/high findings. The reviewed repair implementation
+hash is `9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a`.
+
+The immediate Gate is CI and merge handling for the review evidence, followed
+by a final unchanged-head check before implementation merge. Fixed-range public
+requalification remains unexecuted and unauthorized until both review and exact
+implementation merge requirements are satisfied. U-04 and all downstream work
+remain unauthorized.

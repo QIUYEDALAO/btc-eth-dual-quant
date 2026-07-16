@@ -1,0 +1,74 @@
+name: U03F V4 Repair Exact Head Review
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    env:
+      U03F_REQUIRE_TARGET_HEAD: "1"
+    steps:
+      - name: Check out independent review branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch exact PR 98 target
+        run: git fetch origin +refs/pull/98/head:refs/remotes/origin/u03f-v4-repair-reviewed-head
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install review branch
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Verify exact-head review evidence
+        run: |
+          python scripts/u03f_v4_repair_exact_head_review_check.py
+          python -m unittest tests.test_u03f_v4_repair_exact_head_review -v
+
+      - name: Validate exact implementation target independently
+        run: |
+          git worktree add --detach /tmp/u03f-v4-repair-target 27e6436c0a4b00ca7c8055bc763d533fcbcc9743
+          cd /tmp/u03f-v4-repair-target
+          python -m pip install -e .
+          bash scripts/u03f_v4_repair_implementation_validate.sh
+
+      - name: Validate review branch governance
+        run: |
+          python scripts/project_context_check.py
+          bash scripts/project_validate.sh
+          python -m compileall src scripts
+          python scripts/m0_secret_scan.py
+          git diff --check
+
+      - name: Enforce review-only scope
+        run: |
+          python - <<'PY'
+          import subprocess
+          allowed = {
+              '.github/workflows/u03f-v4-repair-exact-head-review.yml',
+              'AGENTS.md',
+              'NEXT_ACTION.md',
+              'PROJECT_EXECUTION_CHECKLIST.md',
+              'PROJECT_LEDGER.md',
+              'PROJECT_STATE.yaml',
+              'reports/INDEX.md',
+              'reports/expert/U03F_V4_REPAIR_EXACT_HEAD_REVIEW.md',
+              'reports/expert/evidence/u03f_v4_repair_exact_head_review.json',
+              'scripts/u03f_v4_repair_exact_head_review_check.py',
+              'tests/test_u03f_v4_repair_exact_head_review.py',
+          }
+          base = subprocess.check_output(['git', 'merge-base', 'HEAD', 'origin/main'], text=True).strip()
+          changed = set(subprocess.check_output(['git', 'diff', '--name-only', base, 'HEAD'], text=True).splitlines())
+          extra = changed - allowed
+          missing = allowed - changed
+          if extra or missing:
+              raise SystemExit(f'review-only scope mismatch: extra={sorted(extra)} missing={sorted(missing)}')
+          PY

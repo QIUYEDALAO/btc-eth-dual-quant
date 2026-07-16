@@ -1,0 +1,153 @@
+{
+  "authorization": {
+    "api_trading": false,
+    "backtesting": false,
+    "events": false,
+    "execution_live": false,
+    "hypothesis": false,
+    "m2": false,
+    "merge_exact_implementation_after_review": true,
+    "new_independent_audit": false,
+    "oos": false,
+    "public_requalification": false,
+    "returns": false,
+    "signals": false,
+    "strategy": false,
+    "u04": false
+  },
+  "generated_utc": "2026-07-16T15:10:00Z",
+  "remaining_findings": {
+    "critical": [],
+    "high": [],
+    "informational": [
+      "The review is fixture and exact-head evidence; fixed-range public requalification has not run.",
+      "A later blocked public result must be recorded truthfully and cannot proceed to a new audit."
+    ],
+    "low": [],
+    "medium": []
+  },
+  "resolved_during_review": [
+    {
+      "id": "U03F-RR-H01",
+      "resolution": "Blocked evidence now requires the fail-closed determinism marker instead of the pass marker.",
+      "severity": "high"
+    },
+    {
+      "id": "U03F-RR-H02",
+      "resolution": "Every consumed source key, SHA256 and byte size is bound to the exact 27,736-entry freeze.",
+      "severity": "high"
+    },
+    {
+      "id": "U03F-RR-H03",
+      "resolution": "Resume was removed so cold, warm and worker must be regenerated under the current repair.",
+      "severity": "high"
+    }
+  ],
+  "review_content_sha256": "c60b1f8b451ea60ac8da267e90917b8c560655089bb1cd20dfb12999004bf1b4",
+  "review_dimensions": [
+    {
+      "dimension": "exact_head_and_ci",
+      "status": "pass"
+    },
+    {
+      "dimension": "frozen_protocol_scope",
+      "status": "pass"
+    },
+    {
+      "dimension": "integer_time_authority",
+      "status": "pass"
+    },
+    {
+      "dimension": "strict_5m_physical_row_validity",
+      "status": "pass"
+    },
+    {
+      "dimension": "atomic_report_run_binding",
+      "status": "pass"
+    },
+    {
+      "dimension": "exact_frozen_source_consumption",
+      "status": "pass"
+    },
+    {
+      "dimension": "fresh_three_way_execution",
+      "status": "pass"
+    },
+    {
+      "dimension": "truthful_blocked_evidence",
+      "status": "pass"
+    },
+    {
+      "dimension": "historical_evidence_immutability",
+      "status": "pass"
+    },
+    {
+      "dimension": "auditor_algorithm_immutability",
+      "status": "pass"
+    },
+    {
+      "dimension": "zero_downstream_authorization",
+      "status": "pass"
+    }
+  ],
+  "review_id": "U03F-V4-REPAIR-EXACT-HEAD-REVIEW-V1",
+  "reviewed_target": {
+    "auditor_algorithm_sha256": "7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1",
+    "base_sha": "0e65cd41bfac590d40ae5cb0590cc7102019018c",
+    "changed_file_list_sha256": "ecee2bbb76d0da0a0822cf218efda607fd38dea7d8e737c13fb8b19ada978ac9",
+    "changed_files": [
+      ".github/workflows/m0-validate.yml",
+      ".github/workflows/u03f-v4-repair-implementation.yml",
+      ".github/workflows/u03f-v4-repair-protocol.yml",
+      "AGENTS.md",
+      "NEXT_ACTION.md",
+      "PROJECT_EXECUTION_CHECKLIST.md",
+      "PROJECT_LEDGER.md",
+      "PROJECT_STATE.yaml",
+      "reports/INDEX.md",
+      "reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md",
+      "scripts/liquid_universe_v4_historical_audit_blocked_check.py",
+      "scripts/liquid_universe_v4_public_run.py",
+      "scripts/liquid_universe_v4_requalification.py",
+      "scripts/liquid_universe_v4_requalification_check.py",
+      "scripts/liquid_universe_v4_requalification_validate.sh",
+      "scripts/u03f_v4_independent_audit_check.py",
+      "scripts/u03f_v4_repair_implementation_check.py",
+      "scripts/u03f_v4_repair_implementation_validate.sh",
+      "scripts/u03f_v4_repair_protocol_check.py",
+      "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py",
+      "tests/test_liquid_universe_v4_public_run.py",
+      "tests/test_liquid_universe_v4_requalification.py",
+      "tests/test_u03f_v4_repair_implementation.py",
+      "tests/test_u03f_v4_repair_protocol.py"
+    ],
+    "head_sha": "27e6436c0a4b00ca7c8055bc763d533fcbcc9743",
+    "pull_request": 98,
+    "repair_implementation_sha256": "9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a",
+    "repair_protocol_sha256": "9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1",
+    "source_freeze_sha256": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "target_blobs": {
+      "reports/m0/U03F_V4_REPAIR_IMPLEMENTATION_STATUS.md": "c69f34d9e7c466fe8391ba2eb9908c3889395b80",
+      "scripts/liquid_universe_v4_public_run.py": "7a18aa267314bc0f11f393abc70c7678aaff4ac1",
+      "scripts/liquid_universe_v4_requalification.py": "e50f481aadd33b9ba3b3f7f7cb209660e3b3a9a4",
+      "scripts/liquid_universe_v4_requalification_check.py": "949bfb92af3373286b4d5fd46fb8c67b01bef0b7",
+      "scripts/u03f_v4_repair_implementation_check.py": "3b476577d8f7138f99b9b56bb3e2c7e6894f81fa",
+      "src/btc_eth_dual_quant/data/liquid_universe_pipeline_v4.py": "6bd95ce57ebd7bba5fae03585cdaed337f1b7c86",
+      "tests/test_liquid_universe_v4_public_run.py": "91242746d391d44247124f65d95d8be335217a60",
+      "tests/test_liquid_universe_v4_requalification.py": "6c63e8f3ad8ef9a131dd10bd57aa218f5f010540",
+      "tests/test_u03f_v4_repair_implementation.py": "ee6bad276e16f335921fcaf2ad32e0c243b34685"
+    }
+  },
+  "schema_version": 1,
+  "validation_evidence": {
+    "frozen_fault_tests_success": 6,
+    "frozen_fault_tests_total": 6,
+    "github_checks_success": 110,
+    "github_checks_total": 110,
+    "local_unit_tests_success": 602,
+    "local_unit_tests_total": 602,
+    "new_independent_audit_executed": false,
+    "public_requalification_executed": false
+  },
+  "verdict": "approve"
+}

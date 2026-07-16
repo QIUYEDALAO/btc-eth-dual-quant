@@ -1077,3 +1077,18 @@ validation_commands:
   - bash scripts/m1e_conflict_validate.sh
   - bash scripts/m1e_source_owner_validate.sh
   - git diff --check
+u03f_v4_repair_exact_head_review:
+  status: approve_pending_review_pr_ci
+  target_pr: 98
+  target_base_sha: 0e65cd41bfac590d40ae5cb0590cc7102019018c
+  target_head_sha: 27e6436c0a4b00ca7c8055bc763d533fcbcc9743
+  target_github_checks: 110
+  target_github_checks_success: 110
+  repair_implementation_hash: 9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a
+  review_content_hash: c60b1f8b451ea60ac8da267e90917b8c560655089bb1cd20dfb12999004bf1b4
+  remaining_critical: 0
+  remaining_high: 0
+  public_requalification_executed: false
+  new_independent_audit_executed: false
+  u04_authorized: false
+  m2_authorized: false

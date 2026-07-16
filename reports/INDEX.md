@@ -116,3 +116,10 @@ No report in this repository currently approves live trading, paper trading with
 | `reports/m0/LIQUID_SPOT_UNIVERSE_V1_V3_DIFF_REPORT.md` | U-03E V1/V3 diagnostic comparison | deterministic_diff_only | Compares the cold V3 membership to historical V1 without using V1 as qualification input. | no |
 | `reports/m0/LIQUID_SPOT_UNIVERSE_V2_V3_DIFF_REPORT.md` | U-03E V2/V3 diagnostic comparison | deterministic_diff_only | Compares the cold V3 membership to blocked historical V2 without using V2 as qualification input. | no |
 | `reports/m0/evidence/liquid_universe_v3/requalification_run_manifest.json` | U-03E V3 machine authority | blocked_fail_closed_cold_evidence | Binds the cold manifest/report hashes, KLAY blocker and false downstream authorizations; determinism is not claimed because warm/worker correctly did not run. | no |
+
+## U-03F Repair Review Supplemental Index
+
+| Path | Phase | Status | Meaning | Trading approval |
+| --- | --- | --- | --- | --- |
+| `reports/expert/U03F_V4_REPAIR_EXACT_HEAD_REVIEW.md` | U-03F repair exact-head review | approve / review PR CI pending | Binds PR #98 exact head `27e6436...9743`, 110/110 checks, repair/protocol/auditor/source hashes and zero remaining critical/high; no public rerun or downstream authorization. | no |
+| `reports/expert/evidence/u03f_v4_repair_exact_head_review.json` | U-03F repair review machine evidence | deterministic exact-head review | Machine-readable target blobs, review dimensions, resolved findings, remaining findings and false downstream authorizations. | no |

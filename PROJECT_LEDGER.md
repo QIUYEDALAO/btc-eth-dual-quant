@@ -1592,3 +1592,15 @@ private exchange responses here.
 - Execution status: repair implementation no; public requalification no; new independent audit no.
 - Gate: local checks, PR CI and merge are required before production repair implementation.
 - Safety: V4 remains `audit_blocked` / `revalidation_required`; U-04, hypothesis, strategy, events, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-16 - U-03F V4 Repair Exact-Head Review Opened
+
+- Task ID: U-03F-RR
+- Target: Draft PR #98 exact base `0e65cd41bfac590d40ae5cb0590cc7102019018c` and unchanged exact head `27e6436c0a4b00ca7c8055bc763d533fcbcc9743`.
+- Target Gate: 110/110 exact-head GitHub checks and 602/602 local tests passed; all six frozen fault tests passed.
+- Review result: `approve` with zero remaining critical and zero remaining high findings; review content hash `c60b1f8b451ea60ac8da267e90917b8c560655089bb1cd20dfb12999004bf1b4`.
+- Resolved before freeze: truthful blocked-report determinism, exact 27,736-source consumption, and mandatory fresh cold/warm/worker execution were corrected on superseded heads and included in the reviewed head.
+- Integrity: repair protocol, independent auditor algorithm, historical PR #89/#95 evidence and source freeze remain unchanged.
+- Execution status: public requalification not run; new independent audit not run.
+- Gate: the review PR itself must pass all CI. Any target/head/hash drift invalidates approval and stops the chain.
+- Safety: V4 remains `audit_blocked` / `revalidation_required`; U-04, strategy, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
