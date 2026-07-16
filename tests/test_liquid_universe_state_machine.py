@@ -23,24 +23,32 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         changed["current_status"] = "handwritten-pass"
         self.assertTrue(validate(changed))
 
-    def test_u03f_failed_audit_keeps_only_truthful_closeout_open(self):
+    def test_u03f_failed_audit_is_closed_and_v4_is_audit_blocked(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(validate(state), [])
 
         self.assertFalse(any(item.get("id") == "U-03E-V4-RUN" for item in state["open_work"]))
-        audit = next(item for item in state["open_work"] if item.get("id") == "U-03F")
-        self.assertEqual(audit["status"], "completed_failed_audit_pending_review")
-        self.assertEqual(audit["branch"], "codex/u03f-v4-independent-audit-run")
-        self.assertEqual(
-            audit["evidence"],
-            "reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md",
+        self.assertFalse(any(item.get("id") == "U-03F" for item in state["open_work"]))
+        audit = next(
+            item
+            for item in state["completed_milestones"]
+            if item.get("phase") == "U-03F V4 independent audit"
         )
+        self.assertEqual(audit["status"], "failed_audit")
+        self.assertEqual(audit["merged_pr"], 95)
+        self.assertEqual(audit["critical_findings"], 1)
+        self.assertEqual(audit["high_findings"], 7)
         requalification = next(
             item
             for item in state["completed_milestones"]
             if item.get("phase") == "Liquid universe V4 fixed-range public requalification"
         )
-        self.assertEqual(requalification["status"], "pass_active_qualification_authority")
+        self.assertEqual(
+            requalification["status"],
+            "pass_revalidation_required_after_failed_independent_audit",
+        )
+        self.assertEqual(requalification["qualification_authority"], "audit_blocked")
+        self.assertEqual(requalification["audit_status"], "failed_audit")
         self.assertEqual(requalification["merged_pr"], 89)
         self.assertEqual(
             requalification["merge_commit"],
@@ -123,11 +131,20 @@ class LiquidUniverseStateMachineTests(unittest.TestCase):
         self.assertIn("ADR-0014 conformance milestone binding changed", validate(changed))
 
         changed = copy.deepcopy(state)
-        changed["open_work"] = [item for item in changed["open_work"] if item.get("id") != "U-03F"]
+        changed["open_work"].append({"id": "U-03F", "status": "failed_audit", "pr": 95})
         self.assertIn(
-            "current V2 task missing from open_work: U-03F",
+            "merged failed U-03F must not remain in open_work",
             validate(changed),
         )
+
+        changed = copy.deepcopy(state)
+        milestone = next(
+            item
+            for item in changed["completed_milestones"]
+            if item.get("phase") == "U-03F V4 independent audit"
+        )
+        milestone["verdict"] = "pass"
+        self.assertIn("merged failed U-03F milestone binding changed", validate(changed))
 
         changed = copy.deepcopy(state)
         milestone = next(

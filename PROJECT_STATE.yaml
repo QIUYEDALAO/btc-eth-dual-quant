@@ -1,10 +1,24 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-16T08:30:00Z"
-current_phase: U-03F V4 independent audit failed pending truthful result review
-current_status: u03f_v4_independent_audit_failed_pending_review_no_strategy_no_m2
+last_updated_utc: "2026-07-16T08:39:53Z"
+current_phase: Liquid universe V4 independent audit failed or blocked
+current_status: liquid_universe_v4_independent_audit_failed_no_strategy_no_m2
 completed_milestones:
+  - phase: U-03F V4 independent audit
+    status: failed_audit
+    evidence: reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md
+    machine_evidence: reports/expert/evidence/liquid_universe_v4_independent_audit/audit_summary.json
+    merged_pr: 95
+    merge_commit: 36b81649fbdaf4f54aea7027f3e9325b0ea80de0
+    result_head_sha: fed6aa929d952a9d4744728d398dfa51fe399df1
+    verdict: failed_audit
+    critical_findings: 1
+    high_findings: 7
+    production_manifests_exact: 10
+    production_manifests_total: 15
+    source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+    independent_artifact_set_hash: c7c8e564db713c9268fcd907f8b28cf3f5f595fa08d0755d96c40d91fe237236
   - phase: U-03F V4 independent auditor implementation review
     status: approve
     evidence: reports/expert/U03F_V4_AUDITOR_IMPLEMENTATION_REVIEW.md
@@ -30,7 +44,9 @@ completed_milestones:
     protocol_content_hash: 0f4127ceb4f57f78c6fead022f9c71cb07d0f10c55d4a91f3f9cde57005a8157
     branch: codex/u03f-v4-independent-audit-protocol
   - phase: Liquid universe V4 fixed-range public requalification
-    status: pass_active_qualification_authority
+    status: pass_revalidation_required_after_failed_independent_audit
+    qualification_authority: audit_blocked
+    audit_status: failed_audit
     evidence: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
     merged_pr: 89
     merge_commit: 77cb0969980978e65f3560f38f50924c73dfee6e
@@ -292,18 +308,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-03F
-    phase: Liquid universe V4 independent audit
-    status: completed_failed_audit_pending_review
-    branch: codex/u03f-v4-independent-audit-run
-    pr: pending
-    head_sha: runtime_current_pr_head
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md
-    machine_evidence: reports/expert/evidence/liquid_universe_v4_independent_audit/audit_summary.json
-    implementation_evidence: reports/m0/U03F_V4_AUDITOR_IMPLEMENTATION_STATUS.md
-    review_evidence: reports/expert/U03F_V4_AUDITOR_IMPLEMENTATION_REVIEW.md
-    blocker: "The truthful real audit found one critical and seven high findings. Merge the result evidence, then perform a separate failed-audit governance closeout; U-04 remains unauthorized."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -312,7 +316,7 @@ open_work:
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: docs/decisions/ADR-0012-liquid-universe-qualification-correctness-v2.md
-    blocker: "Requires a merged U-03F independent audit pass over V4 and a separate explicit design task."
+    blocker: "U-03F merged as failed_audit. V4 is audit_blocked and requires an independently reviewed repair plus fixed-range requalification before any new audit pass can be considered."
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -375,17 +379,14 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Review and merge the truthful U-03F failed-audit evidence without modifying production V4 authority in the same PR."
-  - "After the result merges, create only the separate failed-audit governance closeout; any production repair/requalification requires a later independent task."
-  - Cross-sectional design remains blocked because U-03F did not pass; U-04 is not authorized.
+  - "Create a separate independently reviewed repair task for the U-03F integer-time, 5m row-validity and report-binding findings; do not repair production in this closeout."
+  - "After an approved repair merges, run a new fixed-range public requalification and a new independent audit under separately frozen authority."
+  - "Diagnostics are limited to reproducing and repairing the merged U-03F findings; they cannot authorize research or mutate historical evidence."
+  - "Design review is limited to the independent repair/requalification contract and cannot select a strategy or authorize U-04."
+  - Cross-sectional design remains blocked because U-03F failed; U-04 is not authorized.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
-  - The user granted automatic approval for sequential research steps in the current session, but every dependency and machine Gate must still pass before advancing.
-  - Investigate the M0 public dual-source audit blocker without private API access.
-  - Diagnostics and revalidation must not lower validation thresholds.
-  - Architecture hardening must not implement execution.
-  - Design review must not implement execution.
-  - Diagnostics and design review remain allowed; lifecycle implementation and fixed-range requalification must follow the adopted A-B-C-D-E dependency order.
+  - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
   - Do not enter M2.
   - Do not use API keys.
   - Do not run live or paper trading.
@@ -421,7 +422,7 @@ prohibited:
 latest_reports:
   - path: reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md
     phase: U-03F V4 independent audit
-    status: failed_audit_pending_review
+    status: failed_audit_merged
     status_marker: "- Verdict: failed_audit"
   - path: reports/expert/evidence/liquid_universe_v4_independent_audit/audit_summary.json
     phase: U-03F V4 independent audit machine evidence
@@ -429,7 +430,7 @@ latest_reports:
     status_marker: '"verdict":"failed_audit"'
   - path: reports/m0/LIQUID_SPOT_UNIVERSE_V4_QUALIFICATION_REPORT.md
     phase: Liquid universe V4 fixed-range public requalification
-    status: pass_active_qualification_authority
+    status: historical_pass_audit_blocked_revalidation_required
     status_marker: "- Status: pass"
   - path: reports/m0/evidence/liquid_universe_v4/requalification_run_manifest.json
     phase: Liquid universe V4 fixed-range public requalification machine evidence
@@ -755,6 +756,30 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 95
+    title: Record U-03F V4 independent audit failure
+    merge_commit: 36b81649fbdaf4f54aea7027f3e9325b0ea80de0
+    status: merged
+  - number: 94
+    title: Close U-03F auditor implementation governance
+    merge_commit: 79cb7426267c283baec30243e2e9665af1f518d5
+    status: merged
+  - number: 93
+    title: Review U-03F V4 independent auditor
+    merge_commit: 80f603b341a638a9f20475218582e4c7575c42e3
+    status: merged
+  - number: 92
+    title: Implement U-03F V4 independent auditor
+    merge_commit: d107894f393de01b2a046a8ffd2ee937a07bdc2b
+    status: merged
+  - number: 91
+    title: Freeze U-03F V4 independent audit protocol
+    merge_commit: a8a89e2097baf79df7eb495927627098a94e5a38
+    status: merged
+  - number: 90
+    title: Close V4 public requalification governance
+    merge_commit: 1b6026499cb247f02f0a471eb5a33370769376d9
+    status: merged
   - number: 89
     title: Pass V4 lifecycle public requalification
     merge_commit: 77cb0969980978e65f3560f38f50924c73dfee6e
@@ -1002,6 +1027,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/u03f_v4_independent_audit_result_validate.sh
   - bash scripts/u03f_v4_independent_audit_validate.sh
   - bash scripts/u03f_v4_audit_protocol_validate.sh
   - bash scripts/liquid_universe_v4_requalification_validate.sh

@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "U-03F V4 independent audit failed pending truthful result review",
+            "Liquid universe V4 independent audit failed or blocked",
         )
         self.assertEqual(
             state["current_status"],
-            "u03f_v4_independent_audit_failed_pending_review_no_strategy_no_m2",
+            "liquid_universe_v4_independent_audit_failed_no_strategy_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -414,8 +414,14 @@ class KlaySourceConflictTests(unittest.TestCase):
             "0f5f76f86973316ac66b8e3f9d6e65419b310ec9",
         )
         self.assertFalse(any(item["id"] == "U-03E-V4-RUN" for item in state["open_work"]))
-        audit = next(item for item in state["open_work"] if item["id"] == "U-03F")
-        self.assertEqual(audit["status"], "completed_failed_audit_pending_review")
+        self.assertFalse(any(item["id"] == "U-03F" for item in state["open_work"]))
+        audit = next(
+            item
+            for item in state["completed_milestones"]
+            if item["phase"] == "U-03F V4 independent audit"
+        )
+        self.assertEqual(audit["status"], "failed_audit")
+        self.assertEqual(audit["merged_pr"], 95)
         self.assertEqual(
             audit["evidence"],
             "reports/expert/U03F_V4_INDEPENDENT_AUDIT_REPORT.md",
