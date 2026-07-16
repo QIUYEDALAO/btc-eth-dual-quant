@@ -1639,6 +1639,7 @@ private exchange responses here.
 
 - Date UTC: 2026-07-16T18:58:31Z
 - Task IDs: U-03F-RQ / U-03F-RC
+- Governance closeout: `codex/u03f-v4-repair-governance-closeout` / PR #101.
 - Evidence PR / head / merge: #100 / `a0e680fbfb4415bb25871aa0cb3ed8b873d6c810` / `927f121651d6e1e07f174410a39595f6d09e9a5d`.
 - Validation: 114/114 GitHub Actions passed. Green CI proves the blocked evidence and bindings are self-consistent; it does not turn the requalification into a pass.
 - Result: cold remains `blocked` on 119 strict frozen-source 5m interval-boundary errors. Warm and worker remain `not_run_due_fail_closed_cold_block`.
