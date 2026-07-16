@@ -2,22 +2,22 @@
 
 ## Immediate Task
 
-The U-03F repair chain is closed as blocked. PR #100 merged the truthful
-fixed-range repair-requalification evidence at
-`927f121651d6e1e07f174410a39595f6d09e9a5d` after 114/114 checks passed.
-Its exact evidence head was `a0e680fbfb4415bb25871aa0cb3ed8b873d6c810`.
+The user explicitly started a new protocol-only follow-on from main
+`3ba411d28563526a5357e3882a1e5759311f6179`. The current branch freezes
+`U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1`, content hash
+`9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190`.
 
-Cold consumed only the exact 27,736 frozen local archives and stopped on 119 physical
-5m interval-boundary errors. Source freeze hash `c86310f8...ec6c`, cold
-artifact-set hash `b7cac049...b2f83` and run-manifest hash
-`0792ec7b...f68cf` remain exact. Warm and worker are
-`not_run_due_fail_closed_cold_block`.
+This task does not run the diagnostic. It binds PR #100's exact 119 blocked
+symbol-month inputs and 119 physical invalid rows, the 27,736-archive frozen
+source, strict integer 5m boundaries, normal/reverse/deterministic-shuffled
+traversal, the existing 80% synchronous evidence threshold and zero downstream
+authorization.
 
-There is no currently authorized follow-on U-03F repair or audit task. A future
-attempt would require a new, explicitly scoped and independently reviewed
-repair/requalification protocol. It may not reuse this blocked result as a pass
-or automatically start a new audit. V4 remains `audit_blocked` /
-`revalidation_required`; U-04, research, OOS and M2 remain unauthorized.
+The immediate action is PR #102 exact-head review, all-green CI and merge.
+Only after that merge may one evidence-only diagnostic read the exact frozen
+local archives. Even a fully synchronized result may authorize only a separate
+Draft policy ADR after its evidence merges; it cannot directly change the
+production pipeline, rerun requalification, start a new audit or enter U-04.
 
 ## Historical Failed Audit
 
@@ -101,10 +101,12 @@ BTC/ETH two-asset candidate queue.
 
 1. Preserve PR #89, PR #95 and PR #100 evidence and the frozen source byte for
    byte; none is an alternative active qualification authority.
-2. Keep the repair chain closed. Any future attempt requires a separately
-   approved protocol and must begin from its own explicit task.
-3. Keep the new independent audit, U-04, hypothesis/strategy work, returns, OOS
-   and M2 blocked.
+2. Merge only the new invalid-interval adjudication protocol after all checks
+   pass, then run one separately versioned evidence-only diagnostic.
+3. Fail closed on any source/hash/order mismatch. Do not create per-row
+   exceptions, substitute daily/REST data or adopt policy inside diagnostics.
+4. Keep runtime implementation, requalification, the new independent audit,
+   U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
 
 U-03E V2 and V3 remain truthful blocked historical milestones. V4 supersedes
 their admission authority through a separately adopted lifecycle policy and

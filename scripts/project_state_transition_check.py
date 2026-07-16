@@ -115,6 +115,10 @@ ALLOWED = {
         "u03f_v4_repair_chain_closed_requalification_blocked_no_new_audit_no_u04_no_m2",
     ): "U-03F-RC",
     (
+        "U-03F V4 invalid-interval adjudication protocol frozen pending review",
+        "u03f_v4_invalid_interval_protocol_frozen_diagnostic_not_run_no_u04_no_m2",
+    ): "U-03F-R2-PROTOCOL",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -144,6 +148,11 @@ REPAIR_CHAIN_CLOSED_PAIR = (
     "u03f_v4_repair_chain_closed_requalification_blocked_no_new_audit_no_u04_no_m2",
 )
 
+INVALID_INTERVAL_PROTOCOL_PAIR = (
+    "U-03F V4 invalid-interval adjudication protocol frozen pending review",
+    "u03f_v4_invalid_interval_protocol_frozen_diagnostic_not_run_no_u04_no_m2",
+)
+
 CLOSED_TASK_PAIRS = {
     FAILED_U03F_CLOSEOUT_PAIR,
     REPAIR_CHAIN_CLOSED_PAIR,
@@ -153,6 +162,7 @@ AUDIT_BLOCKED_PAIRS = {
     FAILED_U03F_CLOSEOUT_PAIR,
     REPAIR_REQUALIFICATION_BLOCKED_PAIR,
     REPAIR_CHAIN_CLOSED_PAIR,
+    INVALID_INTERVAL_PROTOCOL_PAIR,
 }
 
 EXPECTED_AUTH = {
@@ -179,7 +189,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -219,6 +229,7 @@ def validate(state: dict) -> list[str]:
         "Liquid universe V4 independent audit failed or blocked",
         "U-03F V4 repair public requalification blocked",
         "U-03F V4 repair chain closed blocked",
+        "U-03F V4 invalid-interval adjudication protocol frozen pending review",
     }:
         milestones = [
             item
@@ -350,6 +361,17 @@ def validate(state: dict) -> list[str]:
                 failures.append("ADR-0014 adoption manifest hash changed")
             if item.get("adopted") is not True or item.get("implemented") or item.get("registry_change") or item.get("requalification"):
                 failures.append("ADR-0014 adoption authority widened beyond Stage A")
+        if item.get("id") == "U-03F-R2-PROTOCOL":
+            if item.get("status") != "protocol_frozen_pending_review":
+                failures.append("invalid-interval protocol status changed")
+            if item.get("pr") != 102:
+                failures.append("invalid-interval protocol PR binding changed")
+            if item.get("protocol_content_hash") != "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190":
+                failures.append("invalid-interval protocol hash changed")
+            if item.get("diagnostic_executed") is not False:
+                failures.append("invalid-interval diagnostic ran before protocol merge")
+            if item.get("production_pipeline_modified") is not False:
+                failures.append("production pipeline changed in protocol task")
         if item.get("id") == "U-03E-V4-IMPL":
             if item.get("head_sha") != "runtime_current_pr_head":
                 failures.append("V4 implementation head_sha must be runtime current PR metadata")
@@ -400,6 +422,7 @@ def validate(state: dict) -> list[str]:
         "Liquid universe V4 independent audit failed or blocked",
         "U-03F V4 repair public requalification blocked",
         "U-03F V4 repair chain closed blocked",
+        "U-03F V4 invalid-interval adjudication protocol frozen pending review",
     }:
         milestones = [
             item
@@ -514,6 +537,7 @@ def validate(state: dict) -> list[str]:
         "Liquid universe V4 independent audit failed or blocked",
         "U-03F V4 repair public requalification blocked",
         "U-03F V4 repair chain closed blocked",
+        "U-03F V4 invalid-interval adjudication protocol frozen pending review",
     }:
         reviews = [
             item for item in state.get("completed_milestones", [])
@@ -546,6 +570,29 @@ def validate(state: dict) -> list[str]:
             failures.append("U-03F auditor implementation milestone binding changed")
     if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
         failures.append("U-04 authorized without a separate post-audit task")
+    if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
+        protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
+        expected_protocol = {
+            "status": "frozen_before_diagnostic_run_pending_review",
+            "starting_main_sha": "3ba411d28563526a5357e3882a1e5759311f6179",
+            "branch": "codex/u03f-v4-invalid-interval-protocol",
+            "pr": 102,
+            "protocol_content_hash": "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
+            "source_mode": "frozen_local_only",
+            "source_archive_count": 27736,
+            "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+            "blocked_input_processing_errors": 119,
+            "diagnostic_orders": ["normal", "reverse", "deterministic_shuffled"],
+            "diagnostic_executed": False,
+            "policy_adopted": False,
+            "production_pipeline_modified": False,
+            "public_requalification_authorized": False,
+            "new_independent_audit_authorized": False,
+            "u04_authorized": False,
+            "m2_authorized": False,
+        }
+        if protocol != expected_protocol:
+            failures.append("invalid-interval protocol state binding changed")
     return failures
 
 

@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "protocol_id": "U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1",
+  "status": "frozen_before_diagnostic_run",
+  "generated_utc": "2026-07-17T00:00:00Z",
+  "repository_binding": {
+    "repository": "QIUYEDALAO/btc-eth-dual-quant",
+    "starting_main_sha": "3ba411d28563526a5357e3882a1e5759311f6179",
+    "repair_requalification_pr": 100,
+    "repair_requalification_head_sha": "a0e680fbfb4415bb25871aa0cb3ed8b873d6c810",
+    "repair_requalification_merge_sha": "927f121651d6e1e07f174410a39595f6d09e9a5d",
+    "repair_closeout_pr": 101,
+    "repair_closeout_merge_sha": "3ba411d28563526a5357e3882a1e5759311f6179"
+  },
+  "immutable_input_bindings": {
+    "source_freeze_content_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "source_freeze_file_sha256": "71ef8d900ceca6618d0557ce62db0b63814793502789bc8346ba02abc3bb96fb",
+    "repair_run_manifest_content_hash": "0792ec7b52dbabb6057f0c238d963ed774c1e9e838b42cb21a03bc7e334f68cf",
+    "repair_run_manifest_file_sha256": "16fc8162e254462ef9444833bbe21262445b8fbfc75864ef00f22a142f110313",
+    "repair_qualification_summary_content_hash": "278c1a04b84d92f3f365f9091d2febcad95664f794647713d6bef343cc46773b",
+    "repair_qualification_summary_file_sha256": "b2afe36cd8a7c8e91cb628ecf3ce479b6860701bc073a114fdec443212b84b19",
+    "repair_expected_grid_content_hash": "8ffd3771bef44f71cea7542b58dcdbdaa1a95dacb16edbd78b360884f09d328f",
+    "repair_expected_grid_file_sha256": "9901fd07c00734be352674d7af62152e458109643c65e15df0a31af9798159fa",
+    "repair_membership_content_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "repair_membership_file_sha256": "d3dbf7508b1cd8373834a70cf7ee307937de754643687bd9ad9928f082aea72f",
+    "repair_report_sha256": "0085e32766bc7b0b261c158aecef5d022154f396533712a957a4b97b1a3c1eb2",
+    "repair_protocol_content_hash": "9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1",
+    "repair_implementation_hash": "9c97200e7e7ad441eac5282b7bbdda742980b13d59694c97e54cb65c4becae3a",
+    "independent_auditor_algorithm_hash": "7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1",
+    "v2_gap_policy_contract_hash": "051894e89b713f541caa601efab51be22f83461a4e624e1d51d7f576ed8cda51",
+    "v4_contract_hash": "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83"
+  },
+  "known_blocked_input": {
+    "source_mode": "frozen_local_only",
+    "source_archive_count": 27736,
+    "range_start": "2020-01",
+    "range_end": "2026-06",
+    "repair_requalification_status": "blocked",
+    "processing_errors": 119,
+    "stop_reason_count": 119,
+    "stop_reason_suffix": "5m interval boundary is invalid",
+    "warm_worker_status": "not_run_due_fail_closed_cold_block"
+  },
+  "diagnostic_scope": {
+    "allowed_input": "exact_frozen_local_archives_only",
+    "allowed_files": [
+      "scripts/liquid_universe_v4_invalid_interval_adjudication.py",
+      "scripts/liquid_universe_v4_invalid_interval_adjudication_check.py"
+    ],
+    "physical_source_rows_must_remain_unchanged": true,
+    "integer_time_only": true,
+    "network_access_allowed": false,
+    "source_download_or_replacement_allowed": false,
+    "daily_or_rest_substitution_allowed": false,
+    "historical_evidence_mutation_allowed": false,
+    "production_pipeline_change_allowed": false,
+    "policy_adoption_allowed": false,
+    "validation_gate_reduction_allowed": false
+  },
+  "diagnostic_algorithm": {
+    "orders": [
+      "normal",
+      "reverse",
+      "deterministic_shuffled"
+    ],
+    "archive_binding_required_before_parse": true,
+    "zip_crc_required": true,
+    "one_csv_member_required": true,
+    "raw_row_hash_required": true,
+    "open_time_grid_ms": 300000,
+    "valid_close_delta_ms": 299999,
+    "invalid_predicate": "open_time_ms % 300000 != 0 or close_time_ms != open_time_ms + 299999",
+    "group_key": "open_time_ms",
+    "membership_source": "repair_membership_manifest",
+    "synchronous_minimum_symbols": 2,
+    "synchronous_minimum_fraction": 0.8,
+    "verified_archive_required_for_synchronous_candidate": true,
+    "non_member_row_is_blocking": true,
+    "duplicate_or_missing_expected_row_is_blocking": true,
+    "raw_field_repair_allowed": false,
+    "synthetic_fill_allowed": false
+  },
+  "required_machine_outputs": [
+    "input_binding_summary",
+    "invalid_interval_rows",
+    "synchronized_window_summary",
+    "order_determinism_summary",
+    "policy_gap_assessment",
+    "authorization_matrix"
+  ],
+  "decision_gate": {
+    "allowed_decisions": [
+      "new_policy_adr_required",
+      "official_source_followup_required",
+      "blocked_evidence_mismatch"
+    ],
+    "direct_existing_gap_policy_adoption_allowed": false,
+    "per_row_exception_registry_allowed": false,
+    "new_policy_adr_required_if_all_rows_are_exact_and_synchronous": true,
+    "any_binding_or_order_mismatch_must_fail_closed": true,
+    "normal_reverse_shuffled_content_hashes_must_match": true,
+    "markdown_must_be_exact_machine_render": true
+  },
+  "future_dependency_chain": [
+    "protocol_merge",
+    "deterministic_diagnostic_evidence",
+    "diagnostic_evidence_merge",
+    "separate_draft_policy_adr_if_required",
+    "independent_policy_review",
+    "conditional_policy_adoption",
+    "separate_runtime_implementation",
+    "exact_head_independent_implementation_review",
+    "fixed_range_public_requalification",
+    "new_independent_audit",
+    "governance_closeout"
+  ],
+  "stop_conditions": [
+    "historical_evidence_hash_drift",
+    "source_freeze_hash_or_archive_binding_drift",
+    "non_integer_timestamp_authority",
+    "unexpected_invalid_row",
+    "expected_invalid_row_missing_or_duplicated",
+    "non_member_invalid_row",
+    "order_content_hash_mismatch",
+    "policy_preselection_or_exception_registry",
+    "source_download_replacement_or_substitution",
+    "authorization_expansion"
+  ],
+  "authorization": {
+    "diagnostic_run_after_protocol_merge": true,
+    "draft_policy_adr_before_diagnostic_merge": false,
+    "policy_adoption": false,
+    "repair_implementation": false,
+    "public_requalification": false,
+    "new_independent_audit": false,
+    "u04": false,
+    "hypothesis": false,
+    "strategy": false,
+    "event_scan": false,
+    "returns": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  }
+}
