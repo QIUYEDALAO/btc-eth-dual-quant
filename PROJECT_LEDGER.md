@@ -1540,6 +1540,6 @@ private exchange responses here.
 - Task ID: U-03F-AUDITOR
 - Branch: `codex/u03f-v4-independent-auditor`; based on protocol merge `a8a89e2097baf79df7eb495927627098a94e5a38`.
 - Result: independent canonicalization, integer time, source authority, lifecycle, membership, grid, aggregation, gap and artifact comparison primitives pass fixture/fault tests.
-- Algorithm hash: `a20da081dff753ba9091c91b91205bf9bf55781c7e1e04ea67e16b83a65469d8`.
+- Algorithm hash: `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`.
 - Finding for later Gate: six float-timestamp candidates exist in production V4 authority paths. No production repair or audit verdict is made here.
 - Gate: exact implementation head requires separate independent review. The real fixed-range audit, U-04 and all research/trading authorization remain false.

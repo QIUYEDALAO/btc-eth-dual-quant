@@ -29,7 +29,7 @@ def _canonical_value(value: Any) -> Any:
     if isinstance(value, Decimal):
         if not value.is_finite():
             raise ValueError("non-finite Decimal is forbidden")
-        return format(value, "f")
+        return str(value)
     if isinstance(value, float):
         if value != value or value in (float("inf"), float("-inf")):
             raise ValueError("NaN and Infinity are forbidden")
@@ -169,6 +169,7 @@ class KlineRow:
             self.open_time_ms, self.open, self.high, self.low, self.close,
             self.base_volume, self.close_time_ms, self.quote_volume,
             self.trade_count, self.taker_base_volume, self.taker_quote_volume,
+            self.ignore,
         )
 
 
@@ -247,6 +248,11 @@ def parse_official_kline_zip(
     times = [item.open_time_ms for item in rows]
     if len(times) != len(set(times)):
         raise ValueError("archive rows must be unique after registry adjudication")
+    step_ms = {"1d": 86_400_000, "5m": 300_000}.get(interval)
+    if step_ms is None:
+        raise ValueError("unsupported audit interval")
+    if any(item.open_time_ms % step_ms or item.close_time_ms != item.open_time_ms + step_ms - 1 for item in rows):
+        raise ValueError("kline interval boundary is invalid")
     return ParsedArchive(
         raw.sha256,
         raw.byte_size,
@@ -409,7 +415,7 @@ def rank_membership(
         ranked.append((median(values), symbol))
     ranked.sort(key=lambda item: (-item[0], item[1]))
     return [
-        {"effective_month": effective_month, "rank": index, "symbol": symbol, "median_daily_quote_volume_90d": format(metric, "f")}
+        {"effective_month": effective_month, "rank": index, "symbol": symbol, "median_daily_quote_volume_90d": str(metric)}
         for index, (metric, symbol) in enumerate(ranked[:target_size], start=1)
     ]
 
@@ -437,6 +443,10 @@ class FiveMinuteBar:
     low: Decimal
     close: Decimal
     volume: Decimal
+    quote_volume: Decimal = Decimal(0)
+    trade_count: int = 0
+    taker_base_volume: Decimal = Decimal(0)
+    taker_quote_volume: Decimal = Decimal(0)
 
 
 def aggregate_one_hour(bars: Iterable[FiveMinuteBar]) -> list[dict[str, Any]]:
@@ -450,13 +460,26 @@ def aggregate_one_hour(bars: Iterable[FiveMinuteBar]) -> list[dict[str, Any]]:
     for hour, group in sorted(grouped.items()):
         if tuple(item.open_time_ms for item in group) != expected_slots(hour, hour + 3_600_000, 300_000):
             continue
+        if any(
+            item.high < max(item.open, item.close)
+            or item.low > min(item.open, item.close)
+            or item.high < item.low
+            or any(value < 0 for value in (item.volume, item.quote_volume, item.taker_base_volume, item.taker_quote_volume))
+            or item.trade_count < 0
+            for item in group
+        ):
+            continue
         output.append({
             "open_time_ms": hour,
-            "open": format(group[0].open, "f"),
-            "high": format(max(item.high for item in group), "f"),
-            "low": format(min(item.low for item in group), "f"),
-            "close": format(group[-1].close, "f"),
-            "volume": format(sum((item.volume for item in group), Decimal(0)), "f"),
+            "open": str(group[0].open),
+            "high": str(max(item.high for item in group)),
+            "low": str(min(item.low for item in group)),
+            "close": str(group[-1].close),
+            "volume": str(sum((item.volume for item in group), Decimal(0))),
+            "quote_volume": str(sum((item.quote_volume for item in group), Decimal(0))),
+            "trade_count": sum(item.trade_count for item in group),
+            "taker_base_volume": str(sum((item.taker_base_volume for item in group), Decimal(0))),
+            "taker_quote_volume": str(sum((item.taker_quote_volume for item in group), Decimal(0))),
         })
     return output
 
@@ -643,7 +666,7 @@ def eligibility_and_membership(
             "status": "qualified",
             "reason": None,
             "history_days": 365,
-            "median_daily_quote_volume_90d": format(median(ranking_values), "f"),
+            "median_daily_quote_volume_90d": str(median(ranking_values)),
         })
     membership = rank_membership(effective_month, metrics, target_size=target_size)
     return candidates, membership

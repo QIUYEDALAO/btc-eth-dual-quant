@@ -112,6 +112,7 @@ class CanonicalAndArchiveCoverageTests(unittest.TestCase):
             audit_identity_hash({"b": Decimal("1.00"), "generated_utc": "later", "a": 2}),
             audit_identity_hash({"b": Decimal("1.00"), "generated_utc": "earlier", "a": 2}),
         )
+        self.assertEqual(audit_canonical_json({"value": Decimal("1E+3")}), '{"value":"1E+3"}')
 
     def test_official_zip_crc_schema_identity_and_freeze(self):
         payload = zip_payload("BTCUSDT", "1d", "2020-01", [raw_row()])
@@ -400,6 +401,14 @@ class ArtifactAndFaultCoverageTests(unittest.TestCase):
         self.assertEqual(
             verify_manifest_wrapper(manifest, expected_type="membership_manifest"),
             "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+        )
+        suite = {
+            name: json.loads((root / f"reports/m0/evidence/liquid_universe_v4/{name}.json").read_text(encoding="utf-8"))
+            for name in REQUIRED_AUDIT_ARTIFACTS
+        }
+        self.assertEqual(
+            audit_artifact_set_hash(suite),
+            "4cfca060b423f4071c831c9ce52556a3a66837fb7326f689245253e13165fde6",
         )
 
     def test_copied_function_body_is_detected(self):
