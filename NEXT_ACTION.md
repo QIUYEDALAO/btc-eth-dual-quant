@@ -11,7 +11,7 @@ The repair is now implemented fixture-only in Draft PR #98 on
 `codex/u03f-v4-repair-implementation`, based on that exact merged main. Integer-
 only UTC conversion, strict 5m close-boundary filtering and atomic final-report/
 run-manifest binding pass all six frozen fault tests. The repair implementation
-hash is `b3c17ef6b84c0c09798dd7add12ed869622a50963ab7dc99fc8d951bea063c6e`;
+hash is `ec1c561940c0163a795ad8324d4bc403cd6b9c3083f90ad45860051c5b32a084`;
 the independent auditor algorithm remains frozen at
 `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`.
 

@@ -8,6 +8,7 @@ import unittest
 from btc_eth_dual_quant.data.lifecycle_artifacts import V4_MANIFEST_TYPES
 from scripts import liquid_universe_v4_requalification as requalification
 from scripts.liquid_universe_v4_requalification import assert_three_way
+from scripts.liquid_universe_v4_requalification_check import required_report_markers
 
 
 def artifacts(value: str = "same") -> dict:
@@ -59,6 +60,16 @@ class LiquidUniverseV4RequalificationTests(unittest.TestCase):
     def test_missing_worker_build_blocks(self):
         with self.assertRaisesRegex(ValueError, "cold/warm/worker"):
             assert_three_way({"cold": artifacts(), "warm": artifacts()}, {}, {})
+
+    def test_truthful_blocked_report_requires_fail_closed_determinism_marker(self):
+        markers = required_report_markers("blocked")
+        self.assertIn("- Status: blocked", markers)
+        self.assertIn("- Determinism: not_run_due_fail_closed_cold_block", markers)
+        self.assertNotIn("- Determinism: pass", markers)
+
+    def test_unknown_requalification_status_fails_closed(self):
+        with self.assertRaisesRegex(ValueError, "unsupported V4 requalification status"):
+            required_report_markers("unknown")
 
 
 if __name__ == "__main__":

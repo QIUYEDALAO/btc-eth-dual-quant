@@ -16,6 +16,20 @@ REPORT = ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPOR
 REQUIRED_SOURCE_FREEZE_HASH = "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
 
 
+def required_report_markers(status: str) -> tuple[str, ...]:
+    if status == "pass":
+        determinism = "pass"
+    elif status == "blocked":
+        determinism = "not_run_due_fail_closed_cold_block"
+    else:
+        raise ValueError(f"unsupported V4 requalification status: {status}")
+    return (
+        f"- Status: {status}",
+        f"- Determinism: {determinism}",
+        "- M2 authorized: no",
+    )
+
+
 def _load_v4(path: Path) -> dict:
     document = json.loads(path.read_text(encoding="utf-8"))
     unsigned = {key: value for key, value in document.items() if key != "content_hash"}
@@ -91,7 +105,7 @@ def check() -> dict:
     if diff["v3_mutated"] or diff["v3_status"] != "blocked" or diff["v4_status"] != summary["status"]:
         raise ValueError("V3/V4 authority diff mismatch")
     report = REPORT.read_text()
-    for marker in (f"- Status: {summary['status']}", "- Determinism: pass", "- M2 authorized: no"):
+    for marker in required_report_markers(summary["status"]):
         if marker not in report:
             raise ValueError(f"V4 report marker missing: {marker}")
     report_sha256 = hashlib.sha256(

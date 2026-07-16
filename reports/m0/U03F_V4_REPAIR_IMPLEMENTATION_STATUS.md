@@ -5,7 +5,7 @@
 - Branch: `codex/u03f-v4-repair-implementation`
 - Draft PR: `#98`
 - Frozen protocol content hash: `9b771317d8257b397addefc262a1ffd48ded57ec1d79542372fe3c95cf8180c1`
-- Repair implementation hash: `b3c17ef6b84c0c09798dd7add12ed869622a50963ab7dc99fc8d951bea063c6e`
+- Repair implementation hash: `ec1c561940c0163a795ad8324d4bc403cd6b9c3083f90ad45860051c5b32a084`
 - Frozen independent auditor algorithm hash: `7407e147cb41cbb8fbf0b0fa5b3fa08421d03f51cafb19f41c4d1541923d51f1`
 - Real public requalification run: `not run`
 - New independent audit run: `not run`
@@ -26,6 +26,10 @@ Requalification finalization now writes the final report bytes atomically,
 hashes those exact bytes into every completed build record, writes the run
 manifest atomically and immediately verifies the binding. Any later report-byte
 change invalidates the run.
+
+The checker requires `Determinism: pass` for a successful cold/warm/worker run,
+but accepts `not_run_due_fail_closed_cold_block` only for a truthful `blocked`
+cold result. Unknown statuses or inconsistent markers fail closed.
 
 The authoritative V4 public builder and requalification wrapper now require
 the existing frozen local archive set. Download, remote replacement and
