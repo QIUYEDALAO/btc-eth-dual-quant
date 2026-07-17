@@ -1848,3 +1848,9 @@ private exchange responses here.
 - Fixes are narrowly limited to accepted `close precedes open` blocker reconciliation, full daily archive dates and recomputed `V3_V4_diff.v4_status`.
 - Corrected implementation: `d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb`.
 - No Gate was lowered; replacement exact-head review is required before another full audit.
+
+## 2026-07-18 - ADR-0015 Envelope-Fix Exact-Head Review Approved
+
+- Exact target `301e910ea669c702a34598e500826a456663a5fb`; implementation `d183b3f9...afcb`.
+- Verdict `approve`, remaining critical/high `0 / 0`; review `f04f87f849966d188dc39cff0bc72f12a71d6c1d601249d202a08ce4686b7c26`.
+- Only the unchanged real audit is reauthorized; all research, OOS, trading and M2 authorizations remain false.

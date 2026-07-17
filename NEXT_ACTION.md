@@ -2,9 +2,8 @@
 
 ## Immediate Task
 
-The second audit attempt matched all three orders, all policy accounting and
-16/19 manifests. Three legacy envelope fields were corrected; the revised
-implementation requires a replacement exact-head review before rerun.
+The 16/19 envelope fix has received replacement exact-head `approve` with
+0 critical/high. The real three-order audit is again the only authorized task.
 
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
 - Protocol content hash:
@@ -24,11 +23,12 @@ implementation requires a replacement exact-head review before rerun.
 - Historical frozen auditor modified: no.
 - Exact reviewed target: `4bebdf32786818b7f451474c864ba9ee3109a26b`.
 - Review content hash: `77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0`.
-- Real audit completed: no; authorized: no pending replacement review.
+- Exact reviewed target: `301e910ea669c702a34598e500826a456663a5fb`.
+- Review content hash: `f04f87f849966d188dc39cff0bc72f12a71d6c1d601249d202a08ce4686b7c26`.
+- Real audit completed: no; authorized: yes.
 - Prior failed preflight produced no result evidence.
 
-The only authorized next task is replacement exact-head review of the envelope
-fix. The 19/19 Gate remains unchanged.
+The only authorized next task is the real audit. The 19/19 Gate remains unchanged.
 
 ## Required Audit Run
 

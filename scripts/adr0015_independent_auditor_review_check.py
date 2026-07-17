@@ -10,10 +10,10 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TARGET_BASE = "4577466f9fbb223aff5b692449466052322492e6"
-TARGET_COMMIT = "4bebdf32786818b7f451474c864ba9ee3109a26b"
+TARGET_BASE = "8a5c6fc91a23c64ed70dca98a5b64abd98751616"
+TARGET_COMMIT = "301e910ea669c702a34598e500826a456663a5fb"
 PROTOCOL_HASH = "9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b"
-IMPLEMENTATION_HASH = "95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb"
+IMPLEMENTATION_HASH = "d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb"
 EVIDENCE = ROOT / "reports/expert/evidence/adr0015_independent_auditor_review.json"
 REPORT = ROOT / "reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md"
 IMPLEMENTATION_MANIFEST = "config/liquid_universe_v4_adr0015_independent_auditor_implementation.json"
@@ -58,8 +58,8 @@ def build_document(generated_utc: str) -> dict[str, Any]:
         "implementation_files": implementation_files(),
         "review_dimensions": [{"dimension": item, "status": "pass"} for item in DIMENSIONS],
         "validation": {
-            "focused_tests": {"passed": 26, "total": 26},
-            "full_unit_tests": {"passed": 707, "total": 707},
+            "focused_tests": {"passed": 28, "total": 28},
+            "full_unit_tests": {"passed": 709, "total": 709},
             "fault_injection_cases": {"passed": 16, "total": 16},
             "historical_auditor_files_modified": False,
             "public_frozen_source_audit_executed": False,
