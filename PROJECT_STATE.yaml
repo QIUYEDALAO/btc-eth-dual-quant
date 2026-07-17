@@ -1,12 +1,27 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-17T14:49:49Z"
-current_phase: ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task
-current_status: adr0015_audit_protocol_frozen_auditor_fixture_implementation_authorized_no_real_audit_no_u04_no_m2
+last_updated_utc: "2026-07-18T00:00:00Z"
+current_phase: ADR-0015 independent auditor fixture implementation complete; exact-head review is the only authorized next task
+current_status: adr0015_independent_auditor_fixture_complete_pending_exact_head_review_no_real_audit_no_u04_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: ADR-0015 independent auditor fixture implementation
+    status: fixture_complete_pending_exact_head_review
+    evidence: reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md
+    machine_evidence: config/liquid_universe_v4_adr0015_independent_auditor_implementation.json
+    branch: codex/adr-0015-independent-auditor-implementation
+    protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
+    implementation_content_hash: b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c
+    synthetic_tests: 10
+    full_unit_tests: 699
+    historical_auditor_modified: false
+    production_policy_imported_as_audit_algorithm: false
+    real_audit_executed: false
+    exact_head_review_required: true
+    u04_authorized: false
+    m2_authorized: false
   - phase: ADR-0015 invalid-interval independent audit protocol
     status: frozen_local_complete_before_auditor_implementation_or_result
     evidence: reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_PROTOCOL.md
@@ -516,26 +531,26 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: ADR-0015-AUDITOR
-    phase: Independent auditor fixture implementation after frozen ADR-0015 audit protocol
+  - id: ADR-0015-AUDITOR-REVIEW
+    phase: Exact-head independent review of the completed ADR-0015 auditor
     status: authorized_not_started
     branch: not_created
     pr: none
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: config/liquid_universe_v4_adr0015_independent_audit_protocol.json
+    evidence: config/liquid_universe_v4_adr0015_independent_auditor_implementation.json
     protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
     policy_hash: 0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04
     algorithm_hash: 8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff
     requalification_run_manifest_hash: a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9
     requalification_artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
-    auditor_fixture_implementation_authorized: true
-    auditor_fault_injection_authorized: true
-    exact_head_review_required: true
+    implementation_content_hash: b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c
+    auditor_fixture_implementation_complete: true
+    exact_head_review_authorized: true
     real_independent_audit_authorized: false
     u04_authorized: false
     m2_authorized: false
-    blocker: "The real independent audit cannot run until an independent auditor implementation passes fixtures, fault injection and exact-head review."
+    blocker: "The real independent audit cannot run until the completed auditor receives exact-head approve with zero critical/high findings."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -654,6 +669,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md
+    phase: ADR-0015 independent auditor fixture implementation
+    status: fixture_complete_pending_exact_head_review
+    status_marker: '- Status: `fixture_complete_pending_exact_head_review`'
+  - path: config/liquid_universe_v4_adr0015_independent_auditor_implementation.json
+    phase: ADR-0015 independent auditor machine identity
+    status: deterministic_fixture_only_implementation
+    status_marker: '"status": "fixture_complete_pending_exact_head_review"'
   - path: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_IMPLEMENTATION_STATUS.md
     phase: ADR-0015 generic invalid-interval policy implementation
     status: implementation_pass_fixture_only_pending_exact_head_review

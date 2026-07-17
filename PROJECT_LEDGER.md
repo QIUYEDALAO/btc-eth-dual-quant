@@ -1804,3 +1804,15 @@ private exchange responses here.
 - Independence: production builders, production invalid-interval module and production Markdown cannot be used as the audit algorithm or computation input. No economic-materiality waiver, timestamp repair, fill, replacement or date/symbol/row exception is allowed.
 - Execution status: protocol checker and tamper tests pass; real frozen-source audit was not run. Frozen source and requalification/historical evidence remain unchanged.
 - Next Gate: only independent auditor fixture implementation, fault injection and later exact-head review are authorized. The real audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.
+## 2026-07-18 - ADR-0015 Independent Auditor Fixture Implementation Complete
+
+- Task: `ADR-0015-AUDITOR`.
+- Branch: `codex/adr-0015-independent-auditor-implementation`; local Git only.
+- Frozen protocol: `9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b`.
+- Implementation content hash: `b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c`.
+- Scope: new independent ZIP/raw-row/integer-time/member-lifecycle/event-mask/accounting primitives, 19-manifest orchestration, guarded runner, checker, synthetic fixtures and 16 fault IDs.
+- Independence: the production invalid-interval module is not imported as the audit algorithm; copied-production function scan is empty; the historical U-03F independent auditor files have zero diff and their exact-hash regression passes.
+- Validation: implementation/protocol/review regression 25/25; full repository unit suite 700/700; compile passes.
+- Execution: no frozen public archive audit, network, production evidence mutation, strategy result, OOS, API or trading action occurred.
+- Next Gate: freeze the exact local implementation commit and complete a separate exact-head review with `approve`, 0 critical and 0 high before the real audit can be authorized.
+- Safety: U-04, strategy/backtesting/OOS, API/trading, `execution/live` and M2 remain unauthorized.

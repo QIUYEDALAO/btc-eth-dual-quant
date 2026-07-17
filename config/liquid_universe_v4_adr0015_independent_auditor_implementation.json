@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "implementation_id": "ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDITOR-V1",
+  "status": "fixture_complete_pending_exact_head_review",
+  "protocol_content_hash": "9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b",
+  "implementation_content_hash": "b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c",
+  "files": {
+    "scripts/adr0015_independent_audit_run.py": "b9e92feb6325a54f4e3342999d474879fd983c44d4e39eb1185ee4c6d7892355",
+    "src/btc_eth_dual_quant/audit/liquid_universe_v4_adr0015.py": "8e5734be40be1def28d5f63936bfcafc420d4cb1ba3423e13dbee13e849d707d",
+    "src/btc_eth_dual_quant/audit/liquid_universe_v4_adr0015_audit_run.py": "0d5fc0be8b862b59047c7770fbf6b581875f6ff4476bc5350e4f41b1dc97e33b",
+    "tests/test_adr0015_independent_auditor.py": "81998cadd31e85f0a98d76b7e0b1be933a7bcba0001a63db69be8aeea32e83f8"
+  },
+  "fault_injection_ids": [
+    "ADR0015-AUD-FI-001", "ADR0015-AUD-FI-002", "ADR0015-AUD-FI-003", "ADR0015-AUD-FI-004",
+    "ADR0015-AUD-FI-005", "ADR0015-AUD-FI-006", "ADR0015-AUD-FI-007", "ADR0015-AUD-FI-008",
+    "ADR0015-AUD-FI-009", "ADR0015-AUD-FI-010", "ADR0015-AUD-FI-011", "ADR0015-AUD-FI-012",
+    "ADR0015-AUD-FI-013", "ADR0015-AUD-FI-014", "ADR0015-AUD-FI-015", "ADR0015-AUD-FI-016"
+  ],
+  "authorizations": {
+    "synthetic_fixture_validation": true,
+    "fault_injection": true,
+    "exact_head_review": true,
+    "full_independent_audit_run": false,
+    "u04": false,
+    "strategy": false,
+    "returns": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "content_hash": "7a89bb18dcb9e00083191b1d9943210af2624cc7b793e7af0063602acde99a66",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

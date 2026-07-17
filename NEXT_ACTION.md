@@ -2,8 +2,8 @@
 
 ## Immediate Task
 
-The ADR-0015 independent audit protocol is frozen locally before any auditor
-implementation or real audit result.
+The ADR-0015 independent auditor fixture implementation is complete locally
+and must now receive a separate exact-head independent review.
 
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
 - Protocol content hash:
@@ -17,24 +17,25 @@ implementation or real audit result.
   mismatches and zero critical/high findings.
 - Frozen accounting: 8 events, 119 physical invalid rows, 1 valid-minority
   row and 120 total masked active-member slots.
+- Auditor implementation content hash:
+  `b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c`.
+- Synthetic/targeted checks: 24 passed; complete unit regression: 699 passed.
+- Historical frozen auditor modified: no.
 - Real audit executed or authorized: no.
 
-The only authorized next task is a separate independent auditor fixture
-implementation. It may implement independent primitives, synthetic fixtures,
-fault injection and an exact-head review package. It must not execute the real
-frozen-source audit.
+The only authorized next task is an exact-head independent review of the
+completed implementation. The review must bind the final local commit and the
+implementation content hash, inspect independence and all frozen Gates, and
+reach `approve` with 0 critical / 0 high before it may authorize the real audit.
 
-## Required Next Implementation
+## Required Next Review
 
-1. Create one new local branch from the frozen protocol commit.
-2. Implement independent ZIP/raw-row, integer-time, membership, lifecycle,
-   ADR-0015 event/mask/accounting, post-mask grid/hour/day, panel and manifest
-   recomputation without importing production builders as the audit algorithm.
-3. Cover normal, reverse and deterministic-shuffled fixture orders.
-4. Cover source/hash/member/timestamp/membership/threshold/full-slot/order and
-   authorization fault injection.
-5. Freeze one exact implementation head and perform a separate exact-head
-   review before any real audit is authorized.
+1. Freeze one local implementation commit without changing the reviewed files.
+2. Create a separate local review branch from that exact commit.
+3. Bind the protocol, implementation file hashes, exact target commit and all
+   19-manifest/accounting/order Gates.
+4. Record a deterministic review verdict and 0/0 critical/high counts.
+5. Only an `approve` review may separately authorize the frozen-source audit.
 6. Continue local Git only; no GitHub push, PR or Actions unless the user asks.
 
 ## ADR-0015 Implementation Exact-Head Review

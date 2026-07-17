@@ -156,6 +156,10 @@ ALLOWED = {
         "adr0015_audit_protocol_frozen_auditor_fixture_implementation_authorized_no_real_audit_no_u04_no_m2",
     ): "ADR-0015-AUDITOR",
     (
+        "ADR-0015 independent auditor fixture implementation complete; exact-head review is the only authorized next task",
+        "adr0015_independent_auditor_fixture_complete_pending_exact_head_review_no_real_audit_no_u04_no_m2",
+    ): "ADR-0015-AUDITOR-REVIEW",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -235,6 +239,11 @@ ADR0015_AUDIT_PROTOCOL_PAIR = (
     "adr0015_audit_protocol_frozen_auditor_fixture_implementation_authorized_no_real_audit_no_u04_no_m2",
 )
 
+ADR0015_AUDITOR_REVIEW_PAIR = (
+    "ADR-0015 independent auditor fixture implementation complete; exact-head review is the only authorized next task",
+    "adr0015_independent_auditor_fixture_complete_pending_exact_head_review_no_real_audit_no_u04_no_m2",
+)
+
 ADR0015_REVIEWED_IMPLEMENTATION_HEAD = "67e7d29eaed63a3edb903dd618184bc9f02c5748"
 ADR0015_IMPLEMENTATION_REVIEW_MERGE = "a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f"
 ADR0015_EXACT_IMPLEMENTATION_FILES = (
@@ -266,6 +275,7 @@ AUDIT_BLOCKED_PAIRS = {
     ADR0015_CONTROLLED_INTEGRATION_PAIR,
     ADR0015_REQUALIFICATION_PASS_PAIR,
     ADR0015_AUDIT_PROTOCOL_PAIR,
+    ADR0015_AUDITOR_REVIEW_PAIR,
 }
 
 EXPECTED_AUTH = {
@@ -288,7 +298,7 @@ def validate(state: dict) -> list[str]:
         failures.append(f"unsupported V2 phase/status pair: {pair}")
     if state.get("research_authorizations") != EXPECTED_AUTH:
         failures.append("research authorization matrix changed")
-    if pair in {ADR0015_CONTROLLED_INTEGRATION_PAIR, ADR0015_REQUALIFICATION_PASS_PAIR, ADR0015_AUDIT_PROTOCOL_PAIR}:
+    if pair in {ADR0015_CONTROLLED_INTEGRATION_PAIR, ADR0015_REQUALIFICATION_PASS_PAIR, ADR0015_AUDIT_PROTOCOL_PAIR, ADR0015_AUDITOR_REVIEW_PAIR}:
         for commit, label in (
             (ADR0015_REVIEWED_IMPLEMENTATION_HEAD, "reviewed implementation head"),
             (ADR0015_IMPLEMENTATION_REVIEW_MERGE, "implementation review merge"),
@@ -336,7 +346,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -386,6 +396,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
         "ADR-0015 fixed-range requalification passed; new independent audit protocol is the only authorized next task",
         "ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task",
+        "ADR-0015 independent auditor fixture implementation complete; exact-head review is the only authorized next task",
     }:
         milestones = [
             item
@@ -707,6 +718,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
         "ADR-0015 fixed-range requalification passed; new independent audit protocol is the only authorized next task",
         "ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task",
+        "ADR-0015 independent auditor fixture implementation complete; exact-head review is the only authorized next task",
     }:
         milestones = [
             item
