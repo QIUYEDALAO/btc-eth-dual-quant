@@ -1,0 +1,19 @@
+{
+  "content": {
+    "diagnostic_base_main": "70c784b1573de8437e189672c89e9c00b6505978",
+    "membership_content_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_file_sha256": "d3dbf7508b1cd8373834a70cf7ee307937de754643687bd9ad9928f082aea72f",
+    "protocol_content_hash": "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
+    "protocol_merge_commit": "70c784b1573de8437e189672c89e9c00b6505978",
+    "protocol_pr": 102,
+    "qualification_summary_file_sha256": "b2afe36cd8a7c8e91cb628ecf3ce479b6860701bc073a114fdec443212b84b19",
+    "source_archive_count": 27736,
+    "source_freeze_content_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "source_freeze_file_sha256": "71ef8d900ceca6618d0557ce62db0b63814793502789bc8346ba02abc3bb96fb",
+    "source_mode": "frozen_local_only"
+  },
+  "content_hash": "d07c7b0066976f0581163a3705897e29a12f7c4751cec8d6a74b54e77ad86468",
+  "generated_utc": "2026-07-17T00:00:00Z",
+  "manifest_type": "u03f_v4_input_binding_summary",
+  "schema_version": 1
+}

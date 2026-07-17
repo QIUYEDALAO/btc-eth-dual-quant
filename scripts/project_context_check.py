@@ -184,10 +184,13 @@ def main() -> int:
         failures.append("PROJECT_STATE.yaml allowed_next_work must contain strings only")
         raw_allowed_next_work = []
     allowed_next_work = [str(item) for item in raw_allowed_next_work]
-    if not any("diagnostics" in item.casefold() for item in allowed_next_work):
-        failures.append("PROJECT_STATE.yaml allowed_next_work must include diagnostics")
-    if not any("design review" in item.casefold() for item in allowed_next_work):
-        failures.append("PROJECT_STATE.yaml allowed_next_work must include design review")
+    if not any("diagnostic" in item.casefold() for item in allowed_next_work):
+        failures.append("PROJECT_STATE.yaml allowed_next_work must include diagnostic scope")
+    if not any(
+        "design review" in item.casefold() or "draft policy adr" in item.casefold()
+        for item in allowed_next_work
+    ):
+        failures.append("PROJECT_STATE.yaml allowed_next_work must include design or Draft policy ADR scope")
 
     current_status = str(state.get("current_status", ""))
     m1b_history = [

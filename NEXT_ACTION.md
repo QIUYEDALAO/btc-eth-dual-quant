@@ -2,22 +2,24 @@
 
 ## Immediate Task
 
-The user explicitly started a new protocol-only follow-on from main
-`3ba411d28563526a5357e3882a1e5759311f6179`. The current branch freezes
-`U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1`, content hash
+PR #102 merged the frozen protocol at
+`70c784b1573de8437e189672c89e9c00b6505978` after 116/116 checks. Its exact
+head is `07e4fc13d4a6d027e4881863b9224906be776e9a` and content hash is
 `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190`.
 
-This task does not run the diagnostic. It binds PR #100's exact 119 blocked
-symbol-month inputs and 119 physical invalid rows, the 27,736-archive frozen
-source, strict integer 5m boundaries, normal/reverse/deterministic-shuffled
-traversal, the existing 80% synchronous evidence threshold and zero downstream
-authorization.
+The one authorized frozen-local diagnostic has now completed. Normal, reverse
+and deterministic-shuffled traversal each revalidated all 27,736 bound archive
+bytes and produced the same canonical content hash
+`ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677`.
+Exactly 119 physical invalid rows group into eight UTC windows; all eight meet
+the frozen two-symbol and 80% evidence threshold. The run-manifest content hash
+is `df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33`.
 
-The immediate action is PR #102 exact-head review, all-green CI and merge.
-Only after that merge may one evidence-only diagnostic read the exact frozen
-local archives. Even a fully synchronized result may authorize only a separate
-Draft policy ADR after its evidence merges; it cannot directly change the
-production pipeline, rerun requalification, start a new audit or enter U-04.
+The decision is `new_policy_adr_required`, not policy adoption. The immediate
+action is exact evidence review, all-green CI and merge of the diagnostic PR.
+Only after that merge may a separate Draft policy ADR start. Runtime changes,
+requalification, a new audit, U-04, strategy/OOS, API/trading and M2 remain
+unauthorized.
 
 ## Historical Failed Audit
 
@@ -101,10 +103,11 @@ BTC/ETH two-asset candidate queue.
 
 1. Preserve PR #89, PR #95 and PR #100 evidence and the frozen source byte for
    byte; none is an alternative active qualification authority.
-2. Merge only the new invalid-interval adjudication protocol after all checks
-   pass, then run one separately versioned evidence-only diagnostic.
-3. Fail closed on any source/hash/order mismatch. Do not create per-row
-   exceptions, substitute daily/REST data or adopt policy inside diagnostics.
+2. Review and merge only the exact deterministic invalid-interval diagnostic
+   evidence after all checks pass.
+3. After evidence merge, a separately versioned Draft policy ADR is the only
+   allowed follow-on; it may not create per-row exceptions or directly adopt
+   the existing gap policy.
 4. Keep runtime implementation, requalification, the new independent audit,
    U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
 

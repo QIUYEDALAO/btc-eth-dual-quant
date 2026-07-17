@@ -1660,3 +1660,16 @@ private exchange responses here.
 - Execution status: diagnostic no; production pipeline change no; requalification no; new audit no; U-04 no.
 - Next action: review PR #102 exact head and merge only after all CI passes. Only then may one evidence-only frozen-source diagnostic start.
 - Safety: no source download/replacement/substitution, historical mutation, Gate reduction, strategy, returns, OOS, API/trading, execution/live or M2.
+
+## 2026-07-17 - U-03F Invalid-Interval Diagnostic Completed
+
+- Task IDs: U-03F-R2-P / U-03F-R2-D.
+- Protocol merge: PR #102 exact head `07e4fc13d4a6d027e4881863b9224906be776e9a` merged at `70c784b1573de8437e189672c89e9c00b6505978` after 116/116 checks; protocol content hash `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190`.
+- Diagnostic branch/base: `codex/u03f-v4-invalid-interval-diagnostic` / `70c784b1573de8437e189672c89e9c00b6505978`.
+- Source integrity: exactly 27,736 frozen local archives were revalidated in each of normal, reverse and deterministic-shuffled order; no network, download, replacement or substitution occurred.
+- Determinism: all three canonical content hashes equal `ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677`.
+- Evidence: exactly 119 invalid physical rows with archive SHA, byte size, member, line, raw timestamps and raw-row SHA provenance group into eight UTC windows. Seven windows contain 15/15 active members and the 2021-12-24 window contains 14/15; all meet the frozen two-symbol and 80% threshold.
+- Decision: `new_policy_adr_required`; diagnostic run-manifest content hash `df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33`.
+- Policy boundary: no policy was adopted, no per-row exception registry was created and the existing gap policy was not applied directly. Production pipeline modified: no.
+- Next Gate: exact evidence review, all-green CI and merge. Only after merge may a separate Draft policy ADR start; it cannot auto-authorize implementation, requalification, a new audit or U-04.
+- Safety: historical PR #89/#95/#100 evidence and source bytes remain unchanged. Strategy, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
