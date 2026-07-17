@@ -2,8 +2,9 @@
 
 ## Immediate Task
 
-The source-order fix has replacement exact-head `approve` with 0 critical/high.
-The real three-order audit is again the only authorized task.
+The real ADR-0015 independent audit passed all 19 manifests in all three orders
+with zero critical/high findings. Only a separate governance decision about
+U-04 design authorization may follow.
 
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
 - Protocol content hash:
@@ -27,10 +28,13 @@ The real three-order audit is again the only authorized task.
 - Review content hash: `f04f87f849966d188dc39cff0bc72f12a71d6c1d601249d202a08ce4686b7c26`.
 - Exact reviewed target: `e935d6b287eaf66f825d9f73181fa35160cb5225`.
 - Review content hash: `fb63d2f3b3e0843927a348fb5a9fb94a5b3873d15a132d8bd968d10fe7980fe0`.
-- Real audit completed: no; authorized: yes.
+- Audit summary hash: `e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4`.
+- Artifact set: `8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3`.
+- Real audit completed: yes; verdict: pass; 19/19; critical/high: 0/0.
 - Prior failed preflight produced no result evidence.
 
-The only authorized next task is the real audit. The 19/19 Gate remains unchanged.
+The only authorized next task is a governance-only U-04 authorization decision.
+No hypothesis, strategy, outcomes, backtest or OOS work is authorized yet.
 
 ## Required Audit Run
 

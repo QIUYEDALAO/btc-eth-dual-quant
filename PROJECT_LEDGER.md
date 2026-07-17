@@ -1866,3 +1866,12 @@ private exchange responses here.
 
 - Target `e935d6b287eaf66f825d9f73181fa35160cb5225`; review `fb63d2f3b3e0843927a348fb5a9fb94a5b3873d15a132d8bd968d10fe7980fe0`.
 - Verdict `approve`, remaining critical/high `0 / 0`; only the real audit is authorized.
+
+## 2026-07-18 - ADR-0015 Real Independent Audit Passed
+
+- Exact frozen source: 27,736 archives; normal, reverse and deterministic-shuffled identities all `8784b564...348c3`.
+- Production comparison: 19/19 manifests exact; artifact sets exact.
+- Accounting: 8 events, 119 invalid physical rows, 1 valid-minority row and 120 total active slots.
+- Findings: 0 critical, 0 high; verdict `pass`; summary `e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4`.
+- Production evidence mutated: no; network accessed: no.
+- Result itself authorizes no U-04, strategy, returns, backtesting, OOS, API/trading, `execution/live` or M2. Only a separate U-04 governance decision may follow.

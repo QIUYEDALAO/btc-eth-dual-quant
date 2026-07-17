@@ -2,11 +2,34 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: ADR-0015 independent auditor exact-head review approved; real independent audit is the only authorized next task
-current_status: adr0015_independent_auditor_review_approve_real_audit_authorized_no_u04_no_m2
+current_phase: ADR-0015 independent audit passed; separate U-04 authorization decision is the only authorized next task
+current_status: adr0015_independent_audit_pass_pending_separate_u04_decision_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: ADR-0015 real independent frozen-source audit
+    status: pass_local_complete
+    evidence: reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_REPORT.md
+    machine_evidence: reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/audit_summary.json
+    branch: codex/adr-0015-independent-audit-run-v4
+    protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
+    reviewed_target: e935d6b287eaf66f825d9f73181fa35160cb5225
+    review_content_hash: fb63d2f3b3e0843927a348fb5a9fb94a5b3873d15a132d8bd968d10fe7980fe0
+    audit_summary_hash: e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4
+    artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
+    traversal_orders: [normal, reverse, deterministic_shuffled]
+    manifests_exact: 19
+    manifests_total: 19
+    invalid_interval_events: 8
+    invalid_physical_rows: 119
+    valid_minority_rows: 1
+    total_active_slots_masked: 120
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    production_evidence_mutated: false
+    network_accessed: false
+    u04_authorized: false
+    m2_authorized: false
   - phase: ADR-0015 independent auditor source-order exact-head review
     status: approve_local_complete
     branch: codex/adr-0015-independent-auditor-source-order-review
@@ -622,29 +645,28 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: ADR-0015-AUDIT
-    phase: Real ADR-0015 independent audit over the exact frozen source
+  - id: U-04-DECISION
+    phase: Separate governance decision whether to authorize U-04 design
     status: authorized_ready
-    branch: codex/adr-0015-independent-audit-run-v4
+    branch: pending
     pr: none
     head_sha: pending
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/expert/evidence/adr0015_independent_auditor_review.json
+    evidence: reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/audit_summary.json
     protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
     policy_hash: 0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04
     algorithm_hash: 8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff
     requalification_run_manifest_hash: a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9
     requalification_artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
     implementation_content_hash: f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e
-    auditor_fixture_implementation_complete: true
-    exact_head_review_approved: true
-    exact_review_target: e935d6b287eaf66f825d9f73181fa35160cb5225
-    review_content_hash: fb63d2f3b3e0843927a348fb5a9fb94a5b3873d15a132d8bd968d10fe7980fe0
-    replacement_review_required: false
-    real_independent_audit_authorized: true
+    independent_audit_complete: true
+    independent_audit_verdict: pass
+    audit_summary_hash: e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4
+    artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
+    u04_design_decision_authorized: true
     u04_authorized: false
     m2_authorized: false
-    blocker: none
+    blocker: "U-04 remains unauthorized until a separate governance-only decision is recorded."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -763,6 +785,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_REPORT.md
+    phase: ADR-0015 real independent audit
+    status: pass_19_of_19_zero_critical_high
+    status_marker: '- Verdict: `pass`'
+  - path: reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/audit_summary.json
+    phase: ADR-0015 independent audit machine result
+    status: deterministic_pass
+    status_marker: '"verdict":"pass"'
   - path: reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md
     phase: ADR-0015 independent auditor exact-head review
     status: approve_local_complete
