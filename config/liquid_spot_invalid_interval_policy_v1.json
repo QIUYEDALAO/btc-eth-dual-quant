@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "policy_id": "LIQUID-SPOT-SYNCHRONIZED-INVALID-INTERVAL-QUARANTINE-V1",
+  "policy_version": "ADR-0015-V1",
+  "status": "implementation_fixture_authority_public_requalification_not_run",
+  "market": {
+    "exchange": "binance",
+    "market": "spot",
+    "interval": "5m",
+    "open_time_grid_ms": 300000,
+    "valid_close_delta_ms": 299999
+  },
+  "bindings": {
+    "adopted_adr_path": "docs/decisions/ADR-0015-synchronized-official-invalid-interval-quarantine-policy.md",
+    "adopted_adr_file_sha256": "c87288449b1c96db74b5f4c68100e4313fbfc19917b29818ae2fd0dfeb535dc5",
+    "adopted_semantic_body_hash": "c3d5f605ec26161f1bedc6961ac6f326d00582f9c3dcaa9de68c226961a34149",
+    "adoption_content_hash": "d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19",
+    "review_content_hash": "893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3",
+    "protocol_content_hash": "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
+    "diagnostic_content_hash": "ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677",
+    "diagnostic_run_content_hash": "df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33",
+    "source_freeze_content_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "membership_manifest_content_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+    "v2_gap_policy_contract_hash": "051894e89b713f541caa601efab51be22f83461a4e624e1d51d7f576ed8cda51"
+  },
+  "candidate_threshold": {
+    "minimum_invalid_active_members": 2,
+    "minimum_fraction_numerator": 4,
+    "minimum_fraction_denominator": 5,
+    "fraction_denominator": "all_active_members_at_open_time"
+  },
+  "algorithm": {
+    "processing_order": [
+      "verify_archive_size_sha_zip_crc_and_single_member",
+      "retain_exact_physical_rows_and_hashes",
+      "validate_integer_timestamps_and_non_time_fields",
+      "bind_point_in_time_active_membership",
+      "group_rows_by_open_time",
+      "reject_missing_duplicate_non_member_overlap_and_drift",
+      "apply_integer_count_and_fraction_thresholds",
+      "derive_event_identity",
+      "mask_full_active_member_slot",
+      "rebuild_5m_1h_and_utc_day_completeness",
+      "emit_canonical_hash_bound_manifests"
+    ],
+    "event_identity_fields": [
+      "source_freeze_content_hash",
+      "membership_authority_hash",
+      "policy_version",
+      "algorithm_hash",
+      "open_time_ms"
+    ],
+    "sole_candidate_defect": "close_time_ms != open_time_ms + valid_close_delta_ms",
+    "valid_minority_rows_are_masked": true,
+    "raw_rows_are_rewritten": false,
+    "synthetic_fills": false,
+    "replacement_members": false,
+    "known_date_symbol_or_row_exceptions": false,
+    "direct_v2_gap_policy_reuse": false
+  },
+  "algorithm_hash": "8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff",
+  "hard_block_conditions": [
+    "open_time_off_grid",
+    "non_time_field_invalid_or_nonfinite",
+    "ohlcv_legality_failure",
+    "missing_expected_row",
+    "duplicate_row",
+    "non_member_row",
+    "membership_ambiguity",
+    "archive_or_evidence_hash_drift",
+    "source_revision",
+    "affected_fraction_below_threshold",
+    "affected_symbol_count_below_threshold",
+    "policy_overlap",
+    "order_content_hash_mismatch"
+  ],
+  "authorizations": {
+    "generic_policy_implementation": true,
+    "fixture_validation": true,
+    "fault_injection": true,
+    "exact_head_implementation_review": true,
+    "fixed_range_public_requalification": false,
+    "new_independent_audit_protocol": false,
+    "new_independent_audit": false,
+    "u04": false,
+    "hypothesis_or_strategy": false,
+    "event_scan_signals_or_returns": false,
+    "backtesting_or_oos": false,
+    "api_or_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "canonical_hash": "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04"
+}

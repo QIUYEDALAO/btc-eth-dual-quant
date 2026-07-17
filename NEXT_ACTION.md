@@ -2,52 +2,40 @@
 
 ## Immediate Task
 
-PR #107 independently approved the exact ADR-0015 Draft head with zero
-critical/high findings and merged unchanged at
-`1573abf2bef7d02df6c3b0624ee25cd3557ff2c6`. Its exact review head is
-`f3cf2131798f8bf3bd319b21480dca196517f3fe`, and review content hash is
-`893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3`.
-
-The immediate task is the separate `ADR-0015-ADOPT` governance stage. It binds
-the exact Draft, review, protocol, diagnostic, run-manifest and source-freeze
-identities under adoption content hash
+PR #108 merged ADR-0015 conditional adoption at
+`141481fa445bdc03b453844a666dbd2639c3cdf7`; its exact head was
+`01d98b60ce8a9a0b33082777c946cec70d380fc7`, and consolidated main run
+`29554620941` completed successfully. The adoption hash remains
 `d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19`.
-The reviewed policy semantic body hash is
-`c3d5f605ec26161f1bedc6961ac6f326d00582f9c3dcaa9de68c226961a34149`.
 
-The Draft binds PR #102's frozen protocol and PR #103's exact diagnostic
-evidence. It proposes a generic new policy family only for hash-bound official
-5m active-member rows whose open time is grid aligned, whose non-time fields
-all pass, and whose sole defect is the close boundary. A candidate requires at
-least two invalid active members and at least 80% of the active membership at
-one open time.
+The current task is `ADR-0015-IMPL`: a generic production-path policy
+implementation using synthetic ZIP fixtures and fault injection only. Runtime
+policy hash `0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04`
+binds algorithm hash
+`8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff`
+and every reviewed evidence identity.
 
-The underlying immutable diagnostic remains exactly 119 physical invalid rows
-in eight synchronous windows; this Draft neither rewrites nor reclassifies
-those historical source rows.
+The implementation verifies physical archives and raw rows before grouping by
+integer open time and point-in-time active membership. Accepted ≥2/≥80% events
+emit a separate mask for the entire active slot, including valid minority rows,
+before 5m grid, 1h and UTC-day completeness. No known date/symbol registry,
+repair, fill, source replacement, substitute member or V2 gap-policy reuse is
+implemented.
 
-An accepted policy event quarantines the full active-member slot,
-including any valid minority, while preserving every physical source row
-unchanged. Off-grid rows, other malformed fields, missing/duplicate/non-member
-rows, authority ambiguity and any source/hash/order drift remain hard blockers.
-No date/symbol exception registry, raw repair, source replacement, fill,
-substitute member or direct V2 gap-policy reuse is permitted.
+## ADR-0015 Implementation Gate
 
-## ADR-0015 Conditional Adoption
+The implementation is fixture-only and pending exact-head independent review.
+No public archive was read or executed. The implementation PR must remain
+unmerged until a separate review binds its exact head and returns `approve`
+with zero critical/high findings.
 
-The adoption authorizes only the next generic policy implementation, synthetic
-fixtures, fault injection and a later exact-head independent implementation
-review. The implementation must not run public data. Fixed-range
-requalification, a new audit protocol, a new audit, U-04, strategy/OOS,
-API/trading and M2 remain unauthorized.
-
-The adoption PR must preserve the exact reviewed policy semantics and the
-unchanged all-false docs-only Draft model. Any target, model, evidence,
-authorization or dependency drift fails closed.
+Fixed-range requalification, a new audit protocol, a new audit, U-04,
+strategy/OOS, API/trading and M2 remain unauthorized. Any target, model,
+evidence, authorization, mask or order drift fails closed.
 
 ## ADR-0015 Independent Policy Review
 
-PR #107 merged the exact-head independent review with verdict `approve`, zero
+PR #107 merged the policy exact-head independent review with verdict `approve`, zero
 critical findings and zero high findings. That review remains frozen historical
 evidence: approval alone did not adopt the policy, and its exact bindings are
 prerequisites for this separate conditional adoption.
@@ -134,14 +122,13 @@ BTC/ETH two-asset candidate queue.
 
 1. Preserve PR #89, PR #95 and PR #100 evidence and the frozen source byte for
    byte; none is an alternative active qualification authority.
-2. Validate and merge only the ADR-0015 conditional-adoption governance PR
-   after its exact semantic/evidence bindings, repository validation and
-   selective CI pass.
-3. After adoption merge, start only a separate generic policy implementation
-   using synthetic fixtures and fault injection; run no public data.
-4. Require an exact-head independent implementation review before any
-   fixed-range public requalification. Keep audit, U-04, hypothesis/strategy,
-   returns, OOS and M2 blocked.
+2. Complete local and selective validation of the generic ADR-0015
+   implementation without reading or running public data.
+3. Freeze the exact implementation head and conduct a separate independent
+   review; do not merge the implementation before `approve` with zero
+   critical/high findings.
+4. Keep fixed-range requalification, audit, U-04, hypothesis/strategy,
+   returns, OOS and M2 blocked until their explicit dependency Gates pass.
 
 U-03E V2 and V3 remain truthful blocked historical milestones. V4 supersedes
 their admission authority through a separately adopted lifecycle policy and
@@ -170,6 +157,6 @@ approved it with zero remaining critical/high findings and passed 112/112 checks
 after rebasing onto the implementation merge. Both PRs are merged.
 
 That approval authorized only the fixed repair requalification. PR #100 merged
-its truthful cold-blocked evidence after 114/114 checks. The resulting 119
+its truthful cold-blocked evidence after 114/114 checks. The resulting 119 physical
 source-row errors terminate and close the chain before a new audit. U-04 and all
 downstream work remain unauthorized.

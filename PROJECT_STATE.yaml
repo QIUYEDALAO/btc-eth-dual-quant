@@ -1,10 +1,25 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-17T04:00:00Z"
-current_phase: ADR-0015 conditional adoption pending PR validation
-current_status: adr0015_adopted_for_generic_implementation_review_only_pending_ci_no_requalification_no_u04_no_m2
+last_updated_utc: "2026-07-17T05:00:00Z"
+current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
+current_status: adr0015_generic_policy_implementation_fixture_pass_pending_exact_head_review_no_requalification_no_u04_no_m2
 completed_milestones:
+  - phase: ADR-0015 conditional adoption
+    status: accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only_merged
+    evidence: docs/decisions/ADR-0015-synchronized-official-invalid-interval-quarantine-policy.md
+    machine_evidence: reports/expert/evidence/adr0015_adoption_manifest.json
+    merged_pr: 108
+    result_head_sha: 01d98b60ce8a9a0b33082777c946cec70d380fc7
+    merge_commit: 141481fa445bdc03b453844a666dbd2639c3cdf7
+    main_validation_run: 29554620941
+    main_validation_conclusion: success
+    adoption_content_hash: d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19
+    public_data_run_executed: false
+    fixed_range_public_requalification_authorized: false
+    new_independent_audit_authorized: false
+    u04_authorized: false
+    m2_authorized: false
   - phase: ADR-0015 exact-head independent policy review
     status: approve_merged
     evidence: reports/expert/ADR_0015_INDEPENDENT_REVIEW.md
@@ -426,37 +441,28 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: ADR-0015-ADOPT
-    phase: Conditional synchronized invalid-interval policy adoption
-    status: adoption_pending_pr_validation
-    branch: codex/adr-0015-conditional-adoption
+  - id: ADR-0015-IMPL
+    phase: Generic synchronized invalid-interval policy implementation
+    status: implementation_pass_fixture_only_pending_exact_head_review
+    branch: codex/adr-0015-invalid-interval-implementation
     pr: runtime_current_pr
     head_sha: runtime_current_pr_head
+    base_main_sha: 141481fa445bdc03b453844a666dbd2639c3cdf7
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: docs/decisions/ADR-0015-synchronized-official-invalid-interval-quarantine-policy.md
-    machine_evidence: reports/expert/evidence/adr0015_adoption_manifest.json
-    reviewed_pr: 105
-    reviewed_base_sha: 6df4aa3aa355f986e5533a51e223d69e3bf16e84
-    reviewed_head_sha: 03d2b8736abab277e60db1153ba73f0899d7696f
-    draft_merge_sha: e1783090dfb0a4560475b97a021ef1e77aebc399
-    review_pr: 107
-    review_head_sha: f3cf2131798f8bf3bd319b21480dca196517f3fe
-    review_merge_sha: 1573abf2bef7d02df6c3b0624ee25cd3557ff2c6
-    protocol_content_hash: 9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190
-    diagnostic_content_hash: ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677
-    run_manifest_hash: df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33
-    policy_model_content_hash: 7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c
-    review_content_hash: 893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3
+    evidence: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_IMPLEMENTATION_STATUS.md
+    policy_hash: 0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04
+    algorithm_hash: 8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff
     adoption_content_hash: d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19
-    adopted_pending_merge: true
-    generic_implementation_authorized_after_merge: true
+    generic_policy_implemented: true
+    fixture_validation_complete: true
+    fault_injection_complete: true
     exact_head_implementation_review_required: true
     fixed_range_public_requalification_authorized: false
     new_independent_audit_authorized: false
     u04_authorized: false
     m2_authorized: false
-    production_pipeline_modified: false
-    blocker: "Adoption PR must pass local and selective CI with every reviewed semantic/evidence binding exact; only its merge authorizes generic implementation."
+    public_data_run_executed: false
+    blocker: "The exact implementation head requires a separate independent approve verdict with zero critical/high findings before merge or fixed-range requalification."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -478,7 +484,7 @@ open_work:
 active_decisions:
   - id: ADR-0015
     decision: Adopt the synchronized official invalid-interval quarantine policy only for generic implementation, fixtures, fault injection and exact-head implementation review.
-    status: accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only_pending_pr_validation
+    status: accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only_merged
     evidence: docs/decisions/ADR-0015-synchronized-official-invalid-interval-quarantine-policy.md
   - id: ADR-0014
     decision: Adopt lifecycle availability policy only for generic V4 implementation, independent implementation review and one fixed-range public requalification.
@@ -532,9 +538,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Validate and merge only the ADR-0015 conditional-adoption governance PR with exact Draft/review/evidence bindings unchanged."
-  - "After adoption merges, implement only the generic synchronized invalid-interval policy with synthetic fixtures and fault injection; do not run public data."
-  - "The implementation exact head must receive an independent approve verdict with zero critical/high findings before any fixed-range public requalification can be considered."
+  - "Freeze the ADR-0015 generic policy implementation exact head only after local and selective PR validation pass."
+  - "Conduct a separate independent review of that exact implementation head; do not merge the implementation before approve with zero critical/high findings."
+  - "Fixed-range public requalification remains unauthorized until the exact-head implementation review approves and the unchanged implementation merges."
   - "Diagnostics remain immutable evidence only; no new diagnostic, source download or source replacement is authorized."
   - "No unrelated design review or Draft policy ADR is authorized by this adoption."
   - "Any source/hash/order mismatch stops as blocked_evidence_mismatch; no exception registry, source replacement or Gate reduction is allowed."
@@ -575,13 +581,17 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_IMPLEMENTATION_STATUS.md
+    phase: ADR-0015 generic invalid-interval policy implementation
+    status: implementation_pass_fixture_only_pending_exact_head_review
+    status_marker: '- Status: `implementation_pass_fixture_only_pending_exact_head_review`'
   - path: reports/expert/evidence/adr0015_adoption_manifest.json
     phase: ADR-0015 conditional adoption
-    status: deterministic_conditional_adoption_pending_pr_validation
+    status: deterministic_conditional_adoption_merged_pr108
     status_marker: '"adoption_status": "accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only"'
   - path: docs/decisions/ADR-0015-synchronized-official-invalid-interval-quarantine-policy.md
     phase: ADR-0015 conditional adoption
-    status: accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only_pending_pr_validation
+    status: accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only_merged
     status_marker: "- Status: Accepted for generic policy implementation and exact-head implementation review only"
   - path: reports/CI_PR_VALIDATION_POLICY.md
     phase: Pull request validation governance
@@ -971,6 +981,9 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 108
+    merge_commit: 141481fa445bdc03b453844a666dbd2639c3cdf7
+    purpose: ADR-0015 conditional adoption for generic implementation and exact-head review only
   - number: 107
     merge_commit: 1573abf2bef7d02df6c3b0624ee25cd3557ff2c6
     purpose: ADR-0015 exact-head independent policy review approve with zero critical/high
@@ -1282,6 +1295,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/adr0015_invalid_interval_implementation_validate.sh
   - bash scripts/adr0015_adoption_validate.sh
   - bash scripts/adr0015_policy_draft_validate.sh
   - bash scripts/u03f_v4_invalid_interval_protocol_validate.sh
@@ -1460,10 +1474,13 @@ adr0015_independent_policy_review:
   u04_authorized: false
   m2_authorized: false
 adr0015_conditional_adoption:
-  status: accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only_pending_pr_validation
+  status: accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only_merged
   branch: codex/adr-0015-conditional-adoption
-  pr: runtime_current_pr
-  head_sha: runtime_current_pr_head
+  pr: 108
+  head_sha: 01d98b60ce8a9a0b33082777c946cec70d380fc7
+  merge_commit: 141481fa445bdc03b453844a666dbd2639c3cdf7
+  main_validation_run: 29554620941
+  main_validation_conclusion: success
   adopted_semantic_body_hash: c3d5f605ec26161f1bedc6961ac6f326d00582f9c3dcaa9de68c226961a34149
   adoption_content_hash: d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19
   reviewed_draft_head_sha: 03d2b8736abab277e60db1153ba73f0899d7696f
@@ -1475,9 +1492,30 @@ adr0015_conditional_adoption:
   fixture_validation_authorized_after_merge: true
   fault_injection_authorized_after_merge: true
   exact_head_implementation_review_required: true
-  production_pipeline_modified: false
+  production_pipeline_modified_in_adoption: false
   public_data_run_executed: false
   fixed_range_public_requalification_authorized: false
+  new_independent_audit_authorized: false
+  u04_authorized: false
+  m2_authorized: false
+adr0015_invalid_interval_policy_implementation:
+  status: implementation_pass_fixture_only_pending_exact_head_review
+  branch: codex/adr-0015-invalid-interval-implementation
+  pr: runtime_current_pr
+  head_sha: runtime_current_pr_head
+  base_main_sha: 141481fa445bdc03b453844a666dbd2639c3cdf7
+  report: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_IMPLEMENTATION_STATUS.md
+  policy_config: config/liquid_spot_invalid_interval_policy_v1.json
+  policy_hash: 0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04
+  algorithm_hash: 8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff
+  fixture_only: true
+  fault_cases: 16
+  full_active_slot_mask: true
+  valid_minority_masked: true
+  production_pipeline_code_modified: true
+  public_data_run_executed: false
+  fixed_range_public_requalification_authorized: false
+  exact_head_implementation_review_required: true
   new_independent_audit_authorized: false
   u04_authorized: false
   m2_authorized: false
