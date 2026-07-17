@@ -1778,5 +1778,5 @@ private exchange responses here.
 - Integration branch: `codex/adr-0015-invalid-interval-controlled-integration`, based on review merge `a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f` with exact reviewed head `67e7d29eaed63a3edb903dd618184bc9f02c5748` as the second parent.
 - Integrity rule: PR #109 is not rebased or amended. Runtime policy, implementation module, public-run integration, implementation checker/validator, status report and policy tests must remain blob-identical to the reviewed head.
 - Execution status: no public archive read or execution; no cold/warm/worker requalification; no audit.
-- Next Gate: integration validator, full local suite, one selective PR Gate, merge commit preserving ancestry, then consolidated main Gate.
+- Next Gate: project-state ancestry/blob invariant, full local suite, one selective PR Gate, merge commit preserving ancestry, then consolidated main Gate.
 - Safety: fixed-range requalification remains blocked until integration and its main Gate pass. New audit, U-04, strategy/OOS, API/trading, execution/live and M2 remain unauthorized.

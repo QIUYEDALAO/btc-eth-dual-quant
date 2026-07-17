@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -216,6 +217,18 @@ ADR0015_CONTROLLED_INTEGRATION_PAIR = (
     "adr0015_generic_policy_controlled_integration_pending_ci_no_requalification_no_u04_no_m2",
 )
 
+ADR0015_REVIEWED_IMPLEMENTATION_HEAD = "67e7d29eaed63a3edb903dd618184bc9f02c5748"
+ADR0015_IMPLEMENTATION_REVIEW_MERGE = "a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f"
+ADR0015_EXACT_IMPLEMENTATION_FILES = (
+    "config/liquid_spot_invalid_interval_policy_v1.json",
+    "reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_IMPLEMENTATION_STATUS.md",
+    "scripts/adr0015_invalid_interval_implementation_check.py",
+    "scripts/adr0015_invalid_interval_implementation_validate.sh",
+    "scripts/liquid_universe_v4_public_run.py",
+    "src/btc_eth_dual_quant/data/invalid_interval_quarantine.py",
+    "tests/test_adr0015_invalid_interval_policy.py",
+)
+
 CLOSED_TASK_PAIRS = {
     FAILED_U03F_CLOSEOUT_PAIR,
     REPAIR_CHAIN_CLOSED_PAIR,
@@ -255,6 +268,50 @@ def validate(state: dict) -> list[str]:
         failures.append(f"unsupported V2 phase/status pair: {pair}")
     if state.get("research_authorizations") != EXPECTED_AUTH:
         failures.append("research authorization matrix changed")
+    if pair == ADR0015_CONTROLLED_INTEGRATION_PAIR:
+        for commit, label in (
+            (ADR0015_REVIEWED_IMPLEMENTATION_HEAD, "reviewed implementation head"),
+            (ADR0015_IMPLEMENTATION_REVIEW_MERGE, "implementation review merge"),
+        ):
+            available = subprocess.run(
+                ["git", "cat-file", "-e", f"{commit}^{{commit}}"],
+                cwd=ROOT,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            ).returncode == 0
+            ancestor = available and subprocess.run(
+                ["git", "merge-base", "--is-ancestor", commit, "HEAD"],
+                cwd=ROOT,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            ).returncode == 0
+            if not ancestor:
+                failures.append(f"{label} is unavailable or not an ancestor of HEAD")
+        parents = subprocess.check_output(
+            ["git", "rev-list", "--parents", "HEAD"], cwd=ROOT, text=True
+        ).splitlines()
+        if not any(
+            ADR0015_REVIEWED_IMPLEMENTATION_HEAD in line.split()[1:]
+            for line in parents
+        ):
+            failures.append("no integration ancestor records the reviewed head as a parent")
+        for path in ADR0015_EXACT_IMPLEMENTATION_FILES:
+            reviewed = subprocess.run(
+                ["git", "rev-parse", f"{ADR0015_REVIEWED_IMPLEMENTATION_HEAD}:{path}"],
+                cwd=ROOT, text=True, capture_output=True, check=False,
+            )
+            current = subprocess.run(
+                ["git", "rev-parse", f"HEAD:{path}"],
+                cwd=ROOT, text=True, capture_output=True, check=False,
+            )
+            if (
+                reviewed.returncode
+                or current.returncode
+                or reviewed.stdout.strip() != current.stdout.strip()
+            ):
+                failures.append(f"reviewed implementation blob drifted: {path}")
     open_work = state.get("open_work", [])
     active = [
         item
