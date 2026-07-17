@@ -396,6 +396,20 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: CI-PR-GATE
+    phase: Pull request validation routing optimization
+    status: selective_pr_gate_pending_merge
+    branch: codex/ci-pr-trigger-optimization
+    pr: runtime_current_pr
+    head_sha: runtime_current_pr_head
+    checklist: PROJECT_EXECUTION_CHECKLIST.md
+    evidence: reports/CI_PR_VALIDATION_POLICY.md
+    pull_request_workflows: 1
+    automatic_main_push_workflows: 1
+    historical_automatic_workflows: 0
+    cancel_obsolete_heads: true
+    consolidated_regression_on_main: true
+    blocker: "This governance PR must validate before the ADR-0015 independent-review PR uses the selective Gate."
   - id: ADR-0015-DRAFT
     phase: Invalid physical-kline policy Draft
     status: draft_pending_independent_review
@@ -489,6 +503,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "Merge only the CI pull-request routing optimization after its policy checker, project Gate and PR validation pass; it changes no research authority."
   - "Complete and merge only the ADR-0015 Draft after its policy checker, repository validation and all PR CI checks pass."
   - "After Draft merge, start only a separate exact-head independent policy review; any mismatch, critical finding or high finding fails closed."
   - "The review is a design review and cannot authorize adoption, implementation, requalification, audit or U-04."
@@ -531,6 +546,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/CI_PR_VALIDATION_POLICY.md
+    phase: Pull request validation governance
+    status: selective_pr_gate_pending_merge
+    status_marker: "- Status: selective_pr_gate_pending_merge"
   - path: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_DRAFT.md
     phase: ADR-0015 synchronized invalid-interval quarantine policy Draft
     status: proposed_draft_non_authoritative_pending_independent_review
@@ -1342,3 +1361,16 @@ adr0015_policy_draft:
   new_independent_audit_authorized: false
   u04_authorized: false
   m2_authorized: false
+ci_pr_validation_policy:
+  status: selective_pr_gate_pending_merge
+  branch: codex/ci-pr-trigger-optimization
+  pr: runtime_current_pr
+  pull_request_workflows: 1
+  automatic_main_push_workflows: 1
+  historical_automatic_workflows: 0
+  cancel_obsolete_heads: true
+  project_gate_always: true
+  changed_stage_validators: true
+  consolidated_regression_on_main: true
+  manual_historical_dispatch: true
+  research_authority_changed: false

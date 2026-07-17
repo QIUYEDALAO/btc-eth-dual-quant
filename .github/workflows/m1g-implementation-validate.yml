@@ -1,5 +1,6 @@
 name: M1G Implementation Validate
-on: [pull_request, push]
+on:
+  workflow_dispatch:
 jobs:
   validate:
     runs-on: ubuntu-latest

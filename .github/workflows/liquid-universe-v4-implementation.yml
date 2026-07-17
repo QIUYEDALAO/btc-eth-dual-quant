@@ -1,8 +1,7 @@
 name: Liquid Universe V4 Implementation Validate
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 jobs:
   liquid-universe-v4-implementation:

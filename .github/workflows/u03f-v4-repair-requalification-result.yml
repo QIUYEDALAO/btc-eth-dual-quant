@@ -1,7 +1,7 @@
 name: U03F V4 Repair Requalification Result
 
-on: [pull_request, push]
-
+on:
+  workflow_dispatch:
 jobs:
   validate:
     runs-on: ubuntu-latest

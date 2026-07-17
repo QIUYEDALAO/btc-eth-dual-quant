@@ -2,6 +2,18 @@
 
 ## Immediate Task
 
+First merge the CI-only governance change on `codex/ci-pr-trigger-optimization`.
+It replaces duplicated feature-push plus pull-request fan-out with one
+cancel-in-progress selective PR Gate and one consolidated `main` regression
+Gate. The 60 historical stage workflows remain manually dispatchable without
+automatic fan-out. Both automatic Gates run repository validation, compile,
+secret and diff checks, plus any changed stage validator. This changes no ADR,
+research, production or trading authority.
+
+Immediately after that CI prerequisite passes and merges, continue the already
+prepared ADR-0015 exact-head independent review. Do not pause for unrelated
+GitHub fan-out.
+
 ADR-0015 is now a docs-only proposed Draft on
 `codex/adr-0015-invalid-interval-policy-draft`, based exactly on main
 `6df4aa3aa355f986e5533a51e223d69e3bf16e84`. Its machine model content hash is

@@ -1,0 +1,36 @@
+name: Main Regression Validate
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: main-regression
+  cancel-in-progress: true
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package and validator dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes ripgrep
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Run regression Gate
+        env:
+          PR_BASE_SHA: ${{ github.event.before || github.sha }}
+        run: bash scripts/pr_ci_selective_validate.sh

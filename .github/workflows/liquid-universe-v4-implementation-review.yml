@@ -1,8 +1,7 @@
 name: Liquid Universe V4 Implementation Review
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 jobs:
   independent-review:

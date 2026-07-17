@@ -1,8 +1,7 @@
 name: ADR-0014 Required Changes Review
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 jobs:
   required-changes-review:
