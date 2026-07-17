@@ -1,5 +1,6 @@
 name: M1G Fixed Rule Validate
-on: [pull_request, push]
+on:
+  workflow_dispatch:
 jobs:
   validate:
     runs-on: ubuntu-latest

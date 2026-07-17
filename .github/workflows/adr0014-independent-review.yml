@@ -1,8 +1,7 @@
 name: ADR-0014 Independent Review
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 jobs:
   independent-review:

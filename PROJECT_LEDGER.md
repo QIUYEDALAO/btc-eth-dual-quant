@@ -1698,3 +1698,14 @@ private exchange responses here.
 - Forbidden shortcuts: no date/symbol/row exception registry, raw timestamp repair, source replacement/download, fill, substitute member, Gate reduction or direct V2 gap-policy adoption.
 - Next Gate: merge the Draft only after all checks pass, then conduct a separate independent review of the exact Draft head. Any mismatch or critical/high finding stops; approval alone does not adopt.
 - Safety: adoption, implementation, requalification, new audit, U-04, strategy/backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-17 - Selective Pull Request CI Governance Prepared
+
+- Task ID: CI-PR-GATE.
+- Branch: `codex/ci-pr-trigger-optimization`; base main `e1783090dfb0a4560475b97a021ef1e77aebc399`.
+- Root cause: 60 historical workflows each handled both feature-branch `push` and `pull_request`, producing duplicated fan-out of roughly 120 jobs for one PR head.
+- New route: exactly one cancel-in-progress workflow handles pull requests and one consolidated workflow handles `main`; both run the project, compile, secret and diff Gates plus validators selected from changed stage scripts/workflows.
+- Historical coverage: all stage workflows remain manually dispatchable; their automatic feature-branch and `main` fan-out is removed.
+- Policy enforcement: `scripts/ci_pr_trigger_policy_check.py`, `scripts/pr_ci_selective_validate.sh`, and unit tests fail closed on trigger or selector drift.
+- Authority: CI governance only. ADR-0015 semantics and all downstream authorization blocks remain unchanged.
+- Next Gate: local validation, one PR, exact-head CI and merge; then continue the ADR-0015 independent review under the selective Gate.

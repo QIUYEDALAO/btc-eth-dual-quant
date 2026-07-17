@@ -1,8 +1,7 @@
 name: ADR-0014 Adoption Validate
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 jobs:
   adr0014-adoption:

@@ -1,8 +1,7 @@
 name: M1F Validate
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 jobs:
   m1f-validate:

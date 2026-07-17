@@ -28,6 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- CI governance is being reduced to one cancel-in-progress selective pull-request Gate and one consolidated `main` regression Gate. Historical stage workflows remain manually dispatchable and must have no automatic trigger. This changes no project authorization.
 - ADR-0015 is a docs-only `proposed_draft_non_authoritative` policy Draft in PR #105 on `codex/adr-0015-invalid-interval-policy-draft`, based on main `6df4aa3aa355f986e5533a51e223d69e3bf16e84`; model content hash `7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`.
 - The Draft proposes a generic new policy family only for verified grid-aligned official 5m active-member rows with the sole close-boundary defect, at least two affected members and affected fraction at least 80%.
 - A future accepted event must quarantine the full active-member slot, including valid minority rows, without changing physical source evidence. Off-grid/other malformed/missing/duplicate/non-member/ambiguous/drift cases remain hard blockers.

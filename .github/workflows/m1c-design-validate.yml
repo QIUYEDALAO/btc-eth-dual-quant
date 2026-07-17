@@ -1,8 +1,7 @@
 name: M1C Design Validate
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 jobs:
   validate:

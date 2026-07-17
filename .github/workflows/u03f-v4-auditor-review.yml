@@ -1,8 +1,7 @@
 name: U03F V4 Auditor Review
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 jobs:
   review:

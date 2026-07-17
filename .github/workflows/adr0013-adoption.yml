@@ -1,8 +1,7 @@
 name: ADR-0013 Adoption
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 jobs:
   conformance:

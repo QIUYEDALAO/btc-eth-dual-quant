@@ -1,5 +1,6 @@
 # Reports Index
 
+| `reports/CI_PR_VALIDATION_POLICY.md` | Pull request validation governance | selective_pr_gate_pending_merge | One selective PR Gate plus one consolidated main Gate; 60 historical workflows are manual-only, eliminating automatic fan-out without changing research authority. | no |
 | `reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_DRAFT.md` | ADR-0015 synchronized invalid-interval policy Draft | proposed_draft_non_authoritative / Draft PR #105 pending independent review | Proposes generic ≥2 and ≥80% synchronous-event admission plus full active-slot quarantine; no adoption, runtime or downstream authority. | no |
 | `docs/decisions/proposals/adr0015_invalid_interval_policy_model.json` | ADR-0015 machine policy Draft | docs-only content hash `7acb69f7...5fe78c` | Binds PR #102/#103 evidence, generic predicate, full-slot invariants, 16 hard-block fault cases, exact-head review Gate and all-false authorization matrix. | no |
 | `reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_REPORT.md` | U-03F V4 invalid-interval deterministic diagnostic | completed_new_policy_adr_required / PR #103 merged / `49e0287` | Three exact 27,736-archive traversals reproduce 119 physical invalid rows at eight synchronous UTC windows; canonical hash `ae5ae831...c677`; evidence only, no policy/runtime/downstream authorization. | no |
