@@ -1,6 +1,6 @@
 # Reports Index
 
-| `reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md` | ADR-0015 independent auditor implementation | envelope reconciliation fixed pending replacement exact-head review | Content `d183b3f9...afcb`; prior run deterministic and 16/19 exact; 19/19 Gate unchanged. | no |
+| `reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md` | ADR-0015 independent auditor implementation | source order fixed pending replacement exact-head review | Content `f0c0ee6d...8d5e`; prior run deterministic and 18/19 exact; 19/19 Gate unchanged. | no |
 | `reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md` | ADR-0015 independent auditor envelope-fix exact-head review | approve / 0 critical / 0 high | Binds target `301e910e...a5fb`, protocol and four implementation files; authorizes only the real audit. | no |
 | `reports/expert/evidence/adr0015_independent_auditor_review.json` | ADR-0015 auditor review machine evidence | deterministic replacement approve | Review content `f04f87f8...7c26`; all downstream research/trading authorizations false. | no |
 | `config/liquid_universe_v4_adr0015_independent_auditor_implementation.json` | ADR-0015 auditor machine identity | deterministic fixture-only implementation | Binds protocol, four implementation files, 16 fault IDs and a review-only authorization matrix. | no |

@@ -2,8 +2,9 @@
 
 ## Immediate Task
 
-The 16/19 envelope fix has received replacement exact-head `approve` with
-0 critical/high. The real three-order audit is again the only authorized task.
+The third audit attempt matched 18/19. The only difference was source-manifest
+list order after daily-period normalization. The deterministic re-sort is fixed
+and requires replacement exact-head review.
 
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
 - Protocol content hash:
@@ -18,17 +19,17 @@ The 16/19 envelope fix has received replacement exact-head `approve` with
 - Frozen accounting: 8 events, 119 physical invalid rows, 1 valid-minority
   row and 120 total masked active-member slots.
 - Auditor implementation content hash:
-  `d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb`.
+  `f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e`.
 - Synthetic/targeted checks: 25 passed; complete unit regression: 700 passed.
 - Historical frozen auditor modified: no.
 - Exact reviewed target: `4bebdf32786818b7f451474c864ba9ee3109a26b`.
 - Review content hash: `77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0`.
 - Exact reviewed target: `301e910ea669c702a34598e500826a456663a5fb`.
 - Review content hash: `f04f87f849966d188dc39cff0bc72f12a71d6c1d601249d202a08ce4686b7c26`.
-- Real audit completed: no; authorized: yes.
+- Real audit completed: no; authorized: no pending replacement review.
 - Prior failed preflight produced no result evidence.
 
-The only authorized next task is the real audit. The 19/19 Gate remains unchanged.
+The only authorized next task is replacement exact-head review. The 19/19 Gate remains unchanged.
 
 ## Required Audit Run
 

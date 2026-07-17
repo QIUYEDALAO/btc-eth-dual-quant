@@ -1854,3 +1854,10 @@ private exchange responses here.
 - Exact target `301e910ea669c702a34598e500826a456663a5fb`; implementation `d183b3f9...afcb`.
 - Verdict `approve`, remaining critical/high `0 / 0`; review `f04f87f849966d188dc39cff0bc72f12a71d6c1d601249d202a08ce4686b7c26`.
 - Only the unchanged real audit is reauthorized; all research, OOS, trading and M2 authorizations remain false.
+
+## 2026-07-18 - ADR-0015 18/19 Audit Diagnostic and Source Ordering Fix
+
+- All three order identities and accounting remain exact; 18/19 manifests match.
+- The sole mismatch is list ordering after daily source periods were normalized to full dates.
+- The source manifest is now re-sorted by the frozen `(symbol, interval, archive_month, canonical_key)` key; fixture coverage added.
+- Implementation `f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e`; replacement exact-head review required.

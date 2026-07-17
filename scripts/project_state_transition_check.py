@@ -252,8 +252,8 @@ ADR0015_AUDIT_PROTOCOL_PAIR = (
 )
 
 ADR0015_AUDITOR_REVIEW_PAIR = (
-    "ADR-0015 independent auditor exact-head review approved; real independent audit is the only authorized next task",
-    "adr0015_independent_auditor_review_approve_real_audit_authorized_no_u04_no_m2",
+    "ADR-0015 independent auditor envelope reconciliation fixed; replacement exact-head review is the only authorized next task",
+    "adr0015_independent_auditor_envelope_fix_pending_re_review_no_real_audit_no_u04_no_m2",
 )
 
 ADR0015_REVIEWED_IMPLEMENTATION_HEAD = "67e7d29eaed63a3edb903dd618184bc9f02c5748"

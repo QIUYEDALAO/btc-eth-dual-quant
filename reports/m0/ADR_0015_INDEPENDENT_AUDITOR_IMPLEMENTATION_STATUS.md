@@ -3,7 +3,7 @@
 - Status: `fixture_complete_pending_exact_head_review`
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`
 - Protocol content hash: `9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b`
-- Implementation content hash: `d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb`
+- Implementation content hash: `f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e`
 - Production invalid-interval implementation imported as audit algorithm: no
 - Historical independent auditor modified: no
 - Public frozen-source audit executed: no
@@ -35,6 +35,9 @@ The second audit attempt reproduced all three traversal identities and exact
 traced to deterministic envelope defects: accepted legacy blockers were not
 cleared, daily archive periods lost their day, and V3/V4 status was stale.
 Those fields are now independently reconciled and require replacement review.
+The subsequent 18/19 run found only that the normalized daily rows must be
+re-sorted by the frozen source-manifest key. That exact ordering fix is now
+covered by a fixture and requires another exact-head review.
 
 U-04, strategy work, event returns, backtesting, OOS, API/trading,
 `execution/live` and M2 remain unauthorized.

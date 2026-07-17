@@ -170,9 +170,14 @@ class Adr0015IndependentAuditorTests(unittest.TestCase):
         rows = [{
             "canonical_key": "data/spot/daily/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02-10.zip",
             "archive_month": "2026-02",
+            "symbol": "AXSUSDT", "interval": "1d",
+        }, {
+            "canonical_key": "data/spot/monthly/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02.zip",
+            "archive_month": "2026-02",
+            "symbol": "AXSUSDT", "interval": "1d",
         }]
         _normalize_daily_source_periods(rows)
-        self.assertEqual(rows[0]["archive_month"], "2026-02-10")
+        self.assertEqual([row["archive_month"] for row in rows], ["2026-02", "2026-02-10"])
 
     def test_only_accepted_event_members_clear_close_precedes_blocker(self):
         evaluation = {"events": [{

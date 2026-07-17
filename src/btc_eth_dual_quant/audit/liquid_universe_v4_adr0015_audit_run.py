@@ -63,6 +63,9 @@ def _normalize_daily_source_periods(rows: list[dict[str, Any]]) -> None:
         if len(period) != 10:
             raise ValueError("daily source-manifest period changed")
         row["archive_month"] = period
+    rows.sort(key=lambda row: (
+        row["symbol"], row["interval"], row["archive_month"], row["canonical_key"],
+    ))
 
 
 def _accepted_close_precedes_blockers(evaluation: Mapping[str, Any]) -> set[str]:

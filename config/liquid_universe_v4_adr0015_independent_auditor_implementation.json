@@ -3,12 +3,12 @@
   "implementation_id": "ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDITOR-V1",
   "status": "fixture_complete_pending_exact_head_review",
   "protocol_content_hash": "9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b",
-  "implementation_content_hash": "d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb",
+  "implementation_content_hash": "f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e",
   "files": {
     "scripts/adr0015_independent_audit_run.py": "b9e92feb6325a54f4e3342999d474879fd983c44d4e39eb1185ee4c6d7892355",
     "src/btc_eth_dual_quant/audit/liquid_universe_v4_adr0015.py": "afa185b06a1bab8bf5333d679fe42ea341c19c2298b168ac086e55d3575ee564",
-    "src/btc_eth_dual_quant/audit/liquid_universe_v4_adr0015_audit_run.py": "f380e03805061b27736d31505361e3d0c69ff3018f6e302af55bd9b82ceb8b19",
-    "tests/test_adr0015_independent_auditor.py": "d48d13631571733c1d28688fa543a005c59c9570879218ae60fe5283b1c15d0c"
+    "src/btc_eth_dual_quant/audit/liquid_universe_v4_adr0015_audit_run.py": "afa8c9735e1fb5f018ada72f9e51c7b18bb71af3fc1b91d843403c4551508fd4",
+    "tests/test_adr0015_independent_auditor.py": "ef4ac2ef9a3a5652cbc066fbb86231e94afb7eb7a3a6a674b91a8465413b28bf"
   },
   "fault_injection_ids": [
     "ADR0015-AUD-FI-001", "ADR0015-AUD-FI-002", "ADR0015-AUD-FI-003", "ADR0015-AUD-FI-004",
@@ -30,6 +30,6 @@
     "execution_live": false,
     "m2": false
   },
-  "content_hash": "5a842cefe7c6bc492a3c1bdba33920adcb7511eb210becdd2c595b28a6c2e00a",
+  "content_hash": "13b353f9075a4710c15c3294ae29067e9deb30e4d3dbe985383e419a640b894b",
   "generated_utc": "2026-07-18T00:00:00Z"
 }
