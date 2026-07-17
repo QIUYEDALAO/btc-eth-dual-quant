@@ -1,0 +1,68 @@
+{
+  "content": {
+    "adopted_semantic_body_hash": "c3d5f605ec26161f1bedc6961ac6f326d00582f9c3dcaa9de68c226961a34149",
+    "adoption_status": "accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only",
+    "authorization_matrix": {
+      "adr0015_adopted": true,
+      "api_or_trading": false,
+      "backtesting_or_oos": false,
+      "event_scan_signals_or_returns": false,
+      "exact_head_implementation_review": true,
+      "execution_live": false,
+      "fault_injection": true,
+      "fixed_range_public_requalification": false,
+      "fixture_validation": true,
+      "generic_policy_implementation": true,
+      "hypothesis_or_strategy": false,
+      "m2": false,
+      "new_independent_audit": false,
+      "new_independent_audit_protocol": false,
+      "u04": false
+    },
+    "current_stage_effects": {
+      "independent_audit_executed": false,
+      "production_pipeline_modified": false,
+      "public_data_run_executed": false,
+      "requalification_executed": false
+    },
+    "dependency_order": [
+      "A_conditional_adoption",
+      "B_generic_policy_implementation",
+      "C_exact_head_implementation_review",
+      "D_fixed_range_public_requalification",
+      "E_new_independent_audit_protocol",
+      "F_new_independent_audit",
+      "G_governance_closeout",
+      "H_separate_u04_authorization_consideration"
+    ],
+    "stop_condition": "Any target, evidence, semantic, authorization or dependency drift fails closed; no requalification, audit, U-04, research, OOS, trading or M2 authority is created."
+  },
+  "content_hash": "d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19",
+  "generated_utc": "2026-07-17T04:00:00Z",
+  "manifest_type": "adr0015_conditional_adoption",
+  "review_bindings": {
+    "diagnostic_content_hash": "ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677",
+    "diagnostic_run_content_hash": "df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33",
+    "draft_merge_sha": "e1783090dfb0a4560475b97a021ef1e77aebc399",
+    "policy_model_content_hash": "7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c",
+    "policy_model_file_sha256": "f945d5c61553a4571e9cbda7c77bff0c974a460cd25b7ad92d6382c8d4e92a7e",
+    "protocol_content_hash": "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
+    "review_content_hash": "893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3",
+    "review_critical_findings": 0,
+    "review_evidence_file_sha256": "01322bff7ed0d35829e85c2e2eb6c8783a916a9107ba5d3d0a27a586fa9fe24f",
+    "review_head_sha": "f3cf2131798f8bf3bd319b21480dca196517f3fe",
+    "review_high_findings": 0,
+    "review_merge_sha": "1573abf2bef7d02df6c3b0624ee25cd3557ff2c6",
+    "review_pr": 107,
+    "review_report_file_sha256": "caeca0eae20afb761ed516162c9d5128c7403c55ca5b3cb4da9a105c54422cd9",
+    "review_verdict": "approve",
+    "reviewed_adr_file_sha256": "9ce9eade1f622824562a74ce5750da400f4c298145fb92c2a89023ff527ce19a",
+    "reviewed_draft_base_sha": "6df4aa3aa355f986e5533a51e223d69e3bf16e84",
+    "reviewed_draft_head_sha": "03d2b8736abab277e60db1153ba73f0899d7696f",
+    "reviewed_draft_pr": 105,
+    "reviewed_semantic_body_hash": "c3d5f605ec26161f1bedc6961ac6f326d00582f9c3dcaa9de68c226961a34149",
+    "source_freeze_content_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "v2_gap_policy_contract_hash": "051894e89b713f541caa601efab51be22f83461a4e624e1d51d7f576ed8cda51"
+  },
+  "schema_version": 1
+}

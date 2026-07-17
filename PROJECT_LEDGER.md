@@ -1723,3 +1723,15 @@ private exchange responses here.
 - Fail-closed scope: off-grid/other malformed/missing/duplicate/non-member/ambiguous/revised/drift cases remain blockers; all 16 fault cases hard-block; the V2 gap policy remains reference-only.
 - Next Gate: merge the independent-review PR only after all checks pass with the exact target unchanged. After that, only a separate conditional-adoption governance PR may be considered.
 - Safety: approval alone does not adopt ADR-0015. Implementation, requalification, new audit, U-04, strategy/backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-17 - ADR-0015 Conditional Adoption Prepared
+
+- Task ID: ADR-0015-ADOPT.
+- Review merge: PR #107 exact head `f3cf2131798f8bf3bd319b21480dca196517f3fe` merged unchanged at `1573abf2bef7d02df6c3b0624ee25cd3557ff2c6`; verdict `approve`, critical/high 0/0.
+- Branch/base: `codex/adr-0015-conditional-adoption` / `1573abf2bef7d02df6c3b0624ee25cd3557ff2c6`.
+- Adoption evidence: `reports/expert/evidence/adr0015_adoption_manifest.json`; content hash `d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19`.
+- Semantic integrity: reviewed Draft body and adopted ADR both hash to `c3d5f605ec26161f1bedc6961ac6f326d00582f9c3dcaa9de68c226961a34149`; the docs-only policy model remains byte-for-byte unchanged with content hash `7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c` and all-false runtime authorizations.
+- Authorization after merge: generic policy implementation, synthetic fixtures, fault injection and exact-head implementation review only.
+- Not authorized: public-data execution, fixed-range requalification, new audit protocol/audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2.
+- Current-stage effects: production pipeline modified no; public data run no; requalification no; independent audit no.
+- Next Gate: local adoption validation, one selective PR check and unchanged merge. Only then may the generic implementation start on a separate branch.

@@ -135,6 +135,10 @@ ALLOWED = {
         "adr0015_independent_policy_review_approve_pending_ci_unadopted_no_implementation_no_u04_no_m2",
     ): "ADR-0015-REVIEW",
     (
+        "ADR-0015 conditional adoption pending PR validation",
+        "adr0015_adopted_for_generic_implementation_review_only_pending_ci_no_requalification_no_u04_no_m2",
+    ): "ADR-0015-ADOPT",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -189,6 +193,11 @@ ADR0015_REVIEW_PAIR = (
     "adr0015_independent_policy_review_approve_pending_ci_unadopted_no_implementation_no_u04_no_m2",
 )
 
+ADR0015_ADOPTION_PAIR = (
+    "ADR-0015 conditional adoption pending PR validation",
+    "adr0015_adopted_for_generic_implementation_review_only_pending_ci_no_requalification_no_u04_no_m2",
+)
+
 CLOSED_TASK_PAIRS = {
     FAILED_U03F_CLOSEOUT_PAIR,
     REPAIR_CHAIN_CLOSED_PAIR,
@@ -203,6 +212,7 @@ AUDIT_BLOCKED_PAIRS = {
     INVALID_INTERVAL_DIAGNOSTIC_MERGED_PAIR,
     ADR0015_DRAFT_PAIR,
     ADR0015_REVIEW_PAIR,
+    ADR0015_ADOPTION_PAIR,
 }
 
 EXPECTED_AUTH = {
@@ -229,7 +239,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -274,6 +284,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 invalid-interval diagnostic merged; Draft policy ADR is the only authorized next task",
         "ADR-0015 synchronized invalid-interval quarantine policy Draft pending independent review",
         "ADR-0015 exact-head independent policy review pending PR validation",
+        "ADR-0015 conditional adoption pending PR validation",
     }:
         milestones = [
             item
@@ -477,6 +488,33 @@ def validate(state: dict) -> list[str]:
             }
             if any(item.get(key) != value for key, value in expected_review.items()):
                 failures.append("ADR-0015 independent review binding changed")
+        if item.get("id") == "ADR-0015-ADOPT":
+            expected_adoption = {
+                "status": "adoption_pending_pr_validation",
+                "branch": "codex/adr-0015-conditional-adoption",
+                "pr": "runtime_current_pr",
+                "head_sha": "runtime_current_pr_head",
+                "reviewed_pr": 105,
+                "reviewed_base_sha": "6df4aa3aa355f986e5533a51e223d69e3bf16e84",
+                "reviewed_head_sha": "03d2b8736abab277e60db1153ba73f0899d7696f",
+                "draft_merge_sha": "e1783090dfb0a4560475b97a021ef1e77aebc399",
+                "review_pr": 107,
+                "review_head_sha": "f3cf2131798f8bf3bd319b21480dca196517f3fe",
+                "review_merge_sha": "1573abf2bef7d02df6c3b0624ee25cd3557ff2c6",
+                "policy_model_content_hash": "7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c",
+                "review_content_hash": "893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3",
+                "adoption_content_hash": "d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19",
+                "adopted_pending_merge": True,
+                "generic_implementation_authorized_after_merge": True,
+                "exact_head_implementation_review_required": True,
+                "fixed_range_public_requalification_authorized": False,
+                "new_independent_audit_authorized": False,
+                "u04_authorized": False,
+                "m2_authorized": False,
+                "production_pipeline_modified": False,
+            }
+            if any(item.get(key) != value for key, value in expected_adoption.items()):
+                failures.append("ADR-0015 conditional adoption binding changed")
         if item.get("id") == "U-03E-V4-IMPL":
             if item.get("head_sha") != "runtime_current_pr_head":
                 failures.append("V4 implementation head_sha must be runtime current PR metadata")
@@ -532,6 +570,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 invalid-interval diagnostic merged; Draft policy ADR is the only authorized next task",
         "ADR-0015 synchronized invalid-interval quarantine policy Draft pending independent review",
         "ADR-0015 exact-head independent policy review pending PR validation",
+        "ADR-0015 conditional adoption pending PR validation",
     }:
         milestones = [
             item
@@ -651,6 +690,7 @@ def validate(state: dict) -> list[str]:
         "U-03F V4 invalid-interval diagnostic merged; Draft policy ADR is the only authorized next task",
         "ADR-0015 synchronized invalid-interval quarantine policy Draft pending independent review",
         "ADR-0015 exact-head independent policy review pending PR validation",
+        "ADR-0015 conditional adoption pending PR validation",
     }:
         reviews = [
             item for item in state.get("completed_milestones", [])
@@ -775,7 +815,7 @@ def validate(state: dict) -> list[str]:
             milestones[0].get(key) != value for key, value in expected_milestone.items()
         ):
             failures.append("merged invalid-interval protocol milestone changed")
-    if pair in {INVALID_INTERVAL_DIAGNOSTIC_MERGED_PAIR, ADR0015_DRAFT_PAIR, ADR0015_REVIEW_PAIR}:
+    if pair in {INVALID_INTERVAL_DIAGNOSTIC_MERGED_PAIR, ADR0015_DRAFT_PAIR, ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR}:
         diagnostic = state.get("u03f_v4_invalid_interval_adjudication_diagnostic", {})
         expected = {
             "status": "completed_new_policy_adr_required_merged",
@@ -827,13 +867,17 @@ def validate(state: dict) -> list[str]:
             milestones[0].get(key) != value for key, value in expected_milestone.items()
         ):
             failures.append("merged invalid-interval diagnostic milestone changed")
-    if pair in {ADR0015_DRAFT_PAIR, ADR0015_REVIEW_PAIR}:
+    if pair in {ADR0015_DRAFT_PAIR, ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR}:
         draft = state.get("adr0015_policy_draft", {})
         expected_draft = {
             "status": (
                 "proposed_draft_non_authoritative_pending_independent_review"
                 if pair == ADR0015_DRAFT_PAIR
-                else "proposed_draft_non_authoritative_merged_pending_independent_review"
+                else (
+                    "proposed_draft_non_authoritative_merged_pending_independent_review"
+                    if pair == ADR0015_REVIEW_PAIR
+                    else "proposed_draft_non_authoritative_merged_review_approved_historical_source"
+                )
             ),
             "base_main_sha": "6df4aa3aa355f986e5533a51e223d69e3bf16e84",
             "branch": "codex/adr-0015-invalid-interval-policy-draft",
@@ -842,7 +886,7 @@ def validate(state: dict) -> list[str]:
                 "exact_head_sha": "03d2b8736abab277e60db1153ba73f0899d7696f",
                 "merge_commit": "e1783090dfb0a4560475b97a021ef1e77aebc399",
                 "github_checks_success": 120,
-            } if pair == ADR0015_REVIEW_PAIR else {}),
+            } if pair in {ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR} else {}),
             "adr": "docs/decisions/ADR-0015-synchronized-official-invalid-interval-quarantine-policy.md",
             "model": "docs/decisions/proposals/adr0015_invalid_interval_policy_model.json",
             "model_content_hash": "7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c",
@@ -865,12 +909,12 @@ def validate(state: dict) -> list[str]:
         }
         if draft != expected_draft:
             failures.append("ADR-0015 Draft state binding changed")
-    if pair == ADR0015_REVIEW_PAIR:
+    if pair in {ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR}:
         review = state.get("adr0015_independent_policy_review", {})
         expected_review = {
-            "status": "approve_pending_pr_validation",
+            "status": "approve_pending_pr_validation" if pair == ADR0015_REVIEW_PAIR else "approve_merged",
             "branch": "codex/adr-0015-independent-policy-review",
-            "pr": "runtime_current_pr",
+            "pr": "runtime_current_pr" if pair == ADR0015_REVIEW_PAIR else 107,
             "reviewed_pr": 105,
             "reviewed_base_sha": "6df4aa3aa355f986e5533a51e223d69e3bf16e84",
             "reviewed_head_sha": "03d2b8736abab277e60db1153ba73f0899d7696f",
@@ -881,15 +925,73 @@ def validate(state: dict) -> list[str]:
             "verdict": "approve",
             "critical_findings": 0,
             "high_findings": 0,
-            "policy_adopted": False,
-            "implementation_authorized": False,
             "public_requalification_authorized": False,
             "new_independent_audit_authorized": False,
             "u04_authorized": False,
             "m2_authorized": False,
         }
+        if pair == ADR0015_REVIEW_PAIR:
+            expected_review.update({
+                "policy_adopted": False,
+                "implementation_authorized": False,
+            })
+        else:
+            expected_review.update({
+                "review_head_sha": "f3cf2131798f8bf3bd319b21480dca196517f3fe",
+                "review_merge_commit": "1573abf2bef7d02df6c3b0624ee25cd3557ff2c6",
+                "policy_adopted_by_review": False,
+                "implementation_authorized_by_review": False,
+            })
         if review != expected_review:
             failures.append("ADR-0015 independent review state binding changed")
+    if pair == ADR0015_ADOPTION_PAIR:
+        adoption = state.get("adr0015_conditional_adoption", {})
+        expected_adoption = {
+            "status": "accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only_pending_pr_validation",
+            "branch": "codex/adr-0015-conditional-adoption",
+            "pr": "runtime_current_pr",
+            "head_sha": "runtime_current_pr_head",
+            "adopted_semantic_body_hash": "c3d5f605ec26161f1bedc6961ac6f326d00582f9c3dcaa9de68c226961a34149",
+            "adoption_content_hash": "d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19",
+            "reviewed_draft_head_sha": "03d2b8736abab277e60db1153ba73f0899d7696f",
+            "review_pr": 107,
+            "review_head_sha": "f3cf2131798f8bf3bd319b21480dca196517f3fe",
+            "review_merge_commit": "1573abf2bef7d02df6c3b0624ee25cd3557ff2c6",
+            "review_content_hash": "893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3",
+            "generic_policy_implementation_authorized_after_merge": True,
+            "fixture_validation_authorized_after_merge": True,
+            "fault_injection_authorized_after_merge": True,
+            "exact_head_implementation_review_required": True,
+            "production_pipeline_modified": False,
+            "public_data_run_executed": False,
+            "fixed_range_public_requalification_authorized": False,
+            "new_independent_audit_authorized": False,
+            "u04_authorized": False,
+            "m2_authorized": False,
+        }
+        if adoption != expected_adoption:
+            failures.append("ADR-0015 conditional adoption state binding changed")
+        review_milestones = [
+            item for item in state.get("completed_milestones", [])
+            if item.get("phase") == "ADR-0015 exact-head independent policy review"
+        ]
+        expected_review_milestone = {
+            "status": "approve_merged",
+            "reviewed_pr": 105,
+            "reviewed_head_sha": "03d2b8736abab277e60db1153ba73f0899d7696f",
+            "review_pr": 107,
+            "review_head_sha": "f3cf2131798f8bf3bd319b21480dca196517f3fe",
+            "review_merge_commit": "1573abf2bef7d02df6c3b0624ee25cd3557ff2c6",
+            "review_content_hash": "893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3",
+            "verdict": "approve",
+            "critical_findings": 0,
+            "high_findings": 0,
+            "policy_adopted_by_review": False,
+        }
+        if len(review_milestones) != 1 or any(
+            review_milestones[0].get(key) != value for key, value in expected_review_milestone.items()
+        ):
+            failures.append("ADR-0015 merged review milestone binding changed")
     return failures
 
 
