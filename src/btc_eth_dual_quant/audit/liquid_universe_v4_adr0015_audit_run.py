@@ -48,6 +48,34 @@ ADR0015_ARTIFACTS = (
 ALL_ARTIFACTS = tuple(REQUIRED_AUDIT_ARTIFACTS) + ADR0015_ARTIFACTS
 
 
+def _normalize_daily_source_periods(rows: list[dict[str, Any]]) -> None:
+    """Retain the full YYYY-MM-DD authority period for frozen daily archives."""
+    for row in rows:
+        key = str(row.get("canonical_key", ""))
+        parts = key.split("/")
+        if len(parts) != 7 or parts[2] != "daily":
+            continue
+        symbol, interval, filename = parts[4], parts[5], parts[6]
+        prefix = f"{symbol}-{interval}-"
+        if not filename.startswith(prefix) or not filename.endswith(".zip"):
+            raise ValueError("daily source-manifest identity changed")
+        period = filename[len(prefix):-4]
+        if len(period) != 10:
+            raise ValueError("daily source-manifest period changed")
+        row["archive_month"] = period
+
+
+def _accepted_close_precedes_blockers(evaluation: Mapping[str, Any]) -> set[str]:
+    """Name only legacy parser blockers proven to be accepted ADR-0015 rows."""
+    output: set[str] = set()
+    for event in evaluation["events"]:
+        month = (EPOCH + timedelta(milliseconds=int(event["open_time_ms"]))).strftime("%Y-%m")
+        output.update(
+            f"{symbol}:{month}:close precedes open" for symbol in event["invalid_members"]
+        )
+    return output
+
+
 def _mixed_manifest_hash(manifest: Mapping[str, Any]) -> str:
     unsigned = {key: value for key, value in manifest.items() if key != "content_hash"}
     if manifest.get("manifest_type") in ADR0015_ARTIFACTS:
@@ -204,6 +232,7 @@ def _enhance_adr0015_contents(
         policy_version=policy["policy_version"],
         algorithm_hash=policy["algorithm_hash"],
     )
+    _normalize_daily_source_periods(contents["source_manifest"])
     masks: dict[tuple[str, str], set[int]] = defaultdict(set)
     for item in evaluation["slot_mask"]:
         masks[(item["symbol"], item["month"])].add(int(item["open_time_ms"]))
@@ -231,9 +260,10 @@ def _enhance_adr0015_contents(
         confirmed_gap_registry=confirmed,
         contract=v3_contract,
     )
+    accepted_legacy_blockers = _accepted_close_precedes_blockers(evaluation)
     clean_blockers = [
         item for item in contents["qualification_summary"].get("blockers", [])
-        if "5m interval boundary is invalid" not in item
+        if "5m interval boundary is invalid" not in item and item not in accepted_legacy_blockers
     ]
     months = month_sequence("2020-01", "2026-06")
     summary = _summary(
@@ -290,6 +320,7 @@ def _enhance_adr0015_contents(
         "invalid_interval_policy_content_hash": accounting["evaluation_content_hash"],
     })
     contents["qualification_summary"] = summary
+    contents["V3_V4_diff"]["v4_status"] = summary["status"]
     contents["invalid_interval_policy_manifest"] = {
         "policy_id": policy["policy_id"], "policy_version": policy["policy_version"],
         "policy_canonical_hash": policy["canonical_hash"], "algorithm_hash": policy["algorithm_hash"],

@@ -3,7 +3,7 @@
 - Status: `fixture_complete_pending_exact_head_review`
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`
 - Protocol content hash: `9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b`
-- Implementation content hash: `95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb`
+- Implementation content hash: `d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb`
 - Production invalid-interval implementation imported as audit algorithm: no
 - Historical independent auditor modified: no
 - Public frozen-source audit executed: no
@@ -29,6 +29,12 @@ review remains valid only for its old target and cannot authorize this revision.
 The real audit runner is present but refuses execution unless a separate
 exact-head review records `approve`, 0 critical, 0 high and explicit full-run
 authorization. This implementation stage does not provide that authorization.
+
+The second audit attempt reproduced all three traversal identities and exact
+8/119/1/120 accounting, with 16/19 manifests exact. The remaining three were
+traced to deterministic envelope defects: accepted legacy blockers were not
+cleared, daily archive periods lost their day, and V3/V4 status was stale.
+Those fields are now independently reconciled and require replacement review.
 
 U-04, strategy work, event returns, backtesting, OOS, API/trading,
 `execution/live` and M2 remain unauthorized.

@@ -2,11 +2,24 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: ADR-0015 independent auditor exact-head review approved; real independent audit is the only authorized next task
-current_status: adr0015_independent_auditor_review_approve_real_audit_authorized_no_u04_no_m2
+current_phase: ADR-0015 independent auditor envelope reconciliation fixed; replacement exact-head review is the only authorized next task
+current_status: adr0015_independent_auditor_envelope_fix_pending_re_review_no_real_audit_no_u04_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: ADR-0015 independent auditor envelope reconciliation fix
+    status: fixture_complete_pending_replacement_exact_head_review
+    branch: codex/adr-0015-independent-auditor-envelope-fix
+    implementation_content_hash: d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb
+    prior_audit_exact_manifests: 16
+    prior_audit_total_manifests: 19
+    prior_audit_three_order_identity: true
+    prior_audit_accounting_exact: true
+    production_evidence_failed: false
+    replacement_exact_head_review_required: true
+    real_independent_audit_authorized: false
+    u04_authorized: false
+    m2_authorized: false
   - phase: ADR-0015 independent auditor replacement exact-head review
     status: approve_local_complete
     evidence: reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md
@@ -574,29 +587,28 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: ADR-0015-AUDIT
-    phase: Real ADR-0015 independent audit over the exact frozen source
+  - id: ADR-0015-AUDITOR-REVIEW
+    phase: Replacement exact-head review of the envelope reconciliation fix
     status: authorized_ready
-    branch: codex/adr-0015-independent-audit-run-v2
+    branch: pending
     pr: none
     head_sha: pending
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/expert/evidence/adr0015_independent_auditor_review.json
+    evidence: config/liquid_universe_v4_adr0015_independent_auditor_implementation.json
     protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
     policy_hash: 0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04
     algorithm_hash: 8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff
     requalification_run_manifest_hash: a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9
     requalification_artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
-    implementation_content_hash: 95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb
+    implementation_content_hash: d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb
     auditor_fixture_implementation_complete: true
-    exact_head_review_approved: true
-    exact_review_target: 4bebdf32786818b7f451474c864ba9ee3109a26b
-    review_content_hash: 77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0
-    replacement_review_required: false
-    real_independent_audit_authorized: true
+    exact_head_review_approved: false
+    superseded_review_target: 4bebdf32786818b7f451474c864ba9ee3109a26b
+    replacement_review_required: true
+    real_independent_audit_authorized: false
     u04_authorized: false
     m2_authorized: false
-    blocker: none
+    blocker: "The corrected 19-manifest envelope must receive replacement exact-head approve before the audit restarts."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized

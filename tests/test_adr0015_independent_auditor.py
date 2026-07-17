@@ -16,7 +16,11 @@ from btc_eth_dual_quant.audit.liquid_universe_v4_adr0015 import (
     read_audit_five_minute_archive,
     wrap_policy_manifest,
 )
-from btc_eth_dual_quant.audit.liquid_universe_v4_adr0015_audit_run import execute_adr0015_audit
+from btc_eth_dual_quant.audit.liquid_universe_v4_adr0015_audit_run import (
+    _accepted_close_precedes_blockers,
+    _normalize_daily_source_periods,
+    execute_adr0015_audit,
+)
 
 
 H = "a" * 64
@@ -161,6 +165,24 @@ class Adr0015IndependentAuditorTests(unittest.TestCase):
         self.assertEqual(row.open_time_ms, open_ms)
         self.assertEqual(row.close_time_ms, open_ms + 299_999)
         self.assertFalse(row.has_close_boundary_defect)
+
+    def test_daily_source_period_keeps_full_authority_date(self):
+        rows = [{
+            "canonical_key": "data/spot/daily/klines/AXSUSDT/1d/AXSUSDT-1d-2026-02-10.zip",
+            "archive_month": "2026-02",
+        }]
+        _normalize_daily_source_periods(rows)
+        self.assertEqual(rows[0]["archive_month"], "2026-02-10")
+
+    def test_only_accepted_event_members_clear_close_precedes_blocker(self):
+        evaluation = {"events": [{
+            "open_time_ms": 1_609_459_000_000,
+            "invalid_members": ["ADAUSDT", "BTCUSDT"],
+        }]}
+        self.assertEqual(
+            _accepted_close_precedes_blockers(evaluation),
+            {"ADAUSDT:2020-12:close precedes open", "BTCUSDT:2020-12:close precedes open"},
+        )
 
     def test_real_run_requires_separate_exact_head_review_authorization(self):
         protocol = {"audit_scope": {"traversal_orders": []}}

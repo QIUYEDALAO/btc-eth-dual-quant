@@ -1840,3 +1840,11 @@ private exchange responses here.
 - Replacement verdict: `approve`; remaining critical/high: `0 / 0`; review `77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0`.
 - The native-microsecond regression passes without raw-field rewriting, policy exception or production-algorithm import.
 - Only the real three-order audit is reauthorized. U-04, strategy, returns, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - ADR-0015 16/19 Audit Diagnostic and Envelope Fix
+
+- Three traversal identities match exactly; accounting matches 8 events, 119 invalid rows, 1 valid minority and 120 slots.
+- 16/19 manifests are exact. The three differences are independent-auditor envelope defects, not production evidence failures.
+- Fixes are narrowly limited to accepted `close precedes open` blocker reconciliation, full daily archive dates and recomputed `V3_V4_diff.v4_status`.
+- Corrected implementation: `d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb`.
+- No Gate was lowered; replacement exact-head review is required before another full audit.

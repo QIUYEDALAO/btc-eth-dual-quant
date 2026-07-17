@@ -2,9 +2,9 @@
 
 ## Immediate Task
 
-The microsecond normalization fix has received a replacement exact-head review
-with `approve`, 0 critical and 0 high. The real frozen-source independent audit
-is again the only authorized next task.
+The second audit attempt matched all three orders, all policy accounting and
+16/19 manifests. Three legacy envelope fields were corrected; the revised
+implementation requires a replacement exact-head review before rerun.
 
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
 - Protocol content hash:
@@ -19,16 +19,16 @@ is again the only authorized next task.
 - Frozen accounting: 8 events, 119 physical invalid rows, 1 valid-minority
   row and 120 total masked active-member slots.
 - Auditor implementation content hash:
-  `95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb`.
+  `d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb`.
 - Synthetic/targeted checks: 25 passed; complete unit regression: 700 passed.
 - Historical frozen auditor modified: no.
 - Exact reviewed target: `4bebdf32786818b7f451474c864ba9ee3109a26b`.
 - Review content hash: `77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0`.
-- Real audit completed: no; authorized: yes.
+- Real audit completed: no; authorized: no pending replacement review.
 - Prior failed preflight produced no result evidence.
 
-The only authorized next task is the real independent audit over all 27,736
-frozen archives and all three traversal orders.
+The only authorized next task is replacement exact-head review of the envelope
+fix. The 19/19 Gate remains unchanged.
 
 ## Required Audit Run
 
