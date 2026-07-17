@@ -1780,3 +1780,15 @@ private exchange responses here.
 - Execution status: no public archive read or execution; no cold/warm/worker requalification; no audit.
 - Next Gate: project-state ancestry/blob invariant, full local suite, one selective PR Gate, merge commit preserving ancestry, then consolidated main Gate.
 - Safety: fixed-range requalification remains blocked until integration and its main Gate pass. New audit, U-04, strategy/OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-17 - ADR-0015 Controlled Integration And Fixed-Range Requalification Completed
+
+- Task IDs: ADR-0015-IMPL / ADR-0015-RQ.
+- Controlled integration: PR #111 merged at `e2112a31908f1587eb657a4123f1f114cf2016fe`; selective run `29572828915` and main run `29573400780` passed. Exact reviewed implementation head `67e7d29eaed63a3edb903dd618184bc9f02c5748` remains an ancestor and the seven reviewed implementation blobs are exact.
+- Local execution mode: `codex/adr-0015-fixed-range-requalification`; no GitHub push, PR or Actions were used for the requalification task.
+- Source: exact 27,736 frozen local archives, `2020-01` through `2026-06`, source-freeze hash `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`.
+- Result: cold, warm and worker all `pass`; artifact set `8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3`; deterministic mismatches `0`.
+- Machine evidence: `reports/m0/evidence/liquid_universe_v4_adr0015_requalification/requalification_run_manifest.json`; content hash `a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9`.
+- Invalid-interval accounting: 8 synchronous events, 119 invalid physical rows, 1 valid-minority row and 120 total active-member slots quarantined. The eight affected hours and UTC days are ineligible for complete windows.
+- Quality result: processing errors, unresolved gaps, policy blockers, synthetic fills and replacement members are all zero; report and all 19 manifests are hash-bound and exact across the three builds.
+- Next Gate: only a new independent audit protocol may be designed and frozen. The real audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.

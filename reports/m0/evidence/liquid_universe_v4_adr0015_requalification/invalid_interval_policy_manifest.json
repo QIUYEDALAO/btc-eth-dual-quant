@@ -1,0 +1,31 @@
+{
+  "content": {
+    "algorithm_hash": "8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff",
+    "authorizations": {
+      "api_or_trading": false,
+      "backtesting_or_oos": false,
+      "event_scan_signals_or_returns": false,
+      "exact_head_implementation_review": true,
+      "execution_live": false,
+      "fault_injection": true,
+      "fixed_range_public_requalification": false,
+      "fixture_validation": true,
+      "generic_policy_implementation": true,
+      "hypothesis_or_strategy": false,
+      "m2": false,
+      "new_independent_audit": false,
+      "new_independent_audit_protocol": false,
+      "u04": false
+    },
+    "policy_canonical_hash": "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04",
+    "policy_id": "LIQUID-SPOT-SYNCHRONIZED-INVALID-INTERVAL-QUARANTINE-V1",
+    "policy_version": "ADR-0015-V1"
+  },
+  "content_hash": "8c2efd2f2598d851523cfc54ad361d7ab3639558b821fcec2e04fbb4a83fabc7",
+  "generated_utc": null,
+  "manifest_type": "invalid_interval_policy_manifest",
+  "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+  "policy_canonical_hash": "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04",
+  "schema_version": 1,
+  "source_freeze_content_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
+}

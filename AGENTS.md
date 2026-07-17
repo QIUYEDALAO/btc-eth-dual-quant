@@ -34,12 +34,15 @@ After any task, the agent must update:
 - ADR-0015 conditional adoption merged in PR #108 at `141481fa445bdc03b453844a666dbd2639c3cdf7`; exact head `01d98b60ce8a9a0b33082777c946cec70d380fc7` and main run `29554620941` passed. Adoption content hash `d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19` remains exact.
 - The generic policy implementation exact head `67e7d29eaed63a3edb903dd618184bc9f02c5748` passed selective run `29565196104`. Runtime policy hash `0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04`; algorithm hash `8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff`.
 - PR #110 independently approved that exact implementation with 0 critical / 0 high findings and review hash `9a0736431f4df6e27ce0b8e35d28e90d22838aef684e78fbd4c76bd79efe5af1`; review head `996f8b7bff5ac07d0e82ef4b74c67d53a30c9be5` merged at `a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f`, and main run `29568192743` passed.
+- PR #111 completed controlled integration at `e2112a31908f1587eb657a4123f1f114cf2016fe`; selective run `29572828915` and main run `29573400780` passed. Reviewed head `67e7d29eaed63a3edb903dd618184bc9f02c5748` remains an ancestor and all seven reviewed implementation blobs remain exact.
+- ADR-0015 fixed-range requalification completed locally from the exact 27,736 frozen archives. Cold/warm/worker all pass with artifact set `8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3`; run-manifest hash `a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9`.
+- Requalification accounting is exact: eight synchronized events, 119 invalid physical rows, one valid-minority row and 120 total active-member slots quarantined; deterministic mismatches, processing errors, unresolved gaps, policy blockers, fills and replacements are all zero.
 - The implementation verifies exact ZIP/source/raw-row identity, point-in-time active membership, the ≥2/≥80% integer Gate, full active-slot masking including valid minority rows, and mask-before-grid/1h/day behavior using synthetic fixtures only. No public data was read or executed.
 - The adopted policy applies only to verified grid-aligned official 5m active-member rows with the sole close-boundary defect, at least two affected members and affected fraction at least 80%.
 - An accepted event must quarantine the full active-member slot, including valid minority rows, without changing physical source evidence. Off-grid/other malformed/missing/duplicate/non-member/ambiguous/drift cases remain hard blockers.
 - No known date or symbol may be a runtime input. No raw repair, fill, source replacement, substitute member, direct V2 gap-policy adoption or Gate reduction is allowed.
-- The only current successor is controlled integration of the exact reviewed implementation with current `main`. The reviewed head must remain an ancestor and reviewed implementation blobs must remain exact; fixed-range requalification must not start before integration merge and its main Gate pass.
-- Fixed-range requalification, a new audit protocol, a new audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.
+- The only current successor is a new independent audit protocol bound to the exact passing requalification. The protocol task must freeze recomputation and comparison rules before any audit result is produced.
+- The real new audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.
 - PR #102 merged protocol `U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1` at `70c784b1573de8437e189672c89e9c00b6505978` after 116/116 checks. Exact head `07e4fc13d4a6d027e4881863b9224906be776e9a` and content hash `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190` remain frozen.
 - The one authorized diagnostic completed on `codex/u03f-v4-invalid-interval-diagnostic` using only the exact 27,736 frozen local archives in normal, reverse and deterministic-shuffled order. PR #103 exact head `e4b6f6e70bf6df2b10dbd7acc71a734f107d5076` passed 118/118 checks and merged at `49e028712695cf2a946aae9abf14c5668a5343f2`.
 - All three traversal content hashes equal `ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677`; exactly 119 invalid physical rows group into eight synchronous windows.
@@ -185,6 +188,7 @@ After any task, the agent must update:
 - Do not commit `.env`, `.env.*`, API keys, secrets, PEM/key files, `storage/raw/`, DuckDB files/databases, `storage/logs/`, Freqtrade runtime data, or private smoke raw output.
 - `reports/m0/M0_PRIVATE_SMOKE_REPORT.local.md` is local-only and must not be committed.
 - All future development must start from a new branch. Do not push directly to `main`.
+- Default execution is local Git only: one branch and one final local commit per complete task. Do not push, create a PR or run GitHub Actions unless the user explicitly requests publication.
 
 ## U-03F Repair Exact-Head Review Gate
 
@@ -206,4 +210,4 @@ After any task, the agent must update:
 - Runtime policy `0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04`, algorithm `8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff` and implementation content `7cc4f9a3343de1f81ea7ac38e7c77efdd9fdb6bcbe3f8eeec099ddfca1dd020f` are exact.
 - Verdict: `approve`; remaining critical/high findings: 0/0; review content hash `9a0736431f4df6e27ce0b8e35d28e90d22838aef684e78fbd4c76bd79efe5af1`.
 - The review ran only synthetic fixtures and fault injection. PR #110 merged at `a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f`; selective run `29567861738` and main run `29568192743` succeeded while PR #109 remained unchanged.
-- Approval permits only controlled integration of the unchanged implementation. Fixed-range requalification remains blocked until that integration and its main Gate pass; a new audit protocol/audit, U-04, strategy/OOS, API/trading, execution/live and M2 remain unauthorized.
+- Approval led to unchanged controlled integration in PR #111 and the exact fixed-range requalification passed locally. Only a new independent audit protocol is authorized next; the real audit, U-04, strategy/OOS, API/trading, execution/live and M2 remain unauthorized.

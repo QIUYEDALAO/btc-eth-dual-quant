@@ -1,0 +1,8 @@
+{
+  "content": [],
+  "content_hash": "c4930bb769c70e2f26cdd2cff25c80391fa254afc0d26d5dd1eca939d27f20a4",
+  "contract_hash": "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83",
+  "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+  "manifest_type": "lifecycle_event_quarantine_manifest",
+  "schema_version": 4
+}

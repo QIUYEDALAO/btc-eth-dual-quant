@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
+            "ADR-0015 fixed-range requalification passed; new independent audit protocol is the only authorized next task",
         )
         self.assertEqual(
             state["current_status"],
-            "adr0015_generic_policy_controlled_integration_pending_ci_no_requalification_no_u04_no_m2",
+            "adr0015_requalification_pass_new_audit_protocol_authorized_no_audit_no_u04_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -435,17 +435,10 @@ class KlaySourceConflictTests(unittest.TestCase):
             policy_adoption["merge_commit"],
             "141481fa445bdc03b453844a666dbd2639c3cdf7",
         )
-        implementation = next(
-            item for item in state["open_work"]
-            if item["id"] == "ADR-0015-IMPL"
-        )
+        implementation = state["adr0015_invalid_interval_policy_implementation"]
         self.assertEqual(
             implementation["status"],
-            "implementation_exact_head_approved_controlled_integration_pending_gate",
-        )
-        self.assertEqual(
-            implementation["adoption_content_hash"],
-            "d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19",
+            "implementation_integrated_requalification_pass",
         )
         self.assertEqual(
             implementation["policy_hash"],
@@ -455,17 +448,28 @@ class KlaySourceConflictTests(unittest.TestCase):
             implementation["algorithm_hash"],
             "8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff",
         )
-        self.assertTrue(implementation["generic_policy_implemented"])
-        self.assertTrue(implementation["fixture_validation_complete"])
-        self.assertTrue(implementation["fault_injection_complete"])
         self.assertFalse(implementation["exact_head_implementation_review_required"])
         self.assertTrue(implementation["exact_head_implementation_review_complete"])
         self.assertEqual(implementation["review_pr"], 110)
-        self.assertFalse(implementation["fixed_range_public_requalification_authorized"])
+        self.assertTrue(implementation["fixed_range_public_requalification_authorized"])
+        self.assertTrue(implementation["fixed_range_public_requalification_complete"])
         self.assertFalse(implementation["new_independent_audit_authorized"])
         self.assertFalse(implementation["u04_authorized"])
         self.assertFalse(implementation["m2_authorized"])
-        self.assertFalse(implementation["public_data_run_executed"])
+        self.assertTrue(implementation["public_data_run_executed"])
+        protocol = next(
+            item for item in state["open_work"]
+            if item["id"] == "ADR-0015-AUDIT-PROTOCOL"
+        )
+        self.assertEqual(protocol["status"], "authorized_not_started")
+        self.assertFalse(protocol["new_independent_audit_authorized"])
+        requalification = next(
+            item for item in state["completed_milestones"]
+            if item["phase"] == "ADR-0015 fixed-range invalid-interval requalification"
+        )
+        self.assertEqual(requalification["status"], "pass_local_complete")
+        self.assertEqual(requalification["invalid_physical_rows_quarantined"], 119)
+        self.assertEqual(requalification["valid_minority_rows_quarantined"], 1)
         repair = next(
             item
             for item in state["completed_milestones"]
