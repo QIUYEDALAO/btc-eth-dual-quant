@@ -1,0 +1,96 @@
+{
+  "authorization": {
+    "adr0015_adopted": false,
+    "api_or_trading": false,
+    "backtesting_or_oos": false,
+    "event_scan_signals_or_returns": false,
+    "execution_live": false,
+    "fixed_range_public_requalification": false,
+    "hypothesis_or_strategy": false,
+    "m2": false,
+    "new_independent_audit": false,
+    "production_pipeline_modification": false,
+    "production_policy_implementation": false,
+    "separate_conditional_adoption_consideration": true,
+    "u04": false
+  },
+  "generated_utc": "2026-07-17T02:20:00Z",
+  "immutable_bindings": {
+    "diagnostic_content_hash": "ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677",
+    "diagnostic_run_content_hash": "df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33",
+    "protocol_content_hash": "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
+    "source_freeze_content_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "v2_gap_policy_contract_hash": "051894e89b713f541caa601efab51be22f83461a4e624e1d51d7f576ed8cda51"
+  },
+  "remaining_findings": {
+    "critical": [],
+    "high": [],
+    "informational": [
+      "The 0.80 and two-member thresholds are policy parameters frozen before the diagnostic; they are not inferred from the eight observed windows.",
+      "Full-slot quarantine intentionally discards a valid minority row to preserve a synchronized active-member panel and requires separate adoption before runtime use."
+    ],
+    "low": [],
+    "medium": []
+  },
+  "review_content_sha256": "893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3",
+  "review_dimensions": [
+    {"dimension": "exact_head_and_ci", "status": "pass"},
+    {"dimension": "docs_only_scope", "status": "pass"},
+    {"dimension": "immutable_evidence_bindings", "status": "pass"},
+    {"dimension": "pre_outcome_threshold_justification", "status": "pass"},
+    {"dimension": "synchronous_candidate_definition", "status": "pass"},
+    {"dimension": "false_positive_and_adversarial_hard_blocks", "status": "pass"},
+    {"dimension": "full_slot_valid_minority_quarantine", "status": "pass"},
+    {"dimension": "accounting_invariants", "status": "pass"},
+    {"dimension": "v2_gap_policy_separation", "status": "pass"},
+    {"dimension": "machine_fault_coverage", "status": "pass"},
+    {"dimension": "authorization_non_expansion", "status": "pass"}
+  ],
+  "review_id": "ADR0015-EXACT-HEAD-INDEPENDENT-POLICY-REVIEW-V1",
+  "reviewed_target": {
+    "adr_blob_sha": "6a5d29b6c877d043875da71638dc80ddd54da7ee",
+    "adr_file_sha256": "9ce9eade1f622824562a74ce5750da400f4c298145fb92c2a89023ff527ce19a",
+    "base_sha": "6df4aa3aa355f986e5533a51e223d69e3bf16e84",
+    "changed_file_list_sha256": "73373e2fbb2a46d128e4924c732845ccdc4227d7e9b813640f9e15e33e0a430c",
+    "changed_files": [
+      ".github/workflows/adr0015-policy-draft.yml",
+      "AGENTS.md",
+      "NEXT_ACTION.md",
+      "PROJECT_EXECUTION_CHECKLIST.md",
+      "PROJECT_LEDGER.md",
+      "PROJECT_STATE.yaml",
+      "docs/decisions/ADR-0015-synchronized-official-invalid-interval-quarantine-policy.md",
+      "docs/decisions/proposals/adr0015_invalid_interval_policy_model.json",
+      "reports/INDEX.md",
+      "reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_DRAFT.md",
+      "scripts/adr0015_policy_draft_check.py",
+      "scripts/adr0015_policy_draft_validate.sh",
+      "scripts/project_state_transition_check.py",
+      "tests/test_adr0015_policy_draft.py",
+      "tests/test_liquid_universe_v3_klay_conflict.py"
+    ],
+    "head_sha": "03d2b8736abab277e60db1153ba73f0899d7696f",
+    "merge_sha": "e1783090dfb0a4560475b97a021ef1e77aebc399",
+    "model_blob_sha": "a4155cebfde44eb149afe9dd94e4311e9155366e",
+    "model_content_sha256": "7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c",
+    "model_file_sha256": "f945d5c61553a4571e9cbda7c77bff0c974a460cd25b7ad92d6382c8d4e92a7e",
+    "pull_request": 105
+  },
+  "schema_version": 1,
+  "validation_evidence": {
+    "diagnostic_archives_per_order": 27736,
+    "diagnostic_invalid_rows": 119,
+    "diagnostic_synchronous_windows": 8,
+    "draft_changed_files": 15,
+    "fault_cases_hard_block": 16,
+    "fault_cases_total": 16,
+    "full_active_windows": 7,
+    "github_checks_success": 120,
+    "github_checks_total": 120,
+    "minimum_invalid_active_fraction": 0.8,
+    "minimum_invalid_active_members": 2,
+    "minimum_observed_window_fraction": "0.933333333333",
+    "valid_minority_windows": 1
+  },
+  "verdict": "approve"
+}

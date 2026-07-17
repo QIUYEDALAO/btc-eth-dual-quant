@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "ADR-0015 synchronized invalid-interval quarantine policy Draft pending independent review",
+            "ADR-0015 exact-head independent policy review pending PR validation",
         )
         self.assertEqual(
             state["current_status"],
-            "adr0015_draft_pending_independent_policy_review_unadopted_no_implementation_no_u04_no_m2",
+            "adr0015_independent_policy_review_approve_pending_ci_unadopted_no_implementation_no_u04_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -418,25 +418,24 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertFalse(
             any(item["id"] == "U-03F-REPAIR-REQUALIFICATION" for item in state["open_work"])
         )
-        policy_draft = next(
+        policy_review = next(
             item for item in state["open_work"]
-            if item["id"] == "ADR-0015-DRAFT"
+            if item["id"] == "ADR-0015-REVIEW"
         )
-        self.assertEqual(policy_draft["status"], "draft_pending_independent_review")
+        self.assertEqual(policy_review["status"], "approve_pending_pr_validation")
         self.assertEqual(
-            policy_draft["policy_model_content_hash"],
+            policy_review["policy_model_content_hash"],
             "7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c",
         )
         self.assertEqual(
-            policy_draft["protocol_content_hash"],
+            policy_review["protocol_content_hash"],
             "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
         )
-        self.assertTrue(policy_draft["draft_only"])
-        self.assertTrue(policy_draft["exact_head_review_required"])
-        self.assertEqual(policy_draft["maximum_critical_findings"], 0)
-        self.assertEqual(policy_draft["maximum_high_findings"], 0)
-        self.assertFalse(policy_draft["adopted"])
-        self.assertFalse(policy_draft["production_pipeline_modified"])
+        self.assertEqual(policy_review["verdict"], "approve")
+        self.assertEqual(policy_review["critical_findings"], 0)
+        self.assertEqual(policy_review["high_findings"], 0)
+        self.assertFalse(policy_review["adopted"])
+        self.assertFalse(policy_review["production_pipeline_modified"])
         repair = next(
             item
             for item in state["completed_milestones"]

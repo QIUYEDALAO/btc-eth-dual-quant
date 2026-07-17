@@ -2,24 +2,17 @@
 
 ## Immediate Task
 
-First merge the CI-only governance change on `codex/ci-pr-trigger-optimization`.
-It replaces duplicated feature-push plus pull-request fan-out with one
-cancel-in-progress selective PR Gate and one consolidated `main` regression
-Gate. The 60 historical stage workflows remain manually dispatchable without
-automatic fan-out. Both automatic Gates run repository validation, compile,
-secret and diff checks, plus any changed stage validator. This changes no ADR,
-research, production or trading authority.
+CI governance PR #106 merged at
+`925ce55f549f145d9c47be9ec8007feff2eebfad`. Automatic validation now has one
+selective PR Gate and one consolidated `main` Gate; historical workflows are
+manual-only. The immediate task is therefore the ADR-0015 exact-head review,
+without unrelated GitHub fan-out.
 
-Immediately after that CI prerequisite passes and merges, continue the already
-prepared ADR-0015 exact-head independent review. Do not pause for unrelated
-GitHub fan-out.
-
-ADR-0015 is now a docs-only proposed Draft on
-`codex/adr-0015-invalid-interval-policy-draft`, based exactly on main
-`6df4aa3aa355f986e5533a51e223d69e3bf16e84`. Its machine model content hash is
+ADR-0015's docs-only Draft merged in PR #105 at
+`e1783090dfb0a4560475b97a021ef1e77aebc399` after 120/120 checks. The exact
+review target is Draft head `03d2b8736abab277e60db1153ba73f0899d7696f`;
+its machine model content hash is
 `7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`.
-The Draft is PR #105; its final exact head must remain unchanged during the
-later independent policy review.
 
 The Draft binds PR #102's frozen protocol and PR #103's exact diagnostic
 evidence. It proposes a generic new policy family only for hash-bound official
@@ -39,12 +32,21 @@ rows, authority ambiguity and any source/hash/order drift remain hard blockers.
 No date/symbol exception registry, raw repair, source replacement, fill,
 substitute member or direct V2 gap-policy reuse is permitted.
 
-The immediate Gate is to complete the Draft PR and wait for all CI checks. Once
-merged, the only successor is a separate independent review of the exact Draft
-head. Any mismatch, critical finding or high finding fails closed. Review
-approval alone does not adopt ADR-0015. Adoption, implementation,
-requalification, a new audit, U-04, strategy/OOS, API/trading and M2 remain
-unauthorized.
+## ADR-0015 Independent Policy Review
+
+The exact-head independent review verdict is `approve`, with zero remaining
+critical/high findings and review content hash
+`893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3`.
+It confirms the threshold pair was frozen before outcomes, all eight windows
+clear the Gate, the valid-minority window receives full-slot quarantine, and
+all off-grid/other malformed/missing/duplicate/non-member/ambiguous/drift
+cases remain hard blockers.
+
+The immediate Gate is to validate and merge only this review PR with the exact
+Draft target unchanged. Approval alone does not adopt ADR-0015. If the review
+merges unchanged, only a separate conditional-adoption governance PR may be
+considered. Implementation, requalification, a new audit, U-04, strategy/OOS,
+API/trading and M2 remain unauthorized.
 
 ## Historical Failed Audit
 
@@ -128,11 +130,11 @@ BTC/ETH two-asset candidate queue.
 
 1. Preserve PR #89, PR #95 and PR #100 evidence and the frozen source byte for
    byte; none is an alternative active qualification authority.
-2. Merge only this docs-only ADR-0015 Draft after local validation and all PR CI
-   checks pass.
-3. After merge, start only a separate exact-head independent policy design
-   review. Critical/high findings or any hash mismatch stop the chain.
-4. Keep policy adoption, runtime implementation, requalification, the new
+2. Merge only the exact-head ADR-0015 independent policy review after local
+   validation and all PR CI checks pass.
+3. If the review remains `approve` with 0/0 critical/high, consider only a
+   separate conditional-adoption governance PR; approval itself is not adoption.
+4. Keep runtime implementation, requalification, the new
    independent audit, U-04, hypothesis/strategy work, returns, OOS and M2
    blocked.
 

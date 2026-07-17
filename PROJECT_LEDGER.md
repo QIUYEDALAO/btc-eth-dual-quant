@@ -1699,7 +1699,7 @@ private exchange responses here.
 - Next Gate: merge the Draft only after all checks pass, then conduct a separate independent review of the exact Draft head. Any mismatch or critical/high finding stops; approval alone does not adopt.
 - Safety: adoption, implementation, requalification, new audit, U-04, strategy/backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
 
-## 2026-07-17 - Selective Pull Request CI Governance Prepared
+## 2026-07-17 - Selective Pull Request CI Governance Merged
 
 - Task ID: CI-PR-GATE.
 - Branch: `codex/ci-pr-trigger-optimization`; base main `e1783090dfb0a4560475b97a021ef1e77aebc399`.
@@ -1708,4 +1708,18 @@ private exchange responses here.
 - Historical coverage: all stage workflows remain manually dispatchable; their automatic feature-branch and `main` fan-out is removed.
 - Policy enforcement: `scripts/ci_pr_trigger_policy_check.py`, `scripts/pr_ci_selective_validate.sh`, and unit tests fail closed on trigger or selector drift.
 - Authority: CI governance only. ADR-0015 semantics and all downstream authorization blocks remain unchanged.
-- Next Gate: local validation, one PR, exact-head CI and merge; then continue the ADR-0015 independent review under the selective Gate.
+- Result: PR #106 exact head `b6e5e7d4ff9981392c6dcd6338796bfb325a6b2b` passed its sole selective check and merged at `925ce55f549f145d9c47be9ec8007feff2eebfad`.
+- Next Gate: continue the ADR-0015 independent review under the selective Gate.
+
+## 2026-07-17 - ADR-0015 Exact-Head Independent Policy Review Prepared
+
+- Task ID: ADR-0015-REVIEW.
+- Draft merge: PR #105 exact head `03d2b8736abab277e60db1153ba73f0899d7696f` merged at `e1783090dfb0a4560475b97a021ef1e77aebc399` after 120/120 checks.
+- Review branch: `codex/adr-0015-independent-policy-review`, based on the exact Draft merge commit.
+- Evidence: `reports/expert/ADR_0015_INDEPENDENT_REVIEW.md` and `reports/expert/evidence/adr0015_independent_review.json`.
+- Verdict: `approve`; remaining critical/high findings 0/0; review content hash `893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3`.
+- Exact bindings: model `7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`, protocol `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190`, diagnostic `ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677`, run `df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33`.
+- Review result: the ≥2/≥80% threshold pair was frozen before outcomes; all eight windows clear it; seven are 15/15 and one is 14/15. Full-slot quarantine correctly includes the valid minority row while preserving raw bytes.
+- Fail-closed scope: off-grid/other malformed/missing/duplicate/non-member/ambiguous/revised/drift cases remain blockers; all 16 fault cases hard-block; the V2 gap policy remains reference-only.
+- Next Gate: merge the independent-review PR only after all checks pass with the exact target unchanged. After that, only a separate conditional-adoption governance PR may be considered.
+- Safety: approval alone does not adopt ADR-0015. Implementation, requalification, new audit, U-04, strategy/backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
