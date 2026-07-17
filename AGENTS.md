@@ -28,12 +28,13 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- CI governance is being reduced to one cancel-in-progress selective pull-request Gate and one consolidated `main` regression Gate. Historical stage workflows remain manually dispatchable and must have no automatic trigger. This changes no project authorization.
-- ADR-0015 is a docs-only `proposed_draft_non_authoritative` policy Draft in PR #105 on `codex/adr-0015-invalid-interval-policy-draft`, based on main `6df4aa3aa355f986e5533a51e223d69e3bf16e84`; model content hash `7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`.
+- CI governance merged in PR #106 at `925ce55f549f145d9c47be9ec8007feff2eebfad`: one cancel-in-progress selective pull-request Gate, one consolidated `main` Gate, and manual-only historical workflows. This changes no project authorization.
+- ADR-0015's docs-only `proposed_draft_non_authoritative` Draft merged in PR #105 at `e1783090dfb0a4560475b97a021ef1e77aebc399` after 120/120 checks. Exact reviewed head `03d2b8736abab277e60db1153ba73f0899d7696f`; model content hash `7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`.
+- The exact-head independent policy review verdict is `approve` with 0 critical / 0 high findings and review hash `893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3`; it is pending review-PR validation and merge.
 - The Draft proposes a generic new policy family only for verified grid-aligned official 5m active-member rows with the sole close-boundary defect, at least two affected members and affected fraction at least 80%.
 - A future accepted event must quarantine the full active-member slot, including valid minority rows, without changing physical source evidence. Off-grid/other malformed/missing/duplicate/non-member/ambiguous/drift cases remain hard blockers.
 - No known date or symbol may be a runtime input. No raw repair, fill, source replacement, substitute member, direct V2 gap-policy adoption or Gate reduction is allowed.
-- The only successor after Draft merge is a separate independent policy review of the exact Draft head. Any mismatch or critical/high finding fails closed; approval alone does not adopt the policy.
+- The only successor after an unchanged review merge is a separate conditional-adoption governance PR. Any target/hash drift invalidates approval; approval alone does not adopt the policy.
 - Policy adoption, production implementation, requalification, a new audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.
 - PR #102 merged protocol `U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1` at `70c784b1573de8437e189672c89e9c00b6505978` after 116/116 checks. Exact head `07e4fc13d4a6d027e4881863b9224906be776e9a` and content hash `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190` remain frozen.
 - The one authorized diagnostic completed on `codex/u03f-v4-invalid-interval-diagnostic` using only the exact 27,736 frozen local archives in normal, reverse and deterministic-shuffled order. PR #103 exact head `e4b6f6e70bf6df2b10dbd7acc71a734f107d5076` passed 118/118 checks and merged at `49e028712695cf2a946aae9abf14c5668a5343f2`.
@@ -187,3 +188,10 @@ After any task, the agent must update:
 - The review verdict is `approve` with zero remaining critical/high findings and review hash `c60b1f8b451ea60ac8da267e90917b8c560655089bb1cd20dfb12999004bf1b4`.
 - Any target head, implementation, protocol, auditor, historical evidence or source-freeze drift invalidates approval and stops the chain.
 - Public repair requalification ran cold-only and PR #100 merged its blocked evidence after 114/114 checks. The new audit did not run. U-04, strategy, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## ADR-0015 Independent Policy Review Gate
+
+- Target: PR #105 exact head `03d2b8736abab277e60db1153ba73f0899d7696f`, merged at `e1783090dfb0a4560475b97a021ef1e77aebc399` after 120/120 checks.
+- Model content hash: `7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`; review content hash: `893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3`.
+- Verdict: `approve`; remaining critical/high findings: 0/0. The pre-outcome ≥2/≥80% Gate, full active-slot mask, valid-minority quarantine, 13 hard blocks, 16 fault cases and V2 policy separation all pass.
+- Review approval authorizes only a separate conditional-adoption consideration after the review PR itself merges unchanged. It does not adopt ADR-0015 or authorize implementation, requalification, audit, U-04, strategy/OOS, API/trading, execution/live or M2.

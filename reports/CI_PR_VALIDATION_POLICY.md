@@ -1,6 +1,6 @@
 # Pull Request CI Validation Policy
 
-- Status: selective_pr_gate_pending_merge
+- Status: selective_pr_gate_merged
 - Scope: repository CI routing only; no research, policy, production, data, strategy, trading, or authorization change
 
 ## Decision
