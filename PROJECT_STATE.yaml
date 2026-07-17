@@ -2,8 +2,8 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-17T00:00:00Z"
-current_phase: U-03F V4 invalid-interval diagnostic merged; Draft policy ADR is the only authorized next task
-current_status: u03f_v4_invalid_interval_diagnostic_merged_new_policy_adr_draft_authorized_no_u04_no_m2
+current_phase: ADR-0015 synchronized invalid-interval quarantine policy Draft pending independent review
+current_status: adr0015_draft_pending_independent_policy_review_unadopted_no_implementation_no_u04_no_m2
 completed_milestones:
   - phase: U-03F V4 invalid-interval deterministic diagnostic
     status: completed_new_policy_adr_required_merged
@@ -398,22 +398,26 @@ completed_milestones:
 open_work:
   - id: ADR-0015-DRAFT
     phase: Invalid physical-kline policy Draft
-    status: authorized_not_started
-    branch: not_created
-    pr: none
-    head_sha: none
+    status: draft_pending_independent_review
+    branch: codex/adr-0015-invalid-interval-policy-draft
+    pr: 105
+    head_sha: runtime_current_pr_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_REPORT.md
-    machine_evidence: reports/m0/evidence/liquid_universe_v4_invalid_interval_adjudication/diagnostic_run_manifest.json
+    evidence: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_DRAFT.md
+    machine_evidence: docs/decisions/proposals/adr0015_invalid_interval_policy_model.json
     protocol_content_hash: 9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190
     diagnostic_content_hash: ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677
     run_manifest_hash: df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33
+    policy_model_content_hash: 7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c
     draft_only: true
     independent_review_required_before_adoption: true
+    exact_head_review_required: true
+    maximum_critical_findings: 0
+    maximum_high_findings: 0
     adopted: false
     implementation_authorized: false
     production_pipeline_modified: false
-    blocker: "Only a separate Draft policy ADR may start; adoption, implementation and every downstream stage remain unauthorized."
+    blocker: "Only a separate exact-head independent policy review may follow after this Draft merges; approval alone does not adopt policy."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -485,9 +489,10 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Start only a separately versioned Draft policy ADR bound to PR #103 exact diagnostic evidence and the frozen protocol."
-  - "The Draft must define a generic policy without per-row exceptions or direct reuse of the existing gap policy."
-  - "The Draft requires a separate independent policy review and cannot authorize adoption, implementation, requalification, audit or U-04."
+  - "Complete and merge only the ADR-0015 Draft after its policy checker, repository validation and all PR CI checks pass."
+  - "After Draft merge, start only a separate exact-head independent policy review; any mismatch, critical finding or high finding fails closed."
+  - "The review is a design review and cannot authorize adoption, implementation, requalification, audit or U-04."
+  - "Diagnostics remain immutable evidence only; no new diagnostic, source download or source replacement is authorized."
   - "Any source/hash/order mismatch stops as blocked_evidence_mismatch; no exception registry, source replacement or Gate reduction is allowed."
   - Cross-sectional design remains blocked because U-03F failed; U-04 is not authorized.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
@@ -526,6 +531,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_DRAFT.md
+    phase: ADR-0015 synchronized invalid-interval quarantine policy Draft
+    status: proposed_draft_non_authoritative_pending_independent_review
+    status_marker: "- Status: proposed_draft_non_authoritative"
+  - path: docs/decisions/proposals/adr0015_invalid_interval_policy_model.json
+    phase: ADR-0015 machine policy Draft
+    status: deterministic_docs_only_model
+    status_marker: '"status": "proposed_draft_non_authoritative"'
   - path: reports/m0/U03F_V4_INVALID_INTERVAL_ADJUDICATION_REPORT.md
     phase: U-03F V4 invalid-interval deterministic diagnostic
     status: completed_new_policy_adr_required_merged_pr103
@@ -1193,6 +1206,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/adr0015_policy_draft_validate.sh
   - bash scripts/u03f_v4_invalid_interval_protocol_validate.sh
   - bash scripts/u03f_v4_repair_protocol_validate.sh
   - bash scripts/u03f_v4_independent_audit_result_validate.sh
@@ -1300,6 +1314,30 @@ u03f_v4_invalid_interval_adjudication_diagnostic:
   production_pipeline_modified: false
   draft_policy_adr_authorized_before_evidence_merge: false
   draft_policy_adr_authorized_after_evidence_merge: true
+  public_requalification_authorized: false
+  new_independent_audit_authorized: false
+  u04_authorized: false
+  m2_authorized: false
+adr0015_policy_draft:
+  status: proposed_draft_non_authoritative_pending_independent_review
+  base_main_sha: 6df4aa3aa355f986e5533a51e223d69e3bf16e84
+  branch: codex/adr-0015-invalid-interval-policy-draft
+  pr: 105
+  adr: docs/decisions/ADR-0015-synchronized-official-invalid-interval-quarantine-policy.md
+  model: docs/decisions/proposals/adr0015_invalid_interval_policy_model.json
+  model_content_hash: 7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c
+  protocol_content_hash: 9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190
+  diagnostic_content_hash: ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677
+  diagnostic_run_content_hash: df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33
+  policy_family: synchronized_official_invalid_interval_quarantine
+  minimum_invalid_active_members: 2
+  minimum_invalid_active_fraction: 0.8
+  full_active_slot_quarantine: true
+  date_or_symbol_exceptions: false
+  v2_gap_policy_direct_reuse: false
+  policy_adopted: false
+  implementation_authorized: false
+  production_pipeline_modified: false
   public_requalification_authorized: false
   new_independent_audit_authorized: false
   u04_authorized: false

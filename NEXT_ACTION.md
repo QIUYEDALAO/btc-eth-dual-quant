@@ -2,29 +2,37 @@
 
 ## Immediate Task
 
-PR #102 merged the frozen protocol at
-`70c784b1573de8437e189672c89e9c00b6505978` after 116/116 checks. Its exact
-head is `07e4fc13d4a6d027e4881863b9224906be776e9a` and content hash is
-`9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190`.
+ADR-0015 is now a docs-only proposed Draft on
+`codex/adr-0015-invalid-interval-policy-draft`, based exactly on main
+`6df4aa3aa355f986e5533a51e223d69e3bf16e84`. Its machine model content hash is
+`7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`.
+The Draft is PR #105; its final exact head must remain unchanged during the
+later independent policy review.
 
-The one authorized frozen-local diagnostic has now completed. Normal, reverse
-and deterministic-shuffled traversal each revalidated all 27,736 bound archive
-bytes and produced the same canonical content hash
-`ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677`.
-Exactly 119 physical invalid rows group into eight UTC windows; all eight meet
-the frozen two-symbol and 80% evidence threshold. The run-manifest content hash
-is `df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33`.
+The Draft binds PR #102's frozen protocol and PR #103's exact diagnostic
+evidence. It proposes a generic new policy family only for hash-bound official
+5m active-member rows whose open time is grid aligned, whose non-time fields
+all pass, and whose sole defect is the close boundary. A candidate requires at
+least two invalid active members and at least 80% of the active membership at
+one open time.
 
-The decision is `new_policy_adr_required`, not policy adoption. The immediate
-evidence PR #103 exact head
-`e4b6f6e70bf6df2b10dbd7acc71a734f107d5076` passed 118/118 checks and merged
-at `49e028712695cf2a946aae9abf14c5668a5343f2`.
+The underlying immutable diagnostic remains exactly 119 physical invalid rows
+in eight synchronous windows; this Draft neither rewrites nor reclassifies
+those historical source rows.
 
-Only a separate, versioned Draft policy ADR may start next. It must bind the
-frozen protocol and PR #103 evidence, define a generic rule rather than per-row
-exceptions or direct reuse of the existing gap policy, and require independent
-review before any adoption. Runtime changes, requalification, a new audit,
-U-04, strategy/OOS, API/trading and M2 remain unauthorized.
+A future accepted event would quarantine the full active-member slot,
+including any valid minority, while preserving every physical source row
+unchanged. Off-grid rows, other malformed fields, missing/duplicate/non-member
+rows, authority ambiguity and any source/hash/order drift remain hard blockers.
+No date/symbol exception registry, raw repair, source replacement, fill,
+substitute member or direct V2 gap-policy reuse is permitted.
+
+The immediate Gate is to complete the Draft PR and wait for all CI checks. Once
+merged, the only successor is a separate independent review of the exact Draft
+head. Any mismatch, critical finding or high finding fails closed. Review
+approval alone does not adopt ADR-0015. Adoption, implementation,
+requalification, a new audit, U-04, strategy/OOS, API/trading and M2 remain
+unauthorized.
 
 ## Historical Failed Audit
 
@@ -108,12 +116,13 @@ BTC/ETH two-asset candidate queue.
 
 1. Preserve PR #89, PR #95 and PR #100 evidence and the frozen source byte for
    byte; none is an alternative active qualification authority.
-2. Start only a separately versioned Draft policy ADR bound to PR #103 exact
-   evidence and the frozen protocol.
-3. Require a separate independent policy review before adoption; the Draft may
-   not create per-row exceptions or directly adopt the existing gap policy.
-4. Keep runtime implementation, requalification, the new independent audit,
-   U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
+2. Merge only this docs-only ADR-0015 Draft after local validation and all PR CI
+   checks pass.
+3. After merge, start only a separate exact-head independent policy design
+   review. Critical/high findings or any hash mismatch stop the chain.
+4. Keep policy adoption, runtime implementation, requalification, the new
+   independent audit, U-04, hypothesis/strategy work, returns, OOS and M2
+   blocked.
 
 U-03E V2 and V3 remain truthful blocked historical milestones. V4 supersedes
 their admission authority through a separately adopted lifecycle policy and

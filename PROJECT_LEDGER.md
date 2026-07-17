@@ -1683,3 +1683,18 @@ private exchange responses here.
 - Decision: `new_policy_adr_required`; run-manifest content hash `df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33`.
 - Governance: U-03F-R2-D is closed merged. Only a separate Draft policy ADR is authorized next; it must bind PR #103, remain generic, reject per-row exceptions/direct existing-policy adoption and receive independent review before adoption.
 - Safety: policy adoption, production changes, implementation, requalification, a new audit, U-04, strategy/backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-17 - ADR-0015 Invalid-Interval Policy Draft Prepared
+
+- Task ID: ADR-0015-DRAFT.
+- Branch/base: `codex/adr-0015-invalid-interval-policy-draft` / `6df4aa3aa355f986e5533a51e223d69e3bf16e84`.
+- Draft PR: #105; exact review target remains the runtime final PR head after all context-only updates and green CI.
+- Draft authority: docs-only `proposed_draft_non_authoritative`; policy adopted no, implementation authorized no, production modified no.
+- Evidence bindings: protocol `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190`; diagnostic `ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677`; run `df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33`.
+- Machine model: `docs/decisions/proposals/adr0015_invalid_interval_policy_model.json`; content hash `7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`.
+- Generic proposal: verified Binance spot 5m active-member rows, grid-aligned open time, sole close-boundary defect, at least two affected members and at least 80% affected fraction.
+- Quarantine semantics: a future accepted event masks the complete active-member slot, including valid minority rows, while preserving immutable physical evidence and rebuilding 1h/day completeness after the mask.
+- Hard blocks: off-grid or other malformed fields, missing/duplicate/non-member rows, membership ambiguity, source/evidence revision, hash/order mismatch, policy overlap or threshold failure.
+- Forbidden shortcuts: no date/symbol/row exception registry, raw timestamp repair, source replacement/download, fill, substitute member, Gate reduction or direct V2 gap-policy adoption.
+- Next Gate: merge the Draft only after all checks pass, then conduct a separate independent review of the exact Draft head. Any mismatch or critical/high finding stops; approval alone does not adopt.
+- Safety: adoption, implementation, requalification, new audit, U-04, strategy/backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
