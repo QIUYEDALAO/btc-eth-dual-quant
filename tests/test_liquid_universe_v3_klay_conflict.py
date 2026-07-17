@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "ADR-0015 fixed-range requalification passed; new independent audit protocol is the only authorized next task",
+            "ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task",
         )
         self.assertEqual(
             state["current_status"],
-            "adr0015_requalification_pass_new_audit_protocol_authorized_no_audit_no_u04_no_m2",
+            "adr0015_audit_protocol_frozen_auditor_fixture_implementation_authorized_no_real_audit_no_u04_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -459,10 +459,18 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertTrue(implementation["public_data_run_executed"])
         protocol = next(
             item for item in state["open_work"]
-            if item["id"] == "ADR-0015-AUDIT-PROTOCOL"
+            if item["id"] == "ADR-0015-AUDITOR"
         )
         self.assertEqual(protocol["status"], "authorized_not_started")
-        self.assertFalse(protocol["new_independent_audit_authorized"])
+        self.assertTrue(protocol["auditor_fixture_implementation_authorized"])
+        self.assertFalse(protocol["real_independent_audit_authorized"])
+        audit_protocol = state["adr0015_invalid_interval_independent_audit_protocol"]
+        self.assertEqual(
+            audit_protocol["protocol_content_hash"],
+            "9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b",
+        )
+        self.assertEqual(audit_protocol["production_manifests_exact_required"], 19)
+        self.assertFalse(audit_protocol["real_independent_audit_authorized"])
         requalification = next(
             item for item in state["completed_milestones"]
             if item["phase"] == "ADR-0015 fixed-range invalid-interval requalification"

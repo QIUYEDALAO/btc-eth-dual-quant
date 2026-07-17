@@ -1792,3 +1792,15 @@ private exchange responses here.
 - Invalid-interval accounting: 8 synchronous events, 119 invalid physical rows, 1 valid-minority row and 120 total active-member slots quarantined. The eight affected hours and UTC days are ineligible for complete windows.
 - Quality result: processing errors, unresolved gaps, policy blockers, synthetic fills and replacement members are all zero; report and all 19 manifests are hash-bound and exact across the three builds.
 - Next Gate: only a new independent audit protocol may be designed and frozen. The real audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-17 - ADR-0015 New Independent Audit Protocol Frozen Locally
+
+- Task ID: ADR-0015-AUDIT-PROTOCOL.
+- Branch/base: `codex/adr-0015-new-independent-audit-protocol` / local requalification commit `a16b844`.
+- Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`; content hash `9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b`.
+- Exact bindings: source freeze `c86310f8...ec6c`, run `a2f12224...cdf9`, artifact set `8784b564...348c3`, runtime policy `0ac074cf...62d04`, algorithm `8f8a3668...ea4ff` and all 19 production manifests.
+- Frozen method: independent ZIP/raw-row/integer-time/source/membership/lifecycle/ADR-0015 event-mask-accounting and post-mask grid/hour/day/panel recomputation in normal, reverse and deterministic-shuffled order.
+- Pass Gate: 19/19 exact, zero semantic/order mismatch, zero critical/high, and exact 8-event / 119-invalid / 1-valid-minority / 120-slot accounting.
+- Independence: production builders, production invalid-interval module and production Markdown cannot be used as the audit algorithm or computation input. No economic-materiality waiver, timestamp repair, fill, replacement or date/symbol/row exception is allowed.
+- Execution status: protocol checker and tamper tests pass; real frozen-source audit was not run. Frozen source and requalification/historical evidence remain unchanged.
+- Next Gate: only independent auditor fixture implementation, fault injection and later exact-head review are authorized. The real audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.

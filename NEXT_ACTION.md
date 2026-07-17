@@ -2,32 +2,40 @@
 
 ## Immediate Task
 
-The ADR-0015 fixed-range requalification is complete and passed locally from
-the exact 27,736 frozen archives over `2020-01` through `2026-06`.
+The ADR-0015 independent audit protocol is frozen locally before any auditor
+implementation or real audit result.
 
-- Cold/warm/worker artifact set:
-  `8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3`.
-- Requalification run manifest:
+- Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
+- Protocol content hash:
+  `9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b`.
+- Requalification run:
   `a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9`.
-- Deterministic mismatches: `0`.
-- Synchronized invalid-interval events: `8`.
-- Invalid physical rows quarantined: `119`.
-- Valid-minority rows quarantined with the complete active slot: `1`.
-- Total active-member slots quarantined: `120`.
-- Processing errors / unresolved gaps / policy blockers: `0 / 0 / 0`.
-- Synthetic fills / replacement members: `0 / 0`.
+- Production artifact set:
+  `8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3`.
+- Source freeze: `c86310f8...ec6c`; exact archive count: `27,736`.
+- Frozen comparison Gate: 19/19 exact manifests, zero semantic/order
+  mismatches and zero critical/high findings.
+- Frozen accounting: 8 events, 119 physical invalid rows, 1 valid-minority
+  row and 120 total masked active-member slots.
+- Real audit executed or authorized: no.
 
-The only authorized next task is to design and freeze a new independent audit
-protocol bound to the exact run and artifact-set hashes above. The protocol
-task must not execute the audit.
+The only authorized next task is a separate independent auditor fixture
+implementation. It may implement independent primitives, synthetic fixtures,
+fault injection and an exact-head review package. It must not execute the real
+frozen-source audit.
 
-## Completed Dependency
+## Required Next Implementation
 
-The controlled integration prerequisite completed in PR #111 at
-`e2112a31908f1587eb657a4123f1f114cf2016fe`. Selective run `29572828915` and
-main run `29573400780` passed. Reviewed implementation head
-`67e7d29eaed63a3edb903dd618184bc9f02c5748` remains an ancestor and the seven
-reviewed implementation blobs remain exact.
+1. Create one new local branch from the frozen protocol commit.
+2. Implement independent ZIP/raw-row, integer-time, membership, lifecycle,
+   ADR-0015 event/mask/accounting, post-mask grid/hour/day, panel and manifest
+   recomputation without importing production builders as the audit algorithm.
+3. Cover normal, reverse and deterministic-shuffled fixture orders.
+4. Cover source/hash/member/timestamp/membership/threshold/full-slot/order and
+   authorization fault injection.
+5. Freeze one exact implementation head and perform a separate exact-head
+   review before any real audit is authorized.
+6. Continue local Git only; no GitHub push, PR or Actions unless the user asks.
 
 ## ADR-0015 Implementation Exact-Head Review
 
@@ -36,37 +44,27 @@ zero critical/high findings under review hash `9a073643...e5af1`.
 
 ## ADR-0015 Independent Policy Review
 
-Historical review marker: the policy review remains `approve` under review
-hash `893d056e...85a3`; its semantics were not changed by requalification.
+Historical review marker: policy review remains `approve` under review hash
+`893d056e...85a3`; protocol work did not change policy semantics.
 
 ## U-03F Repair Exact-Head Review
 
-Historical review marker: the prior repair review remains immutable. Its later
-cold run truthfully stopped on 119 physical invalid-interval rows; ADR-0015 now
-quarantines those rows only through the separately reviewed generic policy.
-
-## Allowed Next Work
-
-1. Create one local branch for the new independent audit protocol.
-2. Bind the protocol to source freeze `c86310f8...ec6c`, requalification run
-   `a2f12224...cdf9`, artifact set `8784b564...348c3`, runtime policy
-   `0ac074cf...62d04` and algorithm `8f8a3668...ea4ff`.
-3. Freeze independent normal/reverse/deterministic-shuffled recomputation,
-   exact manifest comparisons, severity rules and fail-closed stop conditions.
-4. Do not run the real audit until that protocol task is complete.
-5. Continue using local Git only: one branch and one final local commit; no
-   GitHub push, PR or Actions unless the user explicitly requests publication.
+Historical review marker: the former repair review and its later blocked cold
+run remain immutable. ADR-0015 requalification separately quarantined all 119
+physical invalid rows plus the valid-minority slot.
 
 ## Prohibited
 
 - Freqtrade-first remains the architecture for any future single-leg research.
-- No strategy is eligible for M2.
-- Do not enter M2.
-- Do not mutate or replace any frozen archive or historical evidence.
-- Do not download public data, add date/symbol exceptions, repair timestamps,
-  fill gaps, replace members or lower a Gate.
-- Do not execute the new independent audit in the protocol task.
-- Do not enter U-04, strategy design, event scanning, returns, backtesting or
+- No strategy is eligible for M2. Do not enter M2.
+- Do not execute the real independent audit during auditor implementation.
+- Do not mutate frozen archives, requalification evidence or historical audit
+  evidence.
+- Do not use production builders, production Markdown or the production policy
+  module as the independent audit algorithm.
+- Do not add date/symbol/row exceptions, repair timestamps, fill gaps, replace
+  members, waive manifest mismatches or lower any Gate.
+- Do not enter U-04, hypothesis design, event scanning, returns, backtesting or
   OOS.
 - Do not access API keys, trading permissions, paper/live trading,
   `execution/live`, order placement, cancellation or matching.

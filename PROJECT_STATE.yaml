@@ -1,12 +1,34 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-17T14:24:25Z"
-current_phase: ADR-0015 fixed-range requalification passed; new independent audit protocol is the only authorized next task
-current_status: adr0015_requalification_pass_new_audit_protocol_authorized_no_audit_no_u04_no_m2
+last_updated_utc: "2026-07-17T14:49:49Z"
+current_phase: ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task
+current_status: adr0015_audit_protocol_frozen_auditor_fixture_implementation_authorized_no_real_audit_no_u04_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: ADR-0015 invalid-interval independent audit protocol
+    status: frozen_local_complete_before_auditor_implementation_or_result
+    evidence: reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_PROTOCOL.md
+    machine_evidence: config/liquid_universe_v4_adr0015_independent_audit_protocol.json
+    branch: codex/adr-0015-new-independent-audit-protocol
+    starting_local_commit: a16b844
+    protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
+    source_mode: frozen_local_only
+    source_archive_count: 27736
+    source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+    requalification_run_manifest_hash: a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9
+    requalification_artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
+    production_manifests_total: 19
+    production_manifests_exact_required: 19
+    traversal_orders: [normal, reverse, deterministic_shuffled]
+    independent_auditor_fixture_implementation_authorized: true
+    independent_auditor_fault_injection_authorized: true
+    independent_auditor_exact_head_review_required: true
+    real_audit_executed: false
+    real_audit_authorized: false
+    u04_authorized: false
+    m2_authorized: false
   - phase: ADR-0015 fixed-range invalid-interval requalification
     status: pass_local_complete
     evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_ADR0015_REQUALIFICATION_REPORT.md
@@ -494,23 +516,26 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: ADR-0015-AUDIT-PROTOCOL
-    phase: New independent audit protocol after passing fixed-range requalification
+  - id: ADR-0015-AUDITOR
+    phase: Independent auditor fixture implementation after frozen ADR-0015 audit protocol
     status: authorized_not_started
     branch: not_created
     pr: none
     head_sha: none
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/evidence/liquid_universe_v4_adr0015_requalification/requalification_run_manifest.json
+    evidence: config/liquid_universe_v4_adr0015_independent_audit_protocol.json
+    protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
     policy_hash: 0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04
     algorithm_hash: 8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff
     requalification_run_manifest_hash: a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9
     requalification_artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
-    protocol_design_authorized: true
-    new_independent_audit_authorized: false
+    auditor_fixture_implementation_authorized: true
+    auditor_fault_injection_authorized: true
+    exact_head_review_required: true
+    real_independent_audit_authorized: false
     u04_authorized: false
     m2_authorized: false
-    blocker: "The real independent audit cannot run until a separate protocol is frozen and validated."
+    blocker: "The real independent audit cannot run until an independent auditor implementation passes fixtures, fault injection and exact-head review."
   - id: U-04
     phase: Cross-sectional hypothesis preregistration
     status: not_authorized
@@ -586,12 +611,12 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Design and freeze one new independent audit protocol bound to requalification run a2f12224...cdf9 and artifact set 8784b564...348c3."
-  - "The protocol may authorize only a later independent recomputation; it must not execute the audit in the protocol task."
+  - "Implement only an independent auditor fixture and fault-injection package bound to protocol 9a1768f0...b970b."
+  - "Freeze an exact auditor implementation head and complete a separate exact-head review before any real audit can be authorized."
   - "Preserve all 27,736 frozen archives and historical evidence byte-for-byte; no download, replacement, fill or Gate reduction is allowed."
-  - "The real new audit remains unauthorized until the protocol task completes."
-  - "No unrelated diagnostic task is authorized by the requalification pass."
-  - "No unrelated design review or Draft policy ADR is authorized; only the new independent audit protocol design is allowed."
+  - "The real new audit remains unauthorized during auditor implementation and review."
+  - "Production builders, production Markdown and the production invalid-interval module cannot be the audit algorithm or computation input."
+  - "No unrelated diagnostic, policy, design review or research task is authorized by protocol completion."
   - Cross-sectional design remains blocked because U-03F failed; U-04 is not authorized.
   - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
@@ -1349,6 +1374,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/adr0015_invalid_interval_audit_protocol_validate.sh
   - bash scripts/adr0015_invalid_interval_implementation_validate.sh
   - bash scripts/adr0015_adoption_validate.sh
   - bash scripts/adr0015_policy_draft_validate.sh
@@ -1581,6 +1607,8 @@ adr0015_invalid_interval_policy_implementation:
   exact_head_implementation_review_required: false
   exact_head_implementation_review_complete: true
   new_independent_audit_authorized: false
+  new_independent_audit_protocol_complete: true
+  new_independent_audit_protocol_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
   u04_authorized: false
   m2_authorized: false
 adr0015_invalid_interval_implementation_review:
@@ -1610,4 +1638,30 @@ adr0015_invalid_interval_implementation_review:
   fixed_range_public_requalification_authorized: false
   new_independent_audit_authorized: false
   u04_authorized: false
+  m2_authorized: false
+adr0015_invalid_interval_independent_audit_protocol:
+  status: frozen_local_complete_before_auditor_implementation_or_result
+  branch: codex/adr-0015-new-independent-audit-protocol
+  starting_local_commit: a16b844
+  protocol: config/liquid_universe_v4_adr0015_independent_audit_protocol.json
+  report: reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_PROTOCOL.md
+  protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
+  source_mode: frozen_local_only
+  source_archive_count: 27736
+  source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+  requalification_run_manifest_hash: a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9
+  requalification_artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
+  production_manifests_total: 19
+  production_manifests_exact_required: 19
+  traversal_orders: [normal, reverse, deterministic_shuffled]
+  auditor_fixture_implementation_authorized: true
+  auditor_fault_injection_authorized: true
+  exact_head_auditor_review_required: true
+  real_independent_audit_executed: false
+  real_independent_audit_authorized: false
+  u04_authorized: false
+  strategy_authorized: false
+  oos_authorized: false
+  api_trading_authorized: false
+  execution_live_authorized: false
   m2_authorized: false

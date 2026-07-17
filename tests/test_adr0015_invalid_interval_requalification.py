@@ -15,7 +15,7 @@ def artifacts(value: str = "same") -> dict:
     return {name: {"content_hash": f"{value}:{name}"} for name in names}
 
 
-class ADR0015InvalidIntervalRequalificationTests(unittest.TestCase):
+class ADR0015RequalificationTests(unittest.TestCase):
     def test_stage_uses_independent_nonhistorical_paths(self) -> None:
         self.assertIn("adr0015_requalification", str(run_stage.EVIDENCE))
         self.assertNotIn("repair_requalification", str(run_stage.EVIDENCE))
