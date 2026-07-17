@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -143,6 +144,10 @@ ALLOWED = {
         "adr0015_generic_policy_implementation_fixture_pass_pending_exact_head_review_no_requalification_no_u04_no_m2",
     ): "ADR-0015-IMPL",
     (
+        "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
+        "adr0015_generic_policy_controlled_integration_pending_ci_no_requalification_no_u04_no_m2",
+    ): "ADR-0015-IMPL",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -207,6 +212,23 @@ ADR0015_IMPLEMENTATION_PAIR = (
     "adr0015_generic_policy_implementation_fixture_pass_pending_exact_head_review_no_requalification_no_u04_no_m2",
 )
 
+ADR0015_CONTROLLED_INTEGRATION_PAIR = (
+    "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
+    "adr0015_generic_policy_controlled_integration_pending_ci_no_requalification_no_u04_no_m2",
+)
+
+ADR0015_REVIEWED_IMPLEMENTATION_HEAD = "67e7d29eaed63a3edb903dd618184bc9f02c5748"
+ADR0015_IMPLEMENTATION_REVIEW_MERGE = "a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f"
+ADR0015_EXACT_IMPLEMENTATION_FILES = (
+    "config/liquid_spot_invalid_interval_policy_v1.json",
+    "reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_IMPLEMENTATION_STATUS.md",
+    "scripts/adr0015_invalid_interval_implementation_check.py",
+    "scripts/adr0015_invalid_interval_implementation_validate.sh",
+    "scripts/liquid_universe_v4_public_run.py",
+    "src/btc_eth_dual_quant/data/invalid_interval_quarantine.py",
+    "tests/test_adr0015_invalid_interval_policy.py",
+)
+
 CLOSED_TASK_PAIRS = {
     FAILED_U03F_CLOSEOUT_PAIR,
     REPAIR_CHAIN_CLOSED_PAIR,
@@ -223,6 +245,7 @@ AUDIT_BLOCKED_PAIRS = {
     ADR0015_REVIEW_PAIR,
     ADR0015_ADOPTION_PAIR,
     ADR0015_IMPLEMENTATION_PAIR,
+    ADR0015_CONTROLLED_INTEGRATION_PAIR,
 }
 
 EXPECTED_AUTH = {
@@ -245,6 +268,50 @@ def validate(state: dict) -> list[str]:
         failures.append(f"unsupported V2 phase/status pair: {pair}")
     if state.get("research_authorizations") != EXPECTED_AUTH:
         failures.append("research authorization matrix changed")
+    if pair == ADR0015_CONTROLLED_INTEGRATION_PAIR:
+        for commit, label in (
+            (ADR0015_REVIEWED_IMPLEMENTATION_HEAD, "reviewed implementation head"),
+            (ADR0015_IMPLEMENTATION_REVIEW_MERGE, "implementation review merge"),
+        ):
+            available = subprocess.run(
+                ["git", "cat-file", "-e", f"{commit}^{{commit}}"],
+                cwd=ROOT,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            ).returncode == 0
+            ancestor = available and subprocess.run(
+                ["git", "merge-base", "--is-ancestor", commit, "HEAD"],
+                cwd=ROOT,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                check=False,
+            ).returncode == 0
+            if not ancestor:
+                failures.append(f"{label} is unavailable or not an ancestor of HEAD")
+        parents = subprocess.check_output(
+            ["git", "rev-list", "--parents", "HEAD"], cwd=ROOT, text=True
+        ).splitlines()
+        if not any(
+            ADR0015_REVIEWED_IMPLEMENTATION_HEAD in line.split()[1:]
+            for line in parents
+        ):
+            failures.append("no integration ancestor records the reviewed head as a parent")
+        for path in ADR0015_EXACT_IMPLEMENTATION_FILES:
+            reviewed = subprocess.run(
+                ["git", "rev-parse", f"{ADR0015_REVIEWED_IMPLEMENTATION_HEAD}:{path}"],
+                cwd=ROOT, text=True, capture_output=True, check=False,
+            )
+            current = subprocess.run(
+                ["git", "rev-parse", f"HEAD:{path}"],
+                cwd=ROOT, text=True, capture_output=True, check=False,
+            )
+            if (
+                reviewed.returncode
+                or current.returncode
+                or reviewed.stdout.strip() != current.stdout.strip()
+            ):
+                failures.append(f"reviewed implementation blob drifted: {path}")
     open_work = state.get("open_work", [])
     active = [
         item
@@ -296,6 +363,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 exact-head independent policy review pending PR validation",
         "ADR-0015 conditional adoption pending PR validation",
         "ADR-0015 generic invalid-interval policy implementation pending exact-head review",
+        "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
     }:
         milestones = [
             item
@@ -527,9 +595,18 @@ def validate(state: dict) -> list[str]:
             if any(item.get(key) != value for key, value in expected_adoption.items()):
                 failures.append("ADR-0015 conditional adoption binding changed")
         if item.get("id") == "ADR-0015-IMPL":
+            integration = pair == ADR0015_CONTROLLED_INTEGRATION_PAIR
             expected_implementation = {
-                "status": "implementation_pass_fixture_only_pending_exact_head_review",
-                "branch": "codex/adr-0015-invalid-interval-implementation",
+                "status": (
+                    "implementation_exact_head_approved_controlled_integration_pending_gate"
+                    if integration
+                    else "implementation_pass_fixture_only_pending_exact_head_review"
+                ),
+                "branch": (
+                    "codex/adr-0015-invalid-interval-controlled-integration"
+                    if integration
+                    else "codex/adr-0015-invalid-interval-implementation"
+                ),
                 "pr": "runtime_current_pr",
                 "head_sha": "runtime_current_pr_head",
                 "base_main_sha": "141481fa445bdc03b453844a666dbd2639c3cdf7",
@@ -539,7 +616,7 @@ def validate(state: dict) -> list[str]:
                 "generic_policy_implemented": True,
                 "fixture_validation_complete": True,
                 "fault_injection_complete": True,
-                "exact_head_implementation_review_required": True,
+                "exact_head_implementation_review_required": not integration,
                 "public_data_run_executed": False,
                 "fixed_range_public_requalification_authorized": False,
                 "new_independent_audit_authorized": False,
@@ -605,6 +682,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 exact-head independent policy review pending PR validation",
         "ADR-0015 conditional adoption pending PR validation",
         "ADR-0015 generic invalid-interval policy implementation pending exact-head review",
+        "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
     }:
         milestones = [
             item
@@ -726,6 +804,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 exact-head independent policy review pending PR validation",
         "ADR-0015 conditional adoption pending PR validation",
         "ADR-0015 generic invalid-interval policy implementation pending exact-head review",
+        "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
     }:
         reviews = [
             item for item in state.get("completed_milestones", [])
@@ -850,7 +929,7 @@ def validate(state: dict) -> list[str]:
             milestones[0].get(key) != value for key, value in expected_milestone.items()
         ):
             failures.append("merged invalid-interval protocol milestone changed")
-    if pair in {INVALID_INTERVAL_DIAGNOSTIC_MERGED_PAIR, ADR0015_DRAFT_PAIR, ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR, ADR0015_IMPLEMENTATION_PAIR}:
+    if pair in {INVALID_INTERVAL_DIAGNOSTIC_MERGED_PAIR, ADR0015_DRAFT_PAIR, ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR, ADR0015_IMPLEMENTATION_PAIR, ADR0015_CONTROLLED_INTEGRATION_PAIR}:
         diagnostic = state.get("u03f_v4_invalid_interval_adjudication_diagnostic", {})
         expected = {
             "status": "completed_new_policy_adr_required_merged",
@@ -902,7 +981,7 @@ def validate(state: dict) -> list[str]:
             milestones[0].get(key) != value for key, value in expected_milestone.items()
         ):
             failures.append("merged invalid-interval diagnostic milestone changed")
-    if pair in {ADR0015_DRAFT_PAIR, ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR, ADR0015_IMPLEMENTATION_PAIR}:
+    if pair in {ADR0015_DRAFT_PAIR, ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR, ADR0015_IMPLEMENTATION_PAIR, ADR0015_CONTROLLED_INTEGRATION_PAIR}:
         draft = state.get("adr0015_policy_draft", {})
         expected_draft = {
             "status": (
@@ -921,7 +1000,7 @@ def validate(state: dict) -> list[str]:
                 "exact_head_sha": "03d2b8736abab277e60db1153ba73f0899d7696f",
                 "merge_commit": "e1783090dfb0a4560475b97a021ef1e77aebc399",
                 "github_checks_success": 120,
-            } if pair in {ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR, ADR0015_IMPLEMENTATION_PAIR} else {}),
+            } if pair in {ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR, ADR0015_IMPLEMENTATION_PAIR, ADR0015_CONTROLLED_INTEGRATION_PAIR} else {}),
             "adr": "docs/decisions/ADR-0015-synchronized-official-invalid-interval-quarantine-policy.md",
             "model": "docs/decisions/proposals/adr0015_invalid_interval_policy_model.json",
             "model_content_hash": "7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c",
@@ -944,7 +1023,7 @@ def validate(state: dict) -> list[str]:
         }
         if draft != expected_draft:
             failures.append("ADR-0015 Draft state binding changed")
-    if pair in {ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR, ADR0015_IMPLEMENTATION_PAIR}:
+    if pair in {ADR0015_REVIEW_PAIR, ADR0015_ADOPTION_PAIR, ADR0015_IMPLEMENTATION_PAIR, ADR0015_CONTROLLED_INTEGRATION_PAIR}:
         review = state.get("adr0015_independent_policy_review", {})
         expected_review = {
             "status": "approve_pending_pr_validation" if pair == ADR0015_REVIEW_PAIR else "approve_merged",
@@ -1027,7 +1106,8 @@ def validate(state: dict) -> list[str]:
             review_milestones[0].get(key) != value for key, value in expected_review_milestone.items()
         ):
             failures.append("ADR-0015 merged review milestone binding changed")
-    if pair == ADR0015_IMPLEMENTATION_PAIR:
+    if pair in {ADR0015_IMPLEMENTATION_PAIR, ADR0015_CONTROLLED_INTEGRATION_PAIR}:
+        integration = pair == ADR0015_CONTROLLED_INTEGRATION_PAIR
         adoption = state.get("adr0015_conditional_adoption", {})
         expected_adoption = {
             "status": "accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only_merged",
@@ -1059,8 +1139,16 @@ def validate(state: dict) -> list[str]:
             failures.append("merged ADR-0015 adoption state binding changed")
         implementation = state.get("adr0015_invalid_interval_policy_implementation", {})
         expected_implementation = {
-            "status": "implementation_pass_fixture_only_pending_exact_head_review",
-            "branch": "codex/adr-0015-invalid-interval-implementation",
+            "status": (
+                "implementation_exact_head_approved_controlled_integration_pending_gate"
+                if integration
+                else "implementation_pass_fixture_only_pending_exact_head_review"
+            ),
+            "branch": (
+                "codex/adr-0015-invalid-interval-controlled-integration"
+                if integration
+                else "codex/adr-0015-invalid-interval-implementation"
+            ),
             "pr": "runtime_current_pr",
             "head_sha": "runtime_current_pr_head",
             "base_main_sha": "141481fa445bdc03b453844a666dbd2639c3cdf7",
@@ -1075,11 +1163,20 @@ def validate(state: dict) -> list[str]:
             "production_pipeline_code_modified": True,
             "public_data_run_executed": False,
             "fixed_range_public_requalification_authorized": False,
-            "exact_head_implementation_review_required": True,
+            "exact_head_implementation_review_required": not integration,
             "new_independent_audit_authorized": False,
             "u04_authorized": False,
             "m2_authorized": False,
         }
+        if integration:
+            expected_implementation.update({
+                "reviewed_target_pr": 109,
+                "reviewed_target_head_sha": "67e7d29eaed63a3edb903dd618184bc9f02c5748",
+                "review_pr": 110,
+                "review_merge_commit": "a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f",
+                "review_content_hash": "9a0736431f4df6e27ce0b8e35d28e90d22838aef684e78fbd4c76bd79efe5af1",
+                "exact_head_implementation_review_complete": True,
+            })
         if implementation != expected_implementation:
             failures.append("ADR-0015 implementation state binding changed")
     return failures

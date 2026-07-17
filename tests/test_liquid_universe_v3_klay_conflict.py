@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "ADR-0015 generic invalid-interval policy implementation pending exact-head review",
+            "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
         )
         self.assertEqual(
             state["current_status"],
-            "adr0015_generic_policy_implementation_fixture_pass_pending_exact_head_review_no_requalification_no_u04_no_m2",
+            "adr0015_generic_policy_controlled_integration_pending_ci_no_requalification_no_u04_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -441,7 +441,7 @@ class KlaySourceConflictTests(unittest.TestCase):
         )
         self.assertEqual(
             implementation["status"],
-            "implementation_pass_fixture_only_pending_exact_head_review",
+            "implementation_exact_head_approved_controlled_integration_pending_gate",
         )
         self.assertEqual(
             implementation["adoption_content_hash"],
@@ -458,7 +458,9 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertTrue(implementation["generic_policy_implemented"])
         self.assertTrue(implementation["fixture_validation_complete"])
         self.assertTrue(implementation["fault_injection_complete"])
-        self.assertTrue(implementation["exact_head_implementation_review_required"])
+        self.assertFalse(implementation["exact_head_implementation_review_required"])
+        self.assertTrue(implementation["exact_head_implementation_review_complete"])
+        self.assertEqual(implementation["review_pr"], 110)
         self.assertFalse(implementation["fixed_range_public_requalification_authorized"])
         self.assertFalse(implementation["new_independent_audit_authorized"])
         self.assertFalse(implementation["u04_authorized"])

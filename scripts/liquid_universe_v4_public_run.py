@@ -5,6 +5,8 @@ from __future__ import annotations
 import argparse
 import csv
 from collections import defaultdict
+from dataclasses import asdict
+from datetime import timedelta
 from decimal import Decimal
 import io
 import json
@@ -13,8 +15,18 @@ from typing import Any
 import zipfile
 
 from btc_eth_dual_quant.data.kline_row_conflicts import ResolutionRegistry, normalize_kline_fields
+from btc_eth_dual_quant.data.invalid_interval_quarantine import (
+    ActiveMembershipAuthority,
+    InvalidIntervalPolicy,
+    PolicyEvaluation,
+    VerifiedFiveMinuteRow,
+    apply_invalid_interval_mask,
+    build_invalid_interval_manifests,
+    evaluate_invalid_interval_policy,
+    read_verified_monthly_five_minute_archive,
+)
 from btc_eth_dual_quant.data.lifecycle_artifacts import V4_MANIFEST_TYPES, make_v4_manifest
-from btc_eth_dual_quant.data.lifecycle_availability import LifecycleEventRegistry, utc_epoch_ms
+from btc_eth_dual_quant.data.lifecycle_availability import LifecycleEventRegistry, UTC_EPOCH, utc_epoch_ms
 from btc_eth_dual_quant.data.liquid_universe import (
     aggregate_one_hour,
     canonical_hash,
@@ -178,6 +190,100 @@ def _with_parse_errors(result: GridResult, parse_errors: list[str]) -> GridResul
     )
 
 
+def _with_invalid_interval_mask(
+    result: GridResult,
+    masked_open_times_ms: set[int],
+    parse_errors: list[str] | None = None,
+) -> GridResult:
+    """Remove only accepted ADR-0015 masks from unexplained grid gaps."""
+    missing = tuple(
+        timestamp for timestamp in result.missing
+        if utc_epoch_ms(timestamp) not in masked_open_times_ms
+    )
+    return GridResult(
+        result.symbol,
+        result.month,
+        result.expected_count,
+        result.actual_count,
+        missing,
+        tuple(sorted(set(result.errors) | set(parse_errors or ()))),
+    )
+
+
+def _invalid_interval_claims(
+    row_registry: ResolutionRegistry,
+    lifecycle_registry: LifecycleEventRegistry,
+) -> set[tuple[str, int]]:
+    claims = {
+        (entry.symbol, entry.key[2])
+        for entry in row_registry.entries
+        if entry.interval == "5m"
+    }
+    claims.update(
+        (event.symbol, row.open_time_ms)
+        for event in lifecycle_registry.events
+        for row in event.affected_raw_rows
+        if row.interval == "5m"
+    )
+    return claims
+
+
+def _apply_invalid_interval_artifact_overlay(
+    contents: dict[str, Any],
+    evaluation: PolicyEvaluation,
+) -> None:
+    """Rebuild grid/panel/day accounting from the accepted full-slot mask."""
+    masks_by_symbol_month: dict[tuple[str, str], set[int]] = defaultdict(set)
+    masked_hours_by_symbol_month: dict[tuple[str, str], set[int]] = defaultdict(set)
+    for mask in evaluation.masks:
+        key = (mask.symbol, mask.month)
+        masks_by_symbol_month[key].add(mask.open_time_ms)
+        masked_hours_by_symbol_month[key].add(mask.open_time_ms // 3_600_000)
+
+    for row in contents["expected_grid_manifest"]:
+        masked = masks_by_symbol_month.get((row["symbol"], row["month"]), set())
+        row["invalid_interval_policy_masked_count"] = len(masked)
+        row["complete_after_invalid_interval_mask"] = not row["missing_count"] and not row["errors"]
+
+    contents["complete_day_mask"]["invalid_interval_quarantined_days"] = [
+        {
+            "event_id": event.event_id,
+            "open_time_ms": event.open_time_ms,
+            "utc_day": (UTC_EPOCH + timedelta(milliseconds=event.open_time_ms)).date().isoformat(),
+            "active_members": list(event.active_members),
+            "window_eligible": False,
+        }
+        for event in evaluation.events
+    ]
+    contents["complete_day_mask"]["invalid_interval_quarantined_days_window_eligible"] = False
+
+    for row in contents["qualified_panel_manifest"]:
+        hours = masked_hours_by_symbol_month.get((row["symbol"], row["effective_month"]), set())
+        if not hours:
+            continue
+        count = len(hours)
+        row["invalid_interval_quarantined_1h_count"] = count
+        row["valid_1h_count"] = max(0, int(row["valid_1h_count"]) - count)
+        row["quarantined_1h_count"] = int(row["expected_1h_count"]) - int(row["valid_1h_count"])
+        row["status"] = "synchronized_invalid_interval_quarantined"
+
+    summary = contents["qualification_summary"]
+    summary.update({
+        "invalid_interval_policy_events": len(evaluation.events),
+        "invalid_interval_rows_quarantined": evaluation.accounting["invalid_rows_quarantined"],
+        "invalid_interval_valid_minority_rows_quarantined": evaluation.accounting["valid_minority_rows_quarantined"],
+        "invalid_interval_total_rows_quarantined": evaluation.accounting["total_rows_quarantined"],
+        "invalid_interval_quarantined_hours": len({
+            (mask.month, mask.open_time_ms // 3_600_000) for mask in evaluation.masks
+        }),
+        "invalid_interval_quarantined_days": len({
+            (mask.month, mask.open_time_ms // 86_400_000) for mask in evaluation.masks
+        }),
+        "invalid_interval_policy_blockers": len(evaluation.blockers),
+        "invalid_interval_policy_content_hash": evaluation.content_hash,
+    })
+
+
 def build_daily_v4(
     *,
     monthly_groups: dict,
@@ -306,7 +412,10 @@ def run(
         raise ValueError("V4 requalification requires frozen local sources and forbids downloads")
     frozen_sources = _frozen_source_bindings()
     v4_contract = _load("config/liquid_spot_universe_contract_v4.json")
-    policy = _load("config/liquid_spot_lifecycle_policy_v4.json")
+    lifecycle_policy = _load("config/liquid_spot_lifecycle_policy_v4.json")
+    invalid_interval_policy = InvalidIntervalPolicy.from_path(
+        ROOT / "config/liquid_spot_invalid_interval_policy_v1.json"
+    )
     lifecycle = LifecycleEventRegistry.from_path(ROOT / "config/liquid_spot_lifecycle_event_resolutions_v4.json")
     v3_contract = _load("config/liquid_spot_universe_contract_v3.json")
     eligibility = _load("config/liquid_spot_asset_eligibility_v2.json")
@@ -320,7 +429,7 @@ def run(
     required = {
         "v3_contract_hash": v3_contract["canonical_hash"],
         "v3_row_conflict_registry_hash": row_registry.canonical_hash,
-        "lifecycle_policy_config_hash": policy["canonical_hash"],
+        "lifecycle_policy_config_hash": lifecycle_policy["canonical_hash"],
         "lifecycle_event_registry_hash": lifecycle.canonical_hash,
     }
     if any(bindings.get(key) != value for key, value in required.items()):
@@ -337,6 +446,24 @@ def run(
     )
     processing.extend(lifecycle_blockers)
     membership = build_membership_rows(v3_contract, eligibility, daily)
+    membership_content_preview = [asdict(row) for row in membership]
+    membership_manifest_preview = make_v4_manifest(
+        "membership_manifest",
+        membership_content_preview,
+        contract_hash=v4_contract["canonical_hash"],
+        lifecycle_registry_hash=lifecycle.canonical_hash,
+    )
+    lifecycle_endings: dict[str, int] = {}
+    for event in lifecycle.events:
+        if event.symbol in lifecycle_endings:
+            raise ValueError("membership_ambiguity: multiple lifecycle endings for one symbol")
+        lifecycle_endings[event.symbol] = utc_epoch_ms(event.availability_end_exclusive)
+    membership_authority = ActiveMembershipAuthority.build(
+        membership_content_preview,
+        membership_manifest_content_hash=membership_manifest_preview["content_hash"],
+        lifecycle_registry_hash=lifecycle.canonical_hash,
+        lifecycle_end_exclusive_ms=lifecycle_endings,
+    )
     needed = sorted({(row.symbol, row.effective_month[:7]) for row in membership})
     jobs = [
         (archive_path(raw_root, canonical_key(symbol, "5m", month)), canonical_key(symbol, "5m", month))
@@ -344,7 +471,7 @@ def run(
         if archive_path(raw_root, canonical_key(symbol, "5m", month)).exists()
     ]
     _prefetch_checksums(jobs, offline=True, workers=workers)
-    grid_results: dict[Any, Any] = {}
+    physical_rows: list[VerifiedFiveMinuteRow] = []
     for symbol, month in needed:
         key = canonical_key(symbol, "5m", month)
         path = archive_path(raw_root, key)
@@ -354,24 +481,85 @@ def run(
         try:
             source = _source_row(path, key, symbol, "5m", month, "official_monthly_zip_detail", offline=True)
             sources.append(source)
-            bars, row_errors = _valid_five_minute_rows(path, symbol, month)
-            events = [event for event in lifecycle.events if event.symbol == symbol and event.effective_at.strftime("%Y-%m") == month]
-            if events:
-                boundary_ms = utc_epoch_ms(events[0].availability_end_exclusive)
-                grid_result = validate_lifecycle_symbol_month_grid(
-                    symbol, month, bars, availability_end_exclusive_ms=boundary_ms,
-                )
-                active_bars = [bar for bar in bars if utc_epoch_ms(bar.open_time) < boundary_ms]
-            else:
-                grid_result = validate_symbol_month_grid(symbol, month, bars)
-                active_bars = bars
-            grid_results[(symbol, month)] = _with_parse_errors(grid_result, row_errors)
-            grouped: dict[Any, list[Any]] = defaultdict(list)
-            for bar in active_bars:
-                grouped[bar.open_time.replace(minute=0, second=0, microsecond=0)].append(bar)
-            source["derived_1h_count"] = sum(1 for group in grouped.values() if len(group) == 12 and aggregate_one_hour(group))
+            rows = read_verified_monthly_five_minute_archive(
+                path,
+                binding=frozen_sources[key],
+                symbol=symbol,
+                month=month,
+                source_freeze_content_hash=invalid_interval_policy.source_freeze_content_hash,
+            )
+            physical_rows.extend(rows)
         except Exception as exc:
             processing.append(f"{symbol}:{month}:5m:{type(exc).__name__}:{exc}")
+
+    invalid_interval_evaluation = evaluate_invalid_interval_policy(
+        physical_rows,
+        policy=invalid_interval_policy,
+        membership=membership_authority,
+        existing_policy_claims=_invalid_interval_claims(row_registry, lifecycle),
+    )
+    processing.extend(
+        "invalid_interval_policy:"
+        + blocker.reason
+        + ":"
+        + str(blocker.open_time_ms)
+        + ":"
+        + ",".join(blocker.symbols)
+        for blocker in invalid_interval_evaluation.blockers
+    )
+    unmasked_rows = apply_invalid_interval_mask(physical_rows, invalid_interval_evaluation)
+    unmasked_by_symbol_month: dict[tuple[str, str], list[VerifiedFiveMinuteRow]] = defaultdict(list)
+    for row in unmasked_rows:
+        unmasked_by_symbol_month[(row.symbol, row.month)].append(row)
+    masked_by_symbol_month: dict[tuple[str, str], set[int]] = defaultdict(set)
+    for mask in invalid_interval_evaluation.masks:
+        masked_by_symbol_month[(mask.symbol, mask.month)].add(mask.open_time_ms)
+
+    grid_results: dict[Any, Any] = {}
+    detail_sources = {
+        (row.get("symbol"), row.get("archive_month")): row
+        for row in sources
+        if row.get("interval") == "5m"
+    }
+    for symbol, month in needed:
+        source = detail_sources.get((symbol, month))
+        rows = unmasked_by_symbol_month.get((symbol, month), [])
+        row_errors = sorted({
+            error
+            for row in rows
+            for error in row.structural_errors()
+        } | {
+            "5m interval boundary is invalid"
+            for row in rows if not row.valid_close_boundary
+        })
+        bars = [
+            row.to_minute_bar()
+            for row in rows
+            if not row.structural_errors() and row.valid_close_boundary
+        ]
+        events = [event for event in lifecycle.events if event.symbol == symbol and event.effective_at.strftime("%Y-%m") == month]
+        if events:
+            boundary_ms = utc_epoch_ms(events[0].availability_end_exclusive)
+            grid_result = validate_lifecycle_symbol_month_grid(
+                symbol, month, bars, availability_end_exclusive_ms=boundary_ms,
+            )
+            active_bars = [bar for bar in bars if utc_epoch_ms(bar.open_time) < boundary_ms]
+        else:
+            grid_result = validate_symbol_month_grid(symbol, month, bars)
+            active_bars = bars
+        grid_results[(symbol, month)] = _with_invalid_interval_mask(
+            grid_result,
+            masked_by_symbol_month.get((symbol, month), set()),
+            row_errors,
+        )
+        grouped: dict[Any, list[Any]] = defaultdict(list)
+        for bar in active_bars:
+            grouped[bar.open_time.replace(minute=0, second=0, microsecond=0)].append(bar)
+        if source is not None:
+            source["derived_1h_count"] = sum(
+                1 for group in grouped.values()
+                if len(group) == 12 and aggregate_one_hour(group)
+            )
 
     _validate_frozen_source_rows(sources, frozen_sources, require_complete=True)
 
@@ -429,7 +617,7 @@ def run(
     contents = {
         "source_manifest": v3_base["source_manifest"]["content"],
         "row_conflict_resolution_manifest": v3_base["conflict_resolution_manifest"]["content"],
-        "lifecycle_policy_manifest": policy,
+        "lifecycle_policy_manifest": lifecycle_policy,
         "lifecycle_resolution_registry": lifecycle.document,
         "symbol_availability_manifest": [{
             "event_id": event.event_id, "symbol": event.symbol,
@@ -461,10 +649,16 @@ def run(
         "qualification_summary": summary,
         "V3_V4_diff": diff,
     }
+    _apply_invalid_interval_artifact_overlay(contents, invalid_interval_evaluation)
     artifacts = {
         name: make_v4_manifest(name, contents[name], contract_hash=v4_contract["canonical_hash"], lifecycle_registry_hash=lifecycle.canonical_hash)
         for name in sorted(V4_MANIFEST_TYPES)
     }
+    artifacts.update(build_invalid_interval_manifests(
+        invalid_interval_policy,
+        membership_authority,
+        invalid_interval_evaluation,
+    ))
     evidence_dir.mkdir(parents=True, exist_ok=True)
     for name, document in artifacts.items():
         write_manifest(evidence_dir / f"{name}.json", document)

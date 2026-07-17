@@ -2,32 +2,25 @@
 
 ## Immediate Task
 
-PR #108 merged ADR-0015 conditional adoption at
-`141481fa445bdc03b453844a666dbd2639c3cdf7`; its exact head was
-`01d98b60ce8a9a0b33082777c946cec70d380fc7`, and consolidated main run
-`29554620941` completed successfully. The adoption hash remains
-`d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19`.
+PR #110 merged the exact-head implementation review at
+`a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f`. Review head
+`996f8b7bff5ac07d0e82ef4b74c67d53a30c9be5`, selective run `29567861738`
+and consolidated main run `29568192743` all passed. The verdict remains
+`approve` with critical/high `0/0` and review hash
+`9a0736431f4df6e27ce0b8e35d28e90d22838aef684e78fbd4c76bd79efe5af1`.
 
-The current task is `ADR-0015-IMPL`: a generic production-path policy
-implementation using synthetic ZIP fixtures and fault injection only. Runtime
-policy hash `0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04`
-binds algorithm hash
-`8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff`
-and every reviewed evidence identity.
-
-The implementation verifies physical archives and raw rows before grouping by
-integer open time and point-in-time active membership. Accepted ≥2/≥80% events
-emit a separate mask for the entire active slot, including valid minority rows,
-before 5m grid, 1h and UTC-day completeness. No known date/symbol registry,
-repair, fill, source replacement, substitute member or V2 gap-policy reuse is
-implemented.
+The current task is the controlled integration of PR #109 exact reviewed head
+`67e7d29eaed63a3edb903dd618184bc9f02c5748`. The integration must retain that
+commit as an ancestor and preserve every reviewed implementation blob while
+combining the newer review-governance context from `main`. PR #109 itself must
+not be rebased, amended or force-updated to resolve the conflict.
 
 ## ADR-0015 Implementation Gate
 
-The implementation is fixture-only and pending exact-head independent review.
-No public archive was read or executed. The implementation PR must remain
-unmerged until a separate review binds its exact head and returns `approve`
-with zero critical/high findings.
+The implementation is fixture-only and exact-head approved. The controlled
+integration is pending its own selective Gate and merge. No public archive was
+read or executed. Fixed-range requalification must not start before this
+integration merges and its consolidated `main` Gate succeeds.
 
 Fixed-range requalification, a new audit protocol, a new audit, U-04,
 strategy/OOS, API/trading and M2 remain unauthorized. Any target, model,
@@ -35,17 +28,17 @@ evidence, authorization, mask or order drift fails closed.
 
 ## ADR-0015 Implementation Exact-Head Review
 
-The separate review binds Draft PR #109 exact head
+The completed review binds Draft PR #109 exact head
 `67e7d29eaed63a3edb903dd618184bc9f02c5748` against base
 `141481fa445bdc03b453844a666dbd2639c3cdf7`. Target selective run
 `29565196104` succeeded. The independent verdict is `approve` with zero
 critical and zero high findings under review hash
 `9a0736431f4df6e27ce0b8e35d28e90d22838aef684e78fbd4c76bd79efe5af1`.
 
-The review PR must pass while the target remains unchanged. Approval permits
-only the exact implementation merge after review validation; it does not by
-itself authorize or run fixed-range requalification, a new audit protocol, a
-new audit, U-04, strategy/OOS, API/trading or M2.
+Review PR #110 and its main Gate passed while the target remained unchanged.
+Approval permits only the controlled merge of the exact implementation. This
+integration does not itself run fixed-range requalification, a new audit
+protocol, a new audit, U-04, strategy/OOS, API/trading or M2.
 
 ## ADR-0015 Independent Policy Review
 
@@ -136,13 +129,12 @@ BTC/ETH two-asset candidate queue.
 
 1. Preserve PR #89, PR #95 and PR #100 evidence and the frozen source byte for
    byte; none is an alternative active qualification authority.
-2. Complete local and selective validation of the generic ADR-0015
-   implementation without reading or running public data.
-3. Freeze the exact implementation head and conduct a separate independent
-   review; do not merge the implementation before `approve` with zero
-   critical/high findings.
-4. Keep fixed-range requalification, audit, U-04, hypothesis/strategy,
-   returns, OOS and M2 blocked until their explicit dependency Gates pass.
+2. Complete the controlled integration with exact reviewed head `67e7d29` as
+   an ancestor and all reviewed implementation blobs unchanged.
+3. Require the integration selective Gate and consolidated main Gate to pass;
+   do not alter PR #109's exact head to resolve governance conflicts.
+4. Keep fixed-range requalification blocked until that merge completes. Audit,
+   U-04, hypothesis/strategy, returns, OOS and M2 remain separately blocked.
 
 U-03E V2 and V3 remain truthful blocked historical milestones. V4 supersedes
 their admission authority through a separately adopted lifecycle policy and
