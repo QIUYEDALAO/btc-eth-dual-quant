@@ -1816,3 +1816,12 @@ private exchange responses here.
 - Execution: no frozen public archive audit, network, production evidence mutation, strategy result, OOS, API or trading action occurred.
 - Next Gate: freeze the exact local implementation commit and complete a separate exact-head review with `approve`, 0 critical and 0 high before the real audit can be authorized.
 - Safety: U-04, strategy/backtesting/OOS, API/trading, `execution/live` and M2 remain unauthorized.
+
+## 2026-07-18 - ADR-0015 Independent Auditor Exact-Head Review Approved
+
+- Task: `ADR-0015-AUDITOR-REVIEW`; local Git only.
+- Exact target: `6b4a9687f50d2ede8ba4b5ccfd0549ddecb0e92d`.
+- Protocol/implementation: `9a1768f0...b970b` / `b4bc01d5...004c`.
+- Verdict: `approve`; remaining critical/high findings: `0 / 0`.
+- Review content hash: `c0b0cb6bf6c40b06cb8edf3af2f1b6d4718a779ff139aa4a5633c0b855b33b0a`.
+- Authorization: only the real three-order frozen-source independent audit is enabled. U-04, strategy, returns, backtesting, OOS, API/trading, `execution/live` and M2 remain false.

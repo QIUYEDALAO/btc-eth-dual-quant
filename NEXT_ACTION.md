@@ -2,8 +2,9 @@
 
 ## Immediate Task
 
-The ADR-0015 independent auditor fixture implementation is complete locally
-and must now receive a separate exact-head independent review.
+The ADR-0015 independent auditor exact-head review is complete with `approve`,
+0 critical and 0 high. The real frozen-source independent audit is now the only
+authorized next task.
 
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
 - Protocol content hash:
@@ -19,23 +20,23 @@ and must now receive a separate exact-head independent review.
   row and 120 total masked active-member slots.
 - Auditor implementation content hash:
   `b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c`.
-- Synthetic/targeted checks: 24 passed; complete unit regression: 699 passed.
+- Synthetic/targeted checks: 25 passed; complete unit regression: 700 passed.
 - Historical frozen auditor modified: no.
-- Real audit executed or authorized: no.
+- Exact reviewed target: `6b4a9687f50d2ede8ba4b5ccfd0549ddecb0e92d`.
+- Review content hash: `c0b0cb6bf6c40b06cb8edf3af2f1b6d4718a779ff139aa4a5633c0b855b33b0a`.
+- Real audit executed: no; authorized: yes.
 
-The only authorized next task is an exact-head independent review of the
-completed implementation. The review must bind the final local commit and the
-implementation content hash, inspect independence and all frozen Gates, and
-reach `approve` with 0 critical / 0 high before it may authorize the real audit.
+The only authorized next task is the real independent audit over the exact
+27,736 frozen local archives in normal, reverse and deterministic-shuffled
+orders. It must reproduce all 19 manifests exactly and retain 0 critical/high.
 
-## Required Next Review
+## Required Audit Run
 
-1. Freeze one local implementation commit without changing the reviewed files.
-2. Create a separate local review branch from that exact commit.
-3. Bind the protocol, implementation file hashes, exact target commit and all
-   19-manifest/accounting/order Gates.
-4. Record a deterministic review verdict and 0/0 critical/high counts.
-5. Only an `approve` review may separately authorize the frozen-source audit.
+1. Run only from the exact review-bound implementation and frozen protocol.
+2. Traverse the frozen archive set in all three required orders.
+3. Compare all 19 independently rebuilt manifests byte-semantically.
+4. Verify 8 events, 119 invalid rows, 1 valid minority and 120 masked slots.
+5. Fail closed on any hash, count, order or scope mismatch.
 6. Continue local Git only; no GitHub push, PR or Actions unless the user asks.
 
 ## ADR-0015 Implementation Exact-Head Review
@@ -58,7 +59,7 @@ physical invalid rows plus the valid-minority slot.
 
 - Freqtrade-first remains the architecture for any future single-leg research.
 - No strategy is eligible for M2. Do not enter M2.
-- Do not execute the real independent audit during auditor implementation.
+- Do not execute anything beyond the now-authorized real independent audit.
 - Do not mutate frozen archives, requalification evidence or historical audit
   evidence.
 - Do not use production builders, production Markdown or the production policy
