@@ -1,13 +1,18 @@
 # ADR-0015: Synchronized Official Invalid-Interval Quarantine Policy
 
-- Status: Proposed Draft; non-authoritative pending independent policy review
+- Status: Accepted for generic policy implementation and exact-head implementation review only
+- Historical Draft status: Proposed Draft; non-authoritative pending independent policy review
 - Date: 2026-07-17
 - Scope: frozen official Binance spot 5m physical interval-boundary defects
+- Adoption basis: PR #107 exact-head independent review, merged at `1573abf2bef7d02df6c3b0624ee25cd3557ff2c6`
+- Reviewed Draft head: `03d2b8736abab277e60db1153ba73f0899d7696f`
+- Independent review head: `f3cf2131798f8bf3bd319b21480dca196517f3fe`
+- Independent review content hash: `893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3`
 - Diagnostic protocol: PR #102, exact head `07e4fc13d4a6d027e4881863b9224906be776e9a`
 - Diagnostic evidence: PR #103, exact head `e4b6f6e70bf6df2b10dbd7acc71a734f107d5076`
 - Diagnostic content hash: `ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677`
 - Diagnostic run content hash: `df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33`
-- Runtime authority: none
+- Runtime authority: generic implementation authorized; no requalification or active data authority
 
 ## Context
 
@@ -20,10 +25,10 @@ affected active members and at least 80% of the active membership. The result
 was `new_policy_adr_required`, not a qualification pass or a policy adoption.
 
 The physical rows, frozen archives and prior reports must remain unchanged.
-This Draft does not reinterpret the existing V2 gap policy, does not repair
+This adoption does not reinterpret the existing V2 gap policy, does not repair
 source data and does not authorize a rerun.
 
-## Proposed Decision
+## Decision
 
 Define a new generic policy family named
 `synchronized_official_invalid_interval_quarantine`. A candidate event exists
@@ -92,40 +97,59 @@ is not adopted as authority for this new defect class.
 - No Gate reduction, threshold tuning or reinterpretation of prior evidence.
 - No automatic policy adoption, implementation, requalification or audit.
 
-## Independent Policy Review Gate
+## Independent Policy Review Result
 
-The exact Draft head must receive a separate independent policy review. The
-review must verify evidence and hash bindings, threshold justification,
-false-positive and adversarial cases, full-slot masking of valid minority rows,
-accounting invariants, policy separation from the V2 gap authority, machine
-test coverage and the all-false authorization matrix.
-Any mismatch, critical finding or high finding stops the chain. An approve verdict is review evidence
-only and still does not adopt this ADR.
+PR #107 independently reviewed the exact Draft head
+`03d2b8736abab277e60db1153ba73f0899d7696f`. The unchanged review head
+`f3cf2131798f8bf3bd319b21480dca196517f3fe` returned `approve` with zero
+critical and zero high findings and merged at
+`1573abf2bef7d02df6c3b0624ee25cd3557ff2c6`. Its review content hash is
+`893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3`.
 
-## Future Dependency Chain
+The review verified the exact evidence and model bindings, pre-outcome
+thresholds, adversarial hard blocks, full-slot masking of valid minority rows,
+accounting invariants, separation from V2 gap authority and the all-false Draft
+authorization matrix. This adoption is conditional on those bindings remaining
+exact. Any later drift fails closed and requires a new policy review.
+Any mismatch, critical finding or high finding stops the chain.
 
-1. Merge this Draft after all Draft CI checks pass.
-2. Independently review the exact Draft head.
-3. If and only if the review approves with zero critical/high findings, use a
-   separate governance PR to consider conditional policy adoption.
-4. After separate adoption only, implement the generic policy without running
-   public requalification.
+## Adoption Scope
+
+This ADR now authorizes only a separate generic policy implementation with
+synthetic fixtures, fault injection and a later exact-head independent
+implementation review. The implementation stage must not run public data,
+requalification or an audit. The frozen docs-only Draft model remains unchanged
+and non-runtime; this ADR plus the deterministic adoption manifest are the
+governance authority for the limited next step.
+
+## Adoption Dependency Chain
+
+1. Draft PR #105 merged after all Draft CI checks passed.
+2. Exact-head independent review PR #107 approved with zero critical/high
+   findings and merged unchanged.
+3. This separate governance stage conditionally adopts the policy.
+4. Implement the generic policy without running public requalification.
 5. Independently review the exact implementation head.
 6. After implementation review approval only, run fixed-range public
    requalification from `2020-01` through `2026-06` in cold, warm and worker
    modes under identical frozen inputs.
-7. After a truthful requalification pass only, freeze and execute a new
-   independent audit.
+7. After a truthful requalification pass only, freeze a new independent-audit
+   protocol and then execute the audit separately.
 8. Close governance truthfully after the audit result.
+9. Consider U-04 only under a separate explicit authorization after a truthful
+   audit pass.
 
 Skipping or reordering dependencies is prohibited.
 A future audit pass still does not automatically authorize U-04.
 
-## Draft Authorization Matrix
+## Adoption Authorization Matrix
 
-- ADR-0015 adopted: false
-- Production policy implementation: false
-- Production pipeline modification: false
+- ADR-0015 adopted: true
+- Generic policy implementation: true
+- Synthetic fixture validation: true
+- Fault injection: true
+- Exact-head implementation review: true
+- Production pipeline modified in this adoption stage: false
 - Fixed-range public requalification: false
 - New independent audit: false
 - U-04: false

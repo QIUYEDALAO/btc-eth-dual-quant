@@ -2,17 +2,18 @@
 
 ## Immediate Task
 
-CI governance PR #106 merged at
-`925ce55f549f145d9c47be9ec8007feff2eebfad`. Automatic validation now has one
-selective PR Gate and one consolidated `main` Gate; historical workflows are
-manual-only. The immediate task is therefore the ADR-0015 exact-head review,
-without unrelated GitHub fan-out.
+PR #107 independently approved the exact ADR-0015 Draft head with zero
+critical/high findings and merged unchanged at
+`1573abf2bef7d02df6c3b0624ee25cd3557ff2c6`. Its exact review head is
+`f3cf2131798f8bf3bd319b21480dca196517f3fe`, and review content hash is
+`893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3`.
 
-ADR-0015's docs-only Draft merged in PR #105 at
-`e1783090dfb0a4560475b97a021ef1e77aebc399` after 120/120 checks. The exact
-review target is Draft head `03d2b8736abab277e60db1153ba73f0899d7696f`;
-its machine model content hash is
-`7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`.
+The immediate task is the separate `ADR-0015-ADOPT` governance stage. It binds
+the exact Draft, review, protocol, diagnostic, run-manifest and source-freeze
+identities under adoption content hash
+`d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19`.
+The reviewed policy semantic body hash is
+`c3d5f605ec26161f1bedc6961ac6f326d00582f9c3dcaa9de68c226961a34149`.
 
 The Draft binds PR #102's frozen protocol and PR #103's exact diagnostic
 evidence. It proposes a generic new policy family only for hash-bound official
@@ -25,28 +26,31 @@ The underlying immutable diagnostic remains exactly 119 physical invalid rows
 in eight synchronous windows; this Draft neither rewrites nor reclassifies
 those historical source rows.
 
-A future accepted event would quarantine the full active-member slot,
+An accepted policy event quarantines the full active-member slot,
 including any valid minority, while preserving every physical source row
 unchanged. Off-grid rows, other malformed fields, missing/duplicate/non-member
 rows, authority ambiguity and any source/hash/order drift remain hard blockers.
 No date/symbol exception registry, raw repair, source replacement, fill,
 substitute member or direct V2 gap-policy reuse is permitted.
 
+## ADR-0015 Conditional Adoption
+
+The adoption authorizes only the next generic policy implementation, synthetic
+fixtures, fault injection and a later exact-head independent implementation
+review. The implementation must not run public data. Fixed-range
+requalification, a new audit protocol, a new audit, U-04, strategy/OOS,
+API/trading and M2 remain unauthorized.
+
+The adoption PR must preserve the exact reviewed policy semantics and the
+unchanged all-false docs-only Draft model. Any target, model, evidence,
+authorization or dependency drift fails closed.
+
 ## ADR-0015 Independent Policy Review
 
-The exact-head independent review verdict is `approve`, with zero remaining
-critical/high findings and review content hash
-`893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3`.
-It confirms the threshold pair was frozen before outcomes, all eight windows
-clear the Gate, the valid-minority window receives full-slot quarantine, and
-all off-grid/other malformed/missing/duplicate/non-member/ambiguous/drift
-cases remain hard blockers.
-
-The immediate Gate is to validate and merge only this review PR with the exact
-Draft target unchanged. Approval alone does not adopt ADR-0015. If the review
-merges unchanged, only a separate conditional-adoption governance PR may be
-considered. Implementation, requalification, a new audit, U-04, strategy/OOS,
-API/trading and M2 remain unauthorized.
+PR #107 merged the exact-head independent review with verdict `approve`, zero
+critical findings and zero high findings. That review remains frozen historical
+evidence: approval alone did not adopt the policy, and its exact bindings are
+prerequisites for this separate conditional adoption.
 
 ## Historical Failed Audit
 
@@ -130,13 +134,14 @@ BTC/ETH two-asset candidate queue.
 
 1. Preserve PR #89, PR #95 and PR #100 evidence and the frozen source byte for
    byte; none is an alternative active qualification authority.
-2. Merge only the exact-head ADR-0015 independent policy review after local
-   validation and all PR CI checks pass.
-3. If the review remains `approve` with 0/0 critical/high, consider only a
-   separate conditional-adoption governance PR; approval itself is not adoption.
-4. Keep runtime implementation, requalification, the new
-   independent audit, U-04, hypothesis/strategy work, returns, OOS and M2
-   blocked.
+2. Validate and merge only the ADR-0015 conditional-adoption governance PR
+   after its exact semantic/evidence bindings, repository validation and
+   selective CI pass.
+3. After adoption merge, start only a separate generic policy implementation
+   using synthetic fixtures and fault injection; run no public data.
+4. Require an exact-head independent implementation review before any
+   fixed-range public requalification. Keep audit, U-04, hypothesis/strategy,
+   returns, OOS and M2 blocked.
 
 U-03E V2 and V3 remain truthful blocked historical milestones. V4 supersedes
 their admission authority through a separately adopted lifecycle policy and
