@@ -3,7 +3,7 @@
 - Status: `fixture_complete_pending_exact_head_review`
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`
 - Protocol content hash: `9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b`
-- Implementation content hash: `b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c`
+- Implementation content hash: `95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb`
 - Production invalid-interval implementation imported as audit algorithm: no
 - Historical independent auditor modified: no
 - Public frozen-source audit executed: no
@@ -19,6 +19,12 @@ Synthetic fixtures cover 15/15, 14/15, exactly 12/15, lifecycle-reduced
 denominators, normal/reverse/deterministic-shuffled identity, physical-source
 tampering and fail-closed missing/duplicate/non-member/threshold cases. The
 machine manifest freezes 16 auditor fault-injection IDs.
+
+The frozen-source preflight exposed native microsecond close timestamps whose
+sub-millisecond remainder is valid source precision. The auditor now preserves
+the physical field and independently floor-normalizes it to the millisecond
+authority contract, with a dedicated regression fixture. The former exact-head
+review remains valid only for its old target and cannot authorize this revision.
 
 The real audit runner is present but refuses execution unless a separate
 exact-head review records `approve`, 0 critical, 0 high and explicit full-run

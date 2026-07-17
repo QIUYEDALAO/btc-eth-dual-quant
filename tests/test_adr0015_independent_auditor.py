@@ -147,6 +147,21 @@ class Adr0015IndependentAuditorTests(unittest.TestCase):
         changed = dict(manifest, generated_utc="2099-01-01T00:00:00Z")
         self.assertEqual(manifest["content_hash"], changed["content_hash"])
 
+    def test_native_microsecond_close_boundary_normalizes_without_repair(self):
+        open_ms = 1_893_456_000_000
+        fields = (
+            str(open_ms * 1_000), "10", "12", "9", "11", "1",
+            str(open_ms * 1_000 + 299_999_999), "10", "1", "1", "10", "0",
+        )
+        row = AuditFiveMinuteRow.create(
+            symbol="S00", month="2030-01", fields=fields,
+            raw_line=(",".join(fields)).encode(), line_number=1,
+            archive_sha256=H, source_freeze_hash=L,
+        )
+        self.assertEqual(row.open_time_ms, open_ms)
+        self.assertEqual(row.close_time_ms, open_ms + 299_999)
+        self.assertFalse(row.has_close_boundary_defect)
+
     def test_real_run_requires_separate_exact_head_review_authorization(self):
         protocol = {"audit_scope": {"traversal_orders": []}}
         with self.assertRaises(ValueError):

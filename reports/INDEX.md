@@ -1,6 +1,6 @@
 # Reports Index
 
-| `reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md` | ADR-0015 independent auditor implementation | fixture complete pending exact-head review | Independent ZIP/raw-row/time/membership/lifecycle/event-mask/grid/panel/19-manifest sidecar; content `b4bc01d5...004c`; 700 tests pass; no real audit. | no |
+| `reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md` | ADR-0015 independent auditor implementation | microsecond normalization fixed pending replacement exact-head review | Independent ZIP/raw-row/time/membership/lifecycle/event-mask/grid/panel/19-manifest sidecar; content `95c40583...b6eb`; no completed real audit. | no |
 | `reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md` | ADR-0015 independent auditor exact-head review | approve / 0 critical / 0 high | Binds exact target `6b4a9687...0e92d`, protocol and four implementation files; authorizes only the real audit. | no |
 | `reports/expert/evidence/adr0015_independent_auditor_review.json` | ADR-0015 auditor review machine evidence | deterministic approve | Review content `c0b0cb6b...33b0a`; all downstream research/trading authorizations false. | no |
 | `config/liquid_universe_v4_adr0015_independent_auditor_implementation.json` | ADR-0015 auditor machine identity | deterministic fixture-only implementation | Binds protocol, four implementation files, 16 fault IDs and a review-only authorization matrix. | no |

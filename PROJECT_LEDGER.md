@@ -1825,3 +1825,11 @@ private exchange responses here.
 - Verdict: `approve`; remaining critical/high findings: `0 / 0`.
 - Review content hash: `c0b0cb6bf6c40b06cb8edf3af2f1b6d4718a779ff139aa4a5633c0b855b33b0a`.
 - Authorization: only the real three-order frozen-source independent audit is enabled. U-04, strategy, returns, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - ADR-0015 Real-Audit Preflight Failed Closed; Auditor Fixed
+
+- The first frozen-source pass stopped on a valid native-microsecond close timestamp whose sub-millisecond remainder the independent auditor incorrectly rejected.
+- No audit result evidence or production evidence mutation was produced; this is an auditor implementation defect, not a source or policy verdict.
+- Fix: preserve exact raw microsecond fields and use independent integer-floor normalization to the frozen millisecond contract, matching the authority semantics without importing production code.
+- Corrected implementation content hash: `95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb`.
+- The old exact-head approval cannot authorize the changed code. A replacement exact-head review is mandatory before the real audit restarts.

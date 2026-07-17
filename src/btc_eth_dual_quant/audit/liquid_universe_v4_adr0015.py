@@ -45,8 +45,9 @@ def _uint(value: str, label: str) -> int:
         raise IndependentPolicyBlock(f"malformed {label}")
     result = int(value)
     if result >= 10**14:
-        if result % 1_000:
-            raise IndependentPolicyBlock(f"unaligned microsecond {label}")
+        # Binance switched archive timestamps from milliseconds to microseconds.
+        # Preserve the physical field above, but normalize authority comparisons
+        # exactly as the production contract does: integer floor to milliseconds.
         result //= 1_000
     if result < 10**11 or result >= 10**14:
         raise IndependentPolicyBlock(f"unsupported {label} unit")

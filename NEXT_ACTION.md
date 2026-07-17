@@ -2,9 +2,10 @@
 
 ## Immediate Task
 
-The ADR-0015 independent auditor exact-head review is complete with `approve`,
-0 critical and 0 high. The real frozen-source independent audit is now the only
-authorized next task.
+The first real-audit attempt failed closed on an auditor-only timestamp-unit
+bug. Native microsecond close timestamps are now floor-normalized to the frozen
+millisecond authority contract while their raw physical fields remain exact.
+The corrected implementation requires a replacement exact-head review.
 
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
 - Protocol content hash:
@@ -19,16 +20,17 @@ authorized next task.
 - Frozen accounting: 8 events, 119 physical invalid rows, 1 valid-minority
   row and 120 total masked active-member slots.
 - Auditor implementation content hash:
-  `b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c`.
+  `95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb`.
 - Synthetic/targeted checks: 25 passed; complete unit regression: 700 passed.
 - Historical frozen auditor modified: no.
 - Exact reviewed target: `6b4a9687f50d2ede8ba4b5ccfd0549ddecb0e92d`.
 - Review content hash: `c0b0cb6bf6c40b06cb8edf3af2f1b6d4718a779ff139aa4a5633c0b855b33b0a`.
-- Real audit executed: no; authorized: yes.
+- Real audit completed: no; the failed preflight produced no result evidence.
+- Replacement exact-head review required: yes; real audit currently unauthorized.
 
-The only authorized next task is the real independent audit over the exact
-27,736 frozen local archives in normal, reverse and deterministic-shuffled
-orders. It must reproduce all 19 manifests exactly and retain 0 critical/high.
+The only authorized next task is a replacement exact-head review of the fixed
+implementation. Only a new `approve` with 0 critical/high can reauthorize the
+real audit.
 
 ## Required Audit Run
 

@@ -164,6 +164,10 @@ ALLOWED = {
         "adr0015_independent_auditor_review_approve_real_audit_authorized_no_u04_no_m2",
     ): "ADR-0015-AUDIT",
     (
+        "ADR-0015 independent auditor microsecond normalization fixed; replacement exact-head review is the only authorized next task",
+        "adr0015_independent_auditor_microsecond_fix_pending_re_review_no_real_audit_no_u04_no_m2",
+    ): "ADR-0015-AUDITOR-REVIEW",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -244,8 +248,8 @@ ADR0015_AUDIT_PROTOCOL_PAIR = (
 )
 
 ADR0015_AUDITOR_REVIEW_PAIR = (
-    "ADR-0015 independent auditor exact-head review approved; real independent audit is the only authorized next task",
-    "adr0015_independent_auditor_review_approve_real_audit_authorized_no_u04_no_m2",
+    "ADR-0015 independent auditor microsecond normalization fixed; replacement exact-head review is the only authorized next task",
+    "adr0015_independent_auditor_microsecond_fix_pending_re_review_no_real_audit_no_u04_no_m2",
 )
 
 ADR0015_REVIEWED_IMPLEMENTATION_HEAD = "67e7d29eaed63a3edb903dd618184bc9f02c5748"
@@ -402,6 +406,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task",
         "ADR-0015 independent auditor fixture implementation complete; exact-head review is the only authorized next task",
         "ADR-0015 independent auditor exact-head review approved; real independent audit is the only authorized next task",
+        "ADR-0015 independent auditor microsecond normalization fixed; replacement exact-head review is the only authorized next task",
     }:
         milestones = [
             item
@@ -725,6 +730,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task",
         "ADR-0015 independent auditor fixture implementation complete; exact-head review is the only authorized next task",
         "ADR-0015 independent auditor exact-head review approved; real independent audit is the only authorized next task",
+        "ADR-0015 independent auditor microsecond normalization fixed; replacement exact-head review is the only authorized next task",
     }:
         milestones = [
             item
