@@ -10,10 +10,10 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TARGET_BASE = "8a5c6fc91a23c64ed70dca98a5b64abd98751616"
-TARGET_COMMIT = "301e910ea669c702a34598e500826a456663a5fb"
+TARGET_BASE = "ef0bc39a5a96f2de03743c081bb711cd368c3f81"
+TARGET_COMMIT = "e935d6b287eaf66f825d9f73181fa35160cb5225"
 PROTOCOL_HASH = "9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b"
-IMPLEMENTATION_HASH = "d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb"
+IMPLEMENTATION_HASH = "f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e"
 EVIDENCE = ROOT / "reports/expert/evidence/adr0015_independent_auditor_review.json"
 REPORT = ROOT / "reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md"
 IMPLEMENTATION_MANIFEST = "config/liquid_universe_v4_adr0015_independent_auditor_implementation.json"

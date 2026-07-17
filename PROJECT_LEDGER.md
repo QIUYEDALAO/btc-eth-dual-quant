@@ -1861,3 +1861,8 @@ private exchange responses here.
 - The sole mismatch is list ordering after daily source periods were normalized to full dates.
 - The source manifest is now re-sorted by the frozen `(symbol, interval, archive_month, canonical_key)` key; fixture coverage added.
 - Implementation `f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e`; replacement exact-head review required.
+
+## 2026-07-18 - ADR-0015 Source-Order Exact-Head Review Approved
+
+- Target `e935d6b287eaf66f825d9f73181fa35160cb5225`; review `fb63d2f3b3e0843927a348fb5a9fb94a5b3873d15a132d8bd968d10fe7980fe0`.
+- Verdict `approve`, remaining critical/high `0 / 0`; only the real audit is authorized.

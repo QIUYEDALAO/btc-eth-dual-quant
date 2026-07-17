@@ -2,9 +2,8 @@
 
 ## Immediate Task
 
-The third audit attempt matched 18/19. The only difference was source-manifest
-list order after daily-period normalization. The deterministic re-sort is fixed
-and requires replacement exact-head review.
+The source-order fix has replacement exact-head `approve` with 0 critical/high.
+The real three-order audit is again the only authorized task.
 
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
 - Protocol content hash:
@@ -26,10 +25,12 @@ and requires replacement exact-head review.
 - Review content hash: `77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0`.
 - Exact reviewed target: `301e910ea669c702a34598e500826a456663a5fb`.
 - Review content hash: `f04f87f849966d188dc39cff0bc72f12a71d6c1d601249d202a08ce4686b7c26`.
-- Real audit completed: no; authorized: no pending replacement review.
+- Exact reviewed target: `e935d6b287eaf66f825d9f73181fa35160cb5225`.
+- Review content hash: `fb63d2f3b3e0843927a348fb5a9fb94a5b3873d15a132d8bd968d10fe7980fe0`.
+- Real audit completed: no; authorized: yes.
 - Prior failed preflight produced no result evidence.
 
-The only authorized next task is replacement exact-head review. The 19/19 Gate remains unchanged.
+The only authorized next task is the real audit. The 19/19 Gate remains unchanged.
 
 ## Required Audit Run
 
