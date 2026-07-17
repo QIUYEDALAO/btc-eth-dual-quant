@@ -6,6 +6,8 @@ ADR-0015 is now a docs-only proposed Draft on
 `codex/adr-0015-invalid-interval-policy-draft`, based exactly on main
 `6df4aa3aa355f986e5533a51e223d69e3bf16e84`. Its machine model content hash is
 `7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`.
+The Draft is PR #105; its final exact head must remain unchanged during the
+later independent policy review.
 
 The Draft binds PR #102's frozen protocol and PR #103's exact diagnostic
 evidence. It proposes a generic new policy family only for hash-bound official

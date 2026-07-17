@@ -400,7 +400,7 @@ open_work:
     phase: Invalid physical-kline policy Draft
     status: draft_pending_independent_review
     branch: codex/adr-0015-invalid-interval-policy-draft
-    pr: pending_creation
+    pr: 105
     head_sha: runtime_current_pr_head
     checklist: PROJECT_EXECUTION_CHECKLIST.md
     evidence: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_DRAFT.md
@@ -1322,6 +1322,7 @@ adr0015_policy_draft:
   status: proposed_draft_non_authoritative_pending_independent_review
   base_main_sha: 6df4aa3aa355f986e5533a51e223d69e3bf16e84
   branch: codex/adr-0015-invalid-interval-policy-draft
+  pr: 105
   adr: docs/decisions/ADR-0015-synchronized-official-invalid-interval-quarantine-policy.md
   model: docs/decisions/proposals/adr0015_invalid_interval_policy_model.json
   model_content_hash: 7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c
