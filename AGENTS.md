@@ -28,6 +28,12 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- ADR-0015 is a docs-only `proposed_draft_non_authoritative` policy Draft on `codex/adr-0015-invalid-interval-policy-draft`, based on main `6df4aa3aa355f986e5533a51e223d69e3bf16e84`; model content hash `7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c`.
+- The Draft proposes a generic new policy family only for verified grid-aligned official 5m active-member rows with the sole close-boundary defect, at least two affected members and affected fraction at least 80%.
+- A future accepted event must quarantine the full active-member slot, including valid minority rows, without changing physical source evidence. Off-grid/other malformed/missing/duplicate/non-member/ambiguous/drift cases remain hard blockers.
+- No known date or symbol may be a runtime input. No raw repair, fill, source replacement, substitute member, direct V2 gap-policy adoption or Gate reduction is allowed.
+- The only successor after Draft merge is a separate independent policy review of the exact Draft head. Any mismatch or critical/high finding fails closed; approval alone does not adopt the policy.
+- Policy adoption, production implementation, requalification, a new audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.
 - PR #102 merged protocol `U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1` at `70c784b1573de8437e189672c89e9c00b6505978` after 116/116 checks. Exact head `07e4fc13d4a6d027e4881863b9224906be776e9a` and content hash `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190` remain frozen.
 - The one authorized diagnostic completed on `codex/u03f-v4-invalid-interval-diagnostic` using only the exact 27,736 frozen local archives in normal, reverse and deterministic-shuffled order. PR #103 exact head `e4b6f6e70bf6df2b10dbd7acc71a734f107d5076` passed 118/118 checks and merged at `49e028712695cf2a946aae9abf14c5668a5343f2`.
 - All three traversal content hashes equal `ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677`; exactly 119 invalid physical rows group into eight synchronous windows.
