@@ -1735,3 +1735,36 @@ private exchange responses here.
 - Not authorized: public-data execution, fixed-range requalification, new audit protocol/audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2.
 - Current-stage effects: production pipeline modified no; public data run no; requalification no; independent audit no.
 - Next Gate: local adoption validation, one selective PR check and unchanged merge. Only then may the generic implementation start on a separate branch.
+
+## 2026-07-17 - ADR-0015 Conditional Adoption Merged
+
+- Task ID: ADR-0015-ADOPT.
+- PR / exact head / merge: #108 / `01d98b60ce8a9a0b33082777c946cec70d380fc7` / `141481fa445bdc03b453844a666dbd2639c3cdf7`.
+- Validation: consolidated main run `29554620941` completed successfully.
+- Authority: generic policy implementation, synthetic fixtures, fault injection and a later exact-head implementation review only.
+- Integrity: adoption `d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19`; reviewed semantics `c3d5f605ec26161f1bedc6961ac6f326d00582f9c3dcaa9de68c226961a34149`.
+- Safety: the adoption ran no public data and authorized no requalification, audit, U-04, strategy/OOS, API/trading, execution/live or M2.
+
+## 2026-07-17 - ADR-0015 Generic Invalid-Interval Implementation Prepared
+
+- Task ID: ADR-0015-IMPL.
+- Branch/base: `codex/adr-0015-invalid-interval-implementation` / `141481fa445bdc03b453844a666dbd2639c3cdf7`.
+- Runtime authority: policy `0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04`; algorithm `8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff`.
+- Implementation: exact ZIP size/SHA/CRC/member validation, immutable raw-row hashes, lifecycle-aware active membership, generic integer ≥2/≥80% admission, one event per time, full active-slot mask including valid minority, and mask-before-grid/1h/day reconstruction.
+- Fixture evidence: 15/15, 14/15, exact 12/15, lifecycle-reduced denominator, same-hour/day accounting, three-order content identity and all 16 reviewed fault cases.
+- Artifacts: separate hash-bound policy, event, slot-mask and accounting manifests; historical V4 artifact identities and all frozen evidence remain unchanged.
+- Execution: no public archive was read or executed; no cold/warm/worker requalification or audit ran.
+- Next Gate: freeze the exact implementation head after local/selective validation, then conduct a separate independent review. The implementation PR remains unmerged until `approve` with zero critical/high findings.
+- Safety: fixed-range requalification, new audit protocol/audit, U-04, hypothesis/strategy, returns, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-17 - ADR-0015 Invalid-Interval Implementation Exact-Head Review Prepared
+
+- Task ID: ADR-0015-IMPL-REVIEW.
+- Target: Draft PR #109 exact base `141481fa445bdc03b453844a666dbd2639c3cdf7` and exact head `67e7d29eaed63a3edb903dd618184bc9f02c5748`.
+- Target Gate: selective run `29565196104` succeeded; independent local reproduction passed 670/670 unit tests, 10/10 implementation fixtures, 12/12 production-path regressions and all 16 reviewed fault cases.
+- Review result: `approve` with zero remaining critical and zero remaining high findings; review content hash `9a0736431f4df6e27ce0b8e35d28e90d22838aef684e78fbd4c76bd79efe5af1`.
+- Exact bindings: runtime policy `0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04`, algorithm `8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff` and implementation content `7cc4f9a3343de1f81ea7ac38e7c77efdd9fdb6bcbe3f8eeec099ddfca1dd020f`.
+- Review scope: exact archive/raw-row identity, active membership, integer ≥2/≥80% Gate, full-slot valid-minority masking, event/accounting identities, mask-before-grid/1h/day behavior, order determinism, V2 separation and zero downstream authorization all pass.
+- Execution status: no public archive was read or executed; no fixed-range requalification or new audit ran. PR #109 remains unmerged while the review PR itself is pending validation.
+- Gate: any PR #109 head, policy, algorithm, membership, lifecycle, source, mask, order or authorization drift invalidates approval and stops the chain.
+- Safety: U-04, hypothesis/strategy, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.

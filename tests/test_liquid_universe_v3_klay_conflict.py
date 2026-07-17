@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "ADR-0015 conditional adoption pending PR validation",
+            "ADR-0015 generic invalid-interval policy implementation pending exact-head review",
         )
         self.assertEqual(
             state["current_status"],
-            "adr0015_adopted_for_generic_implementation_review_only_pending_ci_no_requalification_no_u04_no_m2",
+            "adr0015_generic_policy_implementation_fixture_pass_pending_exact_head_review_no_requalification_no_u04_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -419,30 +419,51 @@ class KlaySourceConflictTests(unittest.TestCase):
             any(item["id"] == "U-03F-REPAIR-REQUALIFICATION" for item in state["open_work"])
         )
         policy_adoption = next(
+            item for item in state["completed_milestones"]
+            if item["phase"] == "ADR-0015 conditional adoption"
+        )
+        self.assertEqual(
+            policy_adoption["status"],
+            "accepted_for_generic_policy_implementation_and_exact_head_implementation_review_only_merged",
+        )
+        self.assertEqual(policy_adoption["merged_pr"], 108)
+        self.assertEqual(
+            policy_adoption["result_head_sha"],
+            "01d98b60ce8a9a0b33082777c946cec70d380fc7",
+        )
+        self.assertEqual(
+            policy_adoption["merge_commit"],
+            "141481fa445bdc03b453844a666dbd2639c3cdf7",
+        )
+        implementation = next(
             item for item in state["open_work"]
-            if item["id"] == "ADR-0015-ADOPT"
-        )
-        self.assertEqual(policy_adoption["status"], "adoption_pending_pr_validation")
-        self.assertEqual(
-            policy_adoption["policy_model_content_hash"],
-            "7acb69f72136742eb2b5f4c66e4fa09611846e74625846a690d932b9835fe78c",
+            if item["id"] == "ADR-0015-IMPL"
         )
         self.assertEqual(
-            policy_adoption["protocol_content_hash"],
-            "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
+            implementation["status"],
+            "implementation_pass_fixture_only_pending_exact_head_review",
         )
         self.assertEqual(
-            policy_adoption["review_content_hash"],
-            "893d056ec07ebc0697521a96a1533cb43265ebc2fa9484862fcdf39d8c5285a3",
+            implementation["adoption_content_hash"],
+            "d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19",
         )
-        self.assertTrue(policy_adoption["adopted_pending_merge"])
-        self.assertTrue(policy_adoption["generic_implementation_authorized_after_merge"])
-        self.assertTrue(policy_adoption["exact_head_implementation_review_required"])
-        self.assertFalse(policy_adoption["fixed_range_public_requalification_authorized"])
-        self.assertFalse(policy_adoption["new_independent_audit_authorized"])
-        self.assertFalse(policy_adoption["u04_authorized"])
-        self.assertFalse(policy_adoption["m2_authorized"])
-        self.assertFalse(policy_adoption["production_pipeline_modified"])
+        self.assertEqual(
+            implementation["policy_hash"],
+            "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04",
+        )
+        self.assertEqual(
+            implementation["algorithm_hash"],
+            "8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff",
+        )
+        self.assertTrue(implementation["generic_policy_implemented"])
+        self.assertTrue(implementation["fixture_validation_complete"])
+        self.assertTrue(implementation["fault_injection_complete"])
+        self.assertTrue(implementation["exact_head_implementation_review_required"])
+        self.assertFalse(implementation["fixed_range_public_requalification_authorized"])
+        self.assertFalse(implementation["new_independent_audit_authorized"])
+        self.assertFalse(implementation["u04_authorized"])
+        self.assertFalse(implementation["m2_authorized"])
+        self.assertFalse(implementation["public_data_run_executed"])
         repair = next(
             item
             for item in state["completed_milestones"]
