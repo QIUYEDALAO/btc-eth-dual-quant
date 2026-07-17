@@ -10,10 +10,10 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TARGET_BASE = "a36cb0f198e689245d7cdda8f1485bd7559e7c5b"
-TARGET_COMMIT = "6b4a9687f50d2ede8ba4b5ccfd0549ddecb0e92d"
+TARGET_BASE = "4577466f9fbb223aff5b692449466052322492e6"
+TARGET_COMMIT = "4bebdf32786818b7f451474c864ba9ee3109a26b"
 PROTOCOL_HASH = "9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b"
-IMPLEMENTATION_HASH = "b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c"
+IMPLEMENTATION_HASH = "95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb"
 EVIDENCE = ROOT / "reports/expert/evidence/adr0015_independent_auditor_review.json"
 REPORT = ROOT / "reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md"
 IMPLEMENTATION_MANIFEST = "config/liquid_universe_v4_adr0015_independent_auditor_implementation.json"
@@ -58,8 +58,8 @@ def build_document(generated_utc: str) -> dict[str, Any]:
         "implementation_files": implementation_files(),
         "review_dimensions": [{"dimension": item, "status": "pass"} for item in DIMENSIONS],
         "validation": {
-            "focused_tests": {"passed": 25, "total": 25},
-            "full_unit_tests": {"passed": 700, "total": 700},
+            "focused_tests": {"passed": 26, "total": 26},
+            "full_unit_tests": {"passed": 707, "total": 707},
             "fault_injection_cases": {"passed": 16, "total": 16},
             "historical_auditor_files_modified": False,
             "public_frozen_source_audit_executed": False,
@@ -118,7 +118,7 @@ def validate_target() -> list[str]:
         if actual != expected:
             failures.append(f"target file hash changed: {path}")
     changed = _git("diff", "--name-only", TARGET_BASE, TARGET_COMMIT).splitlines()
-    if len(changed) != 16:
+    if len(changed) != 12:
         failures.append("target changed-file scope changed")
     return failures
 

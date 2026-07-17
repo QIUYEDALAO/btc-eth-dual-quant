@@ -1833,3 +1833,10 @@ private exchange responses here.
 - Fix: preserve exact raw microsecond fields and use independent integer-floor normalization to the frozen millisecond contract, matching the authority semantics without importing production code.
 - Corrected implementation content hash: `95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb`.
 - The old exact-head approval cannot authorize the changed code. A replacement exact-head review is mandatory before the real audit restarts.
+
+## 2026-07-18 - ADR-0015 Corrected Auditor Replacement Review Approved
+
+- Exact target: `4bebdf32786818b7f451474c864ba9ee3109a26b`; implementation `95c40583...b6eb`.
+- Replacement verdict: `approve`; remaining critical/high: `0 / 0`; review `77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0`.
+- The native-microsecond regression passes without raw-field rewriting, policy exception or production-algorithm import.
+- Only the real three-order audit is reauthorized. U-04, strategy, returns, backtesting, OOS, API/trading, `execution/live` and M2 remain false.

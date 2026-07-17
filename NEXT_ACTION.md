@@ -2,10 +2,9 @@
 
 ## Immediate Task
 
-The first real-audit attempt failed closed on an auditor-only timestamp-unit
-bug. Native microsecond close timestamps are now floor-normalized to the frozen
-millisecond authority contract while their raw physical fields remain exact.
-The corrected implementation requires a replacement exact-head review.
+The microsecond normalization fix has received a replacement exact-head review
+with `approve`, 0 critical and 0 high. The real frozen-source independent audit
+is again the only authorized next task.
 
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
 - Protocol content hash:
@@ -23,14 +22,13 @@ The corrected implementation requires a replacement exact-head review.
   `95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb`.
 - Synthetic/targeted checks: 25 passed; complete unit regression: 700 passed.
 - Historical frozen auditor modified: no.
-- Exact reviewed target: `6b4a9687f50d2ede8ba4b5ccfd0549ddecb0e92d`.
-- Review content hash: `c0b0cb6bf6c40b06cb8edf3af2f1b6d4718a779ff139aa4a5633c0b855b33b0a`.
-- Real audit completed: no; the failed preflight produced no result evidence.
-- Replacement exact-head review required: yes; real audit currently unauthorized.
+- Exact reviewed target: `4bebdf32786818b7f451474c864ba9ee3109a26b`.
+- Review content hash: `77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0`.
+- Real audit completed: no; authorized: yes.
+- Prior failed preflight produced no result evidence.
 
-The only authorized next task is a replacement exact-head review of the fixed
-implementation. Only a new `approve` with 0 critical/high can reauthorize the
-real audit.
+The only authorized next task is the real independent audit over all 27,736
+frozen archives and all three traversal orders.
 
 ## Required Audit Run
 

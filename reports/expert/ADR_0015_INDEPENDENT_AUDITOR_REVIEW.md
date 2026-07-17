@@ -1,10 +1,10 @@
 # ADR-0015 Independent Auditor Exact-Head Review
 
 - Verdict: `approve`
-- Exact target: `6b4a9687f50d2ede8ba4b5ccfd0549ddecb0e92d`
+- Exact target: `4bebdf32786818b7f451474c864ba9ee3109a26b`
 - Protocol content hash: `9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b`
-- Implementation content hash: `b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c`
-- Review content hash: `c0b0cb6bf6c40b06cb8edf3af2f1b6d4718a779ff139aa4a5633c0b855b33b0a`
+- Implementation content hash: `95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb`
+- Review content hash: `77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0`
 - Remaining critical/high: `0 / 0`
 
 ## Review Matrix
