@@ -1768,3 +1768,15 @@ private exchange responses here.
 - Execution status: no public archive was read or executed; no fixed-range requalification or new audit ran. PR #109 remains unmerged while the review PR itself is pending validation.
 - Gate: any PR #109 head, policy, algorithm, membership, lifecycle, source, mask, order or authorization drift invalidates approval and stops the chain.
 - Safety: U-04, hypothesis/strategy, returns, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-17 - ADR-0015 Implementation Review Merged And Controlled Integration Started
+
+- Task IDs: ADR-0015-IMPL-REVIEW / ADR-0015-IMPL.
+- Exact target: Draft PR #109 base `141481fa445bdc03b453844a666dbd2639c3cdf7`, unchanged head `67e7d29eaed63a3edb903dd618184bc9f02c5748`, selective run `29565196104` success.
+- Review result: `approve`, critical/high 0/0, review content hash `9a0736431f4df6e27ce0b8e35d28e90d22838aef684e78fbd4c76bd79efe5af1`.
+- Review merge: PR #110 head `996f8b7bff5ac07d0e82ef4b74c67d53a30c9be5` merged at `a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f`; selective run `29567861738` and main run `29568192743` succeeded.
+- Integration branch: `codex/adr-0015-invalid-interval-controlled-integration`, based on review merge `a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f` with exact reviewed head `67e7d29eaed63a3edb903dd618184bc9f02c5748` as the second parent.
+- Integrity rule: PR #109 is not rebased or amended. Runtime policy, implementation module, public-run integration, implementation checker/validator, status report and policy tests must remain blob-identical to the reviewed head.
+- Execution status: no public archive read or execution; no cold/warm/worker requalification; no audit.
+- Next Gate: integration validator, full local suite, one selective PR Gate, merge commit preserving ancestry, then consolidated main Gate.
+- Safety: fixed-range requalification remains blocked until integration and its main Gate pass. New audit, U-04, strategy/OOS, API/trading, execution/live and M2 remain unauthorized.
