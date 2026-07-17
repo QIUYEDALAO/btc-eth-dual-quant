@@ -184,10 +184,13 @@ def main() -> int:
         failures.append("PROJECT_STATE.yaml allowed_next_work must contain strings only")
         raw_allowed_next_work = []
     allowed_next_work = [str(item) for item in raw_allowed_next_work]
-    if not any("diagnostic" in item.casefold() for item in allowed_next_work):
+    u04_design_phase = str(state.get("current_phase", "")).startswith("U-04 cross-sectional hypothesis design authorized")
+    if not u04_design_phase and not any("diagnostic" in item.casefold() for item in allowed_next_work):
         failures.append("PROJECT_STATE.yaml allowed_next_work must include diagnostic scope")
     if not any(
-        "design review" in item.casefold() or "draft policy adr" in item.casefold()
+        "design review" in item.casefold()
+        or "draft policy adr" in item.casefold()
+        or "hypothesis design" in item.casefold()
         for item in allowed_next_work
     ):
         failures.append("PROJECT_STATE.yaml allowed_next_work must include design or Draft policy ADR scope")

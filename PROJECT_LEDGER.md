@@ -1875,3 +1875,11 @@ private exchange responses here.
 - Findings: 0 critical, 0 high; verdict `pass`; summary `e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4`.
 - Production evidence mutated: no; network accessed: no.
 - Result itself authorizes no U-04, strategy, returns, backtesting, OOS, API/trading, `execution/live` or M2. Only a separate U-04 governance decision may follow.
+
+## 2026-07-18 - U-04 Design Authorization Decision
+
+- Decision: authorize exactly one outcome-blind, preregistered point-in-time cross-sectional liquid-spot hypothesis design.
+- Binding: audit summary `e26c9a08...06c4`, artifact set `8784b564...348c3`, 19/19 and 0 critical/high.
+- Decision content hash: `84d9b499329169719a880af80b1e2e7f0d5d5cbbc6c62a6aa762cd738aa04e89`.
+- Event scans, thresholds, signals, returns, strategy rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain unauthorized.
+- A separate outcome-blind protocol is mandatory before any event scan; lifecycle-intersecting fixed-rule work requires a separate delisting/execution policy review.

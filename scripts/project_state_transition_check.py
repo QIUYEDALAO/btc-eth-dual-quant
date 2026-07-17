@@ -176,6 +176,10 @@ ALLOWED = {
         "adr0015_independent_audit_pass_pending_separate_u04_decision_no_strategy_no_oos_no_trading_no_m2",
     ): "U-04-DECISION",
     (
+        "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
+        "u04_one_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-04",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -256,8 +260,8 @@ ADR0015_AUDIT_PROTOCOL_PAIR = (
 )
 
 ADR0015_AUDITOR_REVIEW_PAIR = (
-    "ADR-0015 independent audit passed; separate U-04 authorization decision is the only authorized next task",
-    "adr0015_independent_audit_pass_pending_separate_u04_decision_no_strategy_no_oos_no_trading_no_m2",
+    "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
+    "u04_one_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
 )
 
 ADR0015_REVIEWED_IMPLEMENTATION_HEAD = "67e7d29eaed63a3edb903dd618184bc9f02c5748"
@@ -305,6 +309,11 @@ EXPECTED_AUTH = {
     "api_or_trading": False,
 }
 
+U04_DESIGN_PAIR = (
+    "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
+    "u04_one_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
 
 def validate(state: dict) -> list[str]:
     failures = []
@@ -312,7 +321,10 @@ def validate(state: dict) -> list[str]:
     expected_task = ALLOWED.get(pair)
     if expected_task is None:
         failures.append(f"unsupported V2 phase/status pair: {pair}")
-    if state.get("research_authorizations") != EXPECTED_AUTH:
+    expected_auth = dict(EXPECTED_AUTH)
+    if pair == U04_DESIGN_PAIR:
+        expected_auth["hypothesis_preregistration"] = True
+    if state.get("research_authorizations") != expected_auth:
         failures.append("research authorization matrix changed")
     if pair in {ADR0015_CONTROLLED_INTEGRATION_PAIR, ADR0015_REQUALIFICATION_PASS_PAIR, ADR0015_AUDIT_PROTOCOL_PAIR, ADR0015_AUDITOR_REVIEW_PAIR}:
         for commit, label in (
@@ -362,7 +374,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -417,6 +429,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 independent auditor microsecond normalization fixed; replacement exact-head review is the only authorized next task",
         "ADR-0015 independent auditor envelope reconciliation fixed; replacement exact-head review is the only authorized next task",
         "ADR-0015 independent audit passed; separate U-04 authorization decision is the only authorized next task",
+        "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
     }:
         milestones = [
             item
@@ -743,6 +756,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 independent auditor microsecond normalization fixed; replacement exact-head review is the only authorized next task",
         "ADR-0015 independent auditor envelope reconciliation fixed; replacement exact-head review is the only authorized next task",
         "ADR-0015 independent audit passed; separate U-04 authorization decision is the only authorized next task",
+        "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
     }:
         milestones = [
             item
@@ -896,8 +910,24 @@ def validate(state: dict) -> list[str]:
             failures.append("U-03F auditor review milestone binding changed")
         if len(implementations) != 1 or any(implementations[0].get(key) != value for key, value in expected_implementation.items()):
             failures.append("U-03F auditor implementation milestone binding changed")
-    if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
-        failures.append("U-04 authorized without a separate post-audit task")
+    u04_items = [item for item in open_work if item.get("id") == "U-04"]
+    if any(item.get("status") != "not_authorized" for item in u04_items):
+        if pair != U04_DESIGN_PAIR:
+            failures.append("U-04 authorized without a separate post-audit task")
+        elif len(u04_items) != 1 or any(
+            u04_items[0].get(key) != value
+            for key, value in {
+                "status": "authorized_ready",
+                "maximum_hypotheses": 1,
+                "outcome_blind_preregistration_required": True,
+                "event_scan_authorized": False,
+                "strategy_authorized": False,
+                "oos_authorized": False,
+                "trading_authorized": False,
+                "m2_authorized": False,
+            }.items()
+        ):
+            failures.append("U-04 narrow design authorization binding changed")
     if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
         protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
         expected_protocol = {

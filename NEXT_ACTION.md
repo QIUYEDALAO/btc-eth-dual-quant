@@ -2,9 +2,8 @@
 
 ## Immediate Task
 
-The real ADR-0015 independent audit passed all 19 manifests in all three orders
-with zero critical/high findings. Only a separate governance decision about
-U-04 design authorization may follow.
+The separate governance decision authorizes U-04 to create exactly one
+outcome-blind, preregistered cross-sectional economic hypothesis design.
 
 - Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
 - Protocol content hash:
@@ -33,8 +32,9 @@ U-04 design authorization may follow.
 - Real audit completed: yes; verdict: pass; 19/19; critical/high: 0/0.
 - Prior failed preflight produced no result evidence.
 
-The only authorized next task is a governance-only U-04 authorization decision.
-No hypothesis, strategy, outcomes, backtest or OOS work is authorized yet.
+The only authorized next task is the U-04 hypothesis design itself. It may not
+read outcomes, select event thresholds, define executable strategy rules or
+access OOS. A separate protocol is mandatory before any event scan.
 
 ## Required Audit Run
 
@@ -72,8 +72,8 @@ physical invalid rows plus the valid-minority slot.
   module as the independent audit algorithm.
 - Do not add date/symbol/row exceptions, repair timestamps, fill gaps, replace
   members, waive manifest mismatches or lower any Gate.
-- Do not enter U-04, hypothesis design, event scanning, returns, backtesting or
-  OOS.
+- U-04 may perform one outcome-blind hypothesis design only; do not enter event
+  scanning, returns, strategy rules, backtesting or OOS.
 - Do not access API keys, trading permissions, paper/live trading,
   `execution/live`, order placement, cancellation or matching.
 - M2 remains blocked.

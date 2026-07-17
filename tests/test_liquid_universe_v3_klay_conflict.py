@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "ADR-0015 independent audit passed; separate U-04 authorization decision is the only authorized next task",
+            "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
         )
         self.assertEqual(
             state["current_status"],
-            "adr0015_independent_audit_pass_pending_separate_u04_decision_no_strategy_no_oos_no_trading_no_m2",
+            "u04_one_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -459,12 +459,12 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertTrue(implementation["public_data_run_executed"])
         protocol = next(
             item for item in state["open_work"]
-            if item["id"] == "U-04-DECISION"
+            if item["id"] == "U-04"
         )
         self.assertEqual(protocol["status"], "authorized_ready")
-        self.assertTrue(protocol["independent_audit_complete"])
-        self.assertTrue(protocol["u04_design_decision_authorized"])
-        self.assertFalse(protocol["u04_authorized"])
+        self.assertEqual(protocol["maximum_hypotheses"], 1)
+        self.assertTrue(protocol["outcome_blind_preregistration_required"])
+        self.assertFalse(protocol["event_scan_authorized"])
         audit_protocol = state["adr0015_invalid_interval_independent_audit_protocol"]
         self.assertEqual(
             audit_protocol["protocol_content_hash"],
@@ -503,7 +503,19 @@ class KlaySourceConflictTests(unittest.TestCase):
         )
         self.assertFalse(any(item["id"] == "ADR-0014-ADOPT" for item in state["open_work"]))
         self.assertFalse(any(item["id"] == "ADR-0014-REVIEW" for item in state["open_work"]))
-        self.assertFalse(any(state["research_authorizations"].values()))
+        self.assertEqual(
+            state["research_authorizations"],
+            {
+                "hypothesis_preregistration": True,
+                "strategy_code": False,
+                "event_scan": False,
+                "returns": False,
+                "backtesting": False,
+                "oos_opened": False,
+                "m2": False,
+                "api_or_trading": False,
+            },
+        )
 
 
 if __name__ == "__main__":
