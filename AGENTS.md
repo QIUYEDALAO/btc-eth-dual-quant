@@ -29,10 +29,10 @@ After any task, the agent must update:
 ## Current Stage
 
 - PR #102 merged protocol `U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1` at `70c784b1573de8437e189672c89e9c00b6505978` after 116/116 checks. Exact head `07e4fc13d4a6d027e4881863b9224906be776e9a` and content hash `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190` remain frozen.
-- The one authorized diagnostic completed on `codex/u03f-v4-invalid-interval-diagnostic` using only the exact 27,736 frozen local archives in normal, reverse and deterministic-shuffled order.
+- The one authorized diagnostic completed on `codex/u03f-v4-invalid-interval-diagnostic` using only the exact 27,736 frozen local archives in normal, reverse and deterministic-shuffled order. PR #103 exact head `e4b6f6e70bf6df2b10dbd7acc71a734f107d5076` passed 118/118 checks and merged at `49e028712695cf2a946aae9abf14c5668a5343f2`.
 - All three traversal content hashes equal `ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677`; exactly 119 invalid physical rows group into eight synchronous windows.
 - The diagnostic decision is `new_policy_adr_required`; run-manifest content hash `df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33`.
-- This evidence does not create per-row exceptions, adopt the existing gap policy, modify production, rerun requalification or start a new audit. A separate Draft policy ADR is allowed only after the evidence PR merges.
+- This evidence does not create per-row exceptions, adopt the existing gap policy, modify production, rerun requalification or start a new audit. The only authorized next task is a separate Draft policy ADR bound to PR #103; it requires independent review before any adoption.
 - Any evidence/hash/order drift or authorization expansion must fail closed.
 - PR #100 merged the truthful blocked repair-requalification evidence at `927f121651d6e1e07f174410a39595f6d09e9a5d` after 114/114 checks. Its exact evidence head is `a0e680fbfb4415bb25871aa0cb3ed8b873d6c810`.
 - The U-03F repair chain is closed as blocked. Cold consumed the exact 27,736 frozen local archives and found 119 strict 5m interval-boundary errors; warm/worker and the new independent audit were not run.

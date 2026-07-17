@@ -16,10 +16,15 @@ the frozen two-symbol and 80% evidence threshold. The run-manifest content hash
 is `df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33`.
 
 The decision is `new_policy_adr_required`, not policy adoption. The immediate
-action is exact evidence review, all-green CI and merge of the diagnostic PR.
-Only after that merge may a separate Draft policy ADR start. Runtime changes,
-requalification, a new audit, U-04, strategy/OOS, API/trading and M2 remain
-unauthorized.
+evidence PR #103 exact head
+`e4b6f6e70bf6df2b10dbd7acc71a734f107d5076` passed 118/118 checks and merged
+at `49e028712695cf2a946aae9abf14c5668a5343f2`.
+
+Only a separate, versioned Draft policy ADR may start next. It must bind the
+frozen protocol and PR #103 evidence, define a generic rule rather than per-row
+exceptions or direct reuse of the existing gap policy, and require independent
+review before any adoption. Runtime changes, requalification, a new audit,
+U-04, strategy/OOS, API/trading and M2 remain unauthorized.
 
 ## Historical Failed Audit
 
@@ -103,11 +108,10 @@ BTC/ETH two-asset candidate queue.
 
 1. Preserve PR #89, PR #95 and PR #100 evidence and the frozen source byte for
    byte; none is an alternative active qualification authority.
-2. Review and merge only the exact deterministic invalid-interval diagnostic
-   evidence after all checks pass.
-3. After evidence merge, a separately versioned Draft policy ADR is the only
-   allowed follow-on; it may not create per-row exceptions or directly adopt
-   the existing gap policy.
+2. Start only a separately versioned Draft policy ADR bound to PR #103 exact
+   evidence and the frozen protocol.
+3. Require a separate independent policy review before adoption; the Draft may
+   not create per-row exceptions or directly adopt the existing gap policy.
 4. Keep runtime implementation, requalification, the new independent audit,
    U-04, hypothesis/strategy work, returns, OOS and M2 blocked.
 

@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "U-03F V4 invalid-interval diagnostic completed pending review",
+            "U-03F V4 invalid-interval diagnostic merged; Draft policy ADR is the only authorized next task",
         )
         self.assertEqual(
             state["current_status"],
-            "u03f_v4_invalid_interval_diagnostic_new_policy_adr_required_pending_review_no_u04_no_m2",
+            "u03f_v4_invalid_interval_diagnostic_merged_new_policy_adr_draft_authorized_no_u04_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -418,20 +418,18 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertFalse(
             any(item["id"] == "U-03F-REPAIR-REQUALIFICATION" for item in state["open_work"])
         )
-        diagnostic = next(
+        policy_draft = next(
             item for item in state["open_work"]
-            if item["id"] == "U-03F-R2-DIAGNOSTIC"
+            if item["id"] == "ADR-0015-DRAFT"
         )
+        self.assertEqual(policy_draft["status"], "authorized_not_started")
         self.assertEqual(
-            diagnostic["status"], "completed_new_policy_adr_required_pending_review"
-        )
-        self.assertEqual(
-            diagnostic["protocol_content_hash"],
+            policy_draft["protocol_content_hash"],
             "9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190",
         )
-        self.assertEqual(diagnostic["decision"], "new_policy_adr_required")
-        self.assertTrue(diagnostic["diagnostic_executed"])
-        self.assertFalse(diagnostic["production_pipeline_modified"])
+        self.assertTrue(policy_draft["draft_only"])
+        self.assertFalse(policy_draft["adopted"])
+        self.assertFalse(policy_draft["production_pipeline_modified"])
         repair = next(
             item
             for item in state["completed_milestones"]
