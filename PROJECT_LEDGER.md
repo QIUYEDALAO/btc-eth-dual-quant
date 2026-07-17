@@ -1673,3 +1673,13 @@ private exchange responses here.
 - Policy boundary: no policy was adopted, no per-row exception registry was created and the existing gap policy was not applied directly. Production pipeline modified: no.
 - Next Gate: exact evidence review, all-green CI and merge. Only after merge may a separate Draft policy ADR start; it cannot auto-authorize implementation, requalification, a new audit or U-04.
 - Safety: historical PR #89/#95/#100 evidence and source bytes remain unchanged. Strategy, backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-17 - U-03F Invalid-Interval Diagnostic Evidence Merged
+
+- Task IDs: U-03F-R2-D / governance closeout.
+- Evidence PR / exact head / merge: #103 / `e4b6f6e70bf6df2b10dbd7acc71a734f107d5076` / `49e028712695cf2a946aae9abf14c5668a5343f2`.
+- Validation: 118/118 GitHub Actions passed with zero pending or failed checks. Green CI proves the deterministic diagnostic evidence and bindings are self-consistent; it does not adopt policy.
+- Frozen result: 27,736 archives per order, three identical content hashes `ae5ae831a7a5805cbf0265bc2f9ba34017b79224112eea68bedffa60bac5c677`, 119 physical invalid rows and eight synchronous windows.
+- Decision: `new_policy_adr_required`; run-manifest content hash `df401c071038462b6311193d106fd8b0034f5c5f06f756d0daf821564233dd33`.
+- Governance: U-03F-R2-D is closed merged. Only a separate Draft policy ADR is authorized next; it must bind PR #103, remain generic, reject per-row exceptions/direct existing-policy adoption and receive independent review before adoption.
+- Safety: policy adoption, production changes, implementation, requalification, a new audit, U-04, strategy/backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
