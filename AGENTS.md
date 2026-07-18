@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-21 is closed as `failed_pre_result_complexity` under evidence `33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b`. The first required million-row synthetic pass triggered the frozen combined complexity guard before any frozen-source archive was opened. Market result and OOS rows are zero; optimization and retry are prohibited. Only a separate U-22 independent-candidate authorization may follow; strategy/backtesting, API/trading, execution/live and M2 remain false.
+
 - U-21 exact protocol target `d76714752825f9018427e9cd55cdd69802928d42` is independently approved 16/16 with 0 critical/high under review `809dcdf63d096d8b2742c13004c83151780a7e8078dcde85da7cc65946a355ff`. Only frozen-source qualification, 336h-history/24h-path structural ceiling, three-order result-free preflight and synthetic complexity are authorized next. Common-adjusted returns, cokurtosis, events, paths, formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-21 Paper protocol `U21-03-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e`. It fixes 336h completed history, two 168h halves, standardized squared candidate-adjusted/squared common fourth comoment, `1.50`/top-quarter two-half persistence, 24h clustering and immutable Paper Gates. Only exact-head independent review is authorized; data, returns, cokurtosis, events, paths, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

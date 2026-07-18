@@ -10,11 +10,11 @@ rules:
   candidate_queue_order_is_immutable: true
 candidates:
   - id: U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM
-    status: declared_unopened
+    status: failed_pre_result_complexity
     hypothesis: "U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose squared common-adjusted returns exhibit persistently high comovement with squared active-universe common returns may consume risk capital during large market moves, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-20 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
     sha256: 90761268042081c9f80a4fb446ed7e805242608ec6700f6c18b8419bf24420b6
     oos_opened: false
-    notes: "Outcome-blind design only. Timeframe, history, common return, common adjustment, cokurtosis estimator, persistence, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+    notes: "The first frozen one-million-row exact-core complexity pass failed the combined 30-second/RSS/input-count Gate before any frozen-source archive was opened. No retry, market result, Paper observation, formal return or OOS access occurred."
   - id: U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM
     status: failed_feasibility
     hypothesis: "U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose common-adjusted returns exhibit persistently negative coskewness with the active-universe common return may deliver disproportionately poor relative outcomes during large common moves, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-19 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

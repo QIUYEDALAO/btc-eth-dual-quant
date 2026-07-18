@@ -2653,3 +2653,9 @@ private exchange responses here.
 - Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `809dcdf6...355ff`.
 - Finding: common adjustment, unsigned standardized fourth comoment, two-half threshold/rank persistence, clustering, paths, complexity and isolation are causal and fixed.
 - Authorization: only frozen-source structural qualification, sample ceiling, synthetic complexity and result-free preflight. Cokurtosis/event/path scans, formal returns, strategy, OOS and trading remain false.
+
+## 2026-07-19 - U-21 Qualification Failed Pre-Result Complexity
+
+- Failure: `33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b`; first required one-million-row exact-evaluator pass triggered the frozen combined complexity guard.
+- Isolation: the failure occurred before opening any frozen source archive; market price/return/cokurtosis/event/path and OOS rows are all zero.
+- Decision: U-21 is closed before results. No optimization, retry, Paper observation, formal return, strategy or OOS is authorized.

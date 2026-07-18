@@ -1,5 +1,17 @@
 # Next Action
 
+## Stop: U-21 Failed Pre-Result Complexity
+
+The first required million-row synthetic pass triggered the frozen combined
+complexity guard under failure evidence `33e53b7f...147a1b`. The runner stopped
+before opening any frozen archive: market prices, returns, common adjustments,
+cokurtosis values, events, paths and OOS decoded rows are all zero.
+
+U-21 is closed without optimization or retry. No Paper observation, result
+review, rules, strategy or backtest may start. Continuing the research goal
+requires a separate U-22 independent-candidate authorization that cannot reuse
+this implementation failure to select its mechanism.
+
 ## U-21 Frozen-Source Data Qualification and Preflight
 
 Exact target `d7671475...28d42` is approved 16/16 with 0/0 critical/high under

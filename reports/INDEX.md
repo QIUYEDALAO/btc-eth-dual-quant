@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m1/U21_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-21 frozen-source qualification | failed_pre_result_complexity | First synthetic million-row pass fails fixed complexity guard before any source/result read. | no |
+| `reports/m1/evidence/u21_cross_sectional_data_qualification_v1.json` | U-21 qualification failure evidence | content `33e53b7f...147a1b` | Zero source archives, market outcomes, OOS values and downstream authority; retry false. | no |
+
+
 | `reports/expert/U21_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-21 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `d7671475...28d42` unchanged and authorizes only qualification. | no |
 | `reports/expert/evidence/u21_cross_sectional_paper_protocol_review_v1.json` | U-21 review machine evidence | content `809dcdf6...355ff` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
 
