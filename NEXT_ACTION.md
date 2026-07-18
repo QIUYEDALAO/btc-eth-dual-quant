@@ -1,5 +1,18 @@
 # Next Action
 
+## Stop: U-24 Failed Paper Feasibility
+
+The unique run `131266a...697dd` is deterministic across normal, reverse and
+shuffled traversal, but only 78 complete episodes were observed. Full/sealed-OOS
+projections are 107/29. Median 24h relative premium is `+0.3452%`, absolute
+displacement is `-0.1052%`, and positive fraction is `57.69%`; six frozen Gates
+failed.
+
+U-24 is permanently closed without tuning, a second run, formal returns or OOS.
+Continuing the research objective requires a separate U-25 independent-design
+authorization that may not invert or otherwise reuse U-24 outcomes to select its
+mechanism.
+
 ## U-24 Unique Sealed-IS Paper Observation
 
 Qualification `02e1dd27...ada9627` passes with 27,736 archives, 19 manifests,

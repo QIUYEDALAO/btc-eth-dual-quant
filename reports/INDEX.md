@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m1/U24_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-24 unique sealed-IS Paper observation | failed_feasibility | 78 episodes; six sample/projection/economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u24_cross_sectional_paper_observation/run_manifest.json` | U-24 Paper run machine evidence | content `131266a0...697dd` | Three-order exact failure with no downstream authority. | no |
+
+
 | `reports/m1/U24_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-24 frozen-source qualification | pass_local_complete | Exact sources/orders; ceiling 711; zero price/result/OOS rows. | no |
 | `reports/m1/evidence/u24_cross_sectional_data_qualification_v1.json` | U-24 qualification machine evidence | content `02e1dd27...ada9627` | Binds sources, 336h history/24h path structure, isolation and one-run authority. | no |
 

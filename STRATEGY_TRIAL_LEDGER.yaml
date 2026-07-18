@@ -10,11 +10,11 @@ rules:
   candidate_queue_order_is_immutable: true
 candidates:
   - id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
-    status: declared_unopened
+    status: failed_feasibility
     hypothesis: "U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose common-component-adjusted return distribution persistently offers less idiosyncratic right-tail lottery payoff than active peers may attract less preference-driven overpricing, so a relative premium may accrue after the next eligible open; no U-04 through U-23 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
     sha256: 0b420693a6206504c4ab6644b2f8e3c9194300bfe096b831d80c12762b18ff34
     oos_opened: false
-    notes: "Outcome-blind design only. No public data, parameter, event, return, strategy, backtest or OOS value was accessed; protocol design remains separate."
+    notes: "The unique sealed-IS Paper observation produced 78 complete episodes, projected 107 full and 29 sealed-OOS episodes, and failed six frozen sample/projection/economic Gates. Median 24h relative premium was +0.3452%, absolute displacement -0.1052%, and positive fraction 57.69%. OOS remained sealed; no formal return, strategy or backtest was run."
   - id: U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION
     status: failed_feasibility
     hypothesis: "U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION: Binance spot USDT long/cash only; using only completed prior OHLC observations from the exact point-in-time active member set, an asset whose completed trading range expands unusually relative to its own completed history while its close remains near the completed range high and positive relative to active peers may reveal aggressive demand and incomplete price discovery, so relative strength may continue after the next eligible open; no U-04 through U-22 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

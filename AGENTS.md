@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-24's unique sealed-IS Paper observation is deterministically `failed_feasibility` under run `131266a00f2b3742dd3bb2963bc5184ba55ae5aef22b97cfb0f26d2d02c697dd`: 78 complete episodes, projections 107/29, median 24h relative premium +0.3452%, absolute displacement -0.1052%, and positive fraction 57.69%; six frozen Gates fail. U-24 is closed with OOS sealed, no formal return and no second run. Only a separate U-25 independent-design authorization may follow.
+
 - U-24 frozen-source qualification passes under `02e1dd27ae4d04cf10c3cbd14578eb06b633b02ec749233eba22b72f9ada9627`: 27,736 archives, 19 manifests, three source/reader orders and a 711 independent-episode structural ceiling are exact; price/result/OOS decode counts are zero. Exactly one sealed-IS Paper observation is authorized; formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-24 exact protocol target `cafbd5a90f5fd3a435d15ff03af0ecec2df98c3f` is independently approved 16/16 with 0 critical/high under review `b032f88ab2f8c6cfd42c15a7665ebc3122187c72bdcc14d1a319b03bcb57db17`. Only frozen-source structural qualification, 336h-history/24h-path sample ceiling and result-free preflight are authorized. Returns, lottery payoffs, events, paths, formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

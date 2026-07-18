@@ -2778,3 +2778,10 @@ private exchange responses here.
 - Structure: 4,897 eligible decisions and maximum 711 independent 24h episodes versus 400 required.
 - Isolation: price, return, common-adjustment, lottery-payoff, event, path, formal-return and OOS decoded/generated rows are all zero.
 - Authorization: exactly one sealed-IS Paper observation; no strategy, backtest, OOS or trading.
+
+## 2026-07-19 - U-24 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `131266a00f2b3742dd3bb2963bc5184ba55ae5aef22b97cfb0f26d2d02c697dd` / `0e8ae9785503f1fc59bbb419d031c31856ff90520a3432ff66306c1c7bc138e1`; all three traversal orders and four manifests are exact.
+- Sample: 78 complete episodes, projected 107 full and 29 sealed-OOS episodes, 20 symbols, 52 months and four qualifying years; three sample/projection Gates fail.
+- Economics: median 24h relative lottery-demand-avoidance premium `+0.3452%`, absolute displacement `-0.1052%`, and positive fraction `57.69%`; all three frozen economic Gates fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-24 is permanently closed.

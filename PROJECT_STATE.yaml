@@ -2,11 +2,32 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-19T00:00:00Z"
-current_phase: U-24 frozen-source qualification passed; one sealed-IS Paper observation is the only next task
-current_status: u24_qualification_pass_one_paper_observation_only_no_formal_returns_no_oos_no_trading_no_m2
+current_phase: U-24 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized
+current_status: u24_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-24 unique sealed-IS lottery-demand-avoidance Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U24_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u24_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u24-cross-sectional-paper-observation
+    run_content_hash: 131266a00f2b3742dd3bb2963bc5184ba55ae5aef22b97cfb0f26d2d02c697dd
+    order_content_hash: 0e8ae9785503f1fc59bbb419d031c31856ff90520a3432ff66306c1c7bc138e1
+    complete_is_independent_episodes: 78
+    projected_full_independent_episodes: 107
+    projected_sealed_oos_independent_episodes: 29
+    median_24h_relative_lottery_demand_avoidance_premium: '0.003451638265937481372102744676'
+    median_24h_candidate_absolute_close_displacement: '-0.001052104938464466894353960344'
+    fraction_positive: '0.5769230769230769230769230769'
+    failed_gate_count: 6
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-24 frozen-source data qualification and result-free preflight
     status: pass_local_complete
     evidence: reports/m1/U24_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -2679,6 +2700,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-24-PAPER-OBSERVATION
+    phase: unique sealed-IS lottery-demand-avoidance Paper observation
+    status: completed_failed_feasibility
+    qualification_content_hash: 02e1dd27ae4d04cf10c3cbd14578eb06b633b02ec749233eba22b72f9ada9627
+    protocol_content_hash: 5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7
+    run_content_hash: 131266a00f2b3742dd3bb2963bc5184ba55ae5aef22b97cfb0f26d2d02c697dd
+    candidate_closed: true
+    second_run_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-24-DATA-QUALIFICATION
     phase: frozen-source data qualification and result-free preflight
     status: completed_pass
@@ -3086,6 +3120,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "U-24 is permanently closed after six frozen Paper Gates failed; no tuning, inversion, second observation, review, fixed rules, strategy, backtest or OOS step is authorized."
+  - "Continuing the research objective requires a separate U-25 independent-candidate design authorization that must not use U-24 outcomes to select or invert the next mechanism."
   - "Exactly one U-24 sealed-IS Paper observation may execute the frozen protocol over IS only in normal, reverse and deterministic-shuffled order."
   - "The observation may compute frozen returns/payoff/event/path diagnostics but no fills, positions, equity, formal returns, OOS values, tuning or second run."
   - "U-24 frozen-source data qualification may verify exact archives/manifests, 336h history, 24h path structure, point-in-time membership, lifecycle/mask order, sample ceiling and isolation without decoding returns or results."
@@ -3154,6 +3190,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U24_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-24 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
   - path: reports/m1/U24_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-24 frozen-source qualification
     status: pass_local_complete
