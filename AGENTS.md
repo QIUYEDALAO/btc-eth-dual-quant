@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-17 design authorization `eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b` permits exactly one economically independent, outcome-blind hypothesis design.
+- It binds U-16's immutable failed run and prohibits repairing, relaxing, inverting, relabeling or repackaging its economic Gates or using U-04 through U-16 outcomes to select U-17.
+- Only mechanism, causal timing, failure regimes and non-duplication may be frozen next. Data, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-16's unique sealed-IS Paper observation is `failed_feasibility` under run `322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14` and three-order identity `fb25bbc789068bf7c8a5d56e81e9ab90a34d7c57a7b551d107fb5b51cef3add4`.
 - It has 169 complete episodes and passes every sample/distribution Gate, but 24h relative persistence `0.1003%`, absolute displacement `-0.0427%` and positive fraction `52.66%` fail. U-16 is closed without tuning, rerun, formal returns or OOS.
 - No successor is authorized. A separate independent-candidate authorization decision is required; strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

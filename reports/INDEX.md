@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m0/U17_DESIGN_AUTHORIZATION_DECISION.md` | U-17 design authorization | one independent outcome-blind design authorized | Binds U-16 failed run and prohibits result repair/reuse; enables only one new design. | no |
+| `config/u17_design_authorization_v1.json` | U-17 machine authorization | content `eb93310f...420b` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
+
 | `reports/m1/U16_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-16 sealed-IS Paper observation | failed_feasibility | 169 episodes; three economic Gates fail; OOS remains sealed. | no |
 | `reports/m1/evidence/u16_cross_sectional_paper_observation/` | U-16 Paper machine evidence | run `322fda77...4d14` | Three orders exact under `fb25bbc7...add4`; immutable failure authorizes no downstream work. | no |
 | `reports/m1/U16_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-16 frozen-source qualification | pass / one sealed-IS observation authorized | 27,736 archives, 19 manifests, ceiling 1,331 and 3×1M synthetic passes; result/OOS rows zero. | no |

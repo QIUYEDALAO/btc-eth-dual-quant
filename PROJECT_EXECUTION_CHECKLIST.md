@@ -202,6 +202,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-16-PROTOCOL-REVIEW | Exact-head independent Paper-protocol review | completed_approve_local | U-16-PROTOCOL exact target | `codex/u16-cross-sectional-paper-protocol-review` / local-only | Review causality, parameters, spike exclusion, paths, Gates and isolation | approve 16/16; 0/0; review `2f708c0f...34e3` | none |
 | U-16-DATA-QUALIFICATION | Frozen-source data qualification and preflight | completed_pass_local | review approve | `codex/u16-cross-sectional-data-qualification` / local-only | Verify 48h history/24h path structure, order, ceiling, isolation and complexity | Result `5dc4850a...e949`; ceiling 1,331; 3×1M pass | none |
 | U-16-PAPER-OBSERVATION | Unique sealed-IS Paper observation | completed_failed_feasibility | qualification pass | `codex/u16-cross-sectional-paper-observation` / local-only | Frozen common path, correlation, event, episode, paths and Gates in three orders | Run `322fda77...4d14`; 169 episodes; 3 economic Gates fail | candidate closed; no rerun/rules/strategy/OOS |
+| U-17-DECISION | Separate post-U-16 candidate authorization | completed_authorize_design_only | U-16 closed failed_feasibility with OOS sealed | `codex/u17-design-authorization` / local-only | Bind immutable U-16 result and authorize at most one independent outcome-blind design | Decision `eb93310f...420b`; zero result reuse and downstream permissions | U-17 hypothesis design only |
 
 ## Current Gate
 
@@ -215,7 +216,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - The V3 contract, registry and blocked qualification evidence remain immutable historical evidence. PR #95 merged the deterministic U-03F `failed_audit` result with one critical and seven high findings. V4 is `audit_blocked` / `revalidation_required`; production evidence is unchanged and U-04 remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active task: one U-11 sealed-IS Paper observation. Only protocol-bound common-state/capture/event/path diagnostics are authorized; formal returns, OOS, strategy/backtesting, trading and M2 remain prohibited.
+- Active task: exactly one U-17 outcome-blind cross-sectional hypothesis design. No public data, parameters, events, returns, strategy/backtesting, OOS, trading or M2 are authorized.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

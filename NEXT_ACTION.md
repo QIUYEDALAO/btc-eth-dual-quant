@@ -1,5 +1,18 @@
 # Next Action
 
+## U-17 Outcome-Blind Hypothesis Design
+
+Decision `eb93310f...420b` authorizes exactly one economically independent,
+outcome-blind U-17 cross-sectional hypothesis design. It binds U-16's immutable
+failed run `322fda77...4d14` and prohibits repairing, relaxing, inverting,
+relabeling or repackaging any U-16 Gate or result.
+
+The next task may freeze only one economic mechanism, causal timing, failure
+regimes and non-duplication. It must read no public data or outcomes and select
+no timeframe, estimator, threshold, path, fixed rule or strategy parameter.
+Events, returns, backtesting, OOS, API/trading, `execution/live` and M2 remain
+false. Any future data scan requires a separately frozen and reviewed protocol.
+
 ## Stop: U-16 Failed Paper Feasibility
 
 The unique immutable run `322fda77...4d14` is deterministic across all three

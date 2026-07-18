@@ -2461,4 +2461,10 @@ private exchange responses here.
 - Economics: median 24h relative persistence `0.1003%`, absolute displacement `-0.0427%`, positive fraction `52.66%`; frozen minima `1.80%`, `1.80%`, `60%` all fail.
 - Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false.
 - Decision: U-16 is permanently closed. No fixed rule, strategy, review or OOS step; any U-17 candidate needs a separate authorization decision.
+
+## 2026-07-18 - U-17 Independent Design Authorized
+
+- Decision: `eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b`; exactly one economically independent, outcome-blind U-17 hypothesis design.
+- Binding: U-16 remains closed after its unique run `322fda77...4d14`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-16 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-17. U-16 Gate repair, relaxation, inversion or repackaging is prohibited.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-16 closed failed feasibility; no successor is authorized
-current_status: u16_failed_feasibility_closed_no_returns_no_oos_no_trading_no_m2
+current_phase: U-17 independent outcome-blind hypothesis design authorized
+current_status: u17_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-17 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U17_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u17_design_authorization_v1.json
+    branch: codex/u17-design-authorization
+    decision_content_hash: eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b
+    prior_candidate: U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE
+    prior_run_content_hash: 322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-16 unique sealed-IS correlation-breakdown Paper observation
     status: failed_feasibility
     evidence: reports/m1/U16_CROSS_SECTIONAL_PAPER_OBSERVATION.md
@@ -1991,6 +2005,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-17
+    phase: independent outcome-blind cross-sectional hypothesis design
+    status: authorized_not_started
+    authorization_content_hash: eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b
+    maximum_hypotheses: 1
+    hypothesis_design_authorized: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-16-PAPER-OBSERVATION
     phase: unique sealed-IS correlation-breakdown Paper observation
     status: completed_failed_feasibility
@@ -2082,9 +2109,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "Complete exactly one economically independent, outcome-blind U-17 cross-sectional hypothesis design; freeze only mechanism, causal timing, failure regimes and non-duplication."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
-  - "Any future U-17 hypothesis design authorization decision must be separate, bind this failure and prohibit result-derived mechanism selection."
-  - "Do not begin another candidate until that separate authorization exists."
+  - "U-04 through U-16 outcomes, signs, failed Gates, concentrations, censor patterns and defects may not select U-17."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -2092,7 +2119,7 @@ allowed_next_work:
   - Do not use API keys.
   - Do not run live or paper trading.
 research_authorizations:
-  hypothesis_preregistration: false
+  hypothesis_preregistration: true
   strategy_code: false
   event_scan: false
   returns: false
@@ -2121,6 +2148,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U17_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-17 design authorization
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u17_design_authorization_v1.json
+    phase: U-17 design authorization machine decision
+    status: deterministic_design_only_authority
+    status_marker: '"content_hash": "eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b"'
   - path: reports/m1/U16_CROSS_SECTIONAL_PAPER_OBSERVATION.md
     phase: U-16 unique sealed-IS Paper observation
     status: failed_feasibility

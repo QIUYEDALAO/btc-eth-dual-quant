@@ -12,6 +12,10 @@ import yaml
 
 ALLOWED = {
     (
+        "U-17 independent outcome-blind hypothesis design authorized",
+        "u17_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-17",
+    (
         "U-16 closed failed feasibility; no successor is authorized",
         "u16_failed_feasibility_closed_no_returns_no_oos_no_trading_no_m2",
     ): "U-16-PAPER-OBSERVATION",
@@ -754,7 +758,7 @@ def validate(state: dict) -> list[str]:
     if expected_task is None:
         failures.append(f"unsupported V2 phase/status pair: {pair}")
     expected_auth = dict(EXPECTED_AUTH)
-    if pair in {U04_DESIGN_PAIR, U05_DESIGN_PAIR, U06_DESIGN_PAIR, U07_DESIGN_PAIR, U08_DESIGN_PAIR, U09_DESIGN_PAIR, U10_DESIGN_PAIR, ("U-11 independent design authorized; one outcome-blind hypothesis design is the only next task", "u11_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2"), ("U-12 independent design authorized; one outcome-blind hypothesis design is the only next task", "u12_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2")}:
+    if pair in {U04_DESIGN_PAIR, U05_DESIGN_PAIR, U06_DESIGN_PAIR, U07_DESIGN_PAIR, U08_DESIGN_PAIR, U09_DESIGN_PAIR, U10_DESIGN_PAIR, ("U-11 independent design authorized; one outcome-blind hypothesis design is the only next task", "u11_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2"), ("U-12 independent design authorized; one outcome-blind hypothesis design is the only next task", "u12_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2"), ("U-17 independent outcome-blind hypothesis design authorized", "u17_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2")}:
         expected_auth["hypothesis_preregistration"] = True
     if pair in {U04_DATA_QUALIFICATION_PASS_PAIR, U05_DATA_QUALIFICATION_PASS_PAIR, U06_DATA_QUALIFICATION_PASS_PAIR, U07_DATA_QUALIFICATION_PASS_PAIR} or pair in {("U-08 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task", "u08_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2"), ("U-09 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task", "u09_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2"), ("U-10 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task", "u10_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2"), ("U-11 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task", "u11_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2")}:
         expected_auth["event_scan"] = True
@@ -810,7 +814,7 @@ def validate(state: dict) -> list[str]:
         for item in open_work
         if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07", "U-07-PROTOCOL", "U-07-DATA-QUALIFICATION", "U-07-PAPER-OBSERVATION", "U-08-DECISION", "U-08", "U-08-PROTOCOL", "U-08-DATA-QUALIFICATION", "U-08-PAPER-OBSERVATION", "U-09-DECISION", "U-09", "U-09-PROTOCOL", "U-09-PROTOCOL-REVIEW", "U-09-DATA-QUALIFICATION", "U-09-PAPER-OBSERVATION", "U-10-DECISION", "U-10", "U-10-PROTOCOL", "U-10-PROTOCOL-REVIEW", "U-10-DATA-QUALIFICATION", "U-10-PAPER-OBSERVATION", "U-11-DECISION", "U-11", "U-11-PROTOCOL", "U-11-PROTOCOL-REVIEW", "U-11-DATA-QUALIFICATION", "U-11-PAPER-OBSERVATION", "U-12-DECISION", "U-12", "U-12-PROTOCOL", "U-12-DATA-QUALIFICATION", "U-12-PAPER-OBSERVATION", "U-13-DECISION", "U-13", "U-13-PROTOCOL", "U-13-DATA-QUALIFICATION", "U-13-PAPER-OBSERVATION", "U-14-DECISION", "U-14", "U-14-PROTOCOL"}
     ]
-    active.extend(item for item in open_work if item.get("id") in {"U-14-DATA-QUALIFICATION", "U-14-PAPER-OBSERVATION", "U-15-DECISION", "U-15", "U-15-PROTOCOL", "U-15-PROTOCOL-REVIEW", "U-15-DATA-QUALIFICATION", "U-16", "U-16-PROTOCOL", "U-16-PROTOCOL-REVIEW", "U-16-DATA-QUALIFICATION", "U-16-PAPER-OBSERVATION"})
+    active.extend(item for item in open_work if item.get("id") in {"U-14-DATA-QUALIFICATION", "U-14-PAPER-OBSERVATION", "U-15-DECISION", "U-15", "U-15-PROTOCOL", "U-15-PROTOCOL-REVIEW", "U-15-DATA-QUALIFICATION", "U-16", "U-16-PROTOCOL", "U-16-PROTOCOL-REVIEW", "U-16-DATA-QUALIFICATION", "U-16-PAPER-OBSERVATION", "U-17"})
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
         merged_prs = {item.get("number") for item in state.get("latest_merged_prs", [])}
