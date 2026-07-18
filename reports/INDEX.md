@@ -1,5 +1,10 @@
 # Reports Index
 
+| `reports/m1/U21_SYSTEMATIC_COKURTOSIS_RISK_PREMIUM_DESIGN.md` | U-21 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes compensated systematic fourth-comoment risk without data, parameters, results or OOS. | no |
+| `reports/m1/U21_NON_DUPLICATION_REVIEW.md` | U-21 non-duplication | pass_design_level | Separates unsigned joint tail-risk intensity from signed coskewness, asset-only tails and volatility variability. | no |
+| `config/u21_cross_sectional_design_scope_v1.json` | U-21 machine design scope | content `a4507537...8568b` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
+
+
 | `reports/m0/U21_DESIGN_AUTHORIZATION_DECISION.md` | U-21 design authorization | one independent outcome-blind design authorized | Binds U-20 failed result and prohibits inversion/reuse; enables only one new design. | no |
 | `config/u21_design_authorization_v1.json` | U-21 machine authorization | content `58c4be44...7b247` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
 

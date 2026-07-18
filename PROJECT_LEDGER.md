@@ -2632,3 +2632,10 @@ private exchange responses here.
 - Binding: U-20 remains closed under run `587def88...9ede1`; OOS, formal returns and second-run flags remain false.
 - Independence: U-04 through U-20 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-21. U-20 inversion, repair, relabeling or repackaging is prohibited.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-21 Systematic Cokurtosis Risk Premium Design Complete
+
+- Candidate: `U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM`; hypothesis `90761268...420b6`; design `a4507537...8568b`.
+- Mechanism: persistent joint intensity of squared common-adjusted and squared common returns may consume liquidity and risk capital during marketwide volatility, requiring compensation.
+- Independence: unsigned fourth comoment, not signed coskewness, asset-only tails, volatility-of-volatility, beta capture, trend, panic, absorption or correlation breakdown; no prior result selected it.
+- Scope: no data or outcome read; all clocks, estimators, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.

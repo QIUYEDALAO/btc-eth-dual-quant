@@ -1,5 +1,18 @@
 # Next Action
 
+## U-21 Outcome-Blind Paper Protocol Design
+
+U-21 freezes `U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM` under
+hypothesis `90761268...420b6` and design `a4507537...8568b`. The mechanism is
+compensation for unsigned systematic fourth-moment risk: asset-specific risk
+intensity that tends to be high when completed common-market risk is high.
+
+The only next task is a separate result-blind Paper protocol defining history,
+common-return and common-adjustment estimators, cokurtosis normalization,
+persistence, candidate identity, paths, costs, sample/economic Gates,
+structural ceiling, complexity and isolation before any data read. Returns,
+fixed rules, strategy/backtesting and OOS remain unauthorized.
+
 ## U-21 Outcome-Blind Hypothesis Design
 
 Decision `58c4be44...7b247` authorizes exactly one economically independent,
