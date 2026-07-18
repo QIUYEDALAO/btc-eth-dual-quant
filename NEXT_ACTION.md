@@ -1,6 +1,6 @@
 # Next Action
 
-## U-08 Frozen-Source Data Qualification and Isolation
+## U-08 Unique Sealed-IS Paper Observation
 
 U-07 is frozen as
 `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
@@ -43,11 +43,14 @@ Protocol target `a516efb32f2058b603918365a6eeaef0fe509361` freezes
 `98752a07...0283` and is independently approved under review
 `316fe577...8acf`, with critical/high `0 / 0` and no target modification.
 
-The current task is frozen-source data qualification and IS/OOS isolation only:
-verify exact ZIP/manifests, point-in-time membership ranks, lifecycle, 5m grid
-and invalid-interval authority in three orders. It must not enumerate membership
-entry events, observe paths or decode any OOS OHLC value. A pass may authorize
-exactly one sealed-IS Paper observation.
+Qualification passed under contract `0adc8d49...f51e` and result
+`1ec26ef7...7cb5`: 27,736 ZIPs, 19 manifests, 78 memberships and 1,170 rank
+rows are exact in three orders; OOS/outcome rows remain zero.
+
+The only authorized task is the single sealed-IS Paper observation. It must
+apply protocol `98752a07...0283` once and output membership-entry, episode, path
+and accounting diagnostics only. No fills, positions, equity or formal returns.
+Any failed Gate closes U-08 without tuning or a second run.
 
 ## U-04 Closed Historical Evidence
 

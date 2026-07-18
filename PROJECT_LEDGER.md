@@ -2073,3 +2073,11 @@ private exchange responses here.
 - Verdict: `approve`; critical/high `0/0`; target unchanged.
 - No public data, event/path result, return or OOS value was read.
 - Authorization: frozen-source data qualification and isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-08 Frozen-Source Data Qualification Passed
+
+- Contract/result: `0adc8d49...f51e` / `1ec26ef7...7cb5`; branch `codex/u08-cross-sectional-data-qualification`.
+- 27,736 ZIPs, 19 V4 manifests, 78 membership months and 1,170 exact rank rows pass.
+- Every month has unique ranks 1–15/symbols, positive finite liquidity and prior-only window endpoints.
+- Three orders share `ca7d59b3...44aa`; OOS OHLC, entry events, paths and returns are zero.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, second run, strategy, OOS or trading.
