@@ -1,5 +1,18 @@
 # Next Action
 
+## Stop: U-17 Failed Pre-Result Sample Ceiling
+
+Frozen-source qualification `434d8a58...af91` proves that only 13 structural
+decisions can satisfy the 28-day history plus 28-day future constant-membership
+contract. After the frozen 28-day clustering, the theoretical maximum is 3
+independent episodes versus 50 required.
+
+U-17 closes before any quote-volume, price, liquidity-rank, event, path, return
+or OOS result is read. The protocol cannot be relaxed and the qualification
+cannot be rerun for admission. Continuing the research goal requires a separate
+U-18 independent-candidate authorization decision that may not reuse this
+structural defect as its mechanism or rule source.
+
 ## U-17 Frozen-Source Data Qualification and Preflight
 
 Exact target `c4990fbd...d31a` is approved 16/16 with 0/0 critical/high under

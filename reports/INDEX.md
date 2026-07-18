@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U17_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-17 frozen-source qualification | failed_pre_result_sample_ceiling | Maximum 3 independent 28-day episodes versus 50 required; zero result/OOS access. | no |
+| `reports/m1/evidence/u17_cross_sectional_data_qualification_v1.json` | U-17 qualification failure evidence | content `434d8a58...af91` | Binds exact sources, three orders, complexity, isolation and permanent candidate closure. | no |
+
 | `reports/expert/U17_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-17 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `c4990fbd...d31a` unchanged; future membership only right-censors paths. | no |
 | `reports/expert/evidence/u17_cross_sectional_paper_protocol_review_v1.json` | U-17 review machine evidence | content `c9696e61...0a64` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
 

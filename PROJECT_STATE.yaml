@@ -2,11 +2,26 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-17 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task
-current_status: u17_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-17 closed on failed pre-result structural sample ceiling; no successor is authorized
+current_status: u17_failed_pre_result_sample_ceiling_closed_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-17 frozen-source data qualification and preflight
+    status: failed_pre_result_sample_ceiling
+    evidence: reports/m1/U17_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u17_cross_sectional_data_qualification_v1.json
+    branch: codex/u17-cross-sectional-data-qualification
+    qualification_content_hash: 434d8a58a19306e9ff340da3b8df0c85fe15848c2686ed15491dee05ac64af91
+    maximum_independent_theoretical_28d_episodes: 3
+    required_independent_theoretical_28d_episodes: 50
+    quote_volume_or_price_fields_decoded: 0
+    event_rows_generated: 0
+    return_rows_generated: 0
+    oos_values_decoded: 0
+    candidate_closed: true
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-17 Paper-protocol exact-head independent review
     status: approve
     evidence: reports/expert/U17_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -2047,9 +2062,9 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-17-PROTOCOL-REVIEW
-    phase: exact-head independent liquidity-risk-premium Paper protocol review
-    status: completed_approve_local
+  - id: U-17-DATA-QUALIFICATION
+    phase: frozen-source structural qualification and sample ceiling
+    status: completed_failed_pre_result_sample_ceiling
     authorization_content_hash: eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b
     design_content_hash: ad3b6a4cabc61bd41890684ccf30b8ee4ae3a2811fcc4dd08abcf45a4bf420fe
     protocol_content_hash: 815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089
@@ -2057,7 +2072,8 @@ open_work:
     hypothesis_design_authorized: false
     paper_protocol_design_authorized: false
     exact_head_independent_review_authorized: false
-    data_qualification_complexity_and_preflight_authorized: true
+    data_qualification_complexity_and_preflight_authorized: false
+    candidate_closed: true
     public_data_read_authorized: false
     event_scan_authorized: false
     returns_authorized: false
@@ -2156,7 +2172,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Perform separate U-17 frozen-source data qualification, structural sample-ceiling proof and three synthetic complexity passes without decoding liquidity ranks, events, paths, returns or OOS values."
+  - "No U-17 protocol relaxation, second qualification, Paper observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
+  - "Any future U-18 hypothesis design authorization decision must be separate, bind this pre-result closure and prohibit defect-derived mechanism selection."
+  - "Do not begin another candidate until that separate authorization exists."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-16 outcomes, signs, failed Gates, concentrations, censor patterns and defects may not select U-17."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -2195,6 +2213,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U17_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-17 data qualification and structural ceiling
+    status: failed_pre_result_sample_ceiling
+    status_marker: '- Status: `failed_pre_result_sample_ceiling`'
+  - path: reports/m1/evidence/u17_cross_sectional_data_qualification_v1.json
+    phase: U-17 qualification failure machine evidence
+    status: deterministic_pre_result_failure
+    status_marker: '"qualification_content_hash":"434d8a58a19306e9ff340da3b8df0c85fe15848c2686ed15491dee05ac64af91"'
   - path: reports/expert/U17_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
     phase: U-17 Paper-protocol exact-head review
     status: approve_zero_critical_high

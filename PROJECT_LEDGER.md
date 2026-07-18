@@ -2489,3 +2489,11 @@ private exchange responses here.
 - Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `c9696e61...0a64`.
 - Finding: daily assembly, all-member liquidity rank, 21/28 persistence, continuing investability, 28-day clustering, paths, Gates, complexity and isolation are causal and fixed.
 - Authorization: only separate data qualification, sample ceiling, synthetic complexity and result-free preflight. Liquidity/event/path scans, returns, strategy, OOS and trading remain false.
+
+## 2026-07-18 - U-17 Failed Pre-Result Structural Sample Ceiling
+
+- Evidence: `434d8a58a19306e9ff340da3b8df0c85fe15848c2686ed15491dee05ac64af91`; exact 27,736 archives and 19 manifests; three structural orders exact.
+- Ceiling: 13 structurally eligible daily decisions collapse to 3 independent 28-day episodes, below the frozen minimum 50.
+- Complexity: three deterministic one-million-logical-row passes complete below 0.10 seconds and 27.141 MiB.
+- Isolation: quote-volume/price fields, liquidity ranks, candidates, events, paths, returns and OOS values are zero. The evidence-envelope rerun changed no Gate or protocol.
+- Decision: U-17 closes before results; no protocol relaxation, admission retry or Paper observation. Any U-18 candidate requires a separate authorization decision.

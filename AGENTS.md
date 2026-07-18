@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-17 is closed `failed_pre_result_sample_ceiling` under evidence `434d8a58a19306e9ff340da3b8df0c85fe15848c2686ed15491dee05ac64af91`.
+- The frozen 28-day history plus 28-day future constant-membership contract permits at most 3 independent structural episodes versus 50 required. Quote-volume/price fields, liquidity ranks, events, paths, returns and OOS values remain zero.
+- No U-17 protocol relaxation, retry or Paper observation is allowed. Any U-18 candidate requires a separate independent authorization; strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-17 exact protocol target `c4990fbdc3a237c90fc73a2bf2a538109fcad31a` is independently approved 16/16 with 0 critical/high under review `c9696e6124f8c6e93bff4318f239bcdee1452fffb5449a0c61479f803a540a64`.
 - Only frozen-source data qualification, 28-day history/path structural ceiling and synthetic complexity are authorized next. Liquidity ranks, events, paths, results, OOS and trading remain false.
 - U-17 Paper protocol `U17-03-LIQUIDITY-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089`.
