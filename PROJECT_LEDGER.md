@@ -2315,3 +2315,11 @@ private exchange responses here.
 - Review: `be552dad055234b0107810a7299656793ccea2a97f09a2cba22fa8ffc33ed5e0`; verdict `approve`, 15/15 dimensions, remaining critical/high `0/0`, target modified false.
 - Scope: independent review used `git show` on five exact target blobs and read no public data, result or OOS value.
 - Authorization: frozen-source qualification plus same-reader preflight only. Events, paths, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-13 Frozen-Source Qualification and Preflight Passed
+
+- Contract/result: `e9b82085...5ce7` / `5c4a61ef...0590`; branch `codex/u13-cross-sectional-data-qualification`; local Git only.
+- Authority: all 27,736 archives and 19 manifests exact; source identity `ca7d59b3...44aa`, same-reader identity `5dfc833d...2af3` across normal/reverse/shuffled.
+- Preflight: 40,383 complete active-member 1h intervals, 36,716 structural decisions and theoretical 24h episode ceiling 1,490 versus minimum 400.
+- Isolation: OOS OHLCV decoded 0; OHLCV fields decoded during preflight 0; common-component/candidate/event/path/return rows 0.
+- Authorization: exactly one sealed-IS Paper observation. No tuning, retry, formal returns, strategy/backtesting, OOS, trading or M2.

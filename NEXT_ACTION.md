@@ -1,6 +1,22 @@
 # Next Action
 
-## U-13 Frozen-Source Qualification and Same-Reader Preflight
+## U-13 Unique Sealed-IS Paper Observation
+
+Qualification contract/result `e9b82085...5ce7` / `5c4a61ef...0590` pass.
+All 27,736 archives and 19 manifests are exact, six traversal identities match,
+and the structural 24h ceiling is 1,490 versus the frozen minimum 400. Preflight
+generated no outcomes and decoded zero OOS OHLCV values.
+
+The only next task is the unique result-bearing sealed-IS Paper observation.
+It must execute the frozen common-shock, prior-only lag estimator, deterministic
+candidate, 24h clustering and path contract in normal/reverse/shuffled order.
+Any Gate failure closes U-13; no parameter change, second run or OOS access.
+
+This is not a strategy backtest: no fills, positions, equity or formal returns.
+No strategy is eligible for M2. Do not enter M2. Freqtrade-first remains the
+future architecture only if every research Gate later passes.
+
+## U-13 Historical Frozen-Source Qualification and Same-Reader Preflight
 
 Exact protocol target `6ef10240...625a7` is approved under review
 `be552dad...d5e0`, with 15/15 dimensions passing, 0 critical/high and no target

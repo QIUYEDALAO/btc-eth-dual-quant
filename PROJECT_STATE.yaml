@@ -2,11 +2,34 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-13 Paper protocol exact-head review approved; frozen-source qualification and preflight are the only next task
-current_status: u13_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-13 data qualification passed; one frozen sealed-IS Paper observation is the only next task
+current_status: u13_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-13 frozen-source data qualification and same-reader preflight
+    status: pass_local_complete
+    evidence: reports/m1/U13_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u13_cross_sectional_data_qualification_v1.json
+    branch: codex/u13-cross-sectional-data-qualification
+    protocol_target_commit: 6ef1024033aa9a86ef3c8f07558ba966270625a7
+    contract_content_hash: e9b820855abbd5e5278d3f433ab3f06f7e17a73e792f04de924bed685a0e5ce7
+    qualification_content_hash: 5c4a61efc177415b1bd0a03697f4a3028f9ab8bed908adc12100bc03e9b90590
+    source_archive_count: 27736
+    manifests_exact: 19
+    complete_active_member_1h_intervals: 40383
+    eligible_structural_decision_hours: 36716
+    maximum_independent_theoretical_24h_episodes: 1490
+    oos_ohlcv_values_decoded: 0
+    common_component_rows_generated: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-13 Paper-protocol exact-head independent review
     status: approve_local_complete
     evidence: reports/expert/U13_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -1657,14 +1680,14 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-13-DATA-QUALIFICATION
-    phase: frozen-source qualification and same-reader pre-result preflight
+  - id: U-13-PAPER-OBSERVATION
+    phase: unique frozen sealed-IS Paper observation
     status: authorized_next
     candidate_id: U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION
     protocol_target_commit: 6ef1024033aa9a86ef3c8f07558ba966270625a7
     protocol_content_hash: 1cf6dade6e75900278ba5aeee30018d3f0ff93d83d982e212d58033800993288
     review_content_hash: be552dad055234b0107810a7299656793ccea2a97f09a2cba22fa8ffc33ed5e0
-    data_qualification_and_preflight_authorized: true
+    one_sealed_is_paper_observation_authorized: true
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1738,8 +1761,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Run frozen-source U-13 data qualification and the same-reader metadata-only preflight bound to the exact approved protocol."
-  - "Verify previous-boundary closes, all 5m slots, 2160h history, 4h historical followups and three-order identity before any result scan."
+  - "Run exactly one sealed-IS U-13 Paper observation under the frozen protocol and qualification result; no parameter changes or retry."
+  - "Generate only common-component, candidate, event, episode, path, accounting and Gate evidence in three deterministic orders; no formal returns or OOS."
   - "Preserve U-04 through U-12 evidence without tuning, inversion, retry or outcome-derived protocol choices."
   - "Preserve U-04 through U-11 evidence without tuning, inversion, retry or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
@@ -1779,6 +1802,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U13_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-13 frozen-source qualification and preflight
+    status: pass_local_complete
+    status_marker: '- Status: `pass_local_complete`'
+  - path: reports/m1/evidence/u13_cross_sectional_data_qualification_v1.json
+    phase: U-13 qualification machine evidence
+    status: deterministic_pre_result_pass
+    status_marker: '"qualification_content_hash":"5c4a61efc177415b1bd0a03697f4a3028f9ab8bed908adc12100bc03e9b90590"'
   - path: reports/expert/U13_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
     phase: U-13 Paper-protocol exact-head independent review
     status: approve_local_complete
