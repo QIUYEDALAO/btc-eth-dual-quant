@@ -200,6 +200,10 @@ ALLOWED = {
         "u05_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
     ): "U-05",
     (
+        "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
+        "u05_breadth_demand_persistence_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ): "U-05-PROTOCOL",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -340,6 +344,10 @@ AUDIT_BLOCKED_PAIRS = {
         "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
         "u05_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
     ),
+    (
+        "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
+        "u05_breadth_demand_persistence_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ),
 }
 
 EXPECTED_AUTH = {
@@ -381,6 +389,11 @@ U04_FAILED_FEASIBILITY_PAIR = (
 U05_DESIGN_PAIR = (
     "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
     "u05_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U05_PROTOCOL_PAIR = (
+    "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
+    "u05_breadth_demand_persistence_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
 )
 
 
@@ -445,7 +458,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -506,6 +519,7 @@ def validate(state: dict) -> list[str]:
         "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
         "U-04 paper feasibility failed; candidate closed without OOS",
         "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
     }:
         milestones = [
             item
@@ -838,6 +852,7 @@ def validate(state: dict) -> list[str]:
         "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
         "U-04 paper feasibility failed; candidate closed without OOS",
         "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
     }:
         milestones = [
             item
@@ -1110,6 +1125,33 @@ def validate(state: dict) -> list[str]:
         }
         if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_decision.items()):
             failures.append("U-05 design authorization milestone binding changed")
+    if pair == U05_PROTOCOL_PAIR:
+        protocol_items = [item for item in open_work if item.get("id") == "U-05-PROTOCOL"]
+        expected_protocol = {
+            "status": "authorized_ready",
+            "candidate_id": "U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE",
+            "design_content_hash": "ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb",
+            "outcome_blind_protocol_required": True,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(protocol_items) != 1 or any(protocol_items[0].get(key) != value for key, value in expected_protocol.items()):
+            failures.append("U-05 paper-protocol design authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-05 cross-sectional breadth-demand persistence hypothesis design"]
+        expected_design = {
+            "status": "economic_hypothesis_pass_protocol_design_only",
+            "candidate_id": "U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE",
+            "hypothesis_sha256": "ad164b1d9a94d9d61145bf7431a805cfa795a77a6c8aef2cdc488f6bd9e7349b",
+            "design_content_hash": "ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb",
+            "events_evaluated": False,
+            "returns_computed": False,
+            "oos_opened": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_design.items()):
+            failures.append("U-05 design milestone binding changed")
     if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
         protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
         expected_protocol = {

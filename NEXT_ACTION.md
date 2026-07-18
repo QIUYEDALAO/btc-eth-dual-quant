@@ -1,15 +1,16 @@
 # Next Action
 
-## U-05 Outcome-Blind Hypothesis Design
+## U-05 Outcome-Blind Paper Protocol
 
 Decision `48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c`
-authorizes exactly one independent U-05 hypothesis design. The current design
-route is cross-sectional breadth-confirmed common-demand persistence.
+authorized one independent U-05 hypothesis design. That design is now frozen as
+`U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE` under content hash
+`ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb`.
 
-The next task must create the machine design scope, economic report,
-non-duplication review and append-only trial registration. It may not select a
-timeframe, threshold, holding period, exit, risk rule or position size, and may
-not read events, paths, returns or OOS.
+The next task must freeze one result-blind Paper protocol defining the event,
+path diagnostics, clustering, sample/concentration/cost Gates and IS/OOS
+boundary. No event, path, return or OOS value may be read before that protocol
+is independently approved.
 
 The complete dependency chain is frozen in
 `docs/superpowers/plans/2026-07-18-u05-cross-sectional-research-mainline.md`.

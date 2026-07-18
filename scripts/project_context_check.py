@@ -192,6 +192,7 @@ def main() -> int:
         "design review" in item.casefold()
         or "draft policy adr" in item.casefold()
         or "hypothesis design" in item.casefold()
+        or "protocol design" in item.casefold()
         or "data qualification" in item.casefold()
         or "paper observation" in item.casefold()
         for item in allowed_next_work

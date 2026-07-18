@@ -1929,3 +1929,13 @@ private exchange responses here.
 - Independence: U-04 event signs and failed recovery measurements may not be inverted, relabeled or used to choose U-05.
 - Plan: the continuous dependency chain from design through Paper, IS, optional OOS and final audit is frozen in `docs/superpowers/plans/2026-07-18-u05-cross-sectional-research-mainline.md`.
 - Authorization: U-05 hypothesis design only. Event scans, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-05 Breadth-Demand Persistence Design Complete
+
+- Task: `U-05`; branch `codex/u05-cross-sectional-breadth-demand-persistence-design`; local Git only.
+- Candidate: `U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE`; hypothesis `ad164b1d9a94d9d61145bf7431a805cfa795a77a6c8aef2cdc488f6bd9e7349b`.
+- Design content hash: `ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb`.
+- Mechanism: distributed positive participation across the exact active liquid cross-section may identify diversified common demand that persists beyond a completed observation.
+- Independence: not derived from the U-04 event sign or recovery failure; distinct from M1C winner rotation, M1E compression breakout, M1G panic, M1H funding and M1A indicators.
+- Execution: no public data read, event/path scan, return, timeframe, threshold, fixed rule, backtest or OOS access.
+- Authorization: only a separately frozen outcome-blind Paper protocol may follow; all strategy, OOS, trading and M2 permissions remain false.
