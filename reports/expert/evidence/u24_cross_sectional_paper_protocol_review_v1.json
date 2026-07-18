@@ -1,0 +1,35 @@
+{
+  "schema_version":1,"status":"approve","review_id":"U24-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "target":{"head_sha":"cafbd5a90f5fd3a435d15ff03af0ecec2df98c3f","parent_sha":"8794ef3d5d613efb42cc31b62bfc607db6353949","protocol_content_hash":"5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7","synthetic_feasibility_content_hash":"ce8b0f7998cc1c8e3928c605cccd0da37087a620d37e8058ae55e02f26957484","files":{
+    "config/u24_cross_sectional_paper_protocol_v1.json":"bf66626141263e2862e323b048a913f23cf191c2db97d550791f8616e0891284",
+    "reports/m1/U24_CROSS_SECTIONAL_PAPER_PROTOCOL.md":"7b220c19efb9e88712bb8f1538efca6b2176d374ea014a31abd3a3ccdbdca898",
+    "reports/m1/evidence/u24_synthetic_core_feasibility_v1.json":"f7f85c95cdf8f58d7611cf32526c2c989f3055ab6a9fe5d44d4b48b695e1ac6a",
+    "scripts/u24_cross_sectional_paper_protocol_check.py":"2eb03a8e8e2fb0eaa08b49ff8c97eb36d6bf4c6a41ab8ff33e87dfbc20055802",
+    "scripts/u24_cross_sectional_paper_protocol_validate.sh":"fd877d5476212a65d198c47b78d9732b79d44f405193168ee8128661de8c78ab",
+    "scripts/u24_synthetic_core_benchmark.py":"07d3d0c98941614077ab44e837598d4cd6e5a1c2aef7d3b531e244821e8640e8",
+    "src/btc_eth_dual_quant/data/u24_lottery_demand.py":"9817e4ad55399146eff2ae4f7b08e175a18400a68290d8dea2f1ec6100fae7cd",
+    "tests/test_u24_cross_sectional_paper_protocol.py":"1272403723d5eee7922c87f07217a6d4293abfe09c41c777c4263479b41c17dc",
+    "tests/test_u24_lottery_demand.py":"5a0db4b832c7c838679bcf55ff865097275e96d8b6e37339f39abe8202239b30"
+  }},
+  "verdict":"approve","critical_findings":0,"high_findings":0,
+  "review_dimensions":{
+    "candidate_design_authorization_and_u23_failure_binding":"pass",
+    "pre_freeze_synthetic_feasibility_and_exact_core_binding":"pass",
+    "complete_336h_two_half_history_and_all_active_members":"pass",
+    "completed_1h_and_4h_decision_causality":"pass",
+    "candidate_specific_peer_median_common_adjustment":"pass",
+    "maximum_positive_residual_lottery_payoff_identity":"pass",
+    "absolute_eight_percent_ceiling_and_two_half_persistence":"pass",
+    "rank_before_threshold_and_lowest_quarter_identity":"pass",
+    "no_return_direction_volatility_downside_or_comoment_proxy":"pass",
+    "point_in_time_membership_lifecycle_and_mask":"pass",
+    "event_tie_break_and_24h_clustering":"pass",
+    "strict_next_open_and_path_censoring":"pass",
+    "result_blind_sample_ceiling":"pass",
+    "sample_projection_distribution_and_economic_gates":"pass",
+    "public_data_scope_cost_reference_and_oos_isolation":"pass",
+    "authorization_matrix":"pass"
+  },
+  "authorization_after_review":{"data_qualification_and_preflight":true,"return_common_adjustment_lottery_scan":false,"event_scan":false,"path_observation":false,"formal_returns":false,"fixed_rule_contract":false,"freqtrade_strategy_code":false,"backtesting":false,"oos":false,"api_trading":false,"execution_live":false,"m2":false},
+  "review_content_hash":"b032f88ab2f8c6cfd42c15a7665ebc3122187c72bdcc14d1a319b03bcb57db17","generated_utc":"2026-07-19T00:00:00Z"
+}

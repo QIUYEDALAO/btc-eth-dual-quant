@@ -2764,3 +2764,10 @@ private exchange responses here.
 - Pre-freeze feasibility: `ce8b0f79...957484`; three 1,002,960-logical-return synthetic passes complete in at most 0.472842 seconds and 21.641 MiB with identical digest.
 - Identity: 336 completed 1h returns in two halves; candidate-specific peer median; maximum positive residual payoff no greater than 8% and lowest-quarter in both halves.
 - Scope: no public archive, market result or OOS value read. Only separate exact-head independent review is authorized next.
+
+## 2026-07-19 - U-24 Paper Protocol Exact-Head Review Approved
+
+- Target: `cafbd5a90f5fd3a435d15ff03af0ecec2df98c3f`; protocol `5110c3f4...39c7ce7`; all nine target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `b032f88a...57db17`.
+- Finding: pre-freeze core/evidence, 336h history, candidate-specific peer adjustment, rank-before-threshold, two-half lottery payoff persistence, clustering, paths, Gates and isolation are fixed and causal.
+- Authorization: frozen-source structural qualification and result-free preflight only; returns/payoffs/events/paths, formal returns, strategy, OOS and trading remain false.

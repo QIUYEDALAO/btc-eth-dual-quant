@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-24 exact protocol target `cafbd5a90f5fd3a435d15ff03af0ecec2df98c3f` is independently approved 16/16 with 0 critical/high under review `b032f88ab2f8c6cfd42c15a7665ebc3122187c72bdcc14d1a319b03bcb57db17`. Only frozen-source structural qualification, 336h-history/24h-path sample ceiling and result-free preflight are authorized. Returns, lottery payoffs, events, paths, formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-24 Paper protocol `U24-03-LOTTERY-DEMAND-AVOIDANCE-PREMIUM-PAPER-V1` is frozen before public data/results under `5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7`. Its exact core passed three pre-freeze synthetic 1,002,960-logical-return checks under `ce8b0f7998cc1c8e3928c605cccd0da37087a620d37e8058ae55e02f26957484`. Only a separate exact-head independent review is authorized; public-data results, events, paths, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-24 freezes `U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM` under hypothesis `0b420693a6206504c4ab6644b2f8e3c9194300bfe096b831d80c12762b18ff34` and design `c99f7002b006d635d5c03936055e8d4bc498ace02b45551af52cdf80dd14d0c1`. It studies reduced preference-driven overpricing for assets with persistently lower asset-specific right-tail lottery payoff, not volatility, downside-tail, comoment, reversal or continuation families. The exact core must pass synthetic-only complexity before protocol freeze. Public data, outcomes, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

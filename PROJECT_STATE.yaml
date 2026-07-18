@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-19T00:00:00Z"
-current_phase: U-24 lottery-demand avoidance Paper protocol frozen after synthetic-core feasibility pass; exact-head independent review is the only next task
-current_status: u24_paper_protocol_frozen_pending_exact_head_review_no_public_data_no_results_no_oos_no_trading_no_m2
+current_phase: U-24 Paper protocol exact-head review approved; frozen-source data qualification and result-free preflight are the only next task
+current_status: u24_protocol_review_approve_qualification_only_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-24 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U24_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u24_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u24-cross-sectional-paper-protocol-review
+    target_head_sha: cafbd5a90f5fd3a435d15ff03af0ecec2df98c3f
+    protocol_content_hash: 5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7
+    review_content_hash: b032f88ab2f8c6cfd42c15a7665ebc3122187c72bdcc14d1a319b03bcb57db17
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-24 outcome-blind lottery-demand avoidance Paper protocol
     status: frozen_before_result_pending_exact_head_review
     evidence: reports/m1/U24_CROSS_SECTIONAL_PAPER_PROTOCOL.md
@@ -2647,6 +2661,21 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-24-PROTOCOL-REVIEW
+    phase: exact-head independent Paper-protocol review
+    status: completed_approve
+    target_head_sha: cafbd5a90f5fd3a435d15ff03af0ecec2df98c3f
+    protocol_content_hash: 5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7
+    review_content_hash: b032f88ab2f8c6cfd42c15a7665ebc3122187c72bdcc14d1a319b03bcb57db17
+    critical_findings: 0
+    high_findings: 0
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-24-PROTOCOL
     phase: outcome-blind lottery-demand avoidance Paper protocol
     status: completed_pending_exact_head_review
@@ -3026,6 +3055,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "U-24 frozen-source data qualification may verify exact archives/manifests, 336h history, 24h path structure, point-in-time membership, lifecycle/mask order, sample ceiling and isolation without decoding returns or results."
+  - "Any authority, order, scope or theoretical-episode ceiling failure closes U-24 before results."
   - "A separate read-only exact-head independent review of the frozen U-24 protocol is the only next task."
   - "The review may authorize only frozen-source data qualification and result-free preflight; it may not authorize events, paths, formal returns, strategy, OOS or trading."
   - "U-24 may design one result-blind Paper protocol only after its intended exact statistic core passes a synthetic-only complexity feasibility Gate."
@@ -3090,6 +3121,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/U24_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-24 Paper-protocol exact-head review
+    status: approve
+    status_marker: '- Verdict: `approve`'
   - path: reports/m1/U24_CROSS_SECTIONAL_PAPER_PROTOCOL.md
     phase: U-24 outcome-blind Paper protocol
     status: frozen_before_result_pending_exact_head_review

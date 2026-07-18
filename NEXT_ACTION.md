@@ -1,5 +1,16 @@
 # Next Action
 
+## U-24 Frozen-Source Data Qualification and Result-Free Preflight
+
+Exact target `cafbd5a9...f98c3f` is approved 16/16 with 0/0 critical/high under
+review `b032f88a...57db17`. The next task may verify the 27,736 frozen archives,
+19 manifests, 336h hourly history and next 24h path slots, point-in-time
+membership, lifecycle/mask order and sealed IS/OOS boundaries.
+
+It must produce identical normal/reverse/deterministic-shuffled structural
+hashes and prove at least 400 theoretical independent episodes. It may not
+decode returns, lottery payoffs, candidates, events, paths or OOS values.
+
 ## U-24 Exact-Head Independent Paper-Protocol Review
 
 Protocol `U24-03-LOTTERY-DEMAND-AVOIDANCE-PREMIUM-PAPER-V1` is frozen under

@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/expert/U24_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-24 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `cafbd5a9...f98c3f`, nine exact blobs and pre-freeze feasibility; authorizes only qualification. | no |
+| `reports/expert/evidence/u24_cross_sectional_paper_protocol_review_v1.json` | U-24 review machine evidence | content `b032f88a...57db17` | Binds 16 dimensions, exact core/evidence and qualification-only authority. | no |
+
+
 | `reports/m1/U24_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-24 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes two-half right-tail lottery payoff persistence, clustering, paths and Gates after pre-freeze complexity pass. | no |
 | `config/u24_cross_sectional_paper_protocol_v1.json` | U-24 machine Paper protocol | content `5110c3f4...39c7ce7` | Only exact-head review is true; data/results/trading permissions remain false. | no |
 | `reports/m1/evidence/u24_synthetic_core_feasibility_v1.json` | U-24 pre-freeze synthetic core feasibility | content `ce8b0f79...957484` | 3x1,002,960 logical returns pass deterministically with zero public-data/OOS access. | no |
