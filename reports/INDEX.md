@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U07_CROSS_SECTIONAL_MARKET_STRESS_RELATIVE_STRENGTH_DESIGN.md` | U-07 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes state-conditioned relative resilience without timeframe, threshold, outcomes, rules or OOS. | no |
+| `reports/m1/U07_NON_DUPLICATION_REVIEW.md` | U-07 non-duplication | pass_design_level | Separates stress-state resilience from U-04/U-05/U-06 and prior strategy families. | no |
+| `config/u07_cross_sectional_design_scope_v1.json` | U-07 machine design scope | content `272eabd4...21795` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
 | `reports/m0/U07_DESIGN_AUTHORIZATION_DECISION.md` | U-07 design authorization | one independent outcome-blind design authorized | Binds closed U-04/U-05/U-06 results and passing V4 audit; enables only one U-07 hypothesis design. | no |
 | `config/u07_design_authorization_v1.json` | U-07 machine authorization | content `58f83010...e37d5` | Prohibits prior-outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
 | `reports/m1/U06_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-06 sealed-IS Paper observation | failed_feasibility | 56 complete episodes; count and both 24h economic Gates fail; OOS sealed. | no |

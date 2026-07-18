@@ -1,23 +1,24 @@
 # Next Action
 
-## U-07 Outcome-Blind Hypothesis Design
+## U-07 Outcome-Blind Paper Protocol Design
 
-Decision `58f8301035e593b0621add93cfa876a11a5af52df0a3afae38d7b41f095e37d5`
-authorizes exactly one economically independent U-07 hypothesis design. It
-binds the closed U-04/U-05/U-06 single-run results, their sealed OOS status,
-the passing 19/19 ADR-0015 audit and the exact frozen V4 source authority.
+U-07 is frozen as
+`U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
+design `272eabd4ab1737566698309b98cc13b952a8d39b86c457674d58ff56de021795`
+and hypothesis `3130450cd7bd7cddab4bce0c89b274ae93e50bed278379011cc4d09e15fb3de3`.
 
-The current task is design only. It must define one economic mechanism, causal
-timing, failure regimes and non-duplication without choosing a timeframe,
-threshold, horizon, signal or trading rule. Prior event signs, observed paths
-and failed Gate values may not be inverted, relabeled or used as a rule source.
+The mechanism is state-conditioned relative resilience: broad contemporaneous
+selling pressure plus one asset retaining unusually strong relative price may
+reveal inelastic asset-specific demand that persists after stress subsides.
 
-After design-level validation, only a separate outcome-blind Paper protocol may
-be frozen and independently reviewed. Event scanning, returns, strategy rules,
-Freqtrade code, backtesting and OOS remain prohibited at this stage.
+The current task is to freeze one outcome-blind Paper protocol: exact completed
+timeframe, market-stress and resilience definitions, candidate tie-break,
+episode clustering, path horizons, sample/concentration/economic Gates,
+IS/OOS isolation and exact-head review requirements. No public-data result may
+be read before that protocol is frozen and independently approved.
 
-U-06 remains closed under run `2f715394...1382a`: 56 complete episodes and its
-two 24h economic diagnostics failed. It may not be tuned or rerun.
+Event scanning, returns, fixed rules, Freqtrade code, backtesting and OOS remain
+prohibited. U-04/U-05/U-06 remain closed and may not be tuned or inverted.
 
 ## U-04 Closed Historical Evidence
 

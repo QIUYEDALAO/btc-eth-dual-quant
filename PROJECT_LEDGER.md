@@ -2014,3 +2014,12 @@ private exchange responses here.
 - Binding: U-04/U-05/U-06 remain `failed_feasibility`, single-run and OOS-sealed; the ADR-0015 audit remains 19/19 with zero critical/high.
 - Independence: prior event signs, measured paths and failed Gate values may not be inverted, relabeled or used to choose U-07.
 - Authorization: hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-07 Market-Stress Relative-Strength Design Complete
+
+- Task: `U-07`; branch `codex/u07-cross-sectional-market-stress-relative-strength-design`; local Git only.
+- Candidate: `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION`; hypothesis `3130450c...b3de3`; design `272eabd4...21795`.
+- Mechanism: broad completed cross-sectional selling pressure plus asset-specific relative resilience may reveal inelastic demand and continuation after stress subsides.
+- Independence: state-conditioned Top-15 resilience, not U-04 reversal, U-05 positive breadth, U-06 volume absorption or M1C unconditional long-cycle rotation.
+- Execution: no public data, timeframe, threshold, event, path, return, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.

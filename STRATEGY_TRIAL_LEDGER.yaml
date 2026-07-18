@@ -9,6 +9,12 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION
+    status: declared_unopened
+    hypothesis: "U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, broad contemporaneous market selling pressure combined with an asset retaining unusually strong relative price may indicate inelastic asset-specific demand that can continue to lead after the stress flow subsides and no earlier than the next eligible open; no U-04/U-05/U-06 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 3130450cd7bd7cddab4bce0c89b274ae93e50bed278379011cc4d09e15fb3de3
+    oos_opened: false
+    notes: "Outcome-blind design only. Timeframe, market-stress and resilience definitions, thresholds, horizons, fixed rules and performance Gates remain unresolved until separate protocols. No public data, events, paths, returns or OOS were read."
   - id: U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING
     status: declared_unopened
     hypothesis: "U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING: Binance spot USDT long/cash only; using completed prior observations from exact active members, a persistent increase in an asset's cross-sectional quote-volume share without a commensurate relative price advance may reflect liquidity absorption and latent demand that can reprice after the next eligible open; no U-04/U-05 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

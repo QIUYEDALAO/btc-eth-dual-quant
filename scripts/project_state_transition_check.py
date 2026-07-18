@@ -240,6 +240,10 @@ ALLOWED = {
         "u07_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
     ): "U-07",
     (
+        "U-07 market-stress relative-strength design complete; outcome-blind Paper protocol design is the only next task",
+        "u07_market_stress_relative_strength_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ): "U-07-PROTOCOL",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -489,6 +493,11 @@ U07_DESIGN_PAIR = (
     "u07_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
 )
 
+U07_PROTOCOL_PAIR = (
+    "U-07 market-stress relative-strength design complete; outcome-blind Paper protocol design is the only next task",
+    "u07_market_stress_relative_strength_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+)
+
 U06_DATA_QUALIFICATION_PASS_PAIR = (
     "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
     "u06_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
@@ -556,7 +565,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07", "U-07-PROTOCOL"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -1446,6 +1455,39 @@ def validate(state: dict) -> list[str]:
         }
         if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_decision.items()):
             failures.append("U-07 design decision milestone binding changed")
+    if pair == U07_PROTOCOL_PAIR:
+        protocols = [item for item in open_work if item.get("id") == "U-07-PROTOCOL"]
+        expected_protocol = {
+            "status": "authorized_ready",
+            "candidate_id": "U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION",
+            "design_content_hash": "272eabd4ab1737566698309b98cc13b952a8d39b86c457674d58ff56de021795",
+            "outcome_blind_required": True,
+            "exact_head_review_required": True,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(protocols) != 1 or any(protocols[0].get(key) != value for key, value in expected_protocol.items()):
+            failures.append("U-07 Paper-protocol-design-only authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-07 cross-sectional market-stress relative-strength continuation hypothesis design"]
+        expected_design = {
+            "status": "economic_hypothesis_pass_protocol_design_only",
+            "candidate_id": "U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION",
+            "hypothesis_sha256": "3130450cd7bd7cddab4bce0c89b274ae93e50bed278379011cc4d09e15fb3de3",
+            "design_content_hash": "272eabd4ab1737566698309b98cc13b952a8d39b86c457674d58ff56de021795",
+            "public_data_read": False,
+            "events_evaluated": False,
+            "returns_computed": False,
+            "oos_opened": False,
+            "strategy_authorized": False,
+            "paper_protocol_design_authorized": True,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_design.items()):
+            failures.append("U-07 hypothesis design milestone binding changed")
     if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
         protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
         expected_protocol = {
