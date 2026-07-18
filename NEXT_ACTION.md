@@ -1,6 +1,6 @@
 # Next Action
 
-## U-07 Unique Sealed-IS Paper Observation
+## U-08 Separate Independent-Candidate Authorization Decision
 
 U-07 is frozen as
 `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
@@ -23,12 +23,22 @@ shuffled traversal share identity `ca7d59b3...44aa`. The run qualified 213,570
 4h member blocks from 854,280 constituent 1h rows, while decoding zero OOS OHLC
 values and generating zero event, path or return rows.
 
-The only authorized task is the single frozen sealed-IS Paper observation. It
-must apply protocol `d62dd323...50195` once, preserve normal/reverse/shuffled
-identity and write event, episode, path and accounting diagnostics only. It may
-not create fills, positions, equity or formal strategy returns. Any failed Paper
-Gate closes U-07 without tuning or a second observation; a pass may authorize
-only an independent Paper-result review.
+The single U-07 observation is complete and immutable under run
+`8c637a3f13dad4410beb446094af011582ab2cde0ac449e32d044cbaa709352c`.
+Normal, reverse and deterministic-shuffled orders share identity
+`2714c2bf...00ee`. It produced 82 complete episodes; count, projection and
+concentration Gates pass, but the three frozen economic Gates fail:
+
+- median 24h relative continuation `0.4288%` versus `1.80%`;
+- median 24h candidate absolute displacement `1.1607%` versus `1.80%`;
+- positive 24h relative continuation `52.44%` versus `60%`.
+
+U-07 is closed `failed_feasibility` with OOS sealed and no formal returns. Do
+not review the failed Paper result, tune or rerun it, create rules, implement a
+strategy or backtest it. The only next task is a separate governance decision
+for at most one economically independent, outcome-blind U-08 hypothesis. Any
+U-08 design must not invert, relabel or derive rules from U-04 through U-07
+outcomes.
 
 ## U-04 Closed Historical Evidence
 

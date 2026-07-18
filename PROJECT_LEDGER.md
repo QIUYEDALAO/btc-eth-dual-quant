@@ -2040,3 +2040,12 @@ private exchange responses here.
 - 4h authority: 213,570 expected member blocks from 854,280 constituent 1h rows; 1,170 membership rows and 2,283 quarantined 1h rows are accounted exactly.
 - Isolation: OOS OHLC decoded 0; stress, resilience, event, path and return rows generated 0; network false; production evidence unchanged.
 - Authorization: exactly one sealed-IS Paper observation. No tuning, second run, formal returns, strategy/backtesting, OOS, API/trading, `execution/live` or M2.
+
+## 2026-07-18 - U-07 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Task: `U-07-PAPER-OBSERVATION`; branch `codex/u07-cross-sectional-paper-observation`; local Git only.
+- Run/order: `8c637a3f...352c` / `2714c2bf...00ee`; events, episodes, paths and accounting are exact across normal, reverse and deterministic-shuffled traversal.
+- Sample: 125 events, 92 connected episodes and 82 complete 48h episodes; all count, projection, year, symbol and month Gates pass.
+- Failed frozen economic Gates: median 24h relative continuation `0.4288%` versus `1.80%`; candidate absolute displacement `1.1607%` versus `1.80%`; positive relative-continuation fraction `52.44%` versus `60%`.
+- Isolation: OOS opened false and rows decoded 0; no formal return, fill, position or equity output; no network, parameter change or second run.
+- Decision: U-07 closes `failed_feasibility`. No result review, rules, strategy, backtest or OOS; only a separate independent-candidate authorization decision may follow.
