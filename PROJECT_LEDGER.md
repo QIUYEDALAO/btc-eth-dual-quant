@@ -2090,3 +2090,11 @@ private exchange responses here.
 - Failed frozen economic Gates: median 336h relative persistence `-0.4690%` versus `+1.80%`; candidate absolute displacement `-3.3543%` versus `+1.80%`; positive relative-persistence fraction `45.45%` versus `60%`.
 - Isolation: OOS opened false and rows decoded 0; no formal return, fill, position or equity output; no parameter change or second result-bearing run.
 - Decision: U-08 closes `failed_feasibility`. No result review, rules, strategy, backtest or OOS; only a separate independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-09 Independent Design Authorized
+
+- Task: `U-09-DECISION`; branch `codex/u09-design-authorization`; local Git only.
+- Decision: `2d643678e00575c93dad0331fff089fd620b214f658ca8d174dfe9bbcc06e477`; exactly one economically independent, outcome-blind U-09 hypothesis design.
+- Binding: U-04 through U-08 remain failed, single-run and OOS-sealed; ADR-0015 audit remains 19/19 pass and source freeze remains exact.
+- Independence: prior event signs, measured paths and failed Gate values may not be inverted, relabeled or used to choose U-09.
+- Authorization: hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.

@@ -153,7 +153,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-08-PROTOCOL-REVIEW | Exact-head independent Paper-protocol review | completed_approve_local | U-08-PROTOCOL exact target | `codex/u08-cross-sectional-paper-protocol-review` / local-only | Hash-bound 13-dimension review | approve; 0/0; review `316fe577...8acf`; target unchanged | data qualification only |
 | U-08-DATA-QUALIFICATION | Frozen-source membership/rank/path-authority qualification | completed_pass_local | U-08-PROTOCOL-REVIEW approve | `codex/u08-cross-sectional-data-qualification` / local-only | ZIP/manifests, ranks, lifecycle, 5m grid, mask, boundary | Result `1ec26ef7...7cb5`; three orders exact; zero outcomes | none |
 | U-08-PAPER-OBSERVATION | Unique sealed-IS membership-entry Paper observation | completed_failed_feasibility | U-08-DATA-QUALIFICATION pass | `codex/u08-cross-sectional-paper-observation` / local-only | Frozen event, episode, path and accounting diagnostics | Run `f6fbcdee...ca3e`; 44 complete; relative `-0.4690%`, absolute `-3.3543%`, positive fraction `45.45%` fail | candidate closed; no review, rules, strategy, OOS or rerun |
-| U-09-DECISION | Separate post-U-08 candidate authorization | authorized_next | U-08 closed with OOS sealed | new local-only branch | Bind five failed candidates and consider at most one independent outcome-blind design | exact hashes, zero downstream permissions | fail closed on outcome reuse or authorization expansion |
+| U-09-DECISION | Separate post-U-08 candidate authorization | completed_authorize_design_only | U-08 closed with OOS sealed | `codex/u09-design-authorization` / local-only | Bind five failed candidates and authorize one independent outcome-blind design | Decision `2d643678...e477`; zero downstream permissions | U-09 hypothesis design only |
+| U-09 | Independent point-in-time cross-sectional hypothesis design | authorized_next | U-09-DECISION complete | new local-only branch | One economic mechanism, timing, non-duplication and failures; no parameters/results | design hash exact; no outcome access | Paper protocol design only if design passes |
 
 ## Current Gate
 
@@ -167,7 +168,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - The V3 contract, registry and blocked qualification evidence remain immutable historical evidence. PR #95 merged the deterministic U-03F `failed_audit` result with one critical and seven high findings. V4 is `audit_blocked` / `revalidation_required`; production evidence is unchanged and U-04 remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active task: U-09 independent-candidate authorization decision. Event scanning, formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
+- Active task: one outcome-blind U-09 hypothesis design. Parameters, event scanning, formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

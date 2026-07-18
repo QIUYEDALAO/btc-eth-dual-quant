@@ -1,6 +1,6 @@
 # Next Action
 
-## U-09 Separate Independent-Candidate Authorization Decision
+## U-09 Outcome-Blind Independent Hypothesis Design
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -20,11 +20,15 @@ There was no OOS access, formal return, fill, position, equity curve, parameter
 change or second result-bearing run. U-08 may not proceed to result review,
 fixed rules, strategy implementation or backtesting.
 
-The only authorized next task is `U-09-DECISION`: a separate, hash-bound
-governance decision may authorize at most one economically independent,
-outcome-blind hypothesis design. It must bind U-04 through U-08 as closed,
-prohibit inversion or reuse of their observed signs and failed Gate values, and
-keep events, returns, strategy, OOS, trading and M2 false.
+Decision `2d643678e00575c93dad0331fff089fd620b214f658ca8d174dfe9bbcc06e477`
+authorizes exactly one economically independent, outcome-blind U-09 hypothesis
+design. It binds U-04 through U-08 as failed, single-run and OOS-sealed.
+
+The design may state one economic mechanism, causal timing, non-duplication,
+failure regimes and future validation boundaries. It may not select a timeframe,
+threshold, event, horizon, entry, exit or risk rule, and it may not use prior
+observed signs or failed Gate values to choose its mechanism. A separate frozen
+and independently reviewed Paper protocol must precede any event scan.
 
 ## U-08 Frozen Historical Chain
 

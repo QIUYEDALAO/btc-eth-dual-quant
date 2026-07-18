@@ -28,6 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- Separate decision `2d643678e00575c93dad0331fff089fd620b214f658ca8d174dfe9bbcc06e477` authorizes U-09 only for one economically independent, outcome-blind hypothesis design. U-04 through U-08 outcome inversion is prohibited; events, parameters, returns, strategy/backtesting, OOS, trading and M2 remain false.
 - U-08's unique sealed-IS Paper observation is `failed_feasibility` under run `f6fbcdee846b855883a5e356ea49e6a98901bfcc6a9dbd5a2cbb07ebed9eca3e` and three-order identity `5e77484b1db6365787ea4e5acffc33e4d599b81fa7b95925257e7d2d6448b928`. It produced 44 complete 336h episodes; median relative persistence `-0.4690%`, candidate absolute displacement `-3.3543%`, and positive relative fraction `45.45%` all fail. U-08 is closed without OOS, formal returns, tuning or a second run; only a separate U-09 independent-candidate authorization decision may follow.
 - U-08 data qualification passes under contract `0adc8d4928e245e05a981f6ad997be01cd1fea876c0717e6a8d85ee8ca31f51e` and result `1ec26ef74b80c2b46cfd0dcb231ee8863ae2bd0ff01fabf33dd4028b13807cb5`; ranks and three orders are exact, OOS/outcomes zero. Exactly one sealed-IS Paper observation is authorized.
 - U-08 protocol target `a516efb32f2058b603918365a6eeaef0fe509361` freezes `98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283`; review `316fe577050555bf0b8c237c6a5bc374885132c863ba647fe2c826971aca8acf` approves with 0 critical/high and no mutation. Only frozen-source data qualification and isolation are authorized next.
