@@ -2708,3 +2708,10 @@ private exchange responses here.
 - Binding: U-22 remains permanently closed under run `12a756e2...01531c`; OOS, formal returns and second-run flags remain false.
 - Independence: U-04 through U-22 outcomes, signs, Gates, concentrations, censor patterns, defects and failures may not select U-23. U-22 inversion, repair, relabeling or repackaging is prohibited.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false. A synthetic exact-core feasibility pass is required before protocol freeze.
+
+## 2026-07-19 - U-23 Range-Expansion Close-Strength Design Complete
+
+- Candidate: `U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION`; hypothesis `6c099769...98627f`; design `351ddd25...96e6e0`.
+- Mechanism: unusually expanded completed auction range, a close near that range's high and positive complete-peer-relative displacement may reveal aggressive demand and incomplete price discovery.
+- Independence: not U-22 dispersion leadership, U-10 volume trend, U-14 downside rejection or M1E compression breakout; no prior result or failure selected it.
+- Scope: no public data or outcome read and no timeframe, estimator, threshold, horizon or strategy rule selected. Protocol design may proceed only with a pre-freeze synthetic exact-core complexity pass.

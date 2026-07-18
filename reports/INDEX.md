@@ -1,5 +1,10 @@
 # Reports Index
 
+| `reports/m1/U23_RANGE_EXPANSION_CLOSE_STRENGTH_CONTINUATION_DESIGN.md` | U-23 hypothesis design | economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only | Freezes completed range-expansion close-strength continuation without public data, parameters, results or OOS. | no |
+| `reports/m1/U23_NON_DUPLICATION_REVIEW.md` | U-23 non-duplication | pass_design_level | Separates same-auction range/close geometry from dispersion leaders, volume trend, downside rejection and compression breakout. | no |
+| `config/u23_cross_sectional_design_scope_v1.json` | U-23 machine design scope | content `351ddd25...96e6e0` | Enables only protocol design and synthetic exact-core feasibility; all result/trading permissions false. | no |
+
+
 | `reports/m0/U23_DESIGN_AUTHORIZATION_DECISION.md` | U-23 design authorization | one independent outcome-blind design authorized | Binds U-22 failed result, prohibits inversion/reuse and requires synthetic exact-core feasibility before protocol freeze. | no |
 | `config/u23_design_authorization_v1.json` | U-23 machine authorization | content `70c60434...98d5a` | Only U-23 hypothesis design is true; all result, strategy, OOS and trading permissions remain false. | no |
 

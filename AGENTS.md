@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-23 freezes `U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION` under hypothesis `6c099769b5fb89d7faf032d68c114540a6b93f8546bbedee26c2e9397e98627f` and design `351ddd25e3c8708e55a21e81921d104f4c360b65966945b846fa40ba1e96e6e0`. It studies completed own-history range expansion plus same-range close strength and positive complete-peer displacement, not dispersion leadership, volume trend, downside rejection or prior compression. The exact core must pass synthetic-only complexity before protocol freeze. Public data, outcomes, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-23 decision `70c60434bb7c78344eb733eb8a8d4393538f60bbc97bff60e840c68f10998d5a` authorizes exactly one economically independent, outcome-blind hypothesis design. U-22 remains permanently closed under run `12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c`; its result may not be inverted or reused. Public data, outcomes, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false; a synthetic exact-core complexity pass is mandatory before any later U-23 protocol freeze.
 
 - U-22's unique sealed-IS Paper observation is `failed_feasibility` under `12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c`. All sample/distribution Gates pass with 198 episodes, but relative continuation `-0.1688%`, absolute displacement `+0.1115%` and positive fraction `47.98%` fail all three economic Gates. U-22 is closed without rerun, formal returns or OOS. Only a separate U-23 authorization may follow; strategy/backtesting, API/trading, execution/live and M2 remain false.

@@ -1,5 +1,19 @@
 # Next Action
 
+## U-23 Outcome-Blind Paper Protocol and Synthetic-Core Feasibility
+
+U-23 freezes `U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION`
+under hypothesis `6c099769...98627f` and design `351ddd25...96e6e0`. It studies
+completed-auction range expansion relative to the asset's own history, a close
+near the same completed range high, and positive displacement versus the
+complete point-in-time peer cross section.
+
+The next task must first implement the intended exact statistic core and prove
+its fixed synthetic complexity Gate without reading public data. Only then may
+it freeze the observation clock, range baseline, close-location and peer rules,
+thresholds, clustering, paths, Paper Gates and isolation. Events, returns,
+strategy/backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
 ## U-23 Outcome-Blind Hypothesis Design
 
 Decision `70c60434...98d5a` authorizes exactly one economically independent,
