@@ -1,6 +1,6 @@
 # Next Action
 
-## U-06 Frozen-Source Data Qualification
+## U-06 Unique Sealed-IS Paper Observation
 
 U-05 completed its one authorized sealed-IS Paper observation and is closed as
 `failed_feasibility`. Run `874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a`
@@ -25,10 +25,13 @@ response as possible absorption before delayed repricing.
 Protocol target `1bb59f1a...e8cd` is independently approved under review
 `e4f0af0d...e81b3`, with critical/high `0 / 0` and no target modification.
 
-The next task is frozen-source qualification only: verify ZIP/source identities,
-complete 5m grids, daily OHLC/quote-volume aggregation, point-in-time membership,
-lifecycle/mask authority and the IS/OOS boundary in three traversal orders. It
-must generate zero event/path/return rows and decode no OOS OHLC values.
+Qualification `e6a4a0eb...b95a67` passed: 27,736 ZIPs, 19 manifests,
+10,251,360 expected 5m rows, 1,170 positive finite quote-volume authority rows
+and three-order identity are exact. OOS decode and outcome rows remain zero.
+
+Execute the only sealed-IS observation under the frozen daily event, 72h
+clustering and path contract. Any failed Paper Gate closes U-06 without tuning
+or a second run; a pass authorizes only independent result review.
 
 Do not conduct a U-05 Paper-result review, change its protocol, rerun it or
 continue to fixed rules. U-06 may authorize only a later separate outcome-blind

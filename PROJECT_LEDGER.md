@@ -1990,3 +1990,11 @@ private exchange responses here.
 - All five target blobs and thirteen review dimensions pass; verdict `approve`, critical/high `0/0`, target unchanged.
 - No public data, event/path result, return or OOS value was read.
 - Authorization: frozen-source data qualification and IS/OOS isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-06 Frozen-Source Data Qualification Passed
+
+- Contract/result: `cc05249a...e0d6c` / `e6a4a0eb...b95a67`; branch `codex/u06-cross-sectional-data-qualification`.
+- 27,736/27,736 ZIP identities/CRCs, 19/19 V4 manifests and all three traversal orders pass under `ca7d59b3...44aa`.
+- Daily authority: 10,251,360 expected 5m rows, 1,170 positive finite quote-volume membership rows and 288 bars per complete UTC day.
+- Isolation: OOS values decoded 0; daily signal/event/path/return rows 0; network false; production evidence unchanged.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, second run, strategy, OOS or trading.

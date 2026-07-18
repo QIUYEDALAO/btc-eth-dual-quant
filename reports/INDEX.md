@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U06_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-06 frozen-source qualification | pass / OOS sealed | 27,736 ZIPs, 19 manifests, daily quote-volume authority and three orders pass; outcome rows zero. | no |
+| `reports/m1/evidence/u06_cross_sectional_data_qualification_v1.json` | U-06 qualification machine evidence | content `e6a4a0eb...b95a67` | Binds exact protocol/review, frozen V4 authority and one-run-only IS authorization. | no |
 | `reports/expert/U06_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-06 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1bb59f1a...e8cd` without modification and authorizes only data qualification. | no |
 | `reports/expert/evidence/u06_cross_sectional_paper_protocol_review_v1.json` | U-06 protocol review machine evidence | content `e4f0af0d...e81b3` | Binds five target files, 13 dimensions and data-qualification-only authority. | no |
 | `reports/m1/U06_CROSS_SECTIONAL_VOLUME_SHARE_ABSORPTION_DESIGN.md` | U-06 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes volume-share absorption/repricing without timeframe, threshold, outcomes, rules or OOS. | no |

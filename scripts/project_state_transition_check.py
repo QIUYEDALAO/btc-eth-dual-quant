@@ -228,6 +228,10 @@ ALLOWED = {
         "u06_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
     ): "U-06-DATA-QUALIFICATION",
     (
+        "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u06_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-06-PAPER-OBSERVATION",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -396,6 +400,10 @@ AUDIT_BLOCKED_PAIRS = {
         "U-06 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
         "u06_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
     ),
+    (
+        "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u06_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ),
 }
 
 EXPECTED_AUTH = {
@@ -464,6 +472,11 @@ U06_DESIGN_PAIR = (
     "u06_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
 )
 
+U06_DATA_QUALIFICATION_PASS_PAIR = (
+    "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+    "u06_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+)
+
 
 def validate(state: dict) -> list[str]:
     failures = []
@@ -474,7 +487,7 @@ def validate(state: dict) -> list[str]:
     expected_auth = dict(EXPECTED_AUTH)
     if pair in {U04_DESIGN_PAIR, U05_DESIGN_PAIR, U06_DESIGN_PAIR}:
         expected_auth["hypothesis_preregistration"] = True
-    if pair in {U04_DATA_QUALIFICATION_PASS_PAIR, U05_DATA_QUALIFICATION_PASS_PAIR}:
+    if pair in {U04_DATA_QUALIFICATION_PASS_PAIR, U05_DATA_QUALIFICATION_PASS_PAIR, U06_DATA_QUALIFICATION_PASS_PAIR}:
         expected_auth["event_scan"] = True
     if state.get("research_authorizations") != expected_auth:
         failures.append("research authorization matrix changed")
@@ -526,7 +539,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -594,6 +607,7 @@ def validate(state: dict) -> list[str]:
         "U-06 independent design authorized; outcome-blind hypothesis design is the only next task",
         "U-06 volume-share absorption design complete; outcome-blind Paper protocol design is the only next task",
         "U-06 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
     }:
         milestones = [
             item
@@ -933,6 +947,7 @@ def validate(state: dict) -> list[str]:
         "U-06 independent design authorized; outcome-blind hypothesis design is the only next task",
         "U-06 volume-share absorption design complete; outcome-blind Paper protocol design is the only next task",
         "U-06 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
     }:
         milestones = [
             item
