@@ -1,5 +1,18 @@
 # Next Action
 
+## U-23 Outcome-Blind Hypothesis Design
+
+Decision `70c60434...98d5a` authorizes exactly one economically independent,
+outcome-blind U-23 cross-sectional hypothesis design. It binds U-22's immutable
+failed run `12a756e2...01531c` and prohibits inversion, repair, relabeling,
+repackaging or use of any U-04 through U-22 result to select the mechanism.
+
+The next task may freeze only one economic mechanism, causal timing, failure
+regimes and non-duplication. The exact future statistic core must pass a
+synthetic-only complexity feasibility check before any protocol is frozen.
+Public data, outcomes, parameters, events, returns, strategy/backtesting, OOS,
+API/trading, `execution/live` and M2 remain false.
+
 ## Stop: U-22 Failed Paper Feasibility
 
 The unique run `12a756e2...01531c` produced 198 complete episodes and passed

@@ -1,12 +1,26 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-22 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized
-current_status: u22_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2
+last_updated_utc: "2026-07-19T00:00:00Z"
+current_phase: U-23 independent outcome-blind hypothesis design authorized
+current_status: u23_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-23 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U23_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u23_design_authorization_v1.json
+    branch: codex/u23-design-authorization
+    decision_content_hash: 70c60434bb7c78344eb733eb8a8d4393538f60bbc97bff60e840c68f10998d5a
+    prior_candidate: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
+    prior_run_content_hash: 12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-22 unique sealed-IS dispersion-expansion Paper observation
     status: failed_feasibility
     evidence: reports/m1/U22_CROSS_SECTIONAL_PAPER_OBSERVATION.md
@@ -2507,6 +2521,18 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-23
+    phase: independent outcome-blind cross-sectional hypothesis design
+    status: authorized_design_only
+    authorization_content_hash: 70c60434bb7c78344eb733eb8a8d4393538f60bbc97bff60e840c68f10998d5a
+    maximum_hypotheses: 1
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-22-PAPER-OBSERVATION
     phase: unique sealed-IS dispersion-expansion Paper observation
     status: completed_failed_feasibility
@@ -2785,6 +2811,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "U-23 may freeze exactly one economically independent outcome-blind hypothesis design; a synthetic exact-core complexity pass is required before any later protocol freeze."
+  - "No public data, outcomes, parameters, events, returns, strategy, backtest, OOS, API/trading, execution/live or M2 work is authorized for U-23 design."
   - "U-22 is closed. Only a separate U-23 independent-candidate design authorization decision may follow without using U-22 results to select the mechanism."
   - "No U-22 tuning, inversion, second observation, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-21 outcomes, Gates, defects, censor patterns and the U-21 complexity failure may not select U-22."

@@ -2701,3 +2701,10 @@ private exchange responses here.
 - Sample: 198 episodes, 43 symbols, 54 months and five qualifying years; every sample, projection, concentration and authority Gate passes.
 - Economics: median 24h relative continuation `-0.1688%`, absolute displacement `+0.1115%`, positive fraction `47.98%`; all three frozen economic Gates fail.
 - Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-22 is permanently closed.
+
+## 2026-07-19 - U-23 Independent Design Authorized
+
+- Decision: `70c60434bb7c78344eb733eb8a8d4393538f60bbc97bff60e840c68f10998d5a`; exactly one economically independent, outcome-blind U-23 hypothesis design.
+- Binding: U-22 remains permanently closed under run `12a756e2...01531c`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-22 outcomes, signs, Gates, concentrations, censor patterns, defects and failures may not select U-23. U-22 inversion, repair, relabeling or repackaging is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false. A synthetic exact-core feasibility pass is required before protocol freeze.
