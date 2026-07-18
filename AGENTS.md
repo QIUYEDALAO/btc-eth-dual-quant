@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-22 freezes `U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION` under hypothesis `4ec9eba4d04169fe90caf50f4eaa914f1784339802b148a1cff43f5a07cb77d3` and design `652677b1e0c070d27d854166c9c7d692e93d7f58236eced06c94f01abb153abe`. It studies multi-observation positive peer-relative leadership during broadening completed cross-sectional dispersion, not prior stress, volume, diffusion, correlation or risk-premium families. The exact future statistic core must pass synthetic-only complexity before a Paper protocol is frozen. Public data, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-22 design authorization `82aef7f378a1aaa46ded62cfc21dedb67e6d86a8d0c27c24f66280d8c124e29d` permits exactly one economically independent, outcome-blind hypothesis design. It binds U-21's immutable pre-result complexity failure and prohibits optimization, retry, relabeling or use of U-04 through U-21 outcomes to select U-22. The exact future statistic core must pass a synthetic-only complexity feasibility check before protocol freeze. Public data, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-21 is closed as `failed_pre_result_complexity` under evidence `33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b`. The first required million-row synthetic pass triggered the frozen combined complexity guard before any frozen-source archive was opened. Market result and OOS rows are zero; optimization and retry are prohibited. Only a separate U-22 independent-candidate authorization may follow; strategy/backtesting, API/trading, execution/live and M2 remain false.

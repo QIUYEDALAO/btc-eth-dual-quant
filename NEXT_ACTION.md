@@ -1,5 +1,19 @@
 # Next Action
 
+## U-22 Outcome-Blind Paper Protocol and Synthetic-Core Feasibility
+
+U-22 freezes `U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION`
+under hypothesis `4ec9eba4...cb77d3` and design `652677b1...153abe`.
+It studies multi-observation peer-relative leadership specifically while the
+completed active-member cross section broadens.
+
+The next task must first implement the intended exact statistic core and prove
+its fixed synthetic complexity Gate without reading public data. Only then may
+it freeze the observation clock, dispersion/common estimators, expansion and
+coherence rules, thresholds, clustering, paths, Paper Gates and isolation.
+Events, returns, strategy/backtesting, OOS, API/trading, `execution/live` and M2
+remain false.
+
 ## U-22 Outcome-Blind Hypothesis Design
 
 Decision `82aef7f3...124e29d` authorizes exactly one economically independent,

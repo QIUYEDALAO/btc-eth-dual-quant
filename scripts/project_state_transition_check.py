@@ -12,6 +12,10 @@ import yaml
 
 ALLOWED = {
     (
+        "U-22 dispersion-expansion leader-continuation design completed; result-blind Paper protocol and synthetic-core feasibility are the only next task",
+        "u22_hypothesis_design_pass_protocol_and_synthetic_core_only_no_public_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-22",
+    (
         "U-22 independent outcome-blind hypothesis design authorized",
         "u22_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
     ): "U-22",

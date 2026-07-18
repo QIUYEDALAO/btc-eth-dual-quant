@@ -2666,3 +2666,10 @@ private exchange responses here.
 - Binding: U-21 remains closed under failure `33e53b7f...147a1b`; no frozen archive, market result or OOS value was opened.
 - Independence: U-04 through U-21 outcomes, Gates, concentrations, censor patterns, defects and the U-21 complexity failure may not select U-22; U-21 optimization or retry is prohibited.
 - Authorization: hypothesis design plus synthetic-only exact-core complexity feasibility before protocol freeze; public data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-19 - U-22 Dispersion-Expansion Leader Continuation Design Complete
+
+- Candidate: `U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION`; hypothesis `4ec9eba4...cb77d3`; design `652677b1...153abe`.
+- Mechanism: multi-observation positive peer-relative leadership during broadening cross-sectional dispersion may persist through segmented attention, capital rotation and gradual price discovery.
+- Independence: not market-stress strength, volume trend, common-shock lagged diffusion, correlation breakdown, reversal, absorption or a higher-moment risk premium; no prior result or failure selected it.
+- Scope: no public data or outcome read and no timeframe, estimator, threshold, horizon or strategy rule selected. Protocol design may proceed only with a pre-freeze synthetic exact-core complexity pass.

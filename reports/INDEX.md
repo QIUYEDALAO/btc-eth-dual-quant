@@ -1,5 +1,10 @@
 # Reports Index
 
+| `reports/m1/U22_DISPERSION_EXPANSION_LEADER_CONTINUATION_DESIGN.md` | U-22 hypothesis design | economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only | Freezes dispersion-expansion leader continuation without public data, parameters, results or OOS. | no |
+| `reports/m1/U22_NON_DUPLICATION_REVIEW.md` | U-22 non-duplication | pass_design_level | Separates dispersion expansion from stress strength, volume trend, common-shock diffusion and correlation breakdown. | no |
+| `config/u22_cross_sectional_design_scope_v1.json` | U-22 machine design scope | content `652677b1...153abe` | Enables only protocol design and synthetic exact-core feasibility; all result/trading permissions false. | no |
+
+
 | `reports/m0/U22_DESIGN_AUTHORIZATION_DECISION.md` | U-22 design authorization | one independent outcome-blind design authorized | Binds U-21 pre-result failure and prohibits optimization/reuse; requires synthetic exact-core feasibility before protocol freeze. | no |
 | `config/u22_design_authorization_v1.json` | U-22 machine authorization | content `82aef7f3...124e29d` | Public data, events, returns, strategy, OOS, trading and M2 remain false. | no |
 

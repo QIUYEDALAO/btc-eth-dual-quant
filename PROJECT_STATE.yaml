@@ -2,11 +2,26 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-22 independent outcome-blind hypothesis design authorized
-current_status: u22_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2
+current_phase: U-22 dispersion-expansion leader-continuation design completed; result-blind Paper protocol and synthetic-core feasibility are the only next task
+current_status: u22_hypothesis_design_pass_protocol_and_synthetic_core_only_no_public_data_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-22 dispersion-expansion leader-continuation hypothesis design
+    status: economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only
+    evidence: reports/m1/U22_DISPERSION_EXPANSION_LEADER_CONTINUATION_DESIGN.md
+    machine_evidence: config/u22_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U22_NON_DUPLICATION_REVIEW.md
+    branch: codex/u22-cross-sectional-dispersion-expansion-design
+    candidate_id: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
+    hypothesis_sha256: 4ec9eba4d04169fe90caf50f4eaa914f1784339802b148a1cff43f5a07cb77d3
+    design_content_hash: 652677b1e0c070d27d854166c9c7d692e93d7f58236eced06c94f01abb153abe
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-22 design authorization decision
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
     evidence: reports/m0/U22_DESIGN_AUTHORIZATION_DECISION.md
@@ -2427,12 +2442,14 @@ completed_milestones:
     merged_pr: 29
 open_work:
   - id: U-22
-    phase: independent outcome-blind hypothesis design authorization
-    status: authorized_design_only
+    phase: dispersion-expansion leader-continuation Paper protocol design
+    status: hypothesis_design_complete_protocol_and_synthetic_core_only
     authorization_content_hash: 82aef7f378a1aaa46ded62cfc21dedb67e6d86a8d0c27c24f66280d8c124e29d
     prior_qualification_content_hash: 33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b
-    maximum_hypotheses: 1
-    hypothesis_design_authorized: true
+    candidate_id: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
+    design_content_hash: 652677b1e0c070d27d854166c9c7d692e93d7f58236eced06c94f01abb153abe
+    paper_protocol_design_authorized: true
+    synthetic_only_exact_core_feasibility_authorized: true
     synthetic_only_complexity_feasibility_required: true
     public_data_read_authorized: false
     event_scan_authorized: false
@@ -2697,7 +2714,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Perform exactly one independent, outcome-blind U-22 hypothesis design; only mechanism, causal timing, failures, non-duplication and a synthetic-only exact-core complexity feasibility check are permitted."
+  - "Freeze one outcome-blind U-22 Paper protocol only after the exact statistic core passes a synthetic-only complexity feasibility check; no public data or outcome may be read."
   - "U-04 through U-21 outcomes, Gates, defects, censor patterns and the U-21 complexity failure may not select U-22."
   - "No U-21 optimization, qualification retry, Paper observation, fixed rule, strategy, backtest or OOS step is authorized."
   - "No U-20 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
