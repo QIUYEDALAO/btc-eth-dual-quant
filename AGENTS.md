@@ -28,6 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-11 protocol target `e7f621ec400fcb24833038f9201df5ffa5fa166a` is independently approved under review `4e8fea7a28e19742baab225f9b0e8b98be16749792b9a68b9416c7d287a4d9fc`, with 0 critical/high and no target modification. Only frozen-source qualification, pre-result sample-ceiling verification and isolation are authorized.
 - U-11 protocol `3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc` is frozen before results. It fixes completed 4h common-market states, 360-observation asymmetric capture with two persistence halves, state-sample minimums, 72h clustering/paths, a metadata ceiling ≥200 versus Gate 90 and immutable Paper Gates. Only exact-head independent review is authorized.
 - U-11 freezes `U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE` under hypothesis `1c9ef854245c3f46000712894392b5b97a865013355c4553e372c6d168f63e74` and design `0572daf7511c673a89dff6e737ad12528dde6c40845b672d62bbd3b1aeca9e4c`. Only a separate outcome-blind Paper protocol may follow; no public data, event, path, return or OOS was accessed.
 - Separate decision `c5db3dc0c01bc4e1ffe381150c132742446ce4b05b3fb8c381dc03612cff274a` authorizes U-11 only for one economically independent, outcome-blind hypothesis design. U-04 through U-10 outcome/defect reuse is prohibited; events, parameters, returns, strategy/backtesting, OOS, trading and M2 remain false.

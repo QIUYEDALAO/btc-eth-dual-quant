@@ -1,6 +1,6 @@
 # Next Action
 
-## U-11 Paper Protocol Exact-Head Independent Review
+## U-11 Frozen-Source Data Qualification and Isolation
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -103,10 +103,15 @@ in-time common components, positive/negative states, zero-intercept capture,
 state sample minimums, persistent top-quartile identity, 72h clustering/paths
 and immutable Paper Gates.
 
-The only next task is an independent review of the exact protocol head. The
-review must bind every target blob, confirm the 200-episode metadata preflight,
-causal membership semantics, no U-07/U-09 duplication and zero authorization
-expansion. It must not read public prices, common states, events or outcomes.
+Exact target `e7f621ec400fcb24833038f9201df5ffa5fa166a` is independently
+approved under review `4e8fea7a...d9fc`, with critical/high `0 / 0` and no
+target mutation.
+
+The only next task is frozen-source data qualification and isolation. It must
+verify ZIP/manifests, complete 5m-derived 4h authority, point-in-time membership,
+lifecycle, invalid-interval masks, the metadata-only ≥200 theoretical episode
+ceiling and the sealed IS/OOS boundary in three orders. It must generate zero
+common-state, capture, event, path or return rows.
 
 ## U-08 Frozen Historical Chain
 

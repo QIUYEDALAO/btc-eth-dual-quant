@@ -2215,3 +2215,11 @@ private exchange responses here.
 - State Gates: full positive/negative counts ≥60 each and each half ≥24 each; invalid denominators fail closed.
 - Observation: strict next expected 5m open; 72h connected episodes and 1/2/4/8/12/24/48/72h diagnostics.
 - Authorization: exact-head independent review only; no public data, common-state/event/path scan, return, OOS, strategy or trading.
+
+## 2026-07-18 - U-11 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `e7f621ec...166a` / `aacd8624...4aac`; protocol/review `3d78bbc8...42dc` / `4e8fea7a...d9fc`.
+- Five target blobs and 13 identity, authority, 4h data, common-state, capture, persistence, ceiling, causal, path, Gate, leakage and safety dimensions pass.
+- Verdict: `approve`; critical/high `0/0`; target unchanged.
+- No public data, common-state/event/path result, return or OOS value was read.
+- Authorization: frozen-source qualification and isolation only; no events, returns, strategy, OOS or trading.
