@@ -1,6 +1,20 @@
 # Next Action
 
-## U-14 Separate Independent-Candidate Authorization Decision
+## U-14 Outcome-Blind Hypothesis Design
+
+Decision `ebcf8b78...e640` authorizes exactly one economically independent U-14
+hypothesis design. It binds U-13 closed and OOS-sealed and prohibits selecting
+U-14 from any prior sign, path, failed Gate, concentration, censor pattern or
+defect.
+
+The next task is design only: one mechanism, causal timing, non-duplication and
+failure regimes. Timeframe, estimator, thresholds, events, paths, costs and
+strategy rules must remain unresolved for a later Paper protocol. Any future
+result runner must first pass a result-blind complexity benchmark.
+
+No data, result, OOS, strategy, backtest or trading access is authorized.
+
+## U-14 Historical Separate Independent-Candidate Authorization Decision
 
 U-13 is closed `failed_feasibility` under run `b94ffc31...eb3d`. Three orders
 match exactly, but only one episode survives. Median 24h relative lagged

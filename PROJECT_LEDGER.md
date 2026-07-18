@@ -2331,3 +2331,11 @@ private exchange responses here.
 - Economics: median 24h relative lagged diffusion `-2.8821%`, absolute displacement `-7.1543%`, positive relative fraction `0`; all frozen economic Gates fail.
 - Isolation: OOS opened false, rows decoded 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
 - Decision: U-13 closes `failed_feasibility`; only a separate U-14 independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-14 Independent Design Authorized
+
+- Decision: `ebcf8b78a75911a2567bf84d58363d3c4bd554ec0495bb63457c4d593e34e640`; one independent outcome-blind U-14 hypothesis design only.
+- Binding: U-13 remains failed, single-run and OOS-sealed under `b94ffc31...eb3d`; prior U-04 through U-12 and V4 authorities remain bound through the prior decision chain.
+- Independence: prior signs, paths, Gates, concentrations, censor patterns and defects may not choose U-14; repair, retry, inversion or relabeling is prohibited.
+- Engineering: any later result runner must pass a result-blind complexity benchmark before consuming its unique run.
+- Authorization: hypothesis design only; all data/result/strategy/OOS/trading permissions remain false.
