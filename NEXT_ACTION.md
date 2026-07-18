@@ -1,6 +1,18 @@
 # Next Action
 
-## U-15 Separate Independent-Candidate Authorization Decision
+## U-15 Outcome-Blind Hypothesis Design
+
+Decision `98d4ec90...7e68` authorizes exactly one economically independent,
+outcome-blind U-15 hypothesis design. It binds U-14 closed, single-run and
+OOS-sealed and prohibits selection from all U-04 through U-14 outcomes,
+defects or censor patterns.
+
+The next task is design only: freeze one economic mechanism, causal timing,
+failure regimes and non-duplication. Timeframe, estimator, threshold, event,
+path, cost and strategy rules remain unresolved for a later protocol. No data,
+results, OOS, strategy, backtest or trading access is authorized.
+
+## U-15 Historical Separate Independent-Candidate Authorization Decision
 
 U-14 is closed `failed_feasibility` under the single immutable run
 `38247311...1f5c`. Three orders match exactly and 92 complete episodes pass all

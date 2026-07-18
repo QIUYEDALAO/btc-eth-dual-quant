@@ -286,3 +286,5 @@ No report in this repository currently approves live trading, paper trading with
 | `reports/m1/evidence/u14_cross_sectional_data_qualification_v1.json` | U-14 qualification machine evidence | corrected_deterministic_pre_result_pass | Corrected result `4db5eb79...dec5` supersedes `417b329a...aaa7` before outcomes and authorizes one observation. | no |
 | `reports/m1/U14_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-14 sealed-IS Paper observation | failed_feasibility | 92 episodes pass count/distribution but all three 24h economic Gates fail; candidate closed. | no |
 | `reports/m1/evidence/u14_cross_sectional_paper_observation/` | U-14 Paper machine evidence | deterministic_failed_feasibility | Run `38247311...1f5c`; three orders exact, OOS/formal returns/second run false. | no |
+| `reports/m0/U15_DESIGN_AUTHORIZATION_DECISION.md` | U-15 design authorization | authorized_design_only | Binds U-14 closed and authorizes one independent outcome-blind hypothesis design only. | no |
+| `config/u15_design_authorization_v1.json` | U-15 authorization machine evidence | deterministic_narrow_authorization | Decision `98d4ec90...7e68`; all downstream permissions false. | no |

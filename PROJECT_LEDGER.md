@@ -2378,3 +2378,10 @@ private exchange responses here.
 - Economics: median 24h relative rejection persistence `0.1380%`, absolute displacement `0.7737%`, positive fraction `54.35%`; frozen minima `1.80%`, `1.80%`, `60%` all fail.
 - Isolation: OOS opened false, decoded rows 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
 - Decision: U-14 closes `failed_feasibility`; only a separate U-15 independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-15 Independent Design Authorized
+
+- Decision: `98d4ec9049d3b40ded8f98c045405eda8a010c783b5597653586853a825b7e68`; exactly one economically independent, outcome-blind U-15 hypothesis design.
+- Binding: U-14 remains failed, single-run and OOS-sealed under `38247311...1f5c`; prior chain and exact V4 authorities remain bound.
+- Independence: U-04 through U-14 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-15; repair, retry, inversion and relabeling are prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

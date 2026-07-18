@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-14 closed failed feasibility; only a separate independent-candidate authorization decision may follow
-current_status: u14_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-15 independent design authorized; outcome-blind hypothesis design is the only next task
+current_status: u15_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-15 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U15_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u15_design_authorization_v1.json
+    branch: codex/u15-design-authorization
+    decision_content_hash: 98d4ec9049d3b40ded8f98c045405eda8a010c783b5597653586853a825b7e68
+    prior_candidate: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
+    prior_run_content_hash: 3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-14 unique sealed-IS downside-rejection Paper observation
     status: failed_feasibility
     evidence: reports/m1/U14_CROSS_SECTIONAL_PAPER_OBSERVATION.md
@@ -1832,13 +1846,12 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-15-DECISION
-    phase: separate independent-candidate authorization decision after U-14 closure
+  - id: U-15
+    phase: one independent outcome-blind hypothesis design
     status: authorized_next
-    prior_candidate_id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
-    prior_run_content_hash: 3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c
-    maximum_new_hypotheses: 1
-    hypothesis_design_authorized: false
+    decision_content_hash: 98d4ec9049d3b40ded8f98c045405eda8a010c783b5597653586853a825b7e68
+    maximum_hypotheses: 1
+    hypothesis_design_authorized: true
     event_scan_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
@@ -1913,9 +1926,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Make one separate U-15 independent-candidate authorization decision binding U-14 failed, single-run and OOS-sealed."
-  - "Any future hypothesis must be economically independent and may not invert, tune or select from U-04 through U-14 outcomes, defects or censor patterns."
-  - "The decision may authorize hypothesis design only; data, parameters, events, returns, strategy/backtesting and OOS remain false."
+  - "Complete exactly one economically independent, outcome-blind U-15 cross-sectional hypothesis design without reading data or outcomes."
+  - "Freeze its economic mechanism, causal timing, failure regimes and non-duplication from U-04 through U-14."
+  - "Leave timeframe, estimators, thresholds, event paths, costs and strategy rules unresolved for a later protocol."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -1952,6 +1965,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U15_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-15 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u15_design_authorization_v1.json
+    phase: U-15 authorization machine evidence
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "98d4ec9049d3b40ded8f98c045405eda8a010c783b5597653586853a825b7e68"'
   - path: reports/m1/U14_CROSS_SECTIONAL_PAPER_OBSERVATION.md
     phase: U-14 unique sealed-IS Paper observation
     status: failed_feasibility
