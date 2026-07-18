@@ -1,6 +1,6 @@
 # Next Action
 
-## U-08 Outcome-Blind Paper Protocol Design
+## U-08 Paper Protocol Exact-Head Independent Review
 
 U-07 is frozen as
 `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
@@ -39,11 +39,15 @@ is broadened investability, attention and mandate eligibility after a prior-only
 monthly Top-15 membership admission. It is distinct from U-04 through U-07 and
 all prior strategy families.
 
-Only an outcome-blind Paper protocol may follow. It must freeze membership-entry
-identity, genesis-month handling, reference open, observation horizons,
-clustering, sample/concentration/cost Gates and IS/OOS isolation before reading
-data or outcomes. Events, returns, rules, strategy, backtesting and OOS remain
-unauthorized until later narrow stages.
+Protocol `98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283`
+is frozen before results. It fixes prior-month membership-entry identity, one
+rank/symbol representative per month, strict next 5m open, 24/72/168/336h
+paths, 336h economic Gates and sealed OOS.
+
+The only next task is an independent review of the final exact protocol head.
+The review may not modify target files and must approve with zero critical/high
+findings before data qualification. No data, event, path or return access is
+authorized during review.
 
 ## U-04 Closed Historical Evidence
 

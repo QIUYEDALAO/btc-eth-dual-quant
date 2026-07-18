@@ -2065,3 +2065,12 @@ private exchange responses here.
 - Independence: membership-authority transition, not residual reversal, breadth, price/volume absorption, stress resilience, price momentum, compression, panic, funding or indicator logic.
 - Execution: no public data, event/path scan, return, timeframe, threshold, rule, backtest or OOS access.
 - Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
+
+## 2026-07-18 - U-08 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283`; branch `codex/u08-cross-sectional-paper-protocol`.
+- Event: current qualified monthly Top-15 member absent from immediately prior membership; genesis excluded; lowest current rank then symbol selects one representative.
+- Timing: decision at membership effectiveness; reference is strictly next expected 5m open; no later search.
+- Observation: 24/72/168/336h candidate, peer-median and relative paths; complete fixed peers required.
+- Gates: 36 IS, projected 48 full/12 OOS, dispersion controls, 1.80% median relative/absolute, 60% positive relative and zero mismatches.
+- Execution: no data, events, paths, returns or OOS accessed. Only exact-head independent review is authorized.

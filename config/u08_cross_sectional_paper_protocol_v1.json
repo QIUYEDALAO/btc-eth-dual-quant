@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_result_pending_exact_head_review",
+  "protocol_id": "U08-03-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE-PAPER-V1",
+  "candidate_id": "U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE",
+  "hypothesis_sha256": "5d091b72b4ac77669bfe26659d7a95554bb182ba5c138ca20959e93a2e2345f6",
+  "design_content_hash": "247d652ecc3eb6b3df6ffcfc75c8a54c98716bc9d369e738745bdbd66337d717",
+  "authority_bindings": {
+    "u08_design_authorization_hash": "813267f29fd2f019b7d856d95a5eaaa7927a3f072327cc643e6a1ecd51af1cf9",
+    "u07_closed_run_hash": "8c637a3f13dad4410beb446094af011582ab2cde0ac449e32d044cbaa709352c",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+    "invalid_interval_runtime_policy_hash": "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04"
+  },
+  "scope": {
+    "exchange": "binance", "market": "spot_usdt", "direction": "long_cash_only",
+    "is_start": "2020-01-01T00:00:00Z", "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z", "oos_end_exclusive": "2026-07-01T00:00:00Z",
+    "is_calendar_days": 1715, "oos_calendar_days": 658, "full_calendar_days": 2373,
+    "path_timeframe": "5m", "oos_opened": false
+  },
+  "membership_entry_event": {
+    "authority": "exact_frozen_monthly_point_in_time_top15_membership",
+    "entry_predicate": "qualified_current_effective_month_member_absent_from_immediately_prior_effective_month_membership",
+    "genesis_month_action": "ineligible_no_prior_membership_comparison",
+    "effective_time": "current_membership_effective_month_utc_start",
+    "all_current_and_prior_membership_rows_required": true,
+    "minimum_active_members": 10,
+    "simultaneous_entry_representative": "lowest_current_membership_rank_then_symbol_ascending",
+    "representatives_per_effective_month": 1,
+    "current_membership_backfill_allowed": false,
+    "replacement_member_allowed": false,
+    "outcome_or_price_used_for_entry_selection": false
+  },
+  "episode_clustering": {
+    "scope": "monthly_membership_transition_representatives",
+    "connected_window_hours": 336,
+    "representative": "first_event_only",
+    "boundary": "new_episode_only_when_event_time_is_strictly_more_than_336h_after_prior_connected_event",
+    "future_information_used": false
+  },
+  "observation_contract": {
+    "decision_time": "membership_effective_time",
+    "reference": "first_expected_5m_open_strictly_after_membership_effective_time",
+    "search_later_if_reference_missing": false,
+    "horizon_hours": [24, 72, 168, 336],
+    "primary_horizon_hours": 336,
+    "candidate": "deterministic_monthly_entry_representative",
+    "peer_members": "effective_month_exact_active_members_excluding_candidate",
+    "candidate_close_displacement": "candidate_close_over_candidate_reference_open_minus_one",
+    "peer_median_close_displacement": "median_peer_close_over_peer_reference_open_minus_one",
+    "relative_persistence": "candidate_close_displacement_minus_peer_median_close_displacement",
+    "required_path_diagnostics": [
+      "candidate_absolute_close_displacement_by_horizon", "peer_median_close_displacement_by_horizon",
+      "relative_persistence_by_horizon", "candidate_maximum_favorable_excursion_through_336h",
+      "candidate_maximum_adverse_excursion_through_336h", "first_time_relative_persistence_reaches_base_cost"
+    ],
+    "complete_candidate_and_all_event_time_peers_required_through_each_horizon": true,
+    "missing_quarantine_membership_change_or_lifecycle_intersection": "right_censor_without_later_search",
+    "fill_position_exit_or_equity_model": false, "formal_strategy_return": false
+  },
+  "cost_reference_roundtrip": {"base":"0.0030","cost_x2":"0.0060","stress_a":"0.0080","stress_b":"0.0110"},
+  "projection": {
+    "source": "complete_is_independent_episodes_only",
+    "full": "floor_complete_is_episodes_times_2373_divided_by_1715",
+    "sealed_oos": "floor_complete_is_episodes_times_658_divided_by_1715",
+    "may_read_oos_events_prices_or_counts": false
+  },
+  "paper_gates": {
+    "complete_is_independent_episodes_minimum": 36,
+    "projected_full_independent_episodes_minimum": 48,
+    "projected_sealed_oos_independent_episodes_minimum": 12,
+    "minimum_years_with_six_complete_episodes": 3,
+    "maximum_single_year_episode_share": "0.35",
+    "maximum_single_symbol_episode_share": "0.25",
+    "minimum_distinct_event_symbols": 8,
+    "minimum_distinct_event_months": 24,
+    "combined_median_336h_relative_persistence_minimum": "0.0180",
+    "combined_median_336h_candidate_absolute_close_displacement_minimum": "0.0180",
+    "fraction_complete_episodes_with_positive_336h_relative_persistence_minimum": "0.60",
+    "qualification_quarantine_lifecycle_or_order_mismatches_maximum": 0
+  },
+  "research_leakage_prevention": {
+    "change_entry_identity_representative_cluster_or_horizon_after_results": false,
+    "change_gate_from_event_count_or_outcome": false,
+    "delete_symbol_month_year_or_regime_from_performance": false,
+    "select_current_members_or_replacement_members": false,
+    "use_prior_candidate_outcomes_to_change_rules": false,
+    "protocol_change_after_result_creates_new_candidate": true
+  },
+  "authorizations": {
+    "paper_protocol_frozen": true, "exact_head_independent_review": true,
+    "data_qualification": false, "event_scan": false, "path_observation": false,
+    "signals": false, "formal_returns": false, "fixed_rule_contract": false,
+    "freqtrade_strategy_code": false, "backtesting": false, "oos": false,
+    "api_trading": false, "execution_live": false, "m2": false
+  },
+  "content_hash": "98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

@@ -2,11 +2,28 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-08 liquidity-rank entry demand-persistence design complete; outcome-blind Paper protocol design is the only next task
-current_status: u08_liquidity_rank_entry_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2
+current_phase: U-08 Paper protocol frozen; exact-head independent review is the only authorized next task
+current_status: u08_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-08 outcome-blind liquidity-rank entry demand-persistence Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U08_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u08_cross_sectional_paper_protocol_v1.json
+    branch: codex/u08-cross-sectional-paper-protocol
+    candidate_id: U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE
+    protocol_content_hash: 98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+    exact_head_independent_review_authorized: true
+    data_qualification_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-08 point-in-time liquidity-rank entry demand-persistence hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U08_LIQUIDITY_RANK_ENTRY_DEMAND_PERSISTENCE_DESIGN.md
@@ -1088,13 +1105,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-08-PROTOCOL
-    phase: outcome-blind liquidity-rank entry Paper protocol design
+  - id: U-08-PROTOCOL-REVIEW
+    phase: exact-head independent review of frozen U-08 Paper protocol
     status: authorized_ready
     candidate_id: U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE
-    design_content_hash: 247d652ecc3eb6b3df6ffcfc75c8a54c98716bc9d369e738745bdbd66337d717
-    outcome_blind_required: true
-    exact_head_review_required: true
+    protocol_content_hash: 98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283
+    exact_target_commit: pending_current_final_commit
+    target_mutation_allowed: false
+    maximum_critical_findings: 0
+    maximum_high_findings: 0
     event_scan_authorized: false
     strategy_authorized: false
     oos_authorized: false
@@ -1166,7 +1185,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Freeze one outcome-blind U-08 Paper protocol design before any data or event access."
+  - "Perform one exact-head independent review of the frozen U-08 Paper protocol design without target mutation."
   - "Preserve U-04/U-05/U-06/U-07 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1205,6 +1224,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U08_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-08 Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
   - path: reports/m1/U08_LIQUIDITY_RANK_ENTRY_DEMAND_PERSISTENCE_DESIGN.md
     phase: U-08 hypothesis design
     status: economic_hypothesis_pass_protocol_design_only

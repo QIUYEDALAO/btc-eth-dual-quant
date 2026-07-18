@@ -28,6 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-08 Paper protocol `98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283` is frozen before results. Only exact-head independent review is authorized; data, events, paths, returns, OOS and strategy remain prohibited.
 - U-08 freezes `U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE` under hypothesis `5d091b72b4ac77669bfe26659d7a95554bb182ba5c138ca20959e93a2e2345f6` and design `247d652ecc3eb6b3df6ffcfc75c8a54c98716bc9d369e738745bdbd66337d717`. Only a separate outcome-blind Paper protocol may follow; no public data, events, returns or OOS was accessed.
 - Separate decision `813267f29fd2f019b7d856d95a5eaaa7927a3f072327cc643e6a1ecd51af1cf9` authorizes U-08 only for one economically independent, outcome-blind hypothesis design. U-04 through U-07 outcome inversion is prohibited; events, parameters, returns, strategy/backtesting, OOS, trading and M2 remain false.
 - U-07's only sealed-IS Paper observation is `failed_feasibility` under run `8c637a3f13dad4410beb446094af011582ab2cde0ac449e32d044cbaa709352c` and three-order identity `2714c2bf0fee08ddd9531eeac2ef531904c7c416eb4c809a666f5f75e4cf00ee`. It has 82 complete episodes but fails 24h relative continuation, absolute displacement and positive-fraction Gates. U-07 is closed without OOS or formal returns; only a separate U-08 independent-candidate authorization decision may follow.
@@ -77,7 +78,7 @@ After any task, the agent must update:
 - The adopted policy applies only to verified grid-aligned official 5m active-member rows with the sole close-boundary defect, at least two affected members and affected fraction at least 80%.
 - An accepted event must quarantine the full active-member slot, including valid minority rows, without changing physical source evidence. Off-grid/other malformed/missing/duplicate/non-member/ambiguous/drift cases remain hard blockers.
 - No known date or symbol may be a runtime input. No raw repair, fill, source replacement, substitute member, direct V2 gap-policy adoption or Gate reduction is allowed.
-- U-04/U-05/U-06/U-07 are closed with OOS sealed. U-08 Paper protocol design is current; no event scan, formal return, strategy/backtest, OOS, trading or M2 is authorized.
+- U-04/U-05/U-06/U-07 are closed with OOS sealed. U-08 protocol exact-head review is current; no data/event scan, formal return, strategy/backtest, OOS, trading or M2 is authorized.
 - The real new audit passed locally. Only one outcome-blind U-04 hypothesis design is now authorized; event scans, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.
 - PR #102 merged protocol `U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1` at `70c784b1573de8437e189672c89e9c00b6505978` after 116/116 checks. Exact head `07e4fc13d4a6d027e4881863b9224906be776e9a` and content hash `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190` remain frozen.
 - The one authorized diagnostic completed on `codex/u03f-v4-invalid-interval-diagnostic` using only the exact 27,736 frozen local archives in normal, reverse and deterministic-shuffled order. PR #103 exact head `e4b6f6e70bf6df2b10dbd7acc71a734f107d5076` passed 118/118 checks and merged at `49e028712695cf2a946aae9abf14c5668a5343f2`.

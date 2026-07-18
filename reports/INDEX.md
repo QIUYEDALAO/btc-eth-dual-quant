@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U08_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-08 outcome-blind Paper protocol | frozen pending exact-head review | Fixes membership entry, representative, paths, Gates and sealed OOS before results. | no |
+| `config/u08_cross_sectional_paper_protocol_v1.json` | U-08 machine Paper protocol | content `98752a07...0283` | Only protocol freeze and exact-head review are true. | no |
 | `reports/m1/U08_LIQUIDITY_RANK_ENTRY_DEMAND_PERSISTENCE_DESIGN.md` | U-08 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes membership-entry demand persistence without parameters, outcomes, rules or OOS. | no |
 | `reports/m1/U08_NON_DUPLICATION_REVIEW.md` | U-08 non-duplication | pass_design_level | Separates membership transition from U-04 through U-07 and prior strategy families. | no |
 | `config/u08_cross_sectional_design_scope_v1.json` | U-08 machine design scope | content `247d652e...d717` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
