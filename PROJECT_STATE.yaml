@@ -2,11 +2,28 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-13 common-shock lagged-diffusion design completed; outcome-blind Paper protocol design is the only next task
-current_status: u13_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-13 outcome-blind Paper protocol frozen; exact-head independent review is the only next task
+current_status: u13_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-13 outcome-blind common-shock lagged-diffusion Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U13_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u13_cross_sectional_paper_protocol_v1.json
+    branch: codex/u13-cross-sectional-paper-protocol
+    candidate_id: U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION
+    protocol_content_hash: 1cf6dade6e75900278ba5aeee30018d3f0ff93d83d982e212d58033800993288
+    public_data_read: false
+    events_evaluated: false
+    paths_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    exact_head_independent_review_authorized: true
+    data_qualification_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-13 common-shock lagged-diffusion hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U13_COMMON_SHOCK_LAGGED_DIFFUSION_DESIGN.md
@@ -1635,13 +1652,13 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-13-PROTOCOL
-    phase: outcome-blind common-shock lagged-diffusion Paper protocol design
-    status: authorized_not_started
+  - id: U-13-PROTOCOL-REVIEW
+    phase: exact-head independent review of frozen common-shock lagged-diffusion Paper protocol
+    status: authorized_next
     candidate_id: U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION
-    design_content_hash: 982cb95125a94dd10d5524dab0c241fbd7642639e1dd3461da760024d9fd3477
+    protocol_content_hash: 1cf6dade6e75900278ba5aeee30018d3f0ff93d83d982e212d58033800993288
     outcome_blind: true
-    protocol_design_authorized: true
+    exact_head_independent_review_authorized: true
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1715,8 +1732,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete one outcome-blind U-13 Paper protocol design that freezes the completed common shock, prior-only lag estimator, persistence, permanent-weakness exclusion, sample ceiling, paths and Gates before data access."
-  - "Require an implementation/data-scope preflight proving boundary, lag-history and path-input availability before any future result-bearing run."
+  - "Complete an exact-head independent review of the frozen U-13 Paper protocol without modifying or reading results from the target."
+  - "Only an approve verdict with zero critical/high findings may authorize frozen-source data qualification and same-reader preflight."
   - "Preserve U-04 through U-12 evidence without tuning, inversion, retry or outcome-derived protocol choices."
   - "Preserve U-04 through U-11 evidence without tuning, inversion, retry or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
@@ -1756,6 +1773,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U13_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-13 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u13_cross_sectional_paper_protocol_v1.json
+    phase: U-13 Paper protocol machine evidence
+    status: deterministic_frozen_protocol
+    status_marker: '"content_hash": "1cf6dade6e75900278ba5aeee30018d3f0ff93d83d982e212d58033800993288"'
   - path: reports/m1/U13_COMMON_SHOCK_LAGGED_DIFFUSION_DESIGN.md
     phase: U-13 common-shock lagged-diffusion design
     status: economic_hypothesis_pass_protocol_design_only

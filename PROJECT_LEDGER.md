@@ -2308,3 +2308,11 @@ private exchange responses here.
 - Independence: temporal cross-asset propagation, not residual reversal, breadth demand, volume absorption, stress resilience, membership entry, low volatility, trend/volume, asymmetric capture or calendar flow.
 - Execution: no public data, timeframe, estimator, threshold, event/path, return, rule, backtest or OOS access.
 - Authorization: one separate outcome-blind Paper protocol design with mandatory pre-result preflight; all downstream permissions remain false.
+
+## 2026-07-18 - U-13 Outcome-Blind Paper Protocol Frozen
+
+- Task: `U-13-PROTOCOL`; branch `codex/u13-cross-sectional-paper-protocol`; local Git only.
+- Protocol: `1cf6dade6e75900278ba5aeee30018d3f0ff93d83d982e212d58033800993288`; fixes the completed common shock, breadth, prior 2,160h lag estimator, disjoint persistence, permanent-weakness exclusion, candidate identity, 24h clustering, paths, costs and Gates.
+- Preflight: the later data reader must prove boundary, 1h/5m grid, 2,160h history and 4h historical-followup availability in three orders before generating any common component, event, path or return row.
+- Isolation: no public data, event, path, return or OOS value was read; strategy, backtesting, trading and M2 remain false.
+- Authorization: exact-head independent protocol review only. Qualification or observation requires a later approve verdict with zero critical/high findings.

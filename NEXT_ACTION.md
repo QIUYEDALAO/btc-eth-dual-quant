@@ -1,6 +1,21 @@
 # Next Action
 
-## U-13 Outcome-Blind Paper Protocol Design
+## U-13 Exact-Head Paper-Protocol Review
+
+U-13 Paper protocol `1cf6dade...3288` is frozen before data or results. It fixes
+the completed positive common shock, breadth, prior-only 2,160h lag estimator,
+disjoint-half persistence, permanent-weakness exclusion, event identity, 24h
+clustering/path diagnostics, costs and immutable Paper Gates.
+
+The only next task is a separate exact-head independent review. It must bind the
+target commit and every protocol blob, verify causal timing and permissions, and
+leave the target unchanged. Only `approve` with zero critical/high findings may
+authorize frozen-source qualification plus the same-reader pre-result preflight.
+
+No public data, event, path, return or OOS value has been read. Strategy rules,
+Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## U-13 Historical Outcome-Blind Design
 
 U-13 freezes `U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION` under
 hypothesis `39f1848f...db5c` and design `982cb951...3477`. The mechanism is
