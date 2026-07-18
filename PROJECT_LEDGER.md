@@ -2300,3 +2300,11 @@ private exchange responses here.
 - Binding: U-12 remains failed, single-run and OOS-sealed under `b42a539c...7995`; U-04 through U-11 and exact V4 audit/source authorities remain bound.
 - Independence: prior signs, paths, failed Gates, concentration, censor patterns and defects may not choose or shape U-13.
 - Authorization: hypothesis design only. Data, parameters, events, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-13 Common-Shock Lagged-Diffusion Design Complete
+
+- Candidate: `U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION`; hypothesis `39f1848f...db5c`; design `982cb951...3477`.
+- Mechanism: a completed positive common information/capital-flow shock may propagate at different speeds, allowing an asset with a stable prior-only delayed response to catch up after the next eligible open.
+- Independence: temporal cross-asset propagation, not residual reversal, breadth demand, volume absorption, stress resilience, membership entry, low volatility, trend/volume, asymmetric capture or calendar flow.
+- Execution: no public data, timeframe, estimator, threshold, event/path, return, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design with mandatory pre-result preflight; all downstream permissions remain false.

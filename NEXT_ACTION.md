@@ -1,17 +1,28 @@
 # Next Action
 
-## U-13 Outcome-Blind Hypothesis Design
+## U-13 Outcome-Blind Paper Protocol Design
 
-Decision `8900ada4819a2d951fd26ab6a1d61e18e0e43de939207787c63e05f925866ce6`
-authorizes exactly one economically independent U-13 hypothesis design. The
-design must specify one mechanism, causal timing, non-duplication and failure
-regimes without reading data or selecting a timeframe, estimator, threshold,
-event identity, horizon, cost or strategy rule.
+U-13 freezes `U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION` under
+hypothesis `39f1848f...db5c` and design `982cb951...3477`. The mechanism is
+cross-asset temporal propagation: a completed broad positive common shock may
+reach assets at different speeds, and a stable prior-only lagging responder may
+continue catching up after the next eligible open.
 
-U-04 through U-12 results remain immutable and OOS-sealed. Their event signs,
-paths, failed Gates, concentration, censor patterns and defects may not choose
-or shape U-13. A separate outcome-blind Paper protocol remains mandatory before
-any data access or event scan.
+The only next task is a separate result-blind Paper protocol. Before reading
+data it must freeze the completed observation timeframe, common shock and
+breadth, common component, lag estimator, history, disjoint persistence,
+permanent-weakness exclusion, sample ceiling, candidate identity, clustering,
+paths, costs and Gates. A same-reader preflight must precede any result run.
+
+No public data, event, path, return or OOS value was read. Strategy rules,
+Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## U-13 Historical Authorization
+
+Decision `8900ada4...ce6` authorized the completed single hypothesis design.
+
+U-04 through U-12 results remain immutable and OOS-sealed; they did not select
+the U-13 mechanism and may not shape its future protocol.
 
 ## U-13 Authorization Record
 

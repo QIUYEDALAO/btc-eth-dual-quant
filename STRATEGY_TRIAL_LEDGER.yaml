@@ -9,6 +9,12 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION
+    status: declared_unopened
+    hypothesis: "U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION: Binance spot USDT long/cash only; using only completed observations and exact point-in-time active members, a broad positive common-market information or capital-flow shock may be absorbed at different speeds across assets, and an asset with a preregistered prior-only tendency to respond with delay rather than permanent weakness may continue catching up after the next eligible open; no U-04 through U-12 outcome reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 39f1848fe195be8e6c406a5e21b734ce9c469a9df5c08eaa0a70de348988db5c
+    oos_opened: false
+    notes: "Outcome-blind design only. Timeframe, common-shock and lag estimators, persistence, permanent-weakness exclusion, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
   - id: U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY
     status: declared_unopened
     hypothesis: "U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY: Binance spot USDT long/cash only; using only completed prior occurrences and the exact point-in-time active member set, an asset-specific relative return pattern that recurs in the same predeclared UTC calendar state across disjoint historical subperiods may reflect recurring regional participation, settlement, treasury or mandate flows and may persist after the next eligible open; no U-04 through U-10 outcome reuse, U-11 invalid-result or defect reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
