@@ -2,11 +2,29 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task
-current_status: u06_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-06 closed failed feasibility; only a separate independent-candidate authorization decision may follow
+current_status: u06_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-06 unique sealed-IS Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U06_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u06_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u06-cross-sectional-paper-observation
+    run_content_hash: 2f715394411ca260f9889304ddc84da926d37ec1dfc9d4316493f23f6881382a
+    three_order_identity_hash: b60423c216a6a9a109ac47d645d5ccae5f3f7c3d0fb9a9ffd0df9204bcee762c
+    complete_is_independent_episodes: 56
+    median_24h_relative_repricing: '-0.001437523976085089153319753825'
+    median_24h_candidate_absolute_close_displacement: '-0.0030291579131649309986646607'
+    failed_gates: [complete_is_independent_episodes, projected_full_independent_episodes, median_24h_relative_repricing, median_24h_candidate_absolute_close_displacement]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-06 frozen-source data qualification and IS/OOS isolation
     status: pass_local_complete
     evidence: reports/m1/U06_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -933,19 +951,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-06-PAPER-OBSERVATION
-    phase: U-06 unique sealed-IS Paper observation
-    status: authorized_once_not_started
+  - id: U-07-DECISION
+    phase: separate post-U-06 independent-candidate authorization decision
+    status: authorized_ready
     branch: not_created
-    protocol_target_commit: 1bb59f1ac9d9e0fd5bacc8c55e572b9a1fbce8cd
-    protocol_content_hash: 7b53860efa2a5c52d727f1d4d4694ddf39ff34517dfde6aaf4b6abe31f35f289
-    review_content_hash: e4f0af0d817990d825081b7922b395dc3c76d05fc662e9c404fa82ce344e81b3
-    qualification_content_hash: e6a4a0eb47af2d88f30ab827d4456969549f86c5c81b7affedb91b034cb95a67
-    maximum_runs: 1
-    sealed_is_only: true
-    event_scan_authorized: true
-    path_observation_authorized: true
-    formal_returns_authorized: false
+    predecessor_run_content_hash: 2f715394411ca260f9889304ddc84da926d37ec1dfc9d4316493f23f6881382a
+    maximum_new_hypotheses: 1
+    independent_economic_rationale_required: true
+    outcome_inversion_prohibited: true
+    event_scan_authorized: false
     strategy_authorized: false
     oos_authorized: false
     trading_authorized: false
@@ -1016,8 +1030,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Execute exactly one sealed-IS U-06 Paper observation under the frozen protocol and qualification."
-  - "Normal, reverse and deterministic-shuffled outputs must be identical; no tuning or second run."
+  - "Preserve U-06 failed run 2f715394...1382a without tuning, inversion or second observation."
+  - "A separate decision may authorize at most one independent outcome-blind next hypothesis design."
   - "Preserve U-04/U-05 failed runs without tuning, inversion or outcome-derived design choices."
   - "Do not derive a new candidate's sign, threshold, horizon or Gate from U-04/U-05 failed outcomes."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1029,7 +1043,7 @@ allowed_next_work:
 research_authorizations:
   hypothesis_preregistration: false
   strategy_code: false
-  event_scan: true
+  event_scan: false
   returns: false
   backtesting: false
   oos_opened: false
@@ -1056,6 +1070,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U06_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-06 sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u06_cross_sectional_paper_observation/run_manifest.json
+    phase: U-06 Paper observation machine result
+    status: deterministic_failed_feasibility
+    status_marker: '"status":"failed_feasibility"'
   - path: reports/m1/U06_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-06 data qualification
     status: pass_local_complete

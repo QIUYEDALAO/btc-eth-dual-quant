@@ -1,6 +1,6 @@
 # Next Action
 
-## U-06 Unique Sealed-IS Paper Observation
+## Separate Post-U-06 Candidate Decision
 
 U-05 completed its one authorized sealed-IS Paper observation and is closed as
 `failed_feasibility`. Run `874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a`
@@ -29,9 +29,14 @@ Qualification `e6a4a0eb...b95a67` passed: 27,736 ZIPs, 19 manifests,
 10,251,360 expected 5m rows, 1,170 positive finite quote-volume authority rows
 and three-order identity are exact. OOS decode and outcome rows remain zero.
 
-Execute the only sealed-IS observation under the frozen daily event, 72h
-clustering and path contract. Any failed Paper Gate closes U-06 without tuning
-or a second run; a pass authorizes only independent result review.
+The unique U-06 observation is `failed_feasibility` under run `2f715394...1382a`.
+Three orders match, but 56 complete episodes miss the 60 Gate, projected full
+episodes 77 miss 80, and median 24h relative/absolute outcomes are negative.
+OOS remained sealed; no return, position or equity model was created.
+
+U-06 is closed without tuning or a second run. The next task is a separate
+decision on at most one economically independent, outcome-blind candidate;
+U-04/U-05/U-06 outcome inversion and result-derived parameters are prohibited.
 
 Do not conduct a U-05 Paper-result review, change its protocol, rerun it or
 continue to fixed rules. U-06 may authorize only a later separate outcome-blind

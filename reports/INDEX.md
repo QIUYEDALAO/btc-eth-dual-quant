@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U06_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-06 sealed-IS Paper observation | failed_feasibility | 56 complete episodes; count and both 24h economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u06_cross_sectional_paper_observation/` | U-06 Paper machine evidence | run `2f715394...1382a` | Three-order exact under `b60423c2...e762c`; immutable failed Gates. | no |
 | `reports/m1/U06_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-06 frozen-source qualification | pass / OOS sealed | 27,736 ZIPs, 19 manifests, daily quote-volume authority and three orders pass; outcome rows zero. | no |
 | `reports/m1/evidence/u06_cross_sectional_data_qualification_v1.json` | U-06 qualification machine evidence | content `e6a4a0eb...b95a67` | Binds exact protocol/review, frozen V4 authority and one-run-only IS authorization. | no |
 | `reports/expert/U06_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-06 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1bb59f1a...e8cd` without modification and authorizes only data qualification. | no |

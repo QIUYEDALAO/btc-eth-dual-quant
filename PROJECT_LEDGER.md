@@ -1998,3 +1998,11 @@ private exchange responses here.
 - Daily authority: 10,251,360 expected 5m rows, 1,170 positive finite quote-volume membership rows and 288 bars per complete UTC day.
 - Isolation: OOS values decoded 0; daily signal/event/path/return rows 0; network false; production evidence unchanged.
 - Authorization: exactly one sealed-IS Paper observation; no tuning, second run, strategy, OOS or trading.
+
+## 2026-07-18 - U-06 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `2f715394...1382a` / `b60423c2...e762c`; 106 events, 60 episodes, 56 complete 72h paths; three orders exact.
+- Failed sample Gates: 56 < 60 complete episodes and projected full 77 < 80; sealed-OOS projection 21 passes.
+- Failed economic Gates: median 24h relative repricing `-0.1438%` and absolute displacement `-0.3029%`, both below `+1.80%`.
+- Isolation: OOS decode 0; no formal return, fill, position, equity, parameter change or second run.
+- Decision: U-06 closed `failed_feasibility`; no result review, rules, strategy, backtest or OOS.
