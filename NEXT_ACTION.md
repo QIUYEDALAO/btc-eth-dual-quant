@@ -1,5 +1,17 @@
 # Next Action
 
+## U-16 Outcome-Blind Hypothesis Design
+
+Decision `05346312...528fc` authorizes exactly one economically independent,
+outcome-blind U-16 cross-sectional hypothesis design. It binds U-15 closed
+before results and prohibits repairing, relaxing or repackaging its taker-buy
+field contract.
+
+The design may freeze only one economic mechanism, causal timing, failure
+regimes and non-duplication from U-04 through U-15. Timeframe, estimator,
+threshold, event, path, costs and strategy rules remain unresolved. No market
+data, result, OOS, strategy, backtest or trading access is authorized.
+
 ## Stop: U-15 Failed Pre-Result Field Qualification
 
 U-15 is closed under failure evidence `83eb8ac2...63c28`. The first official

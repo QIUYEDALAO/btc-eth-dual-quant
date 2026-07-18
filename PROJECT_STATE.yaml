@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-15 closed on failed pre-result taker-buy field qualification; no successor is authorized
-current_status: u15_failed_pre_result_field_qualification_closed_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-16 independent design authorized; outcome-blind hypothesis design is the only next task
+current_status: u16_one_independent_hypothesis_design_authorized_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-16 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U16_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u16_design_authorization_v1.json
+    branch: codex/u16-design-authorization
+    decision_content_hash: 05346312b0e47168a17a77cd19d1a73525b17eb9f64de29b2b157a5c673528fc
+    prior_candidate: U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE
+    prior_failure_content_hash: 83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-15 official taker-buy field/data qualification
     status: failed_pre_result_field_qualification
     evidence: reports/m1/U15_TAKER_BUY_FIELD_DATA_QUALIFICATION.md
@@ -1903,16 +1917,20 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-15-DATA-QUALIFICATION
-    phase: official taker-buy field/data qualification, complexity and scope preflight
-    status: completed_failed_pre_result_field_qualification
-    protocol_content_hash: 3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a
-    review_content_hash: 2686c3acc1f5d46d7b37295530c54268f314cca177197306db7358bb8aa38ceb
-    field_data_qualification_authorized: false
-    frozen_source_read_executed: true
-    public_data_download_authorized: false
-    failure_content_hash: 83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28
-    candidate_closed: true
+  - id: U-16
+    phase: one independent outcome-blind hypothesis design
+    status: authorized_next
+    decision_content_hash: 05346312b0e47168a17a77cd19d1a73525b17eb9f64de29b2b157a5c673528fc
+    maximum_hypotheses: 1
+    hypothesis_design_authorized: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1986,9 +2004,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "No U-15 retry, field repair, relaxed invariant, Paper observation, strategy or OOS step is authorized."
-  - "Any future U-16 hypothesis design authorization decision must be separate, bind this failure and prohibit reuse of the failed field contract or result-derived rules."
-  - "Do not begin another candidate until that separate authorization exists."
+  - "Complete exactly one economically independent, outcome-blind U-16 cross-sectional hypothesis design without reading data or outcomes."
+  - "Freeze its mechanism, causal timing, failure regimes and non-duplication from U-04 through U-15."
+  - "Do not repair, relax or reuse U-15's failed taker-buy field contract; leave all estimators and parameters to a later protocol."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -2025,6 +2043,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U16_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-16 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u16_design_authorization_v1.json
+    phase: U-16 authorization machine evidence
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "05346312b0e47168a17a77cd19d1a73525b17eb9f64de29b2b157a5c673528fc"'
   - path: reports/m1/U15_TAKER_BUY_FIELD_DATA_QUALIFICATION.md
     phase: U-15 official taker-buy field/data qualification
     status: failed_pre_result_field_qualification

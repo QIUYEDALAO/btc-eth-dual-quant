@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-16 design authorization `05346312b0e47168a17a77cd19d1a73525b17eb9f64de29b2b157a5c673528fc` permits exactly one economically independent outcome-blind hypothesis design. It binds U-15 closed and prohibits any repair, relaxation or repackaging of the failed taker-buy field contract.
+- Only U-16 mechanism, causal timing, failure regimes and non-duplication may be frozen next. Data, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-15 is closed `failed_pre_result_field_qualification` under evidence `83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28`. The first official field scan found a checksum-bound ADAUSDT 2020-01 row with zero quote volume, violating the frozen strict-positive denominator Gate.
 - The field scan stopped immediately. Taker state, candidates, events, paths, returns and OOS values are all zero; reverse/shuffled scans, structural preflight, complexity and Paper observation did not run. No repair, relaxation, inference, fill, substitution or retry is allowed.
 - No successor is authorized. Continuing research requires a separate independent-candidate authorization decision; strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

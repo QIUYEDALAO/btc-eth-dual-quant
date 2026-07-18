@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m0/U16_DESIGN_AUTHORIZATION_DECISION.md` | U-16 design authorization | one independent outcome-blind design authorized | Binds U-15 pre-result failure and prohibits taker-field repair/reuse; enables only one new design. | no |
+| `config/u16_design_authorization_v1.json` | U-16 machine authorization | content `05346312...528fc` | Keeps data, events, strategy, OOS, trading and M2 false. | no |
 | `reports/m1/U15_TAKER_BUY_FIELD_DATA_QUALIFICATION.md` | U-15 official taker-buy field qualification | failed_pre_result_field_qualification | First official ADAUSDT row has zero quote volume and violates the frozen strict-positive denominator Gate; stopped before outcomes. | no |
 | `reports/m1/evidence/u15_taker_buy_field_qualification_failure_v1.json` | U-15 field failure evidence | content `83eb8ac2...63c28` | Binds archive/raw-row identity, zero result access and permanent candidate closure. | no |
 | `reports/expert/U15_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-15 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `5438dec6...da5a` unchanged and authorizes only field/data qualification and preflight. | no |

@@ -2415,4 +2415,11 @@ private exchange responses here.
 - Fail closed: scan stopped on the first failure; reverse/shuffled field scans, structural preflight, complexity and Paper observation were not run.
 - Isolation: taker-state/candidate/event/path/return rows and OOS values are all zero. No threshold relaxation, field repair, inference, fill, substitution or second run is allowed.
 - Decision: U-15 is permanently closed before results. No successor is authorized; a separate independent-candidate authorization decision is required to continue the research goal.
+
+## 2026-07-18 - U-16 Independent Design Authorized
+
+- Decision: `05346312b0e47168a17a77cd19d1a73525b17eb9f64de29b2b157a5c673528fc`; exactly one independent, outcome-blind U-16 hypothesis design.
+- Binding: U-15 remains closed before results under `83eb8ac2...63c28`; event/return/OOS access and second runs remain zero.
+- Independence: U-04 through U-15 outcomes, signs, Gates, concentrations, censor patterns, defects and field failures may not select U-16. U-15 field-contract repair or relaxation is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
