@@ -1,6 +1,22 @@
 # Next Action
 
-## U-14 Unique Sealed-IS Paper Observation
+## U-15 Separate Independent-Candidate Authorization Decision
+
+U-14 is closed `failed_feasibility` under the single immutable run
+`38247311...1f5c`. Three orders match exactly and 92 complete episodes pass all
+count, projection and distribution Gates, but median 24h relative rejection
+persistence is only `0.1380%`, absolute displacement `0.7737%`, and the positive
+fraction `54.35%`; all three frozen economic Gates fail.
+
+No U-14 result review, fixed rule, strategy, backtest or OOS step is allowed.
+The only possible successor is a separate U-15 authorization decision. It may
+authorize at most one economically independent outcome-blind hypothesis design
+and must prohibit inversion, tuning or selection from every U-04 through U-14
+outcome, defect or censor pattern.
+
+No strategy is eligible for M2. OOS, trading and M2 remain prohibited.
+
+## U-14 Historical Unique Sealed-IS Paper Observation
 
 Qualification contract/corrected result `bea82cea...5951` / `4db5eb79...dec5` pass.
 All 27,736 archives and 19 manifests are exact, six traversal identities match,

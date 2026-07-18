@@ -2,11 +2,30 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-14 data qualification and complexity preflight passed; one frozen sealed-IS Paper observation is the only next task
-current_status: u14_data_qualification_complexity_preflight_pass_one_sealed_is_paper_observation_authorized_no_returns_no_oos_no_trading_no_m2
+current_phase: U-14 closed failed feasibility; only a separate independent-candidate authorization decision may follow
+current_status: u14_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-14 unique sealed-IS downside-rejection Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U14_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u14_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u14-cross-sectional-paper-observation
+    run_content_hash: 3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c
+    three_order_identity_hash: 1436911ba8c6f4fd3adbba1c5ebf391f98d82d80987c7f8b2308b95c42414b69
+    complete_is_independent_episodes: 92
+    median_24h_relative_rejection_persistence: '0.001380259434304533953207550691'
+    median_24h_candidate_absolute_close_displacement: '0.00773724142851497775358313756'
+    fraction_positive_24h_relative_rejection_persistence: '0.5434782608695652173913043478'
+    failed_gates: [median_24h_relative_rejection_persistence, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_rejection_persistence]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-14 pre-result all-member rank-gate correction
     status: corrected_and_requalified_before_any_market_result
     evidence: reports/m1/U14_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -1813,13 +1832,14 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-14-PAPER-OBSERVATION
-    phase: unique sealed-IS downside-rejection persistence Paper observation
+  - id: U-15-DECISION
+    phase: separate independent-candidate authorization decision after U-14 closure
     status: authorized_next
-    candidate_id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
-    qualification_content_hash: 4db5eb7938cbf7f8063a00164fa6986d53629968ea0a8a4516de01e3a859dec5
-    unique_run_authorized: true
-    second_run_authorized: false
+    prior_candidate_id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
+    prior_run_content_hash: 3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c
+    maximum_new_hypotheses: 1
+    hypothesis_design_authorized: false
+    event_scan_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1893,9 +1913,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Run exactly one sealed-IS U-14 Paper observation using the frozen 4h auction, common-selling, downside-rejection, deterministic ranking, 24h clustering and path contract."
-  - "Require normal, reverse and deterministic-shuffled event, episode, path and accounting hashes to match exactly."
-  - "Any frozen Paper Gate failure closes U-14 without tuning, retry, strategy, return or OOS access."
+  - "Make one separate U-15 independent-candidate authorization decision binding U-14 failed, single-run and OOS-sealed."
+  - "Any future hypothesis must be economically independent and may not invert, tune or select from U-04 through U-14 outcomes, defects or censor patterns."
+  - "The decision may authorize hypothesis design only; data, parameters, events, returns, strategy/backtesting and OOS remain false."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -1932,6 +1952,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U14_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-14 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u14_cross_sectional_paper_observation/run_manifest.json
+    phase: U-14 Paper observation machine evidence
+    status: deterministic_failed_feasibility
+    status_marker: '"run_content_hash":"3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c"'
   - path: reports/m1/U14_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-14 data qualification, complexity benchmark and preflight
     status: pass_local_complete

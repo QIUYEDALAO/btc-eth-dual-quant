@@ -2370,3 +2370,11 @@ private exchange responses here.
 - The Gate now ranks every active member first and admits a threshold-passing candidate only when it is inside the frozen top `ceil(active/4)` set.
 - A targeted all-member rank fixture passes; all sources and six traversals remain exact; the three corrected one-million-row passes remain under 1.090370 seconds and 27.391 MiB.
 - Corrected qualification `4db5eb7938cbf7f8063a00164fa6986d53629968ea0a8a4516de01e3a859dec5` supersedes `417b329a...aaa7` before outcomes. The unique Paper observation authority remains unused.
+
+## 2026-07-18 - U-14 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c` / `1436911ba8c6f4fd3adbba1c5ebf391f98d82d80987c7f8b2308b95c42414b69`; all four manifests match across three orders.
+- Sample: 92 complete episodes, 29 symbols, 46 months and five years with at least 12 episodes; all count, projection and concentration Gates pass.
+- Economics: median 24h relative rejection persistence `0.1380%`, absolute displacement `0.7737%`, positive fraction `54.35%`; frozen minima `1.80%`, `1.80%`, `60%` all fail.
+- Isolation: OOS opened false, decoded rows 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
+- Decision: U-14 closes `failed_feasibility`; only a separate U-15 independent-candidate authorization decision may follow.
