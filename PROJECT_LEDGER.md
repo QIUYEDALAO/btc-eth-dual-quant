@@ -2673,3 +2673,10 @@ private exchange responses here.
 - Mechanism: multi-observation positive peer-relative leadership during broadening cross-sectional dispersion may persist through segmented attention, capital rotation and gradual price discovery.
 - Independence: not market-stress strength, volume trend, common-shock lagged diffusion, correlation breakdown, reversal, absorption or a higher-moment risk premium; no prior result or failure selected it.
 - Scope: no public data or outcome read and no timeframe, estimator, threshold, horizon or strategy rule selected. Protocol design may proceed only with a pre-freeze synthetic exact-core complexity pass.
+
+## 2026-07-19 - U-22 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U22-03-DISPERSION-EXPANSION-LEADER-CONTINUATION-PAPER-V1`; content `0fdc7eb2...d1b4fa`; frozen before public data or results.
+- Pre-freeze feasibility: `4476d5b5...e6940b`; three 1,000,080-row synthetic passes complete in at most 0.213096 seconds and 22.000 MiB with identical digest.
+- Identity: 24 completed hours, 12h/12h robust dispersion expansion, 2.40% relative leader, 8/12 positive hours, both halves positive and 50% single-hour dominance ceiling.
+- Scope: no public archive, market result or OOS value read. Only separate exact-head independent review is authorized next.

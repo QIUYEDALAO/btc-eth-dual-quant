@@ -1,5 +1,18 @@
 # Next Action
 
+## U-22 Exact-Head Independent Paper-Protocol Review
+
+Protocol `U22-03-DISPERSION-EXPANSION-LEADER-CONTINUATION-PAPER-V1` is frozen
+under `0fdc7eb2...d1b4fa` after synthetic feasibility `4476d5b5...e6940b`
+passed 3/3 before freeze. The target fixes 24 completed hourly observations,
+12h/12h robust dispersion expansion, coherent relative leadership, 24h
+clustering, next-open paths and immutable Paper Gates.
+
+The only next task is a separate-branch read-only exact-head review. Approval
+may authorize only frozen-source structural qualification and result-free
+preflight. Public-data result fields, events, paths, formal returns, strategy,
+backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
 ## U-22 Outcome-Blind Paper Protocol and Synthetic-Core Feasibility
 
 U-22 freezes `U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION`

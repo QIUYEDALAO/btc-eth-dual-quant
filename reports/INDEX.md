@@ -1,5 +1,10 @@
 # Reports Index
 
+| `reports/m1/U22_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-22 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 24h dispersion expansion, coherent leader, clustering, paths and Gates after pre-freeze complexity pass. | no |
+| `config/u22_cross_sectional_paper_protocol_v1.json` | U-22 machine Paper protocol | content `0fdc7eb2...d1b4fa` | Only exact-head review is true; data/results/trading permissions remain false. | no |
+| `reports/m1/evidence/u22_synthetic_core_feasibility_v1.json` | U-22 pre-freeze synthetic core feasibility | content `4476d5b5...e6940b` | 3×1,000,080 logical rows pass deterministically with zero public-data/OOS access. | no |
+
+
 | `reports/m1/U22_DISPERSION_EXPANSION_LEADER_CONTINUATION_DESIGN.md` | U-22 hypothesis design | economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only | Freezes dispersion-expansion leader continuation without public data, parameters, results or OOS. | no |
 | `reports/m1/U22_NON_DUPLICATION_REVIEW.md` | U-22 non-duplication | pass_design_level | Separates dispersion expansion from stress strength, volume trend, common-shock diffusion and correlation breakdown. | no |
 | `config/u22_cross_sectional_design_scope_v1.json` | U-22 machine design scope | content `652677b1...153abe` | Enables only protocol design and synthetic exact-core feasibility; all result/trading permissions false. | no |
