@@ -2438,4 +2438,11 @@ private exchange responses here.
 - Event: recent relative log displacement at least 2.40%, at least 7/12 positive relative hours, max single candidate hour 6%, terminal-hour contribution at most 50%; deterministic representative and 24h cluster.
 - Observation: strict next 5m open and 1/2/4/8/12/24h paths only; 90-episode and fixed distribution/economic Gates; no formal return.
 - Next action: exact-head independent review only.
+
+## 2026-07-18 - U-16 Paper Protocol Exact-Head Review Approved
+
+- Target: `9cafb08dbe59faa48c948458151eb7cb7d6c1ddb`; protocol `18e302de...5633a`; five target blobs exact.
+- Verdict: approve 16/16 with 0 critical/high; review `2f708c0f...34e3`.
+- Causality: future membership/lifecycle information is excluded from event identity and used only to right-censor incomplete future Paper paths.
+- Authorization: frozen-source data qualification, structural ceiling and synthetic complexity only; no common-path, correlation, event, result or OOS scan.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

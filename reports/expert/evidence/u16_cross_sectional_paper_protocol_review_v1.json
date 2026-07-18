@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "status": "approve",
+  "review_id": "U16-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "target": {
+    "head_sha": "9cafb08dbe59faa48c948458151eb7cb7d6c1ddb",
+    "parent_sha": "0466766defc0dbd716392e5b9a35e1dabf514017",
+    "protocol_content_hash": "18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a",
+    "files": {"config/u16_cross_sectional_paper_protocol_v1.json":"a64a6ae8123add3769097d4aa1cf1ab3757acc91e7f2e433ee45240478af7aa8","reports/m1/U16_CROSS_SECTIONAL_PAPER_PROTOCOL.md":"7032262b44bd16ce9cab20294c33f33d132fcea9eaa3873dc96ed2f862843634","scripts/u16_cross_sectional_paper_protocol_check.py":"4995fa1ee59e2859d6440b134b8b85ae333f7ba3951a935b38528204f9a02ebf","scripts/u16_cross_sectional_paper_protocol_validate.sh":"1772aa2bba2b271e81f9ce813dd60b4a17f87daf9d6ed59f2d6713ed6fbbdc0e","tests/test_u16_cross_sectional_paper_protocol.py":"f77655ace7b7286ded117353e1a1618ec18a34d5cfd09a8af1306b9a124c04b7"}
+  },
+  "verdict": "approve",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "review_dimensions": {"candidate_design_and_prior_failure_binding":"pass","complete_48h_history":"pass","candidate_specific_peer_common_component":"pass","pearson_baseline_recent_windows":"pass","correlation_breakdown_thresholds":"pass","positive_displacement_and_coherence":"pass","terminal_spike_exclusion":"pass","point_in_time_membership_and_lifecycle":"pass","future_membership_used_only_for_episode_right_censor_not_event_selection":"pass","invalid_interval_mask_before_hourly_assembly":"pass","event_tie_break_and_clustering":"pass","strict_next_open_and_path_censoring":"pass","sample_projection_distribution_gates":"pass","economic_and_cost_gates":"pass","complexity_scope_and_oos_isolation":"pass","authorization_matrix":"pass"},
+  "authorization_after_review": {"data_qualification_complexity_and_preflight":true,"common_path_scan":false,"correlation_scan":false,"event_scan":false,"path_observation":false,"formal_returns":false,"fixed_rule_contract":false,"freqtrade_strategy_code":false,"backtesting":false,"oos":false,"api_trading":false,"execution_live":false,"m2":false},
+  "review_content_hash": "2f708c0f6ac7b4e79428a4a7b1e9850182120c2dfcb3b06b53f973123f5c34e3",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

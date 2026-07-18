@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-16 exact protocol target `9cafb08dbe59faa48c948458151eb7cb7d6c1ddb` is independently approved 16/16 with 0 critical/high under review `2f708c0f6ac7b4e79428a4a7b1e9850182120c2dfcb3b06b53f973123f5c34e3`.
+- Only frozen-source data qualification, 48h-history/24h-path structural preflight and synthetic complexity are authorized next. Common paths, correlations, events, results, OOS and trading remain false.
 - U-16 Paper protocol `U16-03-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE-PAPER-V1` is frozen before results under `18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a`. Only exact-head independent review is authorized next.
 - It fixes 48 completed hourly returns, 36h/12h Pearson correlation breakdown, 2.40% positive relative displacement, coherence/spike exclusion, 24h clustering, next-open paths and Paper Gates. No data or outcome was read.
 - U-16 freezes `U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE` under design `8574e5c5aa068f10a561d8cfae26d4a45d5b9eb17287156912fa4d8b5fd075d1`. It is a declared-unopened spot long/cash candidate selected without data or result access.

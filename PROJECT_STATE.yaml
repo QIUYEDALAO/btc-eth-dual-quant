@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-16 correlation-breakdown Paper protocol frozen; exact-head independent review is the only next task
-current_status: u16_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-16 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task
+current_status: u16_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-16 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U16_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u16_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u16-cross-sectional-paper-protocol-review
+    target_head_sha: 9cafb08dbe59faa48c948458151eb7cb7d6c1ddb
+    protocol_content_hash: 18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a
+    review_content_hash: 2f708c0f6ac7b4e79428a4a7b1e9850182120c2dfcb3b06b53f973123f5c34e3
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-16 outcome-blind correlation-breakdown Paper protocol
     status: frozen_before_result_pending_exact_head_review
     evidence: reports/m1/U16_CROSS_SECTIONAL_PAPER_PROTOCOL.md
@@ -1945,11 +1959,12 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-16-PROTOCOL-REVIEW
-    phase: exact-head independent correlation-breakdown Paper protocol review
+  - id: U-16-DATA-QUALIFICATION
+    phase: frozen-source data qualification, complexity and scope preflight
     status: authorized_next
     protocol_content_hash: 18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a
-    exact_head_independent_review_authorized: true
+    review_content_hash: 2f708c0f6ac7b4e79428a4a7b1e9850182120c2dfcb3b06b53f973123f5c34e3
+    data_qualification_authorized: true
     public_data_read_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
@@ -2031,9 +2046,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete one exact-head independent review of the frozen U-16 Paper protocol without modifying target files."
-  - "Review history/common-path construction, correlation/displacement causality, spike exclusion, clustering, paths, Gates, isolation and complexity."
-  - "Only approve with zero critical/high may authorize separate data qualification and preflight."
+  - "Complete U-16 frozen-source data qualification and result-free 48h-history/24h-path structural preflight without decoding returns or events."
+  - "Run three synthetic one-million-row complexity passes on the exact future evaluator path."
+  - "Any authority, order, sample-ceiling, isolation or complexity failure closes U-16 before results."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -2070,6 +2085,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/U16_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-16 Paper-protocol exact-head review
+    status: approve_zero_critical_high
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u16_cross_sectional_paper_protocol_review_v1.json
+    phase: U-16 protocol review machine evidence
+    status: deterministic_qualification_only
+    status_marker: '"review_content_hash": "2f708c0f6ac7b4e79428a4a7b1e9850182120c2dfcb3b06b53f973123f5c34e3"'
   - path: reports/m1/U16_CROSS_SECTIONAL_PAPER_PROTOCOL.md
     phase: U-16 outcome-blind Paper protocol
     status: frozen_before_result_pending_exact_head_review

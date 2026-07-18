@@ -1,5 +1,17 @@
 # Next Action
 
+## U-16 Frozen-Source Data Qualification and Preflight
+
+Exact protocol target `9cafb08d...1ddb` is approved 16/16 with 0/0
+critical/high under review `2f708c0f...34e3`. The only next task may verify
+frozen source/manifests, 1h/5m grids, 48h history and future 24h path
+availability, point-in-time membership/lifecycle/mask order and IS/OOS
+isolation without decoding returns or events. It must also run three synthetic
+one-million-row passes on the exact future evaluator path.
+
+Any authority drift, traversal mismatch, ceiling below 400 or resource failure
+closes U-16 before results.
+
 ## U-16 Exact-Head Independent Paper-Protocol Review
 
 Protocol `U16-03-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE-PAPER-V1` is
