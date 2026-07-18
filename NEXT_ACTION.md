@@ -1,6 +1,6 @@
 # Next Action
 
-## U-09 Outcome-Blind Independent Hypothesis Design
+## U-09 Outcome-Blind Paper Protocol Design
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -24,11 +24,19 @@ Decision `2d643678e00575c93dad0331fff089fd620b214f658ca8d174dfe9bbcc06e477`
 authorizes exactly one economically independent, outcome-blind U-09 hypothesis
 design. It binds U-04 through U-08 as failed, single-run and OOS-sealed.
 
-The design may state one economic mechanism, causal timing, non-duplication,
-failure regimes and future validation boundaries. It may not select a timeframe,
-threshold, event, horizon, entry, exit or risk rule, and it may not use prior
-observed signs or failed Gate values to choose its mechanism. A separate frozen
-and independently reviewed Paper protocol must precede any event scan.
+U-09 freezes
+`U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE` under
+hypothesis `cb91d77d...14c92` and design `4830e361...ee6f2`. The mechanism is
+persistently low asset-specific variability after removing the common market
+component, interpreted as a possible proxy for deeper liquidity, lower
+disagreement and broader capital eligibility.
+
+The only authorized next task is a separate outcome-blind Paper protocol. It
+must freeze the completed-data timeframe, common-factor algorithm,
+idiosyncratic-volatility estimator, persistence rule, candidate threshold,
+reference open, clustering, horizons and immutable sample/economic Gates before
+any event or path scan. It may not create fills, positions, formal returns,
+strategy rules, backtests or OOS access.
 
 ## U-08 Frozen Historical Chain
 

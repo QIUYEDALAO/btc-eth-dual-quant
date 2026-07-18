@@ -9,6 +9,12 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
+    status: declared_unopened
+    hypothesis: "U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, an asset with persistently lower asset-specific volatility after removing the contemporaneous common market component may reflect deeper liquidity, lower disagreement and broader capital eligibility that can preserve relative quality after the next eligible open; no U-04/U-05/U-06/U-07/U-08 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: cb91d77d11b0f877007848330df7e05e1d4e9257142fce4d339edefe75e14c92
+    oos_opened: false
+    notes: "Outcome-blind design only. Observation timeframe, common-factor and idiosyncratic-volatility estimators, persistence rule, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
   - id: U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE
     status: declared_unopened
     hypothesis: "U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE: Binance spot USDT long/cash only; when an asset enters the exact point-in-time monthly Top-15 liquid universe using only prior-complete ranking inputs, broadened investability, attention and mandate eligibility may create demand that persists after membership becomes effective and no earlier than the next eligible open; no U-04/U-05/U-06/U-07 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

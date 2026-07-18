@@ -154,7 +154,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-08-DATA-QUALIFICATION | Frozen-source membership/rank/path-authority qualification | completed_pass_local | U-08-PROTOCOL-REVIEW approve | `codex/u08-cross-sectional-data-qualification` / local-only | ZIP/manifests, ranks, lifecycle, 5m grid, mask, boundary | Result `1ec26ef7...7cb5`; three orders exact; zero outcomes | none |
 | U-08-PAPER-OBSERVATION | Unique sealed-IS membership-entry Paper observation | completed_failed_feasibility | U-08-DATA-QUALIFICATION pass | `codex/u08-cross-sectional-paper-observation` / local-only | Frozen event, episode, path and accounting diagnostics | Run `f6fbcdee...ca3e`; 44 complete; relative `-0.4690%`, absolute `-3.3543%`, positive fraction `45.45%` fail | candidate closed; no review, rules, strategy, OOS or rerun |
 | U-09-DECISION | Separate post-U-08 candidate authorization | completed_authorize_design_only | U-08 closed with OOS sealed | `codex/u09-design-authorization` / local-only | Bind five failed candidates and authorize one independent outcome-blind design | Decision `2d643678...e477`; zero downstream permissions | U-09 hypothesis design only |
-| U-09 | Independent point-in-time cross-sectional hypothesis design | authorized_next | U-09-DECISION complete | new local-only branch | One economic mechanism, timing, non-duplication and failures; no parameters/results | design hash exact; no outcome access | Paper protocol design only if design passes |
+| U-09 | Idiosyncratic-volatility quality-persistence hypothesis design | completed_local | U-09-DECISION complete | `codex/u09-cross-sectional-idiosyncratic-volatility-quality-design` / local-only | Machine scope, economics, non-duplication and unopened ledger registration | Design `4830e361...ee6f2`; hypothesis `cb91d77d...14c92`; no parameters/events/returns/OOS | Paper protocol design only |
+| U-09-PROTOCOL | Outcome-blind idiosyncratic-volatility Paper protocol | authorized_next | U-09 design complete | new local-only branch | Freeze estimators, events, paths, Gates and IS/OOS isolation | deterministic protocol hash; no result access | exact-head independent review |
 
 ## Current Gate
 
@@ -168,7 +169,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - The V3 contract, registry and blocked qualification evidence remain immutable historical evidence. PR #95 merged the deterministic U-03F `failed_audit` result with one critical and seven high findings. V4 is `audit_blocked` / `revalidation_required`; production evidence is unchanged and U-04 remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active task: one outcome-blind U-09 hypothesis design. Parameters, event scanning, formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
+- Active task: U-09 outcome-blind Paper protocol design. Event scanning, formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

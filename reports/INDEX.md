@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U09_IDIOSYNCRATIC_VOLATILITY_QUALITY_PERSISTENCE_DESIGN.md` | U-09 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes low idiosyncratic variability as a quality mechanism without parameters, outcomes, rules or OOS. | no |
+| `reports/m1/U09_NON_DUPLICATION_REVIEW.md` | U-09 non-duplication | pass_design_level | Separates quality/variability from U-04 through U-08 and prior strategy families. | no |
+| `config/u09_cross_sectional_design_scope_v1.json` | U-09 machine design scope | content `4830e361...ee6f2` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
 | `reports/m0/U09_DESIGN_AUTHORIZATION_DECISION.md` | U-09 design authorization | one independent outcome-blind design authorized | Binds five failed candidates and passing V4 audit; enables only one U-09 hypothesis design. | no |
 | `config/u09_design_authorization_v1.json` | U-09 machine authorization | content `2d643678...e477` | Prohibits prior-outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
 | `reports/m1/U08_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-08 sealed-IS Paper observation | failed_feasibility | 44 complete 336h episodes; all three frozen economic Gates fail; OOS remains sealed. | no |

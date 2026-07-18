@@ -2098,3 +2098,11 @@ private exchange responses here.
 - Binding: U-04 through U-08 remain failed, single-run and OOS-sealed; ADR-0015 audit remains 19/19 pass and source freeze remains exact.
 - Independence: prior event signs, measured paths and failed Gate values may not be inverted, relabeled or used to choose U-09.
 - Authorization: hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-09 Idiosyncratic-Volatility Quality-Persistence Design Complete
+
+- Candidate: `U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE`; hypothesis `cb91d77d...14c92`; design `4830e361...ee6f2`.
+- Mechanism: persistently lower asset-specific variability after common-market removal may proxy for deeper liquidity, lower disagreement and broader capital eligibility.
+- Independence: variability/quality, not residual reversal, positive breadth, volume absorption, stress resilience, membership entry, price momentum, compression, panic, funding or indicator logic.
+- Execution: no public data, event/path scan, return, timeframe, estimator, threshold, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
