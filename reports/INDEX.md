@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U06_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-06 outcome-blind Paper protocol | frozen pending exact-head review | Freezes daily volume-share absorption events, 72h paths, Gates and sealed OOS before outcomes. | no |
+| `config/u06_cross_sectional_paper_protocol_v1.json` | U-06 machine Paper protocol | content `7b53860e...5f289` | Only exact-head independent review is enabled; data/events/returns/OOS remain false. | no |
 | `reports/m1/U06_CROSS_SECTIONAL_VOLUME_SHARE_ABSORPTION_DESIGN.md` | U-06 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes volume-share absorption/repricing without timeframe, threshold, outcomes, rules or OOS. | no |
 | `reports/m1/U06_NON_DUPLICATION_REVIEW.md` | U-06 non-duplication | pass_design_level | Separates price/volume disagreement from U-04/U-05 and prior candidates. | no |
 | `config/u06_cross_sectional_design_scope_v1.json` | U-06 machine design scope | content `694e5a43...966a5` | Binds one declared unopened candidate and enables only Paper protocol design. | no |

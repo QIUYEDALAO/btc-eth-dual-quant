@@ -1,6 +1,6 @@
 # Next Action
 
-## U-06 Outcome-Blind Paper Protocol Design
+## U-06 Paper Protocol Exact-Head Review
 
 U-05 completed its one authorized sealed-IS Paper observation and is closed as
 `failed_feasibility`. Run `874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a`
@@ -22,10 +22,13 @@ under design `694e5a43...966a5` and hypothesis `e6cb136b...c259b`. It studies
 prior-only quote-volume-share growth without commensurate relative price
 response as possible absorption before delayed repricing.
 
-The next task is a separate result-blind Paper protocol that must freeze the
-observation timeframe, share baseline, muted-price definition, event identity,
-clustering, path diagnostics, sample/cost Gates and IS/OOS isolation before any
-data access. No protocol outcome may be read during design.
+Protocol `7b53860e...5f289` is frozen before outcomes: completed UTC days,
+prior-30-day volume-share baseline, 2.00x share and 1.50x absolute-volume Gates,
+±1.00% muted relative price response, 72h clustering and fixed Paper Gates.
+
+The next task is an independent read-only review of the exact protocol head.
+It must approve with critical/high 0/0 before any data qualification. The target
+files may not be modified on the review branch.
 
 Do not conduct a U-05 Paper-result review, change its protocol, rerun it or
 continue to fixed rules. U-06 may authorize only a later separate outcome-blind

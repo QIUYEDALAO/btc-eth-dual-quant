@@ -1983,3 +1983,11 @@ private exchange responses here.
 - Independence: no U-04/U-05 outcome inversion; distinct from prior price momentum, compression, panic, funding and indicator families.
 - Execution: no public data, event/path scan, return, timeframe, threshold, fixed rule, backtest or OOS access.
 - Authorization: only a separate outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-06 Paper Protocol Frozen Before Outcomes
+
+- Protocol: `7b53860efa2a5c52d727f1d4d4694ddf39ff34517dfde6aaf4b6abe31f35f289`; branch `codex/u06-cross-sectional-paper-protocol`.
+- Event: completed UTC day; current quote-volume share ≥2.00x prior-30-day median, absolute quote volume ≥1.50x prior median, relative price response within ±1.00%.
+- Selection/path: one daily representative, 72h connected episodes, strict next 5m open and fixed event-time peers.
+- Gates: 60 complete IS episodes, projected 80/20 full/OOS, distribution limits, and 24h relative/absolute medians each ≥1.80%.
+- Execution: no public data, event/path result, formal return or OOS value read. Only exact-head independent review is authorized.
