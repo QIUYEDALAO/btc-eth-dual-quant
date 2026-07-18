@@ -1,5 +1,19 @@
 # Next Action
 
+## U-20 Exact-Head Independent Paper-Protocol Review
+
+Protocol `U20-03-NEGATIVE-COSKEWNESS-RISK-PREMIUM-PAPER-V1` is frozen before
+data/results under `d909cd57...e2dec9`. The only next task is a separate-branch,
+read-only review of the exact target. It must verify the 336h history, two
+disjoint 168h halves, standardized third-comoment estimator, two-half
+`<= -0.20`/bottom-quarter persistence, deterministic identity, 24h clustering,
+paths, immutable Gates, complexity and sealed-OOS isolation.
+
+Approval may authorize only frozen-source structural qualification, the
+metadata-only sample ceiling and synthetic complexity preflight. It cannot
+authorize common-adjusted-return/coskewness/event/path scans, formal returns,
+strategy, backtesting or OOS.
+
 ## U-20 Outcome-Blind Paper Protocol Design
 
 U-20 freezes `U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM` under

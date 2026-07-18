@@ -2,11 +2,24 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-20 negative-coskewness risk-premium design completed; outcome-blind Paper protocol design is the only next task
-current_status: u20_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-20 negative-coskewness Paper protocol frozen; exact-head independent review is the only next task
+current_status: u20_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-20 outcome-blind negative-coskewness risk-premium Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U20_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u20_cross_sectional_paper_protocol_v1.json
+    branch: codex/u20-cross-sectional-paper-protocol
+    candidate_id: U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM
+    protocol_content_hash: d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-20 negative-coskewness risk-premium hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U20_NEGATIVE_COSKEWNESS_RISK_PREMIUM_DESIGN.md
@@ -2277,6 +2290,22 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-20-PROTOCOL
+    phase: outcome-blind negative-coskewness risk-premium Paper protocol
+    status: completed_local_pending_exact_head_review
+    design_content_hash: 3995e92a9ae69fd64f8258b33b620c801d63e235e1ed90a254a3d99d70a1e5b5
+    protocol_content_hash: d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9
+    paper_protocol_design_authorized: false
+    exact_head_independent_review_authorized: true
+    data_qualification_complexity_and_preflight_authorized: false
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-20
     phase: negative-coskewness risk-premium hypothesis design
     status: completed_local
@@ -2406,7 +2435,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Perform exactly one independent, outcome-blind U-20 hypothesis design; diagnostic reasoning is limited to mechanism and non-duplication without data or outcomes."
+  - "Perform one separate-branch exact-head independent review of the frozen U-20 Paper protocol; only a full approve with zero critical/high may authorize result-free qualification, sample ceiling and synthetic complexity."
+  - "Do not read public data, returns, coskewness, events or paths before that review approves the exact protocol head."
   - "No U-19 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-19 outcomes, Gates, defects and censor patterns may not select U-20."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."

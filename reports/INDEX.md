@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m1/U20_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-20 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 336h two-half negative-coskewness persistence, clustering, paths, Gates and preflight. | no |
+| `config/u20_cross_sectional_paper_protocol_v1.json` | U-20 machine Paper protocol | content `d909cd57...e2dec9` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
+
+
 | `reports/m1/U20_NEGATIVE_COSKEWNESS_RISK_PREMIUM_DESIGN.md` | U-20 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes compensated systematic third-comoment risk without data, parameters, results or OOS. | no |
 | `reports/m1/U20_NON_DUPLICATION_REVIEW.md` | U-20 non-duplication | pass_design_level | Separates negative coskewness from directional capture, asset-only tails, volatility variability and prior event families. | no |
 | `config/u20_cross_sectional_design_scope_v1.json` | U-20 machine design scope | content `3995e92a...a1e5b5` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |

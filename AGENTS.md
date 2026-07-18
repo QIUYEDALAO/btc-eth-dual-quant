@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-20 Paper protocol `U20-03-NEGATIVE-COSKEWNESS-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9`. It fixes 336h completed history, two 168h halves, standardized candidate-residual/common-squared third comoment, `-0.20`/bottom-quarter two-half persistence, 24h clustering and immutable Paper Gates. Only a separate exact-head independent review is authorized; data, returns, coskewness, events, paths, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-20 freezes `U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM` under hypothesis `9d17a514b9e13eff5dd885382ab7c9df5c14e9a71283a219d43c901648e46bdb` and design `3995e92a9ae69fd64f8258b33b620c801d63e235e1ed90a254a3d99d70a1e5b5`. It studies compensation for systematic third-comoment risk, not directional capture, asset-only tails, volatility-of-volatility or prior event families. Only one outcome-blind Paper protocol design is authorized next; data, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-20 design authorization `b4e9d5c94957d69142e328a05dfb00474840efe3347dd5347c55997115b64455` permits exactly one economically independent, outcome-blind hypothesis design. It binds U-19's immutable failed run and prohibits inversion, repair, relabeling, repackaging or use of U-04 through U-19 outcomes to select U-20. Data, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

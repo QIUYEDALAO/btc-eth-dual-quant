@@ -2597,3 +2597,10 @@ private exchange responses here.
 - Identity: 336 completed hourly residuals split into two 168h halves; each has seven non-overlapping 24h residual-RMS blocks and normalized `1.4826 × MAD / median` variability.
 - Persistence/Gates: both halves require at least 0.25 and highest cross-sectional quarter rank; base volatility level and return direction are not Gates; 24h clustering/paths and standard immutable Paper Gates apply.
 - Next action: separate exact-head review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-18 - U-20 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U20-03-NEGATIVE-COSKEWNESS-RISK-PREMIUM-PAPER-V1`; content `d909cd57...e2dec9`; frozen before data/results.
+- Identity: 336 completed hourly observations split into two 168h halves; each computes the standardized candidate common-adjusted-return/common-squared third comoment.
+- Persistence/Gates: both halves require coskewness at most `-0.20` and bottom-quarter rank; mean direction, volatility, tail, drawdown and terminal-bar direction are not Gates.
+- Next action: separate exact-head review only. Data qualification, coskewness/events, strategy, OOS and trading remain unauthorized.
