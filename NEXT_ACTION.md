@@ -1,5 +1,17 @@
 # Next Action
 
+## U-19 Outcome-Blind Hypothesis Design
+
+Decision `09965229...c3a9` authorizes exactly one economically independent,
+outcome-blind U-19 cross-sectional hypothesis design. It binds U-18's immutable
+failed run `213c303d...9c3cd` and prohibits inversion, repair, relabeling or
+repackaging of that result.
+
+The next task may freeze only one economic mechanism, causal timing, failure
+regimes and non-duplication. It must read no public data or outcomes and select
+no timeframe, estimator, threshold, path or strategy parameter. Events,
+returns, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
 ## Stop: U-18 Failed Paper Feasibility
 
 The unique sealed-IS observation is immutable under run

@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m0/U19_DESIGN_AUTHORIZATION_DECISION.md` | U-19 design authorization | one independent outcome-blind design authorized | Binds U-18 failed result and prohibits inversion/reuse; enables only one new design. | no |
+| `config/u19_design_authorization_v1.json` | U-19 machine authorization | content `09965229...c3a9` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
+
 | `reports/m1/U18_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-18 unique sealed-IS Paper observation | failed_feasibility | 157 episodes; count/distribution pass but all three 24h economic Gates fail; OOS sealed. | no |
 | `reports/m1/evidence/u18_cross_sectional_paper_observation/run_manifest.json` | U-18 Paper run machine evidence | content `213c303d...9c3cd` | Three-order exact result, immutable failed Gates and zero downstream authority. | no |
 

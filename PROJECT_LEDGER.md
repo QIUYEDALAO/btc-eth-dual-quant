@@ -2541,3 +2541,10 @@ private exchange responses here.
 - Economics: median 24h relative premium `-0.1245%`, absolute displacement `-0.3378%`, and positive fraction `47.77%`; frozen minima `+1.80%`, `+1.80%` and `60%` all fail.
 - Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false.
 - Decision: U-18 is permanently closed. No review, fixed rules, strategy or OOS; any U-19 candidate requires a separate authorization decision.
+
+## 2026-07-18 - U-19 Independent Design Authorized
+
+- Decision: `0996522977d3a54fe35f29220bcd0ca9dd4f2aebd1533d610c6aececf250c3a9`; exactly one economically independent, outcome-blind U-19 hypothesis design.
+- Binding: U-18 remains closed under run `213c303d...9c3cd`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-18 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-19. U-18 inversion, repair, relabeling or repackaging is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
