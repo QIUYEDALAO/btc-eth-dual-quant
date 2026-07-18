@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U16_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-16 frozen-source qualification | pass / one sealed-IS observation authorized | 27,736 archives, 19 manifests, ceiling 1,331 and 3×1M synthetic passes; result/OOS rows zero. | no |
+| `reports/m1/evidence/u16_cross_sectional_data_qualification_v1.json` | U-16 qualification machine evidence | content `5dc4850a...e949` | Binds source/order/ceiling/complexity/isolation and one-run-only authority. | no |
 | `reports/expert/U16_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-16 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `9cafb08d...1ddb` unchanged; future membership only right-censors paths. | no |
 | `reports/expert/evidence/u16_cross_sectional_paper_protocol_review_v1.json` | U-16 review machine evidence | content `2f708c0f...34e3` | Binds five target blobs, 16 dimensions and qualification-only authority. | no |
 | `reports/m1/U16_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-16 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 48h path decoupling, correlation/displacement/spike identity, paths, Gates and preflight. | no |

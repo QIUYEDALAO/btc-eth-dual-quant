@@ -2445,4 +2445,12 @@ private exchange responses here.
 - Verdict: approve 16/16 with 0 critical/high; review `2f708c0f...34e3`.
 - Causality: future membership/lifecycle information is excluded from event identity and used only to right-censor incomplete future Paper paths.
 - Authorization: frozen-source data qualification, structural ceiling and synthetic complexity only; no common-path, correlation, event, result or OOS scan.
+
+## 2026-07-18 - U-16 Frozen-Source Qualification and Preflight Passed
+
+- Result: `5dc4850a1d940d05581774a1270ec6c9cdc4d5f8702a5614a81a01928842e949`; exact 27,736 archives, 19 manifests and three source/same-reader orders.
+- Structure: 9,016 eligible decisions and maximum 1,331 independent 24h episodes; years 2020-2024 each exceed the eventual distribution floor.
+- Complexity: three one-million-row exact-evaluator passes at 3.000204/3.068404/3.002533 seconds and 26.719 MiB; output `a9c3ac3e...eeb4` exact.
+- Correction: pre-result runner measurement was reordered before source qualification because process-lifetime RSS contaminated the initial combined attempt; protocol/evaluator/results were unchanged and market outcomes remained unread.
+- Isolation: price/common/correlation/candidate/event/path/return and OOS decoded rows all zero. Exactly one sealed-IS Paper observation is authorized.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

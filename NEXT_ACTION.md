@@ -1,5 +1,17 @@
 # Next Action
 
+## U-16 Unique Sealed-IS Paper Observation
+
+Qualification `5dc4850a...e949` passes all source, order, structural ceiling,
+complexity and isolation Gates. Exactly one sealed-IS observation may now run
+under protocol `18e302de...5633a` in normal/reverse/shuffled order.
+
+It may compute only completed IS common paths, correlations, candidate events,
+24h episodes and Paper path diagnostics. It must not create fills, positions,
+equity or formal returns and must decode zero OOS values. Any count,
+distribution, economic, order or isolation Gate failure closes U-16 without a
+second run or parameter change.
+
 ## U-16 Frozen-Source Data Qualification and Preflight
 
 Exact protocol target `9cafb08d...1ddb` is approved 16/16 with 0/0

@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-16 frozen-source qualification passes under `5dc4850a1d940d05581774a1270ec6c9cdc4d5f8702a5614a81a01928842e949`: 27,736 archives, 19 manifests, three source/same-reader orders, 9,016 structural decisions and ceiling 1,331.
+- Three synthetic one-million-row exact-evaluator passes are deterministic and under 3.07 seconds / 26.719 MiB. Market result and OOS rows remain zero.
+- Exactly one sealed-IS U-16 Paper observation is authorized next. No tuning, second run, formal return, strategy/backtesting, OOS, trading or M2.
 - U-16 exact protocol target `9cafb08dbe59faa48c948458151eb7cb7d6c1ddb` is independently approved 16/16 with 0 critical/high under review `2f708c0f6ac7b4e79428a4a7b1e9850182120c2dfcb3b06b53f973123f5c34e3`.
 - Only frozen-source data qualification, 48h-history/24h-path structural preflight and synthetic complexity are authorized next. Common paths, correlations, events, results, OOS and trading remain false.
 - U-16 Paper protocol `U16-03-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE-PAPER-V1` is frozen before results under `18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a`. Only exact-head independent review is authorized next.
