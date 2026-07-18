@@ -2131,3 +2131,11 @@ private exchange responses here.
 - Schedule: 123 IS anchors before the boundary and 122 anchors with complete non-overlapping 336h primary horizons.
 - Three orders share `ca7d59b3...44aa`; OOS OHLC, cohort, event, path and return rows are zero.
 - Authorization: exactly one sealed-IS Paper observation; no tuning, second run, strategy, OOS or trading.
+
+## 2026-07-18 - U-09 Qualification Sample-Ceiling Correction Closed Candidate
+
+- Correction: `c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479`; branch `codex/u09-qualification-sample-ceiling-correction`; local Git only.
+- The earlier qualification admission omitted the monthly-membership-boundary ceiling and is superseded.
+- Deterministic maximum: 66 constant-membership 336h episodes versus frozen minimum 80; shortfall 14.
+- Isolation: zero price, cohort, event, path, return and OOS rows; the Paper observation never ran.
+- Decision: U-09 closes before results. No Gate reduction, protocol modification or rerun; only a separate U-10 independent-candidate decision may follow.

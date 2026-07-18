@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U09_QUALIFICATION_SAMPLE_CEILING_CORRECTION.md` | U-09 pre-observation qualification correction | failed_pre_observation_sample_ceiling | Maximum 66 constant-membership episodes is below frozen 80; no price/result access. | no |
+| `reports/m1/evidence/u09_qualification_sample_ceiling_correction_v1.json` | U-09 sample-ceiling machine evidence | content `c6902525...4479` | Supersedes qualification admission and closes U-09 without changing protocol or Gate. | no |
 | `reports/m1/U09_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-09 frozen-source qualification | pass / one sealed-IS observation authorized | ZIPs, manifests, membership ranks, schedule and three orders pass; outcomes zero. | no |
 | `reports/m1/evidence/u09_cross_sectional_data_qualification_v1.json` | U-09 qualification machine evidence | content `c323798a...56aee` | Binds exact authorities, 123/122 anchors, isolation and one-run-only authorization. | no |
 | `reports/expert/U09_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-09 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1bee65ff...68c8` unchanged and authorizes only data qualification. | no |

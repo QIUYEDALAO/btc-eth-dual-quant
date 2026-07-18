@@ -1,6 +1,6 @@
 # Next Action
 
-## U-09 Unique Sealed-IS Paper Observation
+## U-10 Separate Independent-Candidate Authorization Decision
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -45,10 +45,16 @@ Qualification passed under contract `f1bd609d...ead9a` and result
 rows and the 123/122 anchor schedule are exact in three orders. OOS/outcome rows
 remain zero.
 
-The only authorized next task is the single sealed-IS Paper observation. It
-must apply protocol `874b93ce...84ae` once in normal, reverse and deterministic-
-shuffled order and output cohort, episode, path and accounting diagnostics only.
-Any failed Gate closes U-09 without tuning or a second result-bearing run.
+The qualification admission is superseded by deterministic correction
+`c6902525...4479`: the fixed monthly membership boundary leaves at most 66
+constant-membership 336h episodes, below the frozen minimum of 80. No price,
+cohort, event, path, return or OOS value was read.
+
+U-09 is closed before its Paper observation. The protocol and Gate are not
+changed, and no result-bearing run is permitted. The only authorized next task
+is `U-10-DECISION`, which may authorize at most one economically independent,
+outcome-blind design and must prohibit reuse of both prior outcomes and U-09's
+protocol-feasibility defect.
 
 ## U-08 Frozen Historical Chain
 

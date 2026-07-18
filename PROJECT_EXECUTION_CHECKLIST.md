@@ -158,7 +158,9 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-09-PROTOCOL | Outcome-blind idiosyncratic-volatility Paper protocol | completed_local | U-09 design complete | `codex/u09-cross-sectional-paper-protocol` / local-only | Freeze estimators, cohorts, paths, Gates and IS/OOS isolation | Protocol `874b93ce...84ae`; no result access | exact-head review only |
 | U-09-PROTOCOL-REVIEW | Exact-head independent Paper-protocol review | completed_approve_local | U-09-PROTOCOL exact target | `codex/u09-cross-sectional-paper-protocol-review` / local-only | Hash-bound 13-dimension review | approve; 0/0; review `dd6779da...2947`; target unchanged | data qualification only |
 | U-09-DATA-QUALIFICATION | Frozen-source grid/authority qualification and isolation | completed_pass_local | U-09-PROTOCOL-REVIEW approve | `codex/u09-cross-sectional-data-qualification` / local-only | ZIP/manifests, membership ranks, schedule and boundary | Result `c323798a...56aee`; three orders exact; zero outcomes | none |
-| U-09-PAPER-OBSERVATION | Unique sealed-IS quality-cohort Paper observation | authorized_next | U-09-DATA-QUALIFICATION pass | new local-only branch | Frozen cohort, episode, path and accounting diagnostics | three orders exact and all Gates pass | failure closes U-09; no rerun |
+| U-09-QUALIFICATION-CORRECTION | Deterministic sample-ceiling preflight correction | completed_failed_pre_observation | Qualification omitted membership-boundary ceiling | `codex/u09-qualification-sample-ceiling-correction` / local-only | Calendar/membership-only maximum episode proof | Correction `c6902525...4479`; maximum 66 < frozen 80 | U-09 closed before result; qualification pass superseded |
+| U-09-PAPER-OBSERVATION | Unique sealed-IS quality-cohort Paper observation | not_run_closed | sample ceiling failed | none | no result-bearing run | zero price/event/path/return/OOS access | prohibited |
+| U-10-DECISION | Separate post-U-09 candidate authorization | authorized_next | U-09 closed before result | new local-only branch | Bind prior failures and consider one independent outcome-blind design | exact hashes; zero downstream permissions | fail closed on reuse or expansion |
 
 ## Current Gate
 
@@ -172,7 +174,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - The V3 contract, registry and blocked qualification evidence remain immutable historical evidence. PR #95 merged the deterministic U-03F `failed_audit` result with one critical and seven high findings. V4 is `audit_blocked` / `revalidation_required`; production evidence is unchanged and U-04 remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active task: one sealed-IS U-09 Paper observation. Formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
+- Active task: U-10 independent-candidate authorization decision. Event scanning, formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

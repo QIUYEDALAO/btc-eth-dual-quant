@@ -2,11 +2,30 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-09 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task
-current_status: u09_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-09 closed before observation on deterministic sample ceiling; only a separate independent-candidate authorization decision may follow
+current_status: u09_failed_pre_observation_sample_ceiling_closed_no_result_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-09 qualification sample-ceiling correction
+    status: failed_pre_observation_sample_ceiling
+    evidence: reports/m1/U09_QUALIFICATION_SAMPLE_CEILING_CORRECTION.md
+    machine_evidence: reports/m1/evidence/u09_qualification_sample_ceiling_correction_v1.json
+    branch: codex/u09-qualification-sample-ceiling-correction
+    correction_content_hash: c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479
+    superseded_qualification_content_hash: c323798a9de04c423b8bb59c33604b2203715e1453f9b95b3f13022f71656aee
+    maximum_constant_membership_primary_episodes: 66
+    frozen_minimum_complete_is_episodes: 80
+    price_rows_read: 0
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+    paper_observation_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-09 frozen-source data qualification and IS/OOS isolation
     status: pass_local_complete
     evidence: reports/m1/U09_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -1253,21 +1272,15 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-09-PAPER-OBSERVATION
-    phase: unique sealed-IS idiosyncratic-volatility quality Paper observation
-    status: authorized_once_not_started
-    candidate_id: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
-    target_commit: 1bee65ff9dcdf0b9b3e49e37601140068cc968c8
-    protocol_content_hash: 874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae
-    review_content_hash: dd6779dab8be86fffa17d08a6a64b3085963e3e89b1889b24b6f125f64bb2947
-    qualification_content_hash: c323798a9de04c423b8bb59c33604b2203715e1453f9b95b3f13022f71656aee
-    maximum_runs: 1
-    sealed_is_only: true
-    three_traversal_orders_required: true
-    oos_ohlc_decode_authorized: false
-    event_scan_authorized: true
-    path_observation_authorized: true
-    formal_returns_authorized: false
+  - id: U-10-DECISION
+    phase: separate post-U-09 independent-candidate authorization decision
+    status: authorized_ready
+    branch: not_created
+    predecessor_correction_content_hash: c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479
+    maximum_new_hypotheses: 1
+    independent_economic_rationale_required: true
+    outcome_or_protocol_failure_reuse_prohibited: true
+    event_scan_authorized: false
     strategy_authorized: false
     oos_authorized: false
     trading_authorized: false
@@ -1338,7 +1351,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Execute exactly one sealed-IS U-09 Paper observation under the frozen protocol in three traversal orders."
+  - "Make a separate governance decision for at most one economically independent, outcome-blind U-10 hypothesis design."
   - "Preserve U-04/U-05/U-06/U-07 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1350,7 +1363,7 @@ allowed_next_work:
 research_authorizations:
   hypothesis_preregistration: false
   strategy_code: false
-  event_scan: true
+  event_scan: false
   returns: false
   backtesting: false
   oos_opened: false
@@ -1377,6 +1390,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U09_QUALIFICATION_SAMPLE_CEILING_CORRECTION.md
+    phase: U-09 pre-observation sample-ceiling correction
+    status: failed_pre_observation_sample_ceiling
+    status_marker: '- Status: `failed_pre_observation_sample_ceiling`'
+  - path: reports/m1/evidence/u09_qualification_sample_ceiling_correction_v1.json
+    phase: U-09 sample-ceiling machine evidence
+    status: deterministic_failed_pre_observation
+    status_marker: '"content_hash": "c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479"'
   - path: reports/m1/U09_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-09 data qualification
     status: pass_local_complete
