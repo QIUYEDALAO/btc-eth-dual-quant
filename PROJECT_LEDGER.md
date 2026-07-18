@@ -2164,3 +2164,10 @@ private exchange responses here.
 - Pre-result ceiling: at least 400 theoretical constant-membership 72h episodes versus frozen Gate 90.
 - Economic Gates: median 72h relative and absolute displacement ≥1.80%, positive fraction ≥60%, distribution and zero-mismatch controls.
 - Authorization: exact-head independent review only; no public data, events, returns, OOS or trading.
+
+## 2026-07-18 - U-10 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `f468b7ae...776f` / `6f21347d...54bf6`; protocol/review `be205bf4...43b` / `e42d3170...9009`.
+- Five target blobs and 13 identity, authority, daily data, estimators, candidate, ceiling, causal, path, Gate, leakage and safety dimensions pass.
+- Verdict `approve`; critical/high `0/0`; target unchanged; no public result or OOS access.
+- Authorization: frozen-source qualification and isolation only; no events, returns, strategy, OOS or trading.

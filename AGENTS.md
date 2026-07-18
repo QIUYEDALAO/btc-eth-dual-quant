@@ -28,6 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-10 protocol target `f468b7aeaaf02f803125b4ab6037086fb353776f` is independently approved under review `e42d31706fe98fb089f148d563b010b4312e53e9b33ba1c33faafe7f63379009`, with 0 critical/high and no target modification. Only frozen-source qualification, pre-result sample-ceiling verification and isolation are authorized.
 - U-10 protocol `be205bf40dcab624667b97e43bc158ea2473fe15de2ce9846a6bb198575fa43b` is frozen before results. It fixes daily 7d relative trend plus 3d/21d quote-volume-share confirmation, 72h clustering/paths, a pre-result theoretical ceiling ≥400 versus Gate 90, and immutable Paper Gates. Only exact-head independent review is authorized.
 - U-10 freezes `U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION` under hypothesis `5fc3529f7afa3df2344517f3bd567c5b3bf89a23bc0e071ff853bc80e50ec536` and design `af9ac64043adacad08ef834567ff976b26723fb1468d1a7a0d43e6fa5eaa40e5`. Only a separate outcome-blind Paper protocol may follow; no public data, event, path, return or OOS was accessed.
 - Separate decision `e196cc0fdd20e8b8fc84872b440baa09ae69e0752c75005bebefb51a4060c7a0` authorizes U-10 only for one economically independent, outcome-blind hypothesis design. Prior outcome inversion and U-09 protocol-defect reuse are prohibited; events, parameters, returns, strategy/backtesting, OOS, trading and M2 remain false.

@@ -1,6 +1,6 @@
 # Next Action
 
-## U-10 Paper Protocol Exact-Head Independent Review
+## U-10 Frozen-Source Data Qualification and Isolation
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -65,9 +65,15 @@ joint top-quartile selection, 72h clustering and 1/2/4/8/12/24/48/72h paths.
 The metadata-only theoretical ceiling is at least 400 constant-membership 72h
 episodes versus the frozen sample Gate 90.
 
-The only authorized next task is a separate exact-head independent review. It
-must bind the final commit without modifying any target protocol file. Public
-data, events, paths, returns and OOS remain prohibited.
+Exact target `f468b7aeaaf02f803125b4ab6037086fb353776f` is independently
+approved under review `e42d3170...9009`, with critical/high `0 / 0` and no
+target mutation.
+
+The only authorized next task is frozen-source data qualification and isolation.
+It must verify ZIP/manifests, complete daily price/quote-volume authority,
+membership/lifecycle/mask, the exact 418 metadata-only maximum independent
+constant-membership episodes (≥400 and ≥90), and the sealed boundary in three
+orders. It must generate zero event, path or return rows.
 
 ## U-08 Frozen Historical Chain
 
