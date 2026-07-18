@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U18_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-18 frozen-source qualification and preflight | pass_local_complete | 27,736 archives, 19 manifests, ceiling 1,054 and 3×1M complexity pass; zero outcomes/OOS. | no |
+| `reports/m1/evidence/u18_cross_sectional_data_qualification_v1.json` | U-18 qualification machine evidence | content `088ebed2...c6e0` | Binds exact sources/orders, structural ceiling, complexity, isolation and one-run authority. | no |
+
 | `reports/expert/U18_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-18 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `39a766c5...38e5` unchanged and authorizes only qualification. | no |
 | `reports/expert/evidence/u18_cross_sectional_paper_protocol_review_v1.json` | U-18 review machine evidence | content `5fb6a8d2...1dd3` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
 

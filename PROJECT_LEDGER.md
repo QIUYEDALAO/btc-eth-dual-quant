@@ -2525,3 +2525,11 @@ private exchange responses here.
 - Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `5fb6a8d2...1dd3`.
 - Finding: residual construction, two-half robust tails, count/energy/dominance Gates, membership, clustering, paths, complexity and isolation are causal and fixed.
 - Authorization: only separate data qualification, sample ceiling, synthetic complexity and result-free preflight. Tail/event/path scans, returns, strategy, OOS and trading remain false.
+
+## 2026-07-18 - U-18 Frozen-Source Qualification and Preflight Passed
+
+- Result: `088ebed218ce7960621ebeda539ec78c5aeebbef5b98f608a4f044f78e3dc6e0`; exact 27,736 archives, 19 manifests and three source/same-reader traversal orders.
+- Structure: 7,278 eligible decisions and maximum 1,054 independent theoretical 24h episodes versus the frozen minimum 400.
+- Complexity: three deterministic one-million-row exact-evaluator passes complete in at most 23.626789 seconds and 26.438 MiB; output `26773603...1bf` exact.
+- Isolation: price, return, residual, tail, candidate, event, path, formal-return and OOS decoded rows are all zero.
+- Next action: exactly one sealed-IS Paper observation. No tuning, second run, formal returns, strategy, OOS, trading or M2.

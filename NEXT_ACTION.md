@@ -1,5 +1,20 @@
 # Next Action
 
+## U-18 Unique Sealed-IS Paper Observation
+
+Qualification `088ebed2...c6e0` passes with all 27,736 frozen archives and 19
+manifests exact. Three source and same-reader traversal orders agree, the
+metadata-only ceiling is 1,054 independent 24h episodes versus the frozen 400
+minimum, and three one-million-row exact-core complexity passes are below the
+30-second and 1,024-MiB Gates.
+
+The only next task is one sealed-IS Paper observation under protocol
+`7571d2cb...c671`. It may calculate the frozen peer residuals, two-half tail
+statistics, deterministic candidates, 24h episodes and path diagnostics once
+over IS only. It must not create fills, positions, equity or formal returns,
+must not read OOS, and must not tune or rerun. Any failed Paper Gate closes
+U-18; a pass may proceed only to an independent Paper-result review.
+
 ## U-18 Frozen-Source Data Qualification and Preflight
 
 Exact target `39a766c5...38e5` is approved 16/16 with 0/0 critical/high under

@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-18 frozen-source qualification passes locally under result `088ebed218ce7960621ebeda539ec78c5aeebbef5b98f608a4f044f78e3dc6e0`: 27,736 archives and 19 manifests are exact, all source/same-reader orders agree, the structural ceiling is 1,054 versus 400 required, and three one-million-row exact-core complexity passes succeed. Market outcome and OOS rows are zero. Exactly one sealed-IS Paper observation is authorized; no retry, formal returns, strategy/backtesting, OOS, API/trading, execution/live or M2.
+
 - U-18 exact protocol target `39a766c50de5a0855d7ee85c2aab743ec8b738e5` is independently approved 16/16 with 0 critical/high under review `5fb6a8d2d8efe95c6b2970b3368c78c40f17b187a5239f0b907f37ce341e1dd3`.
 - Only frozen-source data qualification, 168h-history/24h-path structural ceiling and synthetic complexity are authorized next. Returns, residuals, tails, events, paths, OOS and trading remain false.
 - U-18 Paper protocol `U18-03-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `7571d2cb2408e30ac03d626544243f1e00595dc9ed85e6a7107b7d9a2062c671`.

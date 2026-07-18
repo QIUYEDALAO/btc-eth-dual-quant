@@ -2,11 +2,30 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-18 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task
-current_status: u18_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-18 data qualification and complexity preflight passed; one sealed-IS Paper observation is the only next task
+current_status: u18_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-18 frozen-source data qualification, complexity and preflight
+    status: pass_local_complete
+    evidence: reports/m1/U18_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u18_cross_sectional_data_qualification_v1.json
+    branch: codex/u18-cross-sectional-data-qualification
+    contract_content_hash: 9da995a6bb271147aa31a0fa81bf582bfa442e4a5d67bf59ca2753e209828338
+    qualification_content_hash: 088ebed218ce7960621ebeda539ec78c5aeebbef5b98f608a4f044f78e3dc6e0
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 7278
+    maximum_independent_theoretical_24h_episodes: 1054
+    complexity_passes: 3
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-18 Paper-protocol exact-head independent review
     status: approve
     evidence: reports/expert/U18_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -2118,9 +2137,9 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-18-PROTOCOL-REVIEW
-    phase: exact-head independent downside-tail-risk-premium Paper protocol review
-    status: completed_approve_local
+  - id: U-18-DATA-QUALIFICATION
+    phase: frozen-source downside-tail-risk qualification and complexity preflight
+    status: completed_pass_local
     authorization_content_hash: eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1
     design_content_hash: 487d9b11883d2eb38f2171bf6fe57b1e2e5040b31032e03de73cea9bb5c62df8
     protocol_content_hash: 7571d2cb2408e30ac03d626544243f1e00595dc9ed85e6a7107b7d9a2062c671
@@ -2128,9 +2147,13 @@ open_work:
     hypothesis_design_authorized: false
     paper_protocol_design_authorized: false
     exact_head_independent_review_authorized: false
-    data_qualification_complexity_and_preflight_authorized: true
-    public_data_read_authorized: false
-    event_scan_authorized: false
+    data_qualification_complexity_and_preflight_authorized: false
+    qualification_content_hash: 088ebed218ce7960621ebeda539ec78c5aeebbef5b98f608a4f044f78e3dc6e0
+    one_sealed_is_paper_observation_authorized: true
+    second_run_authorized: false
+    public_data_read_authorized: true
+    event_scan_authorized: true
+    path_observation_authorized: true
     returns_authorized: false
     strategy_authorized: false
     oos_authorized: false
@@ -2287,6 +2310,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U18_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-18 frozen-source data qualification and preflight
+    status: pass_local_complete
+    status_marker: '- Status: `pass_local_complete`'
+  - path: reports/m1/evidence/u18_cross_sectional_data_qualification_v1.json
+    phase: U-18 qualification machine evidence
+    status: deterministic_one_paper_observation_authority
+    status_marker: '"qualification_content_hash":"088ebed218ce7960621ebeda539ec78c5aeebbef5b98f608a4f044f78e3dc6e0"'
   - path: reports/expert/U18_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
     phase: U-18 Paper-protocol exact-head review
     status: approve_zero_critical_high
