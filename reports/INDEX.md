@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m1/U18_DOWNSIDE_TAIL_RISK_PREMIUM_DESIGN.md` | U-18 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes asset-specific downside-tail risk as a compensated characteristic without data, parameters, results or OOS. | no |
+| `reports/m1/U18_NON_DUPLICATION_REVIEW.md` | U-18 non-duplication | pass_design_level | Separates persistent tail asymmetry from U-04 through U-17 and prior strategy families. | no |
+| `config/u18_cross_sectional_design_scope_v1.json` | U-18 machine design scope | content `487d9b11...2df8` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
+
 | `reports/m0/U18_DESIGN_AUTHORIZATION_DECISION.md` | U-18 design authorization | one independent outcome-blind design authorized | Binds U-17 pre-result closure and prohibits defect repair/reuse; enables only one new design. | no |
 | `config/u18_design_authorization_v1.json` | U-18 machine authorization | content `eb78548e...c0b1` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
 

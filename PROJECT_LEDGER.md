@@ -2504,3 +2504,10 @@ private exchange responses here.
 - Binding: U-17 remains closed before results under `434d8a58...af91`; event/return/OOS access remains zero.
 - Independence: U-04 through U-17 outcomes, Gates, concentrations, censor patterns and defects may not select U-18. U-17 sample-contract repair or shortening is prohibited.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-18 Downside-Tail Risk Premium Design Complete
+
+- Candidate: `U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM`; hypothesis `e6b84d1b...78c4`; design `487d9b11...2df8`.
+- Mechanism: persistent left-tail asymmetry after removing the active-peer common component may expose holders to crash, liquidation and liquidity-withdrawal risk for which they demand compensation.
+- Independence: not a panic/reversal event, market-stress resilience, low residual volatility, beta capture, downside rejection or liquidity-risk characteristic; no prior result selected the mechanism.
+- Scope: no data or outcome read; all clocks, estimators, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.

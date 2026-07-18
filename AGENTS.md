@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-18 freezes `U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM` under hypothesis `e6b84d1b6e9cb979dd973fed42c20821858704c362e24b4a342aef25359778c4` and design `487d9b11883d2eb38f2171bf6fe57b1e2e5040b31032e03de73cea9bb5c62df8`.
+- The mechanism is compensation for persistent left-tail risk after removing the complete active-peer common component. It is not a panic event, reversal, low-volatility quality or repair of U-17.
+- Only one outcome-blind U-18 Paper protocol design is authorized next. Data, events, returns, fixed rules, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-18 design authorization `eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1` permits exactly one economically independent, outcome-blind hypothesis design.
 - It binds U-17's pre-result closure and prohibits repairing, shortening, relaxing, relabeling or repackaging the failed 28+28-day membership-constancy contract or using prior outcomes to select U-18.
 - Only mechanism, causal timing, failure regimes and non-duplication may be frozen next. Data, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

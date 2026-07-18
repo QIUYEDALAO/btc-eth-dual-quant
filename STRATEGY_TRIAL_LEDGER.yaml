@@ -9,6 +9,12 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM
+    status: declared_unopened
+    hypothesis: "U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose returns retain persistent left-tail asymmetry after removing the contemporaneous peer common component may expose holders to crash, liquidation and liquidity-withdrawal risk, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-17 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: e6b84d1b6e9cb979dd973fed42c20821858704c362e24b4a342aef25359778c4
+    oos_opened: false
+    notes: "Outcome-blind design only. Observation timeframe, history, common component, tail estimator, persistence, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
   - id: U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM
     status: failed_pre_result_sample_ceiling
     hypothesis: "U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset that remains investable inside the frozen liquid universe yet persistently ranks below its active peers in trading liquidity may require compensation for marginal immediacy, crowding-exit and capital-capacity risk, and that cross-sectional liquidity risk premium may accrue after the next eligible open; no U-04 through U-16 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

@@ -1,5 +1,18 @@
 # Next Action
 
+## U-18 Outcome-Blind Paper Protocol Design
+
+U-18 freezes `U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM`
+under hypothesis `e6b84d1b...78c4` and design `487d9b11...2df8`. The mechanism
+is compensation for persistent asset-specific left-tail risk after removing
+the common market component, not a panic event or reversal signal.
+
+The only next task is a separate result-blind Paper protocol defining history,
+common-component and tail estimators, persistence, candidate identity, paths,
+costs, sample/economic Gates, structural ceiling, complexity and isolation
+before any data read. Returns, fixed rules, strategy/backtesting and OOS remain
+unauthorized.
+
 ## U-18 Outcome-Blind Hypothesis Design
 
 Decision `eb78548e...c0b1` authorizes exactly one economically independent,

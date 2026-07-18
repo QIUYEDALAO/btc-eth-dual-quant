@@ -2,11 +2,26 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-18 independent outcome-blind hypothesis design authorized
-current_status: u18_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2
+current_phase: U-18 downside-tail-risk-premium design completed; outcome-blind Paper protocol design is the only next task
+current_status: u18_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-18 idiosyncratic downside-tail-risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U18_DOWNSIDE_TAIL_RISK_PREMIUM_DESIGN.md
+    machine_evidence: config/u18_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U18_NON_DUPLICATION_REVIEW.md
+    branch: codex/u18-cross-sectional-downside-tail-risk-premium-design
+    candidate_id: U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM
+    hypothesis_sha256: e6b84d1b6e9cb979dd973fed42c20821858704c362e24b4a342aef25359778c4
+    design_content_hash: 487d9b11883d2eb38f2171bf6fe57b1e2e5040b31032e03de73cea9bb5c62df8
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-18 design authorization decision
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
     evidence: reports/m0/U18_DESIGN_AUTHORIZATION_DECISION.md
@@ -2077,11 +2092,13 @@ completed_milestones:
     merged_pr: 29
 open_work:
   - id: U-18
-    phase: independent outcome-blind cross-sectional hypothesis design
-    status: authorized_not_started
+    phase: idiosyncratic downside-tail-risk-premium hypothesis design
+    status: completed_local
     authorization_content_hash: eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1
+    design_content_hash: 487d9b11883d2eb38f2171bf6fe57b1e2e5040b31032e03de73cea9bb5c62df8
     maximum_hypotheses: 1
-    hypothesis_design_authorized: true
+    hypothesis_design_authorized: false
+    paper_protocol_design_authorized: true
     public_data_read_authorized: false
     event_scan_authorized: false
     returns_authorized: false
@@ -2199,7 +2216,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete exactly one economically independent, outcome-blind U-18 cross-sectional hypothesis design; freeze only mechanism, causal timing, failure regimes and non-duplication."
+  - "Complete exactly one outcome-blind U-18 Paper protocol design defining history, common component, downside-tail estimator, persistence, paths, Gates, sample ceiling, complexity and isolation before any data read."
   - "No U-17 protocol relaxation, second qualification, Paper observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-17 outcomes, Gates, defects and censor patterns may not select U-18."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
@@ -2211,7 +2228,7 @@ allowed_next_work:
   - Do not use API keys.
   - Do not run live or paper trading.
 research_authorizations:
-  hypothesis_preregistration: true
+  hypothesis_preregistration: false
   strategy_code: false
   event_scan: false
   returns: false
@@ -2240,6 +2257,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U18_DOWNSIDE_TAIL_RISK_PREMIUM_DESIGN.md
+    phase: U-18 downside-tail-risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U18_NON_DUPLICATION_REVIEW.md
+    phase: U-18 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u18_cross_sectional_design_scope_v1.json
+    phase: U-18 machine design scope
+    status: deterministic_protocol_design_only_authority
+    status_marker: '"content_hash": "487d9b11883d2eb38f2171bf6fe57b1e2e5040b31032e03de73cea9bb5c62df8"'
   - path: reports/m0/U18_DESIGN_AUTHORIZATION_DECISION.md
     phase: U-18 design authorization
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
