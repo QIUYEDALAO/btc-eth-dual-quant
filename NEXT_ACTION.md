@@ -1,5 +1,20 @@
 # Next Action
 
+## Stop: U-20 Failed Paper Feasibility
+
+The unique sealed-IS observation is immutable under run
+`587def88...9ede1`. It produced 110 complete independent episodes and passed
+all sample, projection, year, symbol, month, concentration and authority Gates.
+It failed all three frozen economic Gates: median 24h relative premium is
+`-0.0375%`, median absolute displacement is `-0.2133%`, and the positive
+fraction is `48.18%`.
+
+U-20 is closed without tuning, a second run, formal returns or OOS. Do not
+start Paper-result review, lifecycle/fixed-rule work, Freqtrade implementation
+or backtesting. Continuing the research goal requires a separately frozen U-21
+independent-candidate authorization decision that may not invert or otherwise
+reuse the U-20 result to select its mechanism.
+
 ## U-20 Unique Sealed-IS Paper Observation
 
 Qualification `de61add6...e2368` passes with all 27,736 frozen archives and 19

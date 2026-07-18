@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m1/U20_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-20 unique sealed-IS Paper observation | failed_feasibility | 110 episodes; all sample/distribution Gates pass but all three 24h economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u20_cross_sectional_paper_observation/run_manifest.json` | U-20 Paper run machine evidence | content `587def88...9ede1` | Three-order exact result, immutable failed Gates and zero downstream authority. | no |
+
+
 | `reports/m1/U20_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-20 frozen-source qualification and preflight | pass_local_complete | 27,736 archives, 19 manifests, ceiling 752 and 3×1M complexity pass; zero outcomes/OOS. | no |
 | `reports/m1/evidence/u20_cross_sectional_data_qualification_v1.json` | U-20 qualification machine evidence | content `de61add6...e2368` | Binds exact sources/orders, structural ceiling, complexity, isolation and one-run authority. | no |
 

@@ -2,11 +2,29 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-20 data qualification and complexity preflight passed; one sealed-IS Paper observation is the only next task
-current_status: u20_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2
+current_phase: U-20 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized
+current_status: u20_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-20 unique sealed-IS negative-coskewness Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U20_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u20_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u20-cross-sectional-paper-observation
+    run_content_hash: 587def88ac42d016a0ac5de97789164be6e6f1bf447b7a239eeed95137a9ede1
+    complete_is_independent_episodes: 110
+    median_24h_relative_negative_coskewness_risk_premium: '-0.0003754158321982493350830023864'
+    median_24h_candidate_absolute_close_displacement: '-0.002132740137685605583093262452'
+    fraction_positive_24h_relative_negative_coskewness_risk_premium: '0.4818181818181818181818181818'
+    failed_gates: [median_24h_relative_negative_coskewness_risk_premium, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_negative_coskewness_risk_premium]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-20 frozen-source data qualification, complexity and preflight
     status: pass_local_complete
     evidence: reports/m1/U20_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -2323,6 +2341,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-20-PAPER-OBSERVATION
+    phase: unique sealed-IS negative-coskewness Paper observation
+    status: completed_failed_feasibility
+    protocol_content_hash: d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9
+    qualification_content_hash: de61add6f8ef2a22f62166c14aeb4c30565cb8b3003e6395909fa7b7a85e2368
+    run_content_hash: 587def88ac42d016a0ac5de97789164be6e6f1bf447b7a239eeed95137a9ede1
+    second_result_run_authorized: false
+    paper_result_independent_review_authorized: false
+    fixed_rule_contract_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-20-DATA-QUALIFICATION
     phase: frozen-source data qualification, complexity and preflight
     status: completed_pass_local
@@ -2500,8 +2531,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Run exactly one U-20 sealed-IS Paper observation under protocol d909cd57...e2dec9 and qualification de61add6...e2368; compute only frozen common-adjusted returns, two-half coskewness, events, paths, accounting and Paper Gates."
-  - "Do not tune, rerun, read OOS, create fills/positions/equity/formal returns or enter strategy/backtesting. Any failed Paper Gate closes U-20."
+  - "U-20 is closed. Only a separate U-21 independent-candidate hypothesis design authorization decision may be designed, binding the immutable U-20 failed result without using its sign, magnitude, Gate pattern or defects to select a mechanism."
+  - "No U-20 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "No U-19 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-19 outcomes, Gates, defects and censor patterns may not select U-20."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."

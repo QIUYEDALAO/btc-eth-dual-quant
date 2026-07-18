@@ -2618,3 +2618,10 @@ private exchange responses here.
 - Structure: 5,179 eligible decisions and maximum 752 independent theoretical 24h episodes versus the frozen minimum 400.
 - Complexity: three deterministic one-million-row exact-evaluator passes complete in at most 27.207247 seconds and 26.250 MiB; output `59beecf0...ade4` exact.
 - Isolation: price, return, common-adjusted-return, coskewness, candidate, event, path, formal-return and OOS decoded rows are all zero. Exactly one sealed-IS Paper observation is authorized.
+
+## 2026-07-18 - U-20 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `587def88ac42d016a0ac5de97789164be6e6f1bf447b7a239eeed95137a9ede1` / `c59e127f989240229dda5e129ca8e333a47eea910bfeb971d7015b5d37d13f91`; all three traversal orders and four manifests are exact.
+- Sample: 110 complete episodes, 36 symbols, 54 months and five qualifying years; every sample, projection, concentration and authority Gate passes.
+- Economics: median 24h relative premium `-0.0375%`, absolute displacement `-0.2133%`, and positive fraction `48.18%`; frozen minima `+1.80%`, `+1.80%` and `60%` all fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-20 is permanently closed.

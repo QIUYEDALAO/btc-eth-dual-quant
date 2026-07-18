@@ -10,11 +10,11 @@ rules:
   candidate_queue_order_is_immutable: true
 candidates:
   - id: U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM
-    status: declared_unopened
+    status: failed_feasibility
     hypothesis: "U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose common-adjusted returns exhibit persistently negative coskewness with the active-universe common return may deliver disproportionately poor relative outcomes during large common moves, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-19 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
     sha256: 9d17a514b9e13eff5dd885382ab7c9df5c14e9a71283a219d43c901648e46bdb
     oos_opened: false
-    notes: "Outcome-blind design only. Timeframe, history, common return, asset-specific adjustment, coskewness estimator, persistence, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+    notes: "The unique sealed-IS Paper observation produced 110 complete episodes and passed every sample/distribution/authority Gate, but failed all three frozen 24h economic Gates: relative premium -0.0375%, absolute displacement -0.2133%, positive fraction 48.18%. OOS remained sealed; no formal return, strategy or backtest was run."
   - id: U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM
     status: failed_feasibility
     hypothesis: "U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose common-component-adjusted volatility itself varies persistently and unpredictably may impose unstable risk-budget, hedging and liquidity-capital demands, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-18 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
