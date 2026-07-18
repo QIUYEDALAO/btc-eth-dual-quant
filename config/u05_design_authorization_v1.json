@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "decision_id": "U05-CROSS-SECTIONAL-DESIGN-AUTHORIZATION-V1",
+  "status": "authorized_for_one_independent_outcome_blind_hypothesis_design_only",
+  "bindings": {
+    "u04_candidate_id": "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL",
+    "u04_run_content_hash": "9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2",
+    "u04_status": "failed_feasibility",
+    "u04_oos_opened": false,
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
+  },
+  "decision": {
+    "u05_design_authorized": true,
+    "maximum_hypotheses": 1,
+    "design_family": "point_in_time_cross_sectional_liquid_spot",
+    "independent_economic_rationale_required": true,
+    "u04_outcome_derived_direction_or_rule_prohibited": true,
+    "outcome_blind_preregistration_required": true,
+    "separate_protocol_before_any_event_scan": true,
+    "freqtrade_first_for_any_later_single_leg_implementation": true,
+    "lifecycle_intersection_requires_separate_delisting_execution_policy": true
+  },
+  "authorizations": {
+    "u05_hypothesis_design": true,
+    "event_scan": false,
+    "signals": false,
+    "returns": false,
+    "strategy_rule_selection": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "stop_conditions": [
+    "Any U-04 result, audit, source-freeze or artifact-set hash drift fails closed.",
+    "The U-05 design must select exactly one independent economic hypothesis without reading additional outcomes.",
+    "U-04 event signs or failed recovery measurements may not be inverted, relabeled or used to choose the U-05 mechanism.",
+    "No parameter threshold, event scan, return, strategy rule, backtest or OOS access is authorized.",
+    "Any possible position intersection with a lifecycle event blocks fixed-rule work pending a separate delisting/execution policy review."
+  ],
+  "content_hash": "48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

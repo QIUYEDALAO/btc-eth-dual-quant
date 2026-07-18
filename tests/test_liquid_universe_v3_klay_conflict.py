@@ -390,12 +390,19 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "U-04 paper feasibility failed; candidate closed without OOS",
+            "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
         )
         self.assertEqual(
             state["current_status"],
-            "u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2",
+            "u05_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
         )
+        u04 = next(
+            item for item in state["completed_milestones"]
+            if item.get("phase") == "U-04 unique sealed-IS paper observation"
+        )
+        self.assertEqual(u04["status"], "failed_feasibility")
+        self.assertFalse(u04["oos_opened"])
+        self.assertTrue(u04["candidate_closed"])
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
             item
@@ -499,7 +506,7 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertEqual(
             state["research_authorizations"],
             {
-                "hypothesis_preregistration": False,
+                "hypothesis_preregistration": True,
                 "strategy_code": False,
                 "event_scan": False,
                 "returns": False,

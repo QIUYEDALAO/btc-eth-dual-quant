@@ -2,11 +2,27 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-04 paper feasibility failed; candidate closed without OOS
-current_status: u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-05 independent design authorized; outcome-blind hypothesis design is the only next task
+current_status: u05_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-05 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U05_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u05_design_authorization_v1.json
+    branch: codex/u05-design-authorization
+    decision_content_hash: 48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c
+    prior_candidate: U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL
+    prior_run_content_hash: 9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    u04_outcome_derived_rule_prohibited: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-04 unique sealed-IS paper observation
     status: failed_feasibility
     evidence: reports/m1/U04_CROSS_SECTIONAL_PAPER_OBSERVATION.md
@@ -745,6 +761,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-05
+    phase: U-05 independent outcome-blind hypothesis design
+    status: authorized_ready
+    branch: codex/u05-cross-sectional-breadth-demand-persistence-design
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    u04_outcome_derived_rule_prohibited: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+    evidence: reports/m0/U05_DESIGN_AUTHORIZATION_DECISION.md
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -811,9 +840,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "No U-04 successor is authorized: the candidate is closed as failed_feasibility."
-  - "Preserve run 9182c9e3...eebc2 and its two failed 24h Gates without tuning or a second observation."
-  - "Any future candidate design review requires a separate explicit authorization and a new candidate identity."
+  - "Complete the hypothesis design for exactly one independent outcome-blind U-05 cross-sectional candidate."
+  - "Preserve U-04 run 9182c9e3...eebc2 without inversion, tuning or outcome-derived U-05 rules."
+  - "After design validation, only a separately frozen outcome-blind Paper protocol may follow."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -821,7 +850,7 @@ allowed_next_work:
   - Do not use API keys.
   - Do not run live or paper trading.
 research_authorizations:
-  hypothesis_preregistration: false
+  hypothesis_preregistration: true
   strategy_code: false
   event_scan: false
   returns: false
@@ -850,6 +879,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U05_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-05 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
   - path: reports/m1/U04_CROSS_SECTIONAL_PAPER_OBSERVATION.md
     phase: U-04 sealed-IS paper observation
     status: failed_feasibility

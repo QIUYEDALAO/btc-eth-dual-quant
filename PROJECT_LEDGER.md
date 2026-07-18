@@ -1919,3 +1919,13 @@ private exchange responses here.
 - Failed frozen Gates: median 24h relative recovery `-0.8556%` and absolute close displacement `-0.7946%`, each below `+1.80%`.
 - Isolation: OOS opened false; OOS rows decoded 0; no formal return, fill, position or equity output; no second run or parameter change.
 - Decision: `U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL` is closed as `failed_feasibility`. No paper-result review, lifecycle/fixed-rule work, strategy/backtesting, OOS, trading or M2 follows.
+
+## 2026-07-18 - U-05 Independent Design Authorized
+
+- Task: `U-05-DECISION`; branch `codex/u05-design-authorization`; local Git only.
+- Decision: authorize exactly one independent outcome-blind point-in-time cross-sectional hypothesis design.
+- Decision content hash: `48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c`.
+- Binding: U-04 remains `failed_feasibility` under run `9182c9e3...eebc2` with OOS sealed; ADR-0015 audit remains `19/19`, `0/0`.
+- Independence: U-04 event signs and failed recovery measurements may not be inverted, relabeled or used to choose U-05.
+- Plan: the continuous dependency chain from design through Paper, IS, optional OOS and final audit is frozen in `docs/superpowers/plans/2026-07-18-u05-cross-sectional-research-mainline.md`.
+- Authorization: U-05 hypothesis design only. Event scans, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
