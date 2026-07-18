@@ -2,10 +2,12 @@
 
 ## U-14 Unique Sealed-IS Paper Observation
 
-Qualification contract/result `bea82cea...5951` / `417b329a...aaa7` pass.
+Qualification contract/corrected result `bea82cea...5951` / `4db5eb79...dec5` pass.
 All 27,736 archives and 19 manifests are exact, six traversal identities match,
-the structural 24h ceiling is 1,405 versus 400, and the three one-million-row
-complexity passes finish within 1.094 seconds and 27.234 MiB. No outcome or OOS
+the structural 24h ceiling is 1,405 versus 400, and the corrected three
+one-million-row complexity passes finish within 1.091 seconds and 27.391 MiB.
+The all-active-member residual rank defect was corrected before any market
+event or path scan. No outcome or OOS
 value was consumed.
 
 The only next task is exactly one sealed-IS Paper observation. It must apply the

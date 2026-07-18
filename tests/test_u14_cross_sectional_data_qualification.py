@@ -52,6 +52,15 @@ class U14QualificationTests(unittest.TestCase):
         malformed[0] = AuctionPathRow(malformed[0].decision_ms, malformed[0].symbol, 100.0, 99.0, 101.0, 100.0, 100.0, malformed[0].path_closes)
         self.assertIsNone(evaluate_decision(malformed))
 
+    def test_rank_gate_uses_all_active_members(self):
+        rows = list(synthetic_rows(15, 15))
+        candidate = rows[0]
+        rows[0] = AuctionPathRow(candidate.decision_ms, candidate.symbol, 100.0, 100.2, 98.0, 99.9, 100.0, candidate.path_closes)
+        for index in range(1, 5):
+            row = rows[index]
+            rows[index] = AuctionPathRow(row.decision_ms, row.symbol, 100.0, 100.0, 98.8, 99.9, 100.0, row.path_closes)
+        self.assertIsNone(evaluate_decision(rows))
+
 
 if __name__ == "__main__":
     unittest.main()

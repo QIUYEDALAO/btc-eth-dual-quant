@@ -2363,3 +2363,10 @@ private exchange responses here.
 - Complexity: same event/path evaluator passes three one-million-row runs; maximum 1.093112 seconds and 27.234 MiB; output hash exact.
 - Isolation: OOS decoded 0 and market OHLCV/common-state/candidate/event/path/return rows 0.
 - Authorization: exactly one sealed-IS Paper observation; no tuning, rerun, formal return, strategy/backtesting, OOS, trading or M2.
+
+## 2026-07-18 - U-14 Pre-Result All-Member Rank Gate Corrected
+
+- Before any U-14 market event/path scan, inspection found the shared core ranked residual only among threshold-passing candidates instead of all active members.
+- The Gate now ranks every active member first and admits a threshold-passing candidate only when it is inside the frozen top `ceil(active/4)` set.
+- A targeted all-member rank fixture passes; all sources and six traversals remain exact; the three corrected one-million-row passes remain under 1.090370 seconds and 27.391 MiB.
+- Corrected qualification `4db5eb7938cbf7f8063a00164fa6986d53629968ea0a8a4516de01e3a859dec5` supersedes `417b329a...aaa7` before outcomes. The unique Paper observation authority remains unused.

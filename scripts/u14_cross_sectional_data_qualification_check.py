@@ -14,7 +14,7 @@ from scripts.u14_cross_sectional_data_qualification import CONFIG, canonical_has
 
 RESULT = ROOT / "reports/m1/evidence/u14_cross_sectional_data_qualification_v1.json"
 EXPECTED_CONTRACT = "bea82ceabcab8ff22f8c5e0d8beab636886ab42e776bfe93be382e0719b45951"
-EXPECTED_RESULT = "417b329a31984482027c35048db1862a10d79e1680ac23eaded8778afb88aaa7"
+EXPECTED_RESULT = "4db5eb7938cbf7f8063a00164fa6986d53629968ea0a8a4516de01e3a859dec5"
 
 
 def validate(config: Mapping[str, Any], result: Mapping[str, Any]) -> list[str]:

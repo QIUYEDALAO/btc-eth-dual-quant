@@ -55,16 +55,18 @@ def evaluate_decision(rows: Sequence[AuctionPathRow], minimum_members: int = 10)
         return None
     close_locations = [value[3] for value in exact]
     candidates: list[tuple[float, float, float, float, str, int]] = []
+    residual_ranks: list[tuple[float, str]] = []
     for index, (row, values) in enumerate(zip(ordered, exact)):
         log_return, normalized_range, downside, close_location = values
         peers = close_locations[:index] + close_locations[index + 1 :]
         residual = close_location - median(peers)
+        residual_ranks.append((residual, row.symbol))
         if log_return <= 0.0 and normalized_range >= 0.0180 and downside <= -0.0120 and close_location >= 0.80 and residual >= 0.20:
             candidates.append((residual, close_location, downside, normalized_range, row.symbol, index))
     if not candidates:
         return None
     ranked = sorted(candidates, key=lambda value: (-value[0], -value[1], value[2], -value[3], value[4]))
-    permitted = {value[4] for value in sorted(candidates, key=lambda value: (-value[0], value[4]))[: ceil(len(rows) / 4)]}
+    permitted = {symbol for _, symbol in sorted(residual_ranks, key=lambda value: (-value[0], value[1]))[: ceil(len(rows) / 4)]}
     chosen = next((value for value in ranked if value[4] in permitted), None)
     if chosen is None:
         return None
