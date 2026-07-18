@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m0/U24_DESIGN_AUTHORIZATION_DECISION.md` | U-24 design authorization | one independent outcome-blind design authorized | Binds U-23 failed result, prohibits inversion/reuse and requires synthetic exact-core feasibility before protocol freeze. | no |
+| `config/u24_design_authorization_v1.json` | U-24 machine authorization | content `74515269...bdfac5` | Only U-24 hypothesis design is true; all result, strategy, OOS and trading permissions remain false. | no |
+
+
 | `reports/m1/U23_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-23 unique sealed-IS Paper observation | failed_feasibility | 178 episodes; sample/distribution pass, three economic Gates fail; OOS sealed. | no |
 | `reports/m1/evidence/u23_cross_sectional_paper_observation/run_manifest.json` | U-23 Paper run machine evidence | content `771ce48d...fb2604` | Three-order exact failure with zero downstream authority. | no |
 

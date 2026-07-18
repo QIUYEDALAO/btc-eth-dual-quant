@@ -185,7 +185,7 @@ def main() -> int:
         raw_allowed_next_work = []
     allowed_next_work = [str(item) for item in raw_allowed_next_work]
     current_phase = str(state.get("current_phase", ""))
-    hypothesis_design_phase = current_phase.startswith(("U-04 ", "U-05 ", "U-06 ", "U-07 ", "U-08 ", "U-09 ", "U-10 ", "U-11 ", "U-12 ", "U-13 ", "U-14 ", "U-15 ", "U-16 ", "U-17 ", "U-18 ", "U-19 ", "U-20 ", "U-21 ", "U-22 ", "U-23 "))
+    hypothesis_design_phase = current_phase.startswith(("U-04 ", "U-05 ", "U-06 ", "U-07 ", "U-08 ", "U-09 ", "U-10 ", "U-11 ", "U-12 ", "U-13 ", "U-14 ", "U-15 ", "U-16 ", "U-17 ", "U-18 ", "U-19 ", "U-20 ", "U-21 ", "U-22 ", "U-23 ", "U-24 "))
     if not hypothesis_design_phase and not any("diagnostic" in item.casefold() for item in allowed_next_work):
         failures.append("PROJECT_STATE.yaml allowed_next_work must include diagnostic scope")
     if not any(

@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-24 decision `745152692cdada8dad9e0abaf5ea171fb3a1d55d70dbfab32b66c7d2edbdfac5` authorizes exactly one economically independent, outcome-blind hypothesis design. U-23 remains permanently closed under run `771ce48d80dc48fd2d8f984528541c8a8c1cef4f756892647d66f49b9ffb2604`; its negative result may not be inverted or reused. Public data, outcomes, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false; a synthetic exact-core complexity pass is mandatory before any later U-24 protocol freeze.
+
 - U-23's unique sealed-IS Paper observation is `failed_feasibility` under `771ce48d80dc48fd2d8f984528541c8a8c1cef4f756892647d66f49b9ffb2604`. All sample/distribution Gates pass with 178 episodes, but relative continuation `-1.1952%`, absolute displacement `-0.9181%` and positive fraction `34.83%` fail all three economic Gates. U-23 is closed without rerun, formal returns or OOS. Only a separate U-24 authorization may follow; strategy/backtesting, API/trading, execution/live and M2 remain false.
 
 - U-23 frozen-source qualification passes under `08166fb534daf691e069f6ae743b472f0c06879dd060c58f816e4f2d5acef2c5`: 27,736 archives, 19 manifests, three source/reader orders and a 1,031 independent-episode structural ceiling are exact; OHLC/result/OOS decode counts are zero. Exactly one sealed-IS Paper observation is authorized; formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
