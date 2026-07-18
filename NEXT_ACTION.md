@@ -1,5 +1,17 @@
 # Next Action
 
+## U-21 Outcome-Blind Hypothesis Design
+
+Decision `58c4be44...7b247` authorizes exactly one economically independent,
+outcome-blind U-21 cross-sectional hypothesis design. It binds U-20's immutable
+failed run `587def88...9ede1` and prohibits inversion, repair, relabeling or
+repackaging of that result.
+
+The next task may freeze only one economic mechanism, causal timing, failure
+regimes and non-duplication. It must read no new public data or outcomes and
+select no timeframe, estimator, threshold, path or strategy parameter. Events,
+returns, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
 ## Stop: U-20 Failed Paper Feasibility
 
 The unique sealed-IS observation is immutable under run

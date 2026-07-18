@@ -2625,3 +2625,10 @@ private exchange responses here.
 - Sample: 110 complete episodes, 36 symbols, 54 months and five qualifying years; every sample, projection, concentration and authority Gate passes.
 - Economics: median 24h relative premium `-0.0375%`, absolute displacement `-0.2133%`, and positive fraction `48.18%`; frozen minima `+1.80%`, `+1.80%` and `60%` all fail.
 - Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-20 is permanently closed.
+
+## 2026-07-18 - U-21 Independent Design Authorized
+
+- Decision: `58c4be44b0d3753d8cf36f96df374880d2a929d4f091e7aac19b14619c17b247`; exactly one economically independent, outcome-blind U-21 hypothesis design.
+- Binding: U-20 remains closed under run `587def88...9ede1`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-20 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-21. U-20 inversion, repair, relabeling or repackaging is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
