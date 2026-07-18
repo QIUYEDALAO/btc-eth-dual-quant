@@ -1967,3 +1967,11 @@ private exchange responses here.
 - Failed frozen Gates: median 24h common-demand close displacement `0.0759%` versus `1.20%`; median positive-member fraction `53.33%` versus `60%`.
 - Isolation: OOS opened false; OOS rows decoded 0; no formal return, fill, position or equity output; no network, second run or parameter change.
 - Decision: `U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE` is closed as `failed_feasibility`. No Paper-result review, lifecycle/fixed-rule work, strategy/backtesting, OOS, trading or M2 follows.
+
+## 2026-07-18 - U-06 Independent Design Authorized
+
+- Task: `U-06-DECISION`; branch `codex/u06-design-authorization`; local Git only.
+- Decision content hash: `596eacbcf2caec7dd1da27bb66ee8bb5859c5b6992c067f22d40e5305cb74662`.
+- Binding: U-05 remains `failed_feasibility` under run `874cdac3...e7e4a`, U-04 remains closed, both OOS sets remain sealed, and the ADR-0015 audit remains `19/19`, `0/0`.
+- Independence: event signs, observed paths and failed Gate values from U-04/U-05 may not be inverted, relabeled or used to choose U-06.
+- Authorization: exactly one outcome-blind U-06 hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.

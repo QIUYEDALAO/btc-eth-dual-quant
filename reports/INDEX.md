@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m0/U06_DESIGN_AUTHORIZATION_DECISION.md` | U-06 design authorization | one independent outcome-blind design authorized | Binds closed U-04/U-05 results and passing V4 audit; enables only one U-06 hypothesis design. | no |
+| `config/u06_design_authorization_v1.json` | U-06 machine authorization | content `596eacbc...b74662` | Prohibits prior-outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
 | `reports/m1/U05_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-05 sealed-IS Paper observation | failed_feasibility | 490 complete episodes; frozen 24h displacement and positive-member-fraction Gates fail; OOS remains sealed. | no |
 | `reports/m1/evidence/u05_cross_sectional_paper_observation/` | U-05 Paper machine evidence | run `874cdac3...e7e4a` | Three orders exact under `ac4b36ac...f267b0`; events, episodes, paths, accounting and failed Gates are hash-bound. | no |
 | `reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md` | U-05 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes distributed common-demand persistence without timeframes, thresholds, outcomes, rules or OOS. | no |

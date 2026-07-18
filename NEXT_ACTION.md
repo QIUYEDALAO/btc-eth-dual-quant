@@ -1,6 +1,6 @@
 # Next Action
 
-## Separate Post-U-05 Candidate Decision
+## U-06 Outcome-Blind Hypothesis Design
 
 U-05 completed its one authorized sealed-IS Paper observation and is closed as
 `failed_feasibility`. Run `874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a`
@@ -13,15 +13,18 @@ versus `1.20%`, and median positive-member fraction was `53.33%` versus `60%`.
 OOS remained sealed and no formal return, fill, position or equity series was
 created.
 
-The next task is a separate governance decision on whether to authorize at
-most one new economically independent, outcome-blind candidate design. That
-decision must bind the U-05 failure, prohibit sign inversion and outcome-derived
-timeframes, thresholds, horizons or Gates, and keep event scans, strategy code,
-returns, backtesting, OOS, API/trading, `execution/live` and M2 false.
+Decision `596eacbcf2caec7dd1da27bb66ee8bb5859c5b6992c067f22d40e5305cb74662`
+authorizes exactly one new economically independent, outcome-blind U-06
+hypothesis design. It binds both prior failed runs and the passing V4 audit.
+
+The next task must select one mechanism based on ex-ante economic reasoning,
+document causal timing, failure regimes and non-duplication, and register the
+candidate unopened. It may not select a timeframe, threshold, horizon, Gate or
+rule, and it may not read any additional event, path, return or OOS outcome.
 
 Do not conduct a U-05 Paper-result review, change its protocol, rerun it or
-continue to fixed rules. A future candidate must start with its own design and
-non-duplication evidence before any protocol or data access.
+continue to fixed rules. U-06 may authorize only a later separate outcome-blind
+Paper protocol after its design and non-duplication evidence pass.
 
 ## U-04 Closed Historical Evidence
 
