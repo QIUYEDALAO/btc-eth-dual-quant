@@ -2687,3 +2687,10 @@ private exchange responses here.
 - Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `e2a920c2...18cd57`.
 - Finding: pre-freeze core/evidence, 24h robust dispersion, coherent leader, point-in-time membership, clustering, paths, Gates and isolation are fixed and causal.
 - Authorization: frozen-source structural qualification and result-free preflight only; returns, dispersion/leaders/events/paths, formal returns, strategy, OOS and trading remain false.
+
+## 2026-07-19 - U-22 Frozen-Source Qualification Passed
+
+- Result: `9b009c6b940e338cc77f8f3ea9e8dd473689c739d6c247ad0ba078c3f40a2334`; 27,736 archives, 19 manifests and all source/reader orders exact.
+- Structure: 37,401 eligible decisions and maximum 1,514 independent 24h episodes versus 400 required; every IS year exceeds the eventual floor.
+- Isolation: price, return, dispersion, leader, event, path, formal-return and OOS decoded rows are all zero.
+- Authorization: exactly one sealed-IS Paper observation; no strategy, backtest, OOS or trading.

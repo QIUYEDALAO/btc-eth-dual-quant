@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "qualification_id": "U22-05-CROSS-SECTIONAL-DATA-QUALIFICATION-PREFLIGHT-V1",
+  "status": "frozen_source_qualification_pending_run",
+  "candidate_id": "U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION",
+  "protocol_target_commit": "d4f254f876dfeab73494c79a48e90c86dfd0ee16",
+  "protocol_content_hash": "0fdc7eb264e5f9a24dbcb746bbee6af0b1af2218cc101d6674099769f5d1b4fa",
+  "protocol_review_content_hash": "e2a920c29105a32764016d478d22efa0d234a2fc5362ce5cae17f4671218cd57",
+  "synthetic_core_feasibility_hash": "4476d5b5cc38b23c3f031b2438e77224a8da3c80ee011dba719cf43b76e6940b",
+  "exact_core_sha256": "18ceb5d8a13450e298b99bb0664acd7c9d4d2893ac37a00d9635f3c2c5de7264",
+  "base_v4_qualification_contract_hash": "0dd9a159382f1d515fed0269c9122adcd042a1fd726431bc36a9e4f6e01d5fb8",
+  "authority_bindings": {
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "source_archive_count": 27736,
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+    "invalid_interval_slot_mask_hash": "23e78e15a4484af9167b03e29bf9d499a39ff1e1c8195a056fae72b984285487"
+  },
+  "structural_preflight": {
+    "is_start": "2020-01-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "decision_step_hours": 1,
+    "history_hours": 24,
+    "future_path_hours": 24,
+    "constituent_5m_rows_per_hour": 12,
+    "minimum_active_members": 10,
+    "cluster_connected_window_hours": 24,
+    "minimum_theoretical_eligible_24h_episodes": 400,
+    "traversal_orders": ["normal", "reverse", "deterministic_shuffled"],
+    "deterministic_shuffle_seed": 161803,
+    "ohlcv_fields_decoded": 0,
+    "result_rows_generated": 0
+  },
+  "pre_freeze_complexity": {
+    "benchmark_passes": 3,
+    "minimum_logical_hourly_member_rows_per_pass": 1000000,
+    "maximum_elapsed_seconds_per_pass": 30,
+    "maximum_peak_rss_mib": 1024,
+    "rerun_during_qualification": false,
+    "market_outcomes_allowed": false
+  },
+  "isolation_contract": {
+    "is_start": "2020-01-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z",
+    "oos_end_exclusive": "2026-07-01T00:00:00Z",
+    "oos_archive_access": "opaque_identity_and_crc_only",
+    "oos_ohlcv_decode_allowed": false
+  },
+  "authorizations": {
+    "frozen_source_identity_verification": true,
+    "data_qualification": true,
+    "structural_preflight": true,
+    "return_dispersion_leader_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "strategy": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "content_hash": "59cf9567c06b73418404202063407f716056c80d584993b2b50a4b5b75482875",
+  "generated_utc": "2026-07-19T00:00:00Z"
+}

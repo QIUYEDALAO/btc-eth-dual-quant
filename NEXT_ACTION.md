@@ -1,5 +1,17 @@
 # Next Action
 
+## U-22 Unique Sealed-IS Paper Observation
+
+Qualification `9b009c6b...0a2334` passes with 27,736 archives, 19 manifests,
+three exact source/reader orders and a structural ceiling of 1,514 versus 400.
+All result and OOS decode counters remain zero.
+
+The only next task is one sealed-IS observation under protocol
+`0fdc7eb2...d1b4fa`. It may compute the frozen hourly common return, robust
+dispersion, coherent leader, 24h episodes and path diagnostics once over IS.
+It must not create fills, positions, equity or formal returns, read OOS, tune
+or rerun. Any failed Paper Gate closes U-22.
+
 ## U-22 Frozen-Source Data Qualification and Result-Free Preflight
 
 Exact target `d4f254f8...d0ee16` is approved 16/16 with 0/0 critical/high under

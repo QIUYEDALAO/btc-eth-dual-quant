@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U22_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-22 frozen-source qualification | pass_local_complete | Exact sources/orders; ceiling 1,514; zero result/OOS rows. | no |
+| `reports/m1/evidence/u22_cross_sectional_data_qualification_v1.json` | U-22 qualification machine evidence | content `9b009c6b...0a2334` | Binds sources, structure, isolation and one-run authority. | no |
+
 | `reports/expert/U22_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-22 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `d4f254f8...d0ee16`, nine exact blobs and pre-freeze feasibility; authorizes only qualification. | no |
 | `reports/expert/evidence/u22_cross_sectional_paper_protocol_review_v1.json` | U-22 review machine evidence | content `e2a920c2...18cd57` | Binds 16 dimensions, exact core/evidence and qualification-only authority. | no |
 
