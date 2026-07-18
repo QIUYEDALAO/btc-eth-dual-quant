@@ -2646,3 +2646,10 @@ private exchange responses here.
 - Identity: 336 completed hourly observations split into two 168h halves; each computes standardized `E[z_candidate² × z_common²]` with independent baseline 1.0.
 - Persistence/Gates: both halves require at least 1.50 and top-quarter rank; signed direction, coskewness, volatility, tail, drawdown and terminal-bar direction are not Gates.
 - Next action: separate exact-head review only. Data qualification, cokurtosis/events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-19 - U-21 Paper Protocol Exact-Head Review Approved
+
+- Target: `d76714752825f9018427e9cd55cdd69802928d42`; protocol `b8cad855...73551e`; all five target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `809dcdf6...355ff`.
+- Finding: common adjustment, unsigned standardized fourth comoment, two-half threshold/rank persistence, clustering, paths, complexity and isolation are causal and fixed.
+- Authorization: only frozen-source structural qualification, sample ceiling, synthetic complexity and result-free preflight. Cokurtosis/event/path scans, formal returns, strategy, OOS and trading remain false.

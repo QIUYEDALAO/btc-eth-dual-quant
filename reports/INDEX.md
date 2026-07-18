@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/expert/U21_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-21 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `d7671475...28d42` unchanged and authorizes only qualification. | no |
+| `reports/expert/evidence/u21_cross_sectional_paper_protocol_review_v1.json` | U-21 review machine evidence | content `809dcdf6...355ff` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
+
+
 | `reports/m1/U21_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-21 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 336h two-half systematic-cokurtosis persistence, clustering, paths, Gates and preflight. | no |
 | `config/u21_cross_sectional_paper_protocol_v1.json` | U-21 machine Paper protocol | content `b8cad855...73551e` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
 

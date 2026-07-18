@@ -1,5 +1,17 @@
 # Next Action
 
+## U-21 Frozen-Source Data Qualification and Preflight
+
+Exact target `d7671475...28d42` is approved 16/16 with 0/0 critical/high under
+review `809dcdf6...355ff`. The only next task may verify frozen ZIP/manifests,
+1h/5m structural grids, 336h history and 24h path availability, membership,
+lifecycle/mask order and IS/OOS isolation without decoding returns,
+common-adjusted returns, cokurtosis, events or paths.
+
+It must prove at least 400 theoretical 24h episodes and run three synthetic
+million-row passes on the exact future evaluator path. Any hash, order, scope,
+ceiling or resource failure closes U-21 before results.
+
 ## U-21 Exact-Head Independent Paper-Protocol Review
 
 Protocol `U21-03-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM-PAPER-V1` is frozen before

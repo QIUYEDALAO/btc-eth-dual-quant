@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-21 exact protocol target `d76714752825f9018427e9cd55cdd69802928d42` is independently approved 16/16 with 0 critical/high under review `809dcdf63d096d8b2742c13004c83151780a7e8078dcde85da7cc65946a355ff`. Only frozen-source qualification, 336h-history/24h-path structural ceiling, three-order result-free preflight and synthetic complexity are authorized next. Common-adjusted returns, cokurtosis, events, paths, formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-21 Paper protocol `U21-03-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e`. It fixes 336h completed history, two 168h halves, standardized squared candidate-adjusted/squared common fourth comoment, `1.50`/top-quarter two-half persistence, 24h clustering and immutable Paper Gates. Only exact-head independent review is authorized; data, returns, cokurtosis, events, paths, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-21 freezes `U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM` under hypothesis `90761268042081c9f80a4fb446ed7e805242608ec6700f6c18b8419bf24420b6` and design `a45075371103acf28981ce3a1f0cd47a029b15f5cf3ef9a878b5c682e248568b`. It studies compensation for unsigned systematic fourth-comoment risk, not negative coskewness, directional capture, asset-only tails, volatility-of-volatility or prior event families. Only one outcome-blind Paper protocol design is authorized next; data, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
