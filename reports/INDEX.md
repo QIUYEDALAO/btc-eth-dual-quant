@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m1/U20_NEGATIVE_COSKEWNESS_RISK_PREMIUM_DESIGN.md` | U-20 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes compensated systematic third-comoment risk without data, parameters, results or OOS. | no |
+| `reports/m1/U20_NON_DUPLICATION_REVIEW.md` | U-20 non-duplication | pass_design_level | Separates negative coskewness from directional capture, asset-only tails, volatility variability and prior event families. | no |
+| `config/u20_cross_sectional_design_scope_v1.json` | U-20 machine design scope | content `3995e92a...a1e5b5` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
+
 | `reports/m0/U20_DESIGN_AUTHORIZATION_DECISION.md` | U-20 design authorization | one independent outcome-blind design authorized | Binds U-19 failed result and prohibits inversion/reuse; enables only one new design. | no |
 | `config/u20_design_authorization_v1.json` | U-20 machine authorization | content `b4e9d5c9...b64455` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
 

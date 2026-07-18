@@ -1,5 +1,18 @@
 # Next Action
 
+## U-20 Outcome-Blind Paper Protocol Design
+
+U-20 freezes `U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM` under
+hypothesis `9d17a514...e46bdb` and design `3995e92a...a1e5b5`. The mechanism is
+compensation for systematic higher-moment risk: common-adjusted asset returns
+that tend to be negative when completed common-market moves are large.
+
+The only next task is a separate result-blind Paper protocol defining history,
+common-return and coskewness estimators, normalization, persistence, candidate
+identity, paths, costs, sample/economic Gates, structural ceiling, complexity
+and isolation before any data read. Returns, fixed rules, strategy/backtesting
+and OOS remain unauthorized.
+
 ## U-20 Outcome-Blind Hypothesis Design
 
 Decision `b4e9d5c9...b64455` authorizes exactly one economically independent,

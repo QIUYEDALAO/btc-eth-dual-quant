@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-20 freezes `U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM` under hypothesis `9d17a514b9e13eff5dd885382ab7c9df5c14e9a71283a219d43c901648e46bdb` and design `3995e92a9ae69fd64f8258b33b620c801d63e235e1ed90a254a3d99d70a1e5b5`. It studies compensation for systematic third-comoment risk, not directional capture, asset-only tails, volatility-of-volatility or prior event families. Only one outcome-blind Paper protocol design is authorized next; data, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-20 design authorization `b4e9d5c94957d69142e328a05dfb00474840efe3347dd5347c55997115b64455` permits exactly one economically independent, outcome-blind hypothesis design. It binds U-19's immutable failed run and prohibits inversion, repair, relabeling, repackaging or use of U-04 through U-19 outcomes to select U-20. Data, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-19's unique sealed-IS Paper observation is `failed_feasibility` under run `38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4`. All three traversal orders match; 54 episodes fail count/projection/year and all three economic Gates: relative premium `-0.5663%`, absolute displacement `-0.7466%`, positive fraction `37.04%`. U-19 is closed without rerun, formal returns or OOS. A separate U-20 independent-candidate authorization is required; strategy/backtesting, API/trading, execution/live and M2 remain false.

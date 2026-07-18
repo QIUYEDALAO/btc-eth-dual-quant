@@ -2423,6 +2423,13 @@ private exchange responses here.
 - Independence: U-04 through U-15 outcomes, signs, Gates, concentrations, censor patterns, defects and field failures may not select U-16. U-15 field-contract repair or relaxation is prohibited.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
 
+## 2026-07-18 - U-20 Negative Coskewness Risk Premium Design Complete
+
+- Candidate: `U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM`; hypothesis `9d17a514...e46bdb`; design `3995e92a...a1e5b5`.
+- Mechanism: persistent negative third co-moment between common-adjusted asset return and squared common return may expose holders to disproportionate relative losses during large common moves, for which they demand compensation.
+- Independence: not directional capture beta, asset-only downside tails, volatility-of-volatility, one-off stress resilience, trend, liquidity or reversal; no prior result selected the mechanism.
+- Scope: no data or outcome read; all clocks, estimators, normalization, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
+
 ## 2026-07-18 - U-16 Correlation-Breakdown Information Persistence Design Complete
 
 - Candidate: `U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE`; hypothesis `78109352...2f1`; design `8574e5c5...075d1`.
