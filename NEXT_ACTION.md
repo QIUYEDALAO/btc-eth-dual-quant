@@ -1,6 +1,6 @@
 # Next Action
 
-## U-08 Separate Independent-Candidate Authorization Decision
+## U-08 Outcome-Blind Independent Hypothesis Design
 
 U-07 is frozen as
 `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
@@ -34,11 +34,13 @@ concentration Gates pass, but the three frozen economic Gates fail:
 - positive 24h relative continuation `52.44%` versus `60%`.
 
 U-07 is closed `failed_feasibility` with OOS sealed and no formal returns. Do
-not review the failed Paper result, tune or rerun it, create rules, implement a
-strategy or backtest it. The only next task is a separate governance decision
-for at most one economically independent, outcome-blind U-08 hypothesis. Any
-U-08 design must not invert, relabel or derive rules from U-04 through U-07
-outcomes.
+not review, tune or rerun it. Decision
+`813267f29fd2f019b7d856d95a5eaaa7927a3f072327cc643e6a1ecd51af1cf9`
+authorizes exactly one economically independent, outcome-blind U-08 hypothesis
+design. It must not invert, relabel or derive rules from U-04 through U-07
+outcomes. The design may state mechanism, timing, non-duplication and failure
+regimes only; timeframe, thresholds, events, returns, fixed rules, strategy,
+backtesting and OOS remain unauthorized.
 
 ## U-04 Closed Historical Evidence
 

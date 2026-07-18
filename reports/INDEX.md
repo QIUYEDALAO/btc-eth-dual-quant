@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m0/U08_DESIGN_AUTHORIZATION_DECISION.md` | U-08 design authorization | one independent outcome-blind design authorized | Binds four failed candidates and passing V4 audit; enables only one U-08 hypothesis design. | no |
+| `config/u08_design_authorization_v1.json` | U-08 machine authorization | content `813267f2...1cf9` | Prohibits prior-outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
 | `reports/m1/U07_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-07 sealed-IS Paper observation | failed_feasibility | 82 complete episodes; all three frozen 24h economic Gates fail; OOS remains sealed. | no |
 | `reports/m1/evidence/u07_cross_sectional_paper_observation/` | U-07 Paper machine evidence | run `8c637a3f...352c` | Three orders exact under `2714c2bf...00ee`; failed result is immutable and authorizes no downstream work. | no |
 | `reports/m1/U07_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-07 frozen-source qualification and IS/OOS isolation | pass / one sealed-IS observation authorized | 27,736 ZIPs, 19 manifests and three orders pass; OOS/outcome rows remain zero. | no |
