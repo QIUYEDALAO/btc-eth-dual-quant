@@ -2171,3 +2171,12 @@ private exchange responses here.
 - Five target blobs and 13 identity, authority, daily data, estimators, candidate, ceiling, causal, path, Gate, leakage and safety dimensions pass.
 - Verdict `approve`; critical/high `0/0`; target unchanged; no public result or OOS access.
 - Authorization: frozen-source qualification and isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-10 Frozen-Source Data Qualification Passed
+
+- Contract/result: `c47701dca14ffab10b94efe2a855dd85c68ab01647c2feede3b8db86c80661bf` / `0029def278eeadf6b3951e1e1f62d16b0919889950eb68e0cdd3fe97fe727ee2`; branch `codex/u10-cross-sectional-data-qualification`; local Git only.
+- All 27,736 ZIPs and 19 frozen manifests pass identity, CRC, daily price/quote-volume, membership, lifecycle, invalid-interval and IS/OOS isolation checks.
+- Normal, reverse and deterministic-shuffled traversals share identity `ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa`.
+- The metadata-only maximum is 418 constant-membership 72h episodes, above the frozen preflight minimum 400 and Paper Gate 90.
+- OOS values decoded and event/path/return rows generated are all zero.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, second result-bearing run, formal return, strategy, OOS, trading or M2.

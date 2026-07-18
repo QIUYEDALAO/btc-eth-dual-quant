@@ -1,6 +1,6 @@
 # Next Action
 
-## U-10 Frozen-Source Data Qualification and Isolation
+## U-10 Unique Sealed-IS Paper Observation
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -69,11 +69,19 @@ Exact target `f468b7aeaaf02f803125b4ab6037086fb353776f` is independently
 approved under review `e42d3170...9009`, with critical/high `0 / 0` and no
 target mutation.
 
-The only authorized next task is frozen-source data qualification and isolation.
-It must verify ZIP/manifests, complete daily price/quote-volume authority,
-membership/lifecycle/mask, the exact 418 metadata-only maximum independent
-constant-membership episodes (≥400 and ≥90), and the sealed boundary in three
-orders. It must generate zero event, path or return rows.
+Frozen-source qualification passed under contract `c47701dc...1bf` and result
+`0029def2...ee2`. All 27,736 ZIPs and 19 manifests are exact; the three
+traversal orders share identity `ca7d59b3...44aa`. The metadata-only ceiling is
+418 constant-membership 72h episodes, above both the frozen 400 preflight and
+90 Paper sample Gates. Qualification decoded zero OOS values and generated zero
+event, path or return rows.
+
+The only authorized next task is the single sealed-IS Paper observation. It
+must apply protocol `be205bf4...43b` once in normal, reverse and deterministic-
+shuffled order and produce event, episode, path and accounting diagnostics
+only. It may not tune parameters, create formal returns/fills/positions/equity,
+decode OOS, or run a second result-bearing observation. Any failed Paper Gate
+closes U-10; a pass authorizes only an independent result review.
 
 ## U-08 Frozen Historical Chain
 

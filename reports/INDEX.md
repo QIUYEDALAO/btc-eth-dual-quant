@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U10_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-10 frozen-source qualification | pass / one sealed-IS observation authorized | 27,736 ZIPs, 19 manifests, daily authority, ceiling 418 and three orders pass; OOS/outcomes zero. | no |
+| `reports/m1/evidence/u10_cross_sectional_data_qualification_v1.json` | U-10 qualification machine evidence | content `0029def2...ee2` | Binds contract `c47701dc...1bf`, exact authorities, ceiling and one-run-only authorization. | no |
 | `reports/expert/U10_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-10 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `f468b7ae...776f` unchanged and authorizes only qualification. | no |
 | `reports/expert/evidence/u10_cross_sectional_paper_protocol_review_v1.json` | U-10 protocol review machine evidence | content `e42d3170...9009` | Binds five target files, 13 dimensions and qualification-only authority. | no |
 | `reports/m1/U10_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-10 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes joint price/volume identity, 72h paths, sample ceiling, Gates and sealed OOS. | no |
