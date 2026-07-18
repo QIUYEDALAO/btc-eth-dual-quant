@@ -2,11 +2,27 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-19T00:00:00Z"
-current_phase: U-24 lottery-demand avoidance premium design completed; result-blind Paper protocol and synthetic-core feasibility are the only next task
-current_status: u24_hypothesis_design_pass_protocol_and_synthetic_core_only_no_public_data_no_results_no_oos_no_trading_no_m2
+current_phase: U-24 lottery-demand avoidance Paper protocol frozen after synthetic-core feasibility pass; exact-head independent review is the only next task
+current_status: u24_paper_protocol_frozen_pending_exact_head_review_no_public_data_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-24 outcome-blind lottery-demand avoidance Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U24_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u24_cross_sectional_paper_protocol_v1.json
+    synthetic_feasibility_evidence: reports/m1/evidence/u24_synthetic_core_feasibility_v1.json
+    branch: codex/u24-cross-sectional-paper-protocol
+    candidate_id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
+    protocol_content_hash: 5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7
+    synthetic_feasibility_content_hash: ce8b0f7998cc1c8e3928c605cccd0da37087a620d37e8058ae55e02f26957484
+    synthetic_complexity_passes: 3
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-24 lottery-demand avoidance premium hypothesis design
     status: economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only
     evidence: reports/m1/U24_LOTTERY_DEMAND_AVOIDANCE_PREMIUM_DESIGN.md
@@ -2631,6 +2647,21 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-24-PROTOCOL
+    phase: outcome-blind lottery-demand avoidance Paper protocol
+    status: completed_pending_exact_head_review
+    candidate_id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
+    design_content_hash: c99f7002b006d635d5c03936055e8d4bc498ace02b45551af52cdf80dd14d0c1
+    protocol_content_hash: 5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7
+    synthetic_feasibility_content_hash: ce8b0f7998cc1c8e3928c605cccd0da37087a620d37e8058ae55e02f26957484
+    exact_head_review_authorized: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-24
     phase: lottery-demand avoidance premium hypothesis design
     status: completed_design_protocol_and_synthetic_core_only
@@ -2995,6 +3026,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "A separate read-only exact-head independent review of the frozen U-24 protocol is the only next task."
+  - "The review may authorize only frozen-source data qualification and result-free preflight; it may not authorize events, paths, formal returns, strategy, OOS or trading."
   - "U-24 may design one result-blind Paper protocol only after its intended exact statistic core passes a synthetic-only complexity feasibility Gate."
   - "The U-24 protocol may freeze clocks, estimators, thresholds, persistence, clustering, paths and Paper Gates, but may not read public data or outcomes."
   - "U-24 may freeze exactly one economically independent outcome-blind hypothesis design; a synthetic exact-core complexity pass is required before any later protocol freeze."
@@ -3057,6 +3090,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U24_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-24 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
   - path: reports/m1/U24_LOTTERY_DEMAND_AVOIDANCE_PREMIUM_DESIGN.md
     phase: U-24 lottery-demand avoidance premium hypothesis design
     status: economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only

@@ -1,5 +1,18 @@
 # Next Action
 
+## U-24 Exact-Head Independent Paper-Protocol Review
+
+Protocol `U24-03-LOTTERY-DEMAND-AVOIDANCE-PREMIUM-PAPER-V1` is frozen under
+`5110c3f4...39c7ce7` after synthetic feasibility `ce8b0f79...957484` passed
+3/3 before freeze. It fixes 336h history, two-half candidate-specific common
+adjustment, maximum positive residual payoff, absolute/rank persistence,
+24h clustering, strict next-open paths and immutable Paper Gates.
+
+The only next task is a separate-branch read-only exact-head review. Approval
+may authorize only frozen-source structural qualification and result-free
+preflight. Public-data returns/results, events, paths, formal returns, strategy,
+backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
 ## U-24 Outcome-Blind Paper Protocol and Synthetic-Core Feasibility
 
 U-24 freezes `U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM` under

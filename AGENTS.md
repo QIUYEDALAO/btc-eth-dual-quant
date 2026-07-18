@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-24 Paper protocol `U24-03-LOTTERY-DEMAND-AVOIDANCE-PREMIUM-PAPER-V1` is frozen before public data/results under `5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7`. Its exact core passed three pre-freeze synthetic 1,002,960-logical-return checks under `ce8b0f7998cc1c8e3928c605cccd0da37087a620d37e8058ae55e02f26957484`. Only a separate exact-head independent review is authorized; public-data results, events, paths, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-24 freezes `U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM` under hypothesis `0b420693a6206504c4ab6644b2f8e3c9194300bfe096b831d80c12762b18ff34` and design `c99f7002b006d635d5c03936055e8d4bc498ace02b45551af52cdf80dd14d0c1`. It studies reduced preference-driven overpricing for assets with persistently lower asset-specific right-tail lottery payoff, not volatility, downside-tail, comoment, reversal or continuation families. The exact core must pass synthetic-only complexity before protocol freeze. Public data, outcomes, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-24 decision `745152692cdada8dad9e0abaf5ea171fb3a1d55d70dbfab32b66c7d2edbdfac5` authorizes exactly one economically independent, outcome-blind hypothesis design. U-23 remains permanently closed under run `771ce48d80dc48fd2d8f984528541c8a8c1cef4f756892647d66f49b9ffb2604`; its negative result may not be inverted or reused. Public data, outcomes, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false; a synthetic exact-core complexity pass is mandatory before any later U-24 protocol freeze.

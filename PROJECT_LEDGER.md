@@ -2757,3 +2757,10 @@ private exchange responses here.
 - Mechanism: after completed active-peer common adjustment, persistently lower asset-specific right-tail lottery payoff may avoid preference-driven overpricing and earn a relative premium.
 - Independence: not low volatility, downside-tail compensation, negative coskewness, systematic cokurtosis, residual reversal or range-expansion continuation; no prior result selected it.
 - Scope: no public data or outcome read and no timeframe, estimator, rank, persistence, threshold, horizon or strategy rule selected. Protocol design may proceed only with a pre-freeze synthetic exact-core complexity pass.
+
+## 2026-07-19 - U-24 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U24-03-LOTTERY-DEMAND-AVOIDANCE-PREMIUM-PAPER-V1`; content `5110c3f4...39c7ce7`; frozen before public data or results.
+- Pre-freeze feasibility: `ce8b0f79...957484`; three 1,002,960-logical-return synthetic passes complete in at most 0.472842 seconds and 21.641 MiB with identical digest.
+- Identity: 336 completed 1h returns in two halves; candidate-specific peer median; maximum positive residual payoff no greater than 8% and lowest-quarter in both halves.
+- Scope: no public archive, market result or OOS value read. Only separate exact-head independent review is authorized next.

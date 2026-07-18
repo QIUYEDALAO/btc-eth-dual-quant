@@ -1,5 +1,10 @@
 # Reports Index
 
+| `reports/m1/U24_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-24 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes two-half right-tail lottery payoff persistence, clustering, paths and Gates after pre-freeze complexity pass. | no |
+| `config/u24_cross_sectional_paper_protocol_v1.json` | U-24 machine Paper protocol | content `5110c3f4...39c7ce7` | Only exact-head review is true; data/results/trading permissions remain false. | no |
+| `reports/m1/evidence/u24_synthetic_core_feasibility_v1.json` | U-24 pre-freeze synthetic core feasibility | content `ce8b0f79...957484` | 3x1,002,960 logical returns pass deterministically with zero public-data/OOS access. | no |
+
+
 | `reports/m1/U24_LOTTERY_DEMAND_AVOIDANCE_PREMIUM_DESIGN.md` | U-24 hypothesis design | economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only | Freezes right-tail lottery-demand avoidance without public data, parameters, results or OOS. | no |
 | `reports/m1/U24_NON_DUPLICATION_REVIEW.md` | U-24 non-duplication | pass_design_level | Separates right-tail preference pricing from volatility, downside-tail, comoment, reversal and continuation families. | no |
 | `config/u24_cross_sectional_design_scope_v1.json` | U-24 machine design scope | content `c99f7002...14d0c1` | Enables only protocol design and synthetic exact-core feasibility; all result/trading permissions false. | no |
