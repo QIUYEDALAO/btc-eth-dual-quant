@@ -2282,3 +2282,13 @@ private exchange responses here.
 - Missing prior-month inputs and masked/incomplete days were excluded without fill, repair or replacement.
 - OOS OHLCV and common-component/candidate/event/path/return rows are zero.
 - Authorization: exactly one sealed-IS Paper observation; no tuning, rerun, formal return, strategy, OOS, trading or M2.
+
+## 2026-07-18 - U-12 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Task: `U-12-PAPER-OBSERVATION`; branch `codex/u12-cross-sectional-paper-observation`; local Git only.
+- Run/order: `b42a539c...7995` / `db4b8e74...a124`; event, episode, path and accounting manifests are exact across all three orders.
+- Sample: 88 complete episodes, 7 symbols, 12 months and only 2 years with at least 12 episodes.
+- Economics: median 24h relative persistence `0.1178%`, median absolute displacement `0.3621%`, positive relative fraction `52.27%`; frozen minima are `1.80%`, `1.80%` and `60%`.
+- Concentration: maximum year `73.86%` versus `35%`; maximum symbol `42.05%` versus `25%`.
+- Isolation: OOS opened false, rows decoded 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
+- Decision: U-12 closes `failed_feasibility`; only a separate U-13 independent-candidate authorization decision may follow.

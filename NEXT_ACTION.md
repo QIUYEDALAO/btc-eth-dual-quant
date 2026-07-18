@@ -1,21 +1,34 @@
 # Next Action
 
-## U-12 Unique Sealed-IS Paper Observation
+## U-13 Independent-Candidate Authorization Decision
+
+U-12 is closed `failed_feasibility` under the single immutable run
+`b42a539c...7995`. Three orders match exactly, but 9 frozen Paper Gates fail.
+There is no tuning, retry, Paper-result review, fixed-rule, strategy or backtest
+path for U-12.
+
+The only possible successor is a separate U-13 governance decision. It may
+authorize at most one genuinely independent, outcome-blind hypothesis design.
+It must bind U-04 through U-12 as immutable and OOS-sealed, and prohibit using
+their result signs, failed Gates, censor patterns or defects to select U-13.
+
+This decision itself may not choose parameters, read new data, scan events,
+compute returns, implement strategy code, open OOS or authorize trading/M2.
+
+## U-12 Closed Paper Observation
 
 U-12 qualification and same-reader preflight pass under contract/result
 `a65aa923...4ed3` / `c9a5b548...0510`. All 27,736 frozen archives and 19
 manifests are exact, three source orders and three same-reader orders match,
 and the metadata-only theoretical ceiling is 647 versus the frozen minimum 300.
 
-The only next task is exactly one sealed-IS Paper observation under protocol
-`a8cfc0b7...0b8a`. It may calculate the frozen prior-only common components,
-calendar candidates, connected episodes and 1/2/4/8/12/24h path diagnostics
-inside IS. It must run normal, reverse and deterministic-shuffled orders and
-require exact event, episode, path, accounting and manifest hashes.
+The single run produced 88 complete episodes. Median 24h relative persistence
+was `0.1178%`, median absolute displacement `0.3621%`, and positive relative
+fraction `52.27%`; all miss their frozen economic Gates. Count, year/symbol/month
+distribution Gates also fail.
 
-This is not a strategy backtest. It may not create fills, positions, equity or
-formal returns, and OOS remains sealed. Any failed Gate or execution defect
-closes U-12 without tuning or a second result-bearing run.
+This was not a strategy backtest: no fills, positions, equity or formal returns
+were generated and OOS remained sealed. The result-bearing authority is consumed.
 
 ## U-12 Frozen-Source Qualification and Same-Reader Preflight
 
