@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-20 frozen-source qualification passes locally under result `de61add6f8ef2a22f62166c14aeb4c30565cb8b3003e6395909fa7b7a85e2368`: 27,736 archives and 19 manifests are exact, all source/same-reader orders agree, the structural ceiling is 752 versus 400 required, and three one-million-row exact-core complexity passes succeed. Market outcome and OOS rows are zero. Exactly one sealed-IS Paper observation is authorized; no retry, formal returns, strategy/backtesting, OOS, API/trading, execution/live or M2.
+
 - U-20 exact protocol target `6a2207c05c7045e82b47f9685c01a5c2d0b30755` is independently approved 16/16 with 0 critical/high under review `eb452e7440b5058b6516629f65a9793f06dfa5748961c58e87229d4c3a1e20f5`. Only frozen-source qualification, 336h-history/24h-path structural ceiling, three-order result-free preflight and synthetic complexity are authorized next. Common-adjusted returns, coskewness, events, paths, formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-20 Paper protocol `U20-03-NEGATIVE-COSKEWNESS-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9`. It fixes 336h completed history, two 168h halves, standardized candidate-residual/common-squared third comoment, `-0.20`/bottom-quarter two-half persistence, 24h clustering and immutable Paper Gates. Only a separate exact-head independent review is authorized; data, returns, coskewness, events, paths, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

@@ -2,11 +2,30 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-20 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task
-current_status: u20_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-20 data qualification and complexity preflight passed; one sealed-IS Paper observation is the only next task
+current_status: u20_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-20 frozen-source data qualification, complexity and preflight
+    status: pass_local_complete
+    evidence: reports/m1/U20_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u20_cross_sectional_data_qualification_v1.json
+    branch: codex/u20-cross-sectional-data-qualification
+    contract_content_hash: 7bae7234c15f6f378b5b28667d3e805e51a34465bd95c736b0a3ef2109f49f80
+    qualification_content_hash: de61add6f8ef2a22f62166c14aeb4c30565cb8b3003e6395909fa7b7a85e2368
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 5179
+    maximum_independent_theoretical_24h_episodes: 752
+    complexity_passes: 3
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-20 Paper-protocol exact-head independent review
     status: approve
     evidence: reports/expert/U20_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -2304,6 +2323,20 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-20-DATA-QUALIFICATION
+    phase: frozen-source data qualification, complexity and preflight
+    status: completed_pass_local
+    protocol_content_hash: d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9
+    protocol_review_content_hash: eb452e7440b5058b6516629f65a9793f06dfa5748961c58e87229d4c3a1e20f5
+    contract_content_hash: 7bae7234c15f6f378b5b28667d3e805e51a34465bd95c736b0a3ef2109f49f80
+    qualification_content_hash: de61add6f8ef2a22f62166c14aeb4c30565cb8b3003e6395909fa7b7a85e2368
+    maximum_independent_theoretical_24h_episodes: 752
+    one_sealed_is_paper_observation_authorized: true
+    second_result_run_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-20-PROTOCOL-REVIEW
     phase: exact-head independent Paper-protocol review
     status: completed_approve_local
@@ -2467,8 +2500,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Perform only U-20 frozen-source data qualification, 336h-history/24h-path structural ceiling, three-order result-free preflight and three synthetic million-row exact-core complexity passes."
-  - "Qualification may inspect source structure and timestamps but may not decode return, common-adjustment, coskewness, event, path or OOS outcome values."
+  - "Run exactly one U-20 sealed-IS Paper observation under protocol d909cd57...e2dec9 and qualification de61add6...e2368; compute only frozen common-adjusted returns, two-half coskewness, events, paths, accounting and Paper Gates."
+  - "Do not tune, rerun, read OOS, create fills/positions/equity/formal returns or enter strategy/backtesting. Any failed Paper Gate closes U-20."
   - "No U-19 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-19 outcomes, Gates, defects and censor patterns may not select U-20."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."

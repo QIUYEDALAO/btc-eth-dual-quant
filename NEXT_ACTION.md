@@ -1,5 +1,20 @@
 # Next Action
 
+## U-20 Unique Sealed-IS Paper Observation
+
+Qualification `de61add6...e2368` passes with all 27,736 frozen archives and 19
+manifests exact. Three source/same-reader traversal orders agree, the structural
+ceiling is 752 independent 24h episodes versus 400 required, and three exact
+million-row evaluator passes meet the fixed time/memory Gates.
+
+The only next task is one sealed-IS Paper observation under protocol
+`d909cd57...e2dec9`. It may calculate the frozen peer common component,
+candidate common-adjusted returns, two-half coskewness, deterministic events,
+24h episodes and path diagnostics once over IS only. It must not create fills,
+positions, equity or formal returns, must not read OOS, and must not tune or
+rerun. Any failed Paper Gate closes U-20; a pass may proceed only to independent
+Paper-result review.
+
 ## U-20 Frozen-Source Data Qualification and Preflight
 
 Exact target `6a2207c0...30755` is approved 16/16 with 0/0 critical/high under

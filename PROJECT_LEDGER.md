@@ -2611,3 +2611,10 @@ private exchange responses here.
 - Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `eb452e74...e20f5`.
 - Finding: common-adjusted-return construction, standardized third comoment, two-half threshold/rank persistence, clustering, paths, complexity and isolation are causal and fixed.
 - Authorization: only frozen-source structural qualification, sample ceiling, synthetic complexity and result-free preflight. Coskewness/event/path scans, formal returns, strategy, OOS and trading remain false.
+
+## 2026-07-18 - U-20 Frozen-Source Qualification and Preflight Passed
+
+- Result: `de61add6f8ef2a22f62166c14aeb4c30565cb8b3003e6395909fa7b7a85e2368`; exact 27,736 archives, 19 manifests and three source/same-reader traversal orders.
+- Structure: 5,179 eligible decisions and maximum 752 independent theoretical 24h episodes versus the frozen minimum 400.
+- Complexity: three deterministic one-million-row exact-evaluator passes complete in at most 27.207247 seconds and 26.250 MiB; output `59beecf0...ade4` exact.
+- Isolation: price, return, common-adjusted-return, coskewness, candidate, event, path, formal-return and OOS decoded rows are all zero. Exactly one sealed-IS Paper observation is authorized.
