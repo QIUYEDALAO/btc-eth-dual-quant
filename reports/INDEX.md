@@ -2,6 +2,8 @@
 
 | `reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md` | U-05 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes distributed common-demand persistence without timeframes, thresholds, outcomes, rules or OOS. | no |
 | `reports/expert/U05_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-05 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `8d865279...ca5a6` without modification and authorizes only data qualification. | no |
+| `reports/m1/U05_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-05 frozen-source data qualification | pass / OOS sealed | 27,736 ZIPs, 19 manifests, 4h/1h/5m authority and three traversal orders pass; outcome rows remain zero. | no |
+| `reports/m1/evidence/u05_cross_sectional_data_qualification_v1.json` | U-05 qualification machine evidence | content `348e8029...f7cb4f` | Binds the exact reviewed protocol, frozen source and one-run-only sealed-IS authorization. | no |
 | `reports/expert/evidence/u05_cross_sectional_paper_protocol_review_v1.json` | U-05 protocol review machine evidence | content `8602f209...d914f` | Binds five exact target files, 13 dimensions and a data-qualification-only authorization. | no |
 | `reports/m1/U05_NON_DUPLICATION_REVIEW.md` | U-05 non-duplication | pass_design_level | Separates breadth/common demand from U-04 residuals and all prior candidate families. | no |
 | `config/u05_cross_sectional_design_scope_v1.json` | U-05 machine design scope | content `ae12172a...8c2bb` | Binds one declared unopened candidate and enables only Paper protocol design. | no |

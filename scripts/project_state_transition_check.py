@@ -208,6 +208,10 @@ ALLOWED = {
         "u05_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
     ): "U-05-DATA-QUALIFICATION",
     (
+        "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u05_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-05-PAPER-OBSERVATION",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -356,6 +360,10 @@ AUDIT_BLOCKED_PAIRS = {
         "U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
         "u05_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
     ),
+    (
+        "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u05_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ),
 }
 
 EXPECTED_AUTH = {
@@ -409,6 +417,11 @@ U05_PROTOCOL_REVIEW_APPROVED_PAIR = (
     "u05_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
 )
 
+U05_DATA_QUALIFICATION_PASS_PAIR = (
+    "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+    "u05_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+)
+
 
 def validate(state: dict) -> list[str]:
     failures = []
@@ -419,7 +432,7 @@ def validate(state: dict) -> list[str]:
     expected_auth = dict(EXPECTED_AUTH)
     if pair in {U04_DESIGN_PAIR, U05_DESIGN_PAIR}:
         expected_auth["hypothesis_preregistration"] = True
-    if pair == U04_DATA_QUALIFICATION_PASS_PAIR:
+    if pair in {U04_DATA_QUALIFICATION_PASS_PAIR, U05_DATA_QUALIFICATION_PASS_PAIR}:
         expected_auth["event_scan"] = True
     if state.get("research_authorizations") != expected_auth:
         failures.append("research authorization matrix changed")
@@ -471,7 +484,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -534,6 +547,7 @@ def validate(state: dict) -> list[str]:
         "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
         "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
         "U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
     }:
         milestones = [
             item
@@ -868,6 +882,7 @@ def validate(state: dict) -> list[str]:
         "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
         "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
         "U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
     }:
         milestones = [
             item
@@ -1216,6 +1231,50 @@ def validate(state: dict) -> list[str]:
         }
         if len(protocols) != 1 or any(protocols[0].get(key) != value for key, value in expected_protocol.items()):
             failures.append("U-05 reviewed protocol milestone binding changed")
+    if pair == U05_DATA_QUALIFICATION_PASS_PAIR:
+        observations = [item for item in open_work if item.get("id") == "U-05-PAPER-OBSERVATION"]
+        expected_observation = {
+            "status": "authorized_once_not_started",
+            "candidate_id": "U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE",
+            "target_commit": "8d8652796e22a15285ba682b4524baa0218ca5a6",
+            "protocol_content_hash": "c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214",
+            "review_content_hash": "8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f",
+            "qualification_content_hash": "348e80291ced6f7cbbb929c0b88c6bbce0b86e23cdbed33718b884810df7cb4f",
+            "maximum_runs": 1,
+            "sealed_is_only": True,
+            "three_traversal_orders_required": True,
+            "oos_ohlc_decode_authorized": False,
+            "event_scan_authorized": True,
+            "path_observation_authorized": True,
+            "formal_returns_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(observations) != 1 or any(observations[0].get(key) != value for key, value in expected_observation.items()):
+            failures.append("U-05 sealed-IS Paper observation authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-05 frozen-source data qualification and IS/OOS isolation"]
+        expected_qualification = {
+            "status": "pass_local_complete",
+            "protocol_target_commit": "8d8652796e22a15285ba682b4524baa0218ca5a6",
+            "contract_content_hash": "f1374b5c7bf7a103be7dacf3985d45cd332388afe601bd849271b30d63f562c3",
+            "qualification_content_hash": "348e80291ced6f7cbbb929c0b88c6bbce0b86e23cdbed33718b884810df7cb4f",
+            "source_archive_count": 27736,
+            "manifests_exact": 19,
+            "traversal_identity_hash": "ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa",
+            "expected_4h_member_blocks": 213570,
+            "oos_ohlc_values_decoded": 0,
+            "breadth_rows_generated": 0,
+            "event_rows_generated": 0,
+            "path_rows_generated": 0,
+            "return_rows_generated": 0,
+            "one_sealed_is_paper_observation_authorized": True,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_qualification.items()):
+            failures.append("U-05 data qualification milestone binding changed")
     if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
         protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
         expected_protocol = {

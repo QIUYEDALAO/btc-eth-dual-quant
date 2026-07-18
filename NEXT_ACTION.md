@@ -1,6 +1,6 @@
 # Next Action
 
-## U-05 Frozen-Source Data Qualification and Isolation
+## U-05 Unique Sealed-IS Paper Observation
 
 Decision `48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c`
 authorized one independent U-05 hypothesis design. That design is now frozen as
@@ -14,15 +14,21 @@ Review `8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f`
 returns `approve` with critical/high `0 / 0` and leaves all target files
 unchanged.
 
-The next task is frozen-source data qualification and IS/OOS isolation. It must
-verify the exact 27,736 source ZIPs, audited V4 manifests, point-in-time
-membership, lifecycle, invalid-interval masks and complete 4h/1h/5m grids in
-normal, reverse and deterministic-shuffled order. It must stop before event
-calculation, path observation or sealed-OOS OHLC decoding.
+Frozen-source qualification passed under contract `f1374b5c...f562c3` and
+result `348e8029...f7cb4f`: 27,736/27,736 ZIP identities and CRCs, 19/19 V4
+manifests and all three traversal orders are exact. The aligned 4h authority is
+backed by 854,280 constituent 1h rows; OOS values, breadth/events, paths and
+returns remain zero.
 
-Passing qualification may authorize exactly one sealed-IS U-05 Paper
-observation. It does not authorize strategy rules, formal returns, backtesting
-or OOS.
+Execute exactly one sealed-IS Paper observation using the frozen 4h breadth
+event, 24h clustering and 5m diagnostic contract. Normal, reverse and
+deterministic-shuffled outputs must have identical event, episode, path and
+accounting hashes. Evaluate every preregistered Paper Gate without changing a
+threshold or running a second observation.
+
+Any failed Gate closes U-05 as `failed_feasibility`. A pass may authorize only
+an independent Paper-result review. No formal strategy return, fill, position,
+equity curve, backtest or OOS access is allowed.
 
 The complete dependency chain is frozen in
 `docs/superpowers/plans/2026-07-18-u05-cross-sectional-research-mainline.md`.

@@ -498,10 +498,18 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertFalse(any(item["id"] == "ADR-0014-ADOPT" for item in state["open_work"]))
         self.assertFalse(any(item["id"] == "ADR-0014-REVIEW" for item in state["open_work"]))
         for key in (
-            "strategy_code", "event_scan", "returns", "backtesting",
+            "strategy_code", "returns", "backtesting",
             "oos_opened", "m2", "api_or_trading",
         ):
             self.assertFalse(state["research_authorizations"][key], key)
+        event_scan_phases = {
+            "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+            "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        }
+        self.assertEqual(
+            state["research_authorizations"]["event_scan"],
+            state["current_phase"] in event_scan_phases,
+        )
 
 
 if __name__ == "__main__":

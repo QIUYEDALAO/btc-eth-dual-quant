@@ -2,11 +2,33 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task
-current_status: u05_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task
+current_status: u05_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-05 frozen-source data qualification and IS/OOS isolation
+    status: pass_local_complete
+    evidence: reports/m1/U05_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u05_cross_sectional_data_qualification_v1.json
+    branch: codex/u05-cross-sectional-data-qualification
+    protocol_target_commit: 8d8652796e22a15285ba682b4524baa0218ca5a6
+    contract_content_hash: f1374b5c7bf7a103be7dacf3985d45cd332388afe601bd849271b30d63f562c3
+    qualification_content_hash: 348e80291ced6f7cbbb929c0b88c6bbce0b86e23cdbed33718b884810df7cb4f
+    source_archive_count: 27736
+    manifests_exact: 19
+    traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    expected_4h_member_blocks: 213570
+    oos_ohlc_values_decoded: 0
+    breadth_rows_generated: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-05 Paper-protocol exact-head independent review
     status: approve_local_complete
     evidence: reports/expert/U05_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -808,18 +830,22 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-05-DATA-QUALIFICATION
-    phase: U-05 frozen-source data qualification and IS/OOS isolation
-    status: authorized_ready
-    branch: codex/u05-cross-sectional-data-qualification
+  - id: U-05-PAPER-OBSERVATION
+    phase: U-05 unique sealed-IS Paper observation
+    status: authorized_once_not_started
+    branch: codex/u05-cross-sectional-paper-observation
     candidate_id: U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE
     target_commit: 8d8652796e22a15285ba682b4524baa0218ca5a6
     protocol_content_hash: c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214
     review_content_hash: 8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f
-    frozen_source_only: true
+    qualification_content_hash: 348e80291ced6f7cbbb929c0b88c6bbce0b86e23cdbed33718b884810df7cb4f
+    maximum_runs: 1
+    sealed_is_only: true
     three_traversal_orders_required: true
     oos_ohlc_decode_authorized: false
-    event_scan_authorized: false
+    event_scan_authorized: true
+    path_observation_authorized: true
+    formal_returns_authorized: false
     strategy_authorized: false
     oos_authorized: false
     trading_authorized: false
@@ -891,10 +917,10 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete the reviewed U-05 protocol's frozen-source data qualification and IS/OOS isolation without scanning events."
+  - "Execute exactly one sealed-IS U-05 Paper observation under the frozen protocol and qualification authority."
   - "Preserve U-04 run 9182c9e3...eebc2 without inversion, tuning or outcome-derived U-05 rules."
-  - "Verify ZIP/source identity, 4h/1h/5m grids, point-in-time membership, lifecycle and invalid-interval masks in three traversal orders."
-  - "Do not calculate breadth, event counts, paths, returns or decode sealed-OOS prices during qualification."
+  - "Normal, reverse and deterministic-shuffled event, episode, path and accounting hashes must be identical."
+  - "Do not tune parameters, run a second observation, create formal returns or decode sealed-OOS prices."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -904,7 +930,7 @@ allowed_next_work:
 research_authorizations:
   hypothesis_preregistration: false
   strategy_code: false
-  event_scan: false
+  event_scan: true
   returns: false
   backtesting: false
   oos_opened: false
@@ -931,6 +957,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U05_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-05 data qualification and isolation
+    status: pass_local_complete
+    status_marker: '- Status: `pass`'
+  - path: reports/m1/evidence/u05_cross_sectional_data_qualification_v1.json
+    phase: U-05 data qualification machine evidence
+    status: deterministic_pass
+    status_marker: '"status":"pass"'
   - path: reports/expert/U05_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
     phase: U-05 Paper-protocol exact-head review
     status: approve_local_complete

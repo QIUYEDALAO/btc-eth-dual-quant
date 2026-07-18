@@ -1948,3 +1948,13 @@ private exchange responses here.
 - Verdict: `approve`; remaining critical/high findings: `0 / 0`; target modified: no.
 - Execution: no public data, event/path result, formal return or OOS value was read.
 - Authorization: only frozen-source data qualification and IS/OOS isolation may follow. Event scanning, path observation, returns, strategy/backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-05 Frozen-Source Data Qualification Passed
+
+- Task: `U-05-DATA-QUALIFICATION`; branch `codex/u05-cross-sectional-data-qualification`; local Git only.
+- Contract/result hashes: `f1374b5c...f562c3` / `348e8029...f7cb4f`.
+- Result: 27,736/27,736 frozen ZIP size/SHA-256/CRC checks and 19/19 audited V4 manifests pass.
+- Determinism: normal, reverse and deterministic-shuffled identity `ca7d59b3...44aa`.
+- 4h authority: 854,280 constituent 1h rows and 213,570 aligned expected 4h member-blocks; quarantined constituents invalidate whole blocks without substitution.
+- Isolation: OOS OHLC decoded 0; breadth/event/path/return rows generated 0; network false; production evidence unchanged.
+- Authorization: exactly one sealed-IS Paper observation. No tuning, second run, formal returns, strategy/backtesting, OOS, API/trading, `execution/live` or M2.
