@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-21 closed after pre-result complexity Gate failed; no successor is authorized
-current_status: u21_failed_pre_result_complexity_closed_no_market_results_no_oos_no_trading_no_m2
+current_phase: U-22 independent outcome-blind hypothesis design authorized
+current_status: u22_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-22 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U22_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u22_design_authorization_v1.json
+    branch: codex/u22-design-authorization
+    decision_content_hash: 82aef7f378a1aaa46ded62cfc21dedb67e6d86a8d0c27c24f66280d8c124e29d
+    prior_candidate: U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM
+    prior_qualification_content_hash: 33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-21 frozen-source data qualification and complexity preflight
     status: failed_pre_result_complexity
     evidence: reports/m1/U21_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -2412,6 +2426,22 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-22
+    phase: independent outcome-blind hypothesis design authorization
+    status: authorized_design_only
+    authorization_content_hash: 82aef7f378a1aaa46ded62cfc21dedb67e6d86a8d0c27c24f66280d8c124e29d
+    prior_qualification_content_hash: 33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b
+    maximum_hypotheses: 1
+    hypothesis_design_authorized: true
+    synthetic_only_complexity_feasibility_required: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-21-DATA-QUALIFICATION
     phase: frozen-source data qualification and complexity preflight
     status: completed_failed_pre_result_complexity
@@ -2667,7 +2697,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "U-21 is closed before market results. Only a separate U-22 independent-candidate hypothesis design authorization decision may follow, binding the immutable U-21 complexity failure without using it to select a mechanism."
+  - "Perform exactly one independent, outcome-blind U-22 hypothesis design; only mechanism, causal timing, failures, non-duplication and a synthetic-only exact-core complexity feasibility check are permitted."
+  - "U-04 through U-21 outcomes, Gates, defects, censor patterns and the U-21 complexity failure may not select U-22."
   - "No U-21 optimization, qualification retry, Paper observation, fixed rule, strategy, backtest or OOS step is authorized."
   - "No U-20 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-20 outcomes, Gates, defects and censor patterns may not select U-21."

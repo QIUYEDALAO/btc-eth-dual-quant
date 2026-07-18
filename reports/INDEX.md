@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m0/U22_DESIGN_AUTHORIZATION_DECISION.md` | U-22 design authorization | one independent outcome-blind design authorized | Binds U-21 pre-result failure and prohibits optimization/reuse; requires synthetic exact-core feasibility before protocol freeze. | no |
+| `config/u22_design_authorization_v1.json` | U-22 machine authorization | content `82aef7f3...124e29d` | Public data, events, returns, strategy, OOS, trading and M2 remain false. | no |
+
+
 | `reports/m1/U21_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-21 frozen-source qualification | failed_pre_result_complexity | First synthetic million-row pass fails fixed complexity guard before any source/result read. | no |
 | `reports/m1/evidence/u21_cross_sectional_data_qualification_v1.json` | U-21 qualification failure evidence | content `33e53b7f...147a1b` | Zero source archives, market outcomes, OOS values and downstream authority; retry false. | no |
 

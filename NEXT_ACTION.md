@@ -1,5 +1,18 @@
 # Next Action
 
+## U-22 Outcome-Blind Hypothesis Design
+
+Decision `82aef7f3...124e29d` authorizes exactly one economically independent,
+outcome-blind U-22 cross-sectional hypothesis design. It binds U-21's immutable
+pre-result complexity failure `33e53b7f...147a1b` and prohibits optimization,
+retry, repair, relabeling or repackaging of that failed evaluator.
+
+The next task may freeze one economic mechanism, causal timing, failure regimes
+and non-duplication. Before a later protocol is frozen, its exact statistic core
+must pass a synthetic-only result-blind complexity feasibility check. No public
+data, outcome, timeframe, threshold, event, return, strategy/backtest, OOS,
+API/trading, `execution/live` or M2 access is authorized.
+
 ## Stop: U-21 Failed Pre-Result Complexity
 
 The first required million-row synthetic pass triggered the frozen combined

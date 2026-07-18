@@ -2659,3 +2659,10 @@ private exchange responses here.
 - Failure: `33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b`; first required one-million-row exact-evaluator pass triggered the frozen combined complexity guard.
 - Isolation: the failure occurred before opening any frozen source archive; market price/return/cokurtosis/event/path and OOS rows are all zero.
 - Decision: U-21 is closed before results. No optimization, retry, Paper observation, formal return, strategy or OOS is authorized.
+
+## 2026-07-19 - U-22 Independent Design Authorized
+
+- Decision: `82aef7f378a1aaa46ded62cfc21dedb67e6d86a8d0c27c24f66280d8c124e29d`; exactly one economically independent, outcome-blind U-22 hypothesis design.
+- Binding: U-21 remains closed under failure `33e53b7f...147a1b`; no frozen archive, market result or OOS value was opened.
+- Independence: U-04 through U-21 outcomes, Gates, concentrations, censor patterns, defects and the U-21 complexity failure may not select U-22; U-21 optimization or retry is prohibited.
+- Authorization: hypothesis design plus synthetic-only exact-core complexity feasibility before protocol freeze; public data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
