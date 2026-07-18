@@ -2,11 +2,26 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-19T00:00:00Z"
-current_phase: U-24 independent outcome-blind hypothesis design authorized
-current_status: u24_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2
+current_phase: U-24 lottery-demand avoidance premium design completed; result-blind Paper protocol and synthetic-core feasibility are the only next task
+current_status: u24_hypothesis_design_pass_protocol_and_synthetic_core_only_no_public_data_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-24 lottery-demand avoidance premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only
+    evidence: reports/m1/U24_LOTTERY_DEMAND_AVOIDANCE_PREMIUM_DESIGN.md
+    machine_evidence: config/u24_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U24_NON_DUPLICATION_REVIEW.md
+    branch: codex/u24-cross-sectional-lottery-demand-avoidance-design
+    candidate_id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
+    hypothesis_sha256: 0b420693a6206504c4ab6644b2f8e3c9194300bfe096b831d80c12762b18ff34
+    design_content_hash: c99f7002b006d635d5c03936055e8d4bc498ace02b45551af52cdf80dd14d0c1
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-24 design authorization decision
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
     evidence: reports/m0/U24_DESIGN_AUTHORIZATION_DECISION.md
@@ -2617,9 +2632,12 @@ completed_milestones:
     merged_pr: 29
 open_work:
   - id: U-24
-    phase: independent outcome-blind hypothesis design
-    status: in_progress_design_only
+    phase: lottery-demand avoidance premium hypothesis design
+    status: completed_design_protocol_and_synthetic_core_only
     authorization_content_hash: 745152692cdada8dad9e0abaf5ea171fb3a1d55d70dbfab32b66c7d2edbdfac5
+    candidate_id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
+    hypothesis_sha256: 0b420693a6206504c4ab6644b2f8e3c9194300bfe096b831d80c12762b18ff34
+    design_content_hash: c99f7002b006d635d5c03936055e8d4bc498ace02b45551af52cdf80dd14d0c1
     maximum_hypotheses: 1
     public_data_read_authorized: false
     event_scan_authorized: false
@@ -2977,6 +2995,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "U-24 may design one result-blind Paper protocol only after its intended exact statistic core passes a synthetic-only complexity feasibility Gate."
+  - "The U-24 protocol may freeze clocks, estimators, thresholds, persistence, clustering, paths and Paper Gates, but may not read public data or outcomes."
   - "U-24 may freeze exactly one economically independent outcome-blind hypothesis design; a synthetic exact-core complexity pass is required before any later protocol freeze."
   - "No public data, outcomes, parameters, events, returns, strategy, backtest, OOS, API/trading, execution/live or M2 work is authorized for U-24 design."
   - "U-23 is closed. Only a separate U-24 independent-candidate design authorization decision may follow without using U-23 results to select the mechanism."
@@ -3008,7 +3028,7 @@ allowed_next_work:
   - Do not use API keys.
   - Do not run live or paper trading.
 research_authorizations:
-  hypothesis_preregistration: true
+  hypothesis_preregistration: false
   strategy_code: false
   event_scan: false
   returns: false
@@ -3037,6 +3057,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U24_LOTTERY_DEMAND_AVOIDANCE_PREMIUM_DESIGN.md
+    phase: U-24 lottery-demand avoidance premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only`'
+  - path: reports/m1/U24_NON_DUPLICATION_REVIEW.md
+    phase: U-24 non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
   - path: reports/m0/U24_DESIGN_AUTHORIZATION_DECISION.md
     phase: U-24 design authorization decision
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only

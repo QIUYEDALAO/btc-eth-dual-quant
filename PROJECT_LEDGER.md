@@ -2750,3 +2750,10 @@ private exchange responses here.
 - Binding: U-23 remains permanently closed under run `771ce48d...fb2604`; OOS, formal returns and second-run flags remain false.
 - Independence: U-04 through U-23 outcomes, signs, Gates, concentrations, censor patterns, defects and failures may not select U-24. U-23 inversion, repair, relabeling or repackaging is prohibited.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false. A synthetic exact-core feasibility pass is required before protocol freeze.
+
+## 2026-07-19 - U-24 Lottery-Demand Avoidance Design Complete
+
+- Candidate: `U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM`; hypothesis `0b420693...18ff34`; design `c99f7002...14d0c1`.
+- Mechanism: after completed active-peer common adjustment, persistently lower asset-specific right-tail lottery payoff may avoid preference-driven overpricing and earn a relative premium.
+- Independence: not low volatility, downside-tail compensation, negative coskewness, systematic cokurtosis, residual reversal or range-expansion continuation; no prior result selected it.
+- Scope: no public data or outcome read and no timeframe, estimator, rank, persistence, threshold, horizon or strategy rule selected. Protocol design may proceed only with a pre-freeze synthetic exact-core complexity pass.

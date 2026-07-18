@@ -1,5 +1,10 @@
 # Reports Index
 
+| `reports/m1/U24_LOTTERY_DEMAND_AVOIDANCE_PREMIUM_DESIGN.md` | U-24 hypothesis design | economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only | Freezes right-tail lottery-demand avoidance without public data, parameters, results or OOS. | no |
+| `reports/m1/U24_NON_DUPLICATION_REVIEW.md` | U-24 non-duplication | pass_design_level | Separates right-tail preference pricing from volatility, downside-tail, comoment, reversal and continuation families. | no |
+| `config/u24_cross_sectional_design_scope_v1.json` | U-24 machine design scope | content `c99f7002...14d0c1` | Enables only protocol design and synthetic exact-core feasibility; all result/trading permissions false. | no |
+
+
 | `reports/m0/U24_DESIGN_AUTHORIZATION_DECISION.md` | U-24 design authorization | one independent outcome-blind design authorized | Binds U-23 failed result, prohibits inversion/reuse and requires synthetic exact-core feasibility before protocol freeze. | no |
 | `config/u24_design_authorization_v1.json` | U-24 machine authorization | content `74515269...bdfac5` | Only U-24 hypothesis design is true; all result, strategy, OOS and trading permissions remain false. | no |
 

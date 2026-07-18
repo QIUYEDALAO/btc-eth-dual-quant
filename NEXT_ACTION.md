@@ -1,5 +1,20 @@
 # Next Action
 
+## U-24 Outcome-Blind Paper Protocol and Synthetic-Core Feasibility
+
+U-24 freezes `U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM` under
+hypothesis `0b420693...18ff34` and design `c99f7002...14d0c1`. It studies the
+possibility that assets with persistently lower asset-specific right-tail
+lottery payoff avoid preference-driven overpricing after the active-peer common
+component is removed.
+
+The next task must first implement the intended exact statistic core and prove
+its fixed synthetic complexity Gate without reading public data. Only then may
+it freeze the observation clock, common adjustment, right-tail statistic,
+robustification, rank, persistence, clustering, paths, Paper Gates and
+isolation. Events, returns, strategy/backtesting, OOS, API/trading,
+`execution/live` and M2 remain false.
+
 ## U-24 Outcome-Blind Hypothesis Design
 
 Decision `74515269...bdfac5` authorizes exactly one economically independent,
