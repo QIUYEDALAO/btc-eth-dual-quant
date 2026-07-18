@@ -2347,3 +2347,11 @@ private exchange responses here.
 - Independence: completed high/low/close auction geometry, not U-04 reversal, U-06 volume share, U-07 close-return strength, U-09 low volatility, U-10 trend/volume, U-11 capture, U-12 calendar flow or U-13 lagged diffusion.
 - Execution: no data, timeframe, estimator, threshold, event/path, return, strategy or OOS access.
 - Authorization: separate outcome-blind Paper protocol with mandatory result-blind complexity benchmark; downstream permissions remain false.
+
+## 2026-07-18 - U-14 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `a0b606d3996f0edd13790178f370bed92e3a6d06bf2298eea78ba8a46907ac57`; branch `codex/u14-cross-sectional-paper-protocol`; local Git only.
+- Identity: completed UTC 4h median selling pressure and breadth; non-positive candidate return, 1.80% range, 1.20% downside excursion, 0.80 close-location and 0.20 peer residual.
+- Complexity: three one-million-row synthetic passes must each stay within 30 seconds and 1024 MiB using the same event/path code path before the unique result run.
+- Isolation: no public data, event, path, return or OOS value was read; all downstream permissions remain false.
+- Authorization: exact-head independent protocol review only.

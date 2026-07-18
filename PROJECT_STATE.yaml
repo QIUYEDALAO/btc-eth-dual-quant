@@ -2,11 +2,29 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-14 downside-rejection persistence design completed; outcome-blind Paper protocol design is the only next task
-current_status: u14_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-14 outcome-blind Paper protocol frozen; exact-head independent review is the only next task
+current_status: u14_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-14 outcome-blind downside-rejection Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U14_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u14_cross_sectional_paper_protocol_v1.json
+    branch: codex/u14-cross-sectional-paper-protocol
+    candidate_id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
+    protocol_content_hash: a0b606d3996f0edd13790178f370bed92e3a6d06bf2298eea78ba8a46907ac57
+    public_data_read: false
+    events_evaluated: false
+    paths_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    complexity_benchmark_required_before_result: true
+    exact_head_independent_review_authorized: true
+    data_qualification_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-14 downside-rejection persistence hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U14_DOWNSIDE_REJECTION_PERSISTENCE_DESIGN.md
@@ -1732,12 +1750,12 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-14-PROTOCOL
-    phase: outcome-blind downside-rejection persistence Paper protocol design
+  - id: U-14-PROTOCOL-REVIEW
+    phase: exact-head independent review of frozen downside-rejection Paper protocol
     status: authorized_next
     candidate_id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
-    design_content_hash: a6c3cc47c3cadf33e5673e59ce47c639d6df1d49c57f88c51cc1c8579b446691
-    protocol_design_authorized: true
+    protocol_content_hash: a0b606d3996f0edd13790178f370bed92e3a6d06bf2298eea78ba8a46907ac57
+    exact_head_independent_review_authorized: true
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1811,8 +1829,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete one outcome-blind U-14 Paper protocol design that freezes timeframe, common selling pressure, range/close-location estimator, persistence, thresholds, paths and Gates before data access."
-  - "Include a result-blind complexity benchmark and data-scope preflight before any unique result-bearing run."
+  - "Complete an exact-head independent review of the frozen U-14 Paper protocol without modifying or reading results from the target."
+  - "Only approve with zero critical/high findings may authorize data qualification, complexity benchmark and preflight."
   - "Preserve U-04 through U-12 evidence without tuning, inversion, retry or outcome-derived protocol choices."
   - "Preserve U-04 through U-11 evidence without tuning, inversion, retry or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
@@ -1852,6 +1870,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U14_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-14 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u14_cross_sectional_paper_protocol_v1.json
+    phase: U-14 Paper protocol machine evidence
+    status: deterministic_frozen_protocol
+    status_marker: '"content_hash": "a0b606d3996f0edd13790178f370bed92e3a6d06bf2298eea78ba8a46907ac57"'
   - path: reports/m1/U14_DOWNSIDE_REJECTION_PERSISTENCE_DESIGN.md
     phase: U-14 downside-rejection persistence design
     status: economic_hypothesis_pass_protocol_design_only

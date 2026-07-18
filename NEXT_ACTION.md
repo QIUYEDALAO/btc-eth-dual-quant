@@ -1,6 +1,19 @@
 # Next Action
 
-## U-14 Outcome-Blind Paper Protocol Design
+## U-14 Exact-Head Paper-Protocol Review
+
+Protocol `a0b606d3...ac57` is frozen before data/results. It fixes completed 4h
+common selling pressure, non-positive-return downside rejection, range and
+close-location identity, 24h clustering/paths, costs, Paper Gates and the
+mandatory three-pass one-million-row complexity benchmark.
+
+The only next task is a separate exact-head review. It must bind every target
+blob, verify that U-14 cannot collapse to U-07 return strength, and confirm that
+qualification plus complexity/preflight are the only possible next authority.
+
+No public data, event, path, return, strategy, OOS or trading access occurred.
+
+## U-14 Historical Outcome-Blind Paper Protocol Design
 
 U-14 freezes `U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE` under design
 `a6c3cc47...6691`. The mechanism is completed intraperiod demand absorption:
