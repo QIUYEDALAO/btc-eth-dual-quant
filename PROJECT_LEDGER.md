@@ -2308,3 +2308,10 @@ private exchange responses here.
 - Independence: temporal cross-asset propagation, not residual reversal, breadth demand, volume absorption, stress resilience, membership entry, low volatility, trend/volume, asymmetric capture or calendar flow.
 - Execution: no public data, timeframe, estimator, threshold, event/path, return, rule, backtest or OOS access.
 - Authorization: one separate outcome-blind Paper protocol design with mandatory pre-result preflight; all downstream permissions remain false.
+
+## 2026-07-18 - U-13 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `6ef1024033aa9a86ef3c8f07558ba966270625a7` / `3c4aa926c2caaeb3adec8cf40bb2c9ff1a2436d5`; protocol `1cf6dade...3288`.
+- Review: `be552dad055234b0107810a7299656793ccea2a97f09a2cba22fa8ffc33ed5e0`; verdict `approve`, 15/15 dimensions, remaining critical/high `0/0`, target modified false.
+- Scope: independent review used `git show` on five exact target blobs and read no public data, result or OOS value.
+- Authorization: frozen-source qualification plus same-reader preflight only. Events, paths, returns, strategy/backtesting, OOS, trading and M2 remain false.

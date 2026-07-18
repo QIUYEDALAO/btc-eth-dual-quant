@@ -1,6 +1,22 @@
 # Next Action
 
-## U-13 Outcome-Blind Paper Protocol Design
+## U-13 Frozen-Source Qualification and Same-Reader Preflight
+
+Exact protocol target `6ef10240...625a7` is approved under review
+`be552dad...d5e0`, with 15/15 dimensions passing, 0 critical/high and no target
+modification.
+
+The only next task is frozen-source qualification plus metadata-only preflight.
+It must bind all 27,736 archives and 19 manifests, point-in-time membership,
+lifecycle and invalid-interval masks; then prove previous-boundary closes, all
+twelve 5m slots per eligible hour, the 2,160h prior history, completed historical
+4h followups and three traversal orders without computing common components,
+events, paths or returns. OOS OHLCV decoding remains zero.
+
+No strategy is eligible for M2. Do not enter M2. Freqtrade-first remains the
+architecture, but no strategy/backtest is authorized here.
+
+## U-13 Historical Outcome-Blind Paper Protocol Design
 
 U-13 freezes `U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION` under
 hypothesis `39f1848f...db5c` and design `982cb951...3477`. The mechanism is
