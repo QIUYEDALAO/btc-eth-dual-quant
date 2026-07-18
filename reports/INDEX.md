@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U08_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-08 sealed-IS Paper observation | failed_feasibility | 44 complete 336h episodes; all three frozen economic Gates fail; OOS remains sealed. | no |
+| `reports/m1/evidence/u08_cross_sectional_paper_observation/` | U-08 Paper machine evidence | run `f6fbcdee...ca3e` | Three orders exact under `5e77484b...b928`; failed result is immutable and authorizes no downstream work. | no |
 | `reports/m1/U08_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-08 frozen-source qualification | pass / one sealed-IS observation authorized | ZIPs, manifests, membership ranks and three orders pass; outcomes zero. | no |
 | `reports/m1/evidence/u08_cross_sectional_data_qualification_v1.json` | U-08 qualification machine evidence | content `1ec26ef7...7cb5` | Binds exact authorities, ranks, isolation and one-run-only authorization. | no |
 | `reports/expert/U08_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-08 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `a516efb3...9361` unchanged and authorizes only data qualification. | no |

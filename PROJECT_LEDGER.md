@@ -2081,3 +2081,12 @@ private exchange responses here.
 - Every month has unique ranks 1–15/symbols, positive finite liquidity and prior-only window endpoints.
 - Three orders share `ca7d59b3...44aa`; OOS OHLC, entry events, paths and returns are zero.
 - Authorization: exactly one sealed-IS Paper observation; no tuning, second run, strategy, OOS or trading.
+
+## 2026-07-18 - U-08 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Task: `U-08-PAPER-OBSERVATION`; branch `codex/u08-cross-sectional-paper-observation`; local Git only.
+- Run/order: `f6fbcdee...ca3e` / `5e77484b...b928`; events, episodes, paths and accounting are exact across normal, reverse and deterministic-shuffled traversal.
+- Sample: 50 events, 50 episodes, 44 complete 336h paths and 6 censored paths; all count, projection and concentration Gates pass.
+- Failed frozen economic Gates: median 336h relative persistence `-0.4690%` versus `+1.80%`; candidate absolute displacement `-3.3543%` versus `+1.80%`; positive relative-persistence fraction `45.45%` versus `60%`.
+- Isolation: OOS opened false and rows decoded 0; no formal return, fill, position or equity output; no parameter change or second result-bearing run.
+- Decision: U-08 closes `failed_feasibility`. No result review, rules, strategy, backtest or OOS; only a separate independent-candidate authorization decision may follow.

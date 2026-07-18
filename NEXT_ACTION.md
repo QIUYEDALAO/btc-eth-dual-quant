@@ -1,6 +1,32 @@
 # Next Action
 
-## U-08 Unique Sealed-IS Paper Observation
+## U-09 Separate Independent-Candidate Authorization Decision
+
+U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
+observation is immutable under run
+`f6fbcdee846b855883a5e356ea49e6a98901bfcc6a9dbd5a2cbb07ebed9eca3e`;
+normal, reverse and deterministic-shuffled orders share identity
+`5e77484b1db6365787ea4e5acffc33e4d599b81fa7b95925257e7d2d6448b928`.
+
+The run produced 50 events, 50 episodes and 44 complete 336h paths. Count,
+projection, year, symbol and month-distribution Gates pass, but every frozen
+economic Gate fails:
+
+- median 336h relative persistence `-0.4690%` versus `+1.80%`;
+- median 336h candidate absolute displacement `-3.3543%` versus `+1.80%`;
+- positive 336h relative-persistence fraction `45.45%` versus `60%`.
+
+There was no OOS access, formal return, fill, position, equity curve, parameter
+change or second result-bearing run. U-08 may not proceed to result review,
+fixed rules, strategy implementation or backtesting.
+
+The only authorized next task is `U-09-DECISION`: a separate, hash-bound
+governance decision may authorize at most one economically independent,
+outcome-blind hypothesis design. It must bind U-04 through U-08 as closed,
+prohibit inversion or reuse of their observed signs and failed Gate values, and
+keep events, returns, strategy, OOS, trading and M2 false.
+
+## U-08 Frozen Historical Chain
 
 U-07 is frozen as
 `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
