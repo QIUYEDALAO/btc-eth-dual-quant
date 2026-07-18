@@ -2231,3 +2231,12 @@ private exchange responses here.
 - Metadata preflight: 8,690 eligible history/constant-path decision times and 473 maximum independent theoretical episodes versus frozen 200/90 Gates.
 - OOS values and common-state/capture/candidate/event/path/return rows are zero.
 - Authorization: exactly one sealed-IS Paper observation; no tuning, rerun, formal return, strategy, OOS or trading.
+
+## 2026-07-18 - U-11 Paper Observation Invalidated and Candidate Closed
+
+- Task: `U-11-PAPER-OBSERVATION`; branch `codex/u11-cross-sectional-paper-observation`; local Git only.
+- Raw attempt: run `0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521`; three-order identity `558f4af6858315d3355d5c8cc42975b5799a620249d4e3108ed020c64b4226c8`.
+- Defect: the active-month reader omitted the previous-boundary close across monthly membership transitions; 9,925 of 9,931 decision times were rejected before capture and zero events remained.
+- Adjudication: `failed_execution_invalid_observation`. The raw generated `failed_feasibility` manifest is immutable attempt evidence, not admissible economic evidence.
+- Isolation: OOS opened false, formal returns false, network access false and second result-bearing run false.
+- Decision: U-11 is closed with no repair or retry. Only a separate U-12 independent-candidate authorization decision may follow; strategy, backtesting, OOS, trading and M2 remain prohibited.

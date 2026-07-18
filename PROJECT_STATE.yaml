@@ -2,11 +2,33 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-11 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task
-current_status: u11_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-11 Paper observation invalid due execution defect; separate U-12 independent-candidate authorization decision is the only next task
+current_status: u11_failed_execution_invalid_observation_candidate_closed_u12_decision_only_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-11 unique sealed-IS Paper observation attempt and fail-closed adjudication
+    status: failed_execution_invalid_observation
+    evidence: reports/m1/U11_PAPER_OBSERVATION_ADJUDICATION.md
+    raw_attempt_evidence: reports/m1/U11_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u11_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u11-cross-sectional-paper-observation
+    candidate_id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    run_content_hash: 0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521
+    three_order_identity_hash: 558f4af6858315d3355d5c8cc42975b5799a620249d4e3108ed020c64b4226c8
+    decision_times_considered: 9931
+    cross_section_ineligible: 9925
+    candidate_events: 0
+    defect: monthly_membership_transition_previous_boundary_close_missing_from_active_month_reader
+    economic_result_admissible: false
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    retry_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-11 frozen-source data qualification and IS/OOS isolation
     status: pass_local_complete
     evidence: reports/m1/U11_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -1477,21 +1499,16 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-11-PAPER-OBSERVATION
-    phase: unique sealed-IS asymmetric market-capture quality Paper observation
-    status: authorized_once_not_started
-    candidate_id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
-    target_commit: e7f621ec400fcb24833038f9201df5ffa5fa166a
-    protocol_content_hash: 3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc
-    review_content_hash: 4e8fea7a28e19742baab225f9b0e8b98be16749792b9a68b9416c7d287a4d9fc
-    qualification_content_hash: b0476b5e8cdd60769f49312e682329376daf5fa6f4163358d9bd4c84f0ca05b6
-    maximum_runs: 1
-    sealed_is_only: true
-    three_traversal_orders_required: true
-    common_state_scan_authorized: true
-    event_scan_authorized: true
-    path_observation_authorized: true
-    formal_returns_authorized: false
+  - id: U-12-DECISION
+    phase: separate post-U-11 independent-candidate authorization decision
+    status: authorized_next_not_started
+    prior_candidate: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    prior_run_content_hash: 0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521
+    prior_status: failed_execution_invalid_observation
+    prior_retry_authorized: false
+    maximum_new_hypotheses_if_authorized: 1
+    governance_only: true
+    hypothesis_design_authorized: false
     event_scan_authorized: false
     returns_authorized: false
     strategy_authorized: false
@@ -1564,8 +1581,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Execute exactly one sealed-IS U-11 Paper observation under the frozen protocol in three traversal orders."
-  - "Preserve U-04/U-05/U-06/U-07 failed runs without tuning, inversion or outcome-derived design choices."
+  - "Make one separate U-12 independent-candidate hypothesis design authorization decision; do not repair or rerun U-11."
+  - "If authorized, U-12 must use an economically independent, outcome-blind hypothesis design that does not exploit U-11's defect or prior outcomes."
+  - "Preserve U-04 through U-11 evidence without tuning, inversion, retry or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
@@ -1576,7 +1594,7 @@ allowed_next_work:
 research_authorizations:
   hypothesis_preregistration: false
   strategy_code: false
-  event_scan: true
+  event_scan: false
   returns: false
   backtesting: false
   oos_opened: false
@@ -1603,6 +1621,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U11_PAPER_OBSERVATION_ADJUDICATION.md
+    phase: U-11 Paper observation fail-closed adjudication
+    status: failed_execution_invalid_observation
+    status_marker: '- Status: `failed_execution_invalid_observation`'
+  - path: reports/m1/U11_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-11 raw Paper observation attempt evidence
+    status: immutable_invalid_attempt_evidence
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u11_cross_sectional_paper_observation/run_manifest.json
+    phase: U-11 raw attempt machine evidence
+    status: deterministic_invalid_attempt
+    status_marker: '"run_content_hash":"0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521"'
   - path: reports/m1/U11_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-11 data qualification
     status: pass_local_complete

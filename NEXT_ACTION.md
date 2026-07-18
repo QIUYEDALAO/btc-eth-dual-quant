@@ -1,6 +1,25 @@
 # Next Action
 
-## U-11 Unique Sealed-IS Paper Observation
+## U-12 Independent-Candidate Authorization Decision
+
+The one U-11 observation attempt is deterministic but invalid as economic
+evidence. Run `0a55b61c...a9521` rejected 9,925 of 9,931 decision times because
+the active-month reader did not provide the previous-boundary close across
+monthly membership transitions. The raw `failed_feasibility` files are retained
+as immutable attempt evidence; adjudication is
+`failed_execution_invalid_observation`.
+
+U-11 is closed without a retry. No threshold, protocol or implementation repair
+may be used to produce a second result. OOS, formal returns, strategy,
+backtesting, trading and M2 remain false.
+
+The only next task is a separate U-12 governance decision. It may authorize at
+most one economically independent, outcome-blind hypothesis design and must
+bind all prior evidence without exploiting U-11's execution defect or any prior
+outcome. It does not itself authorize parameters, data reads, event scans,
+returns, strategy code, OOS or trading.
+
+## U-11 Historical Chain
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -112,11 +131,10 @@ Qualification passed under contract `b376f6c8...cfcc` and result
 The metadata-only ceiling is 473 independent theoretical episodes, above the
 frozen 200 preflight and Paper Gate 90. OOS and all outcome rows remain zero.
 
-The only next task is the single sealed-IS Paper observation. It must apply the
-frozen common-state/capture/event/path contract once in normal, reverse and
-deterministic-shuffled order. It may not tune, create formal returns/fills/
-positions/equity, decode OOS or run a second observation. Any failed Gate closes
-U-11; a pass authorizes only independent Paper-result review.
+The single sealed-IS attempt ran once, but the monthly-boundary input defect made
+its zero-event result inadmissible. The raw attempt is immutable under
+`0a55b61c...a9521`; U-11 is closed as
+`failed_execution_invalid_observation`, with no retry or downstream authority.
 
 ## U-08 Frozen Historical Chain
 
