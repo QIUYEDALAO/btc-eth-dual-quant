@@ -2604,3 +2604,10 @@ private exchange responses here.
 - Identity: 336 completed hourly observations split into two 168h halves; each computes the standardized candidate common-adjusted-return/common-squared third comoment.
 - Persistence/Gates: both halves require coskewness at most `-0.20` and bottom-quarter rank; mean direction, volatility, tail, drawdown and terminal-bar direction are not Gates.
 - Next action: separate exact-head review only. Data qualification, coskewness/events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-18 - U-20 Paper Protocol Exact-Head Review Approved
+
+- Target: `6a2207c05c7045e82b47f9685c01a5c2d0b30755`; protocol `d909cd57...e2dec9`; all five target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `eb452e74...e20f5`.
+- Finding: common-adjusted-return construction, standardized third comoment, two-half threshold/rank persistence, clustering, paths, complexity and isolation are causal and fixed.
+- Authorization: only frozen-source structural qualification, sample ceiling, synthetic complexity and result-free preflight. Coskewness/event/path scans, formal returns, strategy, OOS and trading remain false.

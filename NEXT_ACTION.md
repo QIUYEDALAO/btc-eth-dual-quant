@@ -1,5 +1,17 @@
 # Next Action
 
+## U-20 Frozen-Source Data Qualification and Preflight
+
+Exact target `6a2207c0...30755` is approved 16/16 with 0/0 critical/high under
+review `eb452e74...e20f5`. The only next task may verify frozen ZIP/manifests,
+1h/5m structural grids, 336h history and 24h path availability, point-in-time
+membership/lifecycle/mask order and IS/OOS isolation without decoding returns,
+common-adjusted returns, coskewness, events or paths.
+
+It must prove at least 400 theoretical 24h episodes and run three synthetic
+one-million-row passes on the exact future evaluator path. Any hash, order,
+scope, ceiling or resource failure closes U-20 before results.
+
 ## U-20 Exact-Head Independent Paper-Protocol Review
 
 Protocol `U20-03-NEGATIVE-COSKEWNESS-RISK-PREMIUM-PAPER-V1` is frozen before

@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-20 exact protocol target `6a2207c05c7045e82b47f9685c01a5c2d0b30755` is independently approved 16/16 with 0 critical/high under review `eb452e7440b5058b6516629f65a9793f06dfa5748961c58e87229d4c3a1e20f5`. Only frozen-source qualification, 336h-history/24h-path structural ceiling, three-order result-free preflight and synthetic complexity are authorized next. Common-adjusted returns, coskewness, events, paths, formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-20 Paper protocol `U20-03-NEGATIVE-COSKEWNESS-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9`. It fixes 336h completed history, two 168h halves, standardized candidate-residual/common-squared third comoment, `-0.20`/bottom-quarter two-half persistence, 24h clustering and immutable Paper Gates. Only a separate exact-head independent review is authorized; data, returns, coskewness, events, paths, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-20 freezes `U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM` under hypothesis `9d17a514b9e13eff5dd885382ab7c9df5c14e9a71283a219d43c901648e46bdb` and design `3995e92a9ae69fd64f8258b33b620c801d63e235e1ed90a254a3d99d70a1e5b5`. It studies compensation for systematic third-comoment risk, not directional capture, asset-only tails, volatility-of-volatility or prior event families. Only one outcome-blind Paper protocol design is authorized next; data, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
