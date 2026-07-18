@@ -2,11 +2,29 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-16 data qualification and complexity preflight passed; one frozen sealed-IS Paper observation is the only next task
-current_status: u16_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2
+current_phase: U-16 closed failed feasibility; no successor is authorized
+current_status: u16_failed_feasibility_closed_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-16 unique sealed-IS correlation-breakdown Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U16_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u16_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u16-cross-sectional-paper-observation
+    run_content_hash: 322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14
+    complete_is_independent_episodes: 169
+    median_24h_relative_information_persistence: '0.0010025265182264580534731423602822784465997897076'
+    median_24h_candidate_absolute_close_displacement: '-0.00042674253200568990042674253200568990042674253201'
+    fraction_positive_24h_relative_information_persistence: '0.5266272189349112426035502959'
+    failed_gates: [median_24h_relative_information_persistence, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_information_persistence]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-16 frozen-source data qualification, complexity benchmark and preflight
     status: pass_local_complete
     evidence: reports/m1/U16_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -1975,12 +1993,14 @@ completed_milestones:
 open_work:
   - id: U-16-PAPER-OBSERVATION
     phase: unique sealed-IS correlation-breakdown Paper observation
-    status: authorized_next
+    status: completed_failed_feasibility
     protocol_content_hash: 18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a
     review_content_hash: 2f708c0f6ac7b4e79428a4a7b1e9850182120c2dfcb3b06b53f973123f5c34e3
     qualification_content_hash: 5dc4850a1d940d05581774a1270ec6c9cdc4d5f8702a5614a81a01928842e949
-    one_run_authorized: true
+    one_run_authorized: false
     second_run_authorized: false
+    run_content_hash: 322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14
+    candidate_closed: true
     public_data_read_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
@@ -2062,9 +2082,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Execute exactly one U-16 sealed-IS Paper observation under the frozen protocol in normal, reverse and deterministic-shuffled order."
-  - "Generate only common-path, correlation, event, episode and Paper path diagnostics; no fill, position, equity or formal return."
-  - "Any Gate failure closes U-16 without threshold changes, rerun, strategy or OOS."
+  - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
+  - "Any future U-17 hypothesis design authorization decision must be separate, bind this failure and prohibit result-derived mechanism selection."
+  - "Do not begin another candidate until that separate authorization exists."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -2101,6 +2121,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U16_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-16 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u16_cross_sectional_paper_observation/run_manifest.json
+    phase: U-16 Paper observation machine evidence
+    status: deterministic_failed_feasibility
+    status_marker: '"run_content_hash":"322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14"'
   - path: reports/m1/U16_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-16 data qualification and complexity preflight
     status: pass_local_complete

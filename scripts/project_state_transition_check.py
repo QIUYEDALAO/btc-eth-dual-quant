@@ -12,6 +12,10 @@ import yaml
 
 ALLOWED = {
     (
+        "U-16 closed failed feasibility; no successor is authorized",
+        "u16_failed_feasibility_closed_no_returns_no_oos_no_trading_no_m2",
+    ): "U-16-PAPER-OBSERVATION",
+    (
         "U-16 data qualification and complexity preflight passed; one frozen sealed-IS Paper observation is the only next task",
         "u16_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2",
     ): "U-16-PAPER-OBSERVATION",

@@ -1,5 +1,19 @@
 # Next Action
 
+## Stop: U-16 Failed Paper Feasibility
+
+The unique immutable run `322fda77...4d14` is deterministic across all three
+orders and has 169 complete episodes, 38 symbols, 51 months and five years with
+at least 12 episodes. All count, projection and concentration Gates pass.
+
+All three economic Gates fail: median 24h relative information persistence is
+`0.1003%` versus `1.80%`, median absolute displacement is `-0.0427%` versus
+`1.80%`, and the positive fraction is `52.66%` versus `60%`. U-16 is closed
+without tuning, second run, formal returns, strategy, backtest or OOS access.
+
+No successor is currently authorized. Continuing requires a separate U-17
+independent-candidate authorization decision.
+
 ## U-16 Unique Sealed-IS Paper Observation
 
 Qualification `5dc4850a...e949` passes all source, order, structural ceiling,

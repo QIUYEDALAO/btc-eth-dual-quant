@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-16's unique sealed-IS Paper observation is `failed_feasibility` under run `322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14` and three-order identity `fb25bbc789068bf7c8a5d56e81e9ab90a34d7c57a7b551d107fb5b51cef3add4`.
+- It has 169 complete episodes and passes every sample/distribution Gate, but 24h relative persistence `0.1003%`, absolute displacement `-0.0427%` and positive fraction `52.66%` fail. U-16 is closed without tuning, rerun, formal returns or OOS.
+- No successor is authorized. A separate independent-candidate authorization decision is required; strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-16 frozen-source qualification passes under `5dc4850a1d940d05581774a1270ec6c9cdc4d5f8702a5614a81a01928842e949`: 27,736 archives, 19 manifests, three source/same-reader orders, 9,016 structural decisions and ceiling 1,331.
 - Three synthetic one-million-row exact-evaluator passes are deterministic and under 3.07 seconds / 26.719 MiB. Market result and OOS rows remain zero.
 - Exactly one sealed-IS U-16 Paper observation is authorized next. No tuning, second run, formal return, strategy/backtesting, OOS, trading or M2.

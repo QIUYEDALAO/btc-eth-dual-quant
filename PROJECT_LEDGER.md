@@ -2453,4 +2453,12 @@ private exchange responses here.
 - Complexity: three one-million-row exact-evaluator passes at 3.000204/3.068404/3.002533 seconds and 26.719 MiB; output `a9c3ac3e...eeb4` exact.
 - Correction: pre-result runner measurement was reordered before source qualification because process-lifetime RSS contaminated the initial combined attempt; protocol/evaluator/results were unchanged and market outcomes remained unread.
 - Isolation: price/common/correlation/candidate/event/path/return and OOS decoded rows all zero. Exactly one sealed-IS Paper observation is authorized.
+
+## 2026-07-18 - U-16 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14` / `fb25bbc789068bf7c8a5d56e81e9ab90a34d7c57a7b551d107fb5b51cef3add4`; all manifests exact across three orders.
+- Sample: 169 complete episodes, 38 symbols, 51 months and five qualifying years; every count, projection and concentration Gate passes.
+- Economics: median 24h relative persistence `0.1003%`, absolute displacement `-0.0427%`, positive fraction `52.66%`; frozen minima `1.80%`, `1.80%`, `60%` all fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false.
+- Decision: U-16 is permanently closed. No fixed rule, strategy, review or OOS step; any U-17 candidate needs a separate authorization decision.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

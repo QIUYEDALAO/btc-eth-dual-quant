@@ -201,7 +201,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-16-PROTOCOL | Outcome-blind correlation-breakdown Paper protocol | completed_local | U-16 design complete | `codex/u16-cross-sectional-paper-protocol` / local-only | Freeze 48h common/correlation/displacement identity, thresholds, paths, Gates and preflight | Protocol `18e302de...5633a`; no data/results | exact-head review only |
 | U-16-PROTOCOL-REVIEW | Exact-head independent Paper-protocol review | completed_approve_local | U-16-PROTOCOL exact target | `codex/u16-cross-sectional-paper-protocol-review` / local-only | Review causality, parameters, spike exclusion, paths, Gates and isolation | approve 16/16; 0/0; review `2f708c0f...34e3` | none |
 | U-16-DATA-QUALIFICATION | Frozen-source data qualification and preflight | completed_pass_local | review approve | `codex/u16-cross-sectional-data-qualification` / local-only | Verify 48h history/24h path structure, order, ceiling, isolation and complexity | Result `5dc4850a...e949`; ceiling 1,331; 3×1M pass | none |
-| U-16-PAPER-OBSERVATION | Unique sealed-IS Paper observation | authorized_next | qualification pass | new local-only branch | Frozen common path, correlation, event, episode, paths and Gates in three orders | exact hashes; no formal return/OOS | fail closes candidate; pass permits fixed-contract decision |
+| U-16-PAPER-OBSERVATION | Unique sealed-IS Paper observation | completed_failed_feasibility | qualification pass | `codex/u16-cross-sectional-paper-observation` / local-only | Frozen common path, correlation, event, episode, paths and Gates in three orders | Run `322fda77...4d14`; 169 episodes; 3 economic Gates fail | candidate closed; no rerun/rules/strategy/OOS |
 
 ## Current Gate
 

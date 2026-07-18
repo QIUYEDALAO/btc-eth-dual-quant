@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U16_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-16 sealed-IS Paper observation | failed_feasibility | 169 episodes; three economic Gates fail; OOS remains sealed. | no |
+| `reports/m1/evidence/u16_cross_sectional_paper_observation/` | U-16 Paper machine evidence | run `322fda77...4d14` | Three orders exact under `fb25bbc7...add4`; immutable failure authorizes no downstream work. | no |
 | `reports/m1/U16_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-16 frozen-source qualification | pass / one sealed-IS observation authorized | 27,736 archives, 19 manifests, ceiling 1,331 and 3×1M synthetic passes; result/OOS rows zero. | no |
 | `reports/m1/evidence/u16_cross_sectional_data_qualification_v1.json` | U-16 qualification machine evidence | content `5dc4850a...e949` | Binds source/order/ceiling/complexity/isolation and one-run-only authority. | no |
 | `reports/expert/U16_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-16 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `9cafb08d...1ddb` unchanged; future membership only right-censors paths. | no |
