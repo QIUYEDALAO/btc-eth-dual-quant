@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/expert/U23_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-23 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1d0b2128...5d5913`, nine exact blobs and pre-freeze feasibility; authorizes only qualification. | no |
+| `reports/expert/evidence/u23_cross_sectional_paper_protocol_review_v1.json` | U-23 review machine evidence | content `f2a8a5fd...37c4a4` | Binds 16 dimensions, exact core/evidence and qualification-only authority. | no |
+
+
 | `reports/m1/U23_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-23 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 4h own-range expansion, close strength, peer-relative identity, clustering, paths and Gates after pre-freeze complexity pass. | no |
 | `config/u23_cross_sectional_paper_protocol_v1.json` | U-23 machine Paper protocol | content `52807bd0...3e5611` | Only exact-head review is true; data/results/trading permissions remain false. | no |
 | `reports/m1/evidence/u23_synthetic_core_feasibility_v1.json` | U-23 pre-freeze synthetic core feasibility | content `6010529c...45637e` | 3x1,000,395 logical OHLC bars pass deterministically with zero public-data/OOS access. | no |

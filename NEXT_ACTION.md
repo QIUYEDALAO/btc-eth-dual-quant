@@ -1,5 +1,18 @@
 # Next Action
 
+## U-23 Frozen-Source Data Qualification and Result-Free Preflight
+
+Exact target `1d0b2128...5d5913` is approved 16/16 with 0/0 critical/high under
+review `f2a8a5fd...37c4a4`. The next task may verify the 27,736 frozen archives,
+19 manifests, 5m-to-4h structural grids, seven-day history and next 24h path
+slots, point-in-time membership, lifecycle/mask order and sealed IS/OOS
+boundaries.
+
+It must produce identical normal/reverse/deterministic-shuffled structural
+hashes and prove at least 400 theoretical independent episodes. It may not
+decode OHLC, ranges, returns, candidates, events, paths or OOS values. Any
+authority, order, scope or ceiling failure closes U-23 before results.
+
 ## U-23 Exact-Head Independent Paper-Protocol Review
 
 Protocol `U23-03-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION-PAPER-V1` is

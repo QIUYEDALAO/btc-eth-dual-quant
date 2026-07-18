@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-19T00:00:00Z"
-current_phase: U-23 range-expansion close-strength Paper protocol frozen after synthetic-core feasibility pass; exact-head independent review is the only next task
-current_status: u23_paper_protocol_frozen_pending_exact_head_review_no_public_data_no_results_no_oos_no_trading_no_m2
+current_phase: U-23 Paper protocol exact-head review approved; frozen-source data qualification and result-free preflight are the only next task
+current_status: u23_protocol_review_approve_qualification_only_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-23 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U23_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u23_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u23-cross-sectional-paper-protocol-review
+    target_head_sha: 1d0b21282b1e499fdef0d9cab88e7a918a5d5913
+    protocol_content_hash: 52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611
+    review_content_hash: f2a8a5fdf770419bcc6f29abda3539d251b9e6e0f1dc97d5a4e824ab4f37c4a4
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-23 outcome-blind range-expansion close-strength Paper protocol
     status: frozen_before_result_pending_exact_head_review
     evidence: reports/m1/U23_CROSS_SECTIONAL_PAPER_PROTOCOL.md
@@ -2552,6 +2566,21 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-23-PROTOCOL-REVIEW
+    phase: exact-head independent Paper-protocol review
+    status: completed_approve
+    target_head_sha: 1d0b21282b1e499fdef0d9cab88e7a918a5d5913
+    protocol_content_hash: 52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611
+    review_content_hash: f2a8a5fdf770419bcc6f29abda3539d251b9e6e0f1dc97d5a4e824ab4f37c4a4
+    critical_findings: 0
+    high_findings: 0
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-23-PROTOCOL
     phase: outcome-blind range-expansion close-strength Paper protocol
     status: completed_pending_exact_head_review
@@ -2860,6 +2889,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "U-23 frozen-source data qualification may verify exact archives/manifests, 7d history, 24h path structure, point-in-time membership, lifecycle/mask order, sample ceiling and isolation without decoding OHLC or results."
+  - "Any authority, order, scope or theoretical-episode ceiling failure closes U-23 before results."
   - "A separate read-only exact-head independent review of the frozen U-23 protocol is the only next task."
   - "The review may authorize only frozen-source data qualification and result-free preflight; it may not authorize events, paths, formal returns, strategy, OOS or trading."
   - "U-23 may design one result-blind Paper protocol only after its intended exact statistic core passes a synthetic-only complexity feasibility Gate."
