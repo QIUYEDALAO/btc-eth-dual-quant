@@ -2,11 +2,28 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-11 independent design authorized; one outcome-blind hypothesis design is the only next task
-current_status: u11_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-11 asymmetric market-capture quality design completed; outcome-blind Paper protocol design is the only next task
+current_status: u11_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-11 cross-sectional asymmetric market-capture quality-persistence hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U11_ASYMMETRIC_MARKET_CAPTURE_QUALITY_DESIGN.md
+    machine_evidence: config/u11_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U11_NON_DUPLICATION_REVIEW.md
+    branch: codex/u11-cross-sectional-asymmetric-market-capture-design
+    candidate_id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    hypothesis_sha256: 1c9ef854245c3f46000712894392b5b97a865013355c4553e372c6d168f63e74
+    design_content_hash: 0572daf7511c673a89dff6e737ad12528dde6c40845b672d62bbd3b1aeca9e4c
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-11 design authorization decision
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
     evidence: reports/m0/U11_DESIGN_AUTHORIZATION_DECISION.md
@@ -1400,14 +1417,13 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-11
-    phase: one outcome-blind point-in-time cross-sectional hypothesis design
+  - id: U-11-PROTOCOL
+    phase: outcome-blind asymmetric market-capture quality Paper protocol design
     status: authorized_ready
-    decision_content_hash: c5db3dc0c01bc4e1ffe381150c132742446ce4b05b3fb8c381dc03612cff274a
-    maximum_hypotheses: 1
-    independent_economic_rationale_required: true
-    prior_outcome_reuse_prohibited: true
-    hypothesis_design_authorized: true
+    candidate_id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    design_content_hash: 0572daf7511c673a89dff6e737ad12528dde6c40845b672d62bbd3b1aeca9e4c
+    protocol_must_precede_results: true
+    paper_protocol_design_authorized: true
     event_scan_authorized: false
     returns_authorized: false
     strategy_authorized: false
@@ -1480,7 +1496,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Create exactly one economically independent, outcome-blind U-11 cross-sectional hypothesis design without parameters or result access."
+  - "Freeze one outcome-blind U-11 Paper protocol design for asymmetric market-capture quality before any data or event diagnostic."
   - "Preserve U-04/U-05/U-06/U-07 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1490,7 +1506,7 @@ allowed_next_work:
   - Do not use API keys.
   - Do not run live or paper trading.
 research_authorizations:
-  hypothesis_preregistration: true
+  hypothesis_preregistration: false
   strategy_code: false
   event_scan: false
   returns: false
@@ -1519,6 +1535,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U11_ASYMMETRIC_MARKET_CAPTURE_QUALITY_DESIGN.md
+    phase: U-11 hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U11_NON_DUPLICATION_REVIEW.md
+    phase: U-11 non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u11_cross_sectional_design_scope_v1.json
+    phase: U-11 machine design scope
+    status: deterministic_design
+    status_marker: '"content_hash": "0572daf7511c673a89dff6e737ad12528dde6c40845b672d62bbd3b1aeca9e4c"'
   - path: reports/m0/U11_DESIGN_AUTHORIZATION_DECISION.md
     phase: U-11 design authorization
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only

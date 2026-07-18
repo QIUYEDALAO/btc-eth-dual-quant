@@ -2198,3 +2198,11 @@ private exchange responses here.
 - Binding: U-10 remains failed, single-run and OOS-sealed under `9972a95f...d22f`; prior U-04 through U-09 evidence and V4 audit/source freeze remain exact.
 - Independence: prior event signs, measured paths, failed Gates, censor patterns and protocol defects may not be inverted, repaired, relabeled or used to choose U-11.
 - Authorization: hypothesis design only. Events, parameters, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-11 Asymmetric Market-Capture Quality Design Complete
+
+- Candidate: `U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE`; hypothesis `1c9ef854...3e74`; design `0572daf7...9e4c`.
+- Mechanism: persistent participation in positive common-market states plus lower sensitivity in negative states may indicate a stable demand base and lower forced-selling sensitivity.
+- Independence: conditional asymmetric capture, not U-07 one-off stress resilience, U-09 unconditional low residual volatility, U-10 price/volume trend or other prior families.
+- Execution: no public data, timeframe, estimator, threshold, event/path, return, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.

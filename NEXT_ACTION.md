@@ -1,6 +1,6 @@
 # Next Action
 
-## U-11 Outcome-Blind Hypothesis Design
+## U-11 Outcome-Blind Paper Protocol Design
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -91,11 +91,17 @@ outcome-blind U-11 hypothesis design. It binds U-10's immutable failed run and
 prohibits inversion, threshold repair, censor-pattern reuse or relabeling of
 all prior outcomes.
 
-The only next task is to freeze one U-11 economic mechanism with causal timing,
-failure regimes and non-duplication. The design must select no timeframe,
-estimator, threshold, event, holding rule or risk parameter and may authorize
-only a separate result-blind Paper protocol. Events, returns, OOS, strategy code
-and trading remain prohibited.
+U-11 freezes `U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE`
+under hypothesis `1c9ef854...3e74` and design `0572daf7...9e4c`. The mechanism
+requires persistent participation in positive common-market states together
+with lower sensitivity to negative states, interpreted as asymmetric demand
+quality rather than an absolute direction forecast.
+
+The only next task is one outcome-blind Paper protocol. It must separately
+freeze completed timeframe, common-market states, upside/downside capture,
+persistence, sample requirements, candidate identity, clustering, paths, costs
+and Gates before any data read or event scan. It may authorize only an exact-
+head independent protocol review; returns, OOS, strategy and trading remain false.
 
 ## U-08 Frozen Historical Chain
 
