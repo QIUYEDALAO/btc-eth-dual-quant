@@ -12,6 +12,10 @@ import yaml
 
 ALLOWED = {
     (
+        "U-17 liquidity-risk-premium design completed; outcome-blind Paper protocol design is the only next task",
+        "u17_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-17",
+    (
         "U-17 independent outcome-blind hypothesis design authorized",
         "u17_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
     ): "U-17",

@@ -1,5 +1,18 @@
 # Next Action
 
+## U-17 Outcome-Blind Paper Protocol Design
+
+U-17 freezes `U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM` under hypothesis
+`19b0e7ea...1fea` and design `ad3b6a4c...20fe`. The mechanism is compensation
+for persistent relative liquidity risk inside the already investable Top-15,
+not a volume shock, membership event or price-direction signal.
+
+The only next task is a separate result-blind Paper protocol defining the
+completed observation clock, liquidity proxy, prior history, persistence,
+cohort/tie-break, future paths, costs, sample and economic Gates, structural
+ceiling, complexity and IS/OOS isolation before any data read. Returns, fixed
+rules, strategy/backtesting and OOS remain unauthorized.
+
 ## U-17 Outcome-Blind Hypothesis Design
 
 Decision `eb93310f...420b` authorizes exactly one economically independent,

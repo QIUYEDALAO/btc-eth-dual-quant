@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m1/U17_LIQUIDITY_RISK_PREMIUM_DESIGN.md` | U-17 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes persistent relative liquidity risk as a compensated characteristic without data, parameters, results or OOS. | no |
+| `reports/m1/U17_NON_DUPLICATION_REVIEW.md` | U-17 non-duplication | pass_design_level | Separates a liquidity-risk characteristic from U-04 through U-16 and prior strategy families. | no |
+| `config/u17_cross_sectional_design_scope_v1.json` | U-17 machine design scope | content `ad3b6a4c...20fe` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
+
 | `reports/m0/U17_DESIGN_AUTHORIZATION_DECISION.md` | U-17 design authorization | one independent outcome-blind design authorized | Binds U-16 failed run and prohibits result repair/reuse; enables only one new design. | no |
 | `config/u17_design_authorization_v1.json` | U-17 machine authorization | content `eb93310f...420b` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
 

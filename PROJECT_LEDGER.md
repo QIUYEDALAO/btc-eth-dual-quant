@@ -2468,3 +2468,10 @@ private exchange responses here.
 - Binding: U-16 remains closed after its unique run `322fda77...4d14`; OOS, formal returns and second-run flags remain false.
 - Independence: U-04 through U-16 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-17. U-16 Gate repair, relaxation, inversion or repackaging is prohibited.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-17 Liquidity-Risk Premium Design Complete
+
+- Candidate: `U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM`; hypothesis `19b0e7ea...1fea`; design `ad3b6a4c...20fe`.
+- Mechanism: an asset that remains investable in the point-in-time Top-15 but persistently carries lower trading liquidity may earn compensation for immediacy, crowding-exit and capacity risk after the next eligible open.
+- Independence: not a volume shock, membership event, residual reversal, trend confirmation, taker imbalance or correlation breakdown; no prior outcome selected the mechanism.
+- Scope: no data or outcome read; all clocks, estimators, thresholds, cohorts, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.

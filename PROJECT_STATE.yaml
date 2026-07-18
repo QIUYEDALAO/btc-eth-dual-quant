@@ -2,11 +2,26 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-17 independent outcome-blind hypothesis design authorized
-current_status: u17_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2
+current_phase: U-17 liquidity-risk-premium design completed; outcome-blind Paper protocol design is the only next task
+current_status: u17_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-17 cross-sectional liquidity-risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U17_LIQUIDITY_RISK_PREMIUM_DESIGN.md
+    machine_evidence: config/u17_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U17_NON_DUPLICATION_REVIEW.md
+    branch: codex/u17-cross-sectional-liquidity-risk-premium-design
+    candidate_id: U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM
+    hypothesis_sha256: 19b0e7eaa4d9f8432b733d3660a76226c9e3351674d21a819adf266515261fea
+    design_content_hash: ad3b6a4cabc61bd41890684ccf30b8ee4ae3a2811fcc4dd08abcf45a4bf420fe
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-17 design authorization decision
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
     evidence: reports/m0/U17_DESIGN_AUTHORIZATION_DECISION.md
@@ -2006,11 +2021,13 @@ completed_milestones:
     merged_pr: 29
 open_work:
   - id: U-17
-    phase: independent outcome-blind cross-sectional hypothesis design
-    status: authorized_not_started
+    phase: cross-sectional liquidity-risk-premium hypothesis design
+    status: completed_local
     authorization_content_hash: eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b
+    design_content_hash: ad3b6a4cabc61bd41890684ccf30b8ee4ae3a2811fcc4dd08abcf45a4bf420fe
     maximum_hypotheses: 1
-    hypothesis_design_authorized: true
+    hypothesis_design_authorized: false
+    paper_protocol_design_authorized: true
     public_data_read_authorized: false
     event_scan_authorized: false
     returns_authorized: false
@@ -2109,7 +2126,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete exactly one economically independent, outcome-blind U-17 cross-sectional hypothesis design; freeze only mechanism, causal timing, failure regimes and non-duplication."
+  - "Complete exactly one outcome-blind U-17 Paper protocol design defining liquidity proxy, history, persistence, cohort, paths, Gates, sample ceiling, complexity and isolation before any data read."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-16 outcomes, signs, failed Gates, concentrations, censor patterns and defects may not select U-17."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -2119,7 +2136,7 @@ allowed_next_work:
   - Do not use API keys.
   - Do not run live or paper trading.
 research_authorizations:
-  hypothesis_preregistration: true
+  hypothesis_preregistration: false
   strategy_code: false
   event_scan: false
   returns: false
@@ -2148,6 +2165,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U17_LIQUIDITY_RISK_PREMIUM_DESIGN.md
+    phase: U-17 liquidity-risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U17_NON_DUPLICATION_REVIEW.md
+    phase: U-17 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u17_cross_sectional_design_scope_v1.json
+    phase: U-17 machine design scope
+    status: deterministic_protocol_design_only_authority
+    status_marker: '"content_hash": "ad3b6a4cabc61bd41890684ccf30b8ee4ae3a2811fcc4dd08abcf45a4bf420fe"'
   - path: reports/m0/U17_DESIGN_AUTHORIZATION_DECISION.md
     phase: U-17 design authorization
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only

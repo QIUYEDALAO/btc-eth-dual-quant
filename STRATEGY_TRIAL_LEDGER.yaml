@@ -9,6 +9,12 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM
+    status: declared_unopened
+    hypothesis: "U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset that remains investable inside the frozen liquid universe yet persistently ranks below its active peers in trading liquidity may require compensation for marginal immediacy, crowding-exit and capital-capacity risk, and that cross-sectional liquidity risk premium may accrue after the next eligible open; no U-04 through U-16 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 19b0e7eaa4d9f8432b733d3660a76226c9e3351674d21a819adf266515261fea
+    oos_opened: false
+    notes: "Outcome-blind design only. Observation timeframe, liquidity proxy, history, persistence, cohort, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
   - id: U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE
     status: failed_feasibility
     hypothesis: "U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, an asset that develops positive relative price displacement while its prior-only return path decouples from the contemporaneous peer common component may reflect asset-specific information being incorporated gradually and may continue after the next eligible open; no U-04 through U-15 outcome, defect or field-failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
