@@ -1895,11 +1895,19 @@ private exchange responses here.
 - Authorization: only a separate outcome-blind U-04 paper-protocol design may follow. Protocol execution, strategy, API/trading, `execution/live` and M2 remain false.
 - Lifecycle Gate: any future lifecycle-intersecting fixed rule remains blocked pending a separately reviewed delisting/execution policy.
 
-## 2026-07-18 - U-04 Outcome-Blind Paper Protocol Frozen
+## 2026-07-18 - U-04 Paper Protocol Exact-Head Review Approved
 
-- Task: `U-04-PROTOCOL`; branch `codex/u04-cross-sectional-paper-protocol`; local Git only.
-- Protocol: `U04-02-CROSS-SECTIONAL-RESIDUAL-REVERSAL-PAPER-V1`; content `7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6`.
-- Frozen before outcomes: completed 1h median/MAD residual, -3.0 and -1.80% joint threshold, one event per time, global 24h episodes, next expected 5m reference and 1/2/4/8/12/24h observations.
-- Gates: 90 IS episodes, 120/30 projections, year/symbol concentration, eight symbols and 1.80% relative plus absolute 24h medians.
-- No public data, event, path, return, OOS, strategy, Freqtrade backtest, API/trading or M2 work occurred.
-- Only a separate exact-head independent review is authorized next; the target must remain unchanged.
+- Independent local review target: `6523b83d6b6ba93771ec1bad15625eb191fa07be`; parent `ab85814c...ffeab9`.
+- Protocol/review hashes: `7b0e462d...9629d6` / `34fe2efd...646b1`.
+- Thirteen identity, authority, causal, estimator, threshold, clustering, path, Gate, leakage and safety dimensions pass.
+- Verdict: `approve`; remaining critical/high findings: `0 / 0`; target modified: no.
+- Only frozen-source data qualification and IS/OOS isolation are authorized next. No events, paths, returns, strategy, OOS, trading or M2 are authorized.
+
+## 2026-07-18 - U-04 Frozen-Source Data Qualification Passed
+
+- Task: `U-04-DATA-QUALIFICATION`; local Git only; no GitHub publication.
+- Result: 27,736/27,736 frozen ZIP size/SHA-256/CRC checks and 19/19 audited V4 manifests pass.
+- Determinism: normal, reverse and deterministic-shuffled identity `ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa`.
+- Contract/result: `fc45ba3...52af2` / `4bdebb52...5a8c`.
+- Isolation: OOS OHLC decoded 0; U-04 event/path/return rows generated 0; no network or production-evidence mutation.
+- Decision: authorize exactly one sealed-IS paper observation. No tuning, second scan, formal returns, strategy/backtesting, OOS, API/trading, `execution/live` or M2.

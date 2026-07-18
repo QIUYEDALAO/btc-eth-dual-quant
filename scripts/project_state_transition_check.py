@@ -184,9 +184,13 @@ ALLOWED = {
         "u04_residual_reversal_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
     ): "U-04-PROTOCOL",
     (
-        "U-04 paper protocol frozen; exact-head independent review is the only authorized next task",
-        "u04_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
-    ): "U-04-PROTOCOL-REVIEW",
+        "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "u04_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-04-DATA-QUALIFICATION",
+    (
+        "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+        "u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-04-PAPER-OBSERVATION",
     (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
@@ -309,8 +313,12 @@ AUDIT_BLOCKED_PAIRS = {
         "u04_residual_reversal_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
     ),
     (
-        "U-04 paper protocol frozen; exact-head independent review is the only authorized next task",
-        "u04_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+        "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "u04_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+        "u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
     ),
 }
 
@@ -335,9 +343,14 @@ U04_PROTOCOL_PAIR = (
     "u04_residual_reversal_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
 )
 
-U04_PROTOCOL_REVIEW_PAIR = (
-    "U-04 paper protocol frozen; exact-head independent review is the only authorized next task",
-    "u04_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+U04_PROTOCOL_REVIEW_APPROVED_PAIR = (
+    "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+    "u04_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+)
+
+U04_DATA_QUALIFICATION_PASS_PAIR = (
+    "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+    "u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
 )
 
 
@@ -350,6 +363,8 @@ def validate(state: dict) -> list[str]:
     expected_auth = dict(EXPECTED_AUTH)
     if pair == U04_DESIGN_PAIR:
         expected_auth["hypothesis_preregistration"] = True
+    if pair == U04_DATA_QUALIFICATION_PASS_PAIR:
+        expected_auth["event_scan"] = True
     if state.get("research_authorizations") != expected_auth:
         failures.append("research authorization matrix changed")
     if pair in {ADR0015_CONTROLLED_INTEGRATION_PAIR, ADR0015_REQUALIFICATION_PASS_PAIR, ADR0015_AUDIT_PROTOCOL_PAIR, ADR0015_AUDITOR_REVIEW_PAIR}:
@@ -400,7 +415,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-PROTOCOL-REVIEW"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -457,7 +472,8 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 independent audit passed; separate U-04 authorization decision is the only authorized next task",
         "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
         "U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task",
-        "U-04 paper protocol frozen; exact-head independent review is the only authorized next task",
+        "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
     }:
         milestones = [
             item
@@ -786,7 +802,8 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 independent audit passed; separate U-04 authorization decision is the only authorized next task",
         "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
         "U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task",
-        "U-04 paper protocol frozen; exact-head independent review is the only authorized next task",
+        "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
     }:
         milestones = [
             item
@@ -974,16 +991,17 @@ def validate(state: dict) -> list[str]:
             }.items()
         ):
             failures.append("U-04 paper-protocol design authorization binding changed")
-    u04_review_items = [item for item in open_work if item.get("id") == "U-04-PROTOCOL-REVIEW"]
-    if pair == U04_PROTOCOL_REVIEW_PAIR:
-        if len(u04_review_items) != 1 or any(
-            u04_review_items[0].get(key) != value
+    u04_data_items = [item for item in open_work if item.get("id") == "U-04-DATA-QUALIFICATION"]
+    if pair == U04_PROTOCOL_REVIEW_APPROVED_PAIR:
+        if len(u04_data_items) != 1 or any(
+            u04_data_items[0].get(key) != value
             for key, value in {
                 "status": "authorized_ready",
                 "candidate_id": "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL",
                 "protocol_content_hash": "7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6",
-                "exact_head_review_required": True,
-                "data_qualification_authorized": False,
+                "review_content_hash": "34fe2efdf4788b20b915f34b3b6442f60ddaa364103ae90b920dc2cacf9646b1",
+                "source_mode": "frozen_local_only",
+                "data_qualification_authorized": True,
                 "event_scan_authorized": False,
                 "strategy_authorized": False,
                 "oos_authorized": False,
@@ -991,7 +1009,30 @@ def validate(state: dict) -> list[str]:
                 "m2_authorized": False,
             }.items()
         ):
-            failures.append("U-04 exact-head protocol-review authorization binding changed")
+            failures.append("U-04 data-qualification authorization binding changed")
+    u04_observation_items = [item for item in open_work if item.get("id") == "U-04-PAPER-OBSERVATION"]
+    if pair == U04_DATA_QUALIFICATION_PASS_PAIR:
+        if len(u04_observation_items) != 1 or any(
+            u04_observation_items[0].get(key) != value
+            for key, value in {
+                "status": "authorized_ready",
+                "candidate_id": "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL",
+                "protocol_content_hash": "7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6",
+                "review_content_hash": "34fe2efdf4788b20b915f34b3b6442f60ddaa364103ae90b920dc2cacf9646b1",
+                "qualification_content_hash": "4bdebb527494386d43f85189bf835e7fa1426325c5ef5383ec6fa46c2bb55a8c",
+                "source_mode": "frozen_local_is_only",
+                "paper_observation_authorized": True,
+                "event_scan_authorized": True,
+                "path_observation_authorized": True,
+                "formal_returns_authorized": False,
+                "second_run_authorized": False,
+                "strategy_authorized": False,
+                "oos_authorized": False,
+                "trading_authorized": False,
+                "m2_authorized": False,
+            }.items()
+        ):
+            failures.append("U-04 sealed-IS paper-observation authorization binding changed")
     if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
         protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
         expected_protocol = {

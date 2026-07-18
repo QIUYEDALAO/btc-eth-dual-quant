@@ -2,41 +2,23 @@
 
 ## Immediate Task
 
-Complete an independent exact-head review of the frozen U-04 paper protocol.
+Execute the one authorized U-04 sealed-IS paper observation.
 
-- Candidate: `U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL`.
-- Protocol: `U04-02-CROSS-SECTIONAL-RESIDUAL-REVERSAL-PAPER-V1`.
-- Protocol hash:
-  `7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6`.
-- Design hash:
-  `b384e6484180a0ec358125fbb0338d7376b860372ab065fe7043667931f178b8`.
-- Hypothesis hash:
-  `85e9fc11e8f6b69597fecdb6a40485611eb24163a20cea4534e81d0f08e5ec7a`.
-- Qualified artifact set:
-  `8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3`.
+- Protocol: `7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6`.
+- Protocol review: `34fe2efdf4788b20b915f34b3b6442f60ddaa364103ae90b920dc2cacf9646b1`.
+- Data qualification: `4bdebb527494386d43f85189bf835e7fa1426325c5ef5383ec6fa46c2bb55a8c`.
+- IS: `[2020-01-01T00:00:00Z, 2024-09-11T00:00:00Z)`.
+- OOS: sealed at and after `2024-09-11T00:00:00Z`.
 
-The review must bind the exact target commit, protocol bytes/content hash and
-all source, membership, lifecycle and invalid-interval authorities. It must
-independently examine causal timing, complete active membership, the median/MAD
-estimator, dual event threshold, deterministic tie-breaking, 24h episode
-clustering, next-expected-5m reference, right censoring, paper Gates, leakage
-controls and authorization matrix.
+Run the frozen 1h median/MAD residual event definition, deterministic simultaneous
+selection, 24h connected clustering and the six preregistered path horizons. Use
+the exact point-in-time active membership, lifecycle end-exclusive authority and
+invalid-interval mask. Normal, reverse and deterministic-shuffled results must
+have identical event, episode, path, accounting and manifest hashes.
 
-Approval requires every dimension to pass and remaining critical/high findings
-to equal `0 / 0`. The review must not modify the target. A passing review may
-authorize only a separate data-qualification task; it may not run the protocol.
-
-## Current Frozen Decision
-
-- Completed 1h member log returns; exact point-in-time active cross-section.
-- Common component: cross-sectional median; robust scale: `1.4826 × MAD`.
-- Event: standardized residual at most `-3.0` and relative simple return at
-  most `-1.80%`.
-- One deterministic candidate per timestamp; global connected 24h episodes.
-- Reference: first expected 5m open strictly after the completed decision.
-- IS: `2020-01-01` through `2024-09-11` exclusive; OOS remains sealed through
-  `2026-07-01` exclusive.
-- Candidate events evaluated: no; paths/returns computed: no; OOS opened: no.
+This is the only paper-observation run. Do not tune, lower a Gate, change a
+threshold or rerun based on the result. Any failed Paper Gate closes the candidate
+as `failed_feasibility`.
 
 ## ADR-0015 Implementation Exact-Head Review
 
@@ -46,21 +28,21 @@ zero critical/high findings under review hash `9a073643...e5af1`.
 ## ADR-0015 Independent Policy Review
 
 Historical review marker: policy review remains `approve` under review hash
-`893d056e...85a3`; U-04 protocol work does not change policy semantics.
+`893d056e...85a3`; U-04 observation does not change policy semantics.
 
 ## U-03F Repair Exact-Head Review
 
-Historical review marker: the former repair review and its later blocked cold
-run remain immutable. ADR-0015 requalification separately quarantined 119 physical
-invalid rows plus the valid-minority slot.
+Historical review marker: the former repair review and blocked cold run remain
+immutable. ADR-0015 separately qualified the 119 physical invalid rows and full
+120-slot mask.
 
 ## Prohibited
 
 - No strategy is eligible for M2. Do not enter M2.
-- Freqtrade-first remains mandatory for any later single-leg implementation.
-- Do not read or qualify public market data in the protocol review.
-- Do not scan events, observe paths, calculate returns or inspect OOS.
-- Do not change the target protocol, parameter, threshold, Gate or authority.
-- Do not select fixed rules, implement Freqtrade strategy code or backtest.
-- No API keys, dry-run/live trading, `execution/live`, order operations or M2.
-- Continue local Git only; do not push, create a PR or run GitHub Actions.
+- Freqtrade-first remains mandatory for future single-leg implementation.
+- Do not open or decode OOS data.
+- Do not create fills, positions, equity curves or formal strategy returns.
+- Do not change the reviewed protocol, thresholds, costs, Gates or authorities.
+- Do not implement strategy/fixed-rule/backtest logic.
+- No API keys, dry-run/live trading, `execution/live` or order operations.
+- Local Git only; no push, PR or GitHub Actions.

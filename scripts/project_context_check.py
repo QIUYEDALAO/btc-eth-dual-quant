@@ -191,6 +191,8 @@ def main() -> int:
         "design review" in item.casefold()
         or "draft policy adr" in item.casefold()
         or "hypothesis design" in item.casefold()
+        or "data qualification" in item.casefold()
+        or "paper observation" in item.casefold()
         for item in allowed_next_work
     ):
         failures.append("PROJECT_STATE.yaml allowed_next_work must include design or Draft policy ADR scope")

@@ -1,8 +1,10 @@
 # Reports Index
 
 | `reports/m1/U04_CROSS_SECTIONAL_RESIDUAL_REVERSAL_DESIGN.md` | U-04 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes one point-in-time active-universe residual-reversal mechanism without events, returns, parameters or OOS. | no |
-| `reports/m1/U04_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-04 outcome-blind paper protocol | frozen pending exact-head review | Freezes the 1h median/MAD residual event, 24h episode, path observations and fixed paper Gates before any data or outcome access. | no |
-| `config/u04_cross_sectional_paper_protocol_v1.json` | U-04 machine paper protocol | content `7b0e462d...9629d6` | Binds all V4 authorities and permits only exact-head independent review; data, events, returns, OOS and trading remain false. | no |
+| `reports/m1/U04_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-04 data qualification | pass / OOS sealed | 27,736 ZIPs, 19 manifests and three orders exact; OOS OHLC decode and U-04 result rows remain zero. | no |
+| `reports/m1/evidence/u04_cross_sectional_data_qualification_v1.json` | U-04 data qualification machine evidence | content `4bdebb52...5a8c` | Binds frozen source, grid, membership, lifecycle, invalid-interval mask and one-run-only next authorization. | no |
+| `reports/expert/U04_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-04 paper-protocol exact-head review | approve / 0 critical-high | Reviews target `6523b83d...07be` without modification and authorizes only frozen-source data qualification. | no |
+| `reports/expert/evidence/u04_cross_sectional_paper_protocol_review_v1.json` | U-04 protocol review machine evidence | content `34fe2efd...646b1` | Binds five exact target files, 13 review dimensions and a data-qualification-only authorization. | no |
 | `reports/m1/U04_NON_DUPLICATION_REVIEW.md` | U-04 non-duplication review | pass_design_level | Separates U-04 from M1C momentum, M1G absolute panic, M1E breakout, M1H funding and M1A trend. | no |
 | `config/u04_cross_sectional_design_scope_v1.json` | U-04 machine design scope | content `b384e648...f178b8` | Binds candidate `85e9fc11...5ec7a`, audit and point-in-time data authorities; only paper-protocol design is enabled. | no |
 | `reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md` | ADR-0015 independent auditor implementation | source order fixed pending replacement exact-head review | Content `f0c0ee6d...8d5e`; prior run deterministic and 18/19 exact; 19/19 Gate unchanged. | no |
