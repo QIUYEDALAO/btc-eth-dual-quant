@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-16 freezes `U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE` under design `8574e5c5aa068f10a561d8cfae26d4a45d5b9eb17287156912fa4d8b5fd075d1`. It is a declared-unopened spot long/cash candidate selected without data or result access.
+- The mechanism is positive relative displacement with prior-only decoupling from the complete peer common return path, interpreted as possible gradual asset-specific information incorporation. It uses no taker fields and is not a U-15 repair.
+- Only an outcome-blind U-16 Paper protocol design is authorized next. Events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-16 design authorization `05346312b0e47168a17a77cd19d1a73525b17eb9f64de29b2b157a5c673528fc` permits exactly one economically independent outcome-blind hypothesis design. It binds U-15 closed and prohibits any repair, relaxation or repackaging of the failed taker-buy field contract.
 - Only U-16 mechanism, causal timing, failure regimes and non-duplication may be frozen next. Data, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-15 is closed `failed_pre_result_field_qualification` under evidence `83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28`. The first official field scan found a checksum-bound ADAUSDT 2020-01 row with zero quote volume, violating the frozen strict-positive denominator Gate.

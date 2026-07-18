@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U16_CORRELATION_BREAKDOWN_INFORMATION_PERSISTENCE_DESIGN.md` | U-16 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes positive relative decoupling as gradual asset-specific information without data, parameters, results or OOS. | no |
+| `reports/m1/U16_NON_DUPLICATION_REVIEW.md` | U-16 non-duplication | pass_design_level | Separates multi-path peer decoupling from U-04 through U-15 and prior strategy families. | no |
+| `config/u16_cross_sectional_design_scope_v1.json` | U-16 machine design scope | content `8574e5c5...075d1` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
 | `reports/m0/U16_DESIGN_AUTHORIZATION_DECISION.md` | U-16 design authorization | one independent outcome-blind design authorized | Binds U-15 pre-result failure and prohibits taker-field repair/reuse; enables only one new design. | no |
 | `config/u16_design_authorization_v1.json` | U-16 machine authorization | content `05346312...528fc` | Keeps data, events, strategy, OOS, trading and M2 false. | no |
 | `reports/m1/U15_TAKER_BUY_FIELD_DATA_QUALIFICATION.md` | U-15 official taker-buy field qualification | failed_pre_result_field_qualification | First official ADAUSDT row has zero quote volume and violates the frozen strict-positive denominator Gate; stopped before outcomes. | no |

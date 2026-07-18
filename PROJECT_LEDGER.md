@@ -2422,4 +2422,12 @@ private exchange responses here.
 - Binding: U-15 remains closed before results under `83eb8ac2...63c28`; event/return/OOS access and second runs remain zero.
 - Independence: U-04 through U-15 outcomes, signs, Gates, concentrations, censor patterns, defects and field failures may not select U-16. U-15 field-contract repair or relaxation is prohibited.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-16 Correlation-Breakdown Information Persistence Design Complete
+
+- Candidate: `U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE`; hypothesis `78109352...2f1`; design `8574e5c5...075d1`.
+- Mechanism: positive relative displacement combined with prior-only decoupling from the complete peer common path may reflect gradual asset-specific information incorporation and may persist after the next eligible open.
+- Independence: not single-period reversal, stress resilience, residual-volatility quality, trend/volume confirmation, beta capture, lagged diffusion, downside rejection or taker-buy absorption.
+- Scope: no data or outcome read; all timeframes, estimators, thresholds, paths, costs and rules remain unresolved. OOS sealed.
+- Next action: one outcome-blind Paper protocol design only.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

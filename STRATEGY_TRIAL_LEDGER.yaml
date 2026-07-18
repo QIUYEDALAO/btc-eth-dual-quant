@@ -9,6 +9,12 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE
+    status: declared_unopened
+    hypothesis: "U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, an asset that develops positive relative price displacement while its prior-only return path decouples from the contemporaneous peer common component may reflect asset-specific information being incorporated gradually and may continue after the next eligible open; no U-04 through U-15 outcome, defect or field-failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 781093529714314144be705cef84c0563a59630e71243827950b47cf6c15f2f1
+    oos_opened: false
+    notes: "Outcome-blind design only. Path length, common component, correlation and displacement estimators, thresholds, horizons, costs, rules and Gates remain unresolved. No data, events, paths, returns or OOS were read."
   - id: U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE
     status: failed_pre_result_field_qualification
     hypothesis: "U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE: Binance spot USDT long/cash only; using only a completed observation and exact point-in-time active members, unusually high aggressive taker-buy participation combined with muted contemporaneous relative price response may reveal urgent buy demand absorbed by finite passive sell inventory and may produce positive relative adjustment after the next eligible open if that inventory exhausts; required taker-buy fields must be independently qualified before any event scan; no U-04 through U-14 outcome reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

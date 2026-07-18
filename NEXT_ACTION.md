@@ -1,5 +1,17 @@
 # Next Action
 
+## U-16 Outcome-Blind Paper Protocol Design
+
+U-16 freezes `U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE`
+under design `8574e5c5...075d1`. The only next task is a separate result-blind
+Paper protocol defining prior-path length, common component, correlation
+estimator/baseline, positive displacement, thresholds, clustering, horizons,
+costs, sample Gates, isolation and complexity before any data or result read.
+
+The protocol must use only qualified OHLC/time authorities and cannot use or
+repair U-15 taker fields. Strategy rules, returns, backtesting and OOS remain
+unauthorized.
+
 ## U-16 Outcome-Blind Hypothesis Design
 
 Decision `05346312...528fc` authorizes exactly one economically independent,

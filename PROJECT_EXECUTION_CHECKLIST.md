@@ -197,7 +197,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-15-DATA-QUALIFICATION | Official taker-buy field/data qualification and preflight | completed_failed_pre_result | protocol review approve | `codex/u15-taker-buy-field-data-qualification` / local-only | Verify 12 columns, source fields, order, ceiling, complexity and isolation | Failure `83eb8ac2...63c28`; zero event/result/OOS rows | zero quote-volume row violates frozen Gate; candidate closed |
 | U-15-PAPER-OBSERVATION | Unique sealed-IS Paper observation | not_run_closed | qualification pass required | not created | no result-bearing run | zero event/path/return/OOS access | field qualification failed; retry prohibited |
 | U-16-DECISION | Separate post-U-15 candidate authorization | completed_authorize_design_only | U-15 closed before results with OOS sealed | `codex/u16-design-authorization` / local-only | Bind prior failure and authorize at most one independent outcome-blind design | Decision `05346312...528fc`; no data/results | U-16 hypothesis design only |
-| U-16 | Independent outcome-blind hypothesis design | authorized_next | U-16-DECISION complete | new local-only branch | Freeze one mechanism, timing, failures and non-duplication | no data/parameters/results | Paper protocol design only if design passes |
+| U-16 | Correlation-breakdown information-persistence design | completed_local | U-16-DECISION complete | `codex/u16-cross-sectional-correlation-breakdown-design` / local-only | Freeze prior-path decoupling mechanism, timing, failures and non-duplication | Design `8574e5c5...075d1`; no data/results | Paper protocol design only |
+| U-16-PROTOCOL | Outcome-blind correlation-breakdown Paper protocol | authorized_next | U-16 design complete | new local-only branch | Freeze path/common/correlation/displacement identity, thresholds, paths, Gates and preflight | no data/results | exact-head review only |
 
 ## Current Gate
 
