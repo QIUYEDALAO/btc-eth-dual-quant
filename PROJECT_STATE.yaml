@@ -2,11 +2,41 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-07 market-stress relative-strength design complete; outcome-blind Paper protocol design is the only next task
-current_status: u07_market_stress_relative_strength_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2
+current_phase: U-07 Paper protocol exact-head review approved; data qualification and isolation are the only next task
+current_status: u07_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-07 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U07_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u07_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u07-cross-sectional-paper-protocol-review
+    target_commit: 3aed4c337ff984b3e07ad9a4c7cda898425b3791
+    target_base_commit: f282f45229dbab3fd20767b2097a07a481e50d09
+    protocol_content_hash: d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195
+    review_content_hash: fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-07 outcome-blind market-stress relative-strength Paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence_at_target: reports/m1/U07_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence_at_target: config/u07_cross_sectional_paper_protocol_v1.json
+    branch: codex/u07-cross-sectional-paper-protocol
+    target_commit: 3aed4c337ff984b3e07ad9a4c7cda898425b3791
+    protocol_content_hash: d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
   - phase: U-07 cross-sectional market-stress relative-strength continuation hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U07_CROSS_SECTIONAL_MARKET_STRESS_RELATIVE_STRENGTH_DESIGN.md
@@ -984,13 +1014,16 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-07-PROTOCOL
-    phase: outcome-blind market-stress relative-strength Paper protocol design
+  - id: U-07-DATA-QUALIFICATION
+    phase: frozen-source data qualification and IS/OOS isolation
     status: authorized_ready
     candidate_id: U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION
-    design_content_hash: 272eabd4ab1737566698309b98cc13b952a8d39b86c457674d58ff56de021795
-    outcome_blind_required: true
-    exact_head_review_required: true
+    target_commit: 3aed4c337ff984b3e07ad9a4c7cda898425b3791
+    protocol_content_hash: d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195
+    review_content_hash: fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6
+    frozen_source_only: true
+    three_traversal_orders_required: true
+    oos_ohlc_decode_authorized: false
     event_scan_authorized: false
     strategy_authorized: false
     oos_authorized: false
@@ -1062,7 +1095,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete one outcome-blind U-07 Paper protocol design before any event scan or result access."
+  - "Complete frozen-source U-07 data qualification and IS/OOS isolation without scanning events or paths."
   - "Preserve U-04/U-05/U-06 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1101,6 +1134,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/U07_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-07 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u07_cross_sectional_paper_protocol_review_v1.json
+    phase: U-07 Paper-protocol review machine evidence
+    status: approve_zero_critical_high
+    status_marker: '"verdict": "approve"'
   - path: reports/m1/U07_CROSS_SECTIONAL_MARKET_STRESS_RELATIVE_STRENGTH_DESIGN.md
     phase: U-07 hypothesis design
     status: design_pass_protocol_only

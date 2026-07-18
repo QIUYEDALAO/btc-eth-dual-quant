@@ -244,6 +244,10 @@ ALLOWED = {
         "u07_market_stress_relative_strength_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
     ): "U-07-PROTOCOL",
     (
+        "U-07 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "u07_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-07-DATA-QUALIFICATION",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -498,6 +502,11 @@ U07_PROTOCOL_PAIR = (
     "u07_market_stress_relative_strength_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
 )
 
+U07_PROTOCOL_REVIEW_APPROVED_PAIR = (
+    "U-07 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+    "u07_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+)
+
 U06_DATA_QUALIFICATION_PASS_PAIR = (
     "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
     "u06_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
@@ -565,7 +574,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07", "U-07-PROTOCOL"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07", "U-07-PROTOCOL", "U-07-DATA-QUALIFICATION"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -1488,6 +1497,57 @@ def validate(state: dict) -> list[str]:
         }
         if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_design.items()):
             failures.append("U-07 hypothesis design milestone binding changed")
+    if pair == U07_PROTOCOL_REVIEW_APPROVED_PAIR:
+        data_items = [item for item in open_work if item.get("id") == "U-07-DATA-QUALIFICATION"]
+        expected_data = {
+            "status": "authorized_ready",
+            "candidate_id": "U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION",
+            "target_commit": "3aed4c337ff984b3e07ad9a4c7cda898425b3791",
+            "protocol_content_hash": "d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195",
+            "review_content_hash": "fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6",
+            "frozen_source_only": True,
+            "three_traversal_orders_required": True,
+            "oos_ohlc_decode_authorized": False,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(data_items) != 1 or any(data_items[0].get(key) != value for key, value in expected_data.items()):
+            failures.append("U-07 data-qualification-only authorization binding changed")
+        reviews = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-07 Paper-protocol exact-head independent review"]
+        expected_review = {
+            "status": "approve_local_complete",
+            "target_commit": "3aed4c337ff984b3e07ad9a4c7cda898425b3791",
+            "target_base_commit": "f282f45229dbab3fd20767b2097a07a481e50d09",
+            "protocol_content_hash": "d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195",
+            "review_content_hash": "fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6",
+            "verdict": "approve",
+            "remaining_critical_findings": 0,
+            "remaining_high_findings": 0,
+            "target_modified": False,
+            "data_qualification_authorized": True,
+            "event_scan_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(reviews) != 1 or any(reviews[0].get(key) != value for key, value in expected_review.items()):
+            failures.append("U-07 protocol review milestone binding changed")
+        protocols = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-07 outcome-blind market-stress relative-strength Paper protocol"]
+        expected_protocol = {
+            "status": "frozen_before_result_exact_head_approved",
+            "target_commit": "3aed4c337ff984b3e07ad9a4c7cda898425b3791",
+            "protocol_content_hash": "d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195",
+            "public_data_read": False,
+            "events_evaluated": False,
+            "paths_observed": False,
+            "returns_computed": False,
+            "oos_opened": False,
+        }
+        if len(protocols) != 1 or any(protocols[0].get(key) != value for key, value in expected_protocol.items()):
+            failures.append("U-07 reviewed protocol milestone binding changed")
     if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
         protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
         expected_protocol = {

@@ -1,6 +1,6 @@
 # Next Action
 
-## U-07 Outcome-Blind Paper Protocol Design
+## U-07 Frozen-Source Data Qualification and Isolation
 
 U-07 is frozen as
 `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
@@ -11,14 +11,19 @@ The mechanism is state-conditioned relative resilience: broad contemporaneous
 selling pressure plus one asset retaining unusually strong relative price may
 reveal inelastic asset-specific demand that persists after stress subsides.
 
-The current task is to freeze one outcome-blind Paper protocol: exact completed
-timeframe, market-stress and resilience definitions, candidate tie-break,
-episode clustering, path horizons, sample/concentration/economic Gates,
-IS/OOS isolation and exact-head review requirements. No public-data result may
-be read before that protocol is frozen and independently approved.
+Protocol target `3aed4c337ff984b3e07ad9a4c7cda898425b3791` is independently
+approved under review `fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6`,
+with critical/high `0 / 0` and no target modification.
 
-Event scanning, returns, fixed rules, Freqtrade code, backtesting and OOS remain
-prohibited. U-04/U-05/U-06 remain closed and may not be tuned or inverted.
+The current task is frozen-source data qualification and IS/OOS isolation only.
+It must verify all 27,736 ZIP identities, 19 V4 manifests, exact 4h/1h/5m
+grids, point-in-time membership, lifecycle and invalid-interval authorities in
+normal, reverse and deterministic-shuffled traversal. It must not evaluate the
+stress/resilience event predicate or decode any OOS OHLC value.
+
+Only after deterministic qualification passes may exactly one sealed-IS Paper
+observation be authorized. Events, paths, returns, fixed rules, Freqtrade code,
+backtesting and OOS remain prohibited during qualification.
 
 ## U-04 Closed Historical Evidence
 

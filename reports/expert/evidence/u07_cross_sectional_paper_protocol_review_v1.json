@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "status": "approve_local_complete",
+  "review_id": "U07-04-CROSS-SECTIONAL-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "target": {
+    "base_commit": "f282f45229dbab3fd20767b2097a07a481e50d09",
+    "head_commit": "3aed4c337ff984b3e07ad9a4c7cda898425b3791",
+    "protocol_id": "U07-03-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-PAPER-V1",
+    "protocol_content_hash": "d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195",
+    "candidate_id": "U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION",
+    "design_content_hash": "272eabd4ab1737566698309b98cc13b952a8d39b86c457674d58ff56de021795",
+    "hypothesis_sha256": "3130450cd7bd7cddab4bce0c89b274ae93e50bed278379011cc4d09e15fb3de3"
+  },
+  "target_files": {
+    "config/u07_cross_sectional_paper_protocol_v1.json": "0bdf0a8dbf8e6c9d36bfa428b4f95557b62b75c4818a55c0e9aac72d1c60abb9",
+    "reports/m1/U07_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "a32e2aa8b63987035a694bdbaf31e0d8a77a57021c6fa9fdbbef8f2bbc130878",
+    "scripts/u07_cross_sectional_paper_protocol_check.py": "7e6d9ca705a02443040c6230f8d5db40de720f37e071f02a5e7f300081a51628",
+    "scripts/u07_cross_sectional_paper_protocol_validate.sh": "d23839f3c3d30ada42ad7fa074470a7edd11d976b28f94050cd57337254e70cf",
+    "tests/test_u07_cross_sectional_paper_protocol.py": "933764a6194272b361c035ca0557069a818e876353e1014a61c0a2a7c2cfae11"
+  },
+  "review_dimensions": [
+    {"id":"U07-PR-01","name":"exact_target_protocol_design_and_hypothesis_identity","result":"pass"},
+    {"id":"U07-PR-02","name":"frozen_v4_authority_and_prior_failure_bindings","result":"pass"},
+    {"id":"U07-PR-03","name":"point_in_time_complete_active_membership","result":"pass"},
+    {"id":"U07-PR-04","name":"completed_4h_market_stress_causality","result":"pass"},
+    {"id":"U07-PR-05","name":"negative_breadth_and_median_stress_thresholds","result":"pass"},
+    {"id":"U07-PR-06","name":"relative_resilience_absolute_floor_and_tie_break","result":"pass"},
+    {"id":"U07-PR-07","name":"global_48h_connected_episode","result":"pass"},
+    {"id":"U07-PR-08","name":"strict_next_5m_reference_and_fixed_peer_path","result":"pass"},
+    {"id":"U07-PR-09","name":"right_censoring_and_lifecycle_isolation","result":"pass"},
+    {"id":"U07-PR-10","name":"sample_distribution_and_economic_gates","result":"pass"},
+    {"id":"U07-PR-11","name":"is_only_projection_and_sealed_oos","result":"pass"},
+    {"id":"U07-PR-12","name":"no_fill_position_return_or_strategy_model","result":"pass"},
+    {"id":"U07-PR-13","name":"prior_candidate_independence_and_no_trading","result":"pass"}
+  ],
+  "findings": [],
+  "verdict": "approve",
+  "remaining_critical_findings": 0,
+  "remaining_high_findings": 0,
+  "target_modified_by_review": false,
+  "authorizations": {
+    "data_qualification": true,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "fixed_rule_contract": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "review_content_hash": "fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

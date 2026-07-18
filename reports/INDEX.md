@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/expert/U07_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-07 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `3aed4c33...b3791` without modification and authorizes only data qualification. | no |
+| `reports/expert/evidence/u07_cross_sectional_paper_protocol_review_v1.json` | U-07 protocol review machine evidence | content `fa9d90f7...c70b6` | Binds five target files, 13 dimensions and data-qualification-only authority. | no |
+| `reports/m1/U07_CROSS_SECTIONAL_PAPER_PROTOCOL.md` at target `3aed4c33...b3791` | U-07 outcome-blind Paper protocol | frozen exact-head approved | Fixes stress/resilience, 48h episodes, paths, Gates and sealed OOS before results. | no |
+| `config/u07_cross_sectional_paper_protocol_v1.json` at target `3aed4c33...b3791` | U-07 machine Paper protocol | content `d62dd323...50195` | Only protocol freeze and exact-head review were true at target. | no |
 | `reports/m1/U07_CROSS_SECTIONAL_MARKET_STRESS_RELATIVE_STRENGTH_DESIGN.md` | U-07 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes state-conditioned relative resilience without timeframe, threshold, outcomes, rules or OOS. | no |
 | `reports/m1/U07_NON_DUPLICATION_REVIEW.md` | U-07 non-duplication | pass_design_level | Separates stress-state resilience from U-04/U-05/U-06 and prior strategy families. | no |
 | `config/u07_cross_sectional_design_scope_v1.json` | U-07 machine design scope | content `272eabd4...21795` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
