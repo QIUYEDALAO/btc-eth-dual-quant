@@ -1,6 +1,6 @@
 # Next Action
 
-## U-10 Outcome-Blind Paper Protocol Design
+## U-10 Paper Protocol Exact-Head Independent Review
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -59,10 +59,15 @@ requires positive asset-specific relative trend and persistent expansion in
 cross-sectional quote-volume share, interpreted as scalable demand rather than
 thin-price noise.
 
-The only authorized next task is a separate outcome-blind Paper protocol. It
-must freeze the completed-data timeframe, common component, relative-trend and
-volume-share estimators, persistence rule, candidate identity, reference open,
-clustering, horizons and immutable sample/economic Gates before any event scan.
+Protocol `be205bf4...43b` is frozen before results. It fixes complete daily data,
+7-day relative trend, recent-3 versus prior-21-day volume-share confirmation,
+joint top-quartile selection, 72h clustering and 1/2/4/8/12/24/48/72h paths.
+The metadata-only theoretical ceiling is at least 400 constant-membership 72h
+episodes versus the frozen sample Gate 90.
+
+The only authorized next task is a separate exact-head independent review. It
+must bind the final commit without modifying any target protocol file. Public
+data, events, paths, returns and OOS remain prohibited.
 
 ## U-08 Frozen Historical Chain
 

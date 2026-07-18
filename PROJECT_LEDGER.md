@@ -2155,3 +2155,12 @@ private exchange responses here.
 - Independence: joint price/volume confirmation, not U-06 unconfirmed absorption, U-07 stress resilience, U-09 low-volatility quality or M1C BTC/ETH absolute rotation.
 - Execution: no public data, timeframe, estimator, threshold, event/path, return, rule, backtest or OOS access.
 - Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
+
+## 2026-07-18 - U-10 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `be205bf40dcab624667b97e43bc158ea2473fe15de2ce9846a6bb198575fa43b`; branch `codex/u10-cross-sectional-paper-protocol`; local Git only.
+- Identity: completed UTC days, 7d relative trend ≥3% and top quartile, recent-3/prior-21 quote-volume-share ratio ≥1.25 and top quartile, persistent 3d expansion.
+- One deterministic representative per day; all-symbol 72h connected clustering; strict next expected 5m reference.
+- Pre-result ceiling: at least 400 theoretical constant-membership 72h episodes versus frozen Gate 90.
+- Economic Gates: median 72h relative and absolute displacement ≥1.80%, positive fraction ≥60%, distribution and zero-mismatch controls.
+- Authorization: exact-head independent review only; no public data, events, returns, OOS or trading.

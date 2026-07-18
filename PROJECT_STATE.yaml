@@ -2,11 +2,30 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-10 volume-confirmed relative-trend design complete; outcome-blind Paper protocol design is the only next task
-current_status: u10_volume_confirmed_relative_trend_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2
+current_phase: U-10 Paper protocol frozen; exact-head independent review is the only authorized next task
+current_status: u10_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-10 outcome-blind volume-confirmed relative-trend Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U10_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u10_cross_sectional_paper_protocol_v1.json
+    branch: codex/u10-cross-sectional-paper-protocol
+    candidate_id: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
+    protocol_content_hash: be205bf40dcab624667b97e43bc158ea2473fe15de2ce9846a6bb198575fa43b
+    pre_result_theoretical_episode_minimum: 400
+    frozen_complete_is_episode_gate: 90
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+    exact_head_independent_review_authorized: true
+    data_qualification_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-10 cross-sectional volume-confirmed relative-trend continuation hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U10_VOLUME_CONFIRMED_RELATIVE_TREND_CONTINUATION_DESIGN.md
@@ -1305,13 +1324,13 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-10-PROTOCOL
-    phase: outcome-blind volume-confirmed relative-trend Paper protocol design
-    status: authorized_ready
+  - id: U-10-PROTOCOL-REVIEW
+    phase: exact-head independent review of frozen U-10 Paper protocol
+    status: authorized_after_protocol_commit
     candidate_id: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
-    design_content_hash: af9ac64043adacad08ef834567ff976b26723fb1468d1a7a0d43e6fa5eaa40e5
-    outcome_blind_required: true
-    exact_head_review_required: true
+    protocol_content_hash: be205bf40dcab624667b97e43bc158ea2473fe15de2ce9846a6bb198575fa43b
+    target_mutation_authorized: false
+    public_data_read_authorized: false
     event_scan_authorized: false
     parameter_selection_authorized: false
     formal_returns_authorized: false
@@ -1385,7 +1404,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete one outcome-blind U-10 Paper protocol design before any event or path scan."
+  - "Perform one exact-head independent review of the frozen U-10 Paper protocol design without target mutation."
   - "Preserve U-04/U-05/U-06/U-07 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1424,6 +1443,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U10_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-10 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u10_cross_sectional_paper_protocol_v1.json
+    phase: U-10 machine Paper protocol
+    status: deterministic_frozen_before_result
+    status_marker: '"paper_protocol_frozen":true'
   - path: reports/m1/U10_VOLUME_CONFIRMED_RELATIVE_TREND_CONTINUATION_DESIGN.md
     phase: U-10 hypothesis design
     status: economic_hypothesis_pass_protocol_design_only

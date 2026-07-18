@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U10_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-10 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes joint price/volume identity, 72h paths, sample ceiling, Gates and sealed OOS. | no |
+| `config/u10_cross_sectional_paper_protocol_v1.json` | U-10 machine Paper protocol | content `be205bf4...43b` | Only protocol freeze and exact-head review are true; all result/trading permissions false. | no |
 | `reports/m1/U10_VOLUME_CONFIRMED_RELATIVE_TREND_CONTINUATION_DESIGN.md` | U-10 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes joint relative-price and volume-share confirmation without parameters, results or OOS. | no |
 | `reports/m1/U10_NON_DUPLICATION_REVIEW.md` | U-10 non-duplication | pass_design_level | Separates joint confirmation from U-04 through U-09 and prior strategy families. | no |
 | `config/u10_cross_sectional_design_scope_v1.json` | U-10 machine design scope | content `af9ac640...40e5` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
