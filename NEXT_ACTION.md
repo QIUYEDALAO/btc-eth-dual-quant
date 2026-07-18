@@ -1,6 +1,24 @@
 # Next Action
 
-## U-12 Outcome-Blind Hypothesis Design
+## U-12 Outcome-Blind Paper Protocol Design
+
+U-12 freezes `U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY`
+under hypothesis `5942e15d...f54d` and design `e53003e7...d5dc`. The mechanism
+is an asset-specific relative-return pattern recurring in a predeclared UTC
+calendar state across disjoint prior subperiods, potentially reflecting
+repeating regional participation, settlement, treasury or mandate flows.
+
+The only next task is a separate result-blind Paper protocol. Before reading
+data it must freeze the UTC calendar-state family/granularity, completed
+timeframe, common component, history, disjoint subperiods, persistence,
+multiple-testing control, candidate rule, clustering, paths, cost and sample
+Gates. It must also require a pre-result implementation/data-scope preflight so
+the U-11 boundary failure cannot recur.
+
+No public data, event, path, return or OOS value has been read. Strategy rules,
+Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## U-12 Historical Authorization and Design
 
 Decision `ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7`
 authorizes exactly one economically independent, outcome-blind U-12 hypothesis
@@ -15,9 +33,8 @@ U-11's invalid attempt remains non-economic evidence and cannot be repaired,
 retried or repackaged. U-04 through U-10 outcome signs, paths, failed Gates and
 censor patterns may not be used to select U-12.
 
-The only next task is that one hypothesis design. Event scans, signals, returns,
-fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and
-M2 remain false.
+That one hypothesis design is complete. Only its separate outcome-blind Paper
+protocol design may follow; all result and execution permissions remain false.
 
 ## U-12 Authorization Record
 

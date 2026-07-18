@@ -2248,3 +2248,11 @@ private exchange responses here.
 - Binding: U-11 remains closed `failed_execution_invalid_observation` under attempt `0a55b61c...a9521`; its zero-event output is not economic evidence and no retry is authorized. Prior U-04 through U-10 evidence and V4 audit/source freeze remain exact.
 - Independence: U-11's defect and all prior result signs, paths, failed Gates and censor patterns may not select U-12.
 - Authorization: hypothesis design only. Public-data reads, events, parameters, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-12 Recurring Calendar-Flow Seasonality Design Complete
+
+- Candidate: `U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY`; hypothesis `5942e15d...f54d`; design `e53003e7...d5dc`.
+- Mechanism: an asset-specific relative-return pattern recurring in a predeclared UTC calendar state across disjoint prior subperiods may reflect repeating regional participation, settlement, treasury or mandate flows.
+- Independence: calendar-conditioned recurrence, not residual reversal, breadth, volume absorption, stress resilience, membership entry, low volatility, price/volume trend, asymmetric capture or prior BTC/ETH families.
+- Execution: no public data, timeframe, calendar granularity, estimator, threshold, event/path, return, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design with mandatory pre-result implementation/data-scope preflight; all downstream permissions remain false.

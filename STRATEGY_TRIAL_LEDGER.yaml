@@ -9,6 +9,12 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY
+    status: declared_unopened
+    hypothesis: "U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY: Binance spot USDT long/cash only; using only completed prior occurrences and the exact point-in-time active member set, an asset-specific relative return pattern that recurs in the same predeclared UTC calendar state across disjoint historical subperiods may reflect recurring regional participation, settlement, treasury or mandate flows and may persist after the next eligible open; no U-04 through U-10 outcome reuse, U-11 invalid-result or defect reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 5942e15d4c4dde246979ef980f0fc3c2a3f545e9e6717159355ee4312c87f54d
+    oos_opened: false
+    notes: "Outcome-blind design only. Calendar-state family/granularity, timeframe, common component, history, subperiods, estimators, multiple-testing control, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
   - id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
     status: declared_unopened
     hypothesis: "U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, an asset that persistently participates in positive common-market moves while preserving capital during negative common-market moves may reflect a stable demand base, lower forced-selling sensitivity and asymmetric quality that can persist after the next eligible open; no U-04 through U-10 outcome or defect reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

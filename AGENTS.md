@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-12 freezes `U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY` under hypothesis `5942e15d4c4dde246979ef980f0fc3c2a3f545e9e6717159355ee4312c87f54d` and design `e53003e7c9255fc11d976a646f8700532cc98ad6fd1c410b00647957daa6d5dc`. Only a separate outcome-blind Paper protocol design may follow; no public data, event, path, return or OOS was accessed.
+- The U-12 protocol must predeclare UTC calendar-state granularity, prior-only recurrence and disjoint-subperiod estimators, multiple-testing control, sample ceiling, clustering, paths and Gates. A pre-result implementation/data-scope preflight must prove monthly-boundary and historical-cell availability before any result run.
 - U-12 design authorization `ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7` permits exactly one economically independent outcome-blind cross-sectional hypothesis design. No public-data read, parameter, event scan, return, strategy/backtest, OOS, trading or M2 authority is granted.
 - U-12 must not use U-11's invalid zero-event attempt or monthly-boundary defect, nor any U-04 through U-10 result, to choose its mechanism. A separate Paper protocol and pre-result implementation/data-scope preflight are mandatory before any future event scan.
 - U-11's single sealed-IS observation attempt is deterministic under run `0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521` but invalid as economic evidence. The active-month reader omitted previous-boundary closes across monthly membership transitions, rejecting 9,925 of 9,931 decision times before capture. U-11 is closed `failed_execution_invalid_observation`; no repair or rerun is authorized.
