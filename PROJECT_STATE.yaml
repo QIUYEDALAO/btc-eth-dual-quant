@@ -2,16 +2,35 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-09 Paper protocol frozen; exact-head independent review is the only authorized next task
-current_status: u09_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-09 Paper protocol exact-head review approved; data qualification and isolation are the only next task
+current_status: u09_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-09 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U09_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u09_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u09-cross-sectional-paper-protocol-review
+    target_commit: 1bee65ff9dcdf0b9b3e49e37601140068cc968c8
+    target_base_commit: 29018d811a53abd2f96377c8ac3ab25981965824
+    protocol_content_hash: 874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae
+    review_content_hash: dd6779dab8be86fffa17d08a6a64b3085963e3e89b1889b24b6f125f64bb2947
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-09 outcome-blind idiosyncratic-volatility quality-persistence Paper protocol
-    status: frozen_before_result_pending_exact_head_review
+    status: frozen_before_result_exact_head_approved
     evidence: reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md
     machine_evidence: config/u09_cross_sectional_paper_protocol_v1.json
     branch: codex/u09-cross-sectional-paper-protocol
+    target_commit: 1bee65ff9dcdf0b9b3e49e37601140068cc968c8
     candidate_id: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
     protocol_content_hash: 874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae
     public_data_read: false
@@ -1209,13 +1228,16 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-09-PROTOCOL-REVIEW
-    phase: exact-head independent review of frozen U-09 Paper protocol
-    status: authorized_after_protocol_commit
+  - id: U-09-DATA-QUALIFICATION
+    phase: frozen-source qualification and IS/OOS isolation for U-09
+    status: authorized_ready
     candidate_id: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
+    target_commit: 1bee65ff9dcdf0b9b3e49e37601140068cc968c8
     protocol_content_hash: 874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae
-    target_mutation_authorized: false
-    public_data_read_authorized: false
+    review_content_hash: dd6779dab8be86fffa17d08a6a64b3085963e3e89b1889b24b6f125f64bb2947
+    frozen_source_only: true
+    three_traversal_orders_required: true
+    oos_ohlc_decode_authorized: false
     event_scan_authorized: false
     strategy_authorized: false
     oos_authorized: false
@@ -1287,7 +1309,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Perform one exact-head independent review of the frozen U-09 Paper protocol design without target mutation."
+  - "Perform frozen-source U-09 data qualification and IS/OOS isolation without event or path computation."
   - "Preserve U-04/U-05/U-06/U-07 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1326,6 +1348,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/U09_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-09 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u09_cross_sectional_paper_protocol_review_v1.json
+    phase: U-09 protocol review machine evidence
+    status: deterministic_approve
+    status_marker: '"review_content_hash": "dd6779dab8be86fffa17d08a6a64b3085963e3e89b1889b24b6f125f64bb2947"'
   - path: reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md
     phase: U-09 outcome-blind Paper protocol
     status: frozen_before_result_pending_exact_head_review

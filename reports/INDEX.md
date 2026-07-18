@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/expert/U09_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-09 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1bee65ff...68c8` unchanged and authorizes only data qualification. | no |
+| `reports/expert/evidence/u09_cross_sectional_paper_protocol_review_v1.json` | U-09 protocol review machine evidence | content `dd6779da...2947` | Binds five target files, 13 dimensions and qualification-only authority. | no |
 | `reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-09 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes residual-volatility cohort, 336h anchors, paths, Gates and sealed OOS before results. | no |
 | `config/u09_cross_sectional_paper_protocol_v1.json` | U-09 machine Paper protocol | content `874b93ce...84ae` | Only protocol freeze and exact-head review are true; all result and trading permissions remain false. | no |
 | `reports/m1/U09_IDIOSYNCRATIC_VOLATILITY_QUALITY_PERSISTENCE_DESIGN.md` | U-09 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes low idiosyncratic variability as a quality mechanism without parameters, outcomes, rules or OOS. | no |

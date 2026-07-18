@@ -28,6 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-09 protocol target `1bee65ff9dcdf0b9b3e49e37601140068cc968c8` is independently approved under review `dd6779dab8be86fffa17d08a6a64b3085963e3e89b1889b24b6f125f64bb2947`, with 0 critical/high and no target modification. Only frozen-source data qualification and isolation are authorized next.
 - U-09 protocol `874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae` is frozen before results. It fixes 336h anchors, a prior 168h completed 1h residual-volatility estimator, persistent low-volatility cohort, 24/72/168/336h paths and immutable Paper Gates. Only a separate exact-head independent review is authorized; no data, events, returns or OOS was accessed.
 - U-09 freezes `U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE` under hypothesis `cb91d77d11b0f877007848330df7e05e1d4e9257142fce4d339edefe75e14c92` and design `4830e361b66cd434e54a5ed284d0ad1e85c1e9270d3542dacf3efec5f4eee6f2`. Only a separate outcome-blind Paper protocol may follow; no public data, event, path, return or OOS was accessed.
 - Separate decision `2d643678e00575c93dad0331fff089fd620b214f658ca8d174dfe9bbcc06e477` authorizes U-09 only for one economically independent, outcome-blind hypothesis design. U-04 through U-08 outcome inversion is prohibited; events, parameters, returns, strategy/backtesting, OOS, trading and M2 remain false.

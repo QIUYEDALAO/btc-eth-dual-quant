@@ -2115,3 +2115,11 @@ private exchange responses here.
 - Observation: strict next expected 5m open; 24/72/168/336h paths; 336h primary episodes non-overlapping.
 - Gates: 80 complete IS, projected 110 full/30 sealed OOS, distribution controls, 1.80% relative and absolute medians, 60% positive relative persistence and zero mismatches.
 - Authorization: exact-head independent review only; no public data, event/path scan, formal return, strategy, OOS or trading.
+
+## 2026-07-18 - U-09 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `1bee65ff...68c8` / `29018d81...5824`; protocol/review `874b93ce...84ae` / `dd6779da...2947`.
+- All five target blobs and thirteen identity, authority, schedule, estimator, cohort, membership, causal, path, Gate, leakage and safety dimensions pass.
+- Verdict: `approve`; critical/high `0/0`; target unchanged.
+- No public data, event/path result, return or OOS value was read.
+- Authorization: frozen-source data qualification and isolation only; no events, returns, strategy, OOS or trading.

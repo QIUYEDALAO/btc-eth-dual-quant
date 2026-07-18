@@ -1,6 +1,6 @@
 # Next Action
 
-## U-09 Paper Protocol Exact-Head Independent Review
+## U-09 Frozen-Source Data Qualification and Isolation
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -36,10 +36,15 @@ the preceding 168 completed 1h returns, removes the exact active-member median
 common component and selects the intersection of the low-volatility quartile
 across both 84h halves and the full window. Primary 336h episodes do not overlap.
 
-The only authorized next task is an exact-head independent review on a separate
-branch. It must bind the final protocol commit without changing it and review
-identity, authority, membership, causal timing, estimator, cohort, paths, Gates,
-leakage and safety. Public data, events, paths, returns and OOS remain prohibited.
+Exact target `1bee65ff9dcdf0b9b3e49e37601140068cc968c8` is independently
+approved under review `dd6779da...2947`, with critical/high `0 / 0` and no
+target mutation.
+
+The only authorized next task is frozen-source data qualification and IS/OOS
+isolation. It may verify ZIP/manifests, completed 1h/5m grids, point-in-time
+membership, lifecycle, invalid-interval mask, schedule feasibility and the
+sealed boundary in three traversal orders. It must decode zero OOS OHLC and
+generate zero cohort, event, path or return rows.
 
 ## U-08 Frozen Historical Chain
 
