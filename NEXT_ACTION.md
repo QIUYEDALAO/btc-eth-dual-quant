@@ -1,5 +1,17 @@
 # Next Action
 
+## U-19 Frozen-Source Data Qualification and Preflight
+
+Exact target `8b8b03f0...addf4` is approved 16/16 with 0/0 critical/high under
+review `d215e444...f4a91`. The only next task may verify frozen ZIP/manifests,
+1h/5m structural grids, 336h history and 24h path availability, point-in-time
+membership/lifecycle/mask order and IS/OOS isolation without decoding returns,
+residuals, volatility statistics, events or paths.
+
+It must also prove at least 400 theoretical 24h episodes and run three
+synthetic one-million-row passes on the exact future evaluator path. Any hash,
+order, scope, ceiling or resource failure closes U-19 before results.
+
 ## U-19 Exact-Head Independent Paper-Protocol Review
 
 Protocol `U19-03-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM-PAPER-V1`

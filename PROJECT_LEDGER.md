@@ -2519,6 +2519,13 @@ private exchange responses here.
 - Observation/Gates: strict next 5m open, 1/2/4/8/12/24h diagnostics, 90 complete IS episodes and fixed distribution/economic Gates; no formal return.
 - Next action: separate exact-head review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
 
+## 2026-07-18 - U-19 Paper Protocol Exact-Head Review Approved
+
+- Target: `8b8b03f0869463c046668e28fbb22618383addf4`; protocol `8f50ee40...40f9`; five target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `d215e444...f4a91`.
+- Finding: 336h residual construction, two disjoint 168h halves, 24h block RMS, normalized MAD variability, two-half threshold/rank persistence, clustering, paths, complexity and isolation are causal and fixed.
+- Authorization: only separate frozen-source data qualification, structural ceiling, synthetic complexity and result-free preflight. Residual/volatility/event/path scans, returns, strategy, OOS and trading remain false.
+
 ## 2026-07-18 - U-18 Paper Protocol Exact-Head Review Approved
 
 - Target: `39a766c50de5a0855d7ee85c2aab743ec8b738e5`; protocol `7571d2cb...c671`; five target blobs exact.

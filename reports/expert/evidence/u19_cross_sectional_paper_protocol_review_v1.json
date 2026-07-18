@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "approve",
+  "review_id": "U19-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "target": {
+    "head_sha": "8b8b03f0869463c046668e28fbb22618383addf4",
+    "parent_sha": "0f0474cbf52092771cd992512bcdfdf0345702a8",
+    "protocol_content_hash": "8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9",
+    "files": {
+      "config/u19_cross_sectional_paper_protocol_v1.json": "c8fcd2de1e636307d02f2c6bf75de9b891f028324dfa3c22d5c4e56ba479bbea",
+      "reports/m1/U19_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "69051df68c9e68247b0627985b9eb3a655902cfa0697ce77c9c6f4e11afa1b89",
+      "scripts/u19_cross_sectional_paper_protocol_check.py": "f39c5e750a2121eeb0af24dfdb0810b3bbad17b9a0eb528939bc40715333f0d4",
+      "scripts/u19_cross_sectional_paper_protocol_validate.sh": "c73cb833217e87bfc8d2b314c9ec20739cae4d509da5e48f9c8b3a7681e3059e",
+      "tests/test_u19_cross_sectional_paper_protocol.py": "95b2888bece9fa739895309c9c0b4dcfe9cfb2c703c510e31679767aa55b4f6b"
+    }
+  },
+  "verdict": "approve",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "review_dimensions": {
+    "candidate_design_authorization_and_u18_failure_binding": "pass",
+    "complete_336h_history_and_two_disjoint_halves": "pass",
+    "candidate_specific_peer_common_component": "pass",
+    "idiosyncratic_residual_definition": "pass",
+    "seven_nonoverlapping_24h_blocks_per_half": "pass",
+    "block_root_mean_square_volatility": "pass",
+    "median_mad_normalized_variability_and_zero_block": "pass",
+    "two_half_absolute_variability_threshold": "pass",
+    "two_half_cross_sectional_top_quarter_persistence": "pass",
+    "no_base_volatility_return_direction_tail_or_terminal_gate": "pass",
+    "point_in_time_membership_lifecycle_and_mask": "pass",
+    "event_tie_break_and_24h_clustering": "pass",
+    "strict_next_open_and_path_censoring": "pass",
+    "sample_projection_distribution_and_economic_gates": "pass",
+    "complexity_scope_and_oos_isolation": "pass",
+    "authorization_matrix": "pass"
+  },
+  "authorization_after_review": {
+    "data_qualification_complexity_and_preflight": true,
+    "return_residual_volatility_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "fixed_rule_contract": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "review_content_hash": "d215e444595036412cc680b83cc0adf8449edbe6c283ac82b632c67e623f4a91",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}
