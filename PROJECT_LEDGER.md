@@ -2272,3 +2272,13 @@ private exchange responses here.
 - Verdict: `approve`; critical/high `0/0`; target unchanged.
 - No public data, event, path, return or OOS value was read.
 - Authorization: frozen-source qualification and same-reader preflight only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-12 Frozen-Source Qualification and Same-Reader Preflight Passed
+
+- Contract/result: `a65aa923...4ed3` / `c9a5b548...0510`; branch `codex/u12-cross-sectional-data-qualification`; local Git only.
+- All 27,736 ZIPs and 19 V4 manifests are exact; normal, reverse and deterministic-shuffled source traversals share `ca7d59b3...44aa`.
+- The same daily-input reader checks 962 symbol-month tasks in three orders with identity `5dfc833d...2af3`.
+- Preflight: 1,623 complete active-member UTC days, 1,275 metadata-eligible calendar decisions and 647 maximum independent theoretical 24h episodes versus minimum 300.
+- Missing prior-month inputs and masked/incomplete days were excluded without fill, repair or replacement.
+- OOS OHLCV and common-component/candidate/event/path/return rows are zero.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, rerun, formal return, strategy, OOS, trading or M2.

@@ -1,5 +1,22 @@
 # Next Action
 
+## U-12 Unique Sealed-IS Paper Observation
+
+U-12 qualification and same-reader preflight pass under contract/result
+`a65aa923...4ed3` / `c9a5b548...0510`. All 27,736 frozen archives and 19
+manifests are exact, three source orders and three same-reader orders match,
+and the metadata-only theoretical ceiling is 647 versus the frozen minimum 300.
+
+The only next task is exactly one sealed-IS Paper observation under protocol
+`a8cfc0b7...0b8a`. It may calculate the frozen prior-only common components,
+calendar candidates, connected episodes and 1/2/4/8/12/24h path diagnostics
+inside IS. It must run normal, reverse and deterministic-shuffled orders and
+require exact event, episode, path, accounting and manifest hashes.
+
+This is not a strategy backtest. It may not create fills, positions, equity or
+formal returns, and OOS remains sealed. Any failed Gate or execution defect
+closes U-12 without tuning or a second result-bearing run.
+
 ## U-12 Frozen-Source Qualification and Same-Reader Preflight
 
 The U-12 Paper protocol exact target
@@ -15,9 +32,10 @@ month-boundary previous closes, every 288-slot UTC day, the prior 52 matching
 weekday cells, three traversal orders and a metadata-only 24h episode ceiling
 of at least 300.
 
-This task may decode IS inputs only for qualification. It must generate no
-calendar candidates, events, paths or returns and decode zero OOS OHLCV values.
-Only a passing preflight may authorize one sealed-IS Paper observation.
+The completed preflight decoded only IS open timestamps, produced no outcome
+rows and decoded zero OOS OHLCV values. It found 1,623 complete active-member
+UTC days and 647 maximum non-overlapping theoretical 24h episodes. Missing
+boundary inputs were excluded without fill or replacement.
 
 ## U-12 Frozen Outcome-Blind Paper Protocol
 
