@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-15 Paper protocol `U15-03-TAKER-BUY-ABSORPTION-PERSISTENCE-PAPER-V1` is frozen before results under `3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a`. Only an exact-head independent review is authorized next.
+- The protocol fixes official taker-buy quote field semantics, completed 4h aggregation, share/z/relative-return thresholds, 24h clustering, next-open paths and Paper Gates. It requires a separate field/data qualification before any event scan and forbids inference, repair, fill or substitution of missing taker fields.
+- Review approval can authorize only field/data qualification, complexity and preflight. Market/event/path/result access, formal returns, fixed rules, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-15 freezes `U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE` under design `14ba25a0d8f3c50b3acd6a1ae50720dd4a113554d3bdc17776bf190b51b57b1c`; it is one declared-unopened, outcome-blind spot long/cash candidate.
 - The mechanism is aggressive taker-buy participation with muted contemporaneous relative price impact, interpreted as possible finite passive sell-inventory absorption. No market data or result selected it.
 - Only a separate outcome-blind U-15 Paper protocol design is authorized next. It must define and later qualify the exact taker-buy field authority before any event scan. Data reads, events, returns, fixed rules, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

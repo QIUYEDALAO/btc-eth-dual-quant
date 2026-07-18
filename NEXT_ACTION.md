@@ -1,5 +1,18 @@
 # Next Action
 
+## U-15 Exact-Head Independent Paper-Protocol Review
+
+Protocol `U15-03-TAKER-BUY-ABSORPTION-PERSISTENCE-PAPER-V1` is frozen under
+`3b58d6a2...b577a`. The only next task is a separate-branch, read-only review
+of the exact protocol head. Approval requires zero critical/high findings and
+must verify official taker-buy field semantics, causal next-open timing,
+cross-sectional estimators, thresholds, clustering, paths, Paper Gates,
+pre-result complexity and OOS isolation.
+
+Review approval may authorize only a separate field/data qualification and
+preflight. It cannot authorize event observation, returns, strategy, OOS or
+trading.
+
 ## U-15 Outcome-Blind Paper Protocol Design
 
 U-15 freezes `U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE` under

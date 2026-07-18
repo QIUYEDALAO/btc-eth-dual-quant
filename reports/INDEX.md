@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U15_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-15 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes official taker-buy field contract, completed 4h identity, paths, Gates, isolation and pre-result checks. | no |
+| `config/u15_cross_sectional_paper_protocol_v1.json` | U-15 machine Paper protocol | content `3b58d6a2...b577a` | Only protocol freeze and exact-head review are true; result and trading permissions remain false. | no |
 | `reports/m1/U15_TAKER_BUY_ABSORPTION_PERSISTENCE_DESIGN.md` | U-15 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes aggressive taker-buy absorption and latent demand persistence without parameters, data, results or OOS. | no |
 | `reports/m1/U15_NON_DUPLICATION_REVIEW.md` | U-15 non-duplication | pass_design_level | Separates taker-side flow/price-impact disagreement from U-04 through U-14 and prior strategy families. | no |
 | `config/u15_cross_sectional_design_scope_v1.json` | U-15 machine design scope | content `14ba25a0...57b1c` | Binds one declared unopened candidate, requires taker-field qualification and enables only Paper protocol design. | no |

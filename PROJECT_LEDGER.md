@@ -2392,4 +2392,12 @@ private exchange responses here.
 - Data authority: no data was read. The future protocol must independently define and qualify official taker-buy fields before any event scan and fail closed if unavailable or ambiguous.
 - Independence: not residual reversal, breadth, total-volume-share absorption, relative strength, membership, volatility quality, trend, beta asymmetry, calendar, diffusion or downside rejection.
 - Next action: one outcome-blind Paper protocol design only. No events, paths, returns, fixed rules, strategy, OOS or trading are authorized.
+
+## 2026-07-18 - U-15 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U15-03-TAKER-BUY-ABSORPTION-PERSISTENCE-PAPER-V1`; content `3b58d6a2...b577a`; frozen before any market field, event, path or result read.
+- Identity: completed UTC 4h from 48 qualified 5m rows; taker-buy quote share at least 60%, robust cross-sectional z at least 2.0, relative return `[-0.40%, 0]`, absolute log return at most 0.60%; deterministic one-per-time and 24h connected clustering.
+- Hard prerequisite: independently qualify exact official taker-buy columns and every consumed raw-row binding; missing/ambiguous/revised fields may not be inferred, repaired, filled or substituted.
+- Observation/Gates: next expected 5m open, 1/2/4/8/12/24h paths, 90 complete episodes and frozen projection/distribution/economic Gates; no fill, position, equity or formal return.
+- Next action: separate exact-head independent protocol review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
