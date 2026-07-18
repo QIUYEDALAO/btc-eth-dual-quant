@@ -1,5 +1,17 @@
 # Next Action
 
+## U-17 Frozen-Source Data Qualification and Preflight
+
+Exact target `c4990fbd...d31a` is approved 16/16 with 0/0 critical/high under
+review `c9696e61...0a64`. The only next task may verify frozen ZIP/manifests,
+5m-to-daily structural grids, 28-day history and future-path availability,
+point-in-time membership/lifecycle/mask order and IS/OOS isolation without
+decoding quote volume, price, liquidity rank, event or path outcomes.
+
+It must also prove at least 50 theoretical 28-day episodes and run three
+synthetic one-million-row passes on the exact future evaluator path. Any hash,
+order, scope, ceiling or resource failure closes U-17 before results.
+
 ## U-17 Exact-Head Independent Paper-Protocol Review
 
 Protocol `U17-03-LIQUIDITY-RISK-PREMIUM-PAPER-V1` is frozen before data or

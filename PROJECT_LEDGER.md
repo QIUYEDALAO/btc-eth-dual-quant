@@ -2482,3 +2482,10 @@ private exchange responses here.
 - Identity: 28 completed UTC days, all-active-member daily quote-volume rank, low-liquidity membership on at least 21/28 days, deterministic representative and 28-day clustering.
 - Observation/Gates: strict boundary 5m open, 1/3/7/14/28-day diagnostics, 40 complete IS episodes and fixed projection/distribution/economic Gates; no formal return.
 - Next action: separate exact-head independent review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-18 - U-17 Paper Protocol Exact-Head Review Approved
+
+- Target: `c4990fbdc3a237c90fc73a2bf2a538109fcad31a`; protocol `81501338...6089`; five target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `c9696e61...0a64`.
+- Finding: daily assembly, all-member liquidity rank, 21/28 persistence, continuing investability, 28-day clustering, paths, Gates, complexity and isolation are causal and fixed.
+- Authorization: only separate data qualification, sample ceiling, synthetic complexity and result-free preflight. Liquidity/event/path scans, returns, strategy, OOS and trading remain false.

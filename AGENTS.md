@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-17 exact protocol target `c4990fbdc3a237c90fc73a2bf2a538109fcad31a` is independently approved 16/16 with 0 critical/high under review `c9696e6124f8c6e93bff4318f239bcdee1452fffb5449a0c61479f803a540a64`.
+- Only frozen-source data qualification, 28-day history/path structural ceiling and synthetic complexity are authorized next. Liquidity ranks, events, paths, results, OOS and trading remain false.
 - U-17 Paper protocol `U17-03-LIQUIDITY-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089`.
 - It fixes 28 completed UTC days, daily all-active-member quote-volume ranks, 21/28 low-liquidity persistence, deterministic representative, 28-day clustering and paths, and immutable Paper Gates.
 - Only a separate exact-head independent review is authorized next. Data qualification, liquidity/event/path scans, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

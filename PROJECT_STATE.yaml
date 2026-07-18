@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-17 liquidity-risk-premium Paper protocol frozen; exact-head independent review is the only next task
-current_status: u17_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-17 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task
+current_status: u17_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-17 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U17_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u17_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u17-cross-sectional-paper-protocol-review
+    target_head_sha: c4990fbdc3a237c90fc73a2bf2a538109fcad31a
+    protocol_content_hash: 815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089
+    review_content_hash: c9696e6124f8c6e93bff4318f239bcdee1452fffb5449a0c61479f803a540a64
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-17 outcome-blind liquidity-risk-premium Paper protocol
     status: frozen_before_result_pending_exact_head_review
     evidence: reports/m1/U17_CROSS_SECTIONAL_PAPER_PROTOCOL.md
@@ -2033,16 +2047,17 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-17-PROTOCOL
-    phase: outcome-blind liquidity-risk-premium Paper protocol
-    status: completed_local_pending_exact_head_review
+  - id: U-17-PROTOCOL-REVIEW
+    phase: exact-head independent liquidity-risk-premium Paper protocol review
+    status: completed_approve_local
     authorization_content_hash: eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b
     design_content_hash: ad3b6a4cabc61bd41890684ccf30b8ee4ae3a2811fcc4dd08abcf45a4bf420fe
     protocol_content_hash: 815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089
     maximum_hypotheses: 1
     hypothesis_design_authorized: false
     paper_protocol_design_authorized: false
-    exact_head_independent_review_authorized: true
+    exact_head_independent_review_authorized: false
+    data_qualification_complexity_and_preflight_authorized: true
     public_data_read_authorized: false
     event_scan_authorized: false
     returns_authorized: false
@@ -2141,7 +2156,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Perform one separate-branch exact-head independent review of the frozen U-17 Paper protocol; approval requires zero critical/high findings and no target mutation."
+  - "Perform separate U-17 frozen-source data qualification, structural sample-ceiling proof and three synthetic complexity passes without decoding liquidity ranks, events, paths, returns or OOS values."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-16 outcomes, signs, failed Gates, concentrations, censor patterns and defects may not select U-17."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -2180,6 +2195,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/U17_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-17 Paper-protocol exact-head review
+    status: approve_zero_critical_high
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u17_cross_sectional_paper_protocol_review_v1.json
+    phase: U-17 protocol review machine evidence
+    status: deterministic_qualification_only_authority
+    status_marker: '"review_content_hash": "c9696e6124f8c6e93bff4318f239bcdee1452fffb5449a0c61479f803a540a64"'
   - path: reports/m1/U17_CROSS_SECTIONAL_PAPER_PROTOCOL.md
     phase: U-17 outcome-blind Paper protocol
     status: frozen_before_result_pending_exact_head_review

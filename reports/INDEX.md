@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/expert/U17_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-17 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `c4990fbd...d31a` unchanged; future membership only right-censors paths. | no |
+| `reports/expert/evidence/u17_cross_sectional_paper_protocol_review_v1.json` | U-17 review machine evidence | content `c9696e61...0a64` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
+
 | `reports/m1/U17_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-17 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 28-day liquidity rank persistence, clustering, paths, Gates and preflight before data. | no |
 | `config/u17_cross_sectional_paper_protocol_v1.json` | U-17 machine Paper protocol | content `81501338...6089` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
 
