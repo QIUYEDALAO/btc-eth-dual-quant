@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/expert/U06_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-06 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1bb59f1a...e8cd` without modification and authorizes only data qualification. | no |
+| `reports/expert/evidence/u06_cross_sectional_paper_protocol_review_v1.json` | U-06 protocol review machine evidence | content `e4f0af0d...e81b3` | Binds five target files, 13 dimensions and data-qualification-only authority. | no |
 | `reports/m1/U06_CROSS_SECTIONAL_VOLUME_SHARE_ABSORPTION_DESIGN.md` | U-06 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes volume-share absorption/repricing without timeframe, threshold, outcomes, rules or OOS. | no |
 | `reports/m1/U06_NON_DUPLICATION_REVIEW.md` | U-06 non-duplication | pass_design_level | Separates price/volume disagreement from U-04/U-05 and prior candidates. | no |
 | `config/u06_cross_sectional_design_scope_v1.json` | U-06 machine design scope | content `694e5a43...966a5` | Binds one declared unopened candidate and enables only Paper protocol design. | no |

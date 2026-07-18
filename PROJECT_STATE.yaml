@@ -2,11 +2,41 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-06 volume-share absorption design complete; outcome-blind Paper protocol design is the only next task
-current_status: u06_volume_share_absorption_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2
+current_phase: U-06 Paper protocol exact-head review approved; data qualification and isolation are the only next task
+current_status: u06_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-06 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U06_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u06_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u06-cross-sectional-paper-protocol-review
+    target_commit: 1bb59f1ac9d9e0fd5bacc8c55e572b9a1fbce8cd
+    target_base_commit: 175ffb82057e9bbdfae385f041ab02f959008f99
+    protocol_content_hash: 7b53860efa2a5c52d727f1d4d4694ddf39ff34517dfde6aaf4b6abe31f35f289
+    review_content_hash: e4f0af0d817990d825081b7922b395dc3c76d05fc662e9c404fa82ce344e81b3
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-06 outcome-blind volume-share absorption Paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence_at_target: reports/m1/U06_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence_at_target: config/u06_cross_sectional_paper_protocol_v1.json
+    branch: codex/u06-cross-sectional-paper-protocol
+    target_commit: 1bb59f1ac9d9e0fd5bacc8c55e572b9a1fbce8cd
+    protocol_content_hash: 7b53860efa2a5c52d727f1d4d4694ddf39ff34517dfde6aaf4b6abe31f35f289
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
   - phase: U-06 cross-sectional volume-share absorption hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U06_CROSS_SECTIONAL_VOLUME_SHARE_ABSORPTION_DESIGN.md
@@ -881,11 +911,13 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-06-PROTOCOL
-    phase: U-06 outcome-blind Paper protocol design
+  - id: U-06-DATA-QUALIFICATION
+    phase: U-06 frozen-source data qualification and IS/OOS isolation
     status: authorized_ready
     branch: not_created
-    design_content_hash: 694e5a4344481bf785b09ff9f69a7c170d6c3d7061407902306cee70176966a5
+    protocol_target_commit: 1bb59f1ac9d9e0fd5bacc8c55e572b9a1fbce8cd
+    protocol_content_hash: 7b53860efa2a5c52d727f1d4d4694ddf39ff34517dfde6aaf4b6abe31f35f289
+    review_content_hash: e4f0af0d817990d825081b7922b395dc3c76d05fc662e9c404fa82ce344e81b3
     event_scan_authorized: false
     strategy_authorized: false
     oos_authorized: false
@@ -957,7 +989,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Freeze exactly one outcome-blind U-06 Paper protocol design before any data or event access."
+  - "Qualify frozen U-06 daily price/quote-volume and 5m path authority without scanning events or OOS."
+  - "Data qualification must remain result-blind and three-order deterministic."
   - "Preserve U-04/U-05 failed runs without tuning, inversion or outcome-derived design choices."
   - "Do not derive a new candidate's sign, threshold, horizon or Gate from U-04/U-05 failed outcomes."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -996,6 +1029,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/U06_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-06 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Status: `approve_local_complete`'
+  - path: reports/expert/evidence/u06_cross_sectional_paper_protocol_review_v1.json
+    phase: U-06 Paper-protocol review machine evidence
+    status: approve_zero_critical_high
+    status_marker: '"verdict": "approve"'
   - path: reports/m1/U06_CROSS_SECTIONAL_VOLUME_SHARE_ABSORPTION_DESIGN.md
     phase: U-06 hypothesis design
     status: design_pass_protocol_only

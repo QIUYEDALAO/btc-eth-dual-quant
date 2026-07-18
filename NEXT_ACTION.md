@@ -1,6 +1,6 @@
 # Next Action
 
-## U-06 Outcome-Blind Paper Protocol Design
+## U-06 Frozen-Source Data Qualification
 
 U-05 completed its one authorized sealed-IS Paper observation and is closed as
 `failed_feasibility`. Run `874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a`
@@ -22,10 +22,13 @@ under design `694e5a43...966a5` and hypothesis `e6cb136b...c259b`. It studies
 prior-only quote-volume-share growth without commensurate relative price
 response as possible absorption before delayed repricing.
 
-The next task is a separate result-blind Paper protocol that must freeze the
-observation timeframe, share baseline, muted-price definition, event identity,
-clustering, path diagnostics, sample/cost Gates and IS/OOS isolation before any
-data access. No protocol outcome may be read during design.
+Protocol target `1bb59f1a...e8cd` is independently approved under review
+`e4f0af0d...e81b3`, with critical/high `0 / 0` and no target modification.
+
+The next task is frozen-source qualification only: verify ZIP/source identities,
+complete 5m grids, daily OHLC/quote-volume aggregation, point-in-time membership,
+lifecycle/mask authority and the IS/OOS boundary in three traversal orders. It
+must generate zero event/path/return rows and decode no OOS OHLC values.
 
 Do not conduct a U-05 Paper-result review, change its protocol, rerun it or
 continue to fixed rules. U-06 may authorize only a later separate outcome-blind
