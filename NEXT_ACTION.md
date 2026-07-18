@@ -1,6 +1,6 @@
 # Next Action
 
-## U-10 Outcome-Blind Independent Hypothesis Design
+## U-10 Outcome-Blind Paper Protocol Design
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -53,12 +53,16 @@ cohort, event, path, return or OOS value was read.
 U-09 is closed before its Paper observation. The protocol and Gate are not
 changed, and no result-bearing run is permitted.
 
-Decision `e196cc0fdd20e8b8fc84872b440baa09ae69e0752c75005bebefb51a4060c7a0`
-authorizes exactly one economically independent, outcome-blind U-10 hypothesis
-design. It must not reuse prior outcome signs or U-09's protocol-feasibility
-defect. The design may state one economic mechanism, causal timing,
-non-duplication and failure regimes only; parameters, events, results, rules,
-backtesting and OOS remain unauthorized.
+U-10 freezes `U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION`
+under hypothesis `5fc3529f...c536` and design `af9ac640...40e5`. The mechanism
+requires positive asset-specific relative trend and persistent expansion in
+cross-sectional quote-volume share, interpreted as scalable demand rather than
+thin-price noise.
+
+The only authorized next task is a separate outcome-blind Paper protocol. It
+must freeze the completed-data timeframe, common component, relative-trend and
+volume-share estimators, persistence rule, candidate identity, reference open,
+clustering, horizons and immutable sample/economic Gates before any event scan.
 
 ## U-08 Frozen Historical Chain
 

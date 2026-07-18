@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U10_VOLUME_CONFIRMED_RELATIVE_TREND_CONTINUATION_DESIGN.md` | U-10 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes joint relative-price and volume-share confirmation without parameters, results or OOS. | no |
+| `reports/m1/U10_NON_DUPLICATION_REVIEW.md` | U-10 non-duplication | pass_design_level | Separates joint confirmation from U-04 through U-09 and prior strategy families. | no |
+| `config/u10_cross_sectional_design_scope_v1.json` | U-10 machine design scope | content `af9ac640...40e5` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
 | `reports/m0/U10_DESIGN_AUTHORIZATION_DECISION.md` | U-10 design authorization | one independent outcome-blind design authorized | Binds five failed observations, U-09 pre-result closure and passing V4 audit; enables only U-10 design. | no |
 | `config/u10_design_authorization_v1.json` | U-10 machine authorization | content `e196cc0f...c7a0` | Prohibits prior-outcome and U-09 protocol-defect reuse; all downstream permissions false. | no |
 | `reports/m1/U09_QUALIFICATION_SAMPLE_CEILING_CORRECTION.md` | U-09 pre-observation qualification correction | failed_pre_observation_sample_ceiling | Maximum 66 constant-membership episodes is below frozen 80; no price/result access. | no |

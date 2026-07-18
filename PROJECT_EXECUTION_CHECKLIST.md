@@ -161,7 +161,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-09-QUALIFICATION-CORRECTION | Deterministic sample-ceiling preflight correction | completed_failed_pre_observation | Qualification omitted membership-boundary ceiling | `codex/u09-qualification-sample-ceiling-correction` / local-only | Calendar/membership-only maximum episode proof | Correction `c6902525...4479`; maximum 66 < frozen 80 | U-09 closed before result; qualification pass superseded |
 | U-09-PAPER-OBSERVATION | Unique sealed-IS quality-cohort Paper observation | not_run_closed | sample ceiling failed | none | no result-bearing run | zero price/event/path/return/OOS access | prohibited |
 | U-10-DECISION | Separate post-U-09 candidate authorization | completed_authorize_design_only | U-09 closed before result | `codex/u10-design-authorization` / local-only | Bind prior failures and authorize one independent outcome-blind design | Decision `e196cc0f...c7a0`; zero downstream permissions | U-10 hypothesis design only |
-| U-10 | Independent point-in-time cross-sectional hypothesis design | authorized_next | U-10-DECISION complete | new local-only branch | One economic mechanism, timing, non-duplication and failures; no parameters/results | design hash exact; no outcome access | Paper protocol design only if design passes |
+| U-10 | Volume-confirmed relative-trend continuation hypothesis design | completed_local | U-10-DECISION complete | `codex/u10-cross-sectional-volume-confirmed-relative-trend-design` / local-only | Machine scope, economics, non-duplication and unopened ledger registration | Design `af9ac640...40e5`; hypothesis `5fc3529f...c536`; no parameters/results | Paper protocol design only |
+| U-10-PROTOCOL | Outcome-blind volume-confirmed trend Paper protocol | authorized_next | U-10 design complete | new local-only branch | Freeze estimators, events, paths, Gates and IS/OOS isolation | deterministic protocol hash; no result access | exact-head review |
 
 ## Current Gate
 
@@ -175,7 +176,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - The V3 contract, registry and blocked qualification evidence remain immutable historical evidence. PR #95 merged the deterministic U-03F `failed_audit` result with one critical and seven high findings. V4 is `audit_blocked` / `revalidation_required`; production evidence is unchanged and U-04 remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active task: one outcome-blind U-10 hypothesis design. Parameters, event scanning, formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
+- Active task: U-10 outcome-blind Paper protocol design. Event scanning, formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

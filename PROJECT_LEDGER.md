@@ -2147,3 +2147,11 @@ private exchange responses here.
 - Binding: U-04 through U-08 remain failed and OOS-sealed; U-09 remains closed before results under correction `c6902525...4479`; V4 audit/source freeze remain exact.
 - Independence: prior outcome signs and U-09's protocol-feasibility defect may not be inverted, repaired, relabeled or used to choose U-10.
 - Authorization: hypothesis design only. Events, parameters, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-10 Volume-Confirmed Relative-Trend Design Complete
+
+- Candidate: `U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION`; hypothesis `5fc3529f...c536`; design `af9ac640...40e5`.
+- Mechanism: asset-specific positive relative price trend plus persistent quote-volume-share expansion may reveal scalable continuing demand rather than thin-price noise.
+- Independence: joint price/volume confirmation, not U-06 unconfirmed absorption, U-07 stress resilience, U-09 low-volatility quality or M1C BTC/ETH absolute rotation.
+- Execution: no public data, timeframe, estimator, threshold, event/path, return, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.

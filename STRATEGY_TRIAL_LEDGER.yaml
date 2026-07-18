@@ -9,6 +9,12 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
+    status: declared_unopened
+    hypothesis: "U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, asset-specific positive relative price trend accompanied by a persistent rise in cross-sectional quote-volume share may reflect scalable informed demand rather than thin-price noise and may continue after the next eligible open; no U-04/U-05/U-06/U-07/U-08 outcome inversion, U-09 protocol-defect reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 5fc3529f7afa3df2344517f3bd567c5b3bf89a23bc0e071ff853bc80e50ec536
+    oos_opened: false
+    notes: "Outcome-blind design only. Observation timeframe, relative-trend and volume-share estimators, persistence rule, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
   - id: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
     status: declared_unopened
     hypothesis: "U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, an asset with persistently lower asset-specific volatility after removing the contemporaneous common market component may reflect deeper liquidity, lower disagreement and broader capital eligibility that can preserve relative quality after the next eligible open; no U-04/U-05/U-06/U-07/U-08 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

@@ -28,6 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-10 freezes `U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION` under hypothesis `5fc3529f7afa3df2344517f3bd567c5b3bf89a23bc0e071ff853bc80e50ec536` and design `af9ac64043adacad08ef834567ff976b26723fb1468d1a7a0d43e6fa5eaa40e5`. Only a separate outcome-blind Paper protocol may follow; no public data, event, path, return or OOS was accessed.
 - Separate decision `e196cc0fdd20e8b8fc84872b440baa09ae69e0752c75005bebefb51a4060c7a0` authorizes U-10 only for one economically independent, outcome-blind hypothesis design. Prior outcome inversion and U-09 protocol-defect reuse are prohibited; events, parameters, returns, strategy/backtesting, OOS, trading and M2 remain false.
 - U-09 qualification admission is superseded by sample-ceiling correction `c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479`: at most 66 constant-membership 336h episodes can exist versus the frozen minimum 80. U-09 closes before observation with zero price/result rows and OOS sealed; only a separate U-10 independent-candidate authorization decision may follow.
 - U-09 data qualification passes under contract `f1bd609d74210f6aa1b31f902d2dfecb79448bed4a0db8532a37be7321cead9a` and result `c323798a9de04c423b8bb59c33604b2203715e1453f9b95b3f13022f71656aee`; 27,736 ZIPs, 19 manifests, ranks, schedule and three orders are exact, OOS/outcomes zero. Exactly one sealed-IS Paper observation is authorized.
