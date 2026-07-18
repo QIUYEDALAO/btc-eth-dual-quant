@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m0/U11_DESIGN_AUTHORIZATION_DECISION.md` | U-11 design authorization | one independent outcome-blind design authorized | Binds U-10 failed run and all prior evidence; enables only one U-11 hypothesis design. | no |
+| `config/u11_design_authorization_v1.json` | U-11 machine authorization | content `c5db3dc0...274a` | Prohibits prior-outcome/defect reuse and keeps events, strategy, OOS, trading and M2 false. | no |
 | `reports/m1/U10_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-10 sealed-IS Paper observation | failed_feasibility | 7 complete episodes; count, distribution and 72h relative-continuation Gates fail; OOS sealed. | no |
 | `reports/m1/evidence/u10_cross_sectional_paper_observation/` | U-10 Paper machine evidence | run `9972a95f...d22f` | Three orders exact under `83540c78...11d`; immutable failure authorizes no downstream work. | no |
 | `reports/m1/U10_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-10 frozen-source qualification | pass / one sealed-IS observation authorized | 27,736 ZIPs, 19 manifests, daily authority, ceiling 418 and three orders pass; OOS/outcomes zero. | no |

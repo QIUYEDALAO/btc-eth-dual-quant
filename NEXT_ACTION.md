@@ -1,6 +1,6 @@
 # Next Action
 
-## U-11 Independent-Candidate Authorization Decision
+## U-11 Outcome-Blind Hypothesis Design
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -86,10 +86,16 @@ median 72h relative continuation is `0.7972%` versus `1.80%`. Median absolute
 displacement `2.2812%` and positive fraction `71.43%` pass but cannot override
 the failed Gates. OOS/formal returns remain zero and no second run is allowed.
 
-The only next task is a separate U-11 authorization decision. It may authorize
-at most one economically independent, outcome-blind hypothesis design and must
-prohibit inversion, threshold repair or relabeling of U-10 outcomes. It does
-not itself authorize parameters, events, returns, strategy code, OOS or trading.
+Decision `c5db3dc0...274a` authorizes exactly one economically independent,
+outcome-blind U-11 hypothesis design. It binds U-10's immutable failed run and
+prohibits inversion, threshold repair, censor-pattern reuse or relabeling of
+all prior outcomes.
+
+The only next task is to freeze one U-11 economic mechanism with causal timing,
+failure regimes and non-duplication. The design must select no timeframe,
+estimator, threshold, event, holding rule or risk parameter and may authorize
+only a separate result-blind Paper protocol. Events, returns, OOS, strategy code
+and trading remain prohibited.
 
 ## U-08 Frozen Historical Chain
 

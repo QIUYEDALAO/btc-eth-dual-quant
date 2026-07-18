@@ -2190,3 +2190,11 @@ private exchange responses here.
 - Median absolute displacement `2.2812%` and positive relative fraction `71.43%` pass but cannot override any failed Gate.
 - Isolation: OOS opened false, rows decoded 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
 - Decision: U-10 closes `failed_feasibility`; only a separate U-11 independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-11 Independent Design Authorized
+
+- Task: `U-11-DECISION`; branch `codex/u11-design-authorization`; local Git only.
+- Decision: `c5db3dc0c01bc4e1ffe381150c132742446ce4b05b3fb8c381dc03612cff274a`; exactly one economically independent, outcome-blind U-11 hypothesis design.
+- Binding: U-10 remains failed, single-run and OOS-sealed under `9972a95f...d22f`; prior U-04 through U-09 evidence and V4 audit/source freeze remain exact.
+- Independence: prior event signs, measured paths, failed Gates, censor patterns and protocol defects may not be inverted, repaired, relabeled or used to choose U-11.
+- Authorization: hypothesis design only. Events, parameters, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.

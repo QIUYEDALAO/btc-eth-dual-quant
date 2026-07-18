@@ -2,11 +2,27 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-10 Paper observation failed feasibility; separate U-11 independent-candidate authorization decision is the only next task
-current_status: u10_paper_failed_feasibility_candidate_closed_u11_decision_only_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-11 independent design authorized; one outcome-blind hypothesis design is the only next task
+current_status: u11_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-11 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U11_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u11_design_authorization_v1.json
+    branch: codex/u11-design-authorization
+    decision_content_hash: c5db3dc0c01bc4e1ffe381150c132742446ce4b05b3fb8c381dc03612cff274a
+    prior_candidate: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
+    prior_run_content_hash: 9972a95fe662ac65f7e0e2c0bb4d88eb9743097beb9c7c536f3507d9a316d22f
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    prior_outcome_reuse_prohibited: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-10 unique sealed-IS Paper observation
     status: failed_feasibility
     evidence: reports/m1/U10_CROSS_SECTIONAL_PAPER_OBSERVATION.md
@@ -1384,14 +1400,14 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-11-DECISION
-    phase: separate post-U-10 independent-candidate authorization decision
+  - id: U-11
+    phase: one outcome-blind point-in-time cross-sectional hypothesis design
     status: authorized_ready
-    prior_candidate: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
-    prior_run_content_hash: 9972a95fe662ac65f7e0e2c0bb4d88eb9743097beb9c7c536f3507d9a316d22f
-    maximum_hypotheses_if_authorized: 1
-    outcome_inversion_prohibited: true
-    hypothesis_design_authorized: false
+    decision_content_hash: c5db3dc0c01bc4e1ffe381150c132742446ce4b05b3fb8c381dc03612cff274a
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    prior_outcome_reuse_prohibited: true
+    hypothesis_design_authorized: true
     event_scan_authorized: false
     returns_authorized: false
     strategy_authorized: false
@@ -1464,7 +1480,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Record one separate U-11 independent hypothesis design authorization decision bound to the immutable U-10 failed result."
+  - "Create exactly one economically independent, outcome-blind U-11 cross-sectional hypothesis design without parameters or result access."
   - "Preserve U-04/U-05/U-06/U-07 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1474,7 +1490,7 @@ allowed_next_work:
   - Do not use API keys.
   - Do not run live or paper trading.
 research_authorizations:
-  hypothesis_preregistration: false
+  hypothesis_preregistration: true
   strategy_code: false
   event_scan: false
   returns: false
@@ -1503,6 +1519,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U11_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-11 design authorization
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u11_design_authorization_v1.json
+    phase: U-11 machine design authorization
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "c5db3dc0c01bc4e1ffe381150c132742446ce4b05b3fb8c381dc03612cff274a"'
   - path: reports/m1/U10_CROSS_SECTIONAL_PAPER_OBSERVATION.md
     phase: U-10 sealed-IS Paper observation
     status: failed_feasibility
