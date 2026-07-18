@@ -1,6 +1,22 @@
 # Next Action
 
-## U-14 Outcome-Blind Hypothesis Design
+## U-14 Outcome-Blind Paper Protocol Design
+
+U-14 freezes `U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE` under design
+`a6c3cc47...6691`. The mechanism is completed intraperiod demand absorption:
+under common selling pressure, an asset recovered from its low and closing
+unusually high within its range relative to peers may continue after the next
+eligible open.
+
+The only next task is a separate result-blind Paper protocol. Before data it
+must freeze timeframe, selling-pressure state, range floor and close-location
+algorithm, relative estimator, persistence, sample ceiling, event/clustering,
+paths, costs and Gates. It must also freeze a complexity benchmark that passes
+before the unique result run.
+
+No public data, event, return, strategy, OOS or trading access is authorized.
+
+## U-14 Historical Outcome-Blind Hypothesis Design
 
 Decision `ebcf8b78...e640` authorizes exactly one economically independent U-14
 hypothesis design. It binds U-13 closed and OOS-sealed and prohibits selecting

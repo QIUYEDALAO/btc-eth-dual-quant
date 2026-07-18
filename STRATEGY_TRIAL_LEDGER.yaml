@@ -9,6 +9,12 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
+    status: declared_unopened
+    hypothesis: "U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE: Binance spot USDT long/cash only; using only a completed common selling-pressure observation and exact point-in-time active members, an asset that absorbs intraperiod selling and closes unusually high within its own completed range relative to peers may reveal latent demand and continue outperforming after the next eligible open; no U-04 through U-13 outcome reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: b88f2321269863e385129465c93fbee8ecd35fa0dc6bc19e10bacf12d851b87d
+    oos_opened: false
+    notes: "Outcome-blind design only. Timeframe, selling-pressure state, range/close-location estimator, persistence, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
   - id: U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION
     status: declared_unopened
     hypothesis: "U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION: Binance spot USDT long/cash only; using only completed observations and exact point-in-time active members, a broad positive common-market information or capital-flow shock may be absorbed at different speeds across assets, and an asset with a preregistered prior-only tendency to respond with delay rather than permanent weakness may continue catching up after the next eligible open; no U-04 through U-12 outcome reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

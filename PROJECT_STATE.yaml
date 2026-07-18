@@ -2,11 +2,28 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-14 independent design authorized; outcome-blind hypothesis design is the only next task
-current_status: u14_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-14 downside-rejection persistence design completed; outcome-blind Paper protocol design is the only next task
+current_status: u14_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-14 downside-rejection persistence hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U14_DOWNSIDE_REJECTION_PERSISTENCE_DESIGN.md
+    machine_evidence: config/u14_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U14_NON_DUPLICATION_REVIEW.md
+    branch: codex/u14-cross-sectional-downside-rejection-design
+    candidate_id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
+    hypothesis_sha256: b88f2321269863e385129465c93fbee8ecd35fa0dc6bc19e10bacf12d851b87d
+    design_content_hash: a6c3cc47c3cadf33e5673e59ce47c639d6df1d49c57f88c51cc1c8579b446691
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    paper_protocol_design_authorized: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-14 design authorization decision
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
     evidence: reports/m0/U14_DESIGN_AUTHORIZATION_DECISION.md
@@ -1715,11 +1732,12 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-14
-    phase: one independent outcome-blind cross-sectional hypothesis design
+  - id: U-14-PROTOCOL
+    phase: outcome-blind downside-rejection persistence Paper protocol design
     status: authorized_next
-    decision_content_hash: ebcf8b78a75911a2567bf84d58363d3c4bd554ec0495bb63457c4d593e34e640
-    hypothesis_design_authorized: true
+    candidate_id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
+    design_content_hash: a6c3cc47c3cadf33e5673e59ce47c639d6df1d49c57f88c51cc1c8579b446691
+    protocol_design_authorized: true
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1793,8 +1811,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete exactly one economically independent, outcome-blind U-14 hypothesis design with causal timing, non-duplication and failure regimes."
-  - "Leave timeframe, estimator, threshold, event, path, cost and strategy rules unresolved for a later protocol."
+  - "Complete one outcome-blind U-14 Paper protocol design that freezes timeframe, common selling pressure, range/close-location estimator, persistence, thresholds, paths and Gates before data access."
+  - "Include a result-blind complexity benchmark and data-scope preflight before any unique result-bearing run."
   - "Preserve U-04 through U-12 evidence without tuning, inversion, retry or outcome-derived protocol choices."
   - "Preserve U-04 through U-11 evidence without tuning, inversion, retry or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
@@ -1834,6 +1852,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U14_DOWNSIDE_REJECTION_PERSISTENCE_DESIGN.md
+    phase: U-14 downside-rejection persistence design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: config/u14_cross_sectional_design_scope_v1.json
+    phase: U-14 design machine scope
+    status: deterministic_design
+    status_marker: '"content_hash": "a6c3cc47c3cadf33e5673e59ce47c639d6df1d49c57f88c51cc1c8579b446691"'
+  - path: reports/m1/U14_NON_DUPLICATION_REVIEW.md
+    phase: U-14 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
   - path: reports/m0/U14_DESIGN_AUTHORIZATION_DECISION.md
     phase: U-14 design authorization
     status: authorized_design_only

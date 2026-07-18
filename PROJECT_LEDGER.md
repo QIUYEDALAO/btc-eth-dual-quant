@@ -2339,3 +2339,11 @@ private exchange responses here.
 - Independence: prior signs, paths, Gates, concentrations, censor patterns and defects may not choose U-14; repair, retry, inversion or relabeling is prohibited.
 - Engineering: any later result runner must pass a result-blind complexity benchmark before consuming its unique run.
 - Authorization: hypothesis design only; all data/result/strategy/OOS/trading permissions remain false.
+
+## 2026-07-18 - U-14 Downside-Rejection Persistence Design Complete
+
+- Candidate/hypothesis/design: `U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE` / `b88f2321...b87d` / `a6c3cc47...6691`.
+- Mechanism: under completed common selling pressure, an asset bought back from its intraperiod low to an unusually high relative close-location may reveal passive demand that persists after the next eligible open.
+- Independence: completed high/low/close auction geometry, not U-04 reversal, U-06 volume share, U-07 close-return strength, U-09 low volatility, U-10 trend/volume, U-11 capture, U-12 calendar flow or U-13 lagged diffusion.
+- Execution: no data, timeframe, estimator, threshold, event/path, return, strategy or OOS access.
+- Authorization: separate outcome-blind Paper protocol with mandatory result-blind complexity benchmark; downstream permissions remain false.
