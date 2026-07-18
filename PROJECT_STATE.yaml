@@ -2,11 +2,24 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-21 systematic-cokurtosis risk-premium design completed; outcome-blind Paper protocol design is the only next task
-current_status: u21_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-21 systematic-cokurtosis Paper protocol frozen; exact-head independent review is the only next task
+current_status: u21_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-21 outcome-blind systematic-cokurtosis risk-premium Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U21_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u21_cross_sectional_paper_protocol_v1.json
+    branch: codex/u21-cross-sectional-paper-protocol
+    candidate_id: U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM
+    protocol_content_hash: b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-21 systematic-cokurtosis risk-premium hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U21_SYSTEMATIC_COKURTOSIS_RISK_PREMIUM_DESIGN.md
@@ -2370,6 +2383,22 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-21-PROTOCOL
+    phase: outcome-blind systematic-cokurtosis risk-premium Paper protocol
+    status: completed_local_pending_exact_head_review
+    design_content_hash: a45075371103acf28981ce3a1f0cd47a029b15f5cf3ef9a878b5c682e248568b
+    protocol_content_hash: b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e
+    paper_protocol_design_authorized: false
+    exact_head_independent_review_authorized: true
+    data_qualification_complexity_and_preflight_authorized: false
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-21
     phase: systematic-cokurtosis risk-premium hypothesis design
     status: completed_local
@@ -2579,7 +2608,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Perform one outcome-blind U-21 Paper protocol design defining clocks, common adjustment, systematic cokurtosis estimator, normalization, persistence, candidate identity, paths, costs, immutable Gates, sample ceiling, complexity and isolation before any data read."
+  - "Perform one separate-branch exact-head independent review of the frozen U-21 Paper protocol; only a full approve with zero critical/high may authorize result-free data qualification, sample ceiling and synthetic complexity."
   - "No U-20 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-20 outcomes, Gates, defects and censor patterns may not select U-21."
   - "No U-19 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."

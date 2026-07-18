@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m1/U21_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-21 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 336h two-half systematic-cokurtosis persistence, clustering, paths, Gates and preflight. | no |
+| `config/u21_cross_sectional_paper_protocol_v1.json` | U-21 machine Paper protocol | content `b8cad855...73551e` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
+
+
 | `reports/m1/U21_SYSTEMATIC_COKURTOSIS_RISK_PREMIUM_DESIGN.md` | U-21 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes compensated systematic fourth-comoment risk without data, parameters, results or OOS. | no |
 | `reports/m1/U21_NON_DUPLICATION_REVIEW.md` | U-21 non-duplication | pass_design_level | Separates unsigned joint tail-risk intensity from signed coskewness, asset-only tails and volatility variability. | no |
 | `config/u21_cross_sectional_design_scope_v1.json` | U-21 machine design scope | content `a4507537...8568b` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |

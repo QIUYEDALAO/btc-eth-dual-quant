@@ -2639,3 +2639,10 @@ private exchange responses here.
 - Mechanism: persistent joint intensity of squared common-adjusted and squared common returns may consume liquidity and risk capital during marketwide volatility, requiring compensation.
 - Independence: unsigned fourth comoment, not signed coskewness, asset-only tails, volatility-of-volatility, beta capture, trend, panic, absorption or correlation breakdown; no prior result selected it.
 - Scope: no data or outcome read; all clocks, estimators, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-21 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U21-03-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM-PAPER-V1`; content `b8cad855...73551e`; frozen before data/results.
+- Identity: 336 completed hourly observations split into two 168h halves; each computes standardized `E[z_candidate² × z_common²]` with independent baseline 1.0.
+- Persistence/Gates: both halves require at least 1.50 and top-quarter rank; signed direction, coskewness, volatility, tail, drawdown and terminal-bar direction are not Gates.
+- Next action: separate exact-head review only. Data qualification, cokurtosis/events, strategy, OOS and trading remain unauthorized.

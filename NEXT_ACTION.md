@@ -1,5 +1,18 @@
 # Next Action
 
+## U-21 Exact-Head Independent Paper-Protocol Review
+
+Protocol `U21-03-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM-PAPER-V1` is frozen before
+data/results under `b8cad855...73551e`. The only next task is a separate-branch,
+read-only review of the exact target. It must verify 336h history, two disjoint
+168h halves, standardized unsigned fourth-comoment estimator, two-half
+`>= 1.50`/top-quarter persistence, identity, clustering, paths, immutable
+Gates, complexity and sealed-OOS isolation.
+
+Approval may authorize only frozen-source structural qualification, the sample
+ceiling and synthetic complexity preflight. It cannot authorize common-adjusted
+returns/cokurtosis/events/paths, formal returns, strategy, backtesting or OOS.
+
 ## U-21 Outcome-Blind Paper Protocol Design
 
 U-21 freezes `U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM` under
