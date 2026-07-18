@@ -1,5 +1,18 @@
 # Next Action
 
+## U-19 Outcome-Blind Paper Protocol Design
+
+U-19 freezes `U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM`
+under hypothesis `6b3cd19b...7c52` and design `89cd46e6...fe80`. The mechanism
+is compensation for unstable asset-specific risk-budget, hedging and liquidity-
+capital demands after removing the completed active-peer common component.
+
+The only next task is a separate result-blind Paper protocol defining history,
+common-component, base-volatility and volatility-of-volatility estimators,
+persistence, candidate identity, paths, costs, sample/economic Gates,
+structural ceiling, complexity and isolation before any data read. Returns,
+fixed rules, strategy/backtesting and OOS remain unauthorized.
+
 ## U-19 Outcome-Blind Hypothesis Design
 
 Decision `09965229...c3a9` authorizes exactly one economically independent,

@@ -2,11 +2,26 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-19 independent outcome-blind hypothesis design authorized
-current_status: u19_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2
+current_phase: U-19 volatility-of-volatility risk-premium design completed; outcome-blind Paper protocol design is the only next task
+current_status: u19_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-19 idiosyncratic volatility-of-volatility risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U19_IDIOSYNCRATIC_VOLATILITY_OF_VOLATILITY_RISK_PREMIUM_DESIGN.md
+    machine_evidence: config/u19_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U19_NON_DUPLICATION_REVIEW.md
+    branch: codex/u19-cross-sectional-idiosyncratic-volatility-of-volatility-design
+    candidate_id: U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM
+    hypothesis_sha256: 6b3cd19be7fedab64bfc43ad6c667cdbe774d58994073446a340cf7f55217c52
+    design_content_hash: 89cd46e632d5d890b5c2b13c71a63642ab1ed5a2167904df0f722a5d4279fe80
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-19 design authorization decision
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
     evidence: reports/m0/U19_DESIGN_AUTHORIZATION_DECISION.md
@@ -2170,12 +2185,13 @@ completed_milestones:
     merged_pr: 29
 open_work:
   - id: U-19
-    phase: independent outcome-blind hypothesis design
-    status: authorized_not_started
+    phase: idiosyncratic volatility-of-volatility risk-premium design
+    status: completed_local
     authorization_content_hash: 0996522977d3a54fe35f29220bcd0ca9dd4f2aebd1533d610c6aececf250c3a9
+    design_content_hash: 89cd46e632d5d890b5c2b13c71a63642ab1ed5a2167904df0f722a5d4279fe80
     maximum_hypotheses: 1
-    hypothesis_design_authorized: true
-    paper_protocol_design_authorized: false
+    hypothesis_design_authorized: false
+    paper_protocol_design_authorized: true
     exact_head_independent_review_authorized: false
     data_qualification_complexity_and_preflight_authorized: false
     public_data_read_authorized: false
@@ -2296,7 +2312,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Freeze exactly one economically independent, outcome-blind U-19 hypothesis design without reading data or results or selecting parameters."
+  - "Perform one outcome-blind U-19 Paper protocol design without reading data or results; all estimators, thresholds, paths and Gates must be fixed before access."
   - "No U-18 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-18 outcomes, Gates, defects and censor patterns may not select U-19."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
@@ -2337,6 +2353,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U19_IDIOSYNCRATIC_VOLATILITY_OF_VOLATILITY_RISK_PREMIUM_DESIGN.md
+    phase: U-19 hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U19_NON_DUPLICATION_REVIEW.md
+    phase: U-19 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u19_cross_sectional_design_scope_v1.json
+    phase: U-19 machine design scope
+    status: deterministic_protocol_design_only_authority
+    status_marker: '"content_hash": "89cd46e632d5d890b5c2b13c71a63642ab1ed5a2167904df0f722a5d4279fe80"'
   - path: reports/m0/U19_DESIGN_AUTHORIZATION_DECISION.md
     phase: U-19 design authorization
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only

@@ -2548,3 +2548,10 @@ private exchange responses here.
 - Binding: U-18 remains closed under run `213c303d...9c3cd`; OOS, formal returns and second-run flags remain false.
 - Independence: U-04 through U-18 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-19. U-18 inversion, repair, relabeling or repackaging is prohibited.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-19 Volatility-of-Volatility Risk Premium Design Complete
+
+- Candidate: `U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM`; hypothesis `6b3cd19b...7c52`; design `89cd46e6...fe80`.
+- Mechanism: persistent variability of common-component-adjusted volatility may impose unstable risk-budget, hedging and liquidity-capital demands for which investors require compensation.
+- Independence: not low idiosyncratic volatility, downside-tail asymmetry, beta capture, trading liquidity risk, trend, panic, absorption or correlation breakdown; no prior result selected it.
+- Scope: no data or outcome read; all clocks, estimators, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
