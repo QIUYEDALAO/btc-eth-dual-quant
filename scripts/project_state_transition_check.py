@@ -264,6 +264,10 @@ ALLOWED = {
         "u08_liquidity_rank_entry_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
     ): "U-08-PROTOCOL",
     (
+        "U-08 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "u08_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-08-DATA-QUALIFICATION",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -610,7 +614,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07", "U-07-PROTOCOL", "U-07-DATA-QUALIFICATION", "U-07-PAPER-OBSERVATION", "U-08-DECISION", "U-08", "U-08-PROTOCOL"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07", "U-07-PROTOCOL", "U-07-DATA-QUALIFICATION", "U-07-PAPER-OBSERVATION", "U-08-DECISION", "U-08", "U-08-PROTOCOL", "U-08-DATA-QUALIFICATION"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])

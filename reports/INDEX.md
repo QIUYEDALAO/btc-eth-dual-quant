@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/expert/U08_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-08 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `a516efb3...9361` unchanged and authorizes only data qualification. | no |
+| `reports/expert/evidence/u08_cross_sectional_paper_protocol_review_v1.json` | U-08 protocol review machine evidence | content `316fe577...8acf` | Binds five target files, 13 dimensions and qualification-only authority. | no |
 | `reports/m1/U08_LIQUIDITY_RANK_ENTRY_DEMAND_PERSISTENCE_DESIGN.md` | U-08 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes membership-entry demand persistence without parameters, outcomes, rules or OOS. | no |
 | `reports/m1/U08_NON_DUPLICATION_REVIEW.md` | U-08 non-duplication | pass_design_level | Separates membership transition from U-04 through U-07 and prior strategy families. | no |
 | `config/u08_cross_sectional_design_scope_v1.json` | U-08 machine design scope | content `247d652e...d717` | Binds one declared unopened candidate and enables only Paper protocol design. | no |

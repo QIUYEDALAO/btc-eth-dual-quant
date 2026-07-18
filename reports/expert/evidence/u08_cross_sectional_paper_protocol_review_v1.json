@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "review_id": "U08-04-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "verdict": "approve",
+  "target_commit": "a516efb32f2058b603918365a6eeaef0fe509361",
+  "target_base_commit": "579c179",
+  "protocol_content_hash": "98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283",
+  "target_file_sha256": {
+    "config/u08_cross_sectional_paper_protocol_v1.json": "18618b7cdc27c3481936d0a6c1b3444fb3b87663be078f6370b4f6f3ba904d29",
+    "reports/m1/U08_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "8a463a13bc11a75fe971b7cfdfc5706580281ed039f75cf205a127af904faa41",
+    "scripts/u08_cross_sectional_paper_protocol_check.py": "71d1cee57bf88292507f3df6fbbe4b71b8859c7be6c4501e9b19e3825579d1b9",
+    "scripts/u08_cross_sectional_paper_protocol_validate.sh": "b99ff3da06fa985cc78974f8569f14540e78bbd7aa7c980bc809cc31f0372ca5",
+    "tests/test_u08_cross_sectional_paper_protocol.py": "f627e42c4f2de1aed87b8f628a06f41b3a36bdf73a66d6f4b2b138352528a1b9"
+  },
+  "dimensions": {
+    "exact_target_identity": "pass", "authority_bindings": "pass",
+    "membership_entry_identity": "pass", "genesis_and_representative_rule": "pass",
+    "causal_reference_open": "pass", "episode_clustering": "pass",
+    "fixed_peer_path_completeness": "pass", "paper_gates": "pass",
+    "is_oos_isolation": "pass", "research_leakage_prevention": "pass",
+    "non_duplication": "pass", "no_premature_strategy_or_return": "pass",
+    "authorization_scope": "pass"
+  },
+  "remaining_critical_findings": 0,
+  "remaining_high_findings": 0,
+  "target_modified": false,
+  "authorizations": {
+    "data_qualification": true,
+    "event_scan": false, "path_observation": false, "formal_returns": false,
+    "strategy": false, "backtesting": false, "oos": false,
+    "api_trading": false, "execution_live": false, "m2": false
+  },
+  "review_content_hash": "316fe577050555bf0b8c237c6a5bc374885132c863ba647fe2c826971aca8acf",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

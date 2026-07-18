@@ -1,6 +1,6 @@
 # Next Action
 
-## U-08 Outcome-Blind Paper Protocol Design
+## U-08 Frozen-Source Data Qualification and Isolation
 
 U-07 is frozen as
 `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
@@ -39,11 +39,15 @@ is broadened investability, attention and mandate eligibility after a prior-only
 monthly Top-15 membership admission. It is distinct from U-04 through U-07 and
 all prior strategy families.
 
-Only an outcome-blind Paper protocol may follow. It must freeze membership-entry
-identity, genesis-month handling, reference open, observation horizons,
-clustering, sample/concentration/cost Gates and IS/OOS isolation before reading
-data or outcomes. Events, returns, rules, strategy, backtesting and OOS remain
-unauthorized until later narrow stages.
+Protocol target `a516efb32f2058b603918365a6eeaef0fe509361` freezes
+`98752a07...0283` and is independently approved under review
+`316fe577...8acf`, with critical/high `0 / 0` and no target modification.
+
+The current task is frozen-source data qualification and IS/OOS isolation only:
+verify exact ZIP/manifests, point-in-time membership ranks, lifecycle, 5m grid
+and invalid-interval authority in three orders. It must not enumerate membership
+entry events, observe paths or decode any OOS OHLC value. A pass may authorize
+exactly one sealed-IS Paper observation.
 
 ## U-04 Closed Historical Evidence
 
