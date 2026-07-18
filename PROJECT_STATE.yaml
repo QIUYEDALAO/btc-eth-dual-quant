@@ -2,11 +2,28 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task
-current_status: u05_breadth_demand_persistence_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2
+current_phase: U-05 Paper protocol frozen; exact-head independent review is the only authorized next task
+current_status: u05_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-05 outcome-blind breadth-demand Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U05_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u05_cross_sectional_paper_protocol_v1.json
+    branch: codex/u05-cross-sectional-paper-protocol
+    candidate_id: U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE
+    protocol_content_hash: c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+    exact_head_independent_review_authorized: true
+    data_qualification_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-05 cross-sectional breadth-demand persistence hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md
@@ -778,13 +795,17 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-05-PROTOCOL
-    phase: U-05 outcome-blind Paper protocol design
-    status: authorized_ready
-    branch: codex/u05-cross-sectional-paper-protocol
+  - id: U-05-PROTOCOL-REVIEW
+    phase: U-05 Paper protocol exact-head independent review
+    status: authorized_after_protocol_commit
+    branch: codex/u05-cross-sectional-paper-protocol-review
     candidate_id: U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE
     design_content_hash: ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb
-    outcome_blind_protocol_required: true
+    protocol_content_hash: c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214
+    target_commit: pending_current_exact_head
+    target_files_must_remain_unmodified: true
+    approve_and_zero_critical_high_required: true
+    data_qualification_authorized: false
     event_scan_authorized: false
     strategy_authorized: false
     oos_authorized: false
@@ -857,9 +878,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete and freeze one outcome-blind U-05 Paper protocol design before any event or path scan."
+  - "Perform an independent review of the immutable U-05 Paper protocol exact head; approve with zero critical/high findings is required."
   - "Preserve U-04 run 9182c9e3...eebc2 without inversion, tuning or outcome-derived U-05 rules."
-  - "The protocol must fix event identity, observation paths, sample/cost Gates and IS/OOS boundaries without reading outcomes."
+  - "Do not access public data, events, paths, returns or OOS during protocol review."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -896,6 +917,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U05_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-05 outcome-blind Paper protocol
+    status: frozen_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
   - path: reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md
     phase: U-05 hypothesis design
     status: design_pass_protocol_only

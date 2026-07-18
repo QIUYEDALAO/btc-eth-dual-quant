@@ -131,7 +131,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-04-PAPER-OBSERVATION | Unique sealed-IS paper observation | completed_failed_feasibility | U-04-DATA-QUALIFICATION pass | `codex/u04-cross-sectional-paper-observation` / local-only | Frozen residual events, episodes and path diagnostics only | 397 complete; relative `-0.8556%`, absolute `-0.7946%`; both +1.80% Gates fail | candidate closed; stages 6-20 not entered |
 | U-05-DECISION | Separate post-U-04 candidate authorization | completed_authorize_design_only | U-04 closed failed_feasibility with OOS sealed | `codex/u05-design-authorization` / local-only | Hash-bound one-hypothesis authorization, full dependency plan, tamper tests and zero downstream permissions | Decision `48482a1d...6dc2c`; U-04 outcome inversion prohibited | U-05 hypothesis design only |
 | U-05 | Breadth-confirmed common-demand persistence design | completed_local | U-05-DECISION complete | `codex/u05-cross-sectional-breadth-demand-persistence-design` / local-only | Machine scope, economic design, non-duplication review and trial registration | Design `ae12172a...8c2bb`; hypothesis `ad164b1d...7349b`; no parameters/events/returns/OOS | none |
-| U-05-PROTOCOL | Outcome-blind breadth-demand Paper protocol | authorized_next | U-05 design complete | `codex/u05-cross-sectional-paper-protocol` / local-only | Frozen event/path/Gate/IS-OOS contract plus checker and tests | No result access; exact deterministic hash | fail closed on design or authority drift |
+| U-05-PROTOCOL | Outcome-blind breadth-demand Paper protocol | completed_local_pending_review | U-05 design complete | `codex/u05-cross-sectional-paper-protocol` / local-only | Frozen completed-4h breadth event, 24h episode, 5m path, Gate and IS/OOS contract | Protocol `c8bd5523...e214`; no data/events/paths/returns/OOS | exact-head independent review required |
+| U-05-PROTOCOL-REVIEW | Exact-head independent Paper-protocol review | authorized_next | U-05-PROTOCOL exact local commit | `codex/u05-cross-sectional-paper-protocol-review` / local-only | Immutable target/blob binding, independent semantic and leakage review | Must approve with 0 critical/high and no target mutation | fail closed on any drift or finding |
 
 ## Current Gate
 
@@ -145,7 +146,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - The V3 contract, registry and blocked qualification evidence remain immutable historical evidence. PR #95 merged the deterministic U-03F `failed_audit` result with one critical and seven high findings. V4 is `audit_blocked` / `revalidation_required`; production evidence is unchanged and U-04 remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active task: exact-head independent auditor review only. The fixture implementation is complete; the real audit remains prohibited until review approval.
+- Active task: U-05 Paper protocol exact-head independent review only. Public data, event/path scans, returns, OOS and strategy work remain prohibited until their later narrow Gates.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

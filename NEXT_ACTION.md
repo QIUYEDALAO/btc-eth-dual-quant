@@ -1,16 +1,23 @@
 # Next Action
 
-## U-05 Outcome-Blind Paper Protocol
+## U-05 Paper Protocol Exact-Head Independent Review
 
 Decision `48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c`
 authorized one independent U-05 hypothesis design. That design is now frozen as
 `U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE` under content hash
 `ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb`.
 
-The next task must freeze one result-blind Paper protocol defining the event,
-path diagnostics, clustering, sample/concentration/cost Gates and IS/OOS
-boundary. No event, path, return or OOS value may be read before that protocol
-is independently approved.
+The result-blind Paper protocol is frozen before outcomes under content hash
+`c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214`.
+It fixes completed UTC 4h breadth events, the integer 80% participation Gate,
+the +1.20% cross-sectional median move, 24h global clustering, 5m path
+diagnostics, concentration/sample Gates and the sealed IS/OOS boundary.
+
+The next task is a separate exact-head independent review. It must bind the
+immutable protocol commit and target blobs, leave target files unchanged, and
+return `approve` with zero critical/high findings. No public data, event, path,
+return or OOS value may be read during review. Only a passing review may
+authorize a separate frozen-source data-qualification task.
 
 The complete dependency chain is frozen in
 `docs/superpowers/plans/2026-07-18-u05-cross-sectional-research-mainline.md`.

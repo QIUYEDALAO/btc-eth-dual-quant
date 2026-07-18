@@ -1939,3 +1939,13 @@ private exchange responses here.
 - Independence: not derived from the U-04 event sign or recovery failure; distinct from M1C winner rotation, M1E compression breakout, M1G panic, M1H funding and M1A indicators.
 - Execution: no public data read, event/path scan, return, timeframe, threshold, fixed rule, backtest or OOS access.
 - Authorization: only a separately frozen outcome-blind Paper protocol may follow; all strategy, OOS, trading and M2 permissions remain false.
+
+## 2026-07-18 - U-05 Outcome-Blind Paper Protocol Frozen
+
+- Task: `U-05-PROTOCOL`; branch `codex/u05-cross-sectional-paper-protocol`; local Git only.
+- Protocol: `U05-03-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE-PAPER-V1`; content hash `c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214`.
+- Event identity: completed UTC-aligned 4h bars, exact point-in-time active membership, at least 10 members, positive breadth `positive × 5 >= active × 4`, and cross-sectional median 4h simple return at least `+1.20%`.
+- Observation: 24h global connected clustering, first event only, strictly next expected 5m open, fixed 1/2/4/8/12/24h diagnostics and no later search.
+- Gates: sample, year/quarter/month concentration, median 24h common-demand displacement `+1.80%`, median positive-member fraction `60%`, and zero qualification/quarantine/lifecycle/order mismatches.
+- Execution: no public data, event/path scan, formal return, fill, position, equity, backtest or OOS access.
+- Authorization: only an immutable exact-head independent review may follow; data qualification and every downstream capability remain false until that review approves with zero critical/high findings.
