@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m1/U23_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-23 frozen-source qualification | pass_local_complete | Exact sources/orders; ceiling 1,031; zero OHLC/result/OOS rows. | no |
+| `reports/m1/evidence/u23_cross_sectional_data_qualification_v1.json` | U-23 qualification machine evidence | content `08166fb5...acef2c5` | Binds sources, 7d history/24h path structure, isolation and one-run authority. | no |
+
+
 | `reports/expert/U23_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-23 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1d0b2128...5d5913`, nine exact blobs and pre-freeze feasibility; authorizes only qualification. | no |
 | `reports/expert/evidence/u23_cross_sectional_paper_protocol_review_v1.json` | U-23 review machine evidence | content `f2a8a5fd...37c4a4` | Binds 16 dimensions, exact core/evidence and qualification-only authority. | no |
 

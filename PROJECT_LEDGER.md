@@ -2729,3 +2729,10 @@ private exchange responses here.
 - Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `f2a8a5fd...37c4a4`.
 - Finding: pre-freeze core/evidence, 42+1 completed 4h bars, own-range expansion, same-bar close/body strength, peer-relative identity, clustering, paths, Gates and isolation are fixed and causal.
 - Authorization: frozen-source structural qualification and result-free preflight only; OHLC/range/return/event/path scans, formal returns, strategy, OOS and trading remain false.
+
+## 2026-07-19 - U-23 Frozen-Source Qualification Passed
+
+- Result: `08166fb534daf691e069f6ae743b472f0c06879dd060c58f816e4f2d5acef2c5`; 27,736 archives, 19 manifests and all source/reader orders exact.
+- Structure: 7,122 eligible decisions and maximum 1,031 independent 24h episodes versus 400 required; every IS year exceeds the eventual floor.
+- Isolation: OHLC, range, return, candidate, event, path, formal-return and OOS decoded/generated rows are all zero.
+- Authorization: exactly one sealed-IS Paper observation; no strategy, backtest, OOS or trading.

@@ -2,11 +2,29 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-19T00:00:00Z"
-current_phase: U-23 Paper protocol exact-head review approved; frozen-source data qualification and result-free preflight are the only next task
-current_status: u23_protocol_review_approve_qualification_only_no_results_no_oos_no_trading_no_m2
+current_phase: U-23 frozen-source qualification passed; one sealed-IS Paper observation is the only next task
+current_status: u23_qualification_pass_one_paper_observation_only_no_formal_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-23 frozen-source data qualification and result-free preflight
+    status: pass_local_complete
+    evidence: reports/m1/U23_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u23_cross_sectional_data_qualification_v1.json
+    branch: codex/u23-cross-sectional-data-qualification
+    contract_content_hash: 37c1c9b0bdbb13639aea36a1da525163ba4a8142ec1f808bc8cbe1ca0aed7909
+    qualification_content_hash: 08166fb534daf691e069f6ae743b472f0c06879dd060c58f816e4f2d5acef2c5
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 7122
+    maximum_independent_theoretical_24h_episodes: 1031
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-23 Paper-protocol exact-head independent review
     status: approve
     evidence: reports/expert/U23_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -2566,6 +2584,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-23-DATA-QUALIFICATION
+    phase: frozen-source data qualification and result-free preflight
+    status: completed_pass
+    contract_content_hash: 37c1c9b0bdbb13639aea36a1da525163ba4a8142ec1f808bc8cbe1ca0aed7909
+    qualification_content_hash: 08166fb534daf691e069f6ae743b472f0c06879dd060c58f816e4f2d5acef2c5
+    eligible_structural_decisions: 7122
+    maximum_independent_theoretical_24h_episodes: 1031
+    one_sealed_is_paper_observation_authorized: true
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-23-PROTOCOL-REVIEW
     phase: exact-head independent Paper-protocol review
     status: completed_approve
@@ -2889,6 +2920,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "Exactly one U-23 sealed-IS Paper observation may execute the frozen protocol over IS only in normal, reverse and deterministic-shuffled order."
+  - "The observation may compute frozen OHLC/range/return/event/path diagnostics but no fills, positions, equity, formal returns, OOS values, tuning or second run."
   - "U-23 frozen-source data qualification may verify exact archives/manifests, 7d history, 24h path structure, point-in-time membership, lifecycle/mask order, sample ceiling and isolation without decoding OHLC or results."
   - "Any authority, order, scope or theoretical-episode ceiling failure closes U-23 before results."
   - "A separate read-only exact-head independent review of the frozen U-23 protocol is the only next task."

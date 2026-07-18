@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-23 frozen-source qualification passes under `08166fb534daf691e069f6ae743b472f0c06879dd060c58f816e4f2d5acef2c5`: 27,736 archives, 19 manifests, three source/reader orders and a 1,031 independent-episode structural ceiling are exact; OHLC/result/OOS decode counts are zero. Exactly one sealed-IS Paper observation is authorized; formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-23 exact protocol target `1d0b21282b1e499fdef0d9cab88e7a918a5d5913` is independently approved 16/16 with 0 critical/high under review `f2a8a5fdf770419bcc6f29abda3539d251b9e6e0f1dc97d5a4e824ab4f37c4a4`. Only frozen-source structural qualification, 7d-history/24h-path sample ceiling and result-free preflight are authorized. OHLC, ranges, returns, candidates, events, paths, formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-23 Paper protocol `U23-03-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION-PAPER-V1` is frozen before public data/results under `52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611`. Its exact core passed three pre-freeze synthetic 1,000,395-logical-bar checks under `6010529c89627e8607919272af3c85c7dd5c3fdd4e48f549b8fe055e3245637e`. Only a separate exact-head independent review is authorized; public-data OHLC/results, events, paths, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
