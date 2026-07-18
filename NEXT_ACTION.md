@@ -1,5 +1,21 @@
 # Next Action
 
+## Stop: U-15 Failed Pre-Result Field Qualification
+
+U-15 is closed under failure evidence `83eb8ac2...63c28`. The first official
+field scan encountered `ADAUSDT` at `2020-01-01T00:05:00Z`: a checksum-bound
+12-column row with zero trades, zero quote volume and zero taker-buy volume.
+The frozen protocol requires strictly positive quote volume and forbids field
+inference, repair, fill or substitution, so qualification stopped immediately.
+
+No taker state, candidate, event, path, return or OOS value was generated.
+Reverse/shuffled scans, structural preflight, complexity and Paper observation
+were not run after failure. U-15 cannot be retried or relaxed.
+
+No successor is currently authorized. Continuing the research goal requires a
+separate U-16 independent-candidate authorization decision that binds this
+failure and selects no mechanism or parameter from it.
+
 ## U-15 Official Taker-Buy Field/Data Qualification and Preflight
 
 Exact target `5438dec6...da5a` is approved with 0/0 critical/high under review

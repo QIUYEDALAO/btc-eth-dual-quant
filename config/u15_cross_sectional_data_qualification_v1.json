@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "qualification_id": "U15-05-TAKER-BUY-FIELD-DATA-QUALIFICATION-COMPLEXITY-PREFLIGHT-V1",
+  "status": "frozen_source_qualification_pending_run",
+  "candidate_id": "U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE",
+  "protocol_target_commit": "5438dec609aaaed675e8ecba6f15ae9bb6f6da5a",
+  "protocol_content_hash": "3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a",
+  "protocol_review_content_hash": "2686c3acc1f5d46d7b37295530c54268f314cca177197306db7358bb8aa38ceb",
+  "base_v4_qualification_contract_hash": "0dd9a159382f1d515fed0269c9122adcd042a1fd726431bc36a9e4f6e01d5fb8",
+  "authority_bindings": {"source_freeze_hash":"c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c","source_archive_count":27736,"v4_artifact_set_hash":"8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3","adr0015_audit_summary_hash":"e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4","membership_manifest_hash":"bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5","membership_authority_hash":"52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2","lifecycle_registry_hash":"a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d","invalid_interval_slot_mask_hash":"23e78e15a4484af9167b03e29bf9d499a39ff1e1c8195a056fae72b984285487"},
+  "field_qualification": {"is_start":"2020-01-01T00:00:00Z","is_end_exclusive":"2024-09-11T00:00:00Z","expected_columns":12,"quote_volume_column":7,"taker_buy_base_volume_column":9,"taker_buy_quote_volume_column":10,"traversal_orders":["normal","reverse","deterministic_shuffled"],"deterministic_shuffle_seed":271828,"missing_or_invalid_rows_allowed":0,"oos_values_decoded":0},
+  "structural_preflight": {"is_start":"2020-01-01T00:00:00Z","is_end_exclusive":"2024-09-11T00:00:00Z","decision_step_hours":4,"constituent_5m_rows_per_member":48,"minimum_active_members":10,"primary_horizon_hours":24,"cluster_connected_window_hours":24,"minimum_theoretical_eligible_24h_episodes":400,"traversal_orders":["normal","reverse","deterministic_shuffled"],"deterministic_shuffle_seed":271828,"ohlcv_fields_decoded":0,"result_rows_generated":0},
+  "complexity_benchmark": {"synthetic_fixture_rows":1000000,"synthetic_active_members":15,"benchmark_passes_required":3,"maximum_elapsed_seconds_per_pass":30,"maximum_peak_rss_mib":1024,"same_event_and_path_code_path":"btc_eth_dual_quant.data.u15_taker_buy_absorption.evaluate_stream","decision_times_history_nested_scan_allowed":false,"market_outcomes_allowed":false},
+  "isolation_contract": {"is_start":"2020-01-01T00:00:00Z","is_end_exclusive":"2024-09-11T00:00:00Z","oos_start":"2024-09-11T00:00:00Z","oos_end_exclusive":"2026-07-01T00:00:00Z","oos_archive_access":"opaque_identity_and_crc_only","oos_value_decode_allowed":false},
+  "authorizations": {"frozen_source_read":true,"field_data_qualification":true,"synthetic_complexity_benchmark":true,"structural_preflight":true,"taker_state_scan":false,"event_scan":false,"path_observation":false,"formal_returns":false,"strategy":false,"backtesting":false,"oos":false,"api_trading":false,"execution_live":false,"m2":false},
+  "content_hash": "26dbc745779efa2b42f18cd8f0b1760795eb6a15c3f89911c1e8b6c1f33f37c8",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

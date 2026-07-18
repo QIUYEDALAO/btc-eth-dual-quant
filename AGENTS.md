@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-15 is closed `failed_pre_result_field_qualification` under evidence `83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28`. The first official field scan found a checksum-bound ADAUSDT 2020-01 row with zero quote volume, violating the frozen strict-positive denominator Gate.
+- The field scan stopped immediately. Taker state, candidates, events, paths, returns and OOS values are all zero; reverse/shuffled scans, structural preflight, complexity and Paper observation did not run. No repair, relaxation, inference, fill, substitution or retry is allowed.
+- No successor is authorized. Continuing research requires a separate independent-candidate authorization decision; strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-15 exact protocol target `5438dec609aaaed675e8ecba6f15ae9bb6f6da5a` is independently approved with 15/15 dimensions, 0 critical/high and review `2686c3acc1f5d46d7b37295530c54268f314cca177197306db7358bb8aa38ceb`.
 - Only official taker-buy field/data qualification, structural sample ceiling, synthetic complexity and result-free scope preflight are authorized next. That stage may not compute taker state, events, paths, returns or read OOS values.
 - U-15 Paper protocol `U15-03-TAKER-BUY-ABSORPTION-PERSISTENCE-PAPER-V1` is frozen before results under `3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a`. Only an exact-head independent review is authorized next.

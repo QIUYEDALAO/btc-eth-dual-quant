@@ -2407,4 +2407,12 @@ private exchange responses here.
 - Verdict: `approve`, 15/15 dimensions, 0 critical and 0 high; review `2686c3ac...8ceb`.
 - Finding: official taker-buy quote field identity is explicit and cannot be inferred or substituted; timing, estimator, thresholds, clustering, paths, Gates, complexity and isolation are causal and fixed.
 - Authorization: only a separate field/data qualification, sample ceiling, synthetic complexity benchmark and result-free scope preflight. Events, paths, returns, strategy, OOS and trading remain false.
+
+## 2026-07-18 - U-15 Failed Pre-Result Field Qualification
+
+- Failure: checksum-bound `ADAUSDT` 2020-01 official 5m row at `1577855700000` has quote volume `0.00000000`, violating the frozen strictly-positive denominator invariant.
+- Identity: archive `2b6db817...ab9c`, raw row `4683df3b...57a`, evidence `83eb8ac2...63c28`.
+- Fail closed: scan stopped on the first failure; reverse/shuffled field scans, structural preflight, complexity and Paper observation were not run.
+- Isolation: taker-state/candidate/event/path/return rows and OOS values are all zero. No threshold relaxation, field repair, inference, fill, substitution or second run is allowed.
+- Decision: U-15 is permanently closed before results. No successor is authorized; a separate independent-candidate authorization decision is required to continue the research goal.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

@@ -10,11 +10,11 @@ rules:
   candidate_queue_order_is_immutable: true
 candidates:
   - id: U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE
-    status: declared_unopened
+    status: failed_pre_result_field_qualification
     hypothesis: "U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE: Binance spot USDT long/cash only; using only a completed observation and exact point-in-time active members, unusually high aggressive taker-buy participation combined with muted contemporaneous relative price response may reveal urgent buy demand absorbed by finite passive sell inventory and may produce positive relative adjustment after the next eligible open if that inventory exhausts; required taker-buy fields must be independently qualified before any event scan; no U-04 through U-14 outcome reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
     sha256: 5b99a5d830f40a6d9a5744771dafd3e85a64a55ea172b107465c46b10de115dd
     oos_opened: false
-    notes: "Outcome-blind design only. Taker-buy field authority, timeframe, estimators, thresholds, horizons, costs, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+    notes: "Closed before observation. The first field scan found a checksum-bound ADAUSDT 2020-01 official 5m row with quote volume 0, violating the frozen strict-positive denominator invariant. No repair, retry, taker state, event, path, return or OOS value was allowed."
   - id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
     status: declared_unopened
     hypothesis: "U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE: Binance spot USDT long/cash only; using only a completed common selling-pressure observation and exact point-in-time active members, an asset that absorbs intraperiod selling and closes unusually high within its own completed range relative to peers may reveal latent demand and continue outperforming after the next eligible open; no U-04 through U-13 outcome reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-15 Paper protocol exact-head review approved; field/data qualification, complexity and preflight are the only next task
-current_status: u15_protocol_review_approve_field_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-15 closed on failed pre-result taker-buy field qualification; no successor is authorized
+current_status: u15_failed_pre_result_field_qualification_closed_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-15 official taker-buy field/data qualification
+    status: failed_pre_result_field_qualification
+    evidence: reports/m1/U15_TAKER_BUY_FIELD_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u15_taker_buy_field_qualification_failure_v1.json
+    branch: codex/u15-taker-buy-field-data-qualification
+    failure_content_hash: 83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28
+    blocker: official ADAUSDT 2020-01 5m row has zero quote volume under strict-positive protocol invariant
+    field_scan_stopped_at_first_failure: true
+    event_rows_generated: 0
+    return_rows_generated: 0
+    oos_values_decoded: 0
+    candidate_closed: true
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-15 Paper-protocol exact-head independent review
     status: approve
     evidence: reports/expert/U15_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -1891,11 +1905,14 @@ completed_milestones:
 open_work:
   - id: U-15-DATA-QUALIFICATION
     phase: official taker-buy field/data qualification, complexity and scope preflight
-    status: authorized_next
+    status: completed_failed_pre_result_field_qualification
     protocol_content_hash: 3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a
     review_content_hash: 2686c3acc1f5d46d7b37295530c54268f314cca177197306db7358bb8aa38ceb
-    field_data_qualification_authorized: true
-    public_data_read_authorized: false
+    field_data_qualification_authorized: false
+    frozen_source_read_executed: true
+    public_data_download_authorized: false
+    failure_content_hash: 83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28
+    candidate_closed: true
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1969,9 +1986,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete exact official taker-buy field and data qualification over frozen sources, membership/lifecycle/mask handling and IS/OOS isolation without scanning taker state, events or paths."
-  - "Run the result-blind sample ceiling, same-reader scope preflight and three synthetic one-million-row complexity passes."
-  - "Any field ambiguity, authority drift, ceiling failure, order mismatch or complexity failure closes U-15 before results."
+  - "No U-15 retry, field repair, relaxed invariant, Paper observation, strategy or OOS step is authorized."
+  - "Any future U-16 hypothesis design authorization decision must be separate, bind this failure and prohibit reuse of the failed field contract or result-derived rules."
+  - "Do not begin another candidate until that separate authorization exists."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -2008,6 +2025,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U15_TAKER_BUY_FIELD_DATA_QUALIFICATION.md
+    phase: U-15 official taker-buy field/data qualification
+    status: failed_pre_result_field_qualification
+    status_marker: '- Status: `failed_pre_result_field_qualification`'
+  - path: reports/m1/evidence/u15_taker_buy_field_qualification_failure_v1.json
+    phase: U-15 field qualification failure machine evidence
+    status: deterministic_fail_closed
+    status_marker: '"content_hash": "83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28"'
   - path: reports/expert/U15_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
     phase: U-15 Paper-protocol exact-head review
     status: approve_zero_critical_high

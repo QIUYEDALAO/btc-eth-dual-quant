@@ -12,6 +12,10 @@ import yaml
 
 ALLOWED = {
     (
+        "U-15 closed on failed pre-result taker-buy field qualification; no successor is authorized",
+        "u15_failed_pre_result_field_qualification_closed_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-15-DATA-QUALIFICATION",
+    (
         "U-15 Paper protocol exact-head review approved; field/data qualification, complexity and preflight are the only next task",
         "u15_protocol_review_approve_field_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
     ): "U-15-DATA-QUALIFICATION",
