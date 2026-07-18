@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "status": "approve",
+  "review_id": "U22-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "target": {
+    "head_sha": "d4f254f876dfeab73494c79a48e90c86dfd0ee16",
+    "parent_sha": "df307b268dee177398452b79937a08a498e970ec",
+    "protocol_content_hash": "0fdc7eb264e5f9a24dbcb746bbee6af0b1af2218cc101d6674099769f5d1b4fa",
+    "synthetic_feasibility_content_hash": "4476d5b5cc38b23c3f031b2438e77224a8da3c80ee011dba719cf43b76e6940b",
+    "files": {
+      "config/u22_cross_sectional_paper_protocol_v1.json": "d863278c8bf4aaf83ccbb58c33c08ffde61260d1f87745a0a6d94740b4873be3",
+      "reports/m1/U22_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "ef9debbc93cc02e94eba7fe93988c5f6826a04e2ced940a4dfcbb8a1112dd36c",
+      "reports/m1/evidence/u22_synthetic_core_feasibility_v1.json": "e161a113251b89d0362a5b35793d4f63f13b233026471c15627c0dd4fc81614e",
+      "scripts/u22_cross_sectional_paper_protocol_check.py": "a87dd1ff7644b11a0926ead87860d7523d12af9ce26abf849750f3f696e98314",
+      "scripts/u22_cross_sectional_paper_protocol_validate.sh": "9d9a74c8f0b31b06b074f91a6c0caa67fbbf0a964c2d050069c1dee439f6b5f3",
+      "scripts/u22_synthetic_core_benchmark.py": "f3407e030c54e9a80802f4196a991181c55f7e2c962efb8f97151078efc55215",
+      "src/btc_eth_dual_quant/data/u22_dispersion_expansion.py": "18ceb5d8a13450e298b99bb0664acd7c9d4d2893ac37a00d9635f3c2c5de7264",
+      "tests/test_u22_cross_sectional_paper_protocol.py": "b16c5210b4879d6175fd107337c1fb4e842647c442f1a1c5c6a71e5306718452",
+      "tests/test_u22_dispersion_expansion.py": "d1daafd7ebda4b04825353615fe50ffa5ebc4d2c6866e83dfdeb6d23d0bc5fdc"
+    }
+  },
+  "verdict": "approve",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "review_dimensions": {
+    "candidate_design_authorization_and_u21_failure_binding": "pass",
+    "pre_freeze_synthetic_feasibility_and_exact_core_binding": "pass",
+    "complete_24h_history_and_all_active_members": "pass",
+    "hourly_median_common_and_robust_mad_dispersion": "pass",
+    "disjoint_12h_baseline_recent_expansion_gates": "pass",
+    "relative_leader_displacement_and_deterministic_identity": "pass",
+    "multi_observation_two_half_coherence_and_dominance_exclusion": "pass",
+    "no_absolute_volume_liquidity_stress_correlation_or_higher_moment_gate": "pass",
+    "point_in_time_membership_lifecycle_and_mask": "pass",
+    "event_tie_break_and_24h_clustering": "pass",
+    "strict_next_open_and_path_censoring": "pass",
+    "result_blind_sample_ceiling": "pass",
+    "sample_projection_distribution_and_economic_gates": "pass",
+    "cost_reference_and_no_formal_return": "pass",
+    "public_data_scope_and_oos_isolation": "pass",
+    "authorization_matrix": "pass"
+  },
+  "authorization_after_review": {
+    "data_qualification_and_preflight": true,
+    "return_dispersion_leader_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "fixed_rule_contract": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "review_content_hash": "e2a920c29105a32764016d478d22efa0d234a2fc5362ce5cae17f4671218cd57",
+  "generated_utc": "2026-07-19T00:00:00Z"
+}

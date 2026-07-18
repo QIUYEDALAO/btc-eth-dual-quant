@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-22 exact protocol target `d4f254f876dfeab73494c79a48e90c86dfd0ee16` is independently approved 16/16 with 0 critical/high under review `e2a920c29105a32764016d478d22efa0d234a2fc5362ce5cae17f4671218cd57`. Only frozen-source structural qualification, 24h-history/24h-path sample ceiling and result-free preflight are authorized. Returns, dispersion, leaders, events, paths, formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-22 Paper protocol `U22-03-DISPERSION-EXPANSION-LEADER-CONTINUATION-PAPER-V1` is frozen before public data/results under `0fdc7eb264e5f9a24dbcb746bbee6af0b1af2218cc101d6674099769f5d1b4fa`. Its exact core passed three pre-freeze synthetic 1,000,080-row checks under `4476d5b5cc38b23c3f031b2438e77224a8da3c80ee011dba719cf43b76e6940b`. Only a separate exact-head independent review is authorized; public-data results, events, paths, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-22 freezes `U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION` under hypothesis `4ec9eba4d04169fe90caf50f4eaa914f1784339802b148a1cff43f5a07cb77d3` and design `652677b1e0c070d27d854166c9c7d692e93d7f58236eced06c94f01abb153abe`. It studies multi-observation positive peer-relative leadership during broadening completed cross-sectional dispersion, not prior stress, volume, diffusion, correlation or risk-premium families. The exact future statistic core must pass synthetic-only complexity before a Paper protocol is frozen. Public data, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

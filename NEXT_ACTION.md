@@ -1,5 +1,17 @@
 # Next Action
 
+## U-22 Frozen-Source Data Qualification and Result-Free Preflight
+
+Exact target `d4f254f8...d0ee16` is approved 16/16 with 0/0 critical/high under
+review `e2a920c2...18cd57`. The next task may verify the 27,736 frozen archives,
+19 manifests, 1h/5m structural grids, 24h history and next 24h path slots,
+point-in-time membership, lifecycle/mask order and sealed IS/OOS boundaries.
+
+It must produce identical normal/reverse/deterministic-shuffled structural
+hashes and prove at least 400 theoretical independent episodes. It may not
+decode returns, dispersion, leader identity, events, paths or OOS values.
+Any authority, order, scope or ceiling failure closes U-22 before results.
+
 ## U-22 Exact-Head Independent Paper-Protocol Review
 
 Protocol `U22-03-DISPERSION-EXPANSION-LEADER-CONTINUATION-PAPER-V1` is frozen

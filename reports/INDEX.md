@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/expert/U22_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-22 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `d4f254f8...d0ee16`, nine exact blobs and pre-freeze feasibility; authorizes only qualification. | no |
+| `reports/expert/evidence/u22_cross_sectional_paper_protocol_review_v1.json` | U-22 review machine evidence | content `e2a920c2...18cd57` | Binds 16 dimensions, exact core/evidence and qualification-only authority. | no |
+
+
 | `reports/m1/U22_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-22 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 24h dispersion expansion, coherent leader, clustering, paths and Gates after pre-freeze complexity pass. | no |
 | `config/u22_cross_sectional_paper_protocol_v1.json` | U-22 machine Paper protocol | content `0fdc7eb2...d1b4fa` | Only exact-head review is true; data/results/trading permissions remain false. | no |
 | `reports/m1/evidence/u22_synthetic_core_feasibility_v1.json` | U-22 pre-freeze synthetic core feasibility | content `4476d5b5...e6940b` | 3×1,000,080 logical rows pass deterministically with zero public-data/OOS access. | no |

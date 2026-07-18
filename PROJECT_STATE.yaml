@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-22 dispersion-expansion Paper protocol frozen after synthetic-core feasibility pass; exact-head independent review is the only next task
-current_status: u22_paper_protocol_frozen_pending_exact_head_review_no_public_data_no_results_no_oos_no_trading_no_m2
+current_phase: U-22 Paper protocol exact-head review approved; frozen-source data qualification and result-free preflight are the only next task
+current_status: u22_protocol_review_approve_qualification_only_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-22 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U22_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u22_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u22-cross-sectional-paper-protocol-review
+    target_head_sha: d4f254f876dfeab73494c79a48e90c86dfd0ee16
+    protocol_content_hash: 0fdc7eb264e5f9a24dbcb746bbee6af0b1af2218cc101d6674099769f5d1b4fa
+    review_content_hash: e2a920c29105a32764016d478d22efa0d234a2fc5362ce5cae17f4671218cd57
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-22 outcome-blind dispersion-expansion Paper protocol
     status: frozen_before_result_pending_exact_head_review
     evidence: reports/m1/U22_CROSS_SECTIONAL_PAPER_PROTOCOL.md
@@ -2457,16 +2471,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-22-PROTOCOL
-    phase: outcome-blind dispersion-expansion Paper protocol
-    status: completed_pending_exact_head_review
+  - id: U-22-PROTOCOL-REVIEW
+    phase: exact-head independent Paper-protocol review
+    status: completed_approve_local
     authorization_content_hash: 82aef7f378a1aaa46ded62cfc21dedb67e6d86a8d0c27c24f66280d8c124e29d
     prior_qualification_content_hash: 33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b
     candidate_id: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
     design_content_hash: 652677b1e0c070d27d854166c9c7d692e93d7f58236eced06c94f01abb153abe
     protocol_content_hash: 0fdc7eb264e5f9a24dbcb746bbee6af0b1af2218cc101d6674099769f5d1b4fa
     synthetic_feasibility_content_hash: 4476d5b5cc38b23c3f031b2438e77224a8da3c80ee011dba719cf43b76e6940b
-    exact_head_independent_review_authorized: true
+    review_content_hash: e2a920c29105a32764016d478d22efa0d234a2fc5362ce5cae17f4671218cd57
+    critical_findings: 0
+    high_findings: 0
+    data_qualification_and_preflight_authorized: true
     public_data_read_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
@@ -2730,7 +2747,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Perform a separate-branch exact-head independent review of the frozen U-22 protocol, synthetic feasibility evidence and exact core; target files must remain unchanged."
+  - "Qualify frozen V4 sources, 24h history/24h future structural availability, membership/lifecycle/mask order and IS/OOS isolation without decoding returns, dispersion, leaders, events or paths."
   - "U-04 through U-21 outcomes, Gates, defects, censor patterns and the U-21 complexity failure may not select U-22."
   - "No U-21 optimization, qualification retry, Paper observation, fixed rule, strategy, backtest or OOS step is authorized."
   - "No U-20 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."

@@ -2680,3 +2680,10 @@ private exchange responses here.
 - Pre-freeze feasibility: `4476d5b5...e6940b`; three 1,000,080-row synthetic passes complete in at most 0.213096 seconds and 22.000 MiB with identical digest.
 - Identity: 24 completed hours, 12h/12h robust dispersion expansion, 2.40% relative leader, 8/12 positive hours, both halves positive and 50% single-hour dominance ceiling.
 - Scope: no public archive, market result or OOS value read. Only separate exact-head independent review is authorized next.
+
+## 2026-07-19 - U-22 Paper Protocol Exact-Head Review Approved
+
+- Target: `d4f254f876dfeab73494c79a48e90c86dfd0ee16`; protocol `0fdc7eb2...d1b4fa`; all nine target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `e2a920c2...18cd57`.
+- Finding: pre-freeze core/evidence, 24h robust dispersion, coherent leader, point-in-time membership, clustering, paths, Gates and isolation are fixed and causal.
+- Authorization: frozen-source structural qualification and result-free preflight only; returns, dispersion/leaders/events/paths, formal returns, strategy, OOS and trading remain false.
