@@ -2771,3 +2771,10 @@ private exchange responses here.
 - Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `b032f88a...57db17`.
 - Finding: pre-freeze core/evidence, 336h history, candidate-specific peer adjustment, rank-before-threshold, two-half lottery payoff persistence, clustering, paths, Gates and isolation are fixed and causal.
 - Authorization: frozen-source structural qualification and result-free preflight only; returns/payoffs/events/paths, formal returns, strategy, OOS and trading remain false.
+
+## 2026-07-19 - U-24 Frozen-Source Qualification Passed
+
+- Result: `02e1dd27ae4d04cf10c3cbd14578eb06b633b02ec749233eba22b72f9ada9627`; 27,736 archives, 19 manifests and all source/reader orders are exact.
+- Structure: 4,897 eligible decisions and maximum 711 independent 24h episodes versus 400 required.
+- Isolation: price, return, common-adjustment, lottery-payoff, event, path, formal-return and OOS decoded/generated rows are all zero.
+- Authorization: exactly one sealed-IS Paper observation; no strategy, backtest, OOS or trading.

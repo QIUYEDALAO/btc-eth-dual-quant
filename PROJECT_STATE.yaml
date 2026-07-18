@@ -2,11 +2,29 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-19T00:00:00Z"
-current_phase: U-24 Paper protocol exact-head review approved; frozen-source data qualification and result-free preflight are the only next task
-current_status: u24_protocol_review_approve_qualification_only_no_results_no_oos_no_trading_no_m2
+current_phase: U-24 frozen-source qualification passed; one sealed-IS Paper observation is the only next task
+current_status: u24_qualification_pass_one_paper_observation_only_no_formal_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-24 frozen-source data qualification and result-free preflight
+    status: pass_local_complete
+    evidence: reports/m1/U24_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u24_cross_sectional_data_qualification_v1.json
+    branch: codex/u24-cross-sectional-data-qualification
+    contract_content_hash: 639421137157c61808664576691f62741e5eea8cbd4551d4870013f6008d8a58
+    qualification_content_hash: 02e1dd27ae4d04cf10c3cbd14578eb06b633b02ec749233eba22b72f9ada9627
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 4897
+    maximum_independent_theoretical_24h_episodes: 711
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-24 Paper-protocol exact-head independent review
     status: approve
     evidence: reports/expert/U24_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -2661,6 +2679,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-24-DATA-QUALIFICATION
+    phase: frozen-source data qualification and result-free preflight
+    status: completed_pass
+    contract_content_hash: 639421137157c61808664576691f62741e5eea8cbd4551d4870013f6008d8a58
+    qualification_content_hash: 02e1dd27ae4d04cf10c3cbd14578eb06b633b02ec749233eba22b72f9ada9627
+    eligible_structural_decisions: 4897
+    maximum_independent_theoretical_24h_episodes: 711
+    one_sealed_is_paper_observation_authorized: true
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-24-PROTOCOL-REVIEW
     phase: exact-head independent Paper-protocol review
     status: completed_approve
@@ -3055,6 +3086,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "Exactly one U-24 sealed-IS Paper observation may execute the frozen protocol over IS only in normal, reverse and deterministic-shuffled order."
+  - "The observation may compute frozen returns/payoff/event/path diagnostics but no fills, positions, equity, formal returns, OOS values, tuning or second run."
   - "U-24 frozen-source data qualification may verify exact archives/manifests, 336h history, 24h path structure, point-in-time membership, lifecycle/mask order, sample ceiling and isolation without decoding returns or results."
   - "Any authority, order, scope or theoretical-episode ceiling failure closes U-24 before results."
   - "A separate read-only exact-head independent review of the frozen U-24 protocol is the only next task."
@@ -3121,6 +3154,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U24_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-24 frozen-source qualification
+    status: pass_local_complete
+    status_marker: '- Status: `pass_local_complete`'
   - path: reports/expert/U24_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
     phase: U-24 Paper-protocol exact-head review
     status: approve

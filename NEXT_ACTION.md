@@ -1,5 +1,17 @@
 # Next Action
 
+## U-24 Unique Sealed-IS Paper Observation
+
+Qualification `02e1dd27...ada9627` passes with 27,736 archives, 19 manifests,
+three exact source/reader orders and a structural ceiling of 711 versus 400.
+All price/result and OOS decode counters remain zero.
+
+The only next task is one sealed-IS observation under protocol
+`5110c3f4...39c7ce7`. It may compute the frozen common-adjusted returns,
+two-half lottery payoffs, deterministic events, 24h episodes and path
+diagnostics once over IS. It must not create fills, positions, equity or formal
+returns, read OOS, tune or rerun.
+
 ## U-24 Frozen-Source Data Qualification and Result-Free Preflight
 
 Exact target `cafbd5a9...f98c3f` is approved 16/16 with 0/0 critical/high under
