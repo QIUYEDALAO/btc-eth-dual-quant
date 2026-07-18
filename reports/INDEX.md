@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U05_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-05 sealed-IS Paper observation | failed_feasibility | 490 complete episodes; frozen 24h displacement and positive-member-fraction Gates fail; OOS remains sealed. | no |
+| `reports/m1/evidence/u05_cross_sectional_paper_observation/` | U-05 Paper machine evidence | run `874cdac3...e7e4a` | Three orders exact under `ac4b36ac...f267b0`; events, episodes, paths, accounting and failed Gates are hash-bound. | no |
 | `reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md` | U-05 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes distributed common-demand persistence without timeframes, thresholds, outcomes, rules or OOS. | no |
 | `reports/expert/U05_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-05 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `8d865279...ca5a6` without modification and authorizes only data qualification. | no |
 | `reports/m1/U05_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-05 frozen-source data qualification | pass / OOS sealed | 27,736 ZIPs, 19 manifests, 4h/1h/5m authority and three traversal orders pass; outcome rows remain zero. | no |

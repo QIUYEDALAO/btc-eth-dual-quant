@@ -1,37 +1,27 @@
 # Next Action
 
-## U-05 Unique Sealed-IS Paper Observation
+## Separate Post-U-05 Candidate Decision
 
-Decision `48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c`
-authorized one independent U-05 hypothesis design. That design is now frozen as
-`U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE` under content hash
-`ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb`.
+U-05 completed its one authorized sealed-IS Paper observation and is closed as
+`failed_feasibility`. Run `874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a`
+is exact across normal, reverse and deterministic-shuffled traversal under
+identity `ac4b36ac2c04d55c25f9db62f9d59598bac8bb1861b97d4e01f701be398267b0`.
 
-The independently reviewed protocol target is
-`8d8652796e22a15285ba682b4524baa0218ca5a6`, protocol hash
-`c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214`.
-Review `8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f`
-returns `approve` with critical/high `0 / 0` and leaves all target files
-unchanged.
+The sample and distribution Gates passed with 490 complete episodes, but the
+two economic Gates failed: median 24h common-demand displacement was `0.0759%`
+versus `1.20%`, and median positive-member fraction was `53.33%` versus `60%`.
+OOS remained sealed and no formal return, fill, position or equity series was
+created.
 
-Frozen-source qualification passed under contract `f1374b5c...f562c3` and
-result `348e8029...f7cb4f`: 27,736/27,736 ZIP identities and CRCs, 19/19 V4
-manifests and all three traversal orders are exact. The aligned 4h authority is
-backed by 854,280 constituent 1h rows; OOS values, breadth/events, paths and
-returns remain zero.
+The next task is a separate governance decision on whether to authorize at
+most one new economically independent, outcome-blind candidate design. That
+decision must bind the U-05 failure, prohibit sign inversion and outcome-derived
+timeframes, thresholds, horizons or Gates, and keep event scans, strategy code,
+returns, backtesting, OOS, API/trading, `execution/live` and M2 false.
 
-Execute exactly one sealed-IS Paper observation using the frozen 4h breadth
-event, 24h clustering and 5m diagnostic contract. Normal, reverse and
-deterministic-shuffled outputs must have identical event, episode, path and
-accounting hashes. Evaluate every preregistered Paper Gate without changing a
-threshold or running a second observation.
-
-Any failed Gate closes U-05 as `failed_feasibility`. A pass may authorize only
-an independent Paper-result review. No formal strategy return, fill, position,
-equity curve, backtest or OOS access is allowed.
-
-The complete dependency chain is frozen in
-`docs/superpowers/plans/2026-07-18-u05-cross-sectional-research-mainline.md`.
+Do not conduct a U-05 Paper-result review, change its protocol, rerun it or
+continue to fixed rules. A future candidate must start with its own design and
+non-duplication evidence before any protocol or data access.
 
 ## U-04 Closed Historical Evidence
 

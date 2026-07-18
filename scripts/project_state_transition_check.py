@@ -212,6 +212,10 @@ ALLOWED = {
         "u05_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
     ): "U-05-PAPER-OBSERVATION",
     (
+        "U-05 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "u05_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-06-DECISION",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -364,6 +368,10 @@ AUDIT_BLOCKED_PAIRS = {
         "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
         "u05_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
     ),
+    (
+        "U-05 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "u05_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+    ),
 }
 
 EXPECTED_AUTH = {
@@ -420,6 +428,11 @@ U05_PROTOCOL_REVIEW_APPROVED_PAIR = (
 U05_DATA_QUALIFICATION_PASS_PAIR = (
     "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
     "u05_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U05_CLOSED_PAIR = (
+    "U-05 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+    "u05_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
 )
 
 
@@ -484,7 +497,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -548,6 +561,7 @@ def validate(state: dict) -> list[str]:
         "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
         "U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
         "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "U-05 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
     }:
         milestones = [
             item
@@ -883,6 +897,7 @@ def validate(state: dict) -> list[str]:
         "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
         "U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
         "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "U-05 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
     }:
         milestones = [
             item
@@ -1275,6 +1290,27 @@ def validate(state: dict) -> list[str]:
         }
         if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_qualification.items()):
             failures.append("U-05 data qualification milestone binding changed")
+    if pair == U05_CLOSED_PAIR:
+        observations = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-05 unique sealed-IS Paper observation"]
+        expected_observation = {
+            "status": "failed_feasibility",
+            "run_content_hash": "874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a",
+            "three_order_identity_hash": "ac4b36ac2c04d55c25f9db62f9d59598bac8bb1861b97d4e01f701be398267b0",
+            "complete_is_independent_episodes": 490,
+            "median_24h_common_demand_close_displacement": "0.0007591260524623880214213314285",
+            "median_24h_positive_member_fraction": "0.5333333333333333333333333335",
+            "oos_opened": False,
+            "formal_returns_computed": False,
+            "second_run_executed": False,
+            "candidate_closed": True,
+            "strategy_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(observations) != 1 or any(observations[0].get(key) != value for key, value in expected_observation.items()):
+            failures.append("U-05 failed observation milestone binding changed")
+        if any(item.get("id") == "U-05-PAPER-OBSERVATION" for item in open_work):
+            failures.append("closed U-05 observation remains open")
     if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
         protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
         expected_protocol = {

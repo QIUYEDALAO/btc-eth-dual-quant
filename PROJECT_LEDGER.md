@@ -1958,3 +1958,12 @@ private exchange responses here.
 - 4h authority: 854,280 constituent 1h rows and 213,570 aligned expected 4h member-blocks; quarantined constituents invalidate whole blocks without substitution.
 - Isolation: OOS OHLC decoded 0; breadth/event/path/return rows generated 0; network false; production evidence unchanged.
 - Authorization: exactly one sealed-IS Paper observation. No tuning, second run, formal returns, strategy/backtesting, OOS, API/trading, `execution/live` or M2.
+
+## 2026-07-18 - U-05 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Task: `U-05-PAPER-OBSERVATION`; branch `codex/u05-cross-sectional-paper-observation`; local Git only.
+- Run: `874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a`; three-order identity `ac4b36ac...f267b0` with exact event/episode/path/accounting hashes.
+- Sample: 1,488 candidate events, 509 independent episodes and 490 complete 24h episodes. Count projections, year/quarter concentration and event-month Gates pass.
+- Failed frozen Gates: median 24h common-demand close displacement `0.0759%` versus `1.20%`; median positive-member fraction `53.33%` versus `60%`.
+- Isolation: OOS opened false; OOS rows decoded 0; no formal return, fill, position or equity output; no network, second run or parameter change.
+- Decision: `U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE` is closed as `failed_feasibility`. No Paper-result review, lifecycle/fixed-rule work, strategy/backtesting, OOS, trading or M2 follows.
