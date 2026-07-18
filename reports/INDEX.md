@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/expert/U15_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-15 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `5438dec6...da5a` unchanged and authorizes only field/data qualification and preflight. | no |
+| `reports/expert/evidence/u15_cross_sectional_paper_protocol_review_v1.json` | U-15 protocol review machine evidence | content `2686c3ac...8ceb` | Binds five exact target files, 15 review dimensions and qualification-only authority. | no |
 | `reports/m1/U15_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-15 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes official taker-buy field contract, completed 4h identity, paths, Gates, isolation and pre-result checks. | no |
 | `config/u15_cross_sectional_paper_protocol_v1.json` | U-15 machine Paper protocol | content `3b58d6a2...b577a` | Only protocol freeze and exact-head review are true; result and trading permissions remain false. | no |
 | `reports/m1/U15_TAKER_BUY_ABSORPTION_PERSISTENCE_DESIGN.md` | U-15 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes aggressive taker-buy absorption and latent demand persistence without parameters, data, results or OOS. | no |

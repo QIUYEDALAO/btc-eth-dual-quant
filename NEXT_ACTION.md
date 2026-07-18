@@ -1,5 +1,18 @@
 # Next Action
 
+## U-15 Official Taker-Buy Field/Data Qualification and Preflight
+
+Exact target `5438dec6...da5a` is approved with 0/0 critical/high under review
+`2686c3ac...8ceb`. The only next task may read frozen source strictly to prove
+the 12-column official Kline layout, taker-buy quote/base field identity and
+numeric validity, 4h/5m assembly, membership/lifecycle/mask order and OOS
+isolation. It must also compute only a structural sample ceiling and run three
+synthetic one-million-row complexity passes.
+
+This stage must not calculate taker state, price residuals, events, paths or
+returns. Any field ambiguity, source drift, traversal mismatch, insufficient
+ceiling or complexity failure closes the candidate before results.
+
 ## U-15 Exact-Head Independent Paper-Protocol Review
 
 Protocol `U15-03-TAKER-BUY-ABSORPTION-PERSISTENCE-PAPER-V1` is frozen under

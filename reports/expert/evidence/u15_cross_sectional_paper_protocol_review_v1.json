@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "status": "approve",
+  "review_id": "U15-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "target": {
+    "head_sha": "5438dec609aaaed675e8ecba6f15ae9bb6f6da5a",
+    "parent_sha": "6c37a6096e1a6c147ae73483d7f33ecdf4cd4d91",
+    "protocol_content_hash": "3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a",
+    "files": {
+      "config/u15_cross_sectional_paper_protocol_v1.json": "b4dfc0269b79874084a3712ad9065e607b24eb6432bcd2d7f85dd27f2bbe8dd8",
+      "reports/m1/U15_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "4e0b695d0407f76cc2859f4bd3586c45df720a9590a5eac1d6a33e1333539f7f",
+      "scripts/u15_cross_sectional_paper_protocol_check.py": "1840a401ff000abd08ae05cf82a151ead88b6bef9c1d107362fa94abc0a1b3df",
+      "scripts/u15_cross_sectional_paper_protocol_validate.sh": "0e74b6d2d5ffa6e5895e5f6658ceb33395a178c070bbf75c1f341b066242f815",
+      "tests/test_u15_cross_sectional_paper_protocol.py": "4b908d197b691c7b339dd500ea152a248e229b213e18f3677ba48867a6ac8075"
+    }
+  },
+  "verdict": "approve",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "review_dimensions": {
+    "candidate_and_design_binding": "pass",
+    "official_taker_buy_field_semantics": "pass",
+    "field_availability_fail_closed_gate": "pass",
+    "point_in_time_membership_and_lifecycle": "pass",
+    "invalid_interval_mask_order": "pass",
+    "completed_4h_causal_timing": "pass",
+    "cross_sectional_center_and_scale": "pass",
+    "event_threshold_and_tie_break": "pass",
+    "episode_clustering": "pass",
+    "next_open_and_path_censoring": "pass",
+    "sample_projection_and_concentration_gates": "pass",
+    "economic_and_cost_gates": "pass",
+    "complexity_and_scope_preflight": "pass",
+    "oos_and_outcome_isolation": "pass",
+    "authorization_matrix": "pass"
+  },
+  "authorization_after_review": {
+    "data_field_qualification_complexity_and_preflight": true,
+    "taker_state_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "fixed_rule_contract": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "review_content_hash": "2686c3acc1f5d46d7b37295530c54268f314cca177197306db7358bb8aa38ceb",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

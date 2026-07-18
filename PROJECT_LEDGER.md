@@ -2400,4 +2400,11 @@ private exchange responses here.
 - Hard prerequisite: independently qualify exact official taker-buy columns and every consumed raw-row binding; missing/ambiguous/revised fields may not be inferred, repaired, filled or substituted.
 - Observation/Gates: next expected 5m open, 1/2/4/8/12/24h paths, 90 complete episodes and frozen projection/distribution/economic Gates; no fill, position, equity or formal return.
 - Next action: separate exact-head independent protocol review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-18 - U-15 Paper Protocol Exact-Head Review Approved
+
+- Target: `5438dec609aaaed675e8ecba6f15ae9bb6f6da5a`; protocol `3b58d6a2...b577a`; five target blobs remain exact.
+- Verdict: `approve`, 15/15 dimensions, 0 critical and 0 high; review `2686c3ac...8ceb`.
+- Finding: official taker-buy quote field identity is explicit and cannot be inferred or substituted; timing, estimator, thresholds, clustering, paths, Gates, complexity and isolation are causal and fixed.
+- Authorization: only a separate field/data qualification, sample ceiling, synthetic complexity benchmark and result-free scope preflight. Events, paths, returns, strategy, OOS and trading remain false.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

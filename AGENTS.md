@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-15 exact protocol target `5438dec609aaaed675e8ecba6f15ae9bb6f6da5a` is independently approved with 15/15 dimensions, 0 critical/high and review `2686c3acc1f5d46d7b37295530c54268f314cca177197306db7358bb8aa38ceb`.
+- Only official taker-buy field/data qualification, structural sample ceiling, synthetic complexity and result-free scope preflight are authorized next. That stage may not compute taker state, events, paths, returns or read OOS values.
 - U-15 Paper protocol `U15-03-TAKER-BUY-ABSORPTION-PERSISTENCE-PAPER-V1` is frozen before results under `3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a`. Only an exact-head independent review is authorized next.
 - The protocol fixes official taker-buy quote field semantics, completed 4h aggregation, share/z/relative-return thresholds, 24h clustering, next-open paths and Paper Gates. It requires a separate field/data qualification before any event scan and forbids inference, repair, fill or substitution of missing taker fields.
 - Review approval can authorize only field/data qualification, complexity and preflight. Market/event/path/result access, formal returns, fixed rules, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
