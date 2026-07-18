@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+            "U-04 paper feasibility failed; candidate closed without OOS",
         )
         self.assertEqual(
             state["current_status"],
-            "u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+            "u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -457,15 +457,7 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertFalse(implementation["u04_authorized"])
         self.assertFalse(implementation["m2_authorized"])
         self.assertTrue(implementation["public_data_run_executed"])
-        protocol = next(
-            item for item in state["open_work"]
-            if item["id"] == "U-04-PAPER-OBSERVATION"
-        )
-        self.assertEqual(protocol["status"], "authorized_ready")
-        self.assertEqual(protocol["candidate_id"], "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL")
-        self.assertTrue(protocol["paper_observation_authorized"])
-        self.assertTrue(protocol["event_scan_authorized"])
-        self.assertFalse(protocol["formal_returns_authorized"])
+        self.assertFalse(any(item["id"].startswith("U-04") for item in state["open_work"]))
         audit_protocol = state["adr0015_invalid_interval_independent_audit_protocol"]
         self.assertEqual(
             audit_protocol["protocol_content_hash"],
@@ -509,7 +501,7 @@ class KlaySourceConflictTests(unittest.TestCase):
             {
                 "hypothesis_preregistration": False,
                 "strategy_code": False,
-                "event_scan": True,
+                "event_scan": False,
                 "returns": False,
                 "backtesting": False,
                 "oos_opened": False,

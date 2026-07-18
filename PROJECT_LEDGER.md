@@ -1911,3 +1911,11 @@ private exchange responses here.
 - Contract/result: `fc45ba3...52af2` / `4bdebb52...5a8c`.
 - Isolation: OOS OHLC decoded 0; U-04 event/path/return rows generated 0; no network or production-evidence mutation.
 - Decision: authorize exactly one sealed-IS paper observation. No tuning, second scan, formal returns, strategy/backtesting, OOS, API/trading, `execution/live` or M2.
+
+## 2026-07-18 - U-04 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run: `9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2`; three-order identity `4c512f59...1b42`.
+- Sample: 2,890 timestamp representatives, 420 connected episodes and 397 complete 24h episodes; full/OOS count projections and all concentration Gates pass.
+- Failed frozen Gates: median 24h relative recovery `-0.8556%` and absolute close displacement `-0.7946%`, each below `+1.80%`.
+- Isolation: OOS opened false; OOS rows decoded 0; no formal return, fill, position or equity output; no second run or parameter change.
+- Decision: `U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL` is closed as `failed_feasibility`. No paper-result review, lifecycle/fixed-rule work, strategy/backtesting, OOS, trading or M2 follows.

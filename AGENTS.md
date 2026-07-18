@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-04's unique sealed-IS paper observation is `failed_feasibility`. It produced 397 complete independent episodes, but median 24h relative recovery was `-0.8556%` and median absolute displacement was `-0.7946%`, both below the frozen `+1.80%` Gates. Run `9182c9e3...eebc2`; three-order identity `4c512f59...1b42`.
+- U-04 is closed without tuning, a second observation, formal returns or OOS access. Stages 6-20 are not authorized. Any future candidate requires a separate authorization and new identity; strategy/backtesting, OOS, API/trading, execution/live and M2 remain prohibited.
 - U-04 frozen-source data qualification passed locally: 27,736/27,736 ZIP identities and CRCs, 19/19 audited authority manifests, and normal/reverse/deterministic-shuffled identity `ca7d59b3...44aa` are exact. Qualification hash `4bdebb527494386d43f85189bf835e7fa1426325c5ef5383ec6fa46c2bb55a8c`; OOS OHLC decode and U-04 event/path/return outputs were all zero.
 - Exactly one sealed-IS paper observation under protocol `7b0e462d...9629d6` is authorized next. It may calculate only preregistered IS event/episode/path diagnostics. No tuning, second run, formal returns, strategy/backtesting, OOS, API/trading, execution/live or M2 is authorized.
 - CI governance merged in PR #106 at `925ce55f549f145d9c47be9ec8007feff2eebfad`: one cancel-in-progress selective pull-request Gate, one consolidated `main` Gate, and manual-only historical workflows. This changes no project authorization.

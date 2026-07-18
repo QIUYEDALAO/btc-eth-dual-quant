@@ -128,7 +128,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-04-PROTOCOL | Outcome-blind residual-reversal paper protocol design | completed_local | U-04 design completed | `codex/u04-cross-sectional-paper-protocol` / target `6523b83d...07be` | One pre-outcome protocol with fixed event/observation/Gate definitions | Protocol `7b0e462d...9629d6`; no execution or result access | none |
 | U-04-PROTOCOL-REVIEW | Exact-head independent paper-protocol review | completed_approve_local | U-04-PROTOCOL exact target | `codex/u04-cross-sectional-paper-protocol-review` / local-only | Hash-bound 13-dimension review | `approve`; 0 critical/high; review `34fe2efd...646b1` | none |
 | U-04-DATA-QUALIFICATION | Frozen-source data qualification and IS/OOS isolation | completed_pass_local | U-04-PROTOCOL-REVIEW approve | `codex/u04-cross-sectional-data-qualification` / local-only | 27,736 ZIP identity/CRC, 19 authority manifests, boundary guard | Qualification `4bdebb52...5a8c`; 3-order `ca7d59b3...44aa`; OOS decode 0 | none |
-| U-04-PAPER-OBSERVATION | Unique sealed-IS paper observation | authorized_next | U-04-DATA-QUALIFICATION pass | `codex/u04-cross-sectional-paper-observation` / local-only | Frozen residual events, episodes and path diagnostics only | Three orders exact and all preregistered Paper Gates pass | fail closed on any Gate; no tuning or rerun |
+| U-04-PAPER-OBSERVATION | Unique sealed-IS paper observation | completed_failed_feasibility | U-04-DATA-QUALIFICATION pass | `codex/u04-cross-sectional-paper-observation` / local-only | Frozen residual events, episodes and path diagnostics only | 397 complete; relative `-0.8556%`, absolute `-0.7946%`; both +1.80% Gates fail | candidate closed; stages 6-20 not entered |
 
 ## Current Gate
 

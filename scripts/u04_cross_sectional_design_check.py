@@ -156,8 +156,20 @@ def validate_ledger(path: Path = LEDGER_PATH) -> list[str]:
     digest = hashlib.sha256(str(candidate.get("hypothesis", "")).encode()).hexdigest()
     if digest != EXPECTED_HYPOTHESIS_HASH or candidate.get("sha256") != EXPECTED_HYPOTHESIS_HASH:
         failures.append("registered U-04 hypothesis hash changed")
-    if candidate.get("status") != "declared_unopened" or candidate.get("oos_opened") is not False:
-        failures.append("U-04 must remain declared_unopened with sealed OOS")
+    if candidate.get("oos_opened") is not False:
+        failures.append("U-04 OOS must remain sealed")
+    status = candidate.get("status")
+    if status == "failed_feasibility":
+        result_path = ROOT / "reports/m1/evidence/u04_cross_sectional_paper_observation/run_manifest.json"
+        result = load_json(result_path) if result_path.is_file() else {}
+        if (
+            result.get("status") != "failed_feasibility"
+            or result.get("run_content_hash") != "9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2"
+            or result.get("oos_opened") is not False
+        ):
+            failures.append("U-04 failed-feasibility ledger status lacks exact sealed result evidence")
+    elif status != "declared_unopened":
+        failures.append("U-04 ledger status is not an allowed sealed research state")
     return failures
 
 

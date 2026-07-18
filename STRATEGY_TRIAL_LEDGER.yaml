@@ -10,11 +10,11 @@ rules:
   candidate_queue_order_is_immutable: true
 candidates:
   - id: U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL
-    status: declared_unopened
+    status: failed_feasibility
     hypothesis: "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL: Binance spot USDT long/cash only; at a completed UTC observation time, the prior-only price move of each asset is compared with the contemporaneous move of the exact point-in-time active liquid universe; an asset-specific negative residual may reflect temporary local liquidity pressure and may partially reverse after the next eligible open; no shorting, leverage, loss adding, current-membership hindsight, replacement members, or lifecycle-crossing assumption."
     sha256: 85e9fc11e8f6b69597fecdb6a40485611eb24163a20cea4534e81d0f08e5ec7a
     oos_opened: false
-    notes: "U-04 design-only registration. No event scan, parameter, return, fixed rule, Freqtrade implementation or OOS access is authorized; a separate outcome-blind protocol must precede any event scan."
+    notes: "The unique sealed-IS paper observation produced 397 complete episodes but failed both frozen 24h recovery Gates: median relative recovery -0.8556% and absolute displacement -0.7946% versus +1.80% required. OOS remained sealed; no formal return, strategy or backtest was run. Candidate closed without tuning or a second observation."
   - id: M1E-1H-TREND-BREAKOUT
     status: failed_feasibility
     hypothesis: "M1E-1H-TREND-BREAKOUT: BTC/USDT and ETH/USDT Binance spot, long/cash only; completed UTC 1h candles define a trend-breakout candidate family distinct from M1A; entries may execute no earlier than the next available 5m open after the completed signal candle; completed 4h candles may be used only as a regime filter; no shorting or leverage."

@@ -192,6 +192,10 @@ ALLOWED = {
         "u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
     ): "U-04-PAPER-OBSERVATION",
     (
+        "U-04 paper feasibility failed; candidate closed without OOS",
+        "u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-04-CLOSED",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -291,6 +295,10 @@ ADR0015_EXACT_IMPLEMENTATION_FILES = (
 CLOSED_TASK_PAIRS = {
     FAILED_U03F_CLOSEOUT_PAIR,
     REPAIR_CHAIN_CLOSED_PAIR,
+    (
+        "U-04 paper feasibility failed; candidate closed without OOS",
+        "u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2",
+    ),
 }
 
 AUDIT_BLOCKED_PAIRS = {
@@ -319,6 +327,10 @@ AUDIT_BLOCKED_PAIRS = {
     (
         "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
         "u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-04 paper feasibility failed; candidate closed without OOS",
+        "u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2",
     ),
 }
 
@@ -351,6 +363,11 @@ U04_PROTOCOL_REVIEW_APPROVED_PAIR = (
 U04_DATA_QUALIFICATION_PASS_PAIR = (
     "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
     "u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U04_FAILED_FEASIBILITY_PAIR = (
+    "U-04 paper feasibility failed; candidate closed without OOS",
+    "u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2",
 )
 
 
@@ -474,6 +491,7 @@ def validate(state: dict) -> list[str]:
         "U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task",
         "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
         "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+        "U-04 paper feasibility failed; candidate closed without OOS",
     }:
         milestones = [
             item
@@ -804,6 +822,7 @@ def validate(state: dict) -> list[str]:
         "U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task",
         "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
         "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+        "U-04 paper feasibility failed; candidate closed without OOS",
     }:
         milestones = [
             item
@@ -1033,6 +1052,22 @@ def validate(state: dict) -> list[str]:
             }.items()
         ):
             failures.append("U-04 sealed-IS paper-observation authorization binding changed")
+    if pair == U04_FAILED_FEASIBILITY_PAIR:
+        if any(item.get("id", "").startswith("U-04") for item in open_work):
+            failures.append("failed U-04 candidate must not remain in open_work")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-04 unique sealed-IS paper observation"]
+        expected_failure = {
+            "status": "failed_feasibility",
+            "run_content_hash": "9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2",
+            "three_order_identity_hash": "4c512f5900b15969cf13c1481317e388d94d3ac6c2b26dc576914863b5201b42",
+            "complete_is_independent_episodes": 397,
+            "failed_gates": ["median_24h_relative_recovery", "median_24h_absolute_close_displacement"],
+            "oos_opened": False,
+            "second_run_executed": False,
+            "candidate_closed": True,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_failure.items()):
+            failures.append("U-04 failed-feasibility milestone binding changed")
     if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
         protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
         expected_protocol = {

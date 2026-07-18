@@ -2,11 +2,31 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task
-current_status: u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-04 paper feasibility failed; candidate closed without OOS
+current_status: u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-04 unique sealed-IS paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U04_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u04_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u04-cross-sectional-paper-observation
+    run_content_hash: 9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2
+    three_order_identity_hash: 4c512f5900b15969cf13c1481317e388d94d3ac6c2b26dc576914863b5201b42
+    candidate_events: 2890
+    independent_episodes: 420
+    complete_is_independent_episodes: 397
+    median_24h_relative_recovery: '-0.008556398568655178767341556211667999570187556831814'
+    median_24h_absolute_close_displacement: '-0.00794575696578027333403962284140269096302574425257'
+    failed_gates: [median_24h_relative_recovery, median_24h_absolute_close_displacement]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-04 frozen-source data qualification and IS/OOS isolation
     status: pass_local_complete
     evidence: reports/m1/U04_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -725,29 +745,6 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-04-PAPER-OBSERVATION
-    phase: U-04 unique sealed-IS paper observation
-    status: authorized_ready
-    branch: codex/u04-cross-sectional-paper-observation
-    pr: none
-    head_sha: pending
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m1/evidence/u04_cross_sectional_data_qualification_v1.json
-    candidate_id: U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL
-    protocol_content_hash: 7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6
-    review_content_hash: 34fe2efdf4788b20b915f34b3b6442f60ddaa364103ae90b920dc2cacf9646b1
-    qualification_content_hash: 4bdebb527494386d43f85189bf835e7fa1426325c5ef5383ec6fa46c2bb55a8c
-    source_mode: frozen_local_is_only
-    paper_observation_authorized: true
-    event_scan_authorized: true
-    path_observation_authorized: true
-    formal_returns_authorized: false
-    second_run_authorized: false
-    strategy_authorized: false
-    oos_authorized: false
-    trading_authorized: false
-    m2_authorized: false
-    blocker: none
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -814,9 +811,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Execute exactly one sealed-IS paper observation under protocol 7b0e462d...9629d6 and qualification 4bdebb52...5a8c."
-  - "Compute only preregistered U-04 event, episode and path diagnostics in the IS boundary; do not tune or rerun."
-  - "Keep OOS sealed and produce no fills, positions, equity curve or formal strategy returns."
+  - "No U-04 successor is authorized: the candidate is closed as failed_feasibility."
+  - "Preserve run 9182c9e3...eebc2 and its two failed 24h Gates without tuning or a second observation."
+  - "Any future candidate design review requires a separate explicit authorization and a new candidate identity."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -826,7 +823,7 @@ allowed_next_work:
 research_authorizations:
   hypothesis_preregistration: false
   strategy_code: false
-  event_scan: true
+  event_scan: false
   returns: false
   backtesting: false
   oos_opened: false
@@ -853,6 +850,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U04_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-04 sealed-IS paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u04_cross_sectional_paper_observation/run_manifest.json
+    phase: U-04 paper observation machine result
+    status: deterministic_failed_feasibility
+    status_marker: '"status":"failed_feasibility"'
   - path: reports/m1/U04_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-04 data qualification and isolation
     status: pass_local_complete

@@ -1,6 +1,8 @@
 # Reports Index
 
 | `reports/m1/U04_CROSS_SECTIONAL_RESIDUAL_REVERSAL_DESIGN.md` | U-04 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes one point-in-time active-universe residual-reversal mechanism without events, returns, parameters or OOS. | no |
+| `reports/m1/U04_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-04 sealed-IS paper observation | failed_feasibility | 397 complete episodes; both frozen +1.80% 24h recovery Gates fail; OOS remains sealed. | no |
+| `reports/m1/evidence/u04_cross_sectional_paper_observation/` | U-04 paper machine evidence | run `9182c9e3...eebc2` | Three orders exact under `4c512f59...1b42`; events, episodes, paths, accounting and failed Gates are hash-bound. | no |
 | `reports/m1/U04_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-04 data qualification | pass / OOS sealed | 27,736 ZIPs, 19 manifests and three orders exact; OOS OHLC decode and U-04 result rows remain zero. | no |
 | `reports/m1/evidence/u04_cross_sectional_data_qualification_v1.json` | U-04 data qualification machine evidence | content `4bdebb52...5a8c` | Binds frozen source, grid, membership, lifecycle, invalid-interval mask and one-run-only next authorization. | no |
 | `reports/expert/U04_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-04 paper-protocol exact-head review | approve / 0 critical-high | Reviews target `6523b83d...07be` without modification and authorizes only frozen-source data qualification. | no |
