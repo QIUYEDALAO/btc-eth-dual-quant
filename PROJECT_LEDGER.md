@@ -2694,3 +2694,10 @@ private exchange responses here.
 - Structure: 37,401 eligible decisions and maximum 1,514 independent 24h episodes versus 400 required; every IS year exceeds the eventual floor.
 - Isolation: price, return, dispersion, leader, event, path, formal-return and OOS decoded rows are all zero.
 - Authorization: exactly one sealed-IS Paper observation; no strategy, backtest, OOS or trading.
+
+## 2026-07-19 - U-22 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c`; all three traversal orders and four manifests are exact.
+- Sample: 198 episodes, 43 symbols, 54 months and five qualifying years; every sample, projection, concentration and authority Gate passes.
+- Economics: median 24h relative continuation `-0.1688%`, absolute displacement `+0.1115%`, positive fraction `47.98%`; all three frozen economic Gates fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-22 is permanently closed.

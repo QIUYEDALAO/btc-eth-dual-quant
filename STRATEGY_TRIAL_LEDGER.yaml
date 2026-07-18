@@ -10,11 +10,11 @@ rules:
   candidate_queue_order_is_immutable: true
 candidates:
   - id: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
-    status: declared_unopened
+    status: failed_feasibility
     hypothesis: "U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, a broadening cross-sectional return-dispersion regime in which one asset develops multi-observation positive peer-relative leadership without single-observation dominance may reflect segmented attention, capital rotation and gradual price discovery, so relative leadership may continue after the next eligible open; no U-04 through U-21 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
     sha256: 4ec9eba4d04169fe90caf50f4eaa914f1784339802b148a1cff43f5a07cb77d3
     oos_opened: false
-    notes: "Outcome-blind design only. Timeframe, history, dispersion/common estimators, thresholds, paths, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read; only a synthetic exact-core feasibility check may accompany later protocol design before freeze."
+    notes: "The unique sealed-IS Paper observation produced 198 complete episodes and passed all sample, projection, year, symbol, month, concentration and authority Gates, but failed all three economic Gates: relative continuation -0.1688%, absolute displacement +0.1115%, positive fraction 47.98%. OOS remained sealed; no formal return, strategy or backtest was run."
   - id: U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM
     status: failed_pre_result_complexity
     hypothesis: "U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose squared common-adjusted returns exhibit persistently high comovement with squared active-universe common returns may consume risk capital during large market moves, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-20 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

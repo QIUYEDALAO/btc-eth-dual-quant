@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-22's unique sealed-IS Paper observation is `failed_feasibility` under `12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c`. All sample/distribution Gates pass with 198 episodes, but relative continuation `-0.1688%`, absolute displacement `+0.1115%` and positive fraction `47.98%` fail all three economic Gates. U-22 is closed without rerun, formal returns or OOS. Only a separate U-23 authorization may follow; strategy/backtesting, API/trading, execution/live and M2 remain false.
+
 - U-22 frozen-source qualification passes under `9b009c6b940e338cc77f8f3ea9e8dd473689c739d6c247ad0ba078c3f40a2334`: 27,736 archives, 19 manifests, three source/reader orders and a 1,514 independent-episode structural ceiling are exact; result/OOS decode counts are zero. Exactly one sealed-IS Paper observation is authorized; formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-22 exact protocol target `d4f254f876dfeab73494c79a48e90c86dfd0ee16` is independently approved 16/16 with 0 critical/high under review `e2a920c29105a32764016d478d22efa0d234a2fc5362ce5cae17f4671218cd57`. Only frozen-source structural qualification, 24h-history/24h-path sample ceiling and result-free preflight are authorized. Returns, dispersion, leaders, events, paths, formal returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

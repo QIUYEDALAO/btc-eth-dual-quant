@@ -2,11 +2,29 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-22 frozen-source qualification passed; one sealed-IS Paper observation is the only next task
-current_status: u22_qualification_pass_one_paper_observation_only_no_formal_returns_no_oos_no_trading_no_m2
+current_phase: U-22 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized
+current_status: u22_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-22 unique sealed-IS dispersion-expansion Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U22_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u22_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u22-cross-sectional-paper-observation
+    run_content_hash: 12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c
+    complete_is_independent_episodes: 198
+    median_24h_relative_leader_continuation: '-0.001687854951459260169225285968'
+    median_24h_candidate_absolute_close_displacement: '0.001114962219070440020390258450'
+    fraction_positive_24h_relative_leader_continuation: '0.4797979797979797979797979798'
+    failed_gates: [median_24h_relative_leader_continuation, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_leader_continuation]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-22 frozen-source data qualification and result-free preflight
     status: pass_local_complete
     evidence: reports/m1/U22_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -2489,9 +2507,9 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-22-DATA-QUALIFICATION
-    phase: frozen-source data qualification and result-free preflight
-    status: completed_pass_local
+  - id: U-22-PAPER-OBSERVATION
+    phase: unique sealed-IS dispersion-expansion Paper observation
+    status: completed_failed_feasibility
     authorization_content_hash: 82aef7f378a1aaa46ded62cfc21dedb67e6d86a8d0c27c24f66280d8c124e29d
     prior_qualification_content_hash: 33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b
     candidate_id: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
@@ -2502,7 +2520,8 @@ open_work:
     critical_findings: 0
     high_findings: 0
     qualification_content_hash: 9b009c6b940e338cc77f8f3ea9e8dd473689c739d6c247ad0ba078c3f40a2334
-    one_sealed_is_paper_observation_authorized: true
+    run_content_hash: 12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c
+    candidate_closed: true
     public_data_read_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
@@ -2766,7 +2785,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Execute exactly one sealed-IS U-22 Paper observation under the frozen protocol; no tuning, second run, formal returns or OOS access."
+  - "U-22 is closed. Only a separate U-23 independent-candidate design authorization decision may follow without using U-22 results to select the mechanism."
+  - "No U-22 tuning, inversion, second observation, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-21 outcomes, Gates, defects, censor patterns and the U-21 complexity failure may not select U-22."
   - "No U-21 optimization, qualification retry, Paper observation, fixed rule, strategy, backtest or OOS step is authorized."
   - "No U-20 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
