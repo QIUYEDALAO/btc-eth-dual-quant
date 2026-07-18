@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-12 design authorization `ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7` permits exactly one economically independent outcome-blind cross-sectional hypothesis design. No public-data read, parameter, event scan, return, strategy/backtest, OOS, trading or M2 authority is granted.
+- U-12 must not use U-11's invalid zero-event attempt or monthly-boundary defect, nor any U-04 through U-10 result, to choose its mechanism. A separate Paper protocol and pre-result implementation/data-scope preflight are mandatory before any future event scan.
 - U-11's single sealed-IS observation attempt is deterministic under run `0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521` but invalid as economic evidence. The active-month reader omitted previous-boundary closes across monthly membership transitions, rejecting 9,925 of 9,931 decision times before capture. U-11 is closed `failed_execution_invalid_observation`; no repair or rerun is authorized.
 - Only a separate U-12 independent-candidate authorization decision may follow. It may authorize at most one economically independent outcome-blind hypothesis design; parameters, data reads, event scans, returns, strategy/backtesting, OOS, API/trading, `execution/live` and M2 remain false.
 - U-11 frozen-source qualification historically passed under contract `b376f6c8250a6810a32dd2ceca5cca94431f7e5cf0e1249ded364700940ccfcc` and result `b0476b5e8cdd60769f49312e682329376daf5fa6f4163358d9bd4c84f0ca05b6`. Its one-run authority was consumed by the invalid attempt and is no longer active.

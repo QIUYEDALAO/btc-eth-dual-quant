@@ -1,6 +1,25 @@
 # Next Action
 
-## U-12 Independent-Candidate Authorization Decision
+## U-12 Outcome-Blind Hypothesis Design
+
+Decision `ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7`
+authorizes exactly one economically independent, outcome-blind U-12 hypothesis
+design for the point-in-time liquid spot cross-section.
+
+The design must define one mechanism, causal timing, non-duplication and failure
+regimes while leaving timeframe, estimator, threshold, event, path, cost and
+strategy rules unresolved for a separate Paper protocol. It may not read public
+data or results.
+
+U-11's invalid attempt remains non-economic evidence and cannot be repaired,
+retried or repackaged. U-04 through U-10 outcome signs, paths, failed Gates and
+censor patterns may not be used to select U-12.
+
+The only next task is that one hypothesis design. Event scans, signals, returns,
+fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and
+M2 remain false.
+
+## U-12 Authorization Record
 
 The one U-11 observation attempt is deterministic but invalid as economic
 evidence. Run `0a55b61c...a9521` rejected 9,925 of 9,931 decision times because
@@ -13,11 +32,8 @@ U-11 is closed without a retry. No threshold, protocol or implementation repair
 may be used to produce a second result. OOS, formal returns, strategy,
 backtesting, trading and M2 remain false.
 
-The only next task is a separate U-12 governance decision. It may authorize at
-most one economically independent, outcome-blind hypothesis design and must
-bind all prior evidence without exploiting U-11's execution defect or any prior
-outcome. It does not itself authorize parameters, data reads, event scans,
-returns, strategy code, OOS or trading.
+The separate U-12 governance decision is complete under `ecb8fd78...02e7`. It
+authorizes one hypothesis design only and grants no data or result authority.
 
 ## U-11 Historical Chain
 

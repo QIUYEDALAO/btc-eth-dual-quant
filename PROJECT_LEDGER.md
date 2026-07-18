@@ -2240,3 +2240,11 @@ private exchange responses here.
 - Adjudication: `failed_execution_invalid_observation`. The raw generated `failed_feasibility` manifest is immutable attempt evidence, not admissible economic evidence.
 - Isolation: OOS opened false, formal returns false, network access false and second result-bearing run false.
 - Decision: U-11 is closed with no repair or retry. Only a separate U-12 independent-candidate authorization decision may follow; strategy, backtesting, OOS, trading and M2 remain prohibited.
+
+## 2026-07-18 - U-12 Independent Design Authorized
+
+- Task: `U-12-DECISION`; branch `codex/u12-design-authorization`; local Git only.
+- Decision: `ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7`; exactly one economically independent, outcome-blind U-12 hypothesis design.
+- Binding: U-11 remains closed `failed_execution_invalid_observation` under attempt `0a55b61c...a9521`; its zero-event output is not economic evidence and no retry is authorized. Prior U-04 through U-10 evidence and V4 audit/source freeze remain exact.
+- Independence: U-11's defect and all prior result signs, paths, failed Gates and censor patterns may not select U-12.
+- Authorization: hypothesis design only. Public-data reads, events, parameters, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.

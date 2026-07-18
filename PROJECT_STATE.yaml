@@ -2,11 +2,30 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-11 Paper observation invalid due execution defect; separate U-12 independent-candidate authorization decision is the only next task
-current_status: u11_failed_execution_invalid_observation_candidate_closed_u12_decision_only_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-12 independent design authorized; one outcome-blind hypothesis design is the only next task
+current_status: u12_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-12 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U12_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u12_design_authorization_v1.json
+    branch: codex/u12-design-authorization
+    decision_content_hash: ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7
+    prior_candidate: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    prior_attempt_content_hash: 0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521
+    prior_status: failed_execution_invalid_observation
+    prior_economic_result_admissible: false
+    prior_retry_authorized: false
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-11 unique sealed-IS Paper observation attempt and fail-closed adjudication
     status: failed_execution_invalid_observation
     evidence: reports/m1/U11_PAPER_OBSERVATION_ADJUDICATION.md
@@ -1499,16 +1518,14 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-12-DECISION
-    phase: separate post-U-11 independent-candidate authorization decision
-    status: authorized_next_not_started
-    prior_candidate: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
-    prior_run_content_hash: 0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521
-    prior_status: failed_execution_invalid_observation
-    prior_retry_authorized: false
-    maximum_new_hypotheses_if_authorized: 1
-    governance_only: true
-    hypothesis_design_authorized: false
+  - id: U-12
+    phase: one independent outcome-blind cross-sectional hypothesis design
+    status: authorized_not_started
+    authorization_content_hash: ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    u11_defect_or_invalid_result_reuse_prohibited: true
+    hypothesis_design_authorized: true
     event_scan_authorized: false
     returns_authorized: false
     strategy_authorized: false
@@ -1581,8 +1598,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Make one separate U-12 independent-candidate hypothesis design authorization decision; do not repair or rerun U-11."
-  - "If authorized, U-12 must use an economically independent, outcome-blind hypothesis design that does not exploit U-11's defect or prior outcomes."
+  - "Design exactly one economically independent, outcome-blind U-12 cross-sectional hypothesis; do not repair or rerun U-11."
+  - "The U-12 hypothesis design must document mechanism, causal timing, non-duplication, failure regimes and unresolved future protocol choices without selecting parameters."
   - "Preserve U-04 through U-11 evidence without tuning, inversion, retry or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1592,7 +1609,7 @@ allowed_next_work:
   - Do not use API keys.
   - Do not run live or paper trading.
 research_authorizations:
-  hypothesis_preregistration: false
+  hypothesis_preregistration: true
   strategy_code: false
   event_scan: false
   returns: false
@@ -1621,6 +1638,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U12_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-12 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u12_design_authorization_v1.json
+    phase: U-12 design authorization machine evidence
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7"'
   - path: reports/m1/U11_PAPER_OBSERVATION_ADJUDICATION.md
     phase: U-11 Paper observation fail-closed adjudication
     status: failed_execution_invalid_observation
