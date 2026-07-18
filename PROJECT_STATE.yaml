@@ -2,11 +2,39 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-14 Paper protocol exact-head review approved; qualification, complexity benchmark and preflight are the only next task
-current_status: u14_paper_protocol_review_approve_qualification_complexity_preflight_only_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-14 data qualification and complexity preflight passed; one frozen sealed-IS Paper observation is the only next task
+current_status: u14_data_qualification_complexity_preflight_pass_one_sealed_is_paper_observation_authorized_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-14 frozen-source data qualification, complexity benchmark and preflight
+    status: pass_local_complete
+    evidence: reports/m1/U14_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u14_cross_sectional_data_qualification_v1.json
+    branch: codex/u14-cross-sectional-data-qualification
+    protocol_target_commit: dd8eb34aa0cae8455ba15163831b992820461ebf
+    contract_content_hash: bea82ceabcab8ff22f8c5e0d8beab636886ab42e776bfe93be382e0719b45951
+    qualification_content_hash: 417b329a31984482027c35048db1862a10d79e1680ac23eaded8778afb88aaa7
+    source_archive_count: 27736
+    manifests_exact: 19
+    complete_active_member_4h_auctions: 10094
+    eligible_structural_decision_auctions: 9690
+    maximum_independent_theoretical_24h_episodes: 1405
+    complexity_benchmark_passes: 3
+    complexity_fixture_rows_per_pass: 1000000
+    complexity_maximum_elapsed_seconds: '1.093112'
+    complexity_maximum_peak_rss_mib: '27.234'
+    oos_ohlcv_values_decoded: 0
+    market_ohlcv_fields_decoded_during_preflight: 0
+    common_state_rows_generated: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-14 Paper-protocol exact-head independent review
     status: approve_local_complete
     evidence: reports/expert/U14_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -1772,16 +1800,13 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-14-DATA-QUALIFICATION
-    phase: frozen-source qualification, result-blind complexity benchmark and same-reader preflight
+  - id: U-14-PAPER-OBSERVATION
+    phase: unique sealed-IS downside-rejection persistence Paper observation
     status: authorized_next
     candidate_id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
-    protocol_target_commit: dd8eb34aa0cae8455ba15163831b992820461ebf
-    protocol_content_hash: a0b606d3996f0edd13790178f370bed92e3a6d06bf2298eea78ba8a46907ac57
-    review_content_hash: 873f4435909ebc550f898972714e43ffc553b386700068ad65cecc7bef2fbbc2
-    data_qualification_authorized: true
-    complexity_benchmark_authorized: true
-    structural_preflight_authorized: true
+    qualification_content_hash: 417b329a31984482027c35048db1862a10d79e1680ac23eaded8778afb88aaa7
+    unique_run_authorized: true
+    second_run_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1855,9 +1880,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Run U-14 frozen-source data qualification, the three-pass one-million-row synthetic complexity benchmark and same-reader structural preflight without event or path outcomes."
-  - "Fail closed before the unique result run on any source, authority, order, sample-ceiling, elapsed-time, RSS or asymptotic mismatch."
-  - "Keep OOS OHLCV decoding and common-state/event/path/return rows at zero."
+  - "Run exactly one sealed-IS U-14 Paper observation using the frozen 4h auction, common-selling, downside-rejection, deterministic ranking, 24h clustering and path contract."
+  - "Require normal, reverse and deterministic-shuffled event, episode, path and accounting hashes to match exactly."
+  - "Any frozen Paper Gate failure closes U-14 without tuning, retry, strategy, return or OOS access."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -1894,6 +1919,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U14_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-14 data qualification, complexity benchmark and preflight
+    status: pass_local_complete
+    status_marker: '- Status: `pass_local_complete`'
+  - path: reports/m1/evidence/u14_cross_sectional_data_qualification_v1.json
+    phase: U-14 qualification machine evidence
+    status: deterministic_pre_result_pass
+    status_marker: '"qualification_content_hash":"417b329a31984482027c35048db1862a10d79e1680ac23eaded8778afb88aaa7"'
   - path: reports/expert/U14_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
     phase: U-14 Paper-protocol exact-head review
     status: approve_local_complete

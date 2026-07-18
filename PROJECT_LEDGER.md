@@ -2354,3 +2354,12 @@ private exchange responses here.
 - Review: `873f4435909ebc550f898972714e43ffc553b386700068ad65cecc7bef2fbbc2`; verdict `approve`, 15/15 dimensions, remaining critical/high `0/0`, target modified false.
 - Scope: independent review used exact target blobs and read no public data, event, path, return or OOS value.
 - Authorization: frozen-source qualification, the three-pass one-million-row synthetic complexity benchmark and same-reader structural preflight only. Events, paths, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-14 Frozen-Source Qualification, Complexity and Preflight Passed
+
+- Contract/result: `bea82ceabcab8ff22f8c5e0d8beab636886ab42e776bfe93be382e0719b45951` / `417b329a31984482027c35048db1862a10d79e1680ac23eaded8778afb88aaa7`; local Git only.
+- Authority: all 27,736 archives and 19 manifests exact; source and same-reader identities match across normal/reverse/shuffled.
+- Preflight: 10,094 complete 4h auctions, 9,690 structural decisions and maximum independent 24h ceiling 1,405 versus 400.
+- Complexity: same event/path evaluator passes three one-million-row runs; maximum 1.093112 seconds and 27.234 MiB; output hash exact.
+- Isolation: OOS decoded 0 and market OHLCV/common-state/candidate/event/path/return rows 0.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, rerun, formal return, strategy/backtesting, OOS, trading or M2.

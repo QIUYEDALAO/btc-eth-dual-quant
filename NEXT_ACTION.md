@@ -1,6 +1,24 @@
 # Next Action
 
-## U-14 Frozen-Source Qualification, Complexity Benchmark and Preflight
+## U-14 Unique Sealed-IS Paper Observation
+
+Qualification contract/result `bea82cea...5951` / `417b329a...aaa7` pass.
+All 27,736 archives and 19 manifests are exact, six traversal identities match,
+the structural 24h ceiling is 1,405 versus 400, and the three one-million-row
+complexity passes finish within 1.094 seconds and 27.234 MiB. No outcome or OOS
+value was consumed.
+
+The only next task is exactly one sealed-IS Paper observation. It must apply the
+frozen completed-4h common-selling and downside-rejection identity, select the
+deterministic representative, cluster all candidates in connected 24h windows,
+and compute only the allowed path diagnostics in normal, reverse and shuffled
+orders. All output hashes must match.
+
+Any count, projection, distribution, 24h relative/absolute persistence,
+positive-fraction or isolation Gate failure closes U-14. No tuning, second run,
+formal return, strategy, OOS, trading or M2 is allowed.
+
+## U-14 Historical Frozen-Source Qualification, Complexity Benchmark and Preflight
 
 Exact protocol target `dd8eb34a...61ebf` is independently approved under
 review `873f4435...fbbc2`, with 15/15 dimensions passing, critical/high `0/0`
