@@ -2,11 +2,30 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-10 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task
-current_status: u10_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-10 Paper observation failed feasibility; separate U-11 independent-candidate authorization decision is the only next task
+current_status: u10_paper_failed_feasibility_candidate_closed_u11_decision_only_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-10 unique sealed-IS Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U10_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u10_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u10-cross-sectional-paper-observation
+    run_content_hash: 9972a95fe662ac65f7e0e2c0bb4d88eb9743097beb9c7c536f3507d9a316d22f
+    three_order_identity_hash: 83540c78bf6afed742fa09254b7e6c172014f2f599215335944fdeb9a67de11d
+    complete_is_independent_episodes: 7
+    median_72h_relative_continuation: '0.007971619522185805237735347941231168470184480243915'
+    median_72h_candidate_absolute_close_displacement: '0.0228120258210529022966334902142324409124810328421'
+    fraction_positive_72h_relative_continuation: '0.7142857142857142857142857143'
+    failed_gates: [complete_is_independent_episodes, projected_full_independent_episodes, projected_sealed_oos_independent_episodes, years_with_twelve_complete_episodes, maximum_single_year_episode_share, maximum_single_symbol_episode_share, distinct_event_symbols, distinct_event_months, median_72h_relative_continuation]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-10 frozen-source data qualification and IS/OOS isolation
     status: pass_local_complete
     evidence: reports/m1/U10_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -1365,22 +1384,16 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-10-PAPER-OBSERVATION
-    phase: unique sealed-IS volume-confirmed relative-trend Paper observation
-    status: authorized_once_not_started
-    candidate_id: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
-    target_commit: f468b7aeaaf02f803125b4ab6037086fb353776f
-    protocol_content_hash: be205bf40dcab624667b97e43bc158ea2473fe15de2ce9846a6bb198575fa43b
-    review_content_hash: e42d31706fe98fb089f148d563b010b4312e53e9b33ba1c33faafe7f63379009
-    qualification_content_hash: 0029def278eeadf6b3951e1e1f62d16b0919889950eb68e0cdd3fe97fe727ee2
-    maximum_runs: 1
-    sealed_is_only: true
-    three_traversal_orders_required: true
-    oos_ohlc_decode_authorized: false
-    event_scan_authorized: true
-    path_observation_authorized: true
-    formal_returns_authorized: false
-    parameter_selection_authorized: false
+  - id: U-11-DECISION
+    phase: separate post-U-10 independent-candidate authorization decision
+    status: authorized_ready
+    prior_candidate: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
+    prior_run_content_hash: 9972a95fe662ac65f7e0e2c0bb4d88eb9743097beb9c7c536f3507d9a316d22f
+    maximum_hypotheses_if_authorized: 1
+    outcome_inversion_prohibited: true
+    hypothesis_design_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
     strategy_authorized: false
     oos_authorized: false
     trading_authorized: false
@@ -1451,7 +1464,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Execute exactly one sealed-IS U-10 Paper observation under the frozen protocol in three traversal orders."
+  - "Record one separate U-11 independent hypothesis design authorization decision bound to the immutable U-10 failed result."
   - "Preserve U-04/U-05/U-06/U-07 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1463,7 +1476,7 @@ allowed_next_work:
 research_authorizations:
   hypothesis_preregistration: false
   strategy_code: false
-  event_scan: true
+  event_scan: false
   returns: false
   backtesting: false
   oos_opened: false
@@ -1490,6 +1503,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U10_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-10 sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u10_cross_sectional_paper_observation/run_manifest.json
+    phase: U-10 Paper machine evidence
+    status: deterministic_failed_feasibility
+    status_marker: '"run_content_hash":"9972a95fe662ac65f7e0e2c0bb4d88eb9743097beb9c7c536f3507d9a316d22f"'
   - path: reports/m1/U10_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-10 data qualification
     status: pass_local_complete

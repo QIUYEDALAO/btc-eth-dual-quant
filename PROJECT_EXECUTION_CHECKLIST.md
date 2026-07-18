@@ -165,7 +165,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-10-PROTOCOL | Outcome-blind volume-confirmed trend Paper protocol | completed_local | U-10 design complete | `codex/u10-cross-sectional-paper-protocol` / local-only | Freeze joint identity, clustering, paths, ceiling, Gates and isolation | Protocol `be205bf4...43b`; no result access | exact-head review only |
 | U-10-PROTOCOL-REVIEW | Exact-head independent Paper-protocol review | completed_approve_local | U-10-PROTOCOL exact target | `codex/u10-cross-sectional-paper-protocol-review` / local-only | Hash-bound 13-dimension review | approve; 0/0; review `e42d3170...9009`; target unchanged | data qualification only |
 | U-10-DATA-QUALIFICATION | Frozen-source daily/grid/authority qualification and isolation | completed_pass_local | U-10-PROTOCOL-REVIEW approve | `codex/u10-cross-sectional-data-qualification` / local-only | ZIP/manifests, daily quote volume, ceiling, membership/lifecycle/mask/boundary | Result `0029def2...ee2`; ceiling 418; three-order exact; zero outcomes | none |
-| U-10-PAPER-OBSERVATION | Unique sealed-IS volume-confirmed trend Paper observation | authorized_next | U-10-DATA-QUALIFICATION pass | new local-only branch | Frozen event, episode, 72h path, accounting and Gate evidence | exactly one three-order run; no formal returns or OOS | failed Gate closes candidate; pass permits result review only |
+| U-10-PAPER-OBSERVATION | Unique sealed-IS volume-confirmed trend Paper observation | completed_failed_feasibility | U-10-DATA-QUALIFICATION pass | `codex/u10-cross-sectional-paper-observation` / local-only | Frozen event, episode, 72h path, accounting and Gate evidence | Run `9972a95f...d22f`; 7 complete; count/distribution/relative Gates fail | candidate closed; no review, rules, strategy, OOS or rerun |
+| U-11-DECISION | Separate post-U-10 candidate authorization | authorized_next | U-10 closed failed_feasibility with OOS sealed | new local-only branch | Bind immutable U-10 result and decide at most one independent design | zero outcome reuse and zero downstream permissions | U-11 hypothesis design only if decision passes |
 
 ## Current Gate
 
@@ -179,7 +180,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - The V3 contract, registry and blocked qualification evidence remain immutable historical evidence. PR #95 merged the deterministic U-03F `failed_audit` result with one critical and seven high findings. V4 is `audit_blocked` / `revalidation_required`; production evidence is unchanged and U-04 remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active task: one U-10 sealed-IS Paper observation. Only protocol-bound event/path diagnostics are authorized; formal returns, OOS, strategy/backtesting, trading and M2 remain prohibited.
+- Active task: separate U-11 independent-candidate authorization decision. Events, formal returns, OOS, strategy/backtesting, trading and M2 remain prohibited.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

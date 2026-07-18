@@ -2180,3 +2180,13 @@ private exchange responses here.
 - The metadata-only maximum is 418 constant-membership 72h episodes, above the frozen preflight minimum 400 and Paper Gate 90.
 - OOS values decoded and event/path/return rows generated are all zero.
 - Authorization: exactly one sealed-IS Paper observation; no tuning, second result-bearing run, formal return, strategy, OOS, trading or M2.
+
+## 2026-07-18 - U-10 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Task: `U-10-PAPER-OBSERVATION`; branch `codex/u10-cross-sectional-paper-observation`; local Git only.
+- Run/order: `9972a95fe662ac65f7e0e2c0bb4d88eb9743097beb9c7c536f3507d9a316d22f` / `83540c78bf6afed742fa09254b7e6c172014f2f599215335944fdeb9a67de11d`; all four manifests are exact across three orders.
+- Sample: 179 candidate events, 39 independent episodes, 7 complete 72h paths and 32 membership-change right-censors.
+- Failed frozen Gates include count/projection/distribution and median 72h relative continuation `0.7972%` versus `1.80%`.
+- Median absolute displacement `2.2812%` and positive relative fraction `71.43%` pass but cannot override any failed Gate.
+- Isolation: OOS opened false, rows decoded 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
+- Decision: U-10 closes `failed_feasibility`; only a separate U-11 independent-candidate authorization decision may follow.

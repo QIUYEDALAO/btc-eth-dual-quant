@@ -1,6 +1,6 @@
 # Next Action
 
-## U-10 Unique Sealed-IS Paper Observation
+## U-11 Independent-Candidate Authorization Decision
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -76,12 +76,20 @@ traversal orders share identity `ca7d59b3...44aa`. The metadata-only ceiling is
 90 Paper sample Gates. Qualification decoded zero OOS values and generated zero
 event, path or return rows.
 
-The only authorized next task is the single sealed-IS Paper observation. It
-must apply protocol `be205bf4...43b` once in normal, reverse and deterministic-
-shuffled order and produce event, episode, path and accounting diagnostics
-only. It may not tune parameters, create formal returns/fills/positions/equity,
-decode OOS, or run a second result-bearing observation. Any failed Paper Gate
-closes U-10; a pass authorizes only an independent result review.
+The single U-10 observation is complete and immutable under run
+`9972a95f...d22f`. Three traversal orders share `83540c78...11d`. It produced
+179 candidate events, 39 independent episodes and only 7 complete 72h paths;
+32 episodes were right-censored by the frozen constant-membership rule.
+
+U-10 is `failed_feasibility`: the count/projection/distribution Gates fail and
+median 72h relative continuation is `0.7972%` versus `1.80%`. Median absolute
+displacement `2.2812%` and positive fraction `71.43%` pass but cannot override
+the failed Gates. OOS/formal returns remain zero and no second run is allowed.
+
+The only next task is a separate U-11 authorization decision. It may authorize
+at most one economically independent, outcome-blind hypothesis design and must
+prohibit inversion, threshold repair or relabeling of U-10 outcomes. It does
+not itself authorize parameters, events, returns, strategy code, OOS or trading.
 
 ## U-08 Frozen Historical Chain
 

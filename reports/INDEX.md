@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U10_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-10 sealed-IS Paper observation | failed_feasibility | 7 complete episodes; count, distribution and 72h relative-continuation Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u10_cross_sectional_paper_observation/` | U-10 Paper machine evidence | run `9972a95f...d22f` | Three orders exact under `83540c78...11d`; immutable failure authorizes no downstream work. | no |
 | `reports/m1/U10_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-10 frozen-source qualification | pass / one sealed-IS observation authorized | 27,736 ZIPs, 19 manifests, daily authority, ceiling 418 and three orders pass; OOS/outcomes zero. | no |
 | `reports/m1/evidence/u10_cross_sectional_data_qualification_v1.json` | U-10 qualification machine evidence | content `0029def2...ee2` | Binds contract `c47701dc...1bf`, exact authorities, ceiling and one-run-only authorization. | no |
 | `reports/expert/U10_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-10 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `f468b7ae...776f` unchanged and authorizes only qualification. | no |
