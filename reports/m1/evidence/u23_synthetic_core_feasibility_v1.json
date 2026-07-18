@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "status": "pass_before_protocol_freeze",
+  "candidate_id": "U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION",
+  "design_content_hash": "351ddd25e3c8708e55a21e81921d104f4c360b65966945b846fa40ba1e96e6e0",
+  "core_sha256": "ffba8a38981c954024e1efa96dce3595a13a1f3be53330b9b9c776fef6881aa7",
+  "benchmark_runner_sha256": "f3c35c3f3f288b7efc45458229abb1da3c775a4b5b56416501bd1a48c63a51b0",
+  "minimum_logical_ohlc_member_bars": 1000000,
+  "actual_logical_ohlc_member_bars_per_pass": 1000395,
+  "maximum_elapsed_seconds_per_pass": 30,
+  "maximum_peak_rss_mib": 1024,
+  "passes": [
+    {"elapsed_seconds": "0.345995", "peak_rss_mib": "21.844", "event_digest": "4eebd8ca2a4169f21898943720b4d8022559dfb9ea0dd5f273e5801cf45bd49d"},
+    {"elapsed_seconds": "0.349712", "peak_rss_mib": "22.016", "event_digest": "4eebd8ca2a4169f21898943720b4d8022559dfb9ea0dd5f273e5801cf45bd49d"},
+    {"elapsed_seconds": "0.347161", "peak_rss_mib": "21.859", "event_digest": "4eebd8ca2a4169f21898943720b4d8022559dfb9ea0dd5f273e5801cf45bd49d"}
+  ],
+  "deterministic_output": true,
+  "public_data_read": false,
+  "frozen_source_archives_opened": 0,
+  "market_outcome_rows": 0,
+  "oos_values_decoded": 0,
+  "content_hash": "6010529c89627e8607919272af3c85c7dd5c3fdd4e48f549b8fe055e3245637e",
+  "generated_utc": "2026-07-19T00:00:00Z"
+}

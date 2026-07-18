@@ -1,5 +1,18 @@
 # Next Action
 
+## U-23 Exact-Head Independent Paper-Protocol Review
+
+Protocol `U23-03-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION-PAPER-V1` is
+frozen under `52807bd0...3e5611` after synthetic feasibility
+`6010529c...45637e` passed 3/3 before freeze. The target fixes 42 prior completed
+4h ranges, current range/close/body/peer-relative Gates, 24h clustering,
+strict next-open paths and immutable Paper Gates.
+
+The only next task is a separate-branch read-only exact-head review. Approval
+may authorize only frozen-source structural qualification and result-free
+preflight. Public-data OHLC/results, events, paths, formal returns, strategy,
+backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
 ## U-23 Outcome-Blind Paper Protocol and Synthetic-Core Feasibility
 
 U-23 freezes `U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION`

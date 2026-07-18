@@ -1,5 +1,10 @@
 # Reports Index
 
+| `reports/m1/U23_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-23 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 4h own-range expansion, close strength, peer-relative identity, clustering, paths and Gates after pre-freeze complexity pass. | no |
+| `config/u23_cross_sectional_paper_protocol_v1.json` | U-23 machine Paper protocol | content `52807bd0...3e5611` | Only exact-head review is true; data/results/trading permissions remain false. | no |
+| `reports/m1/evidence/u23_synthetic_core_feasibility_v1.json` | U-23 pre-freeze synthetic core feasibility | content `6010529c...45637e` | 3x1,000,395 logical OHLC bars pass deterministically with zero public-data/OOS access. | no |
+
+
 | `reports/m1/U23_RANGE_EXPANSION_CLOSE_STRENGTH_CONTINUATION_DESIGN.md` | U-23 hypothesis design | economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only | Freezes completed range-expansion close-strength continuation without public data, parameters, results or OOS. | no |
 | `reports/m1/U23_NON_DUPLICATION_REVIEW.md` | U-23 non-duplication | pass_design_level | Separates same-auction range/close geometry from dispersion leaders, volume trend, downside rejection and compression breakout. | no |
 | `config/u23_cross_sectional_design_scope_v1.json` | U-23 machine design scope | content `351ddd25...96e6e0` | Enables only protocol design and synthetic exact-core feasibility; all result/trading permissions false. | no |

@@ -2715,3 +2715,10 @@ private exchange responses here.
 - Mechanism: unusually expanded completed auction range, a close near that range's high and positive complete-peer-relative displacement may reveal aggressive demand and incomplete price discovery.
 - Independence: not U-22 dispersion leadership, U-10 volume trend, U-14 downside rejection or M1E compression breakout; no prior result or failure selected it.
 - Scope: no public data or outcome read and no timeframe, estimator, threshold, horizon or strategy rule selected. Protocol design may proceed only with a pre-freeze synthetic exact-core complexity pass.
+
+## 2026-07-19 - U-23 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U23-03-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION-PAPER-V1`; content `52807bd0...3e5611`; frozen before public data or results.
+- Pre-freeze feasibility: `6010529c...45637e`; three 1,000,395-logical-OHLC-bar synthetic passes complete in at most 0.349712 seconds and 22.016 MiB with identical digest.
+- Identity: 42 prior completed 4h ranges; current range at least 4%, 2x baseline and 3 robust scales; close location 90%, body share 60%, peer-relative return 2.5%.
+- Scope: no public archive, market result or OOS value read. Only separate exact-head independent review is authorized next.

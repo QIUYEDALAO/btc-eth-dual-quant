@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-23 Paper protocol `U23-03-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION-PAPER-V1` is frozen before public data/results under `52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611`. Its exact core passed three pre-freeze synthetic 1,000,395-logical-bar checks under `6010529c89627e8607919272af3c85c7dd5c3fdd4e48f549b8fe055e3245637e`. Only a separate exact-head independent review is authorized; public-data OHLC/results, events, paths, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-23 freezes `U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION` under hypothesis `6c099769b5fb89d7faf032d68c114540a6b93f8546bbedee26c2e9397e98627f` and design `351ddd25e3c8708e55a21e81921d104f4c360b65966945b846fa40ba1e96e6e0`. It studies completed own-history range expansion plus same-range close strength and positive complete-peer displacement, not dispersion leadership, volume trend, downside rejection or prior compression. The exact core must pass synthetic-only complexity before protocol freeze. Public data, outcomes, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-23 decision `70c60434bb7c78344eb733eb8a8d4393538f60bbc97bff60e840c68f10998d5a` authorizes exactly one economically independent, outcome-blind hypothesis design. U-22 remains permanently closed under run `12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c`; its result may not be inverted or reused. Public data, outcomes, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false; a synthetic exact-core complexity pass is mandatory before any later U-23 protocol freeze.

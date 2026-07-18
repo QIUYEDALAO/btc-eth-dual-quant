@@ -2,11 +2,27 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-19T00:00:00Z"
-current_phase: U-23 range-expansion close-strength continuation design completed; result-blind Paper protocol and synthetic-core feasibility are the only next task
-current_status: u23_hypothesis_design_pass_protocol_and_synthetic_core_only_no_public_data_no_results_no_oos_no_trading_no_m2
+current_phase: U-23 range-expansion close-strength Paper protocol frozen after synthetic-core feasibility pass; exact-head independent review is the only next task
+current_status: u23_paper_protocol_frozen_pending_exact_head_review_no_public_data_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-23 outcome-blind range-expansion close-strength Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U23_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u23_cross_sectional_paper_protocol_v1.json
+    synthetic_feasibility_evidence: reports/m1/evidence/u23_synthetic_core_feasibility_v1.json
+    branch: codex/u23-cross-sectional-paper-protocol
+    candidate_id: U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION
+    protocol_content_hash: 52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611
+    synthetic_feasibility_content_hash: 6010529c89627e8607919272af3c85c7dd5c3fdd4e48f549b8fe055e3245637e
+    synthetic_complexity_passes: 3
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-23 range-expansion close-strength continuation hypothesis design
     status: economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only
     evidence: reports/m1/U23_RANGE_EXPANSION_CLOSE_STRENGTH_CONTINUATION_DESIGN.md
@@ -2536,6 +2552,21 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-23-PROTOCOL
+    phase: outcome-blind range-expansion close-strength Paper protocol
+    status: completed_pending_exact_head_review
+    candidate_id: U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION
+    design_content_hash: 351ddd25e3c8708e55a21e81921d104f4c360b65966945b846fa40ba1e96e6e0
+    protocol_content_hash: 52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611
+    synthetic_feasibility_content_hash: 6010529c89627e8607919272af3c85c7dd5c3fdd4e48f549b8fe055e3245637e
+    exact_head_review_authorized: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-23
     phase: range-expansion close-strength continuation hypothesis design
     status: completed_design_protocol_and_synthetic_core_only
@@ -2829,6 +2860,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "A separate read-only exact-head independent review of the frozen U-23 protocol is the only next task."
+  - "The review may authorize only frozen-source data qualification and result-free preflight; it may not authorize events, paths, formal returns, strategy, OOS or trading."
   - "U-23 may design one result-blind Paper protocol only after its intended exact statistic core passes a synthetic-only complexity feasibility Gate."
   - "The U-23 protocol may freeze clocks, estimators, thresholds, clustering, paths and Paper Gates, but may not read public data or outcomes."
   - "U-23 may freeze exactly one economically independent outcome-blind hypothesis design; a synthetic exact-core complexity pass is required before any later protocol freeze."
