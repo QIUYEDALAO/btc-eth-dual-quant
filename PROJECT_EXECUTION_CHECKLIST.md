@@ -136,7 +136,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-05-DATA-QUALIFICATION | Frozen-source qualification and IS/OOS isolation | completed_pass_local | U-05-PROTOCOL-REVIEW approve | `codex/u05-cross-sectional-data-qualification` / local-only | ZIP/manifests, 4h/1h/5m grids, membership/lifecycle/mask and boundary guard | Qualification `348e8029...f7cb4f`; three-order exact; outcome rows zero | none |
 | U-05-PAPER-OBSERVATION | Unique sealed-IS breadth-demand Paper observation | completed_failed_feasibility | U-05-DATA-QUALIFICATION pass | `codex/u05-cross-sectional-paper-observation` / local-only | Frozen event, episode, path, accounting and Gate evidence | 490 complete; 24h displacement `0.0759%` and positive-member fraction `53.33%` fail | candidate closed; no review, rules, strategy, OOS or second run |
 | U-06-DECISION | Separate post-U-05 candidate authorization | completed_authorize_design_only | U-05 closed failed_feasibility with OOS sealed | `codex/u06-design-authorization` / local-only | Bind prior failures and authorize at most one independent outcome-blind design | Decision `596eacbc...b74662`; zero downstream permissions | U-06 hypothesis design only |
-| U-06 | Independent cross-sectional hypothesis design | authorized_next | U-06-DECISION complete | new local-only branch | Machine scope, economics, non-duplication and unopened ledger registration | No parameters, events, returns or OOS | protocol only after design pass |
+| U-06 | Volume-share absorption/repricing hypothesis design | completed_local | U-06-DECISION complete | `codex/u06-cross-sectional-volume-share-absorption-design` / local-only | Machine scope, economics, non-duplication and unopened ledger registration | Design `694e5a43...966a5`; no parameters, events, returns or OOS | Paper protocol design only |
+| U-06-PROTOCOL | Outcome-blind volume-share Paper protocol | authorized_next | U-06 design complete | new local-only branch | Freeze baseline, disagreement, events, paths, Gates and IS/OOS isolation | Deterministic hash; no outcome access | independent review required before data |
 
 ## Current Gate
 
@@ -150,7 +151,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - The V3 contract, registry and blocked qualification evidence remain immutable historical evidence. PR #95 merged the deterministic U-03F `failed_audit` result with one critical and seven high findings. V4 is `audit_blocked` / `revalidation_required`; production evidence is unchanged and U-04 remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active task: one outcome-blind U-06 hypothesis design only. U-05 is closed; event scans, formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
+- Active task: one outcome-blind U-06 Paper protocol design only. Event scans, formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

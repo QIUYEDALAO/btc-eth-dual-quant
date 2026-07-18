@@ -1975,3 +1975,11 @@ private exchange responses here.
 - Binding: U-05 remains `failed_feasibility` under run `874cdac3...e7e4a`, U-04 remains closed, both OOS sets remain sealed, and the ADR-0015 audit remains `19/19`, `0/0`.
 - Independence: event signs, observed paths and failed Gate values from U-04/U-05 may not be inverted, relabeled or used to choose U-06.
 - Authorization: exactly one outcome-blind U-06 hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-06 Volume-Share Absorption Design Complete
+
+- Candidate: `U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING`; hypothesis `e6cb136b...c259b`; design `694e5a43...966a5`.
+- Mechanism: prior-only growth in an asset's exact-active-universe quote-volume share without commensurate relative price response may reflect absorption and delayed repricing.
+- Independence: no U-04/U-05 outcome inversion; distinct from prior price momentum, compression, panic, funding and indicator families.
+- Execution: no public data, event/path scan, return, timeframe, threshold, fixed rule, backtest or OOS access.
+- Authorization: only a separate outcome-blind Paper protocol design may follow.

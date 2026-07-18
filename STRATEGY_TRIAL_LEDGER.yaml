@@ -9,6 +9,12 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING
+    status: declared_unopened
+    hypothesis: "U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING: Binance spot USDT long/cash only; using completed prior observations from exact active members, a persistent increase in an asset's cross-sectional quote-volume share without a commensurate relative price advance may reflect liquidity absorption and latent demand that can reprice after the next eligible open; no U-04/U-05 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: e6cb136b5bfaa4948b1681696b33496a43b7f9ab1f4fc25dcea63714700c259b
+    oos_opened: false
+    notes: "Outcome-blind design only. Timeframe, volume-share baseline, thresholds, horizons, fixed rules and performance Gates remain unresolved until separate protocols. No events, paths, returns or OOS were read."
   - id: U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE
     status: declared_unopened
     hypothesis: "U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE: Binance spot USDT long/cash only; at a completed UTC observation time, broadly distributed positive participation across the exact point-in-time active liquid universe may identify diversified common demand rather than an isolated asset move, and that demand may persist after the next eligible open; no U-04 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

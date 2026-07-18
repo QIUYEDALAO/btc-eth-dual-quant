@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U06_CROSS_SECTIONAL_VOLUME_SHARE_ABSORPTION_DESIGN.md` | U-06 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes volume-share absorption/repricing without timeframe, threshold, outcomes, rules or OOS. | no |
+| `reports/m1/U06_NON_DUPLICATION_REVIEW.md` | U-06 non-duplication | pass_design_level | Separates price/volume disagreement from U-04/U-05 and prior candidates. | no |
+| `config/u06_cross_sectional_design_scope_v1.json` | U-06 machine design scope | content `694e5a43...966a5` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
 | `reports/m0/U06_DESIGN_AUTHORIZATION_DECISION.md` | U-06 design authorization | one independent outcome-blind design authorized | Binds closed U-04/U-05 results and passing V4 audit; enables only one U-06 hypothesis design. | no |
 | `config/u06_design_authorization_v1.json` | U-06 machine authorization | content `596eacbc...b74662` | Prohibits prior-outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
 | `reports/m1/U05_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-05 sealed-IS Paper observation | failed_feasibility | 490 complete episodes; frozen 24h displacement and positive-member-fraction Gates fail; OOS remains sealed. | no |
