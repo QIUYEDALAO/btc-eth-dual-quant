@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-12 protocol `a8cfc0b74e82bdf455bae5dda7a620bc5c0c53f1022d39494800f1053dd80b8a` is frozen before results. It fixes UTC weekday, 52 same-weekday opportunities split 26/26, robust residual medians, 24h paths, unchanged economic Gates and a mandatory same-reader boundary/data-scope preflight. Only exact-head independent review is authorized.
+- The review must bind the exact protocol head, verify all calendar/causal/preflight/Gate/leakage dimensions and return `approve` with 0 critical/high before data qualification. No public data, event, path, return or OOS was accessed.
 - U-12 freezes `U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY` under hypothesis `5942e15d4c4dde246979ef980f0fc3c2a3f545e9e6717159355ee4312c87f54d` and design `e53003e7c9255fc11d976a646f8700532cc98ad6fd1c410b00647957daa6d5dc`. Only a separate outcome-blind Paper protocol design may follow; no public data, event, path, return or OOS was accessed.
 - The U-12 protocol must predeclare UTC calendar-state granularity, prior-only recurrence and disjoint-subperiod estimators, multiple-testing control, sample ceiling, clustering, paths and Gates. A pre-result implementation/data-scope preflight must prove monthly-boundary and historical-cell availability before any result run.
 - U-12 design authorization `ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7` permits exactly one economically independent outcome-blind cross-sectional hypothesis design. No public-data read, parameter, event scan, return, strategy/backtest, OOS, trading or M2 authority is granted.

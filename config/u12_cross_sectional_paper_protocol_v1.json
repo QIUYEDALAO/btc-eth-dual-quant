@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_result_pending_exact_head_review",
+  "protocol_id": "U12-03-RECURRING-CALENDAR-FLOW-SEASONALITY-PAPER-V1",
+  "candidate_id": "U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY",
+  "hypothesis_sha256": "5942e15d4c4dde246979ef980f0fc3c2a3f545e9e6717159355ee4312c87f54d",
+  "design_content_hash": "e53003e7c9255fc11d976a646f8700532cc98ad6fd1c410b00647957daa6d5dc",
+  "authority_bindings": {
+    "u12_design_authorization_hash": "ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7",
+    "u11_invalid_attempt_hash": "0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+    "invalid_interval_runtime_policy_hash": "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04"
+  },
+  "scope": {
+    "exchange": "binance",
+    "market": "spot_usdt",
+    "direction": "long_cash_only",
+    "is_start": "2020-01-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z",
+    "oos_end_exclusive": "2026-07-01T00:00:00Z",
+    "is_calendar_days": 1715,
+    "oos_calendar_days": 658,
+    "full_calendar_days": 2373,
+    "signal_timeframe": "1d_utc_from_complete_5m",
+    "path_timeframe": "5m",
+    "oos_opened": false
+  },
+  "calendar_state_contract": {
+    "family": "utc_weekday_of_target_day",
+    "states": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"],
+    "target_day_state_known_without_market_data": true,
+    "daylight_saving_adjustment": false,
+    "holiday_or_region_specific_exception": false,
+    "alternative_calendar_family_or_granularity": false,
+    "post_result_state_selection": false
+  },
+  "estimator_contract": {
+    "decision_time": "each_utc_day_boundary_after_the_previous_utc_day_is_complete",
+    "target_interval": "the_ensuing_utc_day_with_predeclared_weekday_state",
+    "prior_same_weekday_opportunities": 52,
+    "chronological_halves_opportunities": [26, 26],
+    "minimum_current_active_members": 10,
+    "minimum_candidate_completed_occurrences_full": 40,
+    "minimum_candidate_completed_occurrences_each_half": 18,
+    "candidate_must_be_active_at_decision": true,
+    "historical_candidate_occurrence_requires_candidate_active_then": true,
+    "each_historical_common_component_uses_that_days_exact_active_members": true,
+    "all_historical_active_member_daily_rows_complete_required": true,
+    "common_component": "cross_sectional_median_completed_utc_day_close_to_close_log_return",
+    "asset_specific_value": "candidate_completed_utc_day_log_return_minus_same_day_common_component",
+    "full_and_half_estimators": "median_asset_specific_value_over_available_completed_same_weekday_occurrences",
+    "current_membership_backfill_allowed": false,
+    "replacement_member_allowed": false,
+    "future_target_day_or_outcome_data_used": false
+  },
+  "event_identity": {
+    "full_median_asset_specific_value_minimum": "0.0060",
+    "each_half_median_asset_specific_value_minimum": "0.0030",
+    "persistence_rule": "candidate_in_highest_ceil_eligible_count_divided_by_four_full_median_among_current_active_eligible_members_and_both_halves_pass",
+    "simultaneous_representative": "highest_full_median_then_higher_minimum_half_median_then_higher_completed_occurrence_count_then_symbol",
+    "representatives_per_decision_time": 1,
+    "post_outcome_candidate_or_weekday_selection": false
+  },
+  "episode_clustering": {
+    "scope": "all_symbols_connected_event_window",
+    "connected_window_hours": 24,
+    "representative": "first_event_only",
+    "boundary": "new_episode_only_when_event_time_is_strictly_more_than_24h_after_prior_connected_event",
+    "future_information_used": false
+  },
+  "implementation_data_scope_preflight": {
+    "required_before_any_event_or_path_scan": true,
+    "runs_during_frozen_source_qualification_only": true,
+    "uses_same_archive_membership_lifecycle_mask_and_daily_assembly_paths_as_future_observation": true,
+    "verifies_previous_boundary_close_for_every_requested_daily_interval_including_month_transitions": true,
+    "verifies_all_288_expected_5m_slots_per_unmasked_complete_utc_day": true,
+    "verifies_historical_same_weekday_cell_availability_without_computing_returns": true,
+    "verifies_normal_reverse_and_deterministic_shuffled_input_identity": true,
+    "oos_ohlcv_values_decoded": 0,
+    "common_component_event_path_or_return_rows_generated": 0,
+    "any_scope_or_boundary_mismatch": "fail_closed_before_result_run"
+  },
+  "pre_result_sample_ceiling": {
+    "method": "calendar_membership_lifecycle_mask_grid_and_exact_daily_input_availability_only_before_return_scan",
+    "minimum_theoretical_eligible_24h_episodes": 300,
+    "frozen_complete_is_episode_gate": 90,
+    "must_pass_before_any_common_component_event_or_path_scan": true
+  },
+  "observation_contract": {
+    "reference": "first_expected_5m_open_strictly_after_utc_day_boundary_decision",
+    "search_later_if_reference_missing": false,
+    "horizon_hours": [1, 2, 4, 8, 12, 24],
+    "primary_horizon_hours": 24,
+    "peer_members": "decision_time_exact_active_members_excluding_candidate",
+    "candidate_close_displacement": "candidate_close_over_candidate_reference_open_minus_one",
+    "peer_median_close_displacement": "median_peer_close_over_peer_reference_open_minus_one",
+    "relative_calendar_flow_persistence": "candidate_close_displacement_minus_peer_median_close_displacement",
+    "required_path_diagnostics": [
+      "candidate_absolute_close_displacement_by_horizon",
+      "peer_median_close_displacement_by_horizon",
+      "relative_calendar_flow_persistence_by_horizon",
+      "candidate_maximum_favorable_excursion_through_24h",
+      "candidate_maximum_adverse_excursion_through_24h",
+      "first_time_relative_calendar_flow_persistence_reaches_base_cost"
+    ],
+    "complete_candidate_and_all_event_time_peers_required_through_each_horizon": true,
+    "missing_quarantine_membership_change_or_lifecycle_intersection": "right_censor_without_later_search",
+    "fill_position_exit_or_equity_model": false,
+    "formal_strategy_return": false
+  },
+  "cost_reference_roundtrip": {
+    "base": "0.0030",
+    "cost_x2": "0.0060",
+    "stress_a": "0.0080",
+    "stress_b": "0.0110"
+  },
+  "projection": {
+    "source": "complete_is_independent_episodes_only",
+    "full": "floor_complete_is_episodes_times_2373_divided_by_1715",
+    "sealed_oos": "floor_complete_is_episodes_times_658_divided_by_1715",
+    "may_read_oos_events_prices_or_counts": false
+  },
+  "paper_gates": {
+    "complete_is_independent_episodes_minimum": 90,
+    "projected_full_independent_episodes_minimum": 120,
+    "projected_sealed_oos_independent_episodes_minimum": 30,
+    "minimum_years_with_twelve_complete_episodes": 4,
+    "maximum_single_year_episode_share": "0.35",
+    "maximum_single_symbol_episode_share": "0.25",
+    "minimum_distinct_event_symbols": 8,
+    "minimum_distinct_event_months": 30,
+    "combined_median_24h_relative_calendar_flow_persistence_minimum": "0.0180",
+    "combined_median_24h_candidate_absolute_close_displacement_minimum": "0.0180",
+    "fraction_complete_episodes_with_positive_24h_relative_calendar_flow_persistence_minimum": "0.60",
+    "qualification_preflight_quarantine_lifecycle_or_order_mismatches_maximum": 0
+  },
+  "research_leakage_prevention": {
+    "change_calendar_history_estimator_threshold_rank_cluster_or_horizon_after_results": false,
+    "change_gate_from_event_count_or_outcome": false,
+    "delete_weekday_symbol_month_year_or_regime_from_performance": false,
+    "select_current_members_or_replacement_members": false,
+    "use_prior_candidate_outcomes_defects_or_censor_patterns_to_change_rules": false,
+    "repair_u11_and_rerun_as_u12": false,
+    "protocol_change_after_result_creates_new_candidate": true
+  },
+  "authorizations": {
+    "paper_protocol_frozen": true,
+    "exact_head_independent_review": true,
+    "data_qualification_and_preflight": false,
+    "common_component_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "signals": false,
+    "formal_returns": false,
+    "fixed_rule_contract": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "content_hash": "a8cfc0b74e82bdf455bae5dda7a620bc5c0c53f1022d39494800f1053dd80b8a",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

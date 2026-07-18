@@ -2256,3 +2256,12 @@ private exchange responses here.
 - Independence: calendar-conditioned recurrence, not residual reversal, breadth, volume absorption, stress resilience, membership entry, low volatility, price/volume trend, asymmetric capture or prior BTC/ETH families.
 - Execution: no public data, timeframe, calendar granularity, estimator, threshold, event/path, return, rule, backtest or OOS access.
 - Authorization: one separate outcome-blind Paper protocol design with mandatory pre-result implementation/data-scope preflight; all downstream permissions remain false.
+
+## 2026-07-18 - U-12 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `a8cfc0b74e82bdf455bae5dda7a620bc5c0c53f1022d39494800f1053dd80b8a`; branch `codex/u12-cross-sectional-paper-protocol`; local Git only.
+- Identity: ensuing UTC weekday; preceding 52 same-weekday opportunities split 26/26; exact historical active-member median residual; 40 full and 18/18 candidate observations.
+- Candidate: full median residual ≥0.60%, both half medians ≥0.30%, current-active top quartile, one deterministic representative and 24h connected clustering.
+- Preflight: same future-reader archive/membership/lifecycle/mask/daily scope must prove month-boundary previous closes, 288-slot days, historical cells and three-order identity before results.
+- Gates: 90 complete IS episodes, 120/30 projections, distribution controls, 1.80% relative and absolute 24h medians, 60% positive fraction and zero mismatch.
+- Authorization: exact-head independent review only; no public data, event/path scan, formal return, strategy, OOS or trading.

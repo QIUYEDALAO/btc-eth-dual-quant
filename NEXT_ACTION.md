@@ -1,6 +1,25 @@
 # Next Action
 
-## U-12 Outcome-Blind Paper Protocol Design
+## U-12 Paper Protocol Exact-Head Independent Review
+
+Protocol `a8cfc0b74e82bdf455bae5dda7a620bc5c0c53f1022d39494800f1053dd80b8a`
+is frozen before results. It fixes the ensuing UTC weekday as the only calendar
+state; 52 prior same-weekday opportunities split 26/26; 40 full and 18/18
+candidate observations; exact historical active-member median residuals; 0.60%
+full and 0.30% half medians; one representative; 24h clustering and paths; and
+the unchanged 1.80%/60% Paper economic Gates.
+
+The protocol also requires a same-reader preflight during qualification. It
+must prove prior-boundary closes across month transitions, 288 expected 5m
+slots, same-weekday history availability and three-order identity while
+producing zero result rows and decoding zero OOS OHLCV values.
+
+The only next task is an independent review of the protocol's exact committed
+head. Approval requires every dimension pass and critical/high `0/0`; the target
+files may not be modified. Public-data qualification remains blocked until that
+review passes.
+
+## U-12 Frozen Protocol History
 
 U-12 freezes `U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY`
 under hypothesis `5942e15d...f54d` and design `e53003e7...d5dc`. The mechanism
@@ -8,12 +27,8 @@ is an asset-specific relative-return pattern recurring in a predeclared UTC
 calendar state across disjoint prior subperiods, potentially reflecting
 repeating regional participation, settlement, treasury or mandate flows.
 
-The only next task is a separate result-blind Paper protocol. Before reading
-data it must freeze the UTC calendar-state family/granularity, completed
-timeframe, common component, history, disjoint subperiods, persistence,
-multiple-testing control, candidate rule, clustering, paths, cost and sample
-Gates. It must also require a pre-result implementation/data-scope preflight so
-the U-11 boundary failure cannot recur.
+The separate result-blind Paper protocol is now frozen under
+`a8cfc0b7...0b8a`. Only exact-head independent review may follow.
 
 No public data, event, path, return or OOS value has been read. Strategy rules,
 Freqtrade code, backtesting, OOS, trading and M2 remain false.
