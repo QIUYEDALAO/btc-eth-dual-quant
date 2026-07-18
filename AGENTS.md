@@ -28,6 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- Separate U-07 decision `58f8301035e593b0621add93cfa876a11a5af52df0a3afae38d7b41f095e37d5` authorizes exactly one economically independent, outcome-blind hypothesis design. U-04/U-05/U-06 outcome inversion is prohibited; event scans, parameters, returns, strategy/Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
 - U-04's unique sealed-IS paper observation is `failed_feasibility`. It produced 397 complete independent episodes, but median 24h relative recovery was `-0.8556%` and median absolute displacement was `-0.7946%`, both below the frozen `+1.80%` Gates. Run `9182c9e3...eebc2`; three-order identity `4c512f59...1b42`.
 - Separate U-05 decision `48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c` authorizes exactly one independent outcome-blind cross-sectional hypothesis design. U-04 outcome inversion is prohibited; event scans, parameters, returns, strategy/Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
 - U-05 design `U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE` is frozen under design hash `ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb` and hypothesis hash `ad164b1d9a94d9d61145bf7431a805cfa795a77a6c8aef2cdc488f6bd9e7349b`. It selects no timeframe, threshold, horizon or trading rule; only a result-blind Paper protocol may follow.
@@ -70,7 +71,7 @@ After any task, the agent must update:
 - The adopted policy applies only to verified grid-aligned official 5m active-member rows with the sole close-boundary defect, at least two affected members and affected fraction at least 80%.
 - An accepted event must quarantine the full active-member slot, including valid minority rows, without changing physical source evidence. Off-grid/other malformed/missing/duplicate/non-member/ambiguous/drift cases remain hard blockers.
 - No known date or symbol may be a runtime input. No raw repair, fill, source replacement, substitute member, direct V2 gap-policy adoption or Gate reduction is allowed.
-- U-04/U-05/U-06 are closed. The only current successor is a separate U-07 candidate authorization decision; prior-outcome inversion is prohibited.
+- U-04/U-05/U-06 are closed. U-07 design authorization is complete; exactly one independent outcome-blind U-07 hypothesis design is the current task, with prior-outcome inversion prohibited.
 - The real new audit passed locally. Only one outcome-blind U-04 hypothesis design is now authorized; event scans, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.
 - PR #102 merged protocol `U03F-V4-INVALID-INTERVAL-ADJUDICATION-V1` at `70c784b1573de8437e189672c89e9c00b6505978` after 116/116 checks. Exact head `07e4fc13d4a6d027e4881863b9224906be776e9a` and content hash `9589510619bcda09041dba40abdf25fed38b5b12044892bd315e08e84e862190` remain frozen.
 - The one authorized diagnostic completed on `codex/u03f-v4-invalid-interval-diagnostic` using only the exact 27,736 frozen local archives in normal, reverse and deterministic-shuffled order. PR #103 exact head `e4b6f6e70bf6df2b10dbd7acc71a734f107d5076` passed 118/118 checks and merged at `49e028712695cf2a946aae9abf14c5668a5343f2`.

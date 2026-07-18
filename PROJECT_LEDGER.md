@@ -2006,3 +2006,11 @@ private exchange responses here.
 - Failed economic Gates: median 24h relative repricing `-0.1438%` and absolute displacement `-0.3029%`, both below `+1.80%`.
 - Isolation: OOS decode 0; no formal return, fill, position, equity, parameter change or second run.
 - Decision: U-06 closed `failed_feasibility`; no result review, rules, strategy, backtest or OOS.
+
+## 2026-07-18 - U-07 Independent Design Authorized
+
+- Task: `U-07-DECISION`; branch `codex/u07-design-authorization`; local Git only.
+- Decision: `58f8301035e593b0621add93cfa876a11a5af52df0a3afae38d7b41f095e37d5`; exactly one economically independent, outcome-blind U-07 hypothesis design.
+- Binding: U-04/U-05/U-06 remain `failed_feasibility`, single-run and OOS-sealed; the ADR-0015 audit remains 19/19 with zero critical/high.
+- Independence: prior event signs, measured paths and failed Gate values may not be inverted, relabeled or used to choose U-07.
+- Authorization: hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.

@@ -236,6 +236,10 @@ ALLOWED = {
         "u06_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
     ): "U-07-DECISION",
     (
+        "U-07 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u07_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-07",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -480,6 +484,11 @@ U06_DESIGN_PAIR = (
     "u06_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
 )
 
+U07_DESIGN_PAIR = (
+    "U-07 independent design authorized; outcome-blind hypothesis design is the only next task",
+    "u07_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
 U06_DATA_QUALIFICATION_PASS_PAIR = (
     "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
     "u06_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
@@ -493,7 +502,7 @@ def validate(state: dict) -> list[str]:
     if expected_task is None:
         failures.append(f"unsupported V2 phase/status pair: {pair}")
     expected_auth = dict(EXPECTED_AUTH)
-    if pair in {U04_DESIGN_PAIR, U05_DESIGN_PAIR, U06_DESIGN_PAIR}:
+    if pair in {U04_DESIGN_PAIR, U05_DESIGN_PAIR, U06_DESIGN_PAIR, U07_DESIGN_PAIR}:
         expected_auth["hypothesis_preregistration"] = True
     if pair in {U04_DATA_QUALIFICATION_PASS_PAIR, U05_DATA_QUALIFICATION_PASS_PAIR, U06_DATA_QUALIFICATION_PASS_PAIR}:
         expected_auth["event_scan"] = True
@@ -547,7 +556,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
@@ -569,7 +578,10 @@ def validate(state: dict) -> list[str]:
         and not any(item.get("id") == expected_task for item in active)
     ):
         failures.append(f"current V2 task missing from open_work: {expected_task}")
-    if pair[0] in {
+    if any(
+        item.get("phase") == "ADR-0014 required-changes independent conformance review"
+        for item in state.get("completed_milestones", [])
+    ) or pair[0] in {
         "ADR-0014 required-changes independent conformance review completed",
         "ADR-0014 conditional adoption pending merge",
         "Liquid universe V4 lifecycle availability implementation pending independent review",
@@ -636,7 +648,11 @@ def validate(state: dict) -> list[str]:
             milestones[0].get(key) != value for key, value in expected_milestone.items()
         ):
             failures.append("ADR-0014 conformance milestone binding changed")
-    if pair[0] in {
+    historical_failed_u03f_audit = any(
+        item.get("phase") == "U-03F V4 independent audit" and item.get("status") == "failed_audit"
+        for item in state.get("completed_milestones", [])
+    )
+    if historical_failed_u03f_audit or pair[0] in {
         "Liquid universe V4 lifecycle availability implementation pending independent review",
         "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
         "Liquid universe V4 public requalification passed pending review and merge",
@@ -919,7 +935,7 @@ def validate(state: dict) -> list[str]:
                 }
                 if any(item.get(key) != value for key, value in expected_evidence.items()):
                     failures.append("V4 public requalification evidence binding changed")
-    if pair[0] in {
+    if historical_failed_u03f_audit or pair[0] in {
         "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
         "U-03F V4 independent audit protocol frozen pending review",
         "U-03F V4 independent auditor implementation pending independent review",
@@ -967,7 +983,7 @@ def validate(state: dict) -> list[str]:
         expected_milestone = {
             "status": (
                 "pass_revalidation_required_after_failed_independent_audit"
-                if pair in AUDIT_BLOCKED_PAIRS
+                if pair in AUDIT_BLOCKED_PAIRS or historical_failed_u03f_audit
                 else "pass_active_qualification_authority"
             ),
             "merged_pr": 89,
@@ -982,7 +998,7 @@ def validate(state: dict) -> list[str]:
             failures.append("merged V4 requalification milestone binding changed")
         if any(item.get("id") == "U-03E-V4-RUN" for item in open_work):
             failures.append("merged V4 requalification must not remain in open_work")
-        if pair not in AUDIT_BLOCKED_PAIRS:
+        if pair not in AUDIT_BLOCKED_PAIRS and not historical_failed_u03f_audit:
             audit = [item for item in open_work if item.get("id") == "U-03F"]
             expected_audit_status = {
                 "U-03F V4 independent audit protocol frozen pending review": "protocol_frozen_pending_review",
@@ -999,7 +1015,10 @@ def validate(state: dict) -> list[str]:
             )
             if not audit or audit[0].get("evidence") != expected_evidence:
                 failures.append("U-03F must audit the V4 machine authority")
-    if pair in AUDIT_BLOCKED_PAIRS:
+    if pair in AUDIT_BLOCKED_PAIRS or any(
+        item.get("phase") == "U-03F V4 independent audit" and item.get("status") == "failed_audit"
+        for item in state.get("completed_milestones", [])
+    ):
         if any(item.get("id") == "U-03F" for item in open_work):
             failures.append("merged failed U-03F must not remain in open_work")
         audit_milestones = [
@@ -1399,6 +1418,34 @@ def validate(state: dict) -> list[str]:
         }
         if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_decision.items()):
             failures.append("U-06 design decision milestone binding changed")
+    if pair == U07_DESIGN_PAIR:
+        designs = [item for item in open_work if item.get("id") == "U-07"]
+        expected_design = {
+            "status": "authorized_ready",
+            "authorization_content_hash": "58f8301035e593b0621add93cfa876a11a5af52df0a3afae38d7b41f095e37d5",
+            "maximum_hypotheses": 1,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(designs) != 1 or any(designs[0].get(key) != value for key, value in expected_design.items()):
+            failures.append("U-07 hypothesis-design-only authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-07 design authorization decision"]
+        expected_decision = {
+            "status": "authorized_for_one_independent_outcome_blind_hypothesis_design_only",
+            "decision_content_hash": "58f8301035e593b0621add93cfa876a11a5af52df0a3afae38d7b41f095e37d5",
+            "prior_run_content_hash": "2f715394411ca260f9889304ddc84da926d37ec1dfc9d4316493f23f6881382a",
+            "maximum_hypotheses": 1,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_decision.items()):
+            failures.append("U-07 design decision milestone binding changed")
     if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
         protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
         expected_protocol = {

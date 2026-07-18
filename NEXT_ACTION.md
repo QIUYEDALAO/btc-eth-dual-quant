@@ -1,46 +1,23 @@
 # Next Action
 
-## Separate Post-U-06 Candidate Decision
+## U-07 Outcome-Blind Hypothesis Design
 
-U-05 completed its one authorized sealed-IS Paper observation and is closed as
-`failed_feasibility`. Run `874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a`
-is exact across normal, reverse and deterministic-shuffled traversal under
-identity `ac4b36ac2c04d55c25f9db62f9d59598bac8bb1861b97d4e01f701be398267b0`.
+Decision `58f8301035e593b0621add93cfa876a11a5af52df0a3afae38d7b41f095e37d5`
+authorizes exactly one economically independent U-07 hypothesis design. It
+binds the closed U-04/U-05/U-06 single-run results, their sealed OOS status,
+the passing 19/19 ADR-0015 audit and the exact frozen V4 source authority.
 
-The sample and distribution Gates passed with 490 complete episodes, but the
-two economic Gates failed: median 24h common-demand displacement was `0.0759%`
-versus `1.20%`, and median positive-member fraction was `53.33%` versus `60%`.
-OOS remained sealed and no formal return, fill, position or equity series was
-created.
+The current task is design only. It must define one economic mechanism, causal
+timing, failure regimes and non-duplication without choosing a timeframe,
+threshold, horizon, signal or trading rule. Prior event signs, observed paths
+and failed Gate values may not be inverted, relabeled or used as a rule source.
 
-Decision `596eacbcf2caec7dd1da27bb66ee8bb5859c5b6992c067f22d40e5305cb74662`
-authorizes exactly one new economically independent, outcome-blind U-06
-hypothesis design. It binds both prior failed runs and the passing V4 audit.
+After design-level validation, only a separate outcome-blind Paper protocol may
+be frozen and independently reviewed. Event scanning, returns, strategy rules,
+Freqtrade code, backtesting and OOS remain prohibited at this stage.
 
-U-06 is frozen as `U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING`
-under design `694e5a43...966a5` and hypothesis `e6cb136b...c259b`. It studies
-prior-only quote-volume-share growth without commensurate relative price
-response as possible absorption before delayed repricing.
-
-Protocol target `1bb59f1a...e8cd` is independently approved under review
-`e4f0af0d...e81b3`, with critical/high `0 / 0` and no target modification.
-
-Qualification `e6a4a0eb...b95a67` passed: 27,736 ZIPs, 19 manifests,
-10,251,360 expected 5m rows, 1,170 positive finite quote-volume authority rows
-and three-order identity are exact. OOS decode and outcome rows remain zero.
-
-The unique U-06 observation is `failed_feasibility` under run `2f715394...1382a`.
-Three orders match, but 56 complete episodes miss the 60 Gate, projected full
-episodes 77 miss 80, and median 24h relative/absolute outcomes are negative.
-OOS remained sealed; no return, position or equity model was created.
-
-U-06 is closed without tuning or a second run. The next task is a separate
-decision on at most one economically independent, outcome-blind candidate;
-U-04/U-05/U-06 outcome inversion and result-derived parameters are prohibited.
-
-Do not conduct a U-05 Paper-result review, change its protocol, rerun it or
-continue to fixed rules. U-06 may authorize only a later separate outcome-blind
-Paper protocol after its design and non-duplication evidence pass.
+U-06 remains closed under run `2f715394...1382a`: 56 complete episodes and its
+two 24h economic diagnostics failed. It may not be tuned or rerun.
 
 ## U-04 Closed Historical Evidence
 

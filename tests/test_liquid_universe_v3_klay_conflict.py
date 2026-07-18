@@ -388,8 +388,8 @@ class KlaySourceConflictTests(unittest.TestCase):
 
     def test_repository_governance_closes_adjudication_and_limits_adoption(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
-        self.assertTrue(state["current_phase"].startswith("U-06 "))
-        self.assertTrue(state["current_status"].startswith("u06_"))
+        self.assertRegex(state["current_phase"], r"^U-\d{2} ")
+        self.assertRegex(state["current_status"], r"^u\d{2}_")
         u04 = next(
             item for item in state["completed_milestones"]
             if item.get("phase") == "U-04 unique sealed-IS paper observation"
