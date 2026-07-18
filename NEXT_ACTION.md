@@ -2,49 +2,25 @@
 
 ## Immediate Task
 
-Design and freeze one outcome-blind paper protocol for
-`U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL`.
+Complete U-04 frozen-source data qualification and IS/OOS isolation.
 
-- Design content hash:
-  `b384e6484180a0ec358125fbb0338d7376b860372ab065fe7043667931f178b8`.
-- Hypothesis hash:
-  `85e9fc11e8f6b69597fecdb6a40485611eb24163a20cea4534e81d0f08e5ec7a`.
-- U-04 authorization:
-  `84d9b499329169719a880af80b1e2e7f0d5d5cbbc6c62a6aa762cd738aa04e89`.
-- Qualified artifact set:
-  `8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3`.
-- Source freeze: `c86310f8...ec6c`.
-- Membership manifest: `bcd93c0a...7ec5`.
-- Membership authority: `52aa8cc9...93e2`.
-- Lifecycle registry: `a78c52b1...904d`.
-- Invalid-interval policy/algorithm: `0ac074cf...2d04` / `8f8a3668...a4ff`.
+- Reviewed target: `6523b83d6b6ba93771ec1bad15625eb191fa07be`.
+- Protocol hash: `7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6`.
+- Review hash: `34fe2efdf4788b20b915f34b3b6442f60ddaa364103ae90b920dc2cacf9646b1`.
+- Review verdict: `approve`; critical/high: `0 / 0`.
+- Source freeze: `c86310f8...ec6c`; artifact set: `8784b564...348c3`.
 
-The protocol-design task must freeze exactly one completed observation
-timeframe, common-market estimator, asset-specific residual definition, event
-threshold, clustering rule, future observation windows, sample/concentration
-Gates, cost-coverage Gate, future entry detail and IS/OOS boundary. It must do
-so before reading any event or outcome.
+Verify exact frozen ZIP/source identity, canonical 5m validity, mask-before-grid,
+complete 1h construction, point-in-time active membership, lifecycle
+end-exclusive semantics and the fixed IS/OOS boundary. Normal, reverse and
+deterministic-shuffled traversal must produce the same qualification identity.
 
-The protocol must remain a machine-verifiable preregistration. It cannot run
-the event scan, inspect paths or returns, select a fixed trading rule, write a
-Freqtrade strategy or open OOS. A separately authorized execution task may
-follow only after the protocol itself is frozen and validated.
+This is a data-only task. It must not compute member returns, median/MAD,
+residuals, candidate counts, episodes, paths or performance. It must reject
+timestamps at or after `2024-09-11T00:00:00Z` from any IS research reader and
+must not expose sealed-OOS OHLC values.
 
-## Current Design Decision
-
-- Family: asset-specific negative residual after removal of the active
-  cross-section's contemporaneous common move, followed by possible partial
-  reversal.
-- Universe: exact point-in-time active liquid Binance spot USDT membership.
-- Direction: spot long/cash only.
-- Earliest possible future entry: next eligible open after a completed
-  decision.
-- Candidate events evaluated: no.
-- Returns computed: no.
-- OOS opened: no.
-- Lifecycle crossing assumed: no.
-
-## Historical Governance Bindings
+Passing qualification may authorize exactly one sealed-IS paper observation.
 
 ## ADR-0015 Implementation Exact-Head Review
 
@@ -54,7 +30,7 @@ zero critical/high findings under review hash `9a073643...e5af1`.
 ## ADR-0015 Independent Policy Review
 
 Historical review marker: policy review remains `approve` under review hash
-`893d056e...85a3`; U-04 design work does not change policy semantics.
+`893d056e...85a3`; U-04 data work does not change policy semantics.
 
 ## U-03F Repair Exact-Head Review
 
@@ -64,19 +40,10 @@ invalid rows plus the valid-minority slot.
 
 ## Prohibited
 
-- Do not execute the U-04 protocol or access public outcome data in the
-  protocol-design task.
-- Do not scan events, compute signals or returns, inspect OOS values, tune
-  parameters or derive rules from prior failed candidates.
-- Do not replace historical members, use current membership hindsight, fill
-  quarantined slots or weaken source/lifecycle/invalid-interval authority.
-- Do not define lifecycle exit, conversion or return treatment. A separate
-  reviewed delisting/execution policy is required before lifecycle-intersecting
-  fixed-rule work.
-- Freqtrade-first remains mandatory for any future single-leg implementation;
-  Python must not become a second return engine.
 - No strategy is eligible for M2. Do not enter M2.
-- Do not use API keys, trading permissions, paper/live trading,
-  `execution/live`, order placement, cancellation or matching.
-- Continue local Git only; do not push, create a PR or run GitHub Actions unless
-  the user explicitly requests publication.
+- Freqtrade-first remains mandatory for future single-leg implementation.
+- Do not scan U-04 events, observe paths, calculate returns or inspect OOS.
+- Do not change the reviewed protocol, thresholds, Gates or authorities.
+- Do not implement strategy/fixed-rule/backtest logic.
+- No API keys, dry-run/live trading, `execution/live` or order operations.
+- Local Git only; no push, PR or GitHub Actions.

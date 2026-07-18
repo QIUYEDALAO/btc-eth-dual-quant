@@ -1894,3 +1894,11 @@ private exchange responses here.
 - Execution: no public data read, event scan, signal, return, fixed rule, Freqtrade code, backtest or OOS access.
 - Authorization: only a separate outcome-blind U-04 paper-protocol design may follow. Protocol execution, strategy, API/trading, `execution/live` and M2 remain false.
 - Lifecycle Gate: any future lifecycle-intersecting fixed rule remains blocked pending a separately reviewed delisting/execution policy.
+
+## 2026-07-18 - U-04 Paper Protocol Exact-Head Review Approved
+
+- Independent local review target: `6523b83d6b6ba93771ec1bad15625eb191fa07be`; parent `ab85814c...ffeab9`.
+- Protocol/review hashes: `7b0e462d...9629d6` / `34fe2efd...646b1`.
+- Thirteen identity, authority, causal, estimator, threshold, clustering, path, Gate, leakage and safety dimensions pass.
+- Verdict: `approve`; remaining critical/high findings: `0 / 0`; target modified: no.
+- Only frozen-source data qualification and IS/OOS isolation are authorized next. No events, paths, returns, strategy, OOS, trading or M2 are authorized.

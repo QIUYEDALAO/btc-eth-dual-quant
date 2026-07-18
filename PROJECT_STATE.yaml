@@ -2,11 +2,41 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task
-current_status: u04_residual_reversal_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2
+current_phase: U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task
+current_status: u04_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-04 paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U04_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u04_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u04-cross-sectional-paper-protocol-review
+    target_commit: 6523b83d6b6ba93771ec1bad15625eb191fa07be
+    target_base_commit: ab85814c4f242502681f4a68db750ad565ffeab9
+    protocol_content_hash: 7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6
+    review_content_hash: 34fe2efdf4788b20b915f34b3b6442f60ddaa364103ae90b920dc2cacf9646b1
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-04 outcome-blind cross-sectional paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence: reports/m1/U04_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u04_cross_sectional_paper_protocol_v1.json
+    branch: codex/u04-cross-sectional-paper-protocol
+    target_commit: 6523b83d6b6ba93771ec1bad15625eb191fa07be
+    protocol_content_hash: 7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
   - phase: U-04 cross-sectional residual-reversal hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U04_CROSS_SECTIONAL_RESIDUAL_REVERSAL_DESIGN.md
@@ -676,16 +706,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-04-PROTOCOL
-    phase: Cross-sectional residual-reversal outcome-blind paper protocol design
+  - id: U-04-DATA-QUALIFICATION
+    phase: U-04 frozen-source data qualification and IS/OOS isolation
     status: authorized_ready
-    branch: pending
+    branch: codex/u04-cross-sectional-data-qualification
     pr: none
     head_sha: pending
     checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: config/u04_cross_sectional_design_scope_v1.json
+    evidence: reports/expert/evidence/u04_cross_sectional_paper_protocol_review_v1.json
     candidate_id: U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL
-    outcome_blind_protocol_required: true
+    protocol_content_hash: 7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6
+    review_content_hash: 34fe2efdf4788b20b915f34b3b6442f60ddaa364103ae90b920dc2cacf9646b1
+    source_mode: frozen_local_only
+    data_qualification_authorized: true
     event_scan_authorized: false
     strategy_authorized: false
     oos_authorized: false
@@ -758,10 +791,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete one outcome-blind U-04 paper protocol design review and freeze it for the registered residual-reversal candidate."
-  - "The protocol must bind exact point-in-time membership, source, lifecycle and invalid-interval authorities before any result is read."
-  - "Freeze one observation timeframe, common-component estimator, residual definition, event threshold, clustering rule, observation windows and pre-outcome Gates."
-  - "Do not execute the protocol or inspect any event, path, return or OOS value in the protocol-design task."
+  - "Complete the reviewed design's frozen-source data qualification and IS/OOS isolation without scanning U-04 events."
+  - "Verify ZIP/source identity, 1h/5m grids, point-in-time membership, lifecycle and invalid-interval masks in three traversal orders."
+  - "Do not compute residuals, event counts, paths, returns or read sealed-OOS prices in the data-qualification task."
   - Strategy code, event scanning, signals, returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -798,6 +830,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/U04_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-04 paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u04_cross_sectional_paper_protocol_review_v1.json
+    phase: U-04 paper-protocol review machine evidence
+    status: approve_zero_critical_high
+    status_marker: '"verdict": "approve"'
   - path: reports/m1/U04_CROSS_SECTIONAL_RESIDUAL_REVERSAL_DESIGN.md
     phase: U-04 cross-sectional hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
