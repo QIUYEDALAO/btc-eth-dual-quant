@@ -2123,3 +2123,11 @@ private exchange responses here.
 - Verdict: `approve`; critical/high `0/0`; target unchanged.
 - No public data, event/path result, return or OOS value was read.
 - Authorization: frozen-source data qualification and isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-09 Frozen-Source Data Qualification Passed
+
+- Contract/result: `f1bd609d...ead9a` / `c323798a...56aee`; branch `codex/u09-cross-sectional-data-qualification`; local Git only.
+- 27,736 ZIPs, 19 V4 manifests, 78 membership months and 1,170 exact rank rows pass.
+- Schedule: 123 IS anchors before the boundary and 122 anchors with complete non-overlapping 336h primary horizons.
+- Three orders share `ca7d59b3...44aa`; OOS OHLC, cohort, event, path and return rows are zero.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, second run, strategy, OOS or trading.

@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U09_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-09 frozen-source qualification | pass / one sealed-IS observation authorized | ZIPs, manifests, membership ranks, schedule and three orders pass; outcomes zero. | no |
+| `reports/m1/evidence/u09_cross_sectional_data_qualification_v1.json` | U-09 qualification machine evidence | content `c323798a...56aee` | Binds exact authorities, 123/122 anchors, isolation and one-run-only authorization. | no |
 | `reports/expert/U09_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-09 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1bee65ff...68c8` unchanged and authorizes only data qualification. | no |
 | `reports/expert/evidence/u09_cross_sectional_paper_protocol_review_v1.json` | U-09 protocol review machine evidence | content `dd6779da...2947` | Binds five target files, 13 dimensions and qualification-only authority. | no |
 | `reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-09 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes residual-volatility cohort, 336h anchors, paths, Gates and sealed OOS before results. | no |

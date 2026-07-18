@@ -28,6 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-09 data qualification passes under contract `f1bd609d74210f6aa1b31f902d2dfecb79448bed4a0db8532a37be7321cead9a` and result `c323798a9de04c423b8bb59c33604b2203715e1453f9b95b3f13022f71656aee`; 27,736 ZIPs, 19 manifests, ranks, schedule and three orders are exact, OOS/outcomes zero. Exactly one sealed-IS Paper observation is authorized.
 - U-09 protocol target `1bee65ff9dcdf0b9b3e49e37601140068cc968c8` is independently approved under review `dd6779dab8be86fffa17d08a6a64b3085963e3e89b1889b24b6f125f64bb2947`, with 0 critical/high and no target modification. Only frozen-source data qualification and isolation are authorized next.
 - U-09 protocol `874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae` is frozen before results. It fixes 336h anchors, a prior 168h completed 1h residual-volatility estimator, persistent low-volatility cohort, 24/72/168/336h paths and immutable Paper Gates. Only a separate exact-head independent review is authorized; no data, events, returns or OOS was accessed.
 - U-09 freezes `U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE` under hypothesis `cb91d77d11b0f877007848330df7e05e1d4e9257142fce4d339edefe75e14c92` and design `4830e361b66cd434e54a5ed284d0ad1e85c1e9270d3542dacf3efec5f4eee6f2`. Only a separate outcome-blind Paper protocol may follow; no public data, event, path, return or OOS was accessed.
