@@ -2,48 +2,49 @@
 
 ## Immediate Task
 
-The separate governance decision authorizes U-04 to create exactly one
-outcome-blind, preregistered cross-sectional economic hypothesis design.
+Design and freeze one outcome-blind paper protocol for
+`U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL`.
 
-- Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`.
-- Protocol content hash:
-  `9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b`.
-- Requalification run:
-  `a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9`.
-- Production artifact set:
+- Design content hash:
+  `b384e6484180a0ec358125fbb0338d7376b860372ab065fe7043667931f178b8`.
+- Hypothesis hash:
+  `85e9fc11e8f6b69597fecdb6a40485611eb24163a20cea4534e81d0f08e5ec7a`.
+- U-04 authorization:
+  `84d9b499329169719a880af80b1e2e7f0d5d5cbbc6c62a6aa762cd738aa04e89`.
+- Qualified artifact set:
   `8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3`.
-- Source freeze: `c86310f8...ec6c`; exact archive count: `27,736`.
-- Frozen comparison Gate: 19/19 exact manifests, zero semantic/order
-  mismatches and zero critical/high findings.
-- Frozen accounting: 8 events, 119 physical invalid rows, 1 valid-minority
-  row and 120 total masked active-member slots.
-- Auditor implementation content hash:
-  `f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e`.
-- Synthetic/targeted checks: 25 passed; complete unit regression: 700 passed.
-- Historical frozen auditor modified: no.
-- Exact reviewed target: `4bebdf32786818b7f451474c864ba9ee3109a26b`.
-- Review content hash: `77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0`.
-- Exact reviewed target: `301e910ea669c702a34598e500826a456663a5fb`.
-- Review content hash: `f04f87f849966d188dc39cff0bc72f12a71d6c1d601249d202a08ce4686b7c26`.
-- Exact reviewed target: `e935d6b287eaf66f825d9f73181fa35160cb5225`.
-- Review content hash: `fb63d2f3b3e0843927a348fb5a9fb94a5b3873d15a132d8bd968d10fe7980fe0`.
-- Audit summary hash: `e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4`.
-- Artifact set: `8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3`.
-- Real audit completed: yes; verdict: pass; 19/19; critical/high: 0/0.
-- Prior failed preflight produced no result evidence.
+- Source freeze: `c86310f8...ec6c`.
+- Membership manifest: `bcd93c0a...7ec5`.
+- Membership authority: `52aa8cc9...93e2`.
+- Lifecycle registry: `a78c52b1...904d`.
+- Invalid-interval policy/algorithm: `0ac074cf...2d04` / `8f8a3668...a4ff`.
 
-The only authorized next task is the U-04 hypothesis design itself. It may not
-read outcomes, select event thresholds, define executable strategy rules or
-access OOS. A separate protocol is mandatory before any event scan.
+The protocol-design task must freeze exactly one completed observation
+timeframe, common-market estimator, asset-specific residual definition, event
+threshold, clustering rule, future observation windows, sample/concentration
+Gates, cost-coverage Gate, future entry detail and IS/OOS boundary. It must do
+so before reading any event or outcome.
 
-## Required Audit Run
+The protocol must remain a machine-verifiable preregistration. It cannot run
+the event scan, inspect paths or returns, select a fixed trading rule, write a
+Freqtrade strategy or open OOS. A separately authorized execution task may
+follow only after the protocol itself is frozen and validated.
 
-1. Run only from the exact review-bound implementation and frozen protocol.
-2. Traverse the frozen archive set in all three required orders.
-3. Compare all 19 independently rebuilt manifests byte-semantically.
-4. Verify 8 events, 119 invalid rows, 1 valid minority and 120 masked slots.
-5. Fail closed on any hash, count, order or scope mismatch.
-6. Continue local Git only; no GitHub push, PR or Actions unless the user asks.
+## Current Design Decision
+
+- Family: asset-specific negative residual after removal of the active
+  cross-section's contemporaneous common move, followed by possible partial
+  reversal.
+- Universe: exact point-in-time active liquid Binance spot USDT membership.
+- Direction: spot long/cash only.
+- Earliest possible future entry: next eligible open after a completed
+  decision.
+- Candidate events evaluated: no.
+- Returns computed: no.
+- OOS opened: no.
+- Lifecycle crossing assumed: no.
+
+## Historical Governance Bindings
 
 ## ADR-0015 Implementation Exact-Head Review
 
@@ -53,27 +54,29 @@ zero critical/high findings under review hash `9a073643...e5af1`.
 ## ADR-0015 Independent Policy Review
 
 Historical review marker: policy review remains `approve` under review hash
-`893d056e...85a3`; protocol work did not change policy semantics.
+`893d056e...85a3`; U-04 design work does not change policy semantics.
 
 ## U-03F Repair Exact-Head Review
 
 Historical review marker: the former repair review and its later blocked cold
-run remain immutable. ADR-0015 requalification separately quarantined all 119
-physical invalid rows plus the valid-minority slot.
+run remain immutable. ADR-0015 requalification separately quarantined 119 physical
+invalid rows plus the valid-minority slot.
 
 ## Prohibited
 
-- Freqtrade-first remains the architecture for any future single-leg research.
+- Do not execute the U-04 protocol or access public outcome data in the
+  protocol-design task.
+- Do not scan events, compute signals or returns, inspect OOS values, tune
+  parameters or derive rules from prior failed candidates.
+- Do not replace historical members, use current membership hindsight, fill
+  quarantined slots or weaken source/lifecycle/invalid-interval authority.
+- Do not define lifecycle exit, conversion or return treatment. A separate
+  reviewed delisting/execution policy is required before lifecycle-intersecting
+  fixed-rule work.
+- Freqtrade-first remains mandatory for any future single-leg implementation;
+  Python must not become a second return engine.
 - No strategy is eligible for M2. Do not enter M2.
-- Do not execute anything beyond the now-authorized real independent audit.
-- Do not mutate frozen archives, requalification evidence or historical audit
-  evidence.
-- Do not use production builders, production Markdown or the production policy
-  module as the independent audit algorithm.
-- Do not add date/symbol/row exceptions, repair timestamps, fill gaps, replace
-  members, waive manifest mismatches or lower any Gate.
-- U-04 may perform one outcome-blind hypothesis design only; do not enter event
-  scanning, returns, strategy rules, backtesting or OOS.
-- Do not access API keys, trading permissions, paper/live trading,
+- Do not use API keys, trading permissions, paper/live trading,
   `execution/live`, order placement, cancellation or matching.
-- M2 remains blocked.
+- Continue local Git only; do not push, create a PR or run GitHub Actions unless
+  the user explicitly requests publication.

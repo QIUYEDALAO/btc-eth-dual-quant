@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U04_CROSS_SECTIONAL_RESIDUAL_REVERSAL_DESIGN.md` | U-04 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes one point-in-time active-universe residual-reversal mechanism without events, returns, parameters or OOS. | no |
+| `reports/m1/U04_NON_DUPLICATION_REVIEW.md` | U-04 non-duplication review | pass_design_level | Separates U-04 from M1C momentum, M1G absolute panic, M1E breakout, M1H funding and M1A trend. | no |
+| `config/u04_cross_sectional_design_scope_v1.json` | U-04 machine design scope | content `b384e648...f178b8` | Binds candidate `85e9fc11...5ec7a`, audit and point-in-time data authorities; only paper-protocol design is enabled. | no |
 | `reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md` | ADR-0015 independent auditor implementation | source order fixed pending replacement exact-head review | Content `f0c0ee6d...8d5e`; prior run deterministic and 18/19 exact; 19/19 Gate unchanged. | no |
 | `reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_REPORT.md` | ADR-0015 real independent audit | pass / 19 of 19 / 0 critical-high | Three orders equal artifact `8784b564...348c3`; 8/119/1/120 exact; no network or production mutation. | no |
 | `reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/audit_summary.json` | ADR-0015 audit machine result | deterministic pass | Summary `e26c9a08...06c4`; binds comparison, traversal and zero downstream authorization. | no |

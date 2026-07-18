@@ -390,11 +390,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
         self.assertEqual(
             state["current_phase"],
-            "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
+            "U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task",
         )
         self.assertEqual(
             state["current_status"],
-            "u04_one_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+            "u04_residual_reversal_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
         )
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
@@ -459,11 +459,11 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertTrue(implementation["public_data_run_executed"])
         protocol = next(
             item for item in state["open_work"]
-            if item["id"] == "U-04"
+            if item["id"] == "U-04-PROTOCOL"
         )
         self.assertEqual(protocol["status"], "authorized_ready")
-        self.assertEqual(protocol["maximum_hypotheses"], 1)
-        self.assertTrue(protocol["outcome_blind_preregistration_required"])
+        self.assertEqual(protocol["candidate_id"], "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL")
+        self.assertTrue(protocol["outcome_blind_protocol_required"])
         self.assertFalse(protocol["event_scan_authorized"])
         audit_protocol = state["adr0015_invalid_interval_independent_audit_protocol"]
         self.assertEqual(
@@ -506,7 +506,7 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertEqual(
             state["research_authorizations"],
             {
-                "hypothesis_preregistration": True,
+                "hypothesis_preregistration": False,
                 "strategy_code": False,
                 "event_scan": False,
                 "returns": False,

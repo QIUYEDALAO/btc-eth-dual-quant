@@ -1883,3 +1883,14 @@ private exchange responses here.
 - Decision content hash: `84d9b499329169719a880af80b1e2e7f0d5d5cbbc6c62a6aa762cd738aa04e89`.
 - Event scans, thresholds, signals, returns, strategy rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain unauthorized.
 - A separate outcome-blind protocol is mandatory before any event scan; lifecycle-intersecting fixed-rule work requires a separate delisting/execution policy review.
+
+## 2026-07-18 - U-04 Residual-Reversal Hypothesis Design Complete
+
+- Task: `U-04`; branch `codex/u04-cross-sectional-residual-reversal-design`; local Git only.
+- Candidate: `U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL`; hypothesis `85e9fc11e8f6b69597fecdb6a40485611eb24163a20cea4534e81d0f08e5ec7a`.
+- Design content hash: `b384e6484180a0ec358125fbb0338d7376b860372ab065fe7043667931f178b8`.
+- Mechanism: remove the contemporaneous common move of the exact point-in-time active cross-section and study whether a temporary asset-specific negative residual can partially reverse.
+- Non-duplication: distinct from M1C momentum, M1G absolute panic, M1E breakout continuation, M1H funding crowding and M1A trend.
+- Execution: no public data read, event scan, signal, return, fixed rule, Freqtrade code, backtest or OOS access.
+- Authorization: only a separate outcome-blind U-04 paper-protocol design may follow. Protocol execution, strategy, API/trading, `execution/live` and M2 remain false.
+- Lifecycle Gate: any future lifecycle-intersecting fixed rule remains blocked pending a separately reviewed delisting/execution policy.
