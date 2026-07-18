@@ -2526,6 +2526,13 @@ private exchange responses here.
 - Finding: 336h residual construction, two disjoint 168h halves, 24h block RMS, normalized MAD variability, two-half threshold/rank persistence, clustering, paths, complexity and isolation are causal and fixed.
 - Authorization: only separate frozen-source data qualification, structural ceiling, synthetic complexity and result-free preflight. Residual/volatility/event/path scans, returns, strategy, OOS and trading remain false.
 
+## 2026-07-18 - U-19 Frozen-Source Qualification and Preflight Passed
+
+- Result: `62b7ac38cc1eb9ab89d2c2af8571181ef2f06a2f3873d70f61c917d3c23db499`; exact 27,736 archives, 19 manifests and three source/same-reader traversal orders.
+- Structure: 5,179 eligible decisions and maximum 752 independent theoretical 24h episodes versus the frozen minimum 400.
+- Complexity: three deterministic one-million-row exact-evaluator passes complete in at most 19.826369 seconds and 26.781 MiB; output `e82bf4dc...7f17` exact.
+- Isolation: price, return, residual, volatility-statistic, candidate, event, path, formal-return and OOS decoded rows are all zero. Exactly one sealed-IS Paper observation is authorized.
+
 ## 2026-07-18 - U-18 Paper Protocol Exact-Head Review Approved
 
 - Target: `39a766c50de5a0855d7ee85c2aab743ec8b738e5`; protocol `7571d2cb...c671`; five target blobs exact.

@@ -2,11 +2,30 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-19 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task
-current_status: u19_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-19 data qualification and complexity preflight passed; one sealed-IS Paper observation is the only next task
+current_status: u19_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-19 frozen-source data qualification, complexity and preflight
+    status: pass_local_complete
+    evidence: reports/m1/U19_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u19_cross_sectional_data_qualification_v1.json
+    branch: codex/u19-cross-sectional-data-qualification
+    contract_content_hash: 7b60e967dca3c3300beb8a77e589e257346bfe5ffd24b3ec99bea2058c50e4a0
+    qualification_content_hash: 62b7ac38cc1eb9ab89d2c2af8571181ef2f06a2f3873d70f61c917d3c23db499
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 5179
+    maximum_independent_theoretical_24h_episodes: 752
+    complexity_passes: 3
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-19 Paper-protocol exact-head independent review
     status: approve
     evidence: reports/expert/U19_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -2211,18 +2230,20 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-19-PROTOCOL-REVIEW
-    phase: exact-head independent volatility-of-volatility Paper-protocol review
-    status: completed_approve_local
+  - id: U-19-DATA-QUALIFICATION
+    phase: frozen-source data qualification, complexity and structural preflight
+    status: completed_pass_local
     authorization_content_hash: 0996522977d3a54fe35f29220bcd0ca9dd4f2aebd1533d610c6aececf250c3a9
     design_content_hash: 89cd46e632d5d890b5c2b13c71a63642ab1ed5a2167904df0f722a5d4279fe80
     protocol_content_hash: 8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9
+    qualification_content_hash: 62b7ac38cc1eb9ab89d2c2af8571181ef2f06a2f3873d70f61c917d3c23db499
     maximum_hypotheses: 1
     hypothesis_design_authorized: false
     paper_protocol_design_authorized: false
     review_content_hash: d215e444595036412cc680b83cc0adf8449edbe6c283ac82b632c67e623f4a91
     exact_head_independent_review_authorized: false
-    data_qualification_complexity_and_preflight_authorized: true
+    data_qualification_complexity_and_preflight_authorized: false
+    one_sealed_is_paper_observation_authorized: true
     public_data_read_authorized: true
     event_scan_authorized: false
     path_observation_authorized: false

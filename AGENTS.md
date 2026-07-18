@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-19 frozen-source qualification passes locally under result `62b7ac38cc1eb9ab89d2c2af8571181ef2f06a2f3873d70f61c917d3c23db499`: 27,736 archives and 19 manifests are exact, all source/same-reader orders agree, the structural ceiling is 752 versus 400 required, and three one-million-row exact-core complexity passes succeed. Market outcome and OOS rows are zero. Exactly one sealed-IS Paper observation is authorized; no retry, formal returns, strategy/backtesting, OOS, API/trading, execution/live or M2.
+
 - U-19 exact protocol target `8b8b03f0869463c046668e28fbb22618383addf4` is independently approved 16/16 with 0 critical/high under review `d215e444595036412cc680b83cc0adf8449edbe6c283ac82b632c67e623f4a91`. Only frozen-source qualification, 336h-history/24h-path structural ceiling and synthetic complexity are authorized next. Residuals, volatility statistics, events, paths, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-19 Paper protocol `U19-03-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9`. It fixes 336h residual history, two 168h halves, seven 24h RMS blocks per half, normalized MAD variability, 0.25/top-quartile persistence, 24h clustering and immutable Paper Gates. Only exact-head independent review is authorized; data, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
