@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U11_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-11 frozen-source qualification | pass / one sealed-IS observation authorized | ZIPs, manifests, 4h authority, ceiling 473 and three orders pass; outcomes zero. | no |
+| `reports/m1/evidence/u11_cross_sectional_data_qualification_v1.json` | U-11 qualification machine evidence | content `b0476b5e...05b6` | Binds exact authorities, metadata ceiling, isolation and one-run-only authorization. | no |
 | `reports/expert/U11_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-11 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `e7f621ec...166a` unchanged and authorizes only qualification. | no |
 | `reports/expert/evidence/u11_cross_sectional_paper_protocol_review_v1.json` | U-11 protocol review machine evidence | content `4e8fea7a...d9fc` | Binds five target files, 13 dimensions and qualification-only authority. | no |
 | `reports/m1/U11_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-11 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes asymmetric capture identity, 72h paths, ceiling, Gates and sealed OOS. | no |

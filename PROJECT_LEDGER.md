@@ -2223,3 +2223,11 @@ private exchange responses here.
 - Verdict: `approve`; critical/high `0/0`; target unchanged.
 - No public data, common-state/event/path result, return or OOS value was read.
 - Authorization: frozen-source qualification and isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-11 Frozen-Source Data Qualification Passed
+
+- Contract/result: `b376f6c8...cfcc` / `b0476b5e...05b6`; branch `codex/u11-cross-sectional-data-qualification`; local Git only.
+- All 27,736 ZIPs, 19 manifests, complete 4h authority, membership, lifecycle, invalid-interval and boundary checks pass in three orders.
+- Metadata preflight: 8,690 eligible history/constant-path decision times and 473 maximum independent theoretical episodes versus frozen 200/90 Gates.
+- OOS values and common-state/capture/candidate/event/path/return rows are zero.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, rerun, formal return, strategy, OOS or trading.

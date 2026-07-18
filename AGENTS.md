@@ -28,6 +28,7 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-11 frozen-source qualification passes under contract `b376f6c8250a6810a32dd2ceca5cca94431f7e5cf0e1249ded364700940ccfcc` and result `b0476b5e8cdd60769f49312e682329376daf5fa6f4163358d9bd4c84f0ca05b6`: 27,736 ZIPs, 19 manifests and three orders are exact; metadata ceiling 473, OOS/outcomes zero. Exactly one sealed-IS Paper observation is authorized.
 - U-11 protocol target `e7f621ec400fcb24833038f9201df5ffa5fa166a` is independently approved under review `4e8fea7a28e19742baab225f9b0e8b98be16749792b9a68b9416c7d287a4d9fc`, with 0 critical/high and no target modification. Only frozen-source qualification, pre-result sample-ceiling verification and isolation are authorized.
 - U-11 protocol `3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc` is frozen before results. It fixes completed 4h common-market states, 360-observation asymmetric capture with two persistence halves, state-sample minimums, 72h clustering/paths, a metadata ceiling ≥200 versus Gate 90 and immutable Paper Gates. Only exact-head independent review is authorized.
 - U-11 freezes `U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE` under hypothesis `1c9ef854245c3f46000712894392b5b97a865013355c4553e372c6d168f63e74` and design `0572daf7511c673a89dff6e737ad12528dde6c40845b672d62bbd3b1aeca9e4c`. Only a separate outcome-blind Paper protocol may follow; no public data, event, path, return or OOS was accessed.

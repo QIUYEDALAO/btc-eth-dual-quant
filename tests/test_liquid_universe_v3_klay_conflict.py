@@ -510,6 +510,7 @@ class KlaySourceConflictTests(unittest.TestCase):
             "U-08 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
             "U-09 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
             "U-10 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+            "U-11 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
         }
         self.assertEqual(
             state["research_authorizations"]["event_scan"],
