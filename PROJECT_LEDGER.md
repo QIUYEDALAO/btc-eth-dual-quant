@@ -2555,3 +2555,10 @@ private exchange responses here.
 - Mechanism: persistent variability of common-component-adjusted volatility may impose unstable risk-budget, hedging and liquidity-capital demands for which investors require compensation.
 - Independence: not low idiosyncratic volatility, downside-tail asymmetry, beta capture, trading liquidity risk, trend, panic, absorption or correlation breakdown; no prior result selected it.
 - Scope: no data or outcome read; all clocks, estimators, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-19 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U19-03-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM-PAPER-V1`; content `8f50ee40...40f9`; frozen before data/results.
+- Identity: 336 completed hourly residuals split into two 168h halves; each has seven non-overlapping 24h residual-RMS blocks and normalized `1.4826 × MAD / median` variability.
+- Persistence/Gates: both halves require at least 0.25 and highest cross-sectional quarter rank; base volatility level and return direction are not Gates; 24h clustering/paths and standard immutable Paper Gates apply.
+- Next action: separate exact-head review only. Data qualification, events, strategy, OOS and trading remain unauthorized.

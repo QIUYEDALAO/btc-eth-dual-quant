@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U19_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-19 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 336h two-half volatility-of-volatility persistence, clustering, paths, Gates and preflight. | no |
+| `config/u19_cross_sectional_paper_protocol_v1.json` | U-19 machine Paper protocol | content `8f50ee40...40f9` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
+
 | `reports/m1/U19_IDIOSYNCRATIC_VOLATILITY_OF_VOLATILITY_RISK_PREMIUM_DESIGN.md` | U-19 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes compensated variability-of-asset-specific-risk mechanism without data, parameters, results or OOS. | no |
 | `reports/m1/U19_NON_DUPLICATION_REVIEW.md` | U-19 non-duplication | pass_design_level | Separates risk instability from low volatility, downside tails and prior event families. | no |
 | `config/u19_cross_sectional_design_scope_v1.json` | U-19 machine design scope | content `89cd46e6...fe80` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |

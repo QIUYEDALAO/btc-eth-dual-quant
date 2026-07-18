@@ -2,11 +2,24 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-19 volatility-of-volatility risk-premium design completed; outcome-blind Paper protocol design is the only next task
-current_status: u19_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-19 volatility-of-volatility Paper protocol frozen; exact-head independent review is the only next task
+current_status: u19_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-19 outcome-blind volatility-of-volatility risk-premium Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U19_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u19_cross_sectional_paper_protocol_v1.json
+    branch: codex/u19-cross-sectional-paper-protocol
+    candidate_id: U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM
+    protocol_content_hash: 8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-19 idiosyncratic volatility-of-volatility risk-premium hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U19_IDIOSYNCRATIC_VOLATILITY_OF_VOLATILITY_RISK_PREMIUM_DESIGN.md
@@ -2184,15 +2197,16 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-19
-    phase: idiosyncratic volatility-of-volatility risk-premium design
+  - id: U-19-PROTOCOL
+    phase: outcome-blind volatility-of-volatility risk-premium Paper protocol
     status: completed_local
     authorization_content_hash: 0996522977d3a54fe35f29220bcd0ca9dd4f2aebd1533d610c6aececf250c3a9
     design_content_hash: 89cd46e632d5d890b5c2b13c71a63642ab1ed5a2167904df0f722a5d4279fe80
+    protocol_content_hash: 8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9
     maximum_hypotheses: 1
     hypothesis_design_authorized: false
-    paper_protocol_design_authorized: true
-    exact_head_independent_review_authorized: false
+    paper_protocol_design_authorized: false
+    exact_head_independent_review_authorized: true
     data_qualification_complexity_and_preflight_authorized: false
     public_data_read_authorized: false
     event_scan_authorized: false
@@ -2312,7 +2326,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Perform one outcome-blind U-19 Paper protocol design without reading data or results; all estimators, thresholds, paths and Gates must be fixed before access."
+  - "Perform a separate exact-head independent review of the frozen U-19 Paper protocol without reading data or results."
   - "No U-18 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-18 outcomes, Gates, defects and censor patterns may not select U-19."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
@@ -2353,6 +2367,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U19_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-19 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u19_cross_sectional_paper_protocol_v1.json
+    phase: U-19 machine Paper protocol
+    status: deterministic_exact_head_review_only_authority
+    status_marker: '"content_hash": "8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9"'
   - path: reports/m1/U19_IDIOSYNCRATIC_VOLATILITY_OF_VOLATILITY_RISK_PREMIUM_DESIGN.md
     phase: U-19 hypothesis design
     status: economic_hypothesis_pass_protocol_design_only

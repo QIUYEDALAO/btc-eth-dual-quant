@@ -1,5 +1,18 @@
 # Next Action
 
+## U-19 Exact-Head Independent Paper-Protocol Review
+
+Protocol `U19-03-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM-PAPER-V1`
+is frozen before data/results under `8f50ee40...40f9`. The only next task is a
+separate-branch read-only review of the exact target. It must verify 336h
+history, two 168h halves, non-overlapping 24h residual-RMS blocks, normalized
+MAD variability, two-half 0.25/top-quartile persistence, clustering, paths,
+complexity and sealed-OOS isolation.
+
+Approval may authorize only data qualification, structural ceiling and
+synthetic complexity preflight. It cannot authorize event/path scans, returns,
+strategy, backtesting or OOS.
+
 ## U-19 Outcome-Blind Paper Protocol Design
 
 U-19 freezes `U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM`

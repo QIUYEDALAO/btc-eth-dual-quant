@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-19 Paper protocol `U19-03-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9`. It fixes 336h residual history, two 168h halves, seven 24h RMS blocks per half, normalized MAD variability, 0.25/top-quartile persistence, 24h clustering and immutable Paper Gates. Only exact-head independent review is authorized; data, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
+
 - U-19 freezes `U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM` under hypothesis `6b3cd19be7fedab64bfc43ad6c667cdbe774d58994073446a340cf7f55217c52` and design `89cd46e632d5d890b5c2b13c71a63642ab1ed5a2167904df0f722a5d4279fe80`. It studies compensation for unstable asset-specific risk, not low volatility, downside tails or prior event families. Only one outcome-blind Paper protocol design is authorized next; data, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 
 - U-19 design authorization `0996522977d3a54fe35f29220bcd0ca9dd4f2aebd1533d610c6aececf250c3a9` permits exactly one economically independent, outcome-blind hypothesis design. It binds U-18's immutable failed run and prohibits inversion, repair, relabeling, repackaging or use of U-04 through U-18 outcomes to select U-19. Data, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
