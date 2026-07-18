@@ -2430,4 +2430,12 @@ private exchange responses here.
 - Independence: not single-period reversal, stress resilience, residual-volatility quality, trend/volume confirmation, beta capture, lagged diffusion, downside rejection or taker-buy absorption.
 - Scope: no data or outcome read; all timeframes, estimators, thresholds, paths, costs and rules remain unresolved. OOS sealed.
 - Next action: one outcome-blind Paper protocol design only.
+
+## 2026-07-18 - U-16 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U16-03-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE-PAPER-V1`; content `18e302de...5633a`; frozen before data or results.
+- History: 48 completed hourly returns; oldest 36h baseline Pearson correlation at least 0.50, newest 12h at most 0.10, drop at least 0.50, using candidate-specific peer medians.
+- Event: recent relative log displacement at least 2.40%, at least 7/12 positive relative hours, max single candidate hour 6%, terminal-hour contribution at most 50%; deterministic representative and 24h cluster.
+- Observation: strict next 5m open and 1/2/4/8/12/24h paths only; 90-episode and fixed distribution/economic Gates; no formal return.
+- Next action: exact-head independent review only.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

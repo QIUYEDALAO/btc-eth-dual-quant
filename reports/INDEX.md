@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U16_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-16 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 48h path decoupling, correlation/displacement/spike identity, paths, Gates and preflight. | no |
+| `config/u16_cross_sectional_paper_protocol_v1.json` | U-16 machine Paper protocol | content `18e302de...5633a` | Only protocol freeze and exact-head review are true; result/trading permissions false. | no |
 | `reports/m1/U16_CORRELATION_BREAKDOWN_INFORMATION_PERSISTENCE_DESIGN.md` | U-16 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes positive relative decoupling as gradual asset-specific information without data, parameters, results or OOS. | no |
 | `reports/m1/U16_NON_DUPLICATION_REVIEW.md` | U-16 non-duplication | pass_design_level | Separates multi-path peer decoupling from U-04 through U-15 and prior strategy families. | no |
 | `config/u16_cross_sectional_design_scope_v1.json` | U-16 machine design scope | content `8574e5c5...075d1` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |

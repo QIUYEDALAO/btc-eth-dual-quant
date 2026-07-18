@@ -2,11 +2,24 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-16 correlation-breakdown information-persistence design completed; outcome-blind Paper protocol design is the only next task
-current_status: u16_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-16 correlation-breakdown Paper protocol frozen; exact-head independent review is the only next task
+current_status: u16_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-16 outcome-blind correlation-breakdown Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U16_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u16_cross_sectional_paper_protocol_v1.json
+    branch: codex/u16-cross-sectional-paper-protocol
+    candidate_id: U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE
+    protocol_content_hash: 18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-16 correlation-breakdown information-persistence hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U16_CORRELATION_BREAKDOWN_INFORMATION_PERSISTENCE_DESIGN.md
@@ -1932,11 +1945,11 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-16-PROTOCOL
-    phase: outcome-blind correlation-breakdown Paper protocol design
+  - id: U-16-PROTOCOL-REVIEW
+    phase: exact-head independent correlation-breakdown Paper protocol review
     status: authorized_next
-    design_content_hash: 8574e5c5aa068f10a561d8cfae26d4a45d5b9eb17287156912fa4d8b5fd075d1
-    paper_protocol_design_authorized: true
+    protocol_content_hash: 18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a
+    exact_head_independent_review_authorized: true
     public_data_read_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
@@ -2018,9 +2031,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete one outcome-blind U-16 Paper protocol design without reading market data, events, paths, returns or OOS."
-  - "Freeze the prior path, common component, correlation breakdown, positive displacement, thresholds, clustering, paths, costs, Gates and complexity preflight."
-  - "Use only qualified OHLC timing authority; do not use or repair U-15 taker fields."
+  - "Complete one exact-head independent review of the frozen U-16 Paper protocol without modifying target files."
+  - "Review history/common-path construction, correlation/displacement causality, spike exclusion, clustering, paths, Gates, isolation and complexity."
+  - "Only approve with zero critical/high may authorize separate data qualification and preflight."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -2057,6 +2070,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U16_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-16 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u16_cross_sectional_paper_protocol_v1.json
+    phase: U-16 machine Paper protocol
+    status: deterministic_review_only
+    status_marker: '"content_hash": "18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a"'
   - path: reports/m1/U16_CORRELATION_BREAKDOWN_INFORMATION_PERSISTENCE_DESIGN.md
     phase: U-16 correlation-breakdown information-persistence design
     status: economic_hypothesis_pass_protocol_design_only

@@ -1,5 +1,16 @@
 # Next Action
 
+## U-16 Exact-Head Independent Paper-Protocol Review
+
+Protocol `U16-03-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE-PAPER-V1` is
+frozen under `18e302de...5633a`. The only next task is a separate-branch,
+read-only review of its exact head. Approval requires 0 critical/high and must
+verify 48h history, candidate-specific peer medians, Pearson windows,
+displacement/spike Gates, clustering, next-open paths, complexity and isolation.
+
+Approval can authorize only separate data qualification and result-free
+preflight. It cannot authorize event observation, returns, strategy or OOS.
+
 ## U-16 Outcome-Blind Paper Protocol Design
 
 U-16 freezes `U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE`

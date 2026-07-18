@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-16 Paper protocol `U16-03-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE-PAPER-V1` is frozen before results under `18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a`. Only exact-head independent review is authorized next.
+- It fixes 48 completed hourly returns, 36h/12h Pearson correlation breakdown, 2.40% positive relative displacement, coherence/spike exclusion, 24h clustering, next-open paths and Paper Gates. No data or outcome was read.
 - U-16 freezes `U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE` under design `8574e5c5aa068f10a561d8cfae26d4a45d5b9eb17287156912fa4d8b5fd075d1`. It is a declared-unopened spot long/cash candidate selected without data or result access.
 - The mechanism is positive relative displacement with prior-only decoupling from the complete peer common return path, interpreted as possible gradual asset-specific information incorporation. It uses no taker fields and is not a U-15 repair.
 - Only an outcome-blind U-16 Paper protocol design is authorized next. Events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
