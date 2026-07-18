@@ -1,16 +1,28 @@
 # Next Action
 
-## U-05 Outcome-Blind Paper Protocol
+## U-05 Frozen-Source Data Qualification and Isolation
 
 Decision `48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c`
 authorized one independent U-05 hypothesis design. That design is now frozen as
 `U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE` under content hash
 `ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb`.
 
-The next task must freeze one result-blind Paper protocol defining the event,
-path diagnostics, clustering, sample/concentration/cost Gates and IS/OOS
-boundary. No event, path, return or OOS value may be read before that protocol
-is independently approved.
+The independently reviewed protocol target is
+`8d8652796e22a15285ba682b4524baa0218ca5a6`, protocol hash
+`c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214`.
+Review `8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f`
+returns `approve` with critical/high `0 / 0` and leaves all target files
+unchanged.
+
+The next task is frozen-source data qualification and IS/OOS isolation. It must
+verify the exact 27,736 source ZIPs, audited V4 manifests, point-in-time
+membership, lifecycle, invalid-interval masks and complete 4h/1h/5m grids in
+normal, reverse and deterministic-shuffled order. It must stop before event
+calculation, path observation or sealed-OOS OHLC decoding.
+
+Passing qualification may authorize exactly one sealed-IS U-05 Paper
+observation. It does not authorize strategy rules, formal returns, backtesting
+or OOS.
 
 The complete dependency chain is frozen in
 `docs/superpowers/plans/2026-07-18-u05-cross-sectional-research-mainline.md`.

@@ -2,11 +2,41 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task
-current_status: u05_breadth_demand_persistence_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2
+current_phase: U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task
+current_status: u05_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-05 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U05_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u05_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u05-cross-sectional-paper-protocol-review
+    target_commit: 8d8652796e22a15285ba682b4524baa0218ca5a6
+    target_base_commit: f66dcbdf5ad48b35e7bba2f112257e446563288c
+    protocol_content_hash: c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214
+    review_content_hash: 8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-05 outcome-blind breadth-demand Paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence_at_target: reports/m1/U05_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence_at_target: config/u05_cross_sectional_paper_protocol_v1.json
+    branch: codex/u05-cross-sectional-paper-protocol
+    target_commit: 8d8652796e22a15285ba682b4524baa0218ca5a6
+    protocol_content_hash: c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
   - phase: U-05 cross-sectional breadth-demand persistence hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md
@@ -778,13 +808,17 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-05-PROTOCOL
-    phase: U-05 outcome-blind Paper protocol design
+  - id: U-05-DATA-QUALIFICATION
+    phase: U-05 frozen-source data qualification and IS/OOS isolation
     status: authorized_ready
-    branch: codex/u05-cross-sectional-paper-protocol
+    branch: codex/u05-cross-sectional-data-qualification
     candidate_id: U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE
-    design_content_hash: ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb
-    outcome_blind_protocol_required: true
+    target_commit: 8d8652796e22a15285ba682b4524baa0218ca5a6
+    protocol_content_hash: c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214
+    review_content_hash: 8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f
+    frozen_source_only: true
+    three_traversal_orders_required: true
+    oos_ohlc_decode_authorized: false
     event_scan_authorized: false
     strategy_authorized: false
     oos_authorized: false
@@ -857,9 +891,10 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete and freeze one outcome-blind U-05 Paper protocol design before any event or path scan."
+  - "Complete the reviewed U-05 protocol's frozen-source data qualification and IS/OOS isolation without scanning events."
   - "Preserve U-04 run 9182c9e3...eebc2 without inversion, tuning or outcome-derived U-05 rules."
-  - "The protocol must fix event identity, observation paths, sample/cost Gates and IS/OOS boundaries without reading outcomes."
+  - "Verify ZIP/source identity, 4h/1h/5m grids, point-in-time membership, lifecycle and invalid-interval masks in three traversal orders."
+  - "Do not calculate breadth, event counts, paths, returns or decode sealed-OOS prices during qualification."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -896,6 +931,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/U05_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-05 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u05_cross_sectional_paper_protocol_review_v1.json
+    phase: U-05 Paper-protocol review machine evidence
+    status: approve_zero_critical_high
+    status_marker: '"verdict": "approve"'
   - path: reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md
     phase: U-05 hypothesis design
     status: design_pass_protocol_only

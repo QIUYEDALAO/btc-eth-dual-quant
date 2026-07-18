@@ -1,6 +1,8 @@
 # Reports Index
 
 | `reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md` | U-05 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes distributed common-demand persistence without timeframes, thresholds, outcomes, rules or OOS. | no |
+| `reports/expert/U05_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-05 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `8d865279...ca5a6` without modification and authorizes only data qualification. | no |
+| `reports/expert/evidence/u05_cross_sectional_paper_protocol_review_v1.json` | U-05 protocol review machine evidence | content `8602f209...d914f` | Binds five exact target files, 13 dimensions and a data-qualification-only authorization. | no |
 | `reports/m1/U05_NON_DUPLICATION_REVIEW.md` | U-05 non-duplication | pass_design_level | Separates breadth/common demand from U-04 residuals and all prior candidate families. | no |
 | `config/u05_cross_sectional_design_scope_v1.json` | U-05 machine design scope | content `ae12172a...8c2bb` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
 | `reports/m0/U05_DESIGN_AUTHORIZATION_DECISION.md` | U-05 design authorization | one independent outcome-blind design authorized | Binds the closed U-04 run and passing V4 audit; enables only one U-05 hypothesis design. | no |
