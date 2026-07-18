@@ -2023,3 +2023,12 @@ private exchange responses here.
 - Independence: state-conditioned Top-15 resilience, not U-04 reversal, U-05 positive breadth, U-06 volume absorption or M1C unconditional long-cycle rotation.
 - Execution: no public data, timeframe, threshold, event, path, return, rule, backtest or OOS access.
 - Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
+
+## 2026-07-18 - U-07 Outcome-Blind Paper Protocol Frozen
+
+- Task: `U-07-PROTOCOL`; branch `codex/u07-cross-sectional-paper-protocol`; local Git only.
+- Protocol: `d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195`; frozen before public data, events, paths or returns.
+- Event: completed 4h median market return <= `-2.50%`, negative breadth >=80%, unique candidate residual >=`+2.00%` and candidate return >=`-0.50%`.
+- Timing: 48h connected episodes, strict next expected 5m open, fixed event-time peers, no later search and right-censor on missing/quarantine/lifecycle intersection.
+- Gates: 60/80/20 sample projection, calendar/symbol concentration, +1.80% relative and absolute 24h medians, 60% positive relative episodes, zero authority/order mismatch.
+- Authorization: exact-head independent review only; data qualification, events, returns, strategy, OOS, trading and M2 remain false.

@@ -143,7 +143,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-06-PAPER-OBSERVATION | Unique sealed-IS volume-share Paper observation | completed_failed_feasibility | Qualification pass | `codex/u06-cross-sectional-paper-observation` / local-only | Frozen event/episode/path/accounting evidence | 56 complete; count/full projection and both 24h economic Gates fail | candidate closed; no second run |
 | U-07-DECISION | Separate post-U-06 candidate authorization | completed_authorize_design_only | U-06 closed with OOS sealed | `codex/u07-design-authorization` / local-only | Bind three failed candidates and authorize one independent outcome-blind design | Decision `58f83010...e37d5`; zero downstream permissions | U-07 hypothesis design only |
 | U-07 | Market-stress relative-strength continuation hypothesis design | completed_local | U-07-DECISION complete | `codex/u07-cross-sectional-market-stress-relative-strength-design` / local-only | Machine scope, economics, non-duplication and unopened ledger registration | Design `272eabd4...21795`; no parameters, events, returns or OOS | Paper protocol design only |
-| U-07-PROTOCOL | Outcome-blind market-stress relative-strength Paper protocol | authorized_next | U-07 design complete | new local-only branch | Freeze stress/resilience/event/path/Gate/IS-OOS contract | no result access before exact-head review | none |
+| U-07-PROTOCOL | Outcome-blind market-stress relative-strength Paper protocol | completed_local | U-07 design complete | `codex/u07-cross-sectional-paper-protocol` / local-only | Freeze stress/resilience/event/path/Gate/IS-OOS contract | Protocol `d62dd323...50195`; no result access | exact-head review only |
+| U-07-PROTOCOL-REVIEW | Exact-head independent Paper-protocol review | authorized_next | U-07-PROTOCOL exact target | separate local-only branch | Hash-bind target and review 13 dimensions | `approve`, critical/high 0/0, no target mutation | target commit freezes after protocol commit |
 
 ## Current Gate
 
@@ -157,7 +158,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - The V3 contract, registry and blocked qualification evidence remain immutable historical evidence. PR #95 merged the deterministic U-03F `failed_audit` result with one critical and seven high findings. V4 is `audit_blocked` / `revalidation_required`; production evidence is unchanged and U-04 remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active task: one outcome-blind U-07 Paper protocol design only. Events, formal returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
+- Active task: U-07 Paper protocol exact-head independent review only. Data, events, returns, strategy/backtesting, OOS, trading and M2 remain prohibited.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.

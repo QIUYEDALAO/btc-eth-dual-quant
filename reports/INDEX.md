@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U07_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-07 outcome-blind Paper protocol | frozen pending exact-head review | Fixes 4h stress/resilience, 48h episodes, paths, Gates and sealed OOS before results. | no |
+| `config/u07_cross_sectional_paper_protocol_v1.json` | U-07 machine Paper protocol | content `d62dd323...50195` | Only protocol freeze and exact-head review are true; all execution/result permissions false. | no |
 | `reports/m1/U07_CROSS_SECTIONAL_MARKET_STRESS_RELATIVE_STRENGTH_DESIGN.md` | U-07 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes state-conditioned relative resilience without timeframe, threshold, outcomes, rules or OOS. | no |
 | `reports/m1/U07_NON_DUPLICATION_REVIEW.md` | U-07 non-duplication | pass_design_level | Separates stress-state resilience from U-04/U-05/U-06 and prior strategy families. | no |
 | `config/u07_cross_sectional_design_scope_v1.json` | U-07 machine design scope | content `272eabd4...21795` | Binds one declared unopened candidate and enables only Paper protocol design. | no |

@@ -1,6 +1,6 @@
 # Next Action
 
-## U-07 Outcome-Blind Paper Protocol Design
+## U-07 Paper Protocol Exact-Head Independent Review
 
 U-07 is frozen as
 `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
@@ -11,14 +11,20 @@ The mechanism is state-conditioned relative resilience: broad contemporaneous
 selling pressure plus one asset retaining unusually strong relative price may
 reveal inelastic asset-specific demand that persists after stress subsides.
 
-The current task is to freeze one outcome-blind Paper protocol: exact completed
-timeframe, market-stress and resilience definitions, candidate tie-break,
-episode clustering, path horizons, sample/concentration/economic Gates,
-IS/OOS isolation and exact-head review requirements. No public-data result may
-be read before that protocol is frozen and independently approved.
+Protocol `d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195`
+is frozen before results. It fixes completed UTC 4h stress (`median <= -2.50%`,
+negative breadth at least 80%), candidate resilience (relative at least +2.00%,
+absolute at least -0.50%), 48h clustering, strict next 5m reference, fixed
+event-time peers and all sample, distribution and 24h economic Gates.
 
-Event scanning, returns, fixed rules, Freqtrade code, backtesting and OOS remain
-prohibited. U-04/U-05/U-06 remain closed and may not be tuned or inverted.
+The current task is a separate independent review of the immutable exact target
+commit. It must bind every target file and verify causal timing, membership,
+lifecycle, invalid-interval, OOS isolation, deterministic tie-breaks and zero
+downstream authority. The target files may not be modified during review.
+
+Public data, event scanning, paths, returns, fixed rules, Freqtrade code,
+backtesting and OOS remain prohibited until an `approve` review with zero
+critical/high findings authorizes data qualification only.
 
 ## U-04 Closed Historical Evidence
 
