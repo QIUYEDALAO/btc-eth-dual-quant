@@ -1894,3 +1894,12 @@ private exchange responses here.
 - Execution: no public data read, event scan, signal, return, fixed rule, Freqtrade code, backtest or OOS access.
 - Authorization: only a separate outcome-blind U-04 paper-protocol design may follow. Protocol execution, strategy, API/trading, `execution/live` and M2 remain false.
 - Lifecycle Gate: any future lifecycle-intersecting fixed rule remains blocked pending a separately reviewed delisting/execution policy.
+
+## 2026-07-18 - U-04 Outcome-Blind Paper Protocol Frozen
+
+- Task: `U-04-PROTOCOL`; branch `codex/u04-cross-sectional-paper-protocol`; local Git only.
+- Protocol: `U04-02-CROSS-SECTIONAL-RESIDUAL-REVERSAL-PAPER-V1`; content `7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6`.
+- Frozen before outcomes: completed 1h median/MAD residual, -3.0 and -1.80% joint threshold, one event per time, global 24h episodes, next expected 5m reference and 1/2/4/8/12/24h observations.
+- Gates: 90 IS episodes, 120/30 projections, year/symbol concentration, eight symbols and 1.80% relative plus absolute 24h medians.
+- No public data, event, path, return, OOS, strategy, Freqtrade backtest, API/trading or M2 work occurred.
+- Only a separate exact-head independent review is authorized next; the target must remain unchanged.

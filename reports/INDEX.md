@@ -1,6 +1,8 @@
 # Reports Index
 
 | `reports/m1/U04_CROSS_SECTIONAL_RESIDUAL_REVERSAL_DESIGN.md` | U-04 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes one point-in-time active-universe residual-reversal mechanism without events, returns, parameters or OOS. | no |
+| `reports/m1/U04_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-04 outcome-blind paper protocol | frozen pending exact-head review | Freezes the 1h median/MAD residual event, 24h episode, path observations and fixed paper Gates before any data or outcome access. | no |
+| `config/u04_cross_sectional_paper_protocol_v1.json` | U-04 machine paper protocol | content `7b0e462d...9629d6` | Binds all V4 authorities and permits only exact-head independent review; data, events, returns, OOS and trading remain false. | no |
 | `reports/m1/U04_NON_DUPLICATION_REVIEW.md` | U-04 non-duplication review | pass_design_level | Separates U-04 from M1C momentum, M1G absolute panic, M1E breakout, M1H funding and M1A trend. | no |
 | `config/u04_cross_sectional_design_scope_v1.json` | U-04 machine design scope | content `b384e648...f178b8` | Binds candidate `85e9fc11...5ec7a`, audit and point-in-time data authorities; only paper-protocol design is enabled. | no |
 | `reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md` | ADR-0015 independent auditor implementation | source order fixed pending replacement exact-head review | Content `f0c0ee6d...8d5e`; prior run deterministic and 18/19 exact; 19/19 Gate unchanged. | no |
