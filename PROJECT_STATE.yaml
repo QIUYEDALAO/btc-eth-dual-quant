@@ -2,11 +2,29 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-18 data qualification and complexity preflight passed; one sealed-IS Paper observation is the only next task
-current_status: u18_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2
+current_phase: U-18 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized
+current_status: u18_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-18 unique sealed-IS downside-tail-risk-premium Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U18_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u18_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u18-cross-sectional-paper-observation
+    run_content_hash: 213c303dc81f23f0f8bb0d37c1f114636ca0cbd76c0bae1f3c432a5b2cf9c3cd
+    complete_is_independent_episodes: 157
+    median_24h_relative_downside_tail_risk_premium: '-0.0012453014163554798489821906695580157498865088123'
+    median_24h_candidate_absolute_close_displacement: '-0.00337837837837837837837837837837837837837837837838'
+    fraction_positive_24h_relative_downside_tail_risk_premium: '0.4777070063694267515923566879'
+    failed_gates: [median_24h_relative_downside_tail_risk_premium, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_downside_tail_risk_premium]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-18 frozen-source data qualification, complexity and preflight
     status: pass_local_complete
     evidence: reports/m1/U18_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -2137,9 +2155,9 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-18-DATA-QUALIFICATION
-    phase: frozen-source downside-tail-risk qualification and complexity preflight
-    status: completed_pass_local
+  - id: U-18-PAPER-OBSERVATION
+    phase: unique sealed-IS downside-tail-risk-premium Paper observation
+    status: completed_failed_feasibility
     authorization_content_hash: eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1
     design_content_hash: 487d9b11883d2eb38f2171bf6fe57b1e2e5040b31032e03de73cea9bb5c62df8
     protocol_content_hash: 7571d2cb2408e30ac03d626544243f1e00595dc9ed85e6a7107b7d9a2062c671
@@ -2149,11 +2167,13 @@ open_work:
     exact_head_independent_review_authorized: false
     data_qualification_complexity_and_preflight_authorized: false
     qualification_content_hash: 088ebed218ce7960621ebeda539ec78c5aeebbef5b98f608a4f044f78e3dc6e0
-    one_sealed_is_paper_observation_authorized: true
+    run_content_hash: 213c303dc81f23f0f8bb0d37c1f114636ca0cbd76c0bae1f3c432a5b2cf9c3cd
+    one_sealed_is_paper_observation_authorized: false
     second_run_authorized: false
-    public_data_read_authorized: true
-    event_scan_authorized: true
-    path_observation_authorized: true
+    candidate_closed: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
     returns_authorized: false
     strategy_authorized: false
     oos_authorized: false
@@ -2310,6 +2330,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U18_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-18 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u18_cross_sectional_paper_observation/run_manifest.json
+    phase: U-18 Paper observation machine evidence
+    status: deterministic_failed_feasibility_candidate_closed
+    status_marker: '"run_content_hash":"213c303dc81f23f0f8bb0d37c1f114636ca0cbd76c0bae1f3c432a5b2cf9c3cd"'
   - path: reports/m1/U18_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-18 frozen-source data qualification and preflight
     status: pass_local_complete

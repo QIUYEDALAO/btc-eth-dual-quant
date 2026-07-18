@@ -1,5 +1,19 @@
 # Next Action
 
+## Stop: U-18 Failed Paper Feasibility
+
+The unique sealed-IS observation is immutable under run
+`213c303d...9c3cd`. It produced 157 complete independent episodes and passed
+all count, projection, distribution and order Gates, but all three frozen
+economic Gates failed: median 24h relative premium is `-0.1245%`, median
+absolute displacement is `-0.3378%`, and the positive fraction is `47.77%`.
+
+U-18 is closed without tuning, a second run, formal returns or OOS. Do not
+start Paper-result review, lifecycle/fixed-rule work, Freqtrade implementation
+or backtesting. Continuing the research goal requires a separately frozen U-19
+independent-candidate authorization decision that may not invert or otherwise
+reuse the U-18 result to select its mechanism.
+
 ## U-18 Unique Sealed-IS Paper Observation
 
 Qualification `088ebed2...c6e0` passes with all 27,736 frozen archives and 19

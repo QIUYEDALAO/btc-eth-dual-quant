@@ -2533,3 +2533,11 @@ private exchange responses here.
 - Complexity: three deterministic one-million-row exact-evaluator passes complete in at most 23.626789 seconds and 26.438 MiB; output `26773603...1bf` exact.
 - Isolation: price, return, residual, tail, candidate, event, path, formal-return and OOS decoded rows are all zero.
 - Next action: exactly one sealed-IS Paper observation. No tuning, second run, formal returns, strategy, OOS, trading or M2.
+
+## 2026-07-18 - U-18 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `213c303dc81f23f0f8bb0d37c1f114636ca0cbd76c0bae1f3c432a5b2cf9c3cd` / `08108538897db5769665743f1d2fc54509fc80601199eaf03252d754877ee592`; all three traversal orders and four manifests are exact.
+- Sample: 157 complete episodes, 36 symbols, 56 months and five qualifying years; all sample, projection, concentration and authority Gates pass.
+- Economics: median 24h relative premium `-0.1245%`, absolute displacement `-0.3378%`, and positive fraction `47.77%`; frozen minima `+1.80%`, `+1.80%` and `60%` all fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false.
+- Decision: U-18 is permanently closed. No review, fixed rules, strategy or OOS; any U-19 candidate requires a separate authorization decision.

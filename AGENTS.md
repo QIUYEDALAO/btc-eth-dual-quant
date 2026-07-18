@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-18's unique sealed-IS Paper observation is `failed_feasibility` under run `213c303dc81f23f0f8bb0d37c1f114636ca0cbd76c0bae1f3c432a5b2cf9c3cd`. All three traversal orders match and 157 episodes pass sample/distribution Gates, but median 24h relative premium `-0.1245%`, absolute displacement `-0.3378%`, and positive fraction `47.77%` fail the frozen economic Gates. U-18 is closed without rerun, formal returns or OOS. Only a separate U-19 independent-candidate authorization decision may follow; strategy/backtesting, API/trading, execution/live and M2 remain false.
+
 - U-18 frozen-source qualification passes locally under result `088ebed218ce7960621ebeda539ec78c5aeebbef5b98f608a4f044f78e3dc6e0`: 27,736 archives and 19 manifests are exact, all source/same-reader orders agree, the structural ceiling is 1,054 versus 400 required, and three one-million-row exact-core complexity passes succeed. Market outcome and OOS rows are zero. Exactly one sealed-IS Paper observation is authorized; no retry, formal returns, strategy/backtesting, OOS, API/trading, execution/live or M2.
 
 - U-18 exact protocol target `39a766c50de5a0855d7ee85c2aab743ec8b738e5` is independently approved 16/16 with 0 critical/high under review `5fb6a8d2d8efe95c6b2970b3368c78c40f17b187a5239f0b907f37ce341e1dd3`.
