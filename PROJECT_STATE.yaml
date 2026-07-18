@@ -2,11 +2,29 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-19T00:00:00Z"
-current_phase: U-23 frozen-source qualification passed; one sealed-IS Paper observation is the only next task
-current_status: u23_qualification_pass_one_paper_observation_only_no_formal_returns_no_oos_no_trading_no_m2
+current_phase: U-23 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized
+current_status: u23_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-23 unique sealed-IS range-expansion Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U23_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u23_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u23-cross-sectional-paper-observation
+    run_content_hash: 771ce48d80dc48fd2d8f984528541c8a8c1cef4f756892647d66f49b9ffb2604
+    complete_is_independent_episodes: 178
+    median_24h_relative_close_strength_continuation: '-0.01195215777238291818366680124'
+    median_24h_candidate_absolute_close_displacement: '-0.009181371869888384699633004195'
+    fraction_positive_24h_relative_close_strength_continuation: '0.3483146067415730337078651685'
+    failed_gates: [median_24h_relative_close_strength_continuation, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_close_strength_continuation]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-23 frozen-source data qualification and result-free preflight
     status: pass_local_complete
     evidence: reports/m1/U23_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -2584,6 +2602,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-23-PAPER-OBSERVATION
+    phase: unique sealed-IS range-expansion Paper observation
+    status: completed_failed_feasibility
+    qualification_content_hash: 08166fb534daf691e069f6ae743b472f0c06879dd060c58f816e4f2d5acef2c5
+    protocol_content_hash: 52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611
+    run_content_hash: 771ce48d80dc48fd2d8f984528541c8a8c1cef4f756892647d66f49b9ffb2604
+    candidate_closed: true
+    second_run_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-23-DATA-QUALIFICATION
     phase: frozen-source data qualification and result-free preflight
     status: completed_pass
@@ -2920,6 +2951,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "U-23 is closed. Only a separate U-24 independent-candidate design authorization decision may follow without using U-23 results to select the mechanism."
+  - "No U-23 tuning, inversion, second observation, fixed rule, strategy, backtest or OOS step is authorized."
   - "Exactly one U-23 sealed-IS Paper observation may execute the frozen protocol over IS only in normal, reverse and deterministic-shuffled order."
   - "The observation may compute frozen OHLC/range/return/event/path diagnostics but no fills, positions, equity, formal returns, OOS values, tuning or second run."
   - "U-23 frozen-source data qualification may verify exact archives/manifests, 7d history, 24h path structure, point-in-time membership, lifecycle/mask order, sample ceiling and isolation without decoding OHLC or results."

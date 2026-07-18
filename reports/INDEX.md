@@ -1,5 +1,9 @@
 # Reports Index
 
+| `reports/m1/U23_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-23 unique sealed-IS Paper observation | failed_feasibility | 178 episodes; sample/distribution pass, three economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u23_cross_sectional_paper_observation/run_manifest.json` | U-23 Paper run machine evidence | content `771ce48d...fb2604` | Three-order exact failure with zero downstream authority. | no |
+
+
 | `reports/m1/U23_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-23 frozen-source qualification | pass_local_complete | Exact sources/orders; ceiling 1,031; zero OHLC/result/OOS rows. | no |
 | `reports/m1/evidence/u23_cross_sectional_data_qualification_v1.json` | U-23 qualification machine evidence | content `08166fb5...acef2c5` | Binds sources, 7d history/24h path structure, isolation and one-run authority. | no |
 

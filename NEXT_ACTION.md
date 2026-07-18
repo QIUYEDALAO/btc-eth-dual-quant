@@ -1,5 +1,17 @@
 # Next Action
 
+## Stop: U-23 Failed Paper Feasibility
+
+The unique run `771ce48d...fb2604` produced 178 complete episodes and passed
+every sample, projection, year, symbol, month, concentration and authority
+Gate. It failed all three economic Gates: 24h relative continuation is
+`-1.1952%`, absolute displacement is `-0.9181%`, and positive fraction is
+`34.83%`.
+
+U-23 is closed without tuning, a second run, formal returns or OOS. Continuing
+the research goal requires a separate U-24 independent-candidate authorization
+that cannot invert or reuse this result to select its mechanism.
+
 ## U-23 Unique Sealed-IS Paper Observation
 
 Qualification `08166fb5...acef2c5` passes with 27,736 archives, 19 manifests,

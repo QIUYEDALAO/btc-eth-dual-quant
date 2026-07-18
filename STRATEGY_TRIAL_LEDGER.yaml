@@ -10,11 +10,11 @@ rules:
   candidate_queue_order_is_immutable: true
 candidates:
   - id: U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION
-    status: declared_unopened
+    status: failed_feasibility
     hypothesis: "U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION: Binance spot USDT long/cash only; using only completed prior OHLC observations from the exact point-in-time active member set, an asset whose completed trading range expands unusually relative to its own completed history while its close remains near the completed range high and positive relative to active peers may reveal aggressive demand and incomplete price discovery, so relative strength may continue after the next eligible open; no U-04 through U-22 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
     sha256: 6c099769b5fb89d7faf032d68c114540a6b93f8546bbedee26c2e9397e98627f
     oos_opened: false
-    notes: "Outcome-blind Paper protocol 52807bd0...3e5611 is frozen after pre-freeze synthetic exact-core feasibility 6010529c...45637e. No public data, events, paths, formal returns or OOS were read; exact-head review is the only next task."
+    notes: "The unique sealed-IS Paper observation produced 178 complete episodes and passed all sample, projection, year, symbol, month, concentration and authority Gates, but failed all three economic Gates: relative continuation -1.1952%, absolute displacement -0.9181%, positive fraction 34.83%. OOS remained sealed; no formal return, strategy or backtest was run."
   - id: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
     status: failed_feasibility
     hypothesis: "U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, a broadening cross-sectional return-dispersion regime in which one asset develops multi-observation positive peer-relative leadership without single-observation dominance may reflect segmented attention, capital rotation and gradual price discovery, so relative leadership may continue after the next eligible open; no U-04 through U-21 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
