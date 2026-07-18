@@ -2,11 +2,28 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-09 idiosyncratic-volatility quality-persistence design complete; outcome-blind Paper protocol design is the only next task
-current_status: u09_idiosyncratic_volatility_quality_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2
+current_phase: U-09 Paper protocol frozen; exact-head independent review is the only authorized next task
+current_status: u09_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-09 outcome-blind idiosyncratic-volatility quality-persistence Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u09_cross_sectional_paper_protocol_v1.json
+    branch: codex/u09-cross-sectional-paper-protocol
+    candidate_id: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
+    protocol_content_hash: 874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+    exact_head_independent_review_authorized: true
+    data_qualification_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-09 cross-sectional idiosyncratic-volatility quality-persistence hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U09_IDIOSYNCRATIC_VOLATILITY_QUALITY_PERSISTENCE_DESIGN.md
@@ -1192,13 +1209,13 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-09-PROTOCOL
-    phase: outcome-blind idiosyncratic-volatility quality-persistence Paper protocol design
-    status: authorized_ready
+  - id: U-09-PROTOCOL-REVIEW
+    phase: exact-head independent review of frozen U-09 Paper protocol
+    status: authorized_after_protocol_commit
     candidate_id: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
-    design_content_hash: 4830e361b66cd434e54a5ed284d0ad1e85c1e9270d3542dacf3efec5f4eee6f2
-    outcome_blind_required: true
-    exact_head_review_required: true
+    protocol_content_hash: 874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae
+    target_mutation_authorized: false
+    public_data_read_authorized: false
     event_scan_authorized: false
     strategy_authorized: false
     oos_authorized: false
@@ -1270,7 +1287,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete one outcome-blind U-09 Paper protocol design before any event or path scan."
+  - "Perform one exact-head independent review of the frozen U-09 Paper protocol design without target mutation."
   - "Preserve U-04/U-05/U-06/U-07 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1309,6 +1326,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-09 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u09_cross_sectional_paper_protocol_v1.json
+    phase: U-09 machine Paper protocol
+    status: deterministic_frozen_before_result
+    status_marker: '"paper_protocol_frozen": true'
   - path: reports/m1/U09_IDIOSYNCRATIC_VOLATILITY_QUALITY_PERSISTENCE_DESIGN.md
     phase: U-09 hypothesis design
     status: economic_hypothesis_pass_protocol_design_only

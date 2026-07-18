@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-09 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes residual-volatility cohort, 336h anchors, paths, Gates and sealed OOS before results. | no |
+| `config/u09_cross_sectional_paper_protocol_v1.json` | U-09 machine Paper protocol | content `874b93ce...84ae` | Only protocol freeze and exact-head review are true; all result and trading permissions remain false. | no |
 | `reports/m1/U09_IDIOSYNCRATIC_VOLATILITY_QUALITY_PERSISTENCE_DESIGN.md` | U-09 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes low idiosyncratic variability as a quality mechanism without parameters, outcomes, rules or OOS. | no |
 | `reports/m1/U09_NON_DUPLICATION_REVIEW.md` | U-09 non-duplication | pass_design_level | Separates quality/variability from U-04 through U-08 and prior strategy families. | no |
 | `config/u09_cross_sectional_design_scope_v1.json` | U-09 machine design scope | content `4830e361...ee6f2` | Binds one declared unopened candidate and enables only Paper protocol design. | no |

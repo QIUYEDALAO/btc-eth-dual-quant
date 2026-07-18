@@ -2106,3 +2106,12 @@ private exchange responses here.
 - Independence: variability/quality, not residual reversal, positive breadth, volume absorption, stress resilience, membership entry, price momentum, compression, panic, funding or indicator logic.
 - Execution: no public data, event/path scan, return, timeframe, estimator, threshold, rule, backtest or OOS access.
 - Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
+
+## 2026-07-18 - U-09 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae`; branch `codex/u09-cross-sectional-paper-protocol`; local Git only.
+- Identity: fixed 336h anchors; preceding 168 completed 1h returns; exact active-member median common component; population residual volatility.
+- Cohort: intersection of the lowest quartile in both 84h halves and the full window; no replacement, backfill, future price or outcome selection.
+- Observation: strict next expected 5m open; 24/72/168/336h paths; 336h primary episodes non-overlapping.
+- Gates: 80 complete IS, projected 110 full/30 sealed OOS, distribution controls, 1.80% relative and absolute medians, 60% positive relative persistence and zero mismatches.
+- Authorization: exact-head independent review only; no public data, event/path scan, formal return, strategy, OOS or trading.

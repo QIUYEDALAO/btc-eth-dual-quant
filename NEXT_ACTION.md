@@ -1,6 +1,6 @@
 # Next Action
 
-## U-09 Outcome-Blind Paper Protocol Design
+## U-09 Paper Protocol Exact-Head Independent Review
 
 U-08 is closed as `failed_feasibility`. Its only result-bearing sealed-IS
 observation is immutable under run
@@ -31,12 +31,15 @@ persistently low asset-specific variability after removing the common market
 component, interpreted as a possible proxy for deeper liquidity, lower
 disagreement and broader capital eligibility.
 
-The only authorized next task is a separate outcome-blind Paper protocol. It
-must freeze the completed-data timeframe, common-factor algorithm,
-idiosyncratic-volatility estimator, persistence rule, candidate threshold,
-reference open, clustering, horizons and immutable sample/economic Gates before
-any event or path scan. It may not create fills, positions, formal returns,
-strategy rules, backtests or OOS access.
+Protocol `874b93ce...84ae` is now frozen before results. Every 336h anchor uses
+the preceding 168 completed 1h returns, removes the exact active-member median
+common component and selects the intersection of the low-volatility quartile
+across both 84h halves and the full window. Primary 336h episodes do not overlap.
+
+The only authorized next task is an exact-head independent review on a separate
+branch. It must bind the final protocol commit without changing it and review
+identity, authority, membership, causal timing, estimator, cohort, paths, Gates,
+leakage and safety. Public data, events, paths, returns and OOS remain prohibited.
 
 ## U-08 Frozen Historical Chain
 
