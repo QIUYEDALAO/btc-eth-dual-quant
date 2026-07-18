@@ -2518,3 +2518,10 @@ private exchange responses here.
 - Identity: 168 completed 1h residuals split into two 84h halves; each requires at least two median-minus-2×scale tail points, 25% tail energy and 65% single-point cap.
 - Observation/Gates: strict next 5m open, 1/2/4/8/12/24h diagnostics, 90 complete IS episodes and fixed distribution/economic Gates; no formal return.
 - Next action: separate exact-head review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-18 - U-18 Paper Protocol Exact-Head Review Approved
+
+- Target: `39a766c50de5a0855d7ee85c2aab743ec8b738e5`; protocol `7571d2cb...c671`; five target blobs exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `5fb6a8d2...1dd3`.
+- Finding: residual construction, two-half robust tails, count/energy/dominance Gates, membership, clustering, paths, complexity and isolation are causal and fixed.
+- Authorization: only separate data qualification, sample ceiling, synthetic complexity and result-free preflight. Tail/event/path scans, returns, strategy, OOS and trading remain false.

@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-18 exact protocol target `39a766c50de5a0855d7ee85c2aab743ec8b738e5` is independently approved 16/16 with 0 critical/high under review `5fb6a8d2d8efe95c6b2970b3368c78c40f17b187a5239f0b907f37ce341e1dd3`.
+- Only frozen-source data qualification, 168h-history/24h-path structural ceiling and synthetic complexity are authorized next. Returns, residuals, tails, events, paths, OOS and trading remain false.
 - U-18 Paper protocol `U18-03-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `7571d2cb2408e30ac03d626544243f1e00595dc9ed85e6a7107b7d9a2062c671`.
 - It fixes 168 completed hourly residuals, two disjoint 84h robust tail windows, at least 2 tail points per half, 25% energy, 65% dominance cap, 24h clustering and immutable Paper Gates.
 - Only a separate exact-head independent review is authorized next. Data qualification, tail/event/path scans, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

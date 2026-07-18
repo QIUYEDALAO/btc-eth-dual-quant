@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/expert/U18_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-18 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `39a766c5...38e5` unchanged and authorizes only qualification. | no |
+| `reports/expert/evidence/u18_cross_sectional_paper_protocol_review_v1.json` | U-18 review machine evidence | content `5fb6a8d2...1dd3` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
+
 | `reports/m1/U18_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-18 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 168h two-half downside-tail persistence, clustering, paths, Gates and preflight. | no |
 | `config/u18_cross_sectional_paper_protocol_v1.json` | U-18 machine Paper protocol | content `7571d2cb...c671` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
 

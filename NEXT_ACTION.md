@@ -1,5 +1,17 @@
 # Next Action
 
+## U-18 Frozen-Source Data Qualification and Preflight
+
+Exact target `39a766c5...38e5` is approved 16/16 with 0/0 critical/high under
+review `5fb6a8d2...1dd3`. The only next task may verify frozen ZIP/manifests,
+1h/5m structural grids, 168h history and 24h path availability, point-in-time
+membership/lifecycle/mask order and IS/OOS isolation without decoding returns,
+residuals, tail statistics, events or paths.
+
+It must also prove at least 400 theoretical 24h episodes and run three
+synthetic one-million-row passes on the exact future evaluator path. Any hash,
+order, scope, ceiling or resource failure closes U-18 before results.
+
 ## U-18 Exact-Head Independent Paper-Protocol Review
 
 Protocol `U18-03-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM-PAPER-V1` is frozen
