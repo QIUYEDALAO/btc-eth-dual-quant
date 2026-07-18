@@ -300,6 +300,10 @@ ALLOWED = {
         "u09_failed_pre_observation_sample_ceiling_closed_no_result_no_strategy_no_oos_no_trading_no_m2",
     ): "U-10-DECISION",
     (
+        "U-10 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u10_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-10",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -579,6 +583,11 @@ U09_DESIGN_PAIR = (
     "u09_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
 )
 
+U10_DESIGN_PAIR = (
+    "U-10 independent design authorized; outcome-blind hypothesis design is the only next task",
+    "u10_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
 U08_PROTOCOL_DESIGN_PAIR = (
     "U-08 liquidity-rank entry demand-persistence design complete; outcome-blind Paper protocol design is the only next task",
     "u08_liquidity_rank_entry_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
@@ -597,7 +606,7 @@ def validate(state: dict) -> list[str]:
     if expected_task is None:
         failures.append(f"unsupported V2 phase/status pair: {pair}")
     expected_auth = dict(EXPECTED_AUTH)
-    if pair in {U04_DESIGN_PAIR, U05_DESIGN_PAIR, U06_DESIGN_PAIR, U07_DESIGN_PAIR, U08_DESIGN_PAIR, U09_DESIGN_PAIR}:
+    if pair in {U04_DESIGN_PAIR, U05_DESIGN_PAIR, U06_DESIGN_PAIR, U07_DESIGN_PAIR, U08_DESIGN_PAIR, U09_DESIGN_PAIR, U10_DESIGN_PAIR}:
         expected_auth["hypothesis_preregistration"] = True
     if pair in {U04_DATA_QUALIFICATION_PASS_PAIR, U05_DATA_QUALIFICATION_PASS_PAIR, U06_DATA_QUALIFICATION_PASS_PAIR, U07_DATA_QUALIFICATION_PASS_PAIR} or pair in {("U-08 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task", "u08_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2"), ("U-09 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task", "u09_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2")}:
         expected_auth["event_scan"] = True
@@ -651,7 +660,7 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07", "U-07-PROTOCOL", "U-07-DATA-QUALIFICATION", "U-07-PAPER-OBSERVATION", "U-08-DECISION", "U-08", "U-08-PROTOCOL", "U-08-DATA-QUALIFICATION", "U-08-PAPER-OBSERVATION", "U-09-DECISION", "U-09", "U-09-PROTOCOL", "U-09-PROTOCOL-REVIEW", "U-09-DATA-QUALIFICATION", "U-09-PAPER-OBSERVATION", "U-10-DECISION"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07", "U-07-PROTOCOL", "U-07-DATA-QUALIFICATION", "U-07-PAPER-OBSERVATION", "U-08-DECISION", "U-08", "U-08-PROTOCOL", "U-08-DATA-QUALIFICATION", "U-08-PAPER-OBSERVATION", "U-09-DECISION", "U-09", "U-09-PROTOCOL", "U-09-PROTOCOL-REVIEW", "U-09-DATA-QUALIFICATION", "U-09-PAPER-OBSERVATION", "U-10-DECISION", "U-10"}
     ]
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])

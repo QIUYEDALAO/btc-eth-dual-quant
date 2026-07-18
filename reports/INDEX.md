@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m0/U10_DESIGN_AUTHORIZATION_DECISION.md` | U-10 design authorization | one independent outcome-blind design authorized | Binds five failed observations, U-09 pre-result closure and passing V4 audit; enables only U-10 design. | no |
+| `config/u10_design_authorization_v1.json` | U-10 machine authorization | content `e196cc0f...c7a0` | Prohibits prior-outcome and U-09 protocol-defect reuse; all downstream permissions false. | no |
 | `reports/m1/U09_QUALIFICATION_SAMPLE_CEILING_CORRECTION.md` | U-09 pre-observation qualification correction | failed_pre_observation_sample_ceiling | Maximum 66 constant-membership episodes is below frozen 80; no price/result access. | no |
 | `reports/m1/evidence/u09_qualification_sample_ceiling_correction_v1.json` | U-09 sample-ceiling machine evidence | content `c6902525...4479` | Supersedes qualification admission and closes U-09 without changing protocol or Gate. | no |
 | `reports/m1/U09_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-09 frozen-source qualification | pass / one sealed-IS observation authorized | ZIPs, manifests, membership ranks, schedule and three orders pass; outcomes zero. | no |

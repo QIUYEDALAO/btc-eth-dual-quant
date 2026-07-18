@@ -2139,3 +2139,11 @@ private exchange responses here.
 - Deterministic maximum: 66 constant-membership 336h episodes versus frozen minimum 80; shortfall 14.
 - Isolation: zero price, cohort, event, path, return and OOS rows; the Paper observation never ran.
 - Decision: U-09 closes before results. No Gate reduction, protocol modification or rerun; only a separate U-10 independent-candidate decision may follow.
+
+## 2026-07-18 - U-10 Independent Design Authorized
+
+- Task: `U-10-DECISION`; branch `codex/u10-design-authorization`; local Git only.
+- Decision: `e196cc0fdd20e8b8fc84872b440baa09ae69e0752c75005bebefb51a4060c7a0`; exactly one economically independent, outcome-blind U-10 hypothesis design.
+- Binding: U-04 through U-08 remain failed and OOS-sealed; U-09 remains closed before results under correction `c6902525...4479`; V4 audit/source freeze remain exact.
+- Independence: prior outcome signs and U-09's protocol-feasibility defect may not be inverted, repaired, relabeled or used to choose U-10.
+- Authorization: hypothesis design only. Events, parameters, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.
