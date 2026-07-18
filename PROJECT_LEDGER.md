@@ -2511,3 +2511,10 @@ private exchange responses here.
 - Mechanism: persistent left-tail asymmetry after removing the active-peer common component may expose holders to crash, liquidation and liquidity-withdrawal risk for which they demand compensation.
 - Independence: not a panic/reversal event, market-stress resilience, low residual volatility, beta capture, downside rejection or liquidity-risk characteristic; no prior result selected the mechanism.
 - Scope: no data or outcome read; all clocks, estimators, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-18 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U18-03-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM-PAPER-V1`; content `7571d2cb...c671`; frozen before data/results.
+- Identity: 168 completed 1h residuals split into two 84h halves; each requires at least two median-minus-2×scale tail points, 25% tail energy and 65% single-point cap.
+- Observation/Gates: strict next 5m open, 1/2/4/8/12/24h diagnostics, 90 complete IS episodes and fixed distribution/economic Gates; no formal return.
+- Next action: separate exact-head review only. Data qualification, events, strategy, OOS and trading remain unauthorized.

@@ -1,5 +1,18 @@
 # Next Action
 
+## U-18 Exact-Head Independent Paper-Protocol Review
+
+Protocol `U18-03-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM-PAPER-V1` is frozen
+before data/results under `7571d2cb...c671`. The only next task is a separate-
+branch read-only review of the exact target. It must verify 168h history,
+candidate-specific peer residuals, two disjoint 84h robust tail windows,
+2-observation/25%-energy/65%-dominance Gates, clustering, paths, complexity and
+sealed-OOS isolation.
+
+Approval may authorize only data qualification, structural ceiling and
+synthetic complexity preflight. It cannot authorize tail/event/path scans,
+returns, strategy, backtesting or OOS.
+
 ## U-18 Outcome-Blind Paper Protocol Design
 
 U-18 freezes `U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM`

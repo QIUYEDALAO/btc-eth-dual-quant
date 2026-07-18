@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U18_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-18 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 168h two-half downside-tail persistence, clustering, paths, Gates and preflight. | no |
+| `config/u18_cross_sectional_paper_protocol_v1.json` | U-18 machine Paper protocol | content `7571d2cb...c671` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
+
 | `reports/m1/U18_DOWNSIDE_TAIL_RISK_PREMIUM_DESIGN.md` | U-18 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes asset-specific downside-tail risk as a compensated characteristic without data, parameters, results or OOS. | no |
 | `reports/m1/U18_NON_DUPLICATION_REVIEW.md` | U-18 non-duplication | pass_design_level | Separates persistent tail asymmetry from U-04 through U-17 and prior strategy families. | no |
 | `config/u18_cross_sectional_design_scope_v1.json` | U-18 machine design scope | content `487d9b11...2df8` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |

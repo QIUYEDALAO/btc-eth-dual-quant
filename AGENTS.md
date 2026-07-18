@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-18 Paper protocol `U18-03-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `7571d2cb2408e30ac03d626544243f1e00595dc9ed85e6a7107b7d9a2062c671`.
+- It fixes 168 completed hourly residuals, two disjoint 84h robust tail windows, at least 2 tail points per half, 25% energy, 65% dominance cap, 24h clustering and immutable Paper Gates.
+- Only a separate exact-head independent review is authorized next. Data qualification, tail/event/path scans, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-18 freezes `U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM` under hypothesis `e6b84d1b6e9cb979dd973fed42c20821858704c362e24b4a342aef25359778c4` and design `487d9b11883d2eb38f2171bf6fe57b1e2e5040b31032e03de73cea9bb5c62df8`.
 - The mechanism is compensation for persistent left-tail risk after removing the complete active-peer common component. It is not a panic event, reversal, low-volatility quality or repair of U-17.
 - Only one outcome-blind U-18 Paper protocol design is authorized next. Data, events, returns, fixed rules, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
