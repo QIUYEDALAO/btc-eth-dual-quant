@@ -1,6 +1,6 @@
 # Next Action
 
-## U-08 Outcome-Blind Independent Hypothesis Design
+## U-08 Outcome-Blind Paper Protocol Design
 
 U-07 is frozen as
 `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
@@ -33,14 +33,17 @@ concentration Gates pass, but the three frozen economic Gates fail:
 - median 24h candidate absolute displacement `1.1607%` versus `1.80%`;
 - positive 24h relative continuation `52.44%` versus `60%`.
 
-U-07 is closed `failed_feasibility` with OOS sealed and no formal returns. Do
-not review, tune or rerun it. Decision
-`813267f29fd2f019b7d856d95a5eaaa7927a3f072327cc643e6a1ecd51af1cf9`
-authorizes exactly one economically independent, outcome-blind U-08 hypothesis
-design. It must not invert, relabel or derive rules from U-04 through U-07
-outcomes. The design may state mechanism, timing, non-duplication and failure
-regimes only; timeframe, thresholds, events, returns, fixed rules, strategy,
-backtesting and OOS remain unauthorized.
+U-08 freezes `U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE`
+under hypothesis `5d091b72...45f6` and design `247d652e...d717`. The mechanism
+is broadened investability, attention and mandate eligibility after a prior-only
+monthly Top-15 membership admission. It is distinct from U-04 through U-07 and
+all prior strategy families.
+
+Only an outcome-blind Paper protocol may follow. It must freeze membership-entry
+identity, genesis-month handling, reference open, observation horizons,
+clustering, sample/concentration/cost Gates and IS/OOS isolation before reading
+data or outcomes. Events, returns, rules, strategy, backtesting and OOS remain
+unauthorized until later narrow stages.
 
 ## U-04 Closed Historical Evidence
 

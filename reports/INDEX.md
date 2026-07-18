@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U08_LIQUIDITY_RANK_ENTRY_DEMAND_PERSISTENCE_DESIGN.md` | U-08 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes membership-entry demand persistence without parameters, outcomes, rules or OOS. | no |
+| `reports/m1/U08_NON_DUPLICATION_REVIEW.md` | U-08 non-duplication | pass_design_level | Separates membership transition from U-04 through U-07 and prior strategy families. | no |
+| `config/u08_cross_sectional_design_scope_v1.json` | U-08 machine design scope | content `247d652e...d717` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
 | `reports/m0/U08_DESIGN_AUTHORIZATION_DECISION.md` | U-08 design authorization | one independent outcome-blind design authorized | Binds four failed candidates and passing V4 audit; enables only one U-08 hypothesis design. | no |
 | `config/u08_design_authorization_v1.json` | U-08 machine authorization | content `813267f2...1cf9` | Prohibits prior-outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
 | `reports/m1/U07_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-07 sealed-IS Paper observation | failed_feasibility | 82 complete episodes; all three frozen 24h economic Gates fail; OOS remains sealed. | no |

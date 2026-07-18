@@ -2057,3 +2057,11 @@ private exchange responses here.
 - Binding: U-04 through U-07 remain failed, single-run and OOS-sealed; ADR-0015 audit remains 19/19 pass.
 - Independence: prior event signs, paths and failed Gate values may not be inverted, relabeled or used to choose U-08.
 - Authorization: hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-08 Liquidity-Rank Entry Demand-Persistence Design Complete
+
+- Candidate: `U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE`; hypothesis `5d091b72...45f6`; design `247d652e...d717`.
+- Mechanism: prior-only monthly Top-15 admission may broaden investability, attention and mandate eligibility, producing gradual demand after membership becomes effective.
+- Independence: membership-authority transition, not residual reversal, breadth, price/volume absorption, stress resilience, price momentum, compression, panic, funding or indicator logic.
+- Execution: no public data, event/path scan, return, timeframe, threshold, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
