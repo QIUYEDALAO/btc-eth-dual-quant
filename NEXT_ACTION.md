@@ -1,5 +1,17 @@
 # Next Action
 
+## U-18 Outcome-Blind Hypothesis Design
+
+Decision `eb78548e...c0b1` authorizes exactly one economically independent,
+outcome-blind U-18 cross-sectional hypothesis design. It binds U-17's immutable
+pre-result failure `434d8a58...af91` and prohibits repairing, shortening,
+relaxing or repackaging its 28+28-day membership-constancy defect.
+
+The next task may freeze only one economic mechanism, causal timing, failure
+regimes and non-duplication. It must read no public data or outcomes and select
+no timeframe, estimator, threshold, path or strategy parameter. Events,
+returns, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
 ## Stop: U-17 Failed Pre-Result Sample Ceiling
 
 Frozen-source qualification `434d8a58...af91` proves that only 13 structural

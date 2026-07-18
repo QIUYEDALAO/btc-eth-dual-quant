@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-18 design authorization `eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1` permits exactly one economically independent, outcome-blind hypothesis design.
+- It binds U-17's pre-result closure and prohibits repairing, shortening, relaxing, relabeling or repackaging the failed 28+28-day membership-constancy contract or using prior outcomes to select U-18.
+- Only mechanism, causal timing, failure regimes and non-duplication may be frozen next. Data, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-17 is closed `failed_pre_result_sample_ceiling` under evidence `434d8a58a19306e9ff340da3b8df0c85fe15848c2686ed15491dee05ac64af91`.
 - The frozen 28-day history plus 28-day future constant-membership contract permits at most 3 independent structural episodes versus 50 required. Quote-volume/price fields, liquidity ranks, events, paths, returns and OOS values remain zero.
 - No U-17 protocol relaxation, retry or Paper observation is allowed. Any U-18 candidate requires a separate independent authorization; strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

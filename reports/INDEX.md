@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m0/U18_DESIGN_AUTHORIZATION_DECISION.md` | U-18 design authorization | one independent outcome-blind design authorized | Binds U-17 pre-result closure and prohibits defect repair/reuse; enables only one new design. | no |
+| `config/u18_design_authorization_v1.json` | U-18 machine authorization | content `eb78548e...c0b1` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
+
 | `reports/m1/U17_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-17 frozen-source qualification | failed_pre_result_sample_ceiling | Maximum 3 independent 28-day episodes versus 50 required; zero result/OOS access. | no |
 | `reports/m1/evidence/u17_cross_sectional_data_qualification_v1.json` | U-17 qualification failure evidence | content `434d8a58...af91` | Binds exact sources, three orders, complexity, isolation and permanent candidate closure. | no |
 

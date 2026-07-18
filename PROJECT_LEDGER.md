@@ -2497,3 +2497,10 @@ private exchange responses here.
 - Complexity: three deterministic one-million-logical-row passes complete below 0.10 seconds and 27.141 MiB.
 - Isolation: quote-volume/price fields, liquidity ranks, candidates, events, paths, returns and OOS values are zero. The evidence-envelope rerun changed no Gate or protocol.
 - Decision: U-17 closes before results; no protocol relaxation, admission retry or Paper observation. Any U-18 candidate requires a separate authorization decision.
+
+## 2026-07-18 - U-18 Independent Design Authorized
+
+- Decision: `eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1`; exactly one economically independent, outcome-blind U-18 hypothesis design.
+- Binding: U-17 remains closed before results under `434d8a58...af91`; event/return/OOS access remains zero.
+- Independence: U-04 through U-17 outcomes, Gates, concentrations, censor patterns and defects may not select U-18. U-17 sample-contract repair or shortening is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

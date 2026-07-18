@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-17 closed on failed pre-result structural sample ceiling; no successor is authorized
-current_status: u17_failed_pre_result_sample_ceiling_closed_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-18 independent outcome-blind hypothesis design authorized
+current_status: u18_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-18 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U18_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u18_design_authorization_v1.json
+    branch: codex/u18-design-authorization
+    decision_content_hash: eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1
+    prior_candidate: U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM
+    prior_failure_content_hash: 434d8a58a19306e9ff340da3b8df0c85fe15848c2686ed15491dee05ac64af91
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-17 frozen-source data qualification and preflight
     status: failed_pre_result_sample_ceiling
     evidence: reports/m1/U17_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -2062,6 +2076,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: U-18
+    phase: independent outcome-blind cross-sectional hypothesis design
+    status: authorized_not_started
+    authorization_content_hash: eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1
+    maximum_hypotheses: 1
+    hypothesis_design_authorized: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-17-DATA-QUALIFICATION
     phase: frozen-source structural qualification and sample ceiling
     status: completed_failed_pre_result_sample_ceiling
@@ -2172,9 +2199,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "Complete exactly one economically independent, outcome-blind U-18 cross-sectional hypothesis design; freeze only mechanism, causal timing, failure regimes and non-duplication."
   - "No U-17 protocol relaxation, second qualification, Paper observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
-  - "Any future U-18 hypothesis design authorization decision must be separate, bind this pre-result closure and prohibit defect-derived mechanism selection."
-  - "Do not begin another candidate until that separate authorization exists."
+  - "U-04 through U-17 outcomes, Gates, defects and censor patterns may not select U-18."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-16 outcomes, signs, failed Gates, concentrations, censor patterns and defects may not select U-17."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -2184,7 +2211,7 @@ allowed_next_work:
   - Do not use API keys.
   - Do not run live or paper trading.
 research_authorizations:
-  hypothesis_preregistration: false
+  hypothesis_preregistration: true
   strategy_code: false
   event_scan: false
   returns: false
@@ -2213,6 +2240,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U18_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-18 design authorization
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u18_design_authorization_v1.json
+    phase: U-18 design authorization machine decision
+    status: deterministic_design_only_authority
+    status_marker: '"content_hash": "eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1"'
   - path: reports/m1/U17_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-17 data qualification and structural ceiling
     status: failed_pre_result_sample_ceiling
