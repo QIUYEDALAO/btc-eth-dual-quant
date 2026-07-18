@@ -2,11 +2,26 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-15 independent design authorized; outcome-blind hypothesis design is the only next task
-current_status: u15_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-15 taker-buy absorption persistence design completed; outcome-blind Paper protocol design is the only next task
+current_status: u15_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-15 taker-buy absorption persistence hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U15_TAKER_BUY_ABSORPTION_PERSISTENCE_DESIGN.md
+    machine_evidence: config/u15_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U15_NON_DUPLICATION_REVIEW.md
+    branch: codex/u15-cross-sectional-taker-buy-absorption-design
+    candidate_id: U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE
+    hypothesis_sha256: 5b99a5d830f40a6d9a5744771dafd3e85a64a55ea172b107465c46b10de115dd
+    design_content_hash: 14ba25a0d8f3c50b3acd6a1ae50720dd4a113554d3bdc17776bf190b51b57b1c
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-15 design authorization decision
     status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
     evidence: reports/m0/U15_DESIGN_AUTHORIZATION_DECISION.md
@@ -1846,13 +1861,12 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-15
-    phase: one independent outcome-blind hypothesis design
+  - id: U-15-PROTOCOL
+    phase: outcome-blind taker-buy absorption Paper protocol design
     status: authorized_next
-    decision_content_hash: 98d4ec9049d3b40ded8f98c045405eda8a010c783b5597653586853a825b7e68
-    maximum_hypotheses: 1
-    hypothesis_design_authorized: true
-    event_scan_authorized: false
+    design_content_hash: 14ba25a0d8f3c50b3acd6a1ae50720dd4a113554d3bdc17776bf190b51b57b1c
+    paper_protocol_design_authorized: true
+    public_data_read_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1926,9 +1940,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete exactly one economically independent, outcome-blind U-15 cross-sectional hypothesis design without reading data or outcomes."
-  - "Freeze its economic mechanism, causal timing, failure regimes and non-duplication from U-04 through U-14."
-  - "Leave timeframe, estimators, thresholds, event paths, costs and strategy rules unresolved for a later protocol."
+  - "Complete one outcome-blind U-15 Paper protocol design without reading market data, events, paths, returns or OOS."
+  - "Define exact taker-buy field semantics and require a separate pre-result authority/availability qualification before any event scan."
+  - "Freeze timeframe, estimators, thresholds, clustering, horizons, sample Gates, costs, isolation and complexity preflight before results."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
@@ -1965,6 +1979,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U15_TAKER_BUY_ABSORPTION_PERSISTENCE_DESIGN.md
+    phase: U-15 taker-buy absorption persistence design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: config/u15_cross_sectional_design_scope_v1.json
+    phase: U-15 design machine scope
+    status: deterministic_protocol_design_only
+    status_marker: '"content_hash": "14ba25a0d8f3c50b3acd6a1ae50720dd4a113554d3bdc17776bf190b51b57b1c"'
+  - path: reports/m1/U15_NON_DUPLICATION_REVIEW.md
+    phase: U-15 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
   - path: reports/m0/U15_DESIGN_AUTHORIZATION_DECISION.md
     phase: U-15 design authorization
     status: authorized_design_only

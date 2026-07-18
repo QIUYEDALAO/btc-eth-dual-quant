@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U15_TAKER_BUY_ABSORPTION_PERSISTENCE_DESIGN.md` | U-15 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes aggressive taker-buy absorption and latent demand persistence without parameters, data, results or OOS. | no |
+| `reports/m1/U15_NON_DUPLICATION_REVIEW.md` | U-15 non-duplication | pass_design_level | Separates taker-side flow/price-impact disagreement from U-04 through U-14 and prior strategy families. | no |
+| `config/u15_cross_sectional_design_scope_v1.json` | U-15 machine design scope | content `14ba25a0...57b1c` | Binds one declared unopened candidate, requires taker-field qualification and enables only Paper protocol design. | no |
 | `reports/m1/U11_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-11 frozen-source qualification | pass / one sealed-IS observation authorized | ZIPs, manifests, 4h authority, ceiling 473 and three orders pass; outcomes zero. | no |
 | `reports/m1/evidence/u11_cross_sectional_data_qualification_v1.json` | U-11 qualification machine evidence | content `b0476b5e...05b6` | Binds exact authorities, metadata ceiling, isolation and one-run-only authorization. | no |
 | `reports/expert/U11_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-11 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `e7f621ec...166a` unchanged and authorizes only qualification. | no |

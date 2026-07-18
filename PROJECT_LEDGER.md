@@ -2384,4 +2384,12 @@ private exchange responses here.
 - Decision: `98d4ec9049d3b40ded8f98c045405eda8a010c783b5597653586853a825b7e68`; exactly one economically independent, outcome-blind U-15 hypothesis design.
 - Binding: U-14 remains failed, single-run and OOS-sealed under `38247311...1f5c`; prior chain and exact V4 authorities remain bound.
 - Independence: U-04 through U-14 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-15; repair, retry, inversion and relabeling are prohibited.
+
+## 2026-07-18 - U-15 Taker-Buy Absorption Persistence Design Complete
+
+- Candidate: `U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE`; hypothesis `5b99a5d8...15dd`; design `14ba25a0...57b1c`.
+- Mechanism: unusually high completed aggressive taker-buy participation with muted relative price impact may reflect finite passive sell inventory; unresolved demand may adjust price only after the next eligible open.
+- Data authority: no data was read. The future protocol must independently define and qualify official taker-buy fields before any event scan and fail closed if unavailable or ambiguous.
+- Independence: not residual reversal, breadth, total-volume-share absorption, relative strength, membership, volatility quality, trend, beta asymmetry, calendar, diffusion or downside rejection.
+- Next action: one outcome-blind Paper protocol design only. No events, paths, returns, fixed rules, strategy, OOS or trading are authorized.
 - Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.

@@ -1,8 +1,23 @@
 # Next Action
 
-## U-15 Outcome-Blind Hypothesis Design
+## U-15 Outcome-Blind Paper Protocol Design
 
-Decision `98d4ec90...7e68` authorizes exactly one economically independent,
+U-15 freezes `U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE` under
+design hash `14ba25a0...57b1c`. The only next task is a separate result-blind
+Paper protocol. It must define taker-buy field semantics, timeframe,
+cross-sectional normalization, muted-response estimator, thresholds,
+clustering, paths, costs, sample Gates, isolation and a pre-result complexity
+benchmark before reading any event or result.
+
+The protocol must not assume that V4 already qualifies taker-buy fields. It
+must require a separate data-authority and availability qualification that
+fails closed before any event scan if official field identity or completeness
+cannot be established. Strategy rules, returns, backtesting and OOS remain
+unauthorized.
+
+## U-15 Historical Outcome-Blind Hypothesis Design
+
+Decision `98d4ec90...7e68` authorized exactly one economically independent,
 outcome-blind U-15 hypothesis design. It binds U-14 closed, single-run and
 OOS-sealed and prohibits selection from all U-04 through U-14 outcomes,
 defects or censor patterns.
