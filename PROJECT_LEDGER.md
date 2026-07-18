@@ -2030,3 +2030,13 @@ private exchange responses here.
 - All five target blobs and thirteen review dimensions pass; verdict `approve`, critical/high `0/0`, target unchanged.
 - No public data, event/path result, return or OOS value was read.
 - Authorization: frozen-source data qualification and IS/OOS isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-07 Frozen-Source Data Qualification Passed
+
+- Task: `U-07-DATA-QUALIFICATION`; branch `codex/u07-cross-sectional-data-qualification`; local Git only.
+- Contract/result: `0dd9a159...5fb8` / `fa65f340...e123`; protocol target `3aed4c33...b3791` and review `fa9d90f7...c70b6` remain exact.
+- Source: 27,736/27,736 frozen ZIP identities/CRCs and 19/19 audited V4 manifests pass.
+- Determinism: normal, reverse and deterministic-shuffled traversal share `ca7d59b3...44aa`.
+- 4h authority: 213,570 expected member blocks from 854,280 constituent 1h rows; 1,170 membership rows and 2,283 quarantined 1h rows are accounted exactly.
+- Isolation: OOS OHLC decoded 0; stress, resilience, event, path and return rows generated 0; network false; production evidence unchanged.
+- Authorization: exactly one sealed-IS Paper observation. No tuning, second run, formal returns, strategy/backtesting, OOS, API/trading, `execution/live` or M2.

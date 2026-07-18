@@ -2,11 +2,33 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-07 Paper protocol exact-head review approved; data qualification and isolation are the only next task
-current_status: u07_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-07 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task
+current_status: u07_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-07 frozen-source data qualification and IS/OOS isolation
+    status: pass_local_complete
+    evidence: reports/m1/U07_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u07_cross_sectional_data_qualification_v1.json
+    branch: codex/u07-cross-sectional-data-qualification
+    protocol_target_commit: 3aed4c337ff984b3e07ad9a4c7cda898425b3791
+    contract_content_hash: 0dd9a159382f1d515fed0269c9122adcd042a1fd726431bc36a9e4f6e01d5fb8
+    qualification_content_hash: fa65f34089854cd5faf950234b3488eb64b3058d1ab47f3dab500bbfb395e123
+    source_archive_count: 27736
+    manifests_exact: 19
+    traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    expected_4h_member_blocks: 213570
+    constituent_1h_rows: 854280
+    oos_ohlc_values_decoded: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-07 Paper-protocol exact-head independent review
     status: approve_local_complete
     evidence: reports/expert/U07_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
@@ -1014,17 +1036,21 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-07-DATA-QUALIFICATION
-    phase: frozen-source data qualification and IS/OOS isolation
-    status: authorized_ready
+  - id: U-07-PAPER-OBSERVATION
+    phase: unique sealed-IS market-stress relative-strength Paper observation
+    status: authorized_once_not_started
     candidate_id: U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION
     target_commit: 3aed4c337ff984b3e07ad9a4c7cda898425b3791
     protocol_content_hash: d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195
     review_content_hash: fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6
-    frozen_source_only: true
+    qualification_content_hash: fa65f34089854cd5faf950234b3488eb64b3058d1ab47f3dab500bbfb395e123
+    maximum_runs: 1
+    sealed_is_only: true
     three_traversal_orders_required: true
     oos_ohlc_decode_authorized: false
-    event_scan_authorized: false
+    event_scan_authorized: true
+    path_observation_authorized: true
+    formal_returns_authorized: false
     strategy_authorized: false
     oos_authorized: false
     trading_authorized: false
@@ -1095,7 +1121,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete frozen-source U-07 data qualification and IS/OOS isolation without scanning events or paths."
+  - "Execute exactly one sealed-IS U-07 Paper observation under the frozen protocol in three traversal orders."
+  - "Compute only preregistered event, episode and path diagnostics; no fill, position, equity or formal return."
   - "Preserve U-04/U-05/U-06 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1107,7 +1134,7 @@ allowed_next_work:
 research_authorizations:
   hypothesis_preregistration: false
   strategy_code: false
-  event_scan: false
+  event_scan: true
   returns: false
   backtesting: false
   oos_opened: false
@@ -1134,6 +1161,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U07_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-07 data qualification
+    status: pass_local_complete
+    status_marker: '- Status: `pass`'
+  - path: reports/m1/evidence/u07_cross_sectional_data_qualification_v1.json
+    phase: U-07 data qualification machine evidence
+    status: deterministic_pass
+    status_marker: '"status":"pass"'
   - path: reports/expert/U07_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
     phase: U-07 Paper-protocol exact-head review
     status: approve_local_complete

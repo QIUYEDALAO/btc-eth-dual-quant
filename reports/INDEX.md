@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U07_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-07 frozen-source qualification and IS/OOS isolation | pass / one sealed-IS observation authorized | 27,736 ZIPs, 19 manifests and three orders pass; OOS/outcome rows remain zero. | no |
+| `reports/m1/evidence/u07_cross_sectional_data_qualification_v1.json` | U-07 qualification machine evidence | content `fa65f340...e123` | Binds contract `0dd9a159...5fb8`, three-order `ca7d59b3...44aa` and zero OOS/outcomes. | no |
 | `reports/expert/U07_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-07 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `3aed4c33...b3791` without modification and authorizes only data qualification. | no |
 | `reports/expert/evidence/u07_cross_sectional_paper_protocol_review_v1.json` | U-07 protocol review machine evidence | content `fa9d90f7...c70b6` | Binds five target files, 13 dimensions and data-qualification-only authority. | no |
 | `reports/m1/U07_CROSS_SECTIONAL_PAPER_PROTOCOL.md` at target `3aed4c33...b3791` | U-07 outcome-blind Paper protocol | frozen exact-head approved | Fixes stress/resilience, 48h episodes, paths, Gates and sealed OOS before results. | no |

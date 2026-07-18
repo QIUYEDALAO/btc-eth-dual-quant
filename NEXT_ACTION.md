@@ -1,6 +1,6 @@
 # Next Action
 
-## U-07 Frozen-Source Data Qualification and Isolation
+## U-07 Unique Sealed-IS Paper Observation
 
 U-07 is frozen as
 `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION` under
@@ -15,15 +15,20 @@ Protocol target `3aed4c337ff984b3e07ad9a4c7cda898425b3791` is independently
 approved under review `fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6`,
 with critical/high `0 / 0` and no target modification.
 
-The current task is frozen-source data qualification and IS/OOS isolation only.
-It must verify all 27,736 ZIP identities, 19 V4 manifests, exact 4h/1h/5m
-grids, point-in-time membership, lifecycle and invalid-interval authorities in
-normal, reverse and deterministic-shuffled traversal. It must not evaluate the
-stress/resilience event predicate or decode any OOS OHLC value.
+Frozen-source qualification passed under contract
+`0dd9a159382f1d515fed0269c9122adcd042a1fd726431bc36a9e4f6e01d5fb8`
+and result `fa65f34089854cd5faf950234b3488eb64b3058d1ab47f3dab500bbfb395e123`.
+All 27,736 ZIPs and 19 manifests are exact; normal, reverse and deterministic-
+shuffled traversal share identity `ca7d59b3...44aa`. The run qualified 213,570
+4h member blocks from 854,280 constituent 1h rows, while decoding zero OOS OHLC
+values and generating zero event, path or return rows.
 
-Only after deterministic qualification passes may exactly one sealed-IS Paper
-observation be authorized. Events, paths, returns, fixed rules, Freqtrade code,
-backtesting and OOS remain prohibited during qualification.
+The only authorized task is the single frozen sealed-IS Paper observation. It
+must apply protocol `d62dd323...50195` once, preserve normal/reverse/shuffled
+identity and write event, episode, path and accounting diagnostics only. It may
+not create fills, positions, equity or formal strategy returns. Any failed Paper
+Gate closes U-07 without tuning or a second observation; a pass may authorize
+only an independent Paper-result review.
 
 ## U-04 Closed Historical Evidence
 
