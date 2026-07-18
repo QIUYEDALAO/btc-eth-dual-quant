@@ -1,6 +1,21 @@
 # Next Action
 
-## U-13 Unique Sealed-IS Paper Observation
+## U-14 Separate Independent-Candidate Authorization Decision
+
+U-13 is closed `failed_feasibility` under run `b94ffc31...eb3d`. Three orders
+match exactly, but only one episode survives. Median 24h relative lagged
+diffusion is `-2.8821%`, absolute displacement is `-7.1543%`, and all economic,
+count, projection and distribution Gates fail.
+
+No U-13 result review, fixed rule, strategy, backtest or OOS step is allowed.
+The only possible successor is a separate U-14 authorization decision binding
+all prior failures and permitting at most one economically independent,
+outcome-blind hypothesis design. It may not invert or tune U-13.
+
+No strategy is eligible for M2. Do not enter M2. Freqtrade-first remains the
+future architecture only after a candidate passes every research Gate.
+
+## U-13 Historical Unique Sealed-IS Paper Observation
 
 Qualification contract/result `e9b82085...5ce7` / `5c4a61ef...0590` pass.
 All 27,736 archives and 19 manifests are exact, six traversal identities match,

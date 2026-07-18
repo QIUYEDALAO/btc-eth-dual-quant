@@ -2,11 +2,30 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-13 data qualification passed; one frozen sealed-IS Paper observation is the only next task
-current_status: u13_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-13 closed failed feasibility; only a separate independent-candidate authorization decision may follow
+current_status: u13_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-13 unique sealed-IS common-shock lagged-diffusion Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U13_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u13_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u13-cross-sectional-paper-observation
+    run_content_hash: b94ffc31598899186a005ea1eaba28b274faac2ad9f3fae034e9f71d5868eb3d
+    three_order_identity_hash: 54ebf66033d72a68e1a601875268d444923348dddfdf74a1dd3dd30a2d9fd460
+    complete_is_independent_episodes: 1
+    median_24h_relative_lagged_diffusion: '-0.02882081340015003472958888745843479988669649607176'
+    median_24h_candidate_absolute_close_displacement: '-0.07154272528123611360145938740031027574002323170114'
+    fraction_positive_24h_relative_lagged_diffusion: '0'
+    failed_gates: [complete_is_independent_episodes, projected_full_independent_episodes, projected_sealed_oos_independent_episodes, years_with_twelve_complete_episodes, maximum_single_year_episode_share, maximum_single_symbol_episode_share, distinct_event_symbols, distinct_event_months, median_24h_relative_lagged_diffusion, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_lagged_diffusion]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-13 frozen-source data qualification and same-reader preflight
     status: pass_local_complete
     evidence: reports/m1/U13_CROSS_SECTIONAL_DATA_QUALIFICATION.md
@@ -1680,14 +1699,12 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-13-PAPER-OBSERVATION
-    phase: unique frozen sealed-IS Paper observation
+  - id: U-14-DECISION
+    phase: separate post-U-13 independent-candidate authorization decision
     status: authorized_next
-    candidate_id: U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION
-    protocol_target_commit: 6ef1024033aa9a86ef3c8f07558ba966270625a7
-    protocol_content_hash: 1cf6dade6e75900278ba5aeee30018d3f0ff93d83d982e212d58033800993288
-    review_content_hash: be552dad055234b0107810a7299656793ccea2a97f09a2cba22fa8ffc33ed5e0
-    one_sealed_is_paper_observation_authorized: true
+    prior_candidate_id: U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION
+    prior_run_content_hash: b94ffc31598899186a005ea1eaba28b274faac2ad9f3fae034e9f71d5868eb3d
+    hypothesis_design_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1761,8 +1778,8 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Run exactly one sealed-IS U-13 Paper observation under the frozen protocol and qualification result; no parameter changes or retry."
-  - "Generate only common-component, candidate, event, episode, path, accounting and Gate evidence in three deterministic orders; no formal returns or OOS."
+  - "Record a separate U-14 authorization decision only if it binds U-13 closed, preserves OOS sealing and permits at most one economically independent outcome-blind hypothesis design."
+  - "Do not invert, tune or reuse the failed U-13 lagged-diffusion result to select U-14."
   - "Preserve U-04 through U-12 evidence without tuning, inversion, retry or outcome-derived protocol choices."
   - "Preserve U-04 through U-11 evidence without tuning, inversion, retry or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
@@ -1802,6 +1819,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U13_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-13 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u13_cross_sectional_paper_observation/run_manifest.json
+    phase: U-13 Paper observation machine evidence
+    status: deterministic_failed_feasibility
+    status_marker: '"run_content_hash":"b94ffc31598899186a005ea1eaba28b274faac2ad9f3fae034e9f71d5868eb3d"'
   - path: reports/m1/U13_CROSS_SECTIONAL_DATA_QUALIFICATION.md
     phase: U-13 frozen-source qualification and preflight
     status: pass_local_complete

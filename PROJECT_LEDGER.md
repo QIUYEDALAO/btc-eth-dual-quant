@@ -2323,3 +2323,11 @@ private exchange responses here.
 - Preflight: 40,383 complete active-member 1h intervals, 36,716 structural decisions and theoretical 24h episode ceiling 1,490 versus minimum 400.
 - Isolation: OOS OHLCV decoded 0; OHLCV fields decoded during preflight 0; common-component/candidate/event/path/return rows 0.
 - Authorization: exactly one sealed-IS Paper observation. No tuning, retry, formal returns, strategy/backtesting, OOS, trading or M2.
+
+## 2026-07-18 - U-13 Unique Sealed-IS Paper Observation Failed
+
+- Run/order: `b94ffc31...eb3d` / `54ebf660...d460`; normal, reverse and deterministic-shuffled manifests match exactly.
+- Result: one complete episode, one symbol and one month; full/OOS projection, year/symbol/month distribution and count Gates fail.
+- Economics: median 24h relative lagged diffusion `-2.8821%`, absolute displacement `-7.1543%`, positive relative fraction `0`; all frozen economic Gates fail.
+- Isolation: OOS opened false, rows decoded 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
+- Decision: U-13 closes `failed_feasibility`; only a separate U-14 independent-candidate authorization decision may follow.
