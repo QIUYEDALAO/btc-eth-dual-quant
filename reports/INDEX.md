@@ -1,5 +1,7 @@
 # Reports Index
 
+| `reports/m1/U11_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-11 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes asymmetric capture identity, 72h paths, ceiling, Gates and sealed OOS. | no |
+| `config/u11_cross_sectional_paper_protocol_v1.json` | U-11 machine Paper protocol | content `3d78bbc8...42dc` | Only protocol freeze and exact-head review are true; all result/trading permissions false. | no |
 | `reports/m1/U11_ASYMMETRIC_MARKET_CAPTURE_QUALITY_DESIGN.md` | U-11 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes asymmetric positive/negative common-market capture quality without parameters, results or OOS. | no |
 | `reports/m1/U11_NON_DUPLICATION_REVIEW.md` | U-11 non-duplication | pass_design_level | Separates persistent conditional capture from U-04 through U-10 and prior strategy families. | no |
 | `config/u11_cross_sectional_design_scope_v1.json` | U-11 machine design scope | content `0572daf7...9e4c` | Binds one declared unopened candidate and enables only Paper protocol design. | no |

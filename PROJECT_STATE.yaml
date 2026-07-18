@@ -2,11 +2,30 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-11 asymmetric market-capture quality design completed; outcome-blind Paper protocol design is the only next task
-current_status: u11_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2
+current_phase: U-11 Paper protocol frozen before results; exact-head independent review is the only next task
+current_status: u11_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-11 outcome-blind asymmetric market-capture quality Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U11_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u11_cross_sectional_paper_protocol_v1.json
+    branch: codex/u11-cross-sectional-paper-protocol
+    candidate_id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    protocol_content_hash: 3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc
+    pre_result_theoretical_episode_minimum: 200
+    frozen_complete_is_episode_gate: 90
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+    exact_head_independent_review_authorized: true
+    data_qualification_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-11 cross-sectional asymmetric market-capture quality-persistence hypothesis design
     status: economic_hypothesis_pass_protocol_design_only
     evidence: reports/m1/U11_ASYMMETRIC_MARKET_CAPTURE_QUALITY_DESIGN.md
@@ -1417,13 +1436,14 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-11-PROTOCOL
-    phase: outcome-blind asymmetric market-capture quality Paper protocol design
+  - id: U-11-PROTOCOL-REVIEW
+    phase: exact-head independent review of U-11 Paper protocol
     status: authorized_ready
     candidate_id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
     design_content_hash: 0572daf7511c673a89dff6e737ad12528dde6c40845b672d62bbd3b1aeca9e4c
-    protocol_must_precede_results: true
-    paper_protocol_design_authorized: true
+    protocol_content_hash: 3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc
+    target_commit: pending_exact_local_head
+    exact_head_review_authorized: true
     event_scan_authorized: false
     returns_authorized: false
     strategy_authorized: false
@@ -1496,7 +1516,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Freeze one outcome-blind U-11 Paper protocol design for asymmetric market-capture quality before any data or event diagnostic."
+  - "Perform one exact-head independent review of the frozen U-11 Paper protocol without data or event diagnostic access."
   - "Preserve U-04/U-05/U-06/U-07 failed runs without tuning, inversion or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1535,6 +1555,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U11_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-11 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u11_cross_sectional_paper_protocol_v1.json
+    phase: U-11 machine Paper protocol
+    status: deterministic_frozen_before_result
+    status_marker: '"content_hash": "3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc"'
   - path: reports/m1/U11_ASYMMETRIC_MARKET_CAPTURE_QUALITY_DESIGN.md
     phase: U-11 hypothesis design
     status: economic_hypothesis_pass_protocol_design_only

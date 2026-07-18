@@ -2206,3 +2206,12 @@ private exchange responses here.
 - Independence: conditional asymmetric capture, not U-07 one-off stress resilience, U-09 unconditional low residual volatility, U-10 price/volume trend or other prior families.
 - Execution: no public data, timeframe, estimator, threshold, event/path, return, rule, backtest or OOS access.
 - Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
+
+## 2026-07-18 - U-11 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc`; branch `codex/u11-cross-sectional-paper-protocol`; local Git only.
+- Identity: prior 360 completed 4h observations, exact historical active-member median common component and positive/negative zero-intercept capture.
+- Persistence: two 180-observation halves plus full-window top quartile; full upside ≥0.80, downside ≤0.70 and asymmetry ≥0.30.
+- State Gates: full positive/negative counts ≥60 each and each half ≥24 each; invalid denominators fail closed.
+- Observation: strict next expected 5m open; 72h connected episodes and 1/2/4/8/12/24/48/72h diagnostics.
+- Authorization: exact-head independent review only; no public data, common-state/event/path scan, return, OOS, strategy or trading.

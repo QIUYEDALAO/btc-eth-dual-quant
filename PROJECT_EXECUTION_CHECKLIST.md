@@ -168,7 +168,8 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 | U-10-PAPER-OBSERVATION | Unique sealed-IS volume-confirmed trend Paper observation | completed_failed_feasibility | U-10-DATA-QUALIFICATION pass | `codex/u10-cross-sectional-paper-observation` / local-only | Frozen event, episode, 72h path, accounting and Gate evidence | Run `9972a95f...d22f`; 7 complete; count/distribution/relative Gates fail | candidate closed; no review, rules, strategy, OOS or rerun |
 | U-11-DECISION | Separate post-U-10 candidate authorization | completed_authorize_design_only | U-10 closed failed_feasibility with OOS sealed | `codex/u11-design-authorization` / local-only | Bind immutable U-10 result and decide at most one independent design | Decision `c5db3dc0...274a`; zero outcome reuse and downstream permissions | U-11 hypothesis design only |
 | U-11 | Asymmetric market-capture quality-persistence hypothesis design | completed_local | U-11-DECISION complete | `codex/u11-cross-sectional-asymmetric-market-capture-design` / local-only | Freeze one economic mechanism, timing, failure regimes and non-duplication | Design `0572daf7...9e4c`; no parameters, events, returns or OOS | Paper protocol design only |
-| U-11-PROTOCOL | Outcome-blind asymmetric-capture Paper protocol | authorized_next | U-11 design complete | new local-only branch | Freeze estimators, states, persistence, events, paths, Gates and isolation | no result access | exact-head review only if pass |
+| U-11-PROTOCOL | Outcome-blind asymmetric-capture Paper protocol | completed_local | U-11 design complete | `codex/u11-cross-sectional-paper-protocol` / local-only | Freeze estimators, states, persistence, events, paths, Gates and isolation | Protocol `3d78bbc8...42dc`; no result access | exact-head review only |
+| U-11-PROTOCOL-REVIEW | Exact-head independent Paper-protocol review | authorized_next | U-11-PROTOCOL exact target | new local-only branch | Hash-bind target and review identity/causality/safety | must approve with 0 critical/high | data qualification only if pass |
 
 ## Current Gate
 
@@ -182,7 +183,7 @@ Statuses are `pending`, `in_progress`, `completed`, `blocked`, or
 - The V3 contract, registry and blocked qualification evidence remain immutable historical evidence. PR #95 merged the deterministic U-03F `failed_audit` result with one critical and seven high findings. V4 is `audit_blocked` / `revalidation_required`; production evidence is unchanged and U-04 remains unauthorized.
 - Candidate queue: M1E (`failed_feasibility`) -> M1G (`failed_validation`) -> M1H (`failed_feasibility`) -> BTC/ETH two-asset indicator research stopped. M1G/M1H OOS were never opened.
 - DSR opened-trial count: 3 (`M1A`, `M1B`, `M1C`); no current candidate OOS is opened.
-- Active task: one U-11 outcome-blind Paper protocol design. Data, events, formal returns, OOS, strategy/backtesting, trading and M2 remain prohibited.
+- Active task: U-11 Paper protocol exact-head independent review. Data, events, formal returns, OOS, strategy/backtesting, trading and M2 remain prohibited.
 - T5 final status: `blocked_insufficient_oos_calendar`; 302 OOS days < 540 required days.
 - No M1D event definition, feasibility return run, or strategy code is authorized.
 - Stop reason for M1C: failed P3 fixed numerical gates; its P4 remains blocked.
