@@ -1,6 +1,24 @@
 # Next Action
 
-## U-14 Outcome-Blind Paper Protocol Design
+## U-14 Frozen-Source Qualification, Complexity Benchmark and Preflight
+
+Exact protocol target `dd8eb34a...61ebf` is independently approved under
+review `873f4435...fbbc2`, with 15/15 dimensions passing, critical/high `0/0`
+and no target modification.
+
+The only next task is one pre-result qualification stage. It must verify all
+27,736 frozen archives and 19 manifests, point-in-time membership, lifecycle,
+invalid-interval masks, complete 4h auctions and future structural 5m slots in
+normal/reverse/shuffled order. Before any market result it must also pass the
+same-code-path one-million-row synthetic benchmark three times within 30
+seconds and 1024 MiB, with no decision-times-by-history nested scan.
+
+OOS OHLCV decoding and common-state/event/path/return rows must remain zero.
+Any source, authority, order, sample-ceiling, time, memory or asymptotic failure
+closes the candidate before its unique Paper observation. Strategy,
+backtesting, OOS, trading and M2 remain prohibited.
+
+## U-14 Historical Outcome-Blind Paper Protocol Design
 
 U-14 freezes `U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE` under design
 `a6c3cc47...6691`. The mechanism is completed intraperiod demand absorption:

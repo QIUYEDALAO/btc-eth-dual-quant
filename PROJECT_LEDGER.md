@@ -2347,3 +2347,10 @@ private exchange responses here.
 - Independence: completed high/low/close auction geometry, not U-04 reversal, U-06 volume share, U-07 close-return strength, U-09 low volatility, U-10 trend/volume, U-11 capture, U-12 calendar flow or U-13 lagged diffusion.
 - Execution: no data, timeframe, estimator, threshold, event/path, return, strategy or OOS access.
 - Authorization: separate outcome-blind Paper protocol with mandatory result-blind complexity benchmark; downstream permissions remain false.
+
+## 2026-07-18 - U-14 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `dd8eb34aa0cae8455ba15163831b992820461ebf` / `9ea3a7cabbd06bc8209678ef3e35bb5402a74a74`; protocol `a0b606d3...ac57`.
+- Review: `873f4435909ebc550f898972714e43ffc553b386700068ad65cecc7bef2fbbc2`; verdict `approve`, 15/15 dimensions, remaining critical/high `0/0`, target modified false.
+- Scope: independent review used exact target blobs and read no public data, event, path, return or OOS value.
+- Authorization: frozen-source qualification, the three-pass one-million-row synthetic complexity benchmark and same-reader structural preflight only. Events, paths, returns, strategy/backtesting, OOS, trading and M2 remain false.

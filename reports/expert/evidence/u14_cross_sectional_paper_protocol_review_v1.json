@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "review_id": "U14-04-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "verdict": "approve",
+  "target_commit": "dd8eb34aa0cae8455ba15163831b992820461ebf",
+  "target_base_commit": "9ea3a7cabbd06bc8209678ef3e35bb5402a74a74",
+  "protocol_content_hash": "a0b606d3996f0edd13790178f370bed92e3a6d06bf2298eea78ba8a46907ac57",
+  "target_file_sha256": {
+    "config/u14_cross_sectional_paper_protocol_v1.json": "eafd5597287616daf81b5fff81f1e46bb92cad0b03e9d6d65d521ae6618781e3",
+    "reports/m1/U14_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "58d5810486e39eebc574d9e5535a960e94716b313409398c70e9d454060cbd02",
+    "scripts/u14_cross_sectional_paper_protocol_check.py": "bacdc46bbaa5ff2d66deb874758339c7d1750d5553cd55119dedf37e78c25a68",
+    "scripts/u14_cross_sectional_paper_protocol_validate.sh": "bc5deca1d4333155a45dcdd92f71b72ada593f323da9f0533e98e468203eef60",
+    "tests/test_u14_cross_sectional_paper_protocol.py": "7795c528120809cf64f63918b604a61838af1eec11dd530397e932f8c980543a"
+  },
+  "dimensions": {
+    "exact_target_identity": "pass",
+    "authority_bindings": "pass",
+    "completed_4h_auction_identity": "pass",
+    "common_selling_pressure_and_breadth": "pass",
+    "u07_non_collapse_negative_return_requirement": "pass",
+    "range_downside_close_location_and_rank_identity": "pass",
+    "deterministic_candidate_and_clustering": "pass",
+    "causal_reference_and_fixed_peer_paths": "pass",
+    "same_reader_data_scope_preflight": "pass",
+    "pre_result_complexity_benchmark": "pass",
+    "pre_result_sample_ceiling": "pass",
+    "paper_gates_and_is_oos_isolation": "pass",
+    "non_duplication_and_leakage_prevention": "pass",
+    "fail_closed_source_membership_lifecycle_mask_semantics": "pass",
+    "authorization_scope": "pass"
+  },
+  "remaining_critical_findings": 0,
+  "remaining_high_findings": 0,
+  "target_modified": false,
+  "authorizations": {
+    "data_qualification_complexity_and_preflight": true,
+    "common_state_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "strategy": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "review_content_hash": "873f4435909ebc550f898972714e43ffc553b386700068ad65cecc7bef2fbbc2",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}
