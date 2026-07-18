@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U19_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-19 unique sealed-IS Paper observation | failed_feasibility | 54 episodes; count/projection/year and all three 24h economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u19_cross_sectional_paper_observation/run_manifest.json` | U-19 Paper run machine evidence | content `38daffb0...3f3d4` | Three-order exact result, immutable failed Gates and zero downstream authority. | no |
+
 | `reports/m1/U19_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-19 frozen-source qualification and preflight | pass_local_complete | 27,736 archives, 19 manifests, ceiling 752 and 3×1M complexity pass; zero outcomes/OOS. | no |
 | `reports/m1/evidence/u19_cross_sectional_data_qualification_v1.json` | U-19 qualification machine evidence | content `62b7ac38...db499` | Binds exact sources/orders, structural ceiling, complexity, isolation and one-run authority. | no |
 

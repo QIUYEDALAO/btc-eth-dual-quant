@@ -28,6 +28,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-19's unique sealed-IS Paper observation is `failed_feasibility` under run `38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4`. All three traversal orders match; 54 episodes fail count/projection/year and all three economic Gates: relative premium `-0.5663%`, absolute displacement `-0.7466%`, positive fraction `37.04%`. U-19 is closed without rerun, formal returns or OOS. A separate U-20 independent-candidate authorization is required; strategy/backtesting, API/trading, execution/live and M2 remain false.
+
 - U-19 frozen-source qualification passes locally under result `62b7ac38cc1eb9ab89d2c2af8571181ef2f06a2f3873d70f61c917d3c23db499`: 27,736 archives and 19 manifests are exact, all source/same-reader orders agree, the structural ceiling is 752 versus 400 required, and three one-million-row exact-core complexity passes succeed. Market outcome and OOS rows are zero. Exactly one sealed-IS Paper observation is authorized; no retry, formal returns, strategy/backtesting, OOS, API/trading, execution/live or M2.
 
 - U-19 exact protocol target `8b8b03f0869463c046668e28fbb22618383addf4` is independently approved 16/16 with 0 critical/high under review `d215e444595036412cc680b83cc0adf8449edbe6c283ac82b632c67e623f4a91`. Only frozen-source qualification, 336h-history/24h-path structural ceiling and synthetic complexity are authorized next. Residuals, volatility statistics, events, paths, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

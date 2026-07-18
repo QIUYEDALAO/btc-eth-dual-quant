@@ -10,11 +10,11 @@ rules:
   candidate_queue_order_is_immutable: true
 candidates:
   - id: U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM
-    status: declared_unopened
+    status: failed_feasibility
     hypothesis: "U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose common-component-adjusted volatility itself varies persistently and unpredictably may impose unstable risk-budget, hedging and liquidity-capital demands, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-18 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
     sha256: 6b3cd19be7fedab64bfc43ad6c667cdbe774d58994073446a340cf7f55217c52
     oos_opened: false
-    notes: "Outcome-blind design only. Timeframe, history, common component, volatility and volatility-of-volatility estimators, persistence, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+    notes: "The unique sealed-IS Paper observation produced 54 complete episodes and failed count/projection/year plus all three frozen 24h economic Gates: relative premium -0.5663%, absolute displacement -0.7466%, positive fraction 37.04%. OOS remained sealed; no formal return, strategy or backtest was run."
   - id: U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM
     status: declared_unopened
     hypothesis: "U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose returns retain persistent left-tail asymmetry after removing the contemporaneous peer common component may expose holders to crash, liquidation and liquidity-withdrawal risk, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-17 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

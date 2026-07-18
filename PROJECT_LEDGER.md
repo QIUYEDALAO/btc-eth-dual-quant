@@ -2533,6 +2533,13 @@ private exchange responses here.
 - Complexity: three deterministic one-million-row exact-evaluator passes complete in at most 19.826369 seconds and 26.781 MiB; output `e82bf4dc...7f17` exact.
 - Isolation: price, return, residual, volatility-statistic, candidate, event, path, formal-return and OOS decoded rows are all zero. Exactly one sealed-IS Paper observation is authorized.
 
+## 2026-07-18 - U-19 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4` / `e09ff40bd68e37829bc48a9f2ad434364efda240dab16d595a2cfe68564afb2f`; all three traversal orders and four manifests are exact.
+- Sample: 54 complete episodes, 27 symbols and 50 months; count, projection and qualifying-year Gates fail while concentration Gates pass.
+- Economics: median 24h relative premium `-0.5663%`, absolute displacement `-0.7466%`, and positive fraction `37.04%`; frozen minima `+1.80%`, `+1.80%` and `60%` all fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-19 is permanently closed.
+
 ## 2026-07-18 - U-18 Paper Protocol Exact-Head Review Approved
 
 - Target: `39a766c50de5a0855d7ee85c2aab743ec8b738e5`; protocol `7571d2cb...c671`; five target blobs exact.
