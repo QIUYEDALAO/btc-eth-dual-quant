@@ -2,11 +2,25 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-19 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized
-current_status: u19_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2
+current_phase: U-20 independent outcome-blind hypothesis design authorized
+current_status: u20_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-20 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U20_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u20_design_authorization_v1.json
+    branch: codex/u20-design-authorization
+    decision_content_hash: b4e9d5c94957d69142e328a05dfb00474840efe3347dd5347c55997115b64455
+    prior_candidate: U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM
+    prior_run_content_hash: 38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-19 unique sealed-IS volatility-of-volatility Paper observation
     status: failed_feasibility
     evidence: reports/m1/U19_CROSS_SECTIONAL_PAPER_OBSERVATION.md
@@ -2248,23 +2262,16 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-19-PAPER-OBSERVATION
-    phase: unique sealed-IS volatility-of-volatility Paper observation
-    status: completed_failed_feasibility
-    authorization_content_hash: 0996522977d3a54fe35f29220bcd0ca9dd4f2aebd1533d610c6aececf250c3a9
-    design_content_hash: 89cd46e632d5d890b5c2b13c71a63642ab1ed5a2167904df0f722a5d4279fe80
-    protocol_content_hash: 8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9
-    qualification_content_hash: 62b7ac38cc1eb9ab89d2c2af8571181ef2f06a2f3873d70f61c917d3c23db499
-    run_content_hash: 38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4
+  - id: U-20
+    phase: independent outcome-blind hypothesis design
+    status: authorized_not_started
+    authorization_content_hash: b4e9d5c94957d69142e328a05dfb00474840efe3347dd5347c55997115b64455
+    prior_run_content_hash: 38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4
     maximum_hypotheses: 1
-    hypothesis_design_authorized: false
+    hypothesis_design_authorized: true
     paper_protocol_design_authorized: false
-    review_content_hash: d215e444595036412cc680b83cc0adf8449edbe6c283ac82b632c67e623f4a91
     exact_head_independent_review_authorized: false
     data_qualification_complexity_and_preflight_authorized: false
-    one_sealed_is_paper_observation_authorized: false
-    second_run_authorized: false
-    candidate_closed: true
     public_data_read_authorized: false
     event_scan_authorized: false
     path_observation_authorized: false
@@ -2383,9 +2390,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Perform a separate exact-head independent review of the frozen U-19 Paper protocol without reading data or results."
-  - "No U-18 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
-  - "U-04 through U-18 outcomes, Gates, defects and censor patterns may not select U-19."
+  - "Perform exactly one independent, outcome-blind U-20 hypothesis design; diagnostic reasoning is limited to mechanism and non-duplication without data or outcomes."
+  - "No U-19 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
+  - "U-04 through U-19 outcomes, Gates, defects and censor patterns may not select U-20."
   - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
   - "U-04 through U-16 outcomes, signs, failed Gates, concentrations, censor patterns and defects may not select U-17."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.

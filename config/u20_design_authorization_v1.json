@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "decision_id": "U20-CROSS-SECTIONAL-DESIGN-AUTHORIZATION-V1",
+  "status": "authorized_for_one_independent_outcome_blind_hypothesis_design_only",
+  "bindings": {
+    "u19_candidate_id": "U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM",
+    "u19_run_content_hash": "38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4",
+    "u19_status": "failed_feasibility",
+    "u19_oos_opened": false,
+    "u19_formal_returns_computed": false,
+    "u19_second_run_executed": false,
+    "u19_protocol_content_hash": "8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9",
+    "u19_design_authorization_hash": "0996522977d3a54fe35f29220bcd0ca9dd4f2aebd1533d610c6aececf250c3a9",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
+  },
+  "decision": {
+    "u20_design_authorized": true,
+    "maximum_hypotheses": 1,
+    "design_family": "point_in_time_cross_sectional_liquid_spot",
+    "independent_economic_rationale_required": true,
+    "u04_through_u19_outcome_direction_threshold_rule_censor_or_failure_reuse_prohibited": true,
+    "u19_negative_result_inversion_repair_relabeling_or_repackaging_prohibited": true,
+    "prior_failed_candidate_repair_retry_inversion_or_relabeling_prohibited": true,
+    "outcome_blind_preregistration_required": true,
+    "separate_protocol_before_any_data_or_event_scan": true,
+    "pre_result_data_authority_sample_ceiling_and_complexity_preflight_required": true,
+    "freqtrade_first_for_any_later_single_leg_implementation": true
+  },
+  "authorizations": {
+    "u20_hypothesis_design": true,
+    "public_data_read": false,
+    "event_scan": false,
+    "signals": false,
+    "returns": false,
+    "strategy_rule_selection": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "stop_conditions": [
+    "Any U-19 run, protocol, audit, source-freeze or artifact-set hash drift fails closed.",
+    "The U-20 design must select exactly one economically independent hypothesis without reading data or outcomes.",
+    "U-04 through U-19 signs, paths, Gates, concentrations, censor patterns, defects and failures may not select U-20.",
+    "The U-19 negative Paper result may not be inverted, repaired, relabeled or repackaged as U-20.",
+    "No parameter, public-data read, event scan, return, strategy rule, backtest or OOS access is authorized."
+  ],
+  "content_hash": "b4e9d5c94957d69142e328a05dfb00474840efe3347dd5347c55997115b64455",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}
