@@ -1,19 +1,30 @@
 # Next Action
 
-## U-13 Independent-Candidate Authorization Decision
+## U-13 Outcome-Blind Hypothesis Design
+
+Decision `8900ada4819a2d951fd26ab6a1d61e18e0e43de939207787c63e05f925866ce6`
+authorizes exactly one economically independent U-13 hypothesis design. The
+design must specify one mechanism, causal timing, non-duplication and failure
+regimes without reading data or selecting a timeframe, estimator, threshold,
+event identity, horizon, cost or strategy rule.
+
+U-04 through U-12 results remain immutable and OOS-sealed. Their event signs,
+paths, failed Gates, concentration, censor patterns and defects may not choose
+or shape U-13. A separate outcome-blind Paper protocol remains mandatory before
+any data access or event scan.
+
+## U-13 Authorization Record
 
 U-12 is closed `failed_feasibility` under the single immutable run
 `b42a539c...7995`. Three orders match exactly, but 9 frozen Paper Gates fail.
 There is no tuning, retry, Paper-result review, fixed-rule, strategy or backtest
 path for U-12.
 
-The only possible successor is a separate U-13 governance decision. It may
-authorize at most one genuinely independent, outcome-blind hypothesis design.
-It must bind U-04 through U-12 as immutable and OOS-sealed, and prohibit using
-their result signs, failed Gates, censor patterns or defects to select U-13.
+The separate U-13 decision is complete. It binds U-12's failed run and all prior
+candidate evidence plus the V4 audit/source authority.
 
-This decision itself may not choose parameters, read new data, scan events,
-compute returns, implement strategy code, open OOS or authorize trading/M2.
+Only hypothesis design is now true. Parameters, data reads, event scans,
+returns, strategy code, OOS, trading and M2 remain false.
 
 ## U-12 Closed Paper Observation
 

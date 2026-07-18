@@ -2,11 +2,28 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-18T00:00:00Z"
-current_phase: U-12 Paper observation failed feasibility; separate U-13 independent-candidate authorization decision is the only next task
-current_status: u12_failed_feasibility_candidate_closed_u13_decision_only_no_strategy_no_oos_no_trading_no_m2
+current_phase: U-13 independent design authorized; one outcome-blind hypothesis design is the only next task
+current_status: u13_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-13 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U13_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u13_design_authorization_v1.json
+    branch: codex/u13-design-authorization
+    decision_content_hash: 8900ada4819a2d951fd26ab6a1d61e18e0e43de939207787c63e05f925866ce6
+    prior_candidate: U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY
+    prior_run_content_hash: b42a539c555e37b8b3871910bf5fc21397db3ea01044dee3bbfe3bf7902e7995
+    prior_status: failed_feasibility
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-12 unique sealed-IS recurring calendar-flow Paper observation
     status: failed_feasibility
     evidence: reports/m1/U12_CROSS_SECTIONAL_PAPER_OBSERVATION.md
@@ -1601,13 +1618,12 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: U-13-DECISION
-    phase: separate independent-candidate authorization decision after U-12 closure
+  - id: U-13
+    phase: one independent outcome-blind cross-sectional hypothesis design
     status: authorized_not_started
-    prior_candidate_id: U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY
-    prior_run_content_hash: b42a539c555e37b8b3871910bf5fc21397db3ea01044dee3bbfe3bf7902e7995
-    prior_candidate_closed: true
-    independent_hypothesis_design_authorized: false
+    decision_content_hash: 8900ada4819a2d951fd26ab6a1d61e18e0e43de939207787c63e05f925866ce6
+    maximum_hypotheses: 1
+    independent_hypothesis_design_authorized: true
     event_scan_authorized: false
     path_observation_authorized: false
     returns_authorized: false
@@ -1681,9 +1697,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Create a separate U-13 hypothesis design authorization decision that binds U-12 as failed, immutable and OOS-sealed."
-  - "Any U-13 design authorization must require a genuinely independent economic mechanism and prohibit inversion, tuning or reuse of U-04 through U-12 outcome signs, failed Gates and censor patterns."
-  - "Do not retry, tune, repair or reinterpret U-12; its unique result-bearing run is consumed and candidate closed."
+  - "Design exactly one outcome-blind U-13 cross-sectional hypothesis with an economically independent mechanism, causal timing, non-duplication and failure regimes."
+  - "Leave timeframe, estimator, threshold, event identity, paths, costs and strategy rules unresolved for a separate Paper protocol design."
+  - "Do not use U-04 through U-12 result signs, failed Gates, concentration, censor patterns or defects to choose the U-13 mechanism."
   - "Preserve U-04 through U-11 evidence without tuning, inversion, retry or outcome-derived design choices."
   - "The protocol must bind exact membership, lifecycle, invalid-interval, IS/OOS and later exact-head review Gates."
   - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
@@ -1722,6 +1738,14 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m0/U13_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-13 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u13_design_authorization_v1.json
+    phase: U-13 design authorization machine evidence
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "8900ada4819a2d951fd26ab6a1d61e18e0e43de939207787c63e05f925866ce6"'
   - path: reports/m1/U12_CROSS_SECTIONAL_PAPER_OBSERVATION.md
     phase: U-12 unique sealed-IS Paper observation
     status: failed_feasibility

@@ -2292,3 +2292,11 @@ private exchange responses here.
 - Concentration: maximum year `73.86%` versus `35%`; maximum symbol `42.05%` versus `25%`.
 - Isolation: OOS opened false, rows decoded 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
 - Decision: U-12 closes `failed_feasibility`; only a separate U-13 independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-13 Independent Design Authorized
+
+- Task: `U-13-DECISION`; branch `codex/u13-design-authorization`; local Git only.
+- Decision: `8900ada4819a2d951fd26ab6a1d61e18e0e43de939207787c63e05f925866ce6`; exactly one economically independent, outcome-blind U-13 hypothesis design.
+- Binding: U-12 remains failed, single-run and OOS-sealed under `b42a539c...7995`; U-04 through U-11 and exact V4 audit/source authorities remain bound.
+- Independence: prior signs, paths, failed Gates, concentration, censor patterns and defects may not choose or shape U-13.
+- Authorization: hypothesis design only. Data, parameters, events, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.
