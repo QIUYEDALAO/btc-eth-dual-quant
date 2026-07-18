@@ -1,6 +1,25 @@
 # Next Action
 
-## U-12 Outcome-Blind Paper Protocol Design
+## U-12 Frozen-Source Qualification and Same-Reader Preflight
+
+The U-12 Paper protocol exact target
+`11caf6f5160bfd03a127b6fc3565ad0b84c43d82` is independently approved under
+review `81262bf19b2c32d7cfb37a6d42106ec7bc21bd674a4d0d106b3e0ccfd58b8813`.
+All 14 review dimensions pass, remaining critical/high findings are `0/0`, and
+the target was not modified.
+
+The only next task is frozen-source data qualification plus the mandatory
+same-reader pre-result preflight. It must verify exact source/manifests,
+point-in-time membership, lifecycle, invalid-interval masks, IS/OOS isolation,
+month-boundary previous closes, every 288-slot UTC day, the prior 52 matching
+weekday cells, three traversal orders and a metadata-only 24h episode ceiling
+of at least 300.
+
+This task may decode IS inputs only for qualification. It must generate no
+calendar candidates, events, paths or returns and decode zero OOS OHLCV values.
+Only a passing preflight may authorize one sealed-IS Paper observation.
+
+## U-12 Frozen Outcome-Blind Paper Protocol
 
 U-12 freezes `U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY`
 under hypothesis `5942e15d...f54d` and design `e53003e7...d5dc`. The mechanism
@@ -8,15 +27,14 @@ is an asset-specific relative-return pattern recurring in a predeclared UTC
 calendar state across disjoint prior subperiods, potentially reflecting
 repeating regional participation, settlement, treasury or mandate flows.
 
-The only next task is a separate result-blind Paper protocol. Before reading
-data it must freeze the UTC calendar-state family/granularity, completed
-timeframe, common component, history, disjoint subperiods, persistence,
-multiple-testing control, candidate rule, clustering, paths, cost and sample
-Gates. It must also require a pre-result implementation/data-scope preflight so
-the U-11 boundary failure cannot recur.
+Protocol `a8cfc0b7...0b8a` freezes ensuing UTC weekday, complete daily data,
+the prior 52 same-weekday opportunities split 26/26, exact historical
+active-member median common components, persistence thresholds, clustering,
+24h paths, cost references and immutable Paper Gates.
 
-No public data, event, path, return or OOS value has been read. Strategy rules,
-Freqtrade code, backtesting, OOS, trading and M2 remain false.
+The protocol and review read no public results or OOS values. Event scans,
+paths, returns, strategy rules, Freqtrade code, backtesting, OOS, trading and
+M2 remain false.
 
 ## U-12 Historical Authorization and Design
 

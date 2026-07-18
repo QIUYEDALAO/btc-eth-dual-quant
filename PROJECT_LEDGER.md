@@ -2256,3 +2256,19 @@ private exchange responses here.
 - Independence: calendar-conditioned recurrence, not residual reversal, breadth, volume absorption, stress resilience, membership entry, low volatility, price/volume trend, asymmetric capture or prior BTC/ETH families.
 - Execution: no public data, timeframe, calendar granularity, estimator, threshold, event/path, return, rule, backtest or OOS access.
 - Authorization: one separate outcome-blind Paper protocol design with mandatory pre-result implementation/data-scope preflight; all downstream permissions remain false.
+
+## 2026-07-18 - U-12 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `a8cfc0b74e82bdf455bae5dda7a620bc5c0c53f1022d39494800f1053dd80b8a`; exact target `11caf6f5160bfd03a127b6fc3565ad0b84c43d82`; local Git only.
+- Identity: ensuing UTC weekday only, complete 288-slot UTC days, prior 52 same-weekday opportunities split into two disjoint 26-cell halves, and historical point-in-time active-member median common components.
+- Persistence: full median residual at least 0.60%, each-half median at least 0.30%, current active-member top quartile, deterministic single representative and 24h connected clustering.
+- Preflight: month-boundary prior closes, daily slots, same-weekday cells, three-order identity and metadata-only ceiling at least 300 are mandatory before outcomes.
+- Authorization: exact-head review only; no public result, event, path, return, OOS, strategy or trading access.
+
+## 2026-07-18 - U-12 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `11caf6f5...3d82` / `21670295...d40`; protocol/review `a8cfc0b7...0b8a` / `81262bf1...8813`.
+- Five target blobs and 14 identity, authority, calendar, daily-data, estimator, persistence, preflight, ceiling, causality, clustering/path, Gate, leakage and safety dimensions pass.
+- Verdict: `approve`; critical/high `0/0`; target unchanged.
+- No public data, event, path, return or OOS value was read.
+- Authorization: frozen-source qualification and same-reader preflight only; no events, returns, strategy, OOS or trading.
