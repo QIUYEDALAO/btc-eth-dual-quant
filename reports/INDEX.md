@@ -1,5 +1,8 @@
 # Reports Index
 
+| `reports/m1/U17_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-17 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 28-day liquidity rank persistence, clustering, paths, Gates and preflight before data. | no |
+| `config/u17_cross_sectional_paper_protocol_v1.json` | U-17 machine Paper protocol | content `81501338...6089` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
+
 | `reports/m1/U17_LIQUIDITY_RISK_PREMIUM_DESIGN.md` | U-17 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes persistent relative liquidity risk as a compensated characteristic without data, parameters, results or OOS. | no |
 | `reports/m1/U17_NON_DUPLICATION_REVIEW.md` | U-17 non-duplication | pass_design_level | Separates a liquidity-risk characteristic from U-04 through U-16 and prior strategy families. | no |
 | `config/u17_cross_sectional_design_scope_v1.json` | U-17 machine design scope | content `ad3b6a4c...20fe` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |

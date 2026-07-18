@@ -1,5 +1,18 @@
 # Next Action
 
+## U-17 Exact-Head Independent Paper-Protocol Review
+
+Protocol `U17-03-LIQUIDITY-RISK-PREMIUM-PAPER-V1` is frozen before data or
+results under `81501338...6089`. The only next task is a separate-branch,
+read-only review of the exact target. It must verify 28 complete UTC days,
+daily all-member quote-volume ranks, 21/28 persistence, one deterministic
+representative, 28-day clustering/paths, sample/economic Gates, complexity and
+sealed-OOS isolation.
+
+Approval may authorize only separate frozen-source data qualification,
+structural sample ceiling and synthetic complexity preflight. It cannot
+authorize liquidity/event/path scans, returns, strategy, backtesting or OOS.
+
 ## U-17 Outcome-Blind Paper Protocol Design
 
 U-17 freezes `U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM` under hypothesis

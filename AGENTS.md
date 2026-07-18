@@ -28,6 +28,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- U-17 Paper protocol `U17-03-LIQUIDITY-RISK-PREMIUM-PAPER-V1` is frozen before data/results under `815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089`.
+- It fixes 28 completed UTC days, daily all-active-member quote-volume ranks, 21/28 low-liquidity persistence, deterministic representative, 28-day clustering and paths, and immutable Paper Gates.
+- Only a separate exact-head independent review is authorized next. Data qualification, liquidity/event/path scans, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.
 - U-17 freezes `U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM` under hypothesis `19b0e7eaa4d9f8432b733d3660a76226c9e3351674d21a819adf266515261fea` and design `ad3b6a4cabc61bd41890684ccf30b8ee4ae3a2811fcc4dd08abcf45a4bf420fe`.
 - The mechanism is compensation for persistent relative liquidity risk inside the already investable Top-15. It is not a volume shock, membership event, price-direction signal or repair of U-04 through U-16.
 - Only one outcome-blind U-17 Paper protocol design is authorized next. Data, events, returns, fixed rules, strategy/backtesting, OOS, API/trading, execution/live and M2 remain false.

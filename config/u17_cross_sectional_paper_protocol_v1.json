@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_result_pending_exact_head_review",
+  "protocol_id": "U17-03-LIQUIDITY-RISK-PREMIUM-PAPER-V1",
+  "candidate_id": "U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM",
+  "hypothesis_sha256": "19b0e7eaa4d9f8432b733d3660a76226c9e3351674d21a819adf266515261fea",
+  "design_content_hash": "ad3b6a4cabc61bd41890684ccf30b8ee4ae3a2811fcc4dd08abcf45a4bf420fe",
+  "authority_bindings": {
+    "u17_design_authorization_hash": "eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b",
+    "u16_run_content_hash": "322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+    "invalid_interval_runtime_policy_hash": "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04"
+  },
+  "scope": {
+    "exchange": "binance",
+    "market": "spot_usdt",
+    "direction": "long_cash_only",
+    "is_start": "2020-01-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z",
+    "oos_end_exclusive": "2026-07-01T00:00:00Z",
+    "is_calendar_days": 1715,
+    "oos_calendar_days": 658,
+    "full_calendar_days": 2373,
+    "decision_step": "completed_utc_day_boundary",
+    "signal_input_timeframe": "daily_utc_from_complete_5m",
+    "path_timeframe": "5m",
+    "oos_opened": false
+  },
+  "history_contract": {
+    "history_complete_utc_days": 28,
+    "minimum_active_members": 10,
+    "daily_quote_volume": "sum_quote_volume_of_exactly_288_qualified_5m_rows",
+    "daily_liquidity_rank": "ascending_daily_quote_volume_then_symbol_among_all_complete_active_members_with_rank_1_least_liquid",
+    "all_28_complete_days_for_every_decision_time_active_member_required": true,
+    "membership_must_be_constant_for_history_and_future_28d_path": true,
+    "missing_duplicate_quarantined_or_lifecycle_intersecting_day": "whole_decision_ineligible",
+    "nonpositive_or_nonfinite_quote_volume": "whole_decision_ineligible_and_counted",
+    "current_membership_backfill_or_replacement_allowed": false
+  },
+  "liquidity_characteristic_contract": {
+    "daily_low_liquidity_group": "lowest_ceil_active_member_count_divided_by_4_daily_liquidity_ranks",
+    "candidate_persistence_gate": "candidate_in_daily_low_liquidity_group_on_at_least_21_of_28_completed_days",
+    "candidate_summary_rank": "median_of_28_daily_liquidity_ranks",
+    "candidate_summary_quote_volume": "median_of_28_completed_daily_quote_volumes",
+    "continuing_investability": "candidate_is_an_exact_active_member_at_decision_and_all_history_days",
+    "single_day_volume_change_or_price_move_used": false,
+    "membership_entry_or_exit_event_used": false
+  },
+  "event_identity": {
+    "simultaneous_representative": "lowest_candidate_summary_rank_then_lowest_candidate_summary_quote_volume_then_symbol",
+    "representatives_per_decision_time": 1,
+    "post_outcome_candidate_selection": false
+  },
+  "episode_clustering": {
+    "scope": "all_symbols_connected_event_window",
+    "connected_window_days": 28,
+    "representative": "first_event_only",
+    "boundary": "new_episode_only_when_event_time_is_strictly_more_than_28d_after_prior_connected_event",
+    "future_information_used": false
+  },
+  "implementation_data_scope_preflight": {
+    "required_before_any_liquidity_rank_event_or_path_scan": true,
+    "runs_during_frozen_source_qualification_only": true,
+    "uses_same_membership_lifecycle_mask_daily_history_decision_and_5m_path_assembly_as_future_observation": true,
+    "verifies_28d_history_and_next_28d_path_slot_availability_without_decoding_quote_volume_or_price": true,
+    "verifies_normal_reverse_and_deterministic_shuffled_input_identity": true,
+    "oos_ohlcv_values_decoded": 0,
+    "liquidity_rank_event_path_or_return_rows_generated": 0,
+    "any_scope_or_boundary_mismatch": "fail_closed_before_result_run"
+  },
+  "pre_result_complexity_benchmark": {
+    "required_before_unique_result_run": true,
+    "synthetic_fixture_rows": 1000000,
+    "synthetic_active_members": 15,
+    "same_history_rank_event_and_path_code_path_required": true,
+    "maximum_elapsed_seconds": 30,
+    "maximum_peak_rss_mib": 1024,
+    "maximum_asymptotic_behavior": "linear_in_daily_rows_plus_event_path_rows_without_decision_times_history_nested_scan",
+    "benchmark_passes_required": 3,
+    "benchmark_output_may_contain_market_outcomes": false,
+    "failure": "fail_closed_before_result_run"
+  },
+  "pre_result_sample_ceiling": {
+    "method": "calendar_membership_lifecycle_mask_28d_history_and_28d_path_availability_only_before_quote_volume_or_price_scan",
+    "minimum_theoretical_eligible_28d_episodes": 50,
+    "frozen_complete_is_episode_gate": 40,
+    "must_pass_before_any_liquidity_rank_event_or_path_scan": true
+  },
+  "observation_contract": {
+    "reference": "first_expected_5m_open_at_completed_utc_day_boundary",
+    "search_later_if_reference_missing": false,
+    "horizon_days": [1, 3, 7, 14, 28],
+    "primary_horizon_days": 28,
+    "peer_members": "decision_time_exact_active_members_excluding_candidate",
+    "candidate_close_displacement": "candidate_close_over_candidate_reference_open_minus_one",
+    "peer_median_close_displacement": "median_peer_close_over_peer_reference_open_minus_one",
+    "relative_liquidity_premium": "candidate_close_displacement_minus_peer_median_close_displacement",
+    "required_path_diagnostics": [
+      "candidate_absolute_close_displacement_by_horizon",
+      "peer_median_close_displacement_by_horizon",
+      "relative_liquidity_premium_by_horizon",
+      "candidate_maximum_favorable_excursion_through_28d",
+      "candidate_maximum_adverse_excursion_through_28d",
+      "first_time_relative_liquidity_premium_reaches_base_cost"
+    ],
+    "complete_candidate_and_all_event_time_peers_required_through_each_horizon": true,
+    "missing_quarantine_membership_change_or_lifecycle_intersection": "right_censor_without_later_search",
+    "fill_position_exit_or_equity_model": false,
+    "formal_strategy_return": false
+  },
+  "cost_reference_roundtrip": {
+    "base": "0.0030",
+    "cost_x2": "0.0060",
+    "stress_a": "0.0080",
+    "stress_b": "0.0110"
+  },
+  "projection": {
+    "source": "complete_is_independent_episodes_only",
+    "full": "floor_complete_is_episodes_times_2373_divided_by_1715",
+    "sealed_oos": "floor_complete_is_episodes_times_658_divided_by_1715",
+    "may_read_oos_events_prices_or_counts": false
+  },
+  "paper_gates": {
+    "complete_is_independent_episodes_minimum": 40,
+    "projected_full_independent_episodes_minimum": 55,
+    "projected_sealed_oos_independent_episodes_minimum": 15,
+    "minimum_years_with_six_complete_episodes": 3,
+    "maximum_single_year_episode_share": "0.45",
+    "maximum_single_symbol_episode_share": "0.25",
+    "minimum_distinct_event_symbols": 8,
+    "minimum_distinct_event_months": 30,
+    "combined_median_28d_relative_liquidity_premium_minimum": "0.0180",
+    "combined_median_28d_candidate_absolute_close_displacement_minimum": "0.0180",
+    "fraction_complete_episodes_with_positive_28d_relative_liquidity_premium_minimum": "0.60",
+    "qualification_preflight_complexity_quarantine_lifecycle_or_order_mismatches_maximum": 0
+  },
+  "research_leakage_prevention": {
+    "change_history_liquidity_proxy_persistence_cluster_or_horizon_after_results": false,
+    "change_gate_from_event_count_or_outcome": false,
+    "delete_symbol_month_year_or_regime_from_performance": false,
+    "select_current_members_or_replacement_members": false,
+    "use_prior_candidate_outcomes_defects_or_failures_to_change_rules": false,
+    "protocol_change_after_result_creates_new_candidate": true
+  },
+  "authorizations": {
+    "paper_protocol_frozen": true,
+    "exact_head_independent_review": true,
+    "data_qualification_complexity_and_preflight": false,
+    "liquidity_rank_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "signals": false,
+    "formal_returns": false,
+    "fixed_rule_contract": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "content_hash": "815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

@@ -2475,3 +2475,10 @@ private exchange responses here.
 - Mechanism: an asset that remains investable in the point-in-time Top-15 but persistently carries lower trading liquidity may earn compensation for immediacy, crowding-exit and capacity risk after the next eligible open.
 - Independence: not a volume shock, membership event, residual reversal, trend confirmation, taker imbalance or correlation breakdown; no prior outcome selected the mechanism.
 - Scope: no data or outcome read; all clocks, estimators, thresholds, cohorts, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-17 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U17-03-LIQUIDITY-RISK-PREMIUM-PAPER-V1`; content `81501338...6089`; frozen before any data or result read.
+- Identity: 28 completed UTC days, all-active-member daily quote-volume rank, low-liquidity membership on at least 21/28 days, deterministic representative and 28-day clustering.
+- Observation/Gates: strict boundary 5m open, 1/3/7/14/28-day diagnostics, 40 complete IS episodes and fixed projection/distribution/economic Gates; no formal return.
+- Next action: separate exact-head independent review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
