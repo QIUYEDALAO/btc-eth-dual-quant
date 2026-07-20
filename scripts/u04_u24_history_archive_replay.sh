@@ -39,6 +39,31 @@ PY
   done < <(snapshot_records)
 }
 
+verify_worktree_clean() {
+  local worktree="$1" label="$2" status
+  git -C "$worktree" diff --exit-code --quiet || {
+    echo "$label tracked diff detected" >&2
+    return 1
+  }
+  status="$(git -C "$worktree" status --porcelain --untracked-files=all)"
+  [[ -z "$status" ]] || {
+    echo "$label status is not clean:" >&2
+    printf '%s\n' "$status" >&2
+    return 1
+  }
+}
+
+install_worktree_snapshot() {
+  local worktree="$1" relative expected_size expected_hash
+  while IFS=$'\t' read -r relative expected_size expected_hash; do
+    mkdir -p "$worktree/$(dirname "$relative")"
+    cp -p "$SNAPSHOT_ROOT/$relative" "$worktree/$relative"
+  done < <(snapshot_records)
+  find "$worktree/storage/raw" -type f -exec chmod a-w {} +
+  find "$worktree/storage/raw" -type d -exec chmod a-w {} +
+  verify_snapshot_set "$worktree" "worktree snapshot"
+}
+
 mkdir -p "$SNAPSHOT_ROOT"
 while IFS=$'\t' read -r relative expected_size expected_hash; do
   mkdir -p "$SNAPSHOT_ROOT/$(dirname "$relative")"
@@ -62,33 +87,31 @@ if [[ "${ARCHIVE_REPLAY_SNAPSHOT_PROBE_ONLY:-0}" == "1" ]]; then
   exit 0
 fi
 
-"$PY_CMD" - "$MANIFEST" <<'PY' | while IFS=$'\t' read -r commit validator; do
-import json, sys
-for commit, validator in json.load(open(sys.argv[1], encoding="utf-8"))["replay_stages"]:
-    print(f"{commit}\t{validator}")
-PY
+while IFS=$'\t' read -r commit validator; do
   echo "==> replay $commit $validator"
   verify_snapshot_set "$ROOT" "root snapshot before $commit"
   verify_snapshot_set "$SNAPSHOT_ROOT" "temporary snapshot before $commit"
   git -C "$ROOT" worktree add --detach "$SCRATCH/worktree" "$commit" >/dev/null
-  if [[ -d "$SNAPSHOT_ROOT/storage/raw" && ! -e "$SCRATCH/worktree/storage/raw" ]]; then
-    mkdir -p "$SCRATCH/worktree/storage"
-    ln -s "$SNAPSHOT_ROOT/storage/raw" "$SCRATCH/worktree/storage/raw"
-  fi
-  git -C "$SCRATCH/worktree" diff --exit-code --quiet
-  [[ -z "$(git -C "$SCRATCH/worktree" status --porcelain --untracked-files=all)" ]]
+  install_worktree_snapshot "$SCRATCH/worktree"
+  verify_worktree_clean "$SCRATCH/worktree" "historical worktree before $commit"
   (
     cd "$SCRATCH/worktree"
     export PYTHONPATH="$ROOT/.deps:$SCRATCH/worktree/src"
     export PYTHON="$PY_CMD"
     bash "$validator"
   )
-  git -C "$SCRATCH/worktree" diff --exit-code --quiet
-  [[ -z "$(git -C "$SCRATCH/worktree" status --porcelain --untracked-files=all)" ]]
+  verify_worktree_clean "$SCRATCH/worktree" "historical worktree after $commit"
+  verify_snapshot_set "$SCRATCH/worktree" "worktree snapshot after $commit"
   verify_snapshot_set "$SNAPSHOT_ROOT" "temporary snapshot after $commit"
   verify_snapshot_set "$ROOT" "root snapshot after $commit"
+  chmod -R u+w "$SCRATCH/worktree/storage/raw" >/dev/null 2>&1 || true
   git -C "$ROOT" worktree remove --force "$SCRATCH/worktree" >/dev/null
-done
+done < <("$PY_CMD" - "$MANIFEST" <<'PY'
+import json, sys
+for commit, validator in json.load(open(sys.argv[1], encoding="utf-8"))["replay_stages"]:
+    print(f"{commit}\t{validator}")
+PY
+)
 
 verify_snapshot_set "$SNAPSHOT_ROOT" "temporary snapshot final"
 verify_snapshot_set "$ROOT" "root snapshot final"

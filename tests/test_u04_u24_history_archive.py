@@ -32,10 +32,17 @@ class HistoryArchiveTests(unittest.TestCase):
     def test_replay_mounts_independent_read_only_snapshot(self) -> None:
         replay = (ROOT / "scripts/u04_u24_history_archive_replay.sh").read_text()
         self.assertNotIn('ln -s "$ROOT/storage/raw"', replay)
-        self.assertIn('ln -s "$SNAPSHOT_ROOT/storage/raw"', replay)
+        self.assertNotIn('ln -s "$SNAPSHOT_ROOT/storage/raw"', replay)
+        self.assertIn('cp -p "$SNAPSHOT_ROOT/$relative" "$worktree/$relative"', replay)
         self.assertIn('chmod a-w', replay)
-        self.assertIn('git -C "$SCRATCH/worktree" status --porcelain', replay)
+        self.assertIn('verify_worktree_clean "$SCRATCH/worktree"', replay)
+        self.assertIn('verify_snapshot_set "$SCRATCH/worktree"', replay)
         self.assertIn('verify_snapshot_set "$ROOT"', replay)
+
+    def test_replay_loop_propagates_stage_failures(self) -> None:
+        replay = (ROOT / "scripts/u04_u24_history_archive_replay.sh").read_text()
+        self.assertNotIn("<<'PY' | while", replay)
+        self.assertIn("done < <(\"$PY_CMD\"", replay)
 
     def test_snapshot_write_is_blocked_or_hash_gate_detects_it(self) -> None:
         result = subprocess.run(
