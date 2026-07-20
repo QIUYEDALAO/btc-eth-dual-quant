@@ -29,10 +29,28 @@ class HistoryArchiveTests(unittest.TestCase):
         self.assertEqual(len(snapshots), 1)
         self.assertEqual(snapshots[0]["sha256"], "2b6db817003d1ba07bf4382220bc5455045d7ca713b57a4a95b6401ddc56ab9c")
 
-    def test_replay_mounts_gitignored_frozen_source_store(self) -> None:
+    def test_replay_mounts_independent_read_only_snapshot(self) -> None:
         replay = (ROOT / "scripts/u04_u24_history_archive_replay.sh").read_text()
-        self.assertIn('ln -s "$ROOT/storage/raw" "$SCRATCH/worktree/storage/raw"', replay)
-        self.assertIn('! -e "$SCRATCH/worktree/storage/raw"', replay)
+        self.assertNotIn('ln -s "$ROOT/storage/raw"', replay)
+        self.assertIn('ln -s "$SNAPSHOT_ROOT/storage/raw"', replay)
+        self.assertIn('chmod a-w', replay)
+        self.assertIn('git -C "$SCRATCH/worktree" status --porcelain', replay)
+        self.assertIn('verify_snapshot_set "$ROOT"', replay)
+
+    def test_snapshot_write_is_blocked_or_hash_gate_detects_it(self) -> None:
+        result = subprocess.run(
+            ["bash", "scripts/u04_u24_history_archive_replay.sh"],
+            cwd=ROOT,
+            env={**__import__("os").environ, "ARCHIVE_REPLAY_SNAPSHOT_PROBE_ONLY": "1"},
+            text=True,
+            capture_output=True,
+        )
+        combined = result.stdout + result.stderr
+        self.assertTrue(
+            (result.returncode == 0 and "write blocked PASS" in combined)
+            or (result.returncode != 0 and "hash changed" in combined),
+            combined,
+        )
 
     def test_archive_mode_requires_exact_manifest_branch(self) -> None:
         selector = (ROOT / "scripts/pr_ci_selective_validate.sh").read_text()
