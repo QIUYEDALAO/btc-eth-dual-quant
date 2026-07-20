@@ -21,6 +21,12 @@ for commit, validator in json.load(open(sys.argv[1], encoding="utf-8"))["replay_
 PY
   echo "==> replay $commit $validator"
   git -C "$ROOT" worktree add --detach "$SCRATCH/worktree" "$commit" >/dev/null
+  # U-15+ validators bind frozen raw archive bytes. The store is intentionally
+  # gitignored, so exact-tree replay mounts the same local source read-only.
+  if [[ -d "$ROOT/storage/raw" && ! -e "$SCRATCH/worktree/storage/raw" ]]; then
+    mkdir -p "$SCRATCH/worktree/storage"
+    ln -s "$ROOT/storage/raw" "$SCRATCH/worktree/storage/raw"
+  fi
   (
     cd "$SCRATCH/worktree"
     export PYTHONPATH="$ROOT/.deps:$SCRATCH/worktree/src"

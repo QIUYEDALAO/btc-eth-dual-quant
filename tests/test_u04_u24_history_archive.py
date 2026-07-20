@@ -25,6 +25,11 @@ class HistoryArchiveTests(unittest.TestCase):
         self.assertEqual(len(data["anchored_exact_heads"]), 8)
         self.assertEqual(len(data["replay_stages"]), 21)
 
+    def test_replay_mounts_gitignored_frozen_source_store(self) -> None:
+        replay = (ROOT / "scripts/u04_u24_history_archive_replay.sh").read_text()
+        self.assertIn('ln -s "$ROOT/storage/raw" "$SCRATCH/worktree/storage/raw"', replay)
+        self.assertIn('! -e "$SCRATCH/worktree/storage/raw"', replay)
+
 
 if __name__ == "__main__":
     unittest.main()
