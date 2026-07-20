@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "archive_id": "U04-U24-IMMUTABLE-HISTORY-ARCHIVE-V1",
+  "archive_head_branch": "codex/u04-u24-history-archive",
   "base_commit": "e2112a31908f1587eb657a4123f1f114cf2016fe",
   "terminal_commit": "3bbb80f5860c45f080681d871c53dc463c185692",
   "terminal_tree": "71d35782a459ee7d000f6e739b2a9fd9880af991",

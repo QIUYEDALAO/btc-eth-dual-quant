@@ -17,7 +17,10 @@ git diff --check "$BASE_SHA" HEAD
 
 SELECTED_VALIDATORS=""
 ARCHIVE_MODE=false
-if printf '%s\n' "$CHANGED_FILES" | rg -q '^config/u04_u24_history_archive_v1.json$' \
+ARCHIVE_HEAD_BRANCH="$($PY_CMD -c 'import json; print(json.load(open("config/u04_u24_history_archive_v1.json"))["archive_head_branch"])' 2>/dev/null || true)"
+CURRENT_HEAD_BRANCH="${GITHUB_HEAD_REF:-$(git branch --show-current)}"
+if [[ -n "$ARCHIVE_HEAD_BRANCH" && "$CURRENT_HEAD_BRANCH" == "$ARCHIVE_HEAD_BRANCH" ]] \
+  && printf '%s\n' "$CHANGED_FILES" | rg -q '^config/u04_u24_history_archive_v1.json$' \
   && [[ -f config/u04_u24_history_archive_v1.json ]] \
   && "$PY_CMD" scripts/u04_u24_history_archive_check.py; then
   ARCHIVE_MODE=true

@@ -17,6 +17,8 @@ def git(*args: str) -> str:
 def main() -> int:
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     failures: list[str] = []
+    if data.get("archive_head_branch") != "codex/u04-u24-history-archive":
+        failures.append("archive head branch changed")
     base = data["base_commit"]
     terminal = data["terminal_commit"]
     reachability = data["reachability_commit"]
