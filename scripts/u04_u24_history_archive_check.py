@@ -46,6 +46,16 @@ def main() -> int:
         failures.append("historical evidence path count changed")
     if hashlib.sha256(listing).hexdigest() != data["evidence_tree_listing_sha256"]:
         failures.append("historical evidence tree listing changed")
+    for snapshot in data.get("replay_source_snapshots", []):
+        snapshot_path = ROOT / snapshot["path"]
+        if not snapshot_path.is_file():
+            failures.append(f"replay source snapshot missing: {snapshot['path']}")
+            continue
+        payload = snapshot_path.read_bytes()
+        if len(payload) != snapshot["bytes"]:
+            failures.append(f"replay source snapshot size changed: {snapshot['path']}")
+        if hashlib.sha256(payload).hexdigest() != snapshot["sha256"]:
+            failures.append(f"replay source snapshot identity changed: {snapshot['path']}")
     for short_commit, validator in data["replay_stages"]:
         try:
             git("rev-parse", f"{short_commit}^{{commit}}")

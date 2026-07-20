@@ -10,6 +10,13 @@
   "mainline_commit_list_sha256": "9a2e4943b36610818bee5c4d71a2342aee36932dc1ba353e8005952908dfa33b",
   "evidence_path_count": 745,
   "evidence_tree_listing_sha256": "8441622f77e57123b00a0c22dd4e02e0a9153b1a394d4329d0f6bb49a9364e83",
+  "replay_source_snapshots": [
+    {
+      "path": "storage/raw/liquid_universe/data/spot/monthly/klines/ADAUSDT/5m/ADAUSDT-5m-2020-01.zip",
+      "bytes": 364032,
+      "sha256": "2b6db817003d1ba07bf4382220bc5455045d7ca713b57a4a95b6401ddc56ab9c"
+    }
+  ],
   "anchored_exact_heads": [
     "cbaf1b33425692b14b6b8ffac5a04cab9a9c6876",
     "8d8652796e22a15285ba682b4524baa0218ca5a6",

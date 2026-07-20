@@ -25,6 +25,9 @@ class HistoryArchiveTests(unittest.TestCase):
         self.assertEqual(len(data["anchored_exact_heads"]), 8)
         self.assertEqual(len(data["replay_stages"]), 21)
         self.assertEqual(data["archive_head_branch"], "codex/u04-u24-history-archive")
+        snapshots = data["replay_source_snapshots"]
+        self.assertEqual(len(snapshots), 1)
+        self.assertEqual(snapshots[0]["sha256"], "2b6db817003d1ba07bf4382220bc5455045d7ca713b57a4a95b6401ddc56ab9c")
 
     def test_replay_mounts_gitignored_frozen_source_store(self) -> None:
         replay = (ROOT / "scripts/u04_u24_history_archive_replay.sh").read_text()
