@@ -1,0 +1,12 @@
+{
+  "schema_version": "external-strategy-oos-guard-v1",
+  "status": "pending_explicit_unique_oos_authorization",
+  "oos_authorized": false,
+  "oos_opened": false,
+  "oos_runs": 0,
+  "oos_rows_decoded": 0,
+  "single_use_token": null,
+  "result_materialized": false,
+  "rerun_authorized": false,
+  "crash_policy": "record_incident_and_stop_without_reuse_or_retry"
+}

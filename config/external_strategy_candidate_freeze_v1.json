@@ -1,0 +1,214 @@
+{
+  "content_hash": "50a732cc9119cfab3f12d5658b17e62a20f66916fd8c73f0ee902c0376cdc2ac",
+  "frozen_candidates": [
+    {
+      "adapter_hash": null,
+      "base_adapter_hash": null,
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "id": "Supertrend",
+      "modification_package": {
+        "after_hash": null,
+        "atomic_changes": [],
+        "before_hash": null,
+        "id": null,
+        "package_hash": null
+      },
+      "observed_config_override_count": null,
+      "observed_external_parameter_file_count": null,
+      "order": 1,
+      "runtime_effective_settings_hash": null,
+      "runtime_resolution_status": "runtime_resolution_pending",
+      "runtime_resolved_parameters_hash": null,
+      "source_declaration_hash": "c2460aff932e5a97341e7076008be11200ac797b0ca25cee0b0db2b38bfab17b",
+      "source_sha256": "d01c26757c265cc3d20f597ba25853140e521bbc3666953342a49f1fa8c997c1"
+    },
+    {
+      "adapter_hash": null,
+      "base_adapter_hash": null,
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "id": "Strategy001",
+      "modification_package": {
+        "after_hash": null,
+        "atomic_changes": [],
+        "before_hash": null,
+        "id": null,
+        "package_hash": null
+      },
+      "observed_config_override_count": null,
+      "observed_external_parameter_file_count": null,
+      "order": 3,
+      "runtime_effective_settings_hash": null,
+      "runtime_resolution_status": "pending_vps_load",
+      "runtime_resolved_parameters_hash": null,
+      "source_declaration_hash": "aad6f6d58bec4a02a5b4f7b6ffe3c27f645f15b2ca1b90297735d9f95d915278",
+      "source_sha256": "2357996e6594458e8db45b5f757918462afa3c998de9d06e2af0c009ddc4b80d"
+    },
+    {
+      "adapter_hash": null,
+      "base_adapter_hash": null,
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "id": "UniversalMACD",
+      "modification_package": {
+        "after_hash": null,
+        "atomic_changes": [],
+        "before_hash": null,
+        "id": null,
+        "package_hash": null
+      },
+      "observed_config_override_count": null,
+      "observed_external_parameter_file_count": null,
+      "order": 5,
+      "runtime_effective_settings_hash": null,
+      "runtime_resolution_status": "pending_vps_load",
+      "runtime_resolved_parameters_hash": null,
+      "source_declaration_hash": "fbf7822af8c23e49d0db17eb31d4a3bd986eaf6c97461597adf15aad2c4611d6",
+      "source_sha256": "b3a62e0d8a26024e7ab5f3613d0964e3954373bc3735c1ffd0678d84ce1b1e32"
+    },
+    {
+      "adapter_hash": null,
+      "base_adapter_hash": null,
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "id": "Bandtastic",
+      "modification_package": {
+        "after_hash": null,
+        "atomic_changes": [],
+        "before_hash": null,
+        "id": null,
+        "package_hash": null
+      },
+      "observed_config_override_count": null,
+      "observed_external_parameter_file_count": null,
+      "order": 7,
+      "runtime_effective_settings_hash": null,
+      "runtime_resolution_status": "pending_vps_load",
+      "runtime_resolved_parameters_hash": null,
+      "source_declaration_hash": "5a930b4a94c9aca111fbcbf6e9caf26f66397f39c4c527f1193ee1ccec1a3892",
+      "source_sha256": "15dcb60d49a3681241cd39645f0fe8e6dc247687bf878c2026f37bb1c5790b57"
+    },
+    {
+      "adapter_hash": null,
+      "base_adapter_hash": null,
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "id": "Diamond",
+      "modification_package": {
+        "after_hash": null,
+        "atomic_changes": [],
+        "before_hash": null,
+        "id": null,
+        "package_hash": null
+      },
+      "observed_config_override_count": null,
+      "observed_external_parameter_file_count": null,
+      "order": 9,
+      "runtime_effective_settings_hash": null,
+      "runtime_resolution_status": "runtime_resolution_pending",
+      "runtime_resolved_parameters_hash": null,
+      "source_declaration_hash": "b3f1b8865c210918afe1c2e25eaaf359c34e4518305ad0a13f884b0c3baf6a8e",
+      "source_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902"
+    },
+    {
+      "adapter_hash": null,
+      "base_adapter_hash": null,
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "id": "Heracles",
+      "modification_package": {
+        "after_hash": null,
+        "atomic_changes": [],
+        "before_hash": null,
+        "id": null,
+        "package_hash": null
+      },
+      "observed_config_override_count": null,
+      "observed_external_parameter_file_count": null,
+      "order": 11,
+      "runtime_effective_settings_hash": null,
+      "runtime_resolution_status": "runtime_resolution_pending",
+      "runtime_resolved_parameters_hash": null,
+      "source_declaration_hash": "f0b117a17f498bf9946d0aea3c7d64e5a01dd3e4ac7a1d1837de1e3157984323",
+      "source_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7"
+    }
+  ],
+  "is_rows_materialized": 0,
+  "modification_packages": {
+    "Bandtastic": {
+      "after_hash": null,
+      "atomic_changes": [],
+      "before_hash": null,
+      "id": null,
+      "package_hash": null
+    },
+    "Diamond": {
+      "after_hash": null,
+      "atomic_changes": [],
+      "before_hash": null,
+      "id": null,
+      "package_hash": null
+    },
+    "Heracles": {
+      "after_hash": null,
+      "atomic_changes": [],
+      "before_hash": null,
+      "id": null,
+      "package_hash": null
+    },
+    "Strategy001": {
+      "after_hash": null,
+      "atomic_changes": [],
+      "before_hash": null,
+      "id": null,
+      "package_hash": null
+    },
+    "Supertrend": {
+      "after_hash": null,
+      "atomic_changes": [],
+      "before_hash": null,
+      "id": null,
+      "package_hash": null
+    },
+    "UniversalMACD": {
+      "after_hash": null,
+      "atomic_changes": [],
+      "before_hash": null,
+      "id": null,
+      "package_hash": null
+    }
+  },
+  "observed_config_override_count": null,
+  "observed_external_parameter_file_count": null,
+  "oos_rows_decoded": 0,
+  "required_config_override_count": 0,
+  "required_external_parameter_file_count": 0,
+  "result_contract": {
+    "common_envelope_schema": "external-strategy-is-result-v1",
+    "dsr_authority": "equity_recomputed_sharpe_plus_frozen_trial_sequence",
+    "kinds": [
+      "trades",
+      "equity",
+      "metrics"
+    ],
+    "metric_authority": "equity_recomputed_unified_metrics",
+    "scenarios": [
+      "Base",
+      "CostX2",
+      "StressA",
+      "StressB"
+    ],
+    "variant_identity_fields": [
+      "base_adapter_hash",
+      "variant_executable_hash"
+    ]
+  },
+  "schema_version": "external-strategy-candidate-freeze-v2",
+  "screen_content_hash": "ca7d949e8383bf634341ad3521e768bad785a433182b4785beccd0d1f9d25858",
+  "selection_rule": "scan_all_in_fixed_order_then_freeze_first_six_pass_or_five_if_exactly_five_pass",
+  "selection_trial_count": 0,
+  "trial_manifest_limits": {
+    "maximum_modified_candidates": 3,
+    "modified_must_materialize_strictly_after_original": true,
+    "modified_per_candidate": 1,
+    "modified_requires_passing_original": true,
+    "modified_requires_unique_preregistered_package": true,
+    "ordering": "first_materialized_utc_then_trial_id",
+    "original_per_candidate": 1
+  }
+}

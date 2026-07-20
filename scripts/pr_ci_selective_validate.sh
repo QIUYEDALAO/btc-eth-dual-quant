@@ -11,9 +11,13 @@ CHANGED_COUNT="$(printf '%s\n' "$CHANGED_FILES" | sed '/^$/d' | wc -l | tr -d ' 
 
 echo "PR selective Gate: ${CHANGED_COUNT} changed files"
 bash scripts/project_validate.sh
+"$PY_CMD" scripts/external_strategy_trial_accounting_check.py
 "$PY_CMD" -m compileall -q src scripts
 "$PY_CMD" scripts/m0_secret_scan.py
-git diff --check "$BASE_SHA" HEAD
+# Preserve byte-exact upstream originals even when their frozen source contains
+# whitespace defects. Their file/blob/archive hashes are checked separately;
+# every repository-owned file remains subject to diff --check.
+git diff --check "$BASE_SHA" HEAD -- . ':(exclude)external_strategies/original/**'
 
 SELECTED_VALIDATORS=""
 ARCHIVE_MODE=false

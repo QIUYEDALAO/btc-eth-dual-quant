@@ -1,0 +1,57 @@
+{
+  "schema_version": "external-strategy-benchmark-v1",
+  "status": "frozen_zero_result_pre_runtime",
+  "canonical_content_hash": "6ef39c1dc73caf553b5907e0983214ccf68ebc980f8b20819903ffa35143e653",
+  "implementation": {
+    "path": "src/btc_eth_dual_quant/audit/unified_metrics.py",
+    "function": "build_active_universe_benchmark",
+    "byte_sha256": "0aad90dc2b609a8a00ce08697e5c5792cbcf839db305ce539bc0d4a885cb1eef",
+    "reuses_t3_daily_mtm_cost_and_metrics_engine": true,
+    "second_metrics_engine_created": false
+  },
+  "equal_weight_active_universe": {
+    "maximum_gross_exposure": "0.50",
+    "cash_weight_target": "0.50",
+    "risk_assets": "equal_weight_point_in_time_active_universe",
+    "rebalance": "monday_utc_open",
+    "cost_scenarios": ["Base", "CostX2", "StressA", "StressB"],
+    "same_lifecycle_and_invalid_interval_mask": true,
+    "daily_ordering": ["price_prior_holdings_at_current_open","membership_and_lifecycle_exit_at_open","monday_rebalance_at_open","mark_remaining_holdings_at_close"],
+    "exited_symbol_close_required": false,
+    "lifecycle_exit_charged_once": true,
+    "leverage": 1,
+    "missing_data_policy": "fail_closed_no_replacement"
+  },
+  "risk_matched": {
+    "base": "independently_generated_fixed_50_percent_gross_equal_weight_shadow",
+    "rebalance": "monday_utc_open",
+    "prior_complete_utc_days": 90,
+    "candidate_target_volatility": "candidate_prior_90_complete_daily_mtm_returns",
+    "benchmark_volatility": "fixed_50_percent_gross_shadow_prior_90_complete_daily_returns",
+    "risk_matched_curve_self_history_allowed": false,
+    "weekly_gross_trace_required": true,
+    "future_or_full_is_ex_post_values": false,
+    "gross_exposure_minimum": "0.00",
+    "gross_exposure_maximum": "0.50",
+    "leverage_cap": 1,
+    "insufficient_history_gross_exposure": "0.00"
+  },
+  "synthetic_fixture": {
+    "fixture_id": "EXTERNAL-BENCHMARK-SYNTHETIC-V1",
+    "symbols": ["AAA", "BBB", "CCC"],
+    "membership_change": "2024-01-08T00:00:00Z",
+    "prices": "constant_with_deterministic_small_variation",
+    "candidate_returns": "alternating_prior_only",
+    "contains_market_result": false,
+    "canonical_hash": "9e737b5399bbce91ff7955ae90a4b2f0aedb7708d30e56bc1fc0c22e206a9818"
+  },
+  "guards": {
+    "point_in_time_membership": true,
+    "lifecycle_exit": true,
+    "invalid_interval_fail_closed": true,
+    "reverse_and_shuffled_deterministic": true,
+    "no_future_data": true,
+    "candidate_performance_result_materialized": false,
+    "oos_rows_decoded": 0
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "external-strategy-dsr-reference-trials-v1",
+  "status": "frozen_pre_runtime_zero_selection_trials",
+  "canonical_content_hash": "ca2009f5af39b40b30f8785102086c3ef938b16833c581a638224a44cf2e0b88",
+  "implementation": {
+    "path": "src/btc_eth_dual_quant/audit/unified_metrics.py",
+    "functions": ["metrics_from_equity", "daily_returns", "expected_maximum_sharpe", "deflated_sharpe_ratio"],
+    "byte_sha256": "0aad90dc2b609a8a00ce08697e5c5792cbcf839db305ce539bc0d4a885cb1eef"
+  },
+  "historical_opened_oos_trial_count": 3,
+  "heterogeneous_scope": true,
+  "deliberately_conservative": true,
+  "homogeneous_trial_distribution_claimed": false,
+  "expected_maximum_sharpe_base": "3.146768898019",
+  "expected_maximum_sharpe_costx2": "3.001365569591",
+  "selection_trial_count": 0,
+  "required_trial_count": 3,
+  "trial_count_formula": "3 + selection_trial_count",
+  "scenario_rules": {
+    "Base": "append exactly one equity-recomputed annualized daily-MTM Sharpe for each materialized original or modified selection trial to historical.Base",
+    "CostX2": "append exactly one equity-recomputed annualized daily-MTM Sharpe for each materialized original or modified selection trial to historical.CostX2",
+    "StressA_and_StressB": "reported but never appended as additional trials"
+  },
+  "historical": {
+    "Base": ["0.7367", "7.1534", "0.7882"],
+    "CostX2": ["0.7271", "6.8357", "0.7528"]
+  },
+  "authoritative_trials": [
+    {
+      "candidate_id": "M1A-DAILY-TREND",
+      "metrics_report": "reports/m1/M1A_TREND_BACKTEST_REPORT.md",
+      "metrics_report_byte_sha256": "0f2b73161dc6d5e0e4eaa78110cdaf2e6873a0b90903d4723589ccc3ce6081e9",
+      "decision_report": "reports/m1/M1A_REVIEW_DECISION.md",
+      "decision_report_byte_sha256": "02f68cfbfc52f24d3c60e8dc6f4abbf4bdaf493e68d7a05f3f416d451ff02c1c",
+      "Base": "0.7367",
+      "CostX2": "0.7271",
+      "metric_scope": "full daily portfolio table"
+    },
+    {
+      "candidate_id": "M1B-FUNDING-ARBITRAGE",
+      "metrics_report": "reports/m1/M1B_EVENT_TIME_REVALIDATION_REPORT.md",
+      "metrics_report_byte_sha256": "9bcd4ba71d639d11b1033b50756a1730dfc6bc4f3531b5ad2c63eb2fa5a7a8f1",
+      "decision_report": "reports/m1/M1B_FINAL_DECISION.md",
+      "decision_report_byte_sha256": "883e9246ed7e14125be03b755b3b5bd43aa20a42ea6f22b99b5863ff37aa78cd",
+      "Base": "7.1534",
+      "CostX2": "6.8357",
+      "metric_scope": "event-time full daily portfolio"
+    },
+    {
+      "candidate_id": "M1C-BTC-ETH-ROTATION",
+      "metrics_report": "reports/m1/T3_UNIFIED_METRICS_AND_POLICY_BENCHMARK_REPORT.md",
+      "metrics_report_byte_sha256": "62f8940af4cefc6f0246a60535c510552b7a541ce3cad5fc110594cce1c6b81f",
+      "decision_report": "reports/expert/2026-07-10-FABLE5-EXPERT-REVIEW.md",
+      "decision_report_byte_sha256": "3a90aaa6817a33f11c14744eee6063737dfbc1557ad2fc08970ee853015bdeee",
+      "Base": "0.7882",
+      "CostX2": "0.7528",
+      "metric_scope": "expert-corrected OOS daily-MTM"
+    }
+  ],
+  "selection_trial_sharpes": {"Base": [], "CostX2": []},
+  "guards": {
+    "scenario_sequence_lengths_equal_required_trial_count": true,
+    "selection_append_order": "first_materialized_utc_then_trial_id",
+    "failed_trials_retained": true,
+    "cost_scenarios_do_not_duplicate_trials": true,
+    "selection_sharpes_must_be_recomputed_from_hash_bound_equity": true,
+    "base_and_costx2_dsr_must_be_recomputed_from_equity_and_complete_frozen_sequence": true,
+    "runtime_or_result_access_performed": false,
+    "oos_rows_decoded": 0
+  }
+}

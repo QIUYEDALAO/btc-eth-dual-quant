@@ -1,0 +1,15 @@
+{
+  "schema_version": "external-strategy-runtime-block-v1",
+  "status": "blocked_runtime_environment_before_causal_validation",
+  "required_freqtrade_version": "2026.6",
+  "required_image_digest": "sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6",
+  "local_docker_binary": false,
+  "local_docker_socket": false,
+  "vps_host_configured": false,
+  "freqtrade_loads": 0,
+  "strategy_loads_executed": 0,
+  "causal_validations_executed": 0,
+  "is_trials_materialized": 0,
+  "oos_rows_decoded": 0,
+  "resume_condition": "configure_VPS_HOST_for_existing_pinned_VPS_Docker_runtime"
+}

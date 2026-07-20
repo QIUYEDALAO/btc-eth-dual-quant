@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "decision_id": "U25-CROSS-SECTIONAL-DESIGN-AUTHORIZATION-V1",
+  "status": "authorized_for_one_independent_outcome_blind_hypothesis_design_only",
+  "bindings": {
+    "u24_candidate_id": "U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM",
+    "u24_run_content_hash": "131266a00f2b3742dd3bb2963bc5184ba55ae5aef22b97cfb0f26d2d02c697dd",
+    "u24_status": "failed_feasibility",
+    "u24_oos_opened": false,
+    "u24_formal_returns_computed": false,
+    "u24_second_run_executed": false,
+    "u24_protocol_content_hash": "5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7",
+    "u24_design_authorization_hash": "745152692cdada8dad9e0abaf5ea171fb3a1d55d70dbfab32b66c7d2edbdfac5",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
+  },
+  "decision": {
+    "u25_design_authorized": true,
+    "maximum_hypotheses": 1,
+    "design_family": "point_in_time_cross_sectional_liquid_spot",
+    "independent_economic_rationale_required": true,
+    "u04_through_u24_outcome_direction_threshold_rule_censor_or_failure_reuse_prohibited": true,
+    "u24_negative_result_inversion_repair_relabeling_or_repackaging_prohibited": true,
+    "prior_failed_candidate_repair_retry_inversion_or_relabeling_prohibited": true,
+    "outcome_blind_preregistration_required": true,
+    "synthetic_only_exact_core_complexity_feasibility_required_before_protocol_freeze": true,
+    "separate_protocol_before_any_public_data_or_event_scan": true,
+    "pre_result_data_authority_sample_ceiling_and_complexity_preflight_required": true,
+    "freqtrade_first_for_any_later_single_leg_implementation": true
+  },
+  "authorizations": {
+    "u25_hypothesis_design": true,
+    "public_data_read": false,
+    "event_scan": false,
+    "signals": false,
+    "returns": false,
+    "strategy_rule_selection": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "stop_conditions": [
+    "Any U-24 run, protocol, audit, source-freeze or artifact-set hash drift fails closed.",
+    "The U-25 design must select exactly one economically independent hypothesis without reading public data or outcomes.",
+    "U-04 through U-24 signs, paths, Gates, concentrations, censor patterns, defects and failures may not select U-25.",
+    "The U-24 negative result may not be inverted, repaired, relabeled or repackaged as U-25.",
+    "The exact future statistic core must pass a synthetic-only result-blind complexity feasibility check before protocol freeze.",
+    "No parameter, public-data read, event scan, return, strategy rule, backtest or OOS access is authorized."
+  ],
+  "content_hash": "577bd189120bb5dc76a79141cc1213b541e19487516bb8c0b7c65a3477606771",
+  "generated_utc": "2026-07-19T00:00:00Z"
+}

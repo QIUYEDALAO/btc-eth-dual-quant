@@ -1,0 +1,41 @@
+{
+  "schema_version": "adr0016-pre-runtime-contract-freeze-v2",
+  "status": "frozen_pending_exact_head_review",
+  "immutable_until_append_only_supersession": true,
+  "contract_files": {
+    "docs/decisions/ADR-0016-existing-strategy-adaptation-route.md": "9f8dfb4605da732abc1df8c737cc1994ebf23366d38f1db0ee1816e83a0a5979",
+    "config/adr0016_existing_strategy_route_v1.json": "b15afc7a7c4b541a4f42f3224ca9add62164ee6335e9cde1bfac1c70c7cb6513",
+    "config/external_strategy_inventory_v1.json": "fc34d329272cd69f6d2176ce9ad3a292bab8b0878bf0493e40a359ffa8e84d66",
+    "reports/m1/evidence/external_strategy_source_screen_v1.json": "925032a839c79508aa661b1f89ac96a790c33866d5a9c8b468078090033c2b5c",
+    "config/external_strategy_candidate_freeze_v1.json": "8615113fd7a0429d3717634ebff9bb6c4ac49a741fc23946d272762330a041a7",
+    "config/external_strategy_unified_is_protocol_v1.json": "b6237334c86d9a857382b2984da8444cf4eb093e49d4b1a6eadf7e8f0c133953",
+    "config/external_strategy_data_authority_v1.json": "687aa47450ddc812a3ea444a8e571d9511c43130d71253d6e80ad2d240237ebe",
+    "config/external_strategy_benchmark_v1.json": "916749c0623d53a4d51ddeda6e7147887f031fd2dad2ecf281a43cdec27ac047",
+    "config/external_strategy_dsr_reference_trials_v1.json": "3456e1472e59ea23f44588efc6a47821cef01920a7ff2f3e685c4731594b08b4",
+    "src/btc_eth_dual_quant/audit/unified_metrics.py": "0aad90dc2b609a8a00ce08697e5c5792cbcf839db305ce539bc0d4a885cb1eef",
+    "src/btc_eth_dual_quant/audit/completed_candle_derivation.py": "5343c7431bdbbd01caf15a0cc130b0aa1713699fb060a7c67ec280b0891e0d6f",
+    "scripts/external_strategy_trial_accounting_check.py": "3c27018aa1f065cf22ee318217060060a03aa88a803eb68ff39ce64c2e2f0d60",
+    "config/u25_existing_strategy_supersession_v1.json": "30fdcb1d1c2317d2fdc84adec27b32a1428b7a8dedf6c37788f4baf38a2b344b",
+    "config/external_strategy_oos_guard_v1.json": "952cb2bf67e579b5976099494b18177c3eafd9102658f5caf18f516494b2b1e8",
+    "STRATEGY_TRIAL_LEDGER.yaml": "f1a2f68ced17f8e1c82c391a8bbb4efaa2de77294b36360ace17cc6c93a4a91f",
+    "THIRD_PARTY_NOTICES.md": "99165027a68c23886c2c335902c15501d40657dd72891d8b0e7e3201dd08bdb2",
+    "reports/m1/U25_SUPERSESSION_AND_EXTERNAL_STRATEGY_ROUTE.md": "a1784bd0968537176e0d590e9ab8be2185cd9a90efecb671efd147e4498e0776"
+  },
+  "canonical_content_hashes": {
+    "source_screen": "ca7d949e8383bf634341ad3521e768bad785a433182b4785beccd0d1f9d25858",
+    "candidate_freeze": "50a732cc9119cfab3f12d5658b17e62a20f66916fd8c73f0ee902c0376cdc2ac",
+    "unified_is_protocol": "ebac92aaf77498db5c9918d83866c9b63dc0ba58878bd7c272c043fe3c8c3693",
+    "data_authority": "a6e613140b4daf60ac3f8da51ccbcbc9db8118f80bc575f6e10dcf124d5faa4a",
+    "benchmark_contract": "6ef39c1dc73caf553b5907e0983214ccf68ebc980f8b20819903ffa35143e653",
+    "dsr_reference": "ca2009f5af39b40b30f8785102086c3ef938b16833c581a638224a44cf2e0b88"
+  },
+  "permissions": {
+    "runtime_load": false,
+    "causal_validation": false,
+    "is": false,
+    "oos": false,
+    "dry_run": false,
+    "api_live": false,
+    "m2": false
+  }
+}

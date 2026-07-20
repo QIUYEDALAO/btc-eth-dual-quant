@@ -1,0 +1,40 @@
+{
+  "schema_version": "external-strategy-unified-is-protocol-v1",
+  "content_hash": "ebac92aaf77498db5c9918d83866c9b63dc0ba58878bd7c272c043fe3c8c3693",
+  "market": {"venue":"Binance","instrument":"spot","positioning":"long_cash","leverage":1},
+  "data_authority": {"path":"config/external_strategy_data_authority_v1.json","canonical_content_hash":"a6e613140b4daf60ac3f8da51ccbcbc9db8118f80bc575f6e10dcf124d5faa4a"},
+  "benchmark_contract": {"path":"config/external_strategy_benchmark_v1.json","canonical_content_hash":"6ef39c1dc73caf553b5907e0983214ccf68ebc980f8b20819903ffa35143e653"},
+  "dsr_reference": {"path":"config/external_strategy_dsr_reference_trials_v1.json","canonical_content_hash":"ca2009f5af39b40b30f8785102086c3ef938b16833c581a638224a44cf2e0b88"},
+  "portfolio": {
+    "initial_capital_usdt":"100000","stake_mode":"fixed_equal_notional","stake_amount_usdt":"10000",
+    "maximum_open_trades":5,"maximum_gross_exposure":"0.50","maximum_position_weight":"0.10",
+    "cash_reserve_target":"0.50","compounding":false,"multiple_positions_same_pair":false,
+    "insufficient_cash_policy":"reject_new_entry","capital_contention_order":"point_in_time_active_universe_rank_then_symbol_asc"
+  },
+  "prohibitions": {"short":true,"futures":true,"margin":true,"funding":true,"multi_leg":true,"dca":true,"safety_order":true,"martingale":true,"grid":true,"pyramiding":true,"position_increase":true},
+  "cost_per_side": {"Base":"0.0015","CostX2":"0.0030","StressA":"0.0040","StressB":"0.0055"},
+  "calendar": {"source_warmup_start":"2020-01-01T00:00:00Z","evaluated_full_start":"2020-07-01T00:00:00Z","is_start":"2020-07-01T00:00:00Z","is_end_exclusive":"2024-09-11T00:00:00Z","sealed_oos_start":"2024-09-11T00:00:00Z","evaluated_full_end_exclusive":"2026-07-01T00:00:00Z","full_days":2191,"is_days":1533,"sealed_oos_days":658,"actual_sealed_oos_fraction":"0.300319488818","target_sealed_oos_fraction":"0.30","split_method":"fixed_result_blind_final_contiguous_approximately_30_percent"},
+  "equity_curve": {"evaluation_interval":"half_open","equity_anchor_day":"2020-06-30","first_return_day":"2020-07-01","is_final_return_day":"2024-09-10","oos_anchor_day":"2024-09-10","oos_first_return_day":"2024-09-11","final_return_day":"2026-06-30","full_return_count":2191,"is_return_count":1533,"oos_return_count":658,"observation_count_rule":"return_count_plus_one_anchor_observation","candidate_and_benchmarks_share_identical_date_labels":true},
+  "sample_gates": {"minimum_is_trades":56,"minimum_projected_full_trades":80,"minimum_projected_oos_trades":20},
+  "performance_gates": {
+    "required_cost_scenarios":["Base","CostX2"],"independent_per_scenario":true,
+    "net_return_strictly_positive":true,"daily_mtm_sharpe_minimum":"1.0","psr_minimum":"0.95","dsr_minimum":"0.95",
+    "max_drawdown_maximum":"0.15","delete_best_3_net_return_minimum":"0.0","profitable_subperiods_minimum":3,"subperiod_count":4,
+    "benchmark_gates_per_required_scenario": {
+      "candidate_net_return_strictly_greater_than_equal_weight":true,"candidate_net_return_strictly_greater_than_risk_matched":true,
+      "candidate_sharpe_greater_than_or_equal_to_equal_weight":true,"candidate_sharpe_greater_than_or_equal_to_risk_matched":true,
+      "candidate_max_drawdown_less_than_or_equal_to_equal_weight":true,"candidate_max_drawdown_less_than_or_equal_to_risk_matched":true
+    },
+    "stress_scenarios":{"required_to_run":["StressA","StressB"],"required_to_report":true,"hard_threshold_added":false,"additional_trial_count":0}
+  },
+  "result_reconciliation": {"metric_reconciliation_absolute_error_maximum":"0.0000000001","metric_authority":"btc_eth_dual_quant.audit.unified_metrics.metrics_from_equity","metrics_recomputed_from_equity":["net_return","daily_mtm_sharpe","psr","max_drawdown"],"completed_trades_authority":"hash_bound_trades_result","base_costx2_dsr_recomputed_after_all_materialized_trials":true,"stress_scenarios_excluded_from_dsr_sequence":true},
+  "causal_execution_gates": {"lookahead_findings":0,"recursive_findings":0,"unexplained_gap_events":0,"same_bar_ambiguities":0,"independent_repricing_absolute_error_maximum":"0.00000001"},
+  "execution": {"signal_time":"completed_source_timeframe_close","execution_detail_timeframe":"5m","earliest_fill":"next_eligible_5m_open","same_bar_close_fill":false,"partial_candle_signal":false,"lifecycle_or_mask_crossing_fill":false,"unsupported_limit_semantics":"candidate_fails_compatibility_without_performance_run"},
+  "selection_order": ["all_hard_gates_pass","base_dsr_desc","costx2_dsr_desc","costx2_daily_mtm_sharpe_desc","costx2_max_drawdown_asc","turnover_asc","candidate_id_asc"],
+  "modification_caps": {"packages_per_candidate":1,"atomic_changes_per_package":2,"maximum_enabled_original_candidates":3,"fallback_or_result_condition_allowed":false},
+  "multiple_testing": {"historical_opened_oos_trial_count":3,"selection_trial_count":0,"dsr_trial_count_formula":"3 + selection_trial_count","cost_scenarios_add_trials":false,"failed_trials_append_only":true,"increment_on_first_original_or_modified_is_materialization":true},
+  "parameter_precondition": {"required_external_parameter_file_count":0,"required_config_override_count":0,"observed_external_parameter_file_count":null,"observed_config_override_count":null,"runtime_effective_settings_hash":null,"runtime_resolved_parameters_hash":null,"both_runtime_hashes_and_observed_zero_required_before_is":true},
+  "oos": {"single_use":true,"authorized":false,"opened":false,"runs":0,"rows_decoded":0},
+  "permissions": {"runtime_load":false,"causal_validation":false,"is":false,"oos":false,"dry_run":false,"api_live":false,"m2":false},
+  "execution_counters": {"freqtrade_loads":0,"causal_validations":0,"is_trials":0}
+}

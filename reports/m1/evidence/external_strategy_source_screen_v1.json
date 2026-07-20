@@ -1,0 +1,4055 @@
+{
+  "causal_validations": 0,
+  "content_hash": "ca7d949e8383bf634341ad3521e768bad785a433182b4785beccd0d1f9d25858",
+  "freqtrade_loads": 0,
+  "frozen_ids": [
+    "Supertrend",
+    "Strategy001",
+    "UniversalMACD",
+    "Bandtastic",
+    "Diamond",
+    "Heracles"
+  ],
+  "hard_stop_less_than_five": false,
+  "inventory_sha256": "fc34d329272cd69f6d2176ce9ad3a292bab8b0878bf0493e40a359ffa8e84d66",
+  "is_rows_materialized": 0,
+  "oos_rows_decoded": 0,
+  "pass_count": 12,
+  "results": [
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "78de972f2bead8719df43e717d4a2fc27ac09471",
+          "path": "user_data/strategies/Supertrend.py",
+          "sha256": "d01c26757c265cc3d20f597ba25853140e521bbc3666953342a49f1fa8c997c1",
+          "size": 7888
+        }
+      ],
+      "git_blob_sha1": "78de972f2bead8719df43e717d4a2fc27ac09471",
+      "id": "Supertrend",
+      "license_evidence": {
+        "authors": [
+          "@juankysoriano (Juan Carlos Soriano)"
+        ],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/01-Supertrend/Supertrend.py",
+      "missing_dependency_paths": [],
+      "order": 1,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": {
+            "buy_m1": 4,
+            "buy_m2": 7,
+            "buy_m3": 1,
+            "buy_p1": 8,
+            "buy_p2": 9,
+            "buy_p3": 8
+          },
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.087,
+            "2221": 0,
+            "372": 0.058,
+            "861": 0.029
+          },
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": {
+            "sell_m1": 1,
+            "sell_m2": 3,
+            "sell_m3": 6,
+            "sell_p1": 16,
+            "sell_p2": 18,
+            "sell_p3": 18
+          },
+          "startup_candle_count": 199,
+          "stoploss": -0.265,
+          "timeframe": "1h",
+          "trailing_only_offset_is_reached": false,
+          "trailing_stop": true,
+          "trailing_stop_positive": 0.05,
+          "trailing_stop_positive_offset": 0.144,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": true,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from freqtrade.strategy import IStrategy, IntParameter",
+          "from numpy.lib import math",
+          "from pandas import DataFrame",
+          "import logging",
+          "import numpy as np",
+          "import pandas as pd",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              1,
+              7
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 4,
+            "high": 7,
+            "keywords": {
+              "default": 4
+            },
+            "load": null,
+            "low": 1,
+            "name": "buy_m1",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              1,
+              7
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 4,
+            "high": 7,
+            "keywords": {
+              "default": 4
+            },
+            "load": null,
+            "low": 1,
+            "name": "buy_m2",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              1,
+              7
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 4,
+            "high": 7,
+            "keywords": {
+              "default": 4
+            },
+            "load": null,
+            "low": 1,
+            "name": "buy_m3",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              7,
+              21
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 14,
+            "high": 21,
+            "keywords": {
+              "default": 14
+            },
+            "load": null,
+            "low": 7,
+            "name": "buy_p1",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              7,
+              21
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 14,
+            "high": 21,
+            "keywords": {
+              "default": 14
+            },
+            "load": null,
+            "low": 7,
+            "name": "buy_p2",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              7,
+              21
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 14,
+            "high": 21,
+            "keywords": {
+              "default": 14
+            },
+            "load": null,
+            "low": 7,
+            "name": "buy_p3",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              1,
+              7
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 4,
+            "high": 7,
+            "keywords": {
+              "default": 4
+            },
+            "load": null,
+            "low": 1,
+            "name": "sell_m1",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              1,
+              7
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 4,
+            "high": 7,
+            "keywords": {
+              "default": 4
+            },
+            "load": null,
+            "low": 1,
+            "name": "sell_m2",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              1,
+              7
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 4,
+            "high": 7,
+            "keywords": {
+              "default": 4
+            },
+            "load": null,
+            "low": 1,
+            "name": "sell_m3",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              7,
+              21
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 14,
+            "high": 21,
+            "keywords": {
+              "default": 14
+            },
+            "load": null,
+            "low": 7,
+            "name": "sell_p1",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              7,
+              21
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 14,
+            "high": 21,
+            "keywords": {
+              "default": 14
+            },
+            "load": null,
+            "low": 7,
+            "name": "sell_p2",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              7,
+              21
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 14,
+            "high": 21,
+            "keywords": {
+              "default": 14
+            },
+            "load": null,
+            "low": 7,
+            "name": "sell_p3",
+            "optimize": null,
+            "space": null,
+            "type": "IntParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "runtime_resolution_pending",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "c2460aff932e5a97341e7076008be11200ac797b0ca25cee0b0db2b38bfab17b",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "Supertrend"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/Supertrend.py",
+      "source_sha256": "d01c26757c265cc3d20f597ba25853140e521bbc3666953342a49f1fa8c997c1",
+      "source_size": 7888,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "a8bff4cce2d4e4b02904c0764f05188ee37b60ae",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "5b35dfd87dc17bb2ba00fdd71f0f55784ad69799",
+          "path": "SimpleStrategies/BBRevert.py",
+          "sha256": "4819d4d10bf1e433df85a2ac34818ea01536b084c0e3b73158f8abebb3d4c122",
+          "size": 2603
+        },
+        {
+          "git_blob_sha1": "e7508614deb77d408c1b433456bf53f6850d9297",
+          "path": "SimpleStrategies/SimpleStrategy.py",
+          "sha256": "759c7f3a0e4a851363bdfc9318dff42ef4c3536a28761371274f7b8d21ee280f",
+          "size": 8743
+        },
+        {
+          "git_blob_sha1": "7eb8db0f0d637bba36ba9c3708d661133dc4762c",
+          "path": "Framework/BaseStrategy.py",
+          "sha256": "15364e87dfc97f983bedee0687a2e50f34a7f8af7d54bf8092b885c1bdb078f3",
+          "size": 41724
+        },
+        {
+          "git_blob_sha1": "9861c9d2cfbca04f8099ef78b0ca7a1e215c730b",
+          "path": "utils/custom_indicators.py",
+          "sha256": "0cab5e13312557afa67349756f7957d4f9356cb9080345e6e2dd28500cb438f6",
+          "size": 6906
+        },
+        {
+          "git_blob_sha1": "0096cb1327c46a39f6726618a80612f2bdd9a106",
+          "path": "utils/DataframePopulator.py",
+          "sha256": "ae4f8cacfbbdb927beb1759d9a25c33bd9490bccd87b85496dbad85438145d93",
+          "size": 89042
+        },
+        {
+          "git_blob_sha1": "838bd960e9b5b8c6f2f0fd60610f394e2974c524",
+          "path": "utils/DataframeUtils.py",
+          "sha256": "33fbcdcc5fd4bdf9462862972adf1c04a6d52acec9af322a6197aca8527d9b26",
+          "size": 35162
+        },
+        {
+          "git_blob_sha1": "026b28155c1ce0e848bfd32086b2c1bbe9d31e6b",
+          "path": "utils/Environment.py",
+          "sha256": "23617b73e45ae7c53626566e5486e06dfa72898bcfa207dc8e18bfc8db00460d",
+          "size": 3983
+        },
+        {
+          "git_blob_sha1": "89964b02231a30211e49c845719d5ce1d9669584",
+          "path": "Framework/StrategyDiagnostics.py",
+          "sha256": "3f6e316a8001ace410e1f7b5255a7beb30f893078d2b868fec3f3b80c0393fb9",
+          "size": 20392
+        },
+        {
+          "git_blob_sha1": "0ea083ab43898118ff608ac436646ed34fdf96ea",
+          "path": "GANs/GANType.py",
+          "sha256": "41b01f5b600c98f43c1e0e00276ec40761068f6c960039722f7c63986185e009",
+          "size": 1323
+        }
+      ],
+      "git_blob_sha1": "5b35dfd87dc17bb2ba00fdd71f0f55784ad69799",
+      "id": "BBRevert",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/02-BBRevert/BBRevert.py",
+      "missing_dependency_paths": [],
+      "order": 2,
+      "reasons": [
+        "dynamic_sys_path_and_model_framework_dependency_closure"
+      ],
+      "repository": "nateemma/strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/nate.tar.gz",
+      "repository_archive_sha256": "b40448022c692468b1f4ce75b31955b2b55cbba3a68b8495641dbce2464d0bb0",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": null,
+          "buy_params": "{**SimpleStrategy.buy_params, 'entry_guard_metric': -0.2, 'entry_period': 96}",
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": null,
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": "{**SimpleStrategy.sell_params, 'exit_guard_metric': 0.0}",
+          "startup_candle_count": null,
+          "stoploss": null,
+          "timeframe": null,
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": null,
+          "trailing_stop_positive": null,
+          "trailing_stop_positive_offset": null,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": false,
+          "populate_exit_trend": false,
+          "populate_indicators": false,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from SimpleStrategy import SimpleStrategy",
+          "from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy, merge_informative_pair, stoploss_from_open",
+          "from freqtrade.strategy import IStrategy",
+          "from pandas import DataFrame, Series",
+          "from pathlib import Path",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy as np",
+          "import os",
+          "import pandas as pd",
+          "import pandas_ta as pta",
+          "import sys",
+          "import talib.abstract as ta",
+          "import warnings"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              6,
+              96
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 24,
+            "high": 96,
+            "keywords": {
+              "default": 24,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 6,
+            "name": "entry_period",
+            "optimize": null,
+            "space": "buy",
+            "type": "IntParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "8711dc2c269d57b2c1384a02620540dd4e99597a4aa745c574a1c8e06008cf10",
+        "strategy_classes": [
+          {
+            "bases": [
+              "SimpleStrategy"
+            ],
+            "name": "BBRevert"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "SimpleStrategies/BBRevert.py",
+      "source_sha256": "4819d4d10bf1e433df85a2ac34818ea01536b084c0e3b73158f8abebb3d4c122",
+      "source_size": 2603,
+      "static_findings": [],
+      "status": "REJECT"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "352c344fdb07a56274357e1f534206cac8cc4995",
+          "path": "user_data/strategies/Strategy001.py",
+          "sha256": "2357996e6594458e8db45b5f757918462afa3c998de9d06e2af0c009ddc4b80d",
+          "size": 4103
+        }
+      ],
+      "git_blob_sha1": "352c344fdb07a56274357e1f534206cac8cc4995",
+      "id": "Strategy001",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/03-Strategy001/Strategy001.py",
+      "missing_dependency_paths": [],
+      "order": 3,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": null,
+          "can_short": null,
+          "exit_profit_only": true,
+          "ignore_roi_if_entry_signal": false,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.05,
+            "20": 0.04,
+            "30": 0.03,
+            "60": 0.01
+          },
+          "order_time_in_force": null,
+          "order_types": {
+            "entry": "limit",
+            "exit": "limit",
+            "stoploss": "market",
+            "stoploss_on_exchange": false
+          },
+          "position_adjustment_enable": null,
+          "process_only_new_candles": true,
+          "protections": null,
+          "sell_params": null,
+          "startup_candle_count": null,
+          "stoploss": -0.1,
+          "timeframe": "5m",
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": false,
+          "trailing_stop_positive": 0.01,
+          "trailing_stop_positive_offset": 0.02,
+          "use_custom_stoploss": null,
+          "use_exit_signal": true
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": true,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from freqtrade.strategy import IStrategy",
+          "from functools import reduce",
+          "from pandas import DataFrame",
+          "from typing import Dict, List",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "aad6f6d58bec4a02a5b4f7b6ffe3c27f645f15b2ca1b90297735d9f95d915278",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "Strategy001"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/Strategy001.py",
+      "source_sha256": "2357996e6594458e8db45b5f757918462afa3c998de9d06e2af0c009ddc4b80d",
+      "source_size": 4103,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "a8bff4cce2d4e4b02904c0764f05188ee37b60ae",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "74bc27645e2118a530b49f26030419949fb93d96",
+          "path": "SimpleStrategies/DCBreakout.py",
+          "sha256": "91549d557405ba8a25f572f68948cedc873f0c8aa60177235f44900953ad429b",
+          "size": 2560
+        },
+        {
+          "git_blob_sha1": "e7508614deb77d408c1b433456bf53f6850d9297",
+          "path": "SimpleStrategies/SimpleStrategy.py",
+          "sha256": "759c7f3a0e4a851363bdfc9318dff42ef4c3536a28761371274f7b8d21ee280f",
+          "size": 8743
+        },
+        {
+          "git_blob_sha1": "7eb8db0f0d637bba36ba9c3708d661133dc4762c",
+          "path": "Framework/BaseStrategy.py",
+          "sha256": "15364e87dfc97f983bedee0687a2e50f34a7f8af7d54bf8092b885c1bdb078f3",
+          "size": 41724
+        },
+        {
+          "git_blob_sha1": "9861c9d2cfbca04f8099ef78b0ca7a1e215c730b",
+          "path": "utils/custom_indicators.py",
+          "sha256": "0cab5e13312557afa67349756f7957d4f9356cb9080345e6e2dd28500cb438f6",
+          "size": 6906
+        },
+        {
+          "git_blob_sha1": "0096cb1327c46a39f6726618a80612f2bdd9a106",
+          "path": "utils/DataframePopulator.py",
+          "sha256": "ae4f8cacfbbdb927beb1759d9a25c33bd9490bccd87b85496dbad85438145d93",
+          "size": 89042
+        },
+        {
+          "git_blob_sha1": "838bd960e9b5b8c6f2f0fd60610f394e2974c524",
+          "path": "utils/DataframeUtils.py",
+          "sha256": "33fbcdcc5fd4bdf9462862972adf1c04a6d52acec9af322a6197aca8527d9b26",
+          "size": 35162
+        },
+        {
+          "git_blob_sha1": "026b28155c1ce0e848bfd32086b2c1bbe9d31e6b",
+          "path": "utils/Environment.py",
+          "sha256": "23617b73e45ae7c53626566e5486e06dfa72898bcfa207dc8e18bfc8db00460d",
+          "size": 3983
+        },
+        {
+          "git_blob_sha1": "89964b02231a30211e49c845719d5ce1d9669584",
+          "path": "Framework/StrategyDiagnostics.py",
+          "sha256": "3f6e316a8001ace410e1f7b5255a7beb30f893078d2b868fec3f3b80c0393fb9",
+          "size": 20392
+        },
+        {
+          "git_blob_sha1": "0ea083ab43898118ff608ac436646ed34fdf96ea",
+          "path": "GANs/GANType.py",
+          "sha256": "41b01f5b600c98f43c1e0e00276ec40761068f6c960039722f7c63986185e009",
+          "size": 1323
+        }
+      ],
+      "git_blob_sha1": "74bc27645e2118a530b49f26030419949fb93d96",
+      "id": "DCBreakout",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/04-DCBreakout/DCBreakout.py",
+      "missing_dependency_paths": [],
+      "order": 4,
+      "reasons": [
+        "dynamic_sys_path_and_model_framework_dependency_closure"
+      ],
+      "repository": "nateemma/strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/nate.tar.gz",
+      "repository_archive_sha256": "b40448022c692468b1f4ce75b31955b2b55cbba3a68b8495641dbce2464d0bb0",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": null,
+          "buy_params": "{**SimpleStrategy.buy_params, 'entry_guard_metric': -0.5, 'entry_period': 8}",
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": null,
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": "{**SimpleStrategy.sell_params, 'exit_guard_metric': 0.1}",
+          "startup_candle_count": null,
+          "stoploss": null,
+          "timeframe": null,
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": null,
+          "trailing_stop_positive": null,
+          "trailing_stop_positive_offset": null,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": false,
+          "populate_exit_trend": false,
+          "populate_indicators": false,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from SimpleStrategy import SimpleStrategy",
+          "from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy, merge_informative_pair, stoploss_from_open",
+          "from freqtrade.strategy import IStrategy",
+          "from pandas import DataFrame, Series",
+          "from pathlib import Path",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy as np",
+          "import os",
+          "import pandas as pd",
+          "import pandas_ta as pta",
+          "import sys",
+          "import talib.abstract as ta",
+          "import warnings"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              6,
+              96
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 24,
+            "high": 96,
+            "keywords": {
+              "default": 24,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 6,
+            "name": "entry_period",
+            "optimize": null,
+            "space": "buy",
+            "type": "IntParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "3223b0bd39e2e0d2189853e70575b7ee48bc878c333e0de57a67ce5088e85a15",
+        "strategy_classes": [
+          {
+            "bases": [
+              "SimpleStrategy"
+            ],
+            "name": "DCBreakout"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "SimpleStrategies/DCBreakout.py",
+      "source_sha256": "91549d557405ba8a25f572f68948cedc873f0c8aa60177235f44900953ad429b",
+      "source_size": 2560,
+      "static_findings": [],
+      "status": "REJECT"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "62a1b2002fd1697d67c3cdaca583e668de23b7ae",
+          "path": "user_data/strategies/UniversalMACD.py",
+          "sha256": "b3a62e0d8a26024e7ab5f3613d0964e3954373bc3735c1ffd0678d84ce1b1e32",
+          "size": 4558
+        }
+      ],
+      "git_blob_sha1": "62a1b2002fd1697d67c3cdaca583e668de23b7ae",
+      "id": "UniversalMACD",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/05-UniversalMACD/UniversalMACD.py",
+      "missing_dependency_paths": [],
+      "order": 5,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": null,
+          "can_short": false,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.213,
+            "164": 0,
+            "27": 0.099,
+            "60": 0.03
+          },
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": null,
+          "startup_candle_count": 30,
+          "stoploss": -0.318,
+          "timeframe": "5m",
+          "trailing_only_offset_is_reached": false,
+          "trailing_stop": false,
+          "trailing_stop_positive": null,
+          "trailing_stop_positive_offset": 0.0,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from datetime import datetime",
+          "from freqtrade.strategy import BooleanParameter, CategoricalParameter, DecimalParameter, IntParameter, IStrategy, merge_informative_pair",
+          "from pandas import DataFrame",
+          "from technical import qtpylib",
+          "from typing import Optional, Union",
+          "import numpy as np",
+          "import pandas as pd",
+          "import pandas_ta as pta",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              -0.05,
+              0.05
+            ],
+            "choices": null,
+            "decimals": 5,
+            "default": -0.01176,
+            "high": 0.05,
+            "keywords": {
+              "decimals": 5,
+              "default": -0.01176,
+              "space": "buy"
+            },
+            "load": null,
+            "low": -0.05,
+            "name": "buy_umacd_max",
+            "optimize": null,
+            "space": "buy",
+            "type": "DecimalParameter"
+          },
+          {
+            "args": [
+              -0.05,
+              0.05
+            ],
+            "choices": null,
+            "decimals": 5,
+            "default": -0.01416,
+            "high": 0.05,
+            "keywords": {
+              "decimals": 5,
+              "default": -0.01416,
+              "space": "buy"
+            },
+            "load": null,
+            "low": -0.05,
+            "name": "buy_umacd_min",
+            "optimize": null,
+            "space": "buy",
+            "type": "DecimalParameter"
+          },
+          {
+            "args": [
+              -0.05,
+              0.05
+            ],
+            "choices": null,
+            "decimals": 5,
+            "default": -0.02323,
+            "high": 0.05,
+            "keywords": {
+              "decimals": 5,
+              "default": -0.02323,
+              "space": "sell"
+            },
+            "load": null,
+            "low": -0.05,
+            "name": "sell_umacd_max",
+            "optimize": null,
+            "space": "sell",
+            "type": "DecimalParameter"
+          },
+          {
+            "args": [
+              -0.05,
+              0.05
+            ],
+            "choices": null,
+            "decimals": 5,
+            "default": -0.00707,
+            "high": 0.05,
+            "keywords": {
+              "decimals": 5,
+              "default": -0.00707,
+              "space": "sell"
+            },
+            "load": null,
+            "low": -0.05,
+            "name": "sell_umacd_min",
+            "optimize": null,
+            "space": "sell",
+            "type": "DecimalParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "fbf7822af8c23e49d0db17eb31d4a3bd986eaf6c97461597adf15aad2c4611d6",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "UniversalMACD"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/UniversalMACD.py",
+      "source_sha256": "b3a62e0d8a26024e7ab5f3613d0964e3954373bc3735c1ffd0678d84ce1b1e32",
+      "source_size": 4558,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "a8bff4cce2d4e4b02904c0764f05188ee37b60ae",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "fbffe5256364487671faccb01f34392bd4e96ef5",
+          "path": "SimpleStrategies/EMACross.py",
+          "sha256": "c1efc50346a66247376eec4b25166641215d7d526f5d6f2fd9228138f6f2748a",
+          "size": 2713
+        },
+        {
+          "git_blob_sha1": "e7508614deb77d408c1b433456bf53f6850d9297",
+          "path": "SimpleStrategies/SimpleStrategy.py",
+          "sha256": "759c7f3a0e4a851363bdfc9318dff42ef4c3536a28761371274f7b8d21ee280f",
+          "size": 8743
+        },
+        {
+          "git_blob_sha1": "7eb8db0f0d637bba36ba9c3708d661133dc4762c",
+          "path": "Framework/BaseStrategy.py",
+          "sha256": "15364e87dfc97f983bedee0687a2e50f34a7f8af7d54bf8092b885c1bdb078f3",
+          "size": 41724
+        },
+        {
+          "git_blob_sha1": "9861c9d2cfbca04f8099ef78b0ca7a1e215c730b",
+          "path": "utils/custom_indicators.py",
+          "sha256": "0cab5e13312557afa67349756f7957d4f9356cb9080345e6e2dd28500cb438f6",
+          "size": 6906
+        },
+        {
+          "git_blob_sha1": "0096cb1327c46a39f6726618a80612f2bdd9a106",
+          "path": "utils/DataframePopulator.py",
+          "sha256": "ae4f8cacfbbdb927beb1759d9a25c33bd9490bccd87b85496dbad85438145d93",
+          "size": 89042
+        },
+        {
+          "git_blob_sha1": "838bd960e9b5b8c6f2f0fd60610f394e2974c524",
+          "path": "utils/DataframeUtils.py",
+          "sha256": "33fbcdcc5fd4bdf9462862972adf1c04a6d52acec9af322a6197aca8527d9b26",
+          "size": 35162
+        },
+        {
+          "git_blob_sha1": "026b28155c1ce0e848bfd32086b2c1bbe9d31e6b",
+          "path": "utils/Environment.py",
+          "sha256": "23617b73e45ae7c53626566e5486e06dfa72898bcfa207dc8e18bfc8db00460d",
+          "size": 3983
+        },
+        {
+          "git_blob_sha1": "89964b02231a30211e49c845719d5ce1d9669584",
+          "path": "Framework/StrategyDiagnostics.py",
+          "sha256": "3f6e316a8001ace410e1f7b5255a7beb30f893078d2b868fec3f3b80c0393fb9",
+          "size": 20392
+        },
+        {
+          "git_blob_sha1": "0ea083ab43898118ff608ac436646ed34fdf96ea",
+          "path": "GANs/GANType.py",
+          "sha256": "41b01f5b600c98f43c1e0e00276ec40761068f6c960039722f7c63986185e009",
+          "size": 1323
+        }
+      ],
+      "git_blob_sha1": "fbffe5256364487671faccb01f34392bd4e96ef5",
+      "id": "EMACross",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/06-EMACross/EMACross.py",
+      "missing_dependency_paths": [],
+      "order": 6,
+      "reasons": [
+        "dynamic_sys_path_and_model_framework_dependency_closure"
+      ],
+      "repository": "nateemma/strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/nate.tar.gz",
+      "repository_archive_sha256": "b40448022c692468b1f4ce75b31955b2b55cbba3a68b8495641dbce2464d0bb0",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": null,
+          "buy_params": "{**SimpleStrategy.buy_params, 'entry_guard_metric': -0.1, 'entry_long_period': 117, 'entry_short_period': 22}",
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": null,
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": "{**SimpleStrategy.sell_params, 'exit_guard_metric': 0.7}",
+          "startup_candle_count": null,
+          "stoploss": null,
+          "timeframe": null,
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": null,
+          "trailing_stop_positive": null,
+          "trailing_stop_positive_offset": null,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": false,
+          "populate_exit_trend": false,
+          "populate_indicators": false,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from SimpleStrategy import SimpleStrategy",
+          "from finta import TA as fta",
+          "from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy, merge_informative_pair, stoploss_from_open",
+          "from freqtrade.strategy import IStrategy",
+          "from pandas import DataFrame, Series",
+          "from pathlib import Path",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy as np",
+          "import os",
+          "import pandas as pd",
+          "import pandas_ta as pta",
+          "import sys",
+          "import talib.abstract as ta",
+          "import warnings"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              24,
+              256
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 48,
+            "high": 256,
+            "keywords": {
+              "default": 48,
+              "load": true,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": true,
+            "low": 24,
+            "name": "entry_long_period",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              6,
+              24
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 6,
+            "high": 24,
+            "keywords": {
+              "default": 6,
+              "load": true,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": true,
+            "low": 6,
+            "name": "entry_short_period",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "e5546697ed55992d02cf86a63fb204c78e0eab0f2e5ae5bc2328277ad352ad5c",
+        "strategy_classes": [
+          {
+            "bases": [
+              "SimpleStrategy"
+            ],
+            "name": "EMACross"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "SimpleStrategies/EMACross.py",
+      "source_sha256": "c1efc50346a66247376eec4b25166641215d7d526f5d6f2fd9228138f6f2748a",
+      "source_size": 2713,
+      "static_findings": [],
+      "status": "REJECT"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "f7710c76ae1e4ac7aff90857a647e4c2143baf9f",
+          "path": "user_data/strategies/Bandtastic.py",
+          "sha256": "15dcb60d49a3681241cd39645f0fe8e6dc247687bf878c2026f37bb1c5790b57",
+          "size": 7310
+        }
+      ],
+      "git_blob_sha1": "f7710c76ae1e4ac7aff90857a647e4c2143baf9f",
+      "id": "Bandtastic",
+      "license_evidence": {
+        "authors": [
+          "Robert Roman"
+        ],
+        "declared_license": "MIT",
+        "effective_license_decision": "MIT",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/07-Bandtastic/Bandtastic.py",
+      "missing_dependency_paths": [],
+      "order": 7,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": null,
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.162,
+            "229": 0.061,
+            "566": 0,
+            "69": 0.097
+          },
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": null,
+          "startup_candle_count": 999,
+          "stoploss": -0.345,
+          "timeframe": "15m",
+          "trailing_only_offset_is_reached": false,
+          "trailing_stop": true,
+          "trailing_stop_positive": 0.01,
+          "trailing_stop_positive_offset": 0.058,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from freqtrade.strategy import IStrategy, CategoricalParameter, DecimalParameter, IntParameter, RealParameter",
+          "from functools import reduce",
+          "from pandas import DataFrame",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy as np",
+          "import pandas as pd",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              [
+                true,
+                false
+              ]
+            ],
+            "choices": [
+              true,
+              false
+            ],
+            "decimals": null,
+            "default": false,
+            "high": null,
+            "keywords": {
+              "default": false,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": null,
+            "low": null,
+            "name": "buy_ema_enabled",
+            "optimize": true,
+            "space": "buy",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 211,
+            "high": null,
+            "keywords": {
+              "default": 211,
+              "high": 236,
+              "load": true,
+              "low": 1,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": true,
+            "low": null,
+            "name": "buy_fastema",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 30,
+            "high": null,
+            "keywords": {
+              "default": 30,
+              "high": 70,
+              "load": true,
+              "low": 15,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": true,
+            "low": null,
+            "name": "buy_mfi",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              [
+                true,
+                false
+              ]
+            ],
+            "choices": [
+              true,
+              false
+            ],
+            "decimals": null,
+            "default": false,
+            "high": null,
+            "keywords": {
+              "default": false,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": null,
+            "low": null,
+            "name": "buy_mfi_enabled",
+            "optimize": true,
+            "space": "buy",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 52,
+            "high": null,
+            "keywords": {
+              "default": 52,
+              "high": 70,
+              "load": true,
+              "low": 15,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": true,
+            "low": null,
+            "name": "buy_rsi",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              [
+                true,
+                false
+              ]
+            ],
+            "choices": [
+              true,
+              false
+            ],
+            "decimals": null,
+            "default": false,
+            "high": null,
+            "keywords": {
+              "default": false,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": null,
+            "low": null,
+            "name": "buy_rsi_enabled",
+            "optimize": true,
+            "space": "buy",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 250,
+            "high": null,
+            "keywords": {
+              "default": 250,
+              "high": 250,
+              "load": true,
+              "low": 1,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": true,
+            "low": null,
+            "name": "buy_slowema",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              [
+                "bb_lower1",
+                "bb_lower2",
+                "bb_lower3",
+                "bb_lower4"
+              ]
+            ],
+            "choices": [
+              "bb_lower1",
+              "bb_lower2",
+              "bb_lower3",
+              "bb_lower4"
+            ],
+            "decimals": null,
+            "default": "bb_lower1",
+            "high": null,
+            "keywords": {
+              "default": "bb_lower1",
+              "space": "buy"
+            },
+            "load": null,
+            "low": null,
+            "name": "buy_trigger",
+            "optimize": null,
+            "space": "buy",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [
+              [
+                true,
+                false
+              ]
+            ],
+            "choices": [
+              true,
+              false
+            ],
+            "decimals": null,
+            "default": false,
+            "high": null,
+            "keywords": {
+              "default": false,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": null,
+            "low": null,
+            "name": "sell_ema_enabled",
+            "optimize": true,
+            "space": "sell",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 7,
+            "high": null,
+            "keywords": {
+              "default": 7,
+              "high": 365,
+              "load": true,
+              "low": 1,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": true,
+            "low": null,
+            "name": "sell_fastema",
+            "optimize": true,
+            "space": "sell",
+            "type": "IntParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 46,
+            "high": null,
+            "keywords": {
+              "default": 46,
+              "high": 100,
+              "load": true,
+              "low": 30,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": true,
+            "low": null,
+            "name": "sell_mfi",
+            "optimize": true,
+            "space": "sell",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              [
+                true,
+                false
+              ]
+            ],
+            "choices": [
+              true,
+              false
+            ],
+            "decimals": null,
+            "default": true,
+            "high": null,
+            "keywords": {
+              "default": true,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": null,
+            "low": null,
+            "name": "sell_mfi_enabled",
+            "optimize": true,
+            "space": "sell",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 57,
+            "high": null,
+            "keywords": {
+              "default": 57,
+              "high": 100,
+              "load": true,
+              "low": 30,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": true,
+            "low": null,
+            "name": "sell_rsi",
+            "optimize": true,
+            "space": "sell",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              [
+                true,
+                false
+              ]
+            ],
+            "choices": [
+              true,
+              false
+            ],
+            "decimals": null,
+            "default": false,
+            "high": null,
+            "keywords": {
+              "default": false,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": null,
+            "low": null,
+            "name": "sell_rsi_enabled",
+            "optimize": true,
+            "space": "sell",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 6,
+            "high": null,
+            "keywords": {
+              "default": 6,
+              "high": 365,
+              "load": true,
+              "low": 1,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": true,
+            "low": null,
+            "name": "sell_slowema",
+            "optimize": true,
+            "space": "sell",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              [
+                "sell-bb_upper1",
+                "sell-bb_upper2",
+                "sell-bb_upper3",
+                "sell-bb_upper4"
+              ]
+            ],
+            "choices": [
+              "sell-bb_upper1",
+              "sell-bb_upper2",
+              "sell-bb_upper3",
+              "sell-bb_upper4"
+            ],
+            "decimals": null,
+            "default": "sell-bb_upper2",
+            "high": null,
+            "keywords": {
+              "default": "sell-bb_upper2",
+              "space": "sell"
+            },
+            "load": null,
+            "low": null,
+            "name": "sell_trigger",
+            "optimize": null,
+            "space": "sell",
+            "type": "CategoricalParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "5a930b4a94c9aca111fbcbf6e9caf26f66397f39c4c527f1193ee1ccec1a3892",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "Bandtastic"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/Bandtastic.py",
+      "source_sha256": "15dcb60d49a3681241cd39645f0fe8e6dc247687bf878c2026f37bb1c5790b57",
+      "source_size": 7310,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "a8bff4cce2d4e4b02904c0764f05188ee37b60ae",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "74cc9624750640beb6a308e60875ed48ebfc1bae",
+          "path": "SimpleStrategies/DCRevert.py",
+          "sha256": "9a9c873cfa5257668aa5e17a551fa37c96bf4a7b7c07564d459be5ae9dbee87e",
+          "size": 2559
+        },
+        {
+          "git_blob_sha1": "e7508614deb77d408c1b433456bf53f6850d9297",
+          "path": "SimpleStrategies/SimpleStrategy.py",
+          "sha256": "759c7f3a0e4a851363bdfc9318dff42ef4c3536a28761371274f7b8d21ee280f",
+          "size": 8743
+        },
+        {
+          "git_blob_sha1": "7eb8db0f0d637bba36ba9c3708d661133dc4762c",
+          "path": "Framework/BaseStrategy.py",
+          "sha256": "15364e87dfc97f983bedee0687a2e50f34a7f8af7d54bf8092b885c1bdb078f3",
+          "size": 41724
+        },
+        {
+          "git_blob_sha1": "9861c9d2cfbca04f8099ef78b0ca7a1e215c730b",
+          "path": "utils/custom_indicators.py",
+          "sha256": "0cab5e13312557afa67349756f7957d4f9356cb9080345e6e2dd28500cb438f6",
+          "size": 6906
+        },
+        {
+          "git_blob_sha1": "0096cb1327c46a39f6726618a80612f2bdd9a106",
+          "path": "utils/DataframePopulator.py",
+          "sha256": "ae4f8cacfbbdb927beb1759d9a25c33bd9490bccd87b85496dbad85438145d93",
+          "size": 89042
+        },
+        {
+          "git_blob_sha1": "838bd960e9b5b8c6f2f0fd60610f394e2974c524",
+          "path": "utils/DataframeUtils.py",
+          "sha256": "33fbcdcc5fd4bdf9462862972adf1c04a6d52acec9af322a6197aca8527d9b26",
+          "size": 35162
+        },
+        {
+          "git_blob_sha1": "026b28155c1ce0e848bfd32086b2c1bbe9d31e6b",
+          "path": "utils/Environment.py",
+          "sha256": "23617b73e45ae7c53626566e5486e06dfa72898bcfa207dc8e18bfc8db00460d",
+          "size": 3983
+        },
+        {
+          "git_blob_sha1": "89964b02231a30211e49c845719d5ce1d9669584",
+          "path": "Framework/StrategyDiagnostics.py",
+          "sha256": "3f6e316a8001ace410e1f7b5255a7beb30f893078d2b868fec3f3b80c0393fb9",
+          "size": 20392
+        },
+        {
+          "git_blob_sha1": "0ea083ab43898118ff608ac436646ed34fdf96ea",
+          "path": "GANs/GANType.py",
+          "sha256": "41b01f5b600c98f43c1e0e00276ec40761068f6c960039722f7c63986185e009",
+          "size": 1323
+        }
+      ],
+      "git_blob_sha1": "74cc9624750640beb6a308e60875ed48ebfc1bae",
+      "id": "DCRevert",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/08-DCRevert/DCRevert.py",
+      "missing_dependency_paths": [],
+      "order": 8,
+      "reasons": [
+        "dynamic_sys_path_and_model_framework_dependency_closure"
+      ],
+      "repository": "nateemma/strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/nate.tar.gz",
+      "repository_archive_sha256": "b40448022c692468b1f4ce75b31955b2b55cbba3a68b8495641dbce2464d0bb0",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": null,
+          "buy_params": "{**SimpleStrategy.buy_params, 'entry_guard_metric': -0.2, 'entry_period': 96}",
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": null,
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": "{**SimpleStrategy.sell_params, 'exit_guard_metric': 0.3}",
+          "startup_candle_count": null,
+          "stoploss": null,
+          "timeframe": null,
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": null,
+          "trailing_stop_positive": null,
+          "trailing_stop_positive_offset": null,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": false,
+          "populate_exit_trend": false,
+          "populate_indicators": false,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from SimpleStrategy import SimpleStrategy",
+          "from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy, merge_informative_pair, stoploss_from_open",
+          "from freqtrade.strategy import IStrategy",
+          "from pandas import DataFrame, Series",
+          "from pathlib import Path",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy as np",
+          "import os",
+          "import pandas as pd",
+          "import pandas_ta as pta",
+          "import sys",
+          "import talib.abstract as ta",
+          "import warnings"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              6,
+              96
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 24,
+            "high": 96,
+            "keywords": {
+              "default": 24,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 6,
+            "name": "entry_period",
+            "optimize": null,
+            "space": "buy",
+            "type": "IntParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "57e2507dddf8f946ce82b6b04bd7a105fbe83ab2fd2b277db2e5a8e825ea0c46",
+        "strategy_classes": [
+          {
+            "bases": [
+              "SimpleStrategy"
+            ],
+            "name": "DCRevert"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "SimpleStrategies/DCRevert.py",
+      "source_sha256": "9a9c873cfa5257668aa5e17a551fa37c96bf4a7b7c07564d459be5ae9dbee87e",
+      "source_size": 2559,
+      "static_findings": [],
+      "status": "REJECT"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "fedeb862478aaab58ba18ea069b6a739486c675d",
+          "path": "user_data/strategies/Diamond.py",
+          "sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902",
+          "size": 9411
+        }
+      ],
+      "git_blob_sha1": "fedeb862478aaab58ba18ea069b6a739486c675d",
+      "id": "Diamond",
+      "license_evidence": {
+        "authors": [
+          "@Mablue (Masoud Azizi)"
+        ],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/09-Diamond/Diamond.py",
+      "missing_dependency_paths": [],
+      "order": 9,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": {
+            "buy_fast_key": "high",
+            "buy_horizontal_push": 7,
+            "buy_slow_key": "volume",
+            "buy_vertical_push": 0.942
+          },
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.242,
+            "13": 0.044,
+            "170": 0,
+            "51": 0.02
+          },
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": {
+            "sell_fast_key": "high",
+            "sell_horizontal_push": 10,
+            "sell_slow_key": "low",
+            "sell_vertical_push": 1.184
+          },
+          "startup_candle_count": null,
+          "stoploss": -0.271,
+          "timeframe": "5m",
+          "trailing_only_offset_is_reached": false,
+          "trailing_stop": true,
+          "trailing_stop_positive": 0.011,
+          "trailing_stop_positive_offset": 0.054,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": true,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy",
+          "from functools import reduce",
+          "from pandas import DataFrame",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              [
+                "open",
+                "high",
+                "low",
+                "close",
+                "volume"
+              ]
+            ],
+            "choices": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume"
+            ],
+            "decimals": null,
+            "default": "ma_fast",
+            "high": null,
+            "keywords": {
+              "default": "ma_fast",
+              "space": "buy"
+            },
+            "load": null,
+            "low": null,
+            "name": "buy_fast_key",
+            "optimize": null,
+            "space": "buy",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [
+              0,
+              10
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 0,
+            "high": 10,
+            "keywords": {
+              "default": 0,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 0,
+            "name": "buy_horizontal_push",
+            "optimize": null,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              [
+                "open",
+                "high",
+                "low",
+                "close",
+                "volume"
+              ]
+            ],
+            "choices": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume"
+            ],
+            "decimals": null,
+            "default": "ma_slow",
+            "high": null,
+            "keywords": {
+              "default": "ma_slow",
+              "space": "buy"
+            },
+            "load": null,
+            "low": null,
+            "name": "buy_slow_key",
+            "optimize": null,
+            "space": "buy",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [
+              0.5,
+              1.5
+            ],
+            "choices": null,
+            "decimals": 3,
+            "default": 1,
+            "high": 1.5,
+            "keywords": {
+              "decimals": 3,
+              "default": 1,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 0.5,
+            "name": "buy_vertical_push",
+            "optimize": null,
+            "space": "buy",
+            "type": "DecimalParameter"
+          },
+          {
+            "args": [
+              [
+                "open",
+                "high",
+                "low",
+                "close",
+                "volume"
+              ]
+            ],
+            "choices": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume"
+            ],
+            "decimals": null,
+            "default": "ma_fast",
+            "high": null,
+            "keywords": {
+              "default": "ma_fast",
+              "space": "sell"
+            },
+            "load": null,
+            "low": null,
+            "name": "sell_fast_key",
+            "optimize": null,
+            "space": "sell",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [
+              0,
+              10
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 0,
+            "high": 10,
+            "keywords": {
+              "default": 0,
+              "space": "sell"
+            },
+            "load": null,
+            "low": 0,
+            "name": "sell_horizontal_push",
+            "optimize": null,
+            "space": "sell",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              [
+                "open",
+                "high",
+                "low",
+                "close",
+                "volume"
+              ]
+            ],
+            "choices": [
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume"
+            ],
+            "decimals": null,
+            "default": "ma_slow",
+            "high": null,
+            "keywords": {
+              "default": "ma_slow",
+              "space": "sell"
+            },
+            "load": null,
+            "low": null,
+            "name": "sell_slow_key",
+            "optimize": null,
+            "space": "sell",
+            "type": "CategoricalParameter"
+          },
+          {
+            "args": [
+              0.5,
+              1.5
+            ],
+            "choices": null,
+            "decimals": 3,
+            "default": 1,
+            "high": 1.5,
+            "keywords": {
+              "decimals": 3,
+              "default": 1,
+              "space": "sell"
+            },
+            "load": null,
+            "low": 0.5,
+            "name": "sell_vertical_push",
+            "optimize": null,
+            "space": "sell",
+            "type": "DecimalParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "runtime_resolution_pending",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "b3f1b8865c210918afe1c2e25eaaf359c34e4518305ad0a13f884b0c3baf6a8e",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "Diamond"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/Diamond.py",
+      "source_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902",
+      "source_size": 9411,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "a8bff4cce2d4e4b02904c0764f05188ee37b60ae",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "9d12796c3d86595abc2573f1dfa9aa611aa09bc9",
+          "path": "SimpleStrategies/BBBreakout.py",
+          "sha256": "be1a019056304727cdb2af98c97428bea7a672dd05d6c5d567b8e7c2fc97ea91",
+          "size": 3116
+        },
+        {
+          "git_blob_sha1": "e7508614deb77d408c1b433456bf53f6850d9297",
+          "path": "SimpleStrategies/SimpleStrategy.py",
+          "sha256": "759c7f3a0e4a851363bdfc9318dff42ef4c3536a28761371274f7b8d21ee280f",
+          "size": 8743
+        },
+        {
+          "git_blob_sha1": "7eb8db0f0d637bba36ba9c3708d661133dc4762c",
+          "path": "Framework/BaseStrategy.py",
+          "sha256": "15364e87dfc97f983bedee0687a2e50f34a7f8af7d54bf8092b885c1bdb078f3",
+          "size": 41724
+        },
+        {
+          "git_blob_sha1": "9861c9d2cfbca04f8099ef78b0ca7a1e215c730b",
+          "path": "utils/custom_indicators.py",
+          "sha256": "0cab5e13312557afa67349756f7957d4f9356cb9080345e6e2dd28500cb438f6",
+          "size": 6906
+        },
+        {
+          "git_blob_sha1": "0096cb1327c46a39f6726618a80612f2bdd9a106",
+          "path": "utils/DataframePopulator.py",
+          "sha256": "ae4f8cacfbbdb927beb1759d9a25c33bd9490bccd87b85496dbad85438145d93",
+          "size": 89042
+        },
+        {
+          "git_blob_sha1": "838bd960e9b5b8c6f2f0fd60610f394e2974c524",
+          "path": "utils/DataframeUtils.py",
+          "sha256": "33fbcdcc5fd4bdf9462862972adf1c04a6d52acec9af322a6197aca8527d9b26",
+          "size": 35162
+        },
+        {
+          "git_blob_sha1": "026b28155c1ce0e848bfd32086b2c1bbe9d31e6b",
+          "path": "utils/Environment.py",
+          "sha256": "23617b73e45ae7c53626566e5486e06dfa72898bcfa207dc8e18bfc8db00460d",
+          "size": 3983
+        },
+        {
+          "git_blob_sha1": "89964b02231a30211e49c845719d5ce1d9669584",
+          "path": "Framework/StrategyDiagnostics.py",
+          "sha256": "3f6e316a8001ace410e1f7b5255a7beb30f893078d2b868fec3f3b80c0393fb9",
+          "size": 20392
+        },
+        {
+          "git_blob_sha1": "0ea083ab43898118ff608ac436646ed34fdf96ea",
+          "path": "GANs/GANType.py",
+          "sha256": "41b01f5b600c98f43c1e0e00276ec40761068f6c960039722f7c63986185e009",
+          "size": 1323
+        }
+      ],
+      "git_blob_sha1": "9d12796c3d86595abc2573f1dfa9aa611aa09bc9",
+      "id": "BBBreakout",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/10-BBBreakout/BBBreakout.py",
+      "missing_dependency_paths": [],
+      "order": 10,
+      "reasons": [
+        "dynamic_sys_path_and_model_framework_dependency_closure"
+      ],
+      "repository": "nateemma/strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/nate.tar.gz",
+      "repository_archive_sha256": "b40448022c692468b1f4ce75b31955b2b55cbba3a68b8495641dbce2464d0bb0",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": null,
+          "buy_params": "{**SimpleStrategy.buy_params, 'entry_guard_metric': 0.0, 'entry_period': 24}",
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": null,
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": "{**SimpleStrategy.sell_params, 'exit_guard_metric': 0.1}",
+          "startup_candle_count": null,
+          "stoploss": null,
+          "timeframe": null,
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": null,
+          "trailing_stop_positive": null,
+          "trailing_stop_positive_offset": null,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": false,
+          "populate_exit_trend": false,
+          "populate_indicators": false,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from SimpleStrategy import SimpleStrategy",
+          "from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy, merge_informative_pair, stoploss_from_open",
+          "from freqtrade.strategy import IStrategy",
+          "from pandas import DataFrame, Series",
+          "from pathlib import Path",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy as np",
+          "import os",
+          "import pandas as pd",
+          "import pandas_ta as pta",
+          "import sys",
+          "import talib.abstract as ta",
+          "import warnings"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              6,
+              96
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 24,
+            "high": 96,
+            "keywords": {
+              "default": 24,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 6,
+            "name": "entry_period",
+            "optimize": null,
+            "space": "buy",
+            "type": "IntParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "60250b58d53cde2a5a241b52b9288768b7298e3b2b1cd83a93354ea7d1a1b19b",
+        "strategy_classes": [
+          {
+            "bases": [
+              "SimpleStrategy"
+            ],
+            "name": "BBBreakout"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "SimpleStrategies/BBBreakout.py",
+      "source_sha256": "be1a019056304727cdb2af98c97428bea7a672dd05d6c5d567b8e7c2fc97ea91",
+      "source_size": 3116,
+      "static_findings": [],
+      "status": "REJECT"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "b69656b76ee142c0945dbb0229a19d67d5516215",
+          "path": "user_data/strategies/Heracles.py",
+          "sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+          "size": 3867
+        }
+      ],
+      "git_blob_sha1": "b69656b76ee142c0945dbb0229a19d67d5516215",
+      "id": "Heracles",
+      "license_evidence": {
+        "authors": [
+          "@Mablue (Masoud Azizi)"
+        ],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/11-Heracles/Heracles.py",
+      "missing_dependency_paths": [],
+      "order": 11,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": {
+            "buy_crossed_indicator_shift": 9,
+            "buy_div_max": 0.75,
+            "buy_div_min": 0.16,
+            "buy_indicator_shift": 15
+          },
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.598,
+            "3269": 0.115,
+            "644": 0.166,
+            "7289": 0
+          },
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": {},
+          "startup_candle_count": null,
+          "stoploss": -0.256,
+          "timeframe": "4h",
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": null,
+          "trailing_stop_positive": null,
+          "trailing_stop_positive_offset": null,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": true,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from freqtrade.strategy import IntParameter, DecimalParameter, IStrategy",
+          "from functools import reduce",
+          "from pandas import DataFrame",
+          "from ta.utils import dropna",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy as np",
+          "import pandas as pd",
+          "import ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              0,
+              20
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 9,
+            "high": 20,
+            "keywords": {
+              "default": 9,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 0,
+            "name": "buy_crossed_indicator_shift",
+            "optimize": null,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              0,
+              1
+            ],
+            "choices": null,
+            "decimals": 2,
+            "default": 0.75,
+            "high": 1,
+            "keywords": {
+              "decimals": 2,
+              "default": 0.75,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 0,
+            "name": "buy_div_max",
+            "optimize": null,
+            "space": "buy",
+            "type": "DecimalParameter"
+          },
+          {
+            "args": [
+              0,
+              1
+            ],
+            "choices": null,
+            "decimals": 2,
+            "default": 0.16,
+            "high": 1,
+            "keywords": {
+              "decimals": 2,
+              "default": 0.16,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 0,
+            "name": "buy_div_min",
+            "optimize": null,
+            "space": "buy",
+            "type": "DecimalParameter"
+          },
+          {
+            "args": [
+              0,
+              20
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 16,
+            "high": 20,
+            "keywords": {
+              "default": 16,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 0,
+            "name": "buy_indicator_shift",
+            "optimize": null,
+            "space": "buy",
+            "type": "IntParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "runtime_resolution_pending",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "f0b117a17f498bf9946d0aea3c7d64e5a01dd3e4ac7a1d1837de1e3157984323",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "Heracles"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/Heracles.py",
+      "source_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+      "source_size": 3867,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "a8bff4cce2d4e4b02904c0764f05188ee37b60ae",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "48f514f1ef8ecceb9f1e9f42f0ce225d14d41349",
+          "path": "SimpleStrategies/SMACross.py",
+          "sha256": "d483627023f7a8ab5d3f727597559dfc0ad91131b1dcbb1240c341a23d828ca9",
+          "size": 2768
+        },
+        {
+          "git_blob_sha1": "e7508614deb77d408c1b433456bf53f6850d9297",
+          "path": "SimpleStrategies/SimpleStrategy.py",
+          "sha256": "759c7f3a0e4a851363bdfc9318dff42ef4c3536a28761371274f7b8d21ee280f",
+          "size": 8743
+        },
+        {
+          "git_blob_sha1": "7eb8db0f0d637bba36ba9c3708d661133dc4762c",
+          "path": "Framework/BaseStrategy.py",
+          "sha256": "15364e87dfc97f983bedee0687a2e50f34a7f8af7d54bf8092b885c1bdb078f3",
+          "size": 41724
+        },
+        {
+          "git_blob_sha1": "9861c9d2cfbca04f8099ef78b0ca7a1e215c730b",
+          "path": "utils/custom_indicators.py",
+          "sha256": "0cab5e13312557afa67349756f7957d4f9356cb9080345e6e2dd28500cb438f6",
+          "size": 6906
+        },
+        {
+          "git_blob_sha1": "0096cb1327c46a39f6726618a80612f2bdd9a106",
+          "path": "utils/DataframePopulator.py",
+          "sha256": "ae4f8cacfbbdb927beb1759d9a25c33bd9490bccd87b85496dbad85438145d93",
+          "size": 89042
+        },
+        {
+          "git_blob_sha1": "838bd960e9b5b8c6f2f0fd60610f394e2974c524",
+          "path": "utils/DataframeUtils.py",
+          "sha256": "33fbcdcc5fd4bdf9462862972adf1c04a6d52acec9af322a6197aca8527d9b26",
+          "size": 35162
+        },
+        {
+          "git_blob_sha1": "026b28155c1ce0e848bfd32086b2c1bbe9d31e6b",
+          "path": "utils/Environment.py",
+          "sha256": "23617b73e45ae7c53626566e5486e06dfa72898bcfa207dc8e18bfc8db00460d",
+          "size": 3983
+        },
+        {
+          "git_blob_sha1": "89964b02231a30211e49c845719d5ce1d9669584",
+          "path": "Framework/StrategyDiagnostics.py",
+          "sha256": "3f6e316a8001ace410e1f7b5255a7beb30f893078d2b868fec3f3b80c0393fb9",
+          "size": 20392
+        },
+        {
+          "git_blob_sha1": "0ea083ab43898118ff608ac436646ed34fdf96ea",
+          "path": "GANs/GANType.py",
+          "sha256": "41b01f5b600c98f43c1e0e00276ec40761068f6c960039722f7c63986185e009",
+          "size": 1323
+        }
+      ],
+      "git_blob_sha1": "48f514f1ef8ecceb9f1e9f42f0ce225d14d41349",
+      "id": "SMACross",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/12-SMACross/SMACross.py",
+      "missing_dependency_paths": [],
+      "order": 12,
+      "reasons": [
+        "dynamic_sys_path_and_model_framework_dependency_closure"
+      ],
+      "repository": "nateemma/strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/nate.tar.gz",
+      "repository_archive_sha256": "b40448022c692468b1f4ce75b31955b2b55cbba3a68b8495641dbce2464d0bb0",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": null,
+          "buy_params": "{**SimpleStrategy.buy_params, 'entry_long_period': 32, 'entry_short_period': 6, 'entry_guard_metric': -0.0}",
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": null,
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": "{**SimpleStrategy.sell_params, 'exit_guard_metric': 0.0}",
+          "startup_candle_count": null,
+          "stoploss": null,
+          "timeframe": null,
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": null,
+          "trailing_stop_positive": null,
+          "trailing_stop_positive_offset": null,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": false,
+          "populate_exit_trend": false,
+          "populate_indicators": false,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from SimpleStrategy import SimpleStrategy",
+          "from finta import TA as fta",
+          "from freqtrade.strategy import CategoricalParameter, DecimalParameter, IntParameter, IStrategy, merge_informative_pair, stoploss_from_open",
+          "from freqtrade.strategy import IStrategy",
+          "from pandas import DataFrame, Series",
+          "from pathlib import Path",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy as np",
+          "import os",
+          "import pandas as pd",
+          "import pandas_ta as pta",
+          "import sys",
+          "import talib.abstract as ta",
+          "import warnings"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              12,
+              128
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 48,
+            "high": 128,
+            "keywords": {
+              "default": 48,
+              "load": true,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": true,
+            "low": 12,
+            "name": "entry_long_period",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              6,
+              24
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 6,
+            "high": 24,
+            "keywords": {
+              "default": 6,
+              "load": true,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": true,
+            "low": 6,
+            "name": "entry_short_period",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "2fe665c7d3ca4db152dad1ae3f8819475c772e01043cf70ad815cb4097d1b3e8",
+        "strategy_classes": [
+          {
+            "bases": [
+              "SimpleStrategy"
+            ],
+            "name": "SMACross"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "SimpleStrategies/SMACross.py",
+      "source_sha256": "d483627023f7a8ab5d3f727597559dfc0ad91131b1dcbb1240c341a23d828ca9",
+      "source_size": 2768,
+      "static_findings": [],
+      "status": "REJECT"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "dd398f7f54ddf921678d63329c8612450d2b4bcf",
+          "path": "user_data/strategies/MultiMa.py",
+          "sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+          "size": 3464
+        }
+      ],
+      "git_blob_sha1": "dd398f7f54ddf921678d63329c8612450d2b4bcf",
+      "id": "MultiMa",
+      "license_evidence": {
+        "authors": [
+          "@Mablue (Masoud Azizi)"
+        ],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/13-MultiMa/MultiMa.py",
+      "missing_dependency_paths": [],
+      "order": 13,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": {
+            "buy_ma_count": 4,
+            "buy_ma_gap": 15
+          },
+          "can_short": null,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.523,
+            "1553": 0.123,
+            "2332": 0.076,
+            "3169": 0
+          },
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": {
+            "sell_ma_count": 12,
+            "sell_ma_gap": 68
+          },
+          "startup_candle_count": null,
+          "stoploss": -0.345,
+          "timeframe": "4h",
+          "trailing_only_offset_is_reached": false,
+          "trailing_stop": false,
+          "trailing_stop_positive": null,
+          "trailing_stop_positive_offset": 0.0,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from freqtrade.strategy import IntParameter, IStrategy",
+          "from functools import reduce",
+          "from pandas import DataFrame",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              1,
+              "count_max"
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 7,
+            "high": "count_max",
+            "keywords": {
+              "default": 7,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 1,
+            "name": "buy_ma_count",
+            "optimize": null,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              1,
+              "gap_max"
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 7,
+            "high": "gap_max",
+            "keywords": {
+              "default": 7,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 1,
+            "name": "buy_ma_gap",
+            "optimize": null,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              1,
+              "count_max"
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 7,
+            "high": "count_max",
+            "keywords": {
+              "default": 7,
+              "space": "sell"
+            },
+            "load": null,
+            "low": 1,
+            "name": "sell_ma_count",
+            "optimize": null,
+            "space": "sell",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              1,
+              "gap_max"
+            ],
+            "choices": null,
+            "decimals": null,
+            "default": 94,
+            "high": "gap_max",
+            "keywords": {
+              "default": 94,
+              "space": "sell"
+            },
+            "load": null,
+            "low": 1,
+            "name": "sell_ma_gap",
+            "optimize": null,
+            "space": "sell",
+            "type": "IntParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "d1dfec9e190d9b2df63ef78a56627525cb9b6bbed52a4101123cd7182ff2998a",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "MultiMa"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/MultiMa.py",
+      "source_sha256": "cae77a6c8f983377e392a2c66bfc541e7c1400fae03c3a413194902b2eda6626",
+      "source_size": 3464,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "c99cdfe3b2a298dc060d7ea84c5208907c701115",
+          "path": "user_data/strategies/PowerTower.py",
+          "sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41",
+          "size": 4317
+        }
+      ],
+      "git_blob_sha1": "c99cdfe3b2a298dc060d7ea84c5208907c701115",
+      "id": "PowerTower",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/14-PowerTower/PowerTower.py",
+      "missing_dependency_paths": [],
+      "order": 14,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": null,
+          "can_short": false,
+          "exit_profit_only": null,
+          "ignore_roi_if_entry_signal": null,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.213,
+            "159": 0,
+            "39": 0.048,
+            "56": 0.029
+          },
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": null,
+          "process_only_new_candles": null,
+          "protections": null,
+          "sell_params": null,
+          "startup_candle_count": 30,
+          "stoploss": -0.288,
+          "timeframe": "5m",
+          "trailing_only_offset_is_reached": false,
+          "trailing_stop": false,
+          "trailing_stop_positive": null,
+          "trailing_stop_positive_offset": 0.0,
+          "use_custom_stoploss": null,
+          "use_exit_signal": null
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": false,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from datetime import datetime",
+          "from freqtrade.strategy import BooleanParameter, CategoricalParameter, DecimalParameter, IntParameter, IStrategy, merge_informative_pair",
+          "from pandas import DataFrame",
+          "from technical import qtpylib",
+          "from typing import Optional, Union",
+          "import numpy as np",
+          "import pandas as pd",
+          "import pandas_ta as pta",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [
+              0,
+              4
+            ],
+            "choices": null,
+            "decimals": 3,
+            "default": 3.849,
+            "high": 4,
+            "keywords": {
+              "decimals": 3,
+              "default": 3.849,
+              "space": "buy"
+            },
+            "load": null,
+            "low": 0,
+            "name": "buy_pow",
+            "optimize": null,
+            "space": "buy",
+            "type": "DecimalParameter"
+          },
+          {
+            "args": [
+              0,
+              4
+            ],
+            "choices": null,
+            "decimals": 3,
+            "default": 3.798,
+            "high": 4,
+            "keywords": {
+              "decimals": 3,
+              "default": 3.798,
+              "space": "sell"
+            },
+            "load": null,
+            "low": 0,
+            "name": "sell_pow",
+            "optimize": null,
+            "space": "sell",
+            "type": "DecimalParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "7999fd578bfd768fc5299d0a5d119e17deb54873f8b43ebc47d5d1349890a518",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "PowerTower"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/PowerTower.py",
+      "source_sha256": "ce423a28ea54cfa46f44566ef5632d2ec04718a0723b16e322e9f9ac92df8f41",
+      "source_size": 4317,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "ea08f8f6c9bab17e0e8c64876ec6d85c3965d04f",
+          "path": "user_data/strategies/Strategy002.py",
+          "sha256": "d1ca86a4ceb68ef828b35490ce1112330dad209cc3bb1e1b6c303c21ab3d8a90",
+          "size": 4363
+        }
+      ],
+      "git_blob_sha1": "ea08f8f6c9bab17e0e8c64876ec6d85c3965d04f",
+      "id": "Strategy002",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/15-Strategy002/Strategy002.py",
+      "missing_dependency_paths": [],
+      "order": 15,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": null,
+          "can_short": null,
+          "exit_profit_only": true,
+          "ignore_roi_if_entry_signal": false,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.05,
+            "20": 0.04,
+            "30": 0.03,
+            "60": 0.01
+          },
+          "order_time_in_force": null,
+          "order_types": {
+            "entry": "limit",
+            "exit": "limit",
+            "stoploss": "market",
+            "stoploss_on_exchange": false
+          },
+          "position_adjustment_enable": null,
+          "process_only_new_candles": true,
+          "protections": null,
+          "sell_params": null,
+          "startup_candle_count": null,
+          "stoploss": -0.1,
+          "timeframe": "5m",
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": false,
+          "trailing_stop_positive": 0.01,
+          "trailing_stop_positive_offset": 0.02,
+          "use_custom_stoploss": null,
+          "use_exit_signal": true
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": true,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from freqtrade.strategy import IStrategy",
+          "from functools import reduce",
+          "from pandas import DataFrame",
+          "from typing import Dict, List",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "0e0f3cad84edd02a8d41c6d52e3a11c5e8154badc26a376e466b9df248cab785",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "Strategy002"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/Strategy002.py",
+      "source_sha256": "d1ca86a4ceb68ef828b35490ce1112330dad209cc3bb1e1b6c303c21ab3d8a90",
+      "source_size": 4363,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "3719f89949baca8478fa4ce21303e602c846f8aa",
+          "path": "user_data/strategies/Strategy003.py",
+          "sha256": "055984b4672779b36a2391f790ccbcd320e408eb0634e34718d7182acaeef9c9",
+          "size": 5110
+        }
+      ],
+      "git_blob_sha1": "3719f89949baca8478fa4ce21303e602c846f8aa",
+      "id": "Strategy003",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/16-Strategy003/Strategy003.py",
+      "missing_dependency_paths": [],
+      "order": 16,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": null,
+          "can_short": null,
+          "exit_profit_only": true,
+          "ignore_roi_if_entry_signal": false,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.05,
+            "20": 0.04,
+            "30": 0.03,
+            "60": 0.01
+          },
+          "order_time_in_force": null,
+          "order_types": {
+            "entry": "limit",
+            "exit": "limit",
+            "stoploss": "market",
+            "stoploss_on_exchange": false
+          },
+          "position_adjustment_enable": null,
+          "process_only_new_candles": true,
+          "protections": null,
+          "sell_params": null,
+          "startup_candle_count": null,
+          "stoploss": -0.1,
+          "timeframe": "5m",
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": false,
+          "trailing_stop_positive": 0.01,
+          "trailing_stop_positive_offset": 0.02,
+          "use_custom_stoploss": null,
+          "use_exit_signal": true
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": true,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from freqtrade.strategy import IStrategy",
+          "from functools import reduce",
+          "from pandas import DataFrame",
+          "from typing import Dict, List",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "15e9a3e367c67c6f6d3c2dcf3ac09e21cc44405ec581e565fdfccf99bf289aee",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "Strategy003"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/Strategy003.py",
+      "source_sha256": "055984b4672779b36a2391f790ccbcd320e408eb0634e34718d7182acaeef9c9",
+      "source_size": 5110,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "8a873d786dc8f8ba81e991dcfe60d056df6c8202",
+          "path": "user_data/strategies/Strategy004.py",
+          "sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a",
+          "size": 5472
+        }
+      ],
+      "git_blob_sha1": "8a873d786dc8f8ba81e991dcfe60d056df6c8202",
+      "id": "Strategy004",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/17-Strategy004/Strategy004.py",
+      "missing_dependency_paths": [],
+      "order": 17,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": null,
+          "can_short": null,
+          "exit_profit_only": true,
+          "ignore_roi_if_entry_signal": false,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.05,
+            "20": 0.04,
+            "30": 0.03,
+            "60": 0.01
+          },
+          "order_time_in_force": null,
+          "order_types": {
+            "entry": "limit",
+            "exit": "limit",
+            "stoploss": "market",
+            "stoploss_on_exchange": false
+          },
+          "position_adjustment_enable": null,
+          "process_only_new_candles": true,
+          "protections": null,
+          "sell_params": null,
+          "startup_candle_count": null,
+          "stoploss": -0.1,
+          "timeframe": "5m",
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": false,
+          "trailing_stop_positive": 0.01,
+          "trailing_stop_positive_offset": 0.02,
+          "use_custom_stoploss": null,
+          "use_exit_signal": true
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": true,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from freqtrade.strategy import IStrategy",
+          "from functools import reduce",
+          "from pandas import DataFrame",
+          "from typing import Dict, List",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "30a08277fc63bb17ace7c55c936f6048a593f9913a248683900bae3f0aa625a9",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "Strategy004"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/Strategy004.py",
+      "source_sha256": "1b4c001e80b077aaf3ec227577c78d3283be549c7d25ce9279ea03f1db5de64a",
+      "source_size": 5472,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "c0d2025f62ea9cfc4f0f2335905f18b55556627e",
+          "path": "user_data/strategies/Strategy005.py",
+          "sha256": "797b293f5acd809f8c77f26b38c004c87b75d8847be4cde4d0224040cc591030",
+          "size": 6667
+        }
+      ],
+      "git_blob_sha1": "c0d2025f62ea9cfc4f0f2335905f18b55556627e",
+      "id": "Strategy005",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/18-Strategy005/Strategy005.py",
+      "missing_dependency_paths": [],
+      "order": 18,
+      "reasons": [],
+      "repository": "freqtrade/freqtrade-strategies",
+      "repository_archive_path": "external_strategies/upstream_archives/official.tar.gz",
+      "repository_archive_sha256": "2717f2dbc8939c74a1715fbc94ebed5f7e8075d8a3ef8222ee6f24ee2cfdd0d1",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": {
+            "buy_fastd": 1,
+            "buy_fishRsiNorma": 5,
+            "buy_rsi": 26,
+            "buy_volumeAVG": 150
+          },
+          "can_short": null,
+          "exit_profit_only": true,
+          "ignore_roi_if_entry_signal": false,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": {
+            "0": 0.05,
+            "1440": 0.01,
+            "20": 0.04,
+            "40": 0.03,
+            "80": 0.02
+          },
+          "order_time_in_force": null,
+          "order_types": {
+            "entry": "limit",
+            "exit": "limit",
+            "stoploss": "market",
+            "stoploss_on_exchange": false
+          },
+          "position_adjustment_enable": null,
+          "process_only_new_candles": true,
+          "protections": null,
+          "sell_params": {
+            "sell_fishRsiNorma": 30,
+            "sell_minusDI": 4,
+            "sell_rsi": 74,
+            "sell_trigger": "rsi-macd-minusdi"
+          },
+          "startup_candle_count": null,
+          "stoploss": -0.1,
+          "timeframe": "5m",
+          "trailing_only_offset_is_reached": null,
+          "trailing_stop": false,
+          "trailing_stop_positive": 0.01,
+          "trailing_stop_positive_offset": 0.02,
+          "use_custom_stoploss": null,
+          "use_exit_signal": true
+        },
+        "behavior_methods": {
+          "adjust_trade_position": false,
+          "confirm_trade_entry": false,
+          "confirm_trade_exit": false,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": false,
+          "custom_stoploss": false,
+          "informative_pairs": true,
+          "leverage": false,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": false,
+        "external_config_loading": false,
+        "imports": [
+          "from freqtrade.strategy import CategoricalParameter, IntParameter",
+          "from freqtrade.strategy import IStrategy",
+          "from functools import reduce",
+          "from pandas import DataFrame",
+          "import freqtrade.vendor.qtpylib.indicators as qtpylib",
+          "import numpy",
+          "import talib.abstract as ta"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 30,
+            "high": null,
+            "keywords": {
+              "default": 30,
+              "high": 100,
+              "low": 1,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": null,
+            "low": null,
+            "name": "buy_fastd",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 30,
+            "high": null,
+            "keywords": {
+              "default": 30,
+              "high": 100,
+              "low": 1,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": null,
+            "low": null,
+            "name": "buy_fishRsiNorma",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 30,
+            "high": null,
+            "keywords": {
+              "default": 30,
+              "high": 100,
+              "low": 1,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": null,
+            "low": null,
+            "name": "buy_rsi",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 70,
+            "high": null,
+            "keywords": {
+              "default": 70,
+              "high": 300,
+              "low": 50,
+              "optimize": true,
+              "space": "buy"
+            },
+            "load": null,
+            "low": null,
+            "name": "buy_volumeAVG",
+            "optimize": true,
+            "space": "buy",
+            "type": "IntParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 50,
+            "high": null,
+            "keywords": {
+              "default": 50,
+              "high": 100,
+              "low": 1,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": null,
+            "low": null,
+            "name": "sell_fishRsiNorma",
+            "optimize": true,
+            "space": "sell",
+            "type": "IntParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 50,
+            "high": null,
+            "keywords": {
+              "default": 50,
+              "high": 100,
+              "low": 1,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": null,
+            "low": null,
+            "name": "sell_minusDI",
+            "optimize": true,
+            "space": "sell",
+            "type": "IntParameter"
+          },
+          {
+            "args": [],
+            "choices": null,
+            "decimals": null,
+            "default": 70,
+            "high": null,
+            "keywords": {
+              "default": 70,
+              "high": 100,
+              "low": 1,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": null,
+            "low": null,
+            "name": "sell_rsi",
+            "optimize": true,
+            "space": "sell",
+            "type": "IntParameter"
+          },
+          {
+            "args": [
+              [
+                "rsi-macd-minusdi",
+                "sar-fisherRsi"
+              ]
+            ],
+            "choices": [
+              "rsi-macd-minusdi",
+              "sar-fisherRsi"
+            ],
+            "decimals": null,
+            "default": 30,
+            "high": null,
+            "keywords": {
+              "default": 30,
+              "optimize": true,
+              "space": "sell"
+            },
+            "load": null,
+            "low": null,
+            "name": "sell_trigger",
+            "optimize": true,
+            "space": "sell",
+            "type": "CategoricalParameter"
+          }
+        ],
+        "parameter_json_lookup": false,
+        "position_increase_capability": false,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "cd8d653cf07114a61f3b32d7a41a8fb30178e77836e888f4813bf69367e9a686",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "Strategy005"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "user_data/strategies/Strategy005.py",
+      "source_sha256": "797b293f5acd809f8c77f26b38c004c87b75d8847be4cde4d0224040cc591030",
+      "source_size": 6667,
+      "static_findings": [],
+      "status": "PASS"
+    },
+    {
+      "commit": "5e168431991e05a889514eb1e16fdbebc6a09811",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "fe50f09609c256321982cf8c01f55a9801ea4e92",
+          "path": "NostalgiaForInfinityX7.py",
+          "sha256": "cf3afa5e451f491fa8f450d5e67eabfcb4d585bef2db4c569a1d62a1569790c6",
+          "size": 3199017
+        }
+      ],
+      "git_blob_sha1": "fe50f09609c256321982cf8c01f55a9801ea4e92",
+      "id": "NostalgiaForInfinityX7",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "GPL-3.0-only",
+        "repo_license": "GPL-3.0-only",
+        "spdx_identifiers": []
+      },
+      "license_status": "redistributed_under_verified_license",
+      "local_read_only_source": "external_strategies/original/19-NostalgiaForInfinityX7/NostalgiaForInfinityX7.py",
+      "missing_dependency_paths": [],
+      "order": 19,
+      "reasons": [
+        "future_data",
+        "position_adjustment",
+        "short_or_leverage"
+      ],
+      "repository": "iterativv/NostalgiaForInfinity",
+      "repository_archive_path": "external_strategies/upstream_archives/nfi.tar.gz",
+      "repository_archive_sha256": "8021562bdffb9872224a2e856800e5237d966bad1c0ca8a8febe0e2038dbc191",
+      "source_declaration": {
+        "assignments": {
+          "INTERFACE_VERSION": 3,
+          "buy_params": null,
+          "can_short": null,
+          "exit_profit_only": false,
+          "ignore_roi_if_entry_signal": true,
+          "max_entry_position_adjustment": null,
+          "minimal_roi": null,
+          "order_time_in_force": null,
+          "order_types": null,
+          "position_adjustment_enable": true,
+          "process_only_new_candles": true,
+          "protections": null,
+          "sell_params": null,
+          "startup_candle_count": 800,
+          "stoploss": -0.99,
+          "timeframe": "5m",
+          "trailing_only_offset_is_reached": true,
+          "trailing_stop": false,
+          "trailing_stop_positive": 0.01,
+          "trailing_stop_positive_offset": 0.03,
+          "use_custom_stoploss": false,
+          "use_exit_signal": true
+        },
+        "behavior_methods": {
+          "adjust_trade_position": true,
+          "confirm_trade_entry": true,
+          "confirm_trade_exit": true,
+          "custom_entry_price": false,
+          "custom_exit_price": false,
+          "custom_stake_amount": true,
+          "custom_stoploss": false,
+          "informative_pairs": true,
+          "leverage": true,
+          "populate_entry_trend": true,
+          "populate_exit_trend": true,
+          "populate_indicators": true,
+          "protections": false
+        },
+        "class_parameter_default_conflict": false,
+        "dynamic_attribute_access": true,
+        "external_config_loading": true,
+        "imports": [
+          "from datetime import datetime, timedelta",
+          "from freqtrade.persistence import Trade, Order",
+          "from freqtrade.strategy import merge_informative_pair",
+          "from freqtrade.strategy.interface import IStrategy",
+          "from functools import reduce",
+          "from pandas import DataFrame, Series",
+          "from typing import Optional",
+          "import copy",
+          "import logging",
+          "import numpy as np",
+          "import pandas as pd",
+          "import pathlib",
+          "import rapidjson",
+          "import talib.abstract as ta",
+          "import time",
+          "import warnings"
+        ],
+        "informative_timeframes": [],
+        "observed_config_override_count": null,
+        "observed_external_parameter_file_count": null,
+        "parameter_declarations": [],
+        "parameter_json_lookup": true,
+        "position_increase_capability": true,
+        "required_config_override_count": 0,
+        "required_external_parameter_file_count": 0,
+        "runtime_effective_settings_hash": null,
+        "runtime_resolution_status": "pending_vps_load",
+        "runtime_resolved_parameters_hash": null,
+        "source_declaration_hash": "8ab7eb501069734b328c8b66e083bf11430450ec4c63ea5e5639fca755c009e8",
+        "strategy_classes": [
+          {
+            "bases": [
+              "IStrategy"
+            ],
+            "name": "NostalgiaForInfinityX7"
+          },
+          {
+            "bases": [],
+            "name": "Cache"
+          },
+          {
+            "bases": [
+              "Cache"
+            ],
+            "name": "HoldsCache"
+          }
+        ]
+      },
+      "source_materialized": true,
+      "source_path": "NostalgiaForInfinityX7.py",
+      "source_sha256": "cf3afa5e451f491fa8f450d5e67eabfcb4d585bef2db4c569a1d62a1569790c6",
+      "source_size": 3199017,
+      "static_findings": [
+        "future_data",
+        "position_adjustment",
+        "short_or_leverage"
+      ],
+      "status": "REJECT"
+    },
+    {
+      "commit": "b9feaaa2f845aed5612b3c7726a0590ee233c846",
+      "dependency_closure": [
+        {
+          "git_blob_sha1": "c157b513001d0d5b39d2d17c6772493d6ed2a593",
+          "path": "strategies/ElliotV5_SMA/ElliotV5_SMA.py",
+          "sha256": "95998392fb5d668ea4ed15d0f2f16ba57b9e36e782de5a047c991fefad7d3679",
+          "size": 9681
+        }
+      ],
+      "git_blob_sha1": "c157b513001d0d5b39d2d17c6772493d6ed2a593",
+      "id": "ElliotV5_SMA",
+      "license_evidence": {
+        "authors": [],
+        "declared_license": null,
+        "effective_license_decision": "UNVERIFIED",
+        "repo_license": "UNVERIFIED",
+        "spdx_identifiers": []
+      },
+      "license_status": "unverified_not_redistributed",
+      "local_read_only_source": null,
+      "missing_dependency_paths": [],
+      "order": 20,
+      "reasons": [
+        "unverified_repository_and_target_file_license"
+      ],
+      "repository": "TheoBrigitte/freqtrade",
+      "repository_archive_path": null,
+      "repository_archive_sha256": "3d12d130ad481044f5f6b53286f248ff97f4bd02414b96ea1e9aaa7ca397d04b",
+      "source_materialized": false,
+      "source_path": "strategies/ElliotV5_SMA/ElliotV5_SMA.py",
+      "source_sha256": "95998392fb5d668ea4ed15d0f2f16ba57b9e36e782de5a047c991fefad7d3679",
+      "source_size": 9681,
+      "static_findings": [],
+      "status": "REJECT"
+    }
+  ],
+  "sandbox_contract": [
+    "network_none",
+    "read_only_source",
+    "non_privileged_user",
+    "no_secrets",
+    "dependency_hash_allowlist"
+  ],
+  "scan_execution": "source_text_and_ast_only_never_imported_or_executed",
+  "schema_version": "external-strategy-source-screen-v2",
+  "selection_trial_count": 0
+}

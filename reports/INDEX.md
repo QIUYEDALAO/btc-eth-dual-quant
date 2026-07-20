@@ -1,5 +1,22 @@
 # Reports Index
 
+| Artifact | Purpose | Status | Key evidence | Trading authority |
+|---|---|---|---|---|
+| `reports/m1/U25_SUPERSESSION_AND_EXTERNAL_STRATEGY_ROUTE.md` | ADR-0016 pre-runtime contract freeze | pending exact-head review | root `aafbf062...a172bc8`; protocol `ebac92aa...c3693`; DSR `ca2009f5...e0b88`; independently recomputed metrics/DSR; zero runtime/results | no |
+| `config/external_strategy_dsr_reference_trials_v1.json` | Frozen Base/CostX2 DSR historical and future append rules | frozen zero selection trials | M1A/M1B/M1C report hashes; count `3 + 0` | no |
+| `src/btc_eth_dual_quant/audit/completed_candle_derivation.py` | Strict synthetic 5m→15m/1h/4h derivation | frozen pre-runtime implementation | exact 3/12/48 windows; no fill/lifecycle/mask crossing | no |
+
+| `reports/m1/U25_SUPERSESSION_AND_EXTERNAL_STRATEGY_ROUTE.md` | U-25 supersession and ADR-0016 public-strategy route | pre_runtime_contract_complete_pending_exact_head_review | 20 sources screened, six frozen, zero load/causal/IS/OOS. | no |
+| `reports/m1/evidence/external_strategy_source_screen_v1.json` | External-strategy source screen evidence | content `edc3633c...a32a5b` | Archive/member identities, repo/file licenses, expanded AST declarations, rejections and frozen order. | no |
+| `reports/m1/evidence/external_strategy_runtime_block_v1.json` | Fixed-runtime preflight | blocked | No Docker/socket/VPS_HOST; zero loads, causal validations, IS trials and OOS rows. | no |
+
+| `reports/m1/EXISTING_STRATEGY_ADAPTATION_ROADMAP_FOR_EXPERT_REVIEW.md` | Existing-strategy screening and Freqtrade adaptation roadmap | proposal_for_expert_review_project_paused | Replaces continued from-scratch candidate invention with source-pinned screening, compatibility ports, uniform IS validation and one final OOS boundary. | no |
+
+
+| `reports/m0/U25_DESIGN_AUTHORIZATION_DECISION.md` | U-25 design authorization | one independent outcome-blind design authorized | Binds U-24 failed result, prohibits inversion/reuse and requires synthetic exact-core feasibility before protocol freeze. | no |
+| `config/u25_design_authorization_v1.json` | U-25 machine authorization | content `577bd189...06771` | Only U-25 hypothesis design is true; all result, strategy, OOS and trading permissions remain false. | no |
+
+
 | `reports/m1/U24_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-24 unique sealed-IS Paper observation | failed_feasibility | 78 episodes; six sample/projection/economic Gates fail; OOS sealed. | no |
 | `reports/m1/evidence/u24_cross_sectional_paper_observation/run_manifest.json` | U-24 Paper run machine evidence | content `131266a0...697dd` | Three-order exact failure with no downstream authority. | no |
 
