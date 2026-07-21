@@ -1,0 +1,161 @@
+{
+  "base_adapter_hash": "1017f36659ba0075e09c5f89586ba3e172e95c522192321a1c7e9b7d3e0fb85e",
+  "can_short": false,
+  "candidate_id": "Supertrend",
+  "causal_result_hash": "49a350f28a3172d32b6f426e70420cd78bd25b48e0a3afd88ed2a3eefe8ad812",
+  "container_manifest_hash": "6e8e54141ddc5f643722a336fb756245e852c7905eecdcaae8eac9654d58fb56",
+  "content_hash": "e9740b1c59a2d16ee42c1e4937231b1fb18fec9899bad21c38db1149761f1b3e",
+  "dependency_manifest_hash": "665256bb8229d02db727948fefd4d26eab027a6c4c65d86a180cf8fe45eb7f64",
+  "executable_components": {
+    "adapter_sha256": "1017f36659ba0075e09c5f89586ba3e172e95c522192321a1c7e9b7d3e0fb85e",
+    "dependencies": {
+      "original/original_source.py": "d01c26757c265cc3d20f597ba25853140e521bbc3666953342a49f1fa8c997c1"
+    },
+    "original_sha256": "d01c26757c265cc3d20f597ba25853140e521bbc3666953342a49f1fa8c997c1"
+  },
+  "generated_utc": "2026-07-21T01:59:16Z",
+  "load_command_kind": "freqtrade_list_strategies",
+  "load_exit_code": 0,
+  "load_stdout_stderr_sha256": "6474c3b5e6cada80577dc335d1b8094debf6ac2022549f6139209463e9917535",
+  "observed_config_override_count": 0,
+  "observed_external_parameter_file_count": 0,
+  "position_increase_capability": false,
+  "runtime_effective_settings": {
+    "can_short": false,
+    "exit_profit_only": false,
+    "ignore_roi_if_entry_signal": false,
+    "max_entry_position_adjustment": -1,
+    "minimal_roi": {
+      "0": 0.087,
+      "2221": 0,
+      "372": 0.058,
+      "861": 0.029
+    },
+    "order_time_in_force": {
+      "entry": "GTC",
+      "exit": "GTC"
+    },
+    "order_types": {
+      "entry": "limit",
+      "exit": "limit",
+      "stoploss": "limit",
+      "stoploss_on_exchange": false,
+      "stoploss_on_exchange_interval": 60
+    },
+    "position_adjustment_enable": false,
+    "process_only_new_candles": true,
+    "startup_candle_count": 199,
+    "stoploss": -0.265,
+    "timeframe": "1h",
+    "trailing_only_offset_is_reached": false,
+    "trailing_stop": true,
+    "trailing_stop_positive": 0.05,
+    "trailing_stop_positive_offset": 0.144,
+    "use_exit_signal": true
+  },
+  "runtime_effective_settings_hash": "7c62389a16838c464748a551c4e803ab43ab737b38f430d920d582d745ff81fe",
+  "runtime_identity_hash": "a88f0c591bc40d6acdaa3bb8e4fafe5b0dcda398f076f8f265a339caffb9eed1",
+  "runtime_probe_sha256": "33adcfafac013ec14f5e861eca79dfd328727d8dcfc04c44e113ec91de4e3c5d",
+  "runtime_resolved_parameters": {
+    "buy_m1": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        4
+      ],
+      "value": 4
+    },
+    "buy_m2": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        7
+      ],
+      "value": 7
+    },
+    "buy_m3": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        1
+      ],
+      "value": 1
+    },
+    "buy_p1": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        8
+      ],
+      "value": 8
+    },
+    "buy_p2": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        9
+      ],
+      "value": 9
+    },
+    "buy_p3": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        8
+      ],
+      "value": 8
+    },
+    "sell_m1": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        1
+      ],
+      "value": 1
+    },
+    "sell_m2": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        3
+      ],
+      "value": 3
+    },
+    "sell_m3": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        6
+      ],
+      "value": 6
+    },
+    "sell_p1": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        16
+      ],
+      "value": 16
+    },
+    "sell_p2": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        18
+      ],
+      "value": 18
+    },
+    "sell_p3": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        18
+      ],
+      "value": 18
+    }
+  },
+  "runtime_resolved_parameters_hash": "00d2faf8ecbe9f3d74fe69611c379668755e4a3b12192773fec8fde0a3b5adac",
+  "schema_version": "external-strategy-runtime-probe-v1",
+  "status": "causal_pass",
+  "variant_executable_hash": "af0597c800ebced22821a5bb0f3721ce15ab32a47038f94c42d332dd99e6f4d1"
+}

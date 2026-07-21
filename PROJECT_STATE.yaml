@@ -2,8 +2,8 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-21T00:00:00Z"
-current_phase: "ADR-0017 final pre-runtime selection/runtime authorization pending merge"
-current_status: adr0017_frozen_pending_merge_runtime_not_yet_executed_oos_sealed_no_trading_no_m2
+current_phase: "External-strategy runtime and causal validation complete; IS blocked by frozen membership-exit data authority"
+current_status: external_strategy_runtime_causal_pass_is_blocked_missing_92_exit_boundaries_zero_is_zero_oos_no_trading_no_m2
 context_sync_policy:
   update_on_every_user_instruction: true
   required_files:
@@ -20,11 +20,38 @@ context_sync_policy:
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: External-strategy pinned runtime, causal validation and IS boundary qualification
+    status: blocked_data_authority_missing_membership_exit_open
+    evidence: reports/m1/EXTERNAL_STRATEGY_RUNTIME_AND_IS_BOUNDARY_STOP.md
+    machine_evidence: reports/m1/evidence/external_strategy_runtime/is_boundary_qualification.json
+    branch: codex/external-strategy-runtime-validation
+    adr0017_merge_commit: 1e8a87682835544b23c82e4aab1d0072e274d59a
+    runtime_identity_hash: a88f0c591bc40d6acdaa3bb8e4fafe5b0dcda398f076f8f265a339caffb9eed1
+    causal_summary_hash: 473dd739da1566c1a978984896c4645ab7a6235aa8b0754e122a7325f514a107
+    causal_pass_candidates: 6
+    is_materialization_hash: 628bec95afbce9fb63d6a20a0d9047b09d611d87bd645680e17069e5d2c39def
+    membership_exit_boundary_hash: e9844902eaa7234a5476a080e937cfbf51f70913cb9ff1b903b907cad08280fa
+    membership_exit_boundaries: 92
+    frozen_boundary_archives: 0
+    missing_frozen_boundary_archives: 92
+    freqtrade_loads: 6
+    causal_validations: 6
+    is_trials_materialized: 0
+    selection_trial_count: 0
+    oos_authorized: false
+    oos_opened: false
+    oos_runs: 0
+    oos_rows_decoded: 0
+    dry_run_authorized: false
+    api_authorized: false
+    live_authorized: false
+    m2_authorized: false
   - phase: ADR-0017 current-route selection and runtime authorization
-    status: frozen_pending_validation_and_merge
+    status: adopted_merged
     decision: docs/decisions/ADR-0017-current-route-selection-and-runtime.md
     machine_contract: config/adr0017_current_route_selection_runtime_v1.json
     content_hash: 8a4b1d6d859c683bf3a61fd55784083bc04c8169a9cd1cab2362273177b48cdd
+    merge_commit: 1e8a87682835544b23c82e4aab1d0072e274d59a
     pr113_approved_head: 11cd55fd3e8a784df61bbcb370d4109be82a5ceb
     pr113_merge_commit: d657994b69289d8330acca90f5c1ed301863a3ce
     pr112_approved_head: 2467123cf4d0de29ac719ae622706dfdc6138b13
@@ -2790,14 +2817,14 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: EXTERNAL-STRATEGY-ADR0017
-    phase: final pre-runtime selection and runtime authorization
-    status: frozen_pending_validation_and_merge
-    content_hash: 8a4b1d6d859c683bf3a61fd55784083bc04c8169a9cd1cab2362273177b48cdd
-    runtime_load_authorized_after_merge: true
-    causal_validation_authorized_after_merge: true
-    is_after_automated_causal_gate_authorized_after_merge: true
-    minimum_causal_pass_candidates: 5
+  - id: EXTERNAL-STRATEGY-IS-DATA-BOUNDARY
+    phase: point-in-time membership exit execution authority
+    status: blocked_missing_frozen_boundary_open_for_92_of_92_transitions
+    evidence_hash: e9844902eaa7234a5476a080e937cfbf51f70913cb9ff1b903b907cad08280fa
+    runtime_loads: 6
+    causal_pass_candidates: 6
+    is_trials: 0
+    selection_trial_count: 0
     oos_authorized: false
     dry_run_authorized: false
     api_authorized: false

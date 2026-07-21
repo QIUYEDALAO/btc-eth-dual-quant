@@ -1,0 +1,37 @@
+{
+  "adapter_original_equal": true,
+  "candidate_id": "Supertrend",
+  "content_hash": "d9909c0e7cf113ca9ee4d2fefc2689679df246ea4dbf45dc1047de23508d87f7",
+  "entry_signals": 685,
+  "exit_signals": 9,
+  "fixture_manifest_hash": "e122fbea4f29546bc1b35f2438fbcce99b053f4cd6756527262bd0967f6fa6e5",
+  "market_or_oos_rows": 0,
+  "normal_reverse_shuffled_equal": true,
+  "profile": "Supertrend",
+  "profile_identity": {
+    "price_scale": 1.0,
+    "timeframes": {
+      "15m": {
+        "rows": 6000,
+        "sha256": "e642ab8c63e634e4a78f27c2660611f48b8c1adeee53108433db63c15ca7cd1a"
+      },
+      "1h": {
+        "rows": 1500,
+        "sha256": "b7028a19907eefa6e5045b505f29814d6c94314b5f57e6ee7b8d655b2694c404"
+      },
+      "4h": {
+        "rows": 375,
+        "sha256": "8a8783f60c646527f862e994498619f72db3acf0f9a8ab06d10854de53ace1e1"
+      },
+      "5m": {
+        "rows": 18000,
+        "sha256": "5c6d85f8240e01ddd72577a89fac49123c689c112b23582964505cd2852b9e29"
+      }
+    },
+    "trend_per_bar": 0.004
+  },
+  "schema_version": "external-strategy-golden-fixture-v1",
+  "signal_hash": "ef939dff6bcdaecc5ce14eab0564017cb589f665b3d1e37725e9af4f80ad7bdb",
+  "source_is_synthetic": true,
+  "timeframe": "1h"
+}

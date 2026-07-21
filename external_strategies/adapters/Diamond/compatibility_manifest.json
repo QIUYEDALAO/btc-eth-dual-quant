@@ -1,0 +1,129 @@
+{
+  "base_adapter_hash": "410a5b1530c6abea72dab9e82fb81299a638203da8bc103b46dbb04c655c76f6",
+  "can_short": false,
+  "candidate_id": "Diamond",
+  "causal_result_hash": "e2170bd88ce27518f09d3c96484d406cf3e6934221ed72146a0b9cf0359d8f90",
+  "container_manifest_hash": "6e8e54141ddc5f643722a336fb756245e852c7905eecdcaae8eac9654d58fb56",
+  "content_hash": "2b6e4b93f6eb8ad79d26f403225ceacd5ffacf3148031a803d94f05857838d8d",
+  "dependency_manifest_hash": "665256bb8229d02db727948fefd4d26eab027a6c4c65d86a180cf8fe45eb7f64",
+  "executable_components": {
+    "adapter_sha256": "410a5b1530c6abea72dab9e82fb81299a638203da8bc103b46dbb04c655c76f6",
+    "dependencies": {
+      "original/original_source.py": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902"
+    },
+    "original_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902"
+  },
+  "generated_utc": "2026-07-21T01:59:16Z",
+  "load_command_kind": "freqtrade_list_strategies",
+  "load_exit_code": 0,
+  "load_stdout_stderr_sha256": "962650011d8d63de79ce2d3564ca234f05d3efb40c5c9d09951cc7c10c696ef4",
+  "observed_config_override_count": 0,
+  "observed_external_parameter_file_count": 0,
+  "position_increase_capability": false,
+  "runtime_effective_settings": {
+    "can_short": false,
+    "exit_profit_only": false,
+    "ignore_roi_if_entry_signal": false,
+    "max_entry_position_adjustment": -1,
+    "minimal_roi": {
+      "0": 0.242,
+      "13": 0.044,
+      "170": 0,
+      "51": 0.02
+    },
+    "order_time_in_force": {
+      "entry": "GTC",
+      "exit": "GTC"
+    },
+    "order_types": {
+      "entry": "limit",
+      "exit": "limit",
+      "stoploss": "limit",
+      "stoploss_on_exchange": false,
+      "stoploss_on_exchange_interval": 60
+    },
+    "position_adjustment_enable": false,
+    "process_only_new_candles": true,
+    "startup_candle_count": 12,
+    "stoploss": -0.271,
+    "timeframe": "5m",
+    "trailing_only_offset_is_reached": false,
+    "trailing_stop": true,
+    "trailing_stop_positive": 0.011,
+    "trailing_stop_positive_offset": 0.054,
+    "use_exit_signal": true
+  },
+  "runtime_effective_settings_hash": "4422b27e21a93916b219d8b53739a1c62974f82b1ebdb3139741c956c2456978",
+  "runtime_identity_hash": "a88f0c591bc40d6acdaa3bb8e4fafe5b0dcda398f076f8f265a339caffb9eed1",
+  "runtime_probe_sha256": "33adcfafac013ec14f5e861eca79dfd328727d8dcfc04c44e113ec91de4e3c5d",
+  "runtime_resolved_parameters": {
+    "buy_fast_key": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        "high"
+      ],
+      "value": "high"
+    },
+    "buy_horizontal_push": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        7
+      ],
+      "value": 7
+    },
+    "buy_slow_key": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        "volume"
+      ],
+      "value": "volume"
+    },
+    "buy_vertical_push": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        0.942
+      ],
+      "value": 0.942
+    },
+    "sell_fast_key": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        "high"
+      ],
+      "value": "high"
+    },
+    "sell_horizontal_push": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        10
+      ],
+      "value": 10
+    },
+    "sell_slow_key": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        "low"
+      ],
+      "value": "low"
+    },
+    "sell_vertical_push": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        1.184
+      ],
+      "value": 1.184
+    }
+  },
+  "runtime_resolved_parameters_hash": "cb48129ff0c2286416a5d956ab60e2e5e27b90bfa8a9dc927845cc32ffd9bb3a",
+  "schema_version": "external-strategy-runtime-probe-v1",
+  "status": "causal_pass",
+  "variant_executable_hash": "5f6c1ace456ba3e6890112ec382a568cf150bb4e0977961e80fe62edbba27a30"
+}

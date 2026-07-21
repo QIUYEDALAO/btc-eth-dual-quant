@@ -1,0 +1,37 @@
+{
+  "adapter_original_equal": true,
+  "candidate_id": "Heracles",
+  "content_hash": "d1e4e76e331eccde89b17ec2ca32f9e89423e9c50b202f0fc96112b1d984b3a9",
+  "entry_signals": 76,
+  "exit_signals": 0,
+  "fixture_manifest_hash": "e122fbea4f29546bc1b35f2438fbcce99b053f4cd6756527262bd0967f6fa6e5",
+  "market_or_oos_rows": 0,
+  "normal_reverse_shuffled_equal": true,
+  "profile": "Heracles",
+  "profile_identity": {
+    "price_scale": 0.7,
+    "timeframes": {
+      "15m": {
+        "rows": 6000,
+        "sha256": "5e90ca112d5bddb2b1732f9fb74190daab3ed194fb9487f6d638a5b7d7014d33"
+      },
+      "1h": {
+        "rows": 1500,
+        "sha256": "e1b0424d6b0dae8089f2f1ec246ddc6d1cafd9b0f96ace7b0865f61efc7cb0b7"
+      },
+      "4h": {
+        "rows": 375,
+        "sha256": "21642589d3e731a55b408a4aa8db245ee5e13a7ab4deb0f90af275eb3fdc9ad7"
+      },
+      "5m": {
+        "rows": 18000,
+        "sha256": "39aa066615186671198ddb4fc2bbe9ac31868f3878fc64f18446e1319ac3b0ae"
+      }
+    },
+    "trend_per_bar": 0.0
+  },
+  "schema_version": "external-strategy-golden-fixture-v1",
+  "signal_hash": "31d14ca4bcb24cf8290f995e0fa09797f077d725d41ef4606b8badeefdfe32ef",
+  "source_is_synthetic": true,
+  "timeframe": "4h"
+}

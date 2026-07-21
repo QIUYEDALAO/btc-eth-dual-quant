@@ -1,0 +1,9 @@
+{
+  "candidate_id": "Supertrend",
+  "content_hash": "42c9d0316dcb1308046a29890ba1767349048d8fd0292efdfb4a7bda27a75685",
+  "schema_version": "external-strategy-original-identity-v1",
+  "source_commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+  "source_declaration_hash": "c2460aff932e5a97341e7076008be11200ac797b0ca25cee0b0db2b38bfab17b",
+  "source_path": "external_strategies/original/01-Supertrend/Supertrend.py",
+  "source_sha256": "d01c26757c265cc3d20f597ba25853140e521bbc3666953342a49f1fa8c997c1"
+}

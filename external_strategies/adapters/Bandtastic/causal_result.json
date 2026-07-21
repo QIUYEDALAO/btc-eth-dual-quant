@@ -1,0 +1,76 @@
+{
+  "candidate_id": "Bandtastic",
+  "content_hash": "66547f8f8408b43b7c431f9850926ef1f4936b67a5bad3699b48db97d391ec07",
+  "direct_command_exit_code": 0,
+  "direct_probe": {
+    "candidate_id": "Bandtastic",
+    "diagnostics": {},
+    "entry_signals": 1692,
+    "exit_signals": 396,
+    "failures": [],
+    "normal_signal_hash": "83129a943b11785f14f5e1b83d81ce9b0ab47b2e9f75ed2de030d09262fb7837",
+    "original_signal_hash": "83129a943b11785f14f5e1b83d81ce9b0ab47b2e9f75ed2de030d09262fb7837",
+    "prefix_checks": [
+      {
+        "actual": [
+          0,
+          0
+        ],
+        "expected": [
+          0,
+          0
+        ],
+        "row": 1049
+      },
+      {
+        "actual": [
+          1,
+          0
+        ],
+        "expected": [
+          1,
+          0
+        ],
+        "row": 3000
+      },
+      {
+        "actual": [
+          1,
+          0
+        ],
+        "expected": [
+          1,
+          0
+        ],
+        "row": 5999
+      }
+    ],
+    "reverse_signal_hash": "83129a943b11785f14f5e1b83d81ce9b0ab47b2e9f75ed2de030d09262fb7837",
+    "rows": 6000,
+    "schema_version": "external-strategy-causal-probe-v1",
+    "shuffled_signal_hash": "83129a943b11785f14f5e1b83d81ce9b0ab47b2e9f75ed2de030d09262fb7837",
+    "status": "PASS",
+    "timeframe": "15m"
+  },
+  "direct_stdout_stderr_sha256": "6c365ef2014583f3343afe574fbb7429a812ab7dd8f02e66593dab965f35e154",
+  "dry_run_bot_started": false,
+  "earliest_fill": "next_eligible_5m_open",
+  "failures": [],
+  "generated_utc": "2026-07-21T02:00:40Z",
+  "golden_fixture_hash": "7f2152d9a2fcdfd77d20480edf94988b07c40559d0d1baefda031c1d7621ac0f",
+  "informative_pairs": [],
+  "lifecycle_or_mask_crossing_allowed": false,
+  "lookahead_command_exit_code": 0,
+  "lookahead_findings": 0,
+  "lookahead_stdout_stderr_sha256": "3f8ff052147b8ddbb9582dcb27b665014f903a257648f203db055cb6f39d9e10",
+  "network_mode": "none_with_hash_bound_offline_market_fixture",
+  "oos_rows_decoded": 0,
+  "partial_candle_allowed": false,
+  "position_increase_allowed": false,
+  "recursive_command_exit_code": 0,
+  "recursive_findings": 0,
+  "recursive_stdout_stderr_sha256": "7f4b4770cc5bec8783a3b9c31c32d6a3d78df21cbe13e5e3aefd697c712eaa4d",
+  "same_bar_close_fill_allowed": false,
+  "schema_version": "external-strategy-causal-result-v1",
+  "status": "PASS"
+}

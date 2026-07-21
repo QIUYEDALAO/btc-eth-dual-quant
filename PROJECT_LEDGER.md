@@ -2867,3 +2867,12 @@ private exchange responses here.
 - Current-route Base/CostX2 DSR is mandatory and the primary ranking statistic, not an absolute hard Gate. Final DSR is recomputed once after all allowed trials close; per-trial immutable metrics exclude final DSR.
 - After ADR-0017 merges, fixed runtime/causal work and automated original/limited-modification IS are authorized subject to at least five causal PASS candidates. OOS, dry-run, API/private endpoints, paper/live, orders, execution/live and M2 remain false.
 - Local acceptance is complete: ADR-specific tests pass 7/7, the project Gate passes 9/9 with the 1,330-test regression, and the actual main-base selective Gate passes. No runtime, Freqtrade, IS or OOS command was used.
+
+## 2026-07-21 - Pinned Runtime/Causal Passed; IS Boundary Authority Blocked
+
+- ADR-0017 PR #114 passed GitHub Gate and was merged as `1e8a87682835544b23c82e4aab1d0072e274d59a`.
+- The pinned Freqtrade 2026.6 VPS identity passed under `a88f0c59...eed1`; image digest is exact, network is disabled, source is read-only, and no secrets, private endpoints or trading process were used.
+- Supertrend, Strategy001, UniversalMACD, Bandtastic, Diamond and Heracles all loaded with zero external parameter/config overrides. All six passed synthetic golden equality, deterministic order, completed-candle/next-open, lookahead and recursive checks under causal summary `473dd739...a107`.
+- IS-only materialization `628bec95...9def` verified 855 frozen archives, produced 224 files for 56 symbols, decoded 7,393,658 IS 5m rows and decoded zero OOS rows.
+- Pre-performance boundary qualification `e9844902...80fa` found 92 point-in-time active-to-inactive membership transitions and zero frozen next-boundary 5m archives. Exact membership exits cannot be priced without an unfrozen/synthetic/forward-searched/lookahead remedy, so the route stops under the authorized data-authority hard-stop condition.
+- Original IS, modified IS, selection trials, final DSR and final candidate selection were not run. Counts remain 0/0/0; OOS is false/false/0/0 and dry-run bot/API/live/M2 remain false.

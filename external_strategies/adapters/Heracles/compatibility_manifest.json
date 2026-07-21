@@ -1,0 +1,99 @@
+{
+  "base_adapter_hash": "cae381f5cd518de38e86d8cc140e63efabcc9c84e737747d922faa24ebaa2a2f",
+  "can_short": false,
+  "candidate_id": "Heracles",
+  "causal_result_hash": "f5cefa8e87a62bd60010652b93cd751f0267e1589ac83dfb06df598b3019babd",
+  "container_manifest_hash": "6e8e54141ddc5f643722a336fb756245e852c7905eecdcaae8eac9654d58fb56",
+  "content_hash": "918cf46161aa8e12908164dfcb0e3436ae9405f7a8ddf722198f38451b523415",
+  "dependency_manifest_hash": "665256bb8229d02db727948fefd4d26eab027a6c4c65d86a180cf8fe45eb7f64",
+  "executable_components": {
+    "adapter_sha256": "cae381f5cd518de38e86d8cc140e63efabcc9c84e737747d922faa24ebaa2a2f",
+    "dependencies": {
+      "original/original_source.py": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7",
+      "ta/__init__.py": "0f07098866b1643e5e63d96b22dc0d33ce6afeeb48b64a94e9fe4c11cd996f54",
+      "ta/utils.py": "88e3893d581832e3ae24f5c4b58f2a4bfb2708799cdcfc58a560d5718269e95b"
+    },
+    "original_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7"
+  },
+  "generated_utc": "2026-07-21T01:59:16Z",
+  "load_command_kind": "freqtrade_list_strategies",
+  "load_exit_code": 0,
+  "load_stdout_stderr_sha256": "27a876c0b563482f5da548594ab3968c94a93493ade44fdc2053d32b9085292f",
+  "observed_config_override_count": 0,
+  "observed_external_parameter_file_count": 0,
+  "position_increase_capability": false,
+  "runtime_effective_settings": {
+    "can_short": false,
+    "exit_profit_only": false,
+    "ignore_roi_if_entry_signal": false,
+    "max_entry_position_adjustment": -1,
+    "minimal_roi": {
+      "0": 0.598,
+      "3269": 0.115,
+      "644": 0.166,
+      "7289": 0
+    },
+    "order_time_in_force": {
+      "entry": "GTC",
+      "exit": "GTC"
+    },
+    "order_types": {
+      "entry": "limit",
+      "exit": "limit",
+      "stoploss": "limit",
+      "stoploss_on_exchange": false,
+      "stoploss_on_exchange_interval": 60
+    },
+    "position_adjustment_enable": false,
+    "process_only_new_candles": true,
+    "startup_candle_count": 40,
+    "stoploss": -0.256,
+    "timeframe": "4h",
+    "trailing_only_offset_is_reached": false,
+    "trailing_stop": false,
+    "trailing_stop_positive": null,
+    "trailing_stop_positive_offset": 0.0,
+    "use_exit_signal": true
+  },
+  "runtime_effective_settings_hash": "e4c625d2bac14d9642a1d66473a8fc25958157a9dcb33168b34371f5a4636695",
+  "runtime_identity_hash": "a88f0c591bc40d6acdaa3bb8e4fafe5b0dcda398f076f8f265a339caffb9eed1",
+  "runtime_probe_sha256": "33adcfafac013ec14f5e861eca79dfd328727d8dcfc04c44e113ec91de4e3c5d",
+  "runtime_resolved_parameters": {
+    "buy_crossed_indicator_shift": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        9
+      ],
+      "value": 9
+    },
+    "buy_div_max": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        0.75
+      ],
+      "value": 0.75
+    },
+    "buy_div_min": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        0.16
+      ],
+      "value": 0.16
+    },
+    "buy_indicator_shift": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        15
+      ],
+      "value": 15
+    }
+  },
+  "runtime_resolved_parameters_hash": "9e5a11d1f9d056a16d06611c364dbd7933e9b916b0a0a6672f6ef7856e05da69",
+  "schema_version": "external-strategy-runtime-probe-v1",
+  "status": "causal_pass",
+  "variant_executable_hash": "0803de9e0e3c80e1784b083a71827ecef73444e31950db54f3c1fb5e1c69a270"
+}

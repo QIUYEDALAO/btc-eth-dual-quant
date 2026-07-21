@@ -1,0 +1,9 @@
+{
+  "candidate_id": "Bandtastic",
+  "content_hash": "cb224b76a873e237b24ba38348c12e4436e9f76fd381c2033b7eccac7dda7d45",
+  "schema_version": "external-strategy-original-identity-v1",
+  "source_commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+  "source_declaration_hash": "5a930b4a94c9aca111fbcbf6e9caf26f66397f39c4c527f1193ee1ccec1a3892",
+  "source_path": "external_strategies/original/07-Bandtastic/Bandtastic.py",
+  "source_sha256": "15dcb60d49a3681241cd39645f0fe8e6dc247687bf878c2026f37bb1c5790b57"
+}

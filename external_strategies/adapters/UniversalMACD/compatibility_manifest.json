@@ -1,0 +1,97 @@
+{
+  "base_adapter_hash": "46cca5c1d02d35d1f8c11cf3b95137dd3f04328d1e0aaee823817604ef1b146a",
+  "can_short": false,
+  "candidate_id": "UniversalMACD",
+  "causal_result_hash": "e5ce2fd5c88d54514b205e34dfe9db73775307e2fd93a58fdf72cd68f72b750c",
+  "container_manifest_hash": "6e8e54141ddc5f643722a336fb756245e852c7905eecdcaae8eac9654d58fb56",
+  "content_hash": "96dd9322fb292e57ffa20791d60f11fd400284ac82f8d18003bdff52b3388d08",
+  "dependency_manifest_hash": "665256bb8229d02db727948fefd4d26eab027a6c4c65d86a180cf8fe45eb7f64",
+  "executable_components": {
+    "adapter_sha256": "46cca5c1d02d35d1f8c11cf3b95137dd3f04328d1e0aaee823817604ef1b146a",
+    "dependencies": {
+      "original/original_source.py": "b3a62e0d8a26024e7ab5f3613d0964e3954373bc3735c1ffd0678d84ce1b1e32"
+    },
+    "original_sha256": "b3a62e0d8a26024e7ab5f3613d0964e3954373bc3735c1ffd0678d84ce1b1e32"
+  },
+  "generated_utc": "2026-07-21T01:59:16Z",
+  "load_command_kind": "freqtrade_list_strategies",
+  "load_exit_code": 0,
+  "load_stdout_stderr_sha256": "a0d2f404878181b9ad56d5778fe9341aeb3985fdf89e47c40705dc3a8fd7b43e",
+  "observed_config_override_count": 0,
+  "observed_external_parameter_file_count": 0,
+  "position_increase_capability": false,
+  "runtime_effective_settings": {
+    "can_short": false,
+    "exit_profit_only": false,
+    "ignore_roi_if_entry_signal": false,
+    "max_entry_position_adjustment": -1,
+    "minimal_roi": {
+      "0": 0.213,
+      "164": 0,
+      "27": 0.099,
+      "60": 0.03
+    },
+    "order_time_in_force": {
+      "entry": "GTC",
+      "exit": "GTC"
+    },
+    "order_types": {
+      "entry": "limit",
+      "exit": "limit",
+      "stoploss": "limit",
+      "stoploss_on_exchange": false,
+      "stoploss_on_exchange_interval": 60
+    },
+    "position_adjustment_enable": false,
+    "process_only_new_candles": true,
+    "startup_candle_count": 30,
+    "stoploss": -0.318,
+    "timeframe": "5m",
+    "trailing_only_offset_is_reached": false,
+    "trailing_stop": false,
+    "trailing_stop_positive": null,
+    "trailing_stop_positive_offset": 0.0,
+    "use_exit_signal": true
+  },
+  "runtime_effective_settings_hash": "2b8e2d7a659d74571224c60685a37caaa23fdd25dff38d431dde1db47e7883b0",
+  "runtime_identity_hash": "a88f0c591bc40d6acdaa3bb8e4fafe5b0dcda398f076f8f265a339caffb9eed1",
+  "runtime_probe_sha256": "33adcfafac013ec14f5e861eca79dfd328727d8dcfc04c44e113ec91de4e3c5d",
+  "runtime_resolved_parameters": {
+    "buy_umacd_max": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        -0.01176
+      ],
+      "value": -0.01176
+    },
+    "buy_umacd_min": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        -0.01416
+      ],
+      "value": -0.01416
+    },
+    "sell_umacd_max": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        -0.02323
+      ],
+      "value": -0.02323
+    },
+    "sell_umacd_min": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        -0.00707
+      ],
+      "value": -0.00707
+    }
+  },
+  "runtime_resolved_parameters_hash": "e4b4ee4406e3c597eed39cc2e40cfc3d552a77e03b3df1bfc493219de0e8794d",
+  "schema_version": "external-strategy-runtime-probe-v1",
+  "status": "causal_pass",
+  "variant_executable_hash": "183bb3eda761c8cc7bfc6cf844b70a386c89cb9804068a7cebbd257026fd0cfa"
+}

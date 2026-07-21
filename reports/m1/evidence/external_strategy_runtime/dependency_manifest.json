@@ -1,0 +1,17 @@
+{
+  "content_hash": "665256bb8229d02db727948fefd4d26eab027a6c4c65d86a180cf8fe45eb7f64",
+  "dependencies": {
+    "ccxt": "4.5.61",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "platform": "Linux-7.0.0-15-generic-x86_64-with-glibc2.41",
+    "python": "3.14.6",
+    "talib": "0.6.8",
+    "technical": "1.6.0"
+  },
+  "dependency_probe_stdout_sha256": "61098f8155b74ef532519b57d8853877a5461faa1359ba896d303d789ca13fb6",
+  "generated_utc": "2026-07-21T01:59:16Z",
+  "image": "freqtradeorg/freqtrade:2026.6@sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6",
+  "schema_version": "external-strategy-dependency-manifest-v1",
+  "status": "pass"
+}

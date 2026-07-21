@@ -1,0 +1,80 @@
+{
+  "candidate_id": "Heracles",
+  "content_hash": "f5cefa8e87a62bd60010652b93cd751f0267e1589ac83dfb06df598b3019babd",
+  "direct_command_exit_code": 0,
+  "direct_probe": {
+    "candidate_id": "Heracles",
+    "diagnostics": {
+      "entry_ratio_in_range": 76,
+      "entry_ratio_max": 0.2090736016705122,
+      "entry_ratio_min": 0.010131058581521902
+    },
+    "entry_signals": 76,
+    "exit_signals": 0,
+    "failures": [],
+    "normal_signal_hash": "31d14ca4bcb24cf8290f995e0fa09797f077d725d41ef4606b8badeefdfe32ef",
+    "original_signal_hash": "31d14ca4bcb24cf8290f995e0fa09797f077d725d41ef4606b8badeefdfe32ef",
+    "prefix_checks": [
+      {
+        "actual": [
+          0,
+          0
+        ],
+        "expected": [
+          0,
+          0
+        ],
+        "row": 90
+      },
+      {
+        "actual": [
+          0,
+          0
+        ],
+        "expected": [
+          0,
+          0
+        ],
+        "row": 187
+      },
+      {
+        "actual": [
+          1,
+          0
+        ],
+        "expected": [
+          1,
+          0
+        ],
+        "row": 374
+      }
+    ],
+    "reverse_signal_hash": "31d14ca4bcb24cf8290f995e0fa09797f077d725d41ef4606b8badeefdfe32ef",
+    "rows": 375,
+    "schema_version": "external-strategy-causal-probe-v1",
+    "shuffled_signal_hash": "31d14ca4bcb24cf8290f995e0fa09797f077d725d41ef4606b8badeefdfe32ef",
+    "status": "PASS",
+    "timeframe": "4h"
+  },
+  "direct_stdout_stderr_sha256": "93a0e2f76a6d0828c297109e8ccabfce417d9235e382e158a2b32928a2bc1ae3",
+  "dry_run_bot_started": false,
+  "earliest_fill": "next_eligible_5m_open",
+  "failures": [],
+  "generated_utc": "2026-07-21T02:00:40Z",
+  "golden_fixture_hash": "d1e4e76e331eccde89b17ec2ca32f9e89423e9c50b202f0fc96112b1d984b3a9",
+  "informative_pairs": [],
+  "lifecycle_or_mask_crossing_allowed": false,
+  "lookahead_command_exit_code": 0,
+  "lookahead_findings": 0,
+  "lookahead_stdout_stderr_sha256": "9b41c870bbcabaa2bfd3b56e25faca529c588c98e664d6807aea7288dbbb30e1",
+  "network_mode": "none_with_hash_bound_offline_market_fixture",
+  "oos_rows_decoded": 0,
+  "partial_candle_allowed": false,
+  "position_increase_allowed": false,
+  "recursive_command_exit_code": 0,
+  "recursive_findings": 0,
+  "recursive_stdout_stderr_sha256": "0d056a4c3af49a6865d48fde0834c9e3dd07f359f79727112070e1503b1e7556",
+  "same_bar_close_fill_allowed": false,
+  "schema_version": "external-strategy-causal-result-v1",
+  "status": "PASS"
+}

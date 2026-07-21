@@ -1,0 +1,875 @@
+{
+  "api_live": false,
+  "boundary_transition_count": 92,
+  "causal_pass_count": 6,
+  "causal_summary_hash": "473dd739da1566c1a978984896c4645ab7a6235aa8b0754e122a7325f514a107",
+  "content_hash": "e9844902eaa7234a5476a080e937cfbf51f70913cb9ff1b903b907cad08280fa",
+  "dry_run_bot": false,
+  "failure_reason": "A position may remain open when a point-in-time member exits. The frozen source authority has no 5m archive at any of the required exit boundaries, so the exit cannot use a real exact-boundary open.",
+  "forbidden_remedies": [
+    "synthetic_or_last_price_exit",
+    "forward_search_for_later_open",
+    "unfrozen_source_archive",
+    "future_membership_lookahead_exit",
+    "current_member_backfill"
+  ],
+  "frozen_boundary_archive_count": 0,
+  "generated_utc": "2026-07-21T02:16:14Z",
+  "is_authorized": false,
+  "is_materialization": {
+    "archive_count": 855,
+    "content_hash": "628bec95afbce9fb63d6a20a0d9047b09d611d87bd645680e17069e5d2c39def",
+    "file_count": 224,
+    "market_rows_decoded": 7393658,
+    "oos_rows_decoded": 0,
+    "schema_version": "external-strategy-is-data-materialization-v1",
+    "status": "pass",
+    "symbol_count": 56
+  },
+  "is_trials_materialized": 0,
+  "m2": false,
+  "membership_exit_execution_rule": "first_exact_5m_open_at_membership_end_exclusive",
+  "membership_manifest_byte_sha256": "d3dbf7508b1cd8373834a70cf7ee307937de754643687bd9ad9928f082aea72f",
+  "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+  "minimum_causal_pass_count": 5,
+  "missing_frozen_boundary_archive_count": 92,
+  "oos_authorized": false,
+  "oos_opened": false,
+  "oos_rows_decoded": 0,
+  "oos_runs": 0,
+  "schema_version": "external-strategy-is-boundary-qualification-v1",
+  "selection_trial_count": 0,
+  "source_freeze_byte_sha256": "71ef8d900ceca6618d0557ce62db0b63814793502789bc8346ba02abc3bb96fb",
+  "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+  "status": "blocked_data_authority_missing_membership_exit_open",
+  "transitions": [
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-10",
+      "membership_end_exclusive": "2023-11-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ADAUSDT/5m/ADAUSDT-5m-2023-11.zip",
+      "symbol": "ADAUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-05",
+      "membership_end_exclusive": "2024-06-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ADAUSDT/5m/ADAUSDT-5m-2024-06.zip",
+      "symbol": "ADAUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-08",
+      "membership_end_exclusive": "2024-09-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ARBUSDT/5m/ARBUSDT-5m-2024-09.zip",
+      "symbol": "ARBUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-09",
+      "membership_end_exclusive": "2020-10-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ATOMUSDT/5m/ATOMUSDT-5m-2020-10.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-12",
+      "membership_end_exclusive": "2021-01-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ATOMUSDT/5m/ATOMUSDT-5m-2021-01.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-04",
+      "membership_end_exclusive": "2021-05-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ATOMUSDT/5m/ATOMUSDT-5m-2021-05.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-11",
+      "membership_end_exclusive": "2021-12-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ATOMUSDT/5m/ATOMUSDT-5m-2021-12.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-04",
+      "membership_end_exclusive": "2022-05-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ATOMUSDT/5m/ATOMUSDT-5m-2022-05.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-01",
+      "membership_end_exclusive": "2023-02-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ATOMUSDT/5m/ATOMUSDT-5m-2023-02.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-11",
+      "membership_end_exclusive": "2022-12-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/AVAXUSDT/5m/AVAXUSDT-5m-2022-12.zip",
+      "symbol": "AVAXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-04",
+      "membership_end_exclusive": "2023-05-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/AVAXUSDT/5m/AVAXUSDT-5m-2023-05.zip",
+      "symbol": "AVAXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-10",
+      "membership_end_exclusive": "2023-11-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/AVAXUSDT/5m/AVAXUSDT-5m-2023-11.zip",
+      "symbol": "AVAXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-11",
+      "membership_end_exclusive": "2020-12-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/BANDUSDT/5m/BANDUSDT-5m-2020-12.zip",
+      "symbol": "BANDUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-07",
+      "membership_end_exclusive": "2021-08-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/BCHUSDT/5m/BCHUSDT-5m-2021-08.zip",
+      "symbol": "BCHUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-12",
+      "membership_end_exclusive": "2024-01-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/BCHUSDT/5m/BCHUSDT-5m-2024-01.zip",
+      "symbol": "BCHUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-11",
+      "membership_end_exclusive": "2023-12-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/BLZUSDT/5m/BLZUSDT-5m-2023-12.zip",
+      "symbol": "BLZUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-03",
+      "membership_end_exclusive": "2020-04-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/BTTUSDT/5m/BTTUSDT-5m-2020-04.zip",
+      "symbol": "BTTUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-06",
+      "membership_end_exclusive": "2021-07-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/BTTUSDT/5m/BTTUSDT-5m-2021-07.zip",
+      "symbol": "BTTUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-08",
+      "membership_end_exclusive": "2023-09-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/CFXUSDT/5m/CFXUSDT-5m-2023-09.zip",
+      "symbol": "CFXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-08",
+      "membership_end_exclusive": "2021-09-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/CHZUSDT/5m/CHZUSDT-5m-2021-09.zip",
+      "symbol": "CHZUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-02",
+      "membership_end_exclusive": "2023-03-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/CHZUSDT/5m/CHZUSDT-5m-2023-03.zip",
+      "symbol": "CHZUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-07",
+      "membership_end_exclusive": "2020-08-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/DASHUSDT/5m/DASHUSDT-5m-2020-08.zip",
+      "symbol": "DASHUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-02",
+      "membership_end_exclusive": "2021-03-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/DASHUSDT/5m/DASHUSDT-5m-2021-03.zip",
+      "symbol": "DASHUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-03",
+      "membership_end_exclusive": "2022-04-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/DOGEUSDT/5m/DOGEUSDT-5m-2022-04.zip",
+      "symbol": "DOGEUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-01",
+      "membership_end_exclusive": "2023-02-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/DOTUSDT/5m/DOTUSDT-5m-2023-02.zip",
+      "symbol": "DOTUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-02",
+      "membership_end_exclusive": "2024-03-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/DOTUSDT/5m/DOTUSDT-5m-2024-03.zip",
+      "symbol": "DOTUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-05",
+      "membership_end_exclusive": "2023-06-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/DYDXUSDT/5m/DYDXUSDT-5m-2023-06.zip",
+      "symbol": "DYDXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-01",
+      "membership_end_exclusive": "2024-02-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/DYDXUSDT/5m/DYDXUSDT-5m-2024-02.zip",
+      "symbol": "DYDXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-10",
+      "membership_end_exclusive": "2021-11-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/EOSUSDT/5m/EOSUSDT-5m-2021-11.zip",
+      "symbol": "EOSUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-08",
+      "membership_end_exclusive": "2020-09-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ETCUSDT/5m/ETCUSDT-5m-2020-09.zip",
+      "symbol": "ETCUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-02",
+      "membership_end_exclusive": "2021-03-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ETCUSDT/5m/ETCUSDT-5m-2021-03.zip",
+      "symbol": "ETCUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-10",
+      "membership_end_exclusive": "2021-11-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ETCUSDT/5m/ETCUSDT-5m-2021-11.zip",
+      "symbol": "ETCUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-12",
+      "membership_end_exclusive": "2023-01-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ETCUSDT/5m/ETCUSDT-5m-2023-01.zip",
+      "symbol": "ETCUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-07",
+      "membership_end_exclusive": "2024-08-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/FETUSDT/5m/FETUSDT-5m-2024-08.zip",
+      "symbol": "FETUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-12",
+      "membership_end_exclusive": "2022-01-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/FILUSDT/5m/FILUSDT-5m-2022-01.zip",
+      "symbol": "FILUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-07",
+      "membership_end_exclusive": "2023-08-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/FILUSDT/5m/FILUSDT-5m-2023-08.zip",
+      "symbol": "FILUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-05",
+      "membership_end_exclusive": "2024-06-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/FILUSDT/5m/FILUSDT-5m-2024-06.zip",
+      "symbol": "FILUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-08",
+      "membership_end_exclusive": "2022-09-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/FTMUSDT/5m/FTMUSDT-5m-2022-09.zip",
+      "symbol": "FTMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-09",
+      "membership_end_exclusive": "2023-10-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/FTMUSDT/5m/FTMUSDT-5m-2023-10.zip",
+      "symbol": "FTMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-06",
+      "membership_end_exclusive": "2023-07-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/GALAUSDT/5m/GALAUSDT-5m-2023-07.zip",
+      "symbol": "GALAUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-07",
+      "membership_end_exclusive": "2023-08-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/INJUSDT/5m/INJUSDT-5m-2023-08.zip",
+      "symbol": "INJUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-04",
+      "membership_end_exclusive": "2024-05-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/INJUSDT/5m/INJUSDT-5m-2024-05.zip",
+      "symbol": "INJUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-01",
+      "membership_end_exclusive": "2020-02-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/IOTAUSDT/5m/IOTAUSDT-5m-2020-02.zip",
+      "symbol": "IOTAUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-12",
+      "membership_end_exclusive": "2022-01-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/LINKUSDT/5m/LINKUSDT-5m-2022-01.zip",
+      "symbol": "LINKUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-09",
+      "membership_end_exclusive": "2022-10-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/LINKUSDT/5m/LINKUSDT-5m-2022-10.zip",
+      "symbol": "LINKUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-03",
+      "membership_end_exclusive": "2023-04-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/LINKUSDT/5m/LINKUSDT-5m-2023-04.zip",
+      "symbol": "LINKUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-05",
+      "membership_end_exclusive": "2024-06-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/LINKUSDT/5m/LINKUSDT-5m-2024-06.zip",
+      "symbol": "LINKUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-09",
+      "membership_end_exclusive": "2021-10-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/LTCUSDT/5m/LTCUSDT-5m-2021-10.zip",
+      "symbol": "LTCUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-12",
+      "membership_end_exclusive": "2024-01-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/LTCUSDT/5m/LTCUSDT-5m-2024-01.zip",
+      "symbol": "LTCUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-05",
+      "membership_end_exclusive": "2022-06-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/LUNAUSDT/5m/LUNAUSDT-5m-2022-06.zip",
+      "symbol": "LUNAUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-03",
+      "membership_end_exclusive": "2022-04-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/MANAUSDT/5m/MANAUSDT-5m-2022-04.zip",
+      "symbol": "MANAUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-02",
+      "membership_end_exclusive": "2023-03-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/MASKUSDT/5m/MASKUSDT-5m-2023-03.zip",
+      "symbol": "MASKUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-08",
+      "membership_end_exclusive": "2020-09-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/MATICUSDT/5m/MATICUSDT-5m-2020-09.zip",
+      "symbol": "MATICUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-04",
+      "membership_end_exclusive": "2021-05-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/MATICUSDT/5m/MATICUSDT-5m-2021-05.zip",
+      "symbol": "MATICUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-05",
+      "membership_end_exclusive": "2022-06-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/MATICUSDT/5m/MATICUSDT-5m-2022-06.zip",
+      "symbol": "MATICUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-04",
+      "membership_end_exclusive": "2024-05-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/MATICUSDT/5m/MATICUSDT-5m-2024-05.zip",
+      "symbol": "MATICUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-11",
+      "membership_end_exclusive": "2022-12-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/NEARUSDT/5m/NEARUSDT-5m-2022-12.zip",
+      "symbol": "NEARUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-02",
+      "membership_end_exclusive": "2023-03-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/NEARUSDT/5m/NEARUSDT-5m-2023-03.zip",
+      "symbol": "NEARUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-04",
+      "membership_end_exclusive": "2020-05-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/NEOUSDT/5m/NEOUSDT-5m-2020-05.zip",
+      "symbol": "NEOUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-01",
+      "membership_end_exclusive": "2021-02-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/NEOUSDT/5m/NEOUSDT-5m-2021-02.zip",
+      "symbol": "NEOUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-03",
+      "membership_end_exclusive": "2021-04-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/NEOUSDT/5m/NEOUSDT-5m-2021-04.zip",
+      "symbol": "NEOUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-03",
+      "membership_end_exclusive": "2020-04-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ONTUSDT/5m/ONTUSDT-5m-2020-04.zip",
+      "symbol": "ONTUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-10",
+      "membership_end_exclusive": "2020-11-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ONTUSDT/5m/ONTUSDT-5m-2020-11.zip",
+      "symbol": "ONTUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-12",
+      "membership_end_exclusive": "2024-01-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/OPUSDT/5m/OPUSDT-5m-2024-01.zip",
+      "symbol": "OPUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-04",
+      "membership_end_exclusive": "2024-05-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/OPUSDT/5m/OPUSDT-5m-2024-05.zip",
+      "symbol": "OPUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-01",
+      "membership_end_exclusive": "2020-02-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/QTUMUSDT/5m/QTUMUSDT-5m-2020-02.zip",
+      "symbol": "QTUMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-08",
+      "membership_end_exclusive": "2023-09-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/RNDRUSDT/5m/RNDRUSDT-5m-2023-09.zip",
+      "symbol": "RNDRUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-07",
+      "membership_end_exclusive": "2024-08-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-08.zip",
+      "symbol": "RNDRUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-03",
+      "membership_end_exclusive": "2024-04-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/RUNEUSDT/5m/RUNEUSDT-5m-2024-04.zip",
+      "symbol": "RUNEUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-06",
+      "membership_end_exclusive": "2022-07-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/SANDUSDT/5m/SANDUSDT-5m-2022-07.zip",
+      "symbol": "SANDUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-08",
+      "membership_end_exclusive": "2022-09-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/SANDUSDT/5m/SANDUSDT-5m-2022-09.zip",
+      "symbol": "SANDUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-05",
+      "membership_end_exclusive": "2023-06-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/SHIBUSDT/5m/SHIBUSDT-5m-2023-06.zip",
+      "symbol": "SHIBUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-10",
+      "membership_end_exclusive": "2023-11-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/SHIBUSDT/5m/SHIBUSDT-5m-2023-11.zip",
+      "symbol": "SHIBUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2024-01",
+      "membership_end_exclusive": "2024-02-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/SHIBUSDT/5m/SHIBUSDT-5m-2024-02.zip",
+      "symbol": "SHIBUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-06",
+      "membership_end_exclusive": "2021-07-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/THETAUSDT/5m/THETAUSDT-5m-2021-07.zip",
+      "symbol": "THETAUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-10",
+      "membership_end_exclusive": "2021-11-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/THETAUSDT/5m/THETAUSDT-5m-2021-11.zip",
+      "symbol": "THETAUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-12",
+      "membership_end_exclusive": "2024-01-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/TRBUSDT/5m/TRBUSDT-5m-2024-01.zip",
+      "symbol": "TRBUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-08",
+      "membership_end_exclusive": "2021-09-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/TRXUSDT/5m/TRXUSDT-5m-2021-09.zip",
+      "symbol": "TRXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-02",
+      "membership_end_exclusive": "2022-03-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/TRXUSDT/5m/TRXUSDT-5m-2022-03.zip",
+      "symbol": "TRXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-09",
+      "membership_end_exclusive": "2022-10-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/TRXUSDT/5m/TRXUSDT-5m-2022-10.zip",
+      "symbol": "TRXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-02",
+      "membership_end_exclusive": "2023-03-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/TRXUSDT/5m/TRXUSDT-5m-2023-03.zip",
+      "symbol": "TRXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2023-12",
+      "membership_end_exclusive": "2024-01-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/TRXUSDT/5m/TRXUSDT-5m-2024-01.zip",
+      "symbol": "TRXUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-09",
+      "membership_end_exclusive": "2021-10-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/VETUSDT/5m/VETUSDT-5m-2021-10.zip",
+      "symbol": "VETUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-06",
+      "membership_end_exclusive": "2022-07-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/WAVESUSDT/5m/WAVESUSDT-5m-2022-07.zip",
+      "symbol": "WAVESUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-09",
+      "membership_end_exclusive": "2020-10-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/XLMUSDT/5m/XLMUSDT-5m-2020-10.zip",
+      "symbol": "XLMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-05",
+      "membership_end_exclusive": "2021-06-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/XLMUSDT/5m/XLMUSDT-5m-2021-06.zip",
+      "symbol": "XLMUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-01",
+      "membership_end_exclusive": "2021-02-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/XMRUSDT/5m/XMRUSDT-5m-2021-02.zip",
+      "symbol": "XMRUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-11",
+      "membership_end_exclusive": "2020-12-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/XTZUSDT/5m/XTZUSDT-5m-2020-12.zip",
+      "symbol": "XTZUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-02",
+      "membership_end_exclusive": "2021-03-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ZECUSDT/5m/ZECUSDT-5m-2021-03.zip",
+      "symbol": "ZECUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2020-09",
+      "membership_end_exclusive": "2020-10-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ZILUSDT/5m/ZILUSDT-5m-2020-10.zip",
+      "symbol": "ZILUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2021-03",
+      "membership_end_exclusive": "2021-04-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ZILUSDT/5m/ZILUSDT-5m-2021-04.zip",
+      "symbol": "ZILUSDT"
+    },
+    {
+      "frozen_boundary_archive": false,
+      "frozen_boundary_archive_sha256": null,
+      "frozen_boundary_archive_size": null,
+      "last_active_month": "2022-07",
+      "membership_end_exclusive": "2022-08-01T00:00:00Z",
+      "required_boundary_archive": "data/spot/monthly/klines/ZILUSDT/5m/ZILUSDT-5m-2022-08.zip",
+      "symbol": "ZILUSDT"
+    }
+  ]
+}
