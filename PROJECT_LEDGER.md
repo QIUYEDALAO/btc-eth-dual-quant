@@ -2892,3 +2892,4 @@ private exchange responses here.
 - Evidence `5746b9824ddce364cbe291ea5d7f9b499246683cb8b909a5fc9e19383150537e` fixes normal/reverse/shuffled identity, the single missing boundary and all zero-access counters.
 - No archive body was downloaded; market/result/OOS rows and IS/selection trials remain zero. No alternate symbol, REST data, time search, synthetic/last price or unfrozen source was used.
 - The boundary authority is not frozen. Original IS remains unauthorized; resumption requires a separate explicit source or holding/universe-contract decision. The materializer now also requires explicit `eligibility_status == qualified`.
+- Draft PR #116 publishes this immutable blocked evidence for exact-head review. It is not authorized for automatic merge and grants no IS authority.

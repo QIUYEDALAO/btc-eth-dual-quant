@@ -22,6 +22,10 @@ set. The boundary authority is not frozen and original IS remains prohibited.
 The only possible next research action is a separate explicit decision changing
 the official-source requirement or the holding/universe contract.
 
+Draft PR #116 contains the terminal evidence and defensive qualified-membership
+guard. It may receive exact-head review but must not be interpreted as authority
+to run IS or as permission to substitute the missing source.
+
 ## Historical Authorization: IS-Only Membership-Exit Boundary Authority
 
 PR #115 exact head `60e49ee7...b3b4b5` was independently approved with zero

@@ -38,6 +38,8 @@ completed_milestones:
     is_trials: 0
     selection_trial_count: 0
     oos_rows_decoded: 0
+    draft_pr: 116
+    draft_pr_merge_authorized: false
   - phase: PR #115 exact-head independent review and merge
     status: approve_critical_high_zero_merged_boundary_authority_design_only
     evidence: reports/expert/PR115_EXACT_HEAD_REVIEW.md
