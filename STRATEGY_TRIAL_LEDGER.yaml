@@ -2,13 +2,53 @@ version: 1
 updated_utc: "2026-07-11T09:20:00Z"
 hash_algorithm: sha256
 rules:
-  oos_opening_increments_trial_count: true
+  first_original_or_modified_is_materialization_increments_selection_trial_count: true
+  historical_opened_oos_trial_count: 3
+  selection_trial_count: 0
+  selection_trial_manifest_hashes: {}
+  dsr_trial_count_formula: "3 + selection_trial_count"
+  cost_scenarios_add_trials: false
   post_freeze_rule_change_creates_new_candidate: true
   failed_or_rejected_candidates_are_append_only: true
   oos_opening_is_single_use_per_hash: true
-  dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: EXTERNAL-SUPERTREND-ORIGINAL
+    status: source_frozen_unopened_blocked_runtime_validation
+    hypothesis: "Unmodified upstream Supertrend at the ADR-0016 pinned source and default parameters; economic validity is unknown until fixed-runtime causal validation and one unified IS trial."
+    sha256: 1a42e44e903ef62314484b44e52dbc0ef569a6510bf86fa2f1a774cb57fd33cd
+    oos_opened: false
+    notes: "No IS metric materialized; does not increment the current-route trial count. Modification package preregistered as none."
+  - id: EXTERNAL-STRATEGY001-ORIGINAL
+    status: source_frozen_unopened_blocked_runtime_validation
+    hypothesis: "Unmodified upstream Strategy001 at the ADR-0016 pinned source and default parameters; economic validity is unknown until fixed-runtime causal validation and one unified IS trial."
+    sha256: 30f919bcf80a93016ef056c4e00f774bace3cdfc9766c24fdff52428743ab11f
+    oos_opened: false
+    notes: "No IS metric materialized; does not increment the current-route trial count. Modification package preregistered as none."
+  - id: EXTERNAL-UNIVERSALMACD-ORIGINAL
+    status: source_frozen_unopened_blocked_runtime_validation
+    hypothesis: "Unmodified upstream UniversalMACD at the ADR-0016 pinned source and default parameters; economic validity is unknown until fixed-runtime causal validation and one unified IS trial."
+    sha256: 3160548d7e832ee680eaa90dbcaf2080a1d3522db9c4572eb6fab8220448b591
+    oos_opened: false
+    notes: "No IS metric materialized; does not increment the current-route trial count. Modification package preregistered as none."
+  - id: EXTERNAL-BANDTASTIC-ORIGINAL
+    status: source_frozen_unopened_blocked_runtime_validation
+    hypothesis: "Unmodified upstream Bandtastic at the ADR-0016 pinned source and default parameters; economic validity is unknown until fixed-runtime causal validation and one unified IS trial."
+    sha256: 3c37470e91bfb63001c8b6185565dda0b2b3f269cc0525e713ef48e2e8a1ce0a
+    oos_opened: false
+    notes: "No IS metric materialized; does not increment the current-route trial count. Modification package preregistered as none."
+  - id: EXTERNAL-DIAMOND-ORIGINAL
+    status: source_frozen_unopened_blocked_runtime_validation
+    hypothesis: "Unmodified upstream Diamond at the ADR-0016 pinned source and default parameters; economic validity is unknown until fixed-runtime causal validation and one unified IS trial."
+    sha256: 39f924a51ca81573d2033c55c462c5fec6efd4c9958d2d7b6778e75f09f23429
+    oos_opened: false
+    notes: "No IS metric materialized; does not increment the current-route trial count. Modification package preregistered as none."
+  - id: EXTERNAL-HERACLES-ORIGINAL
+    status: source_frozen_unopened_blocked_runtime_validation
+    hypothesis: "Unmodified upstream Heracles at the ADR-0016 pinned source and default parameters; economic validity is unknown until fixed-runtime causal validation and one unified IS trial."
+    sha256: 6286a0ee094d630dcec912c03efd46579d2f656c564863ecfee50c02c8e46e32
+    oos_opened: false
+    notes: "No IS metric materialized; does not increment the current-route trial count. Modification package preregistered as none."
   - id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
     status: failed_feasibility
     hypothesis: "U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose common-component-adjusted return distribution persistently offers less idiosyncratic right-tail lottery payoff than active peers may attract less preference-driven overpricing, so a relative premium may accrue after the next eligible open; no U-04 through U-23 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."

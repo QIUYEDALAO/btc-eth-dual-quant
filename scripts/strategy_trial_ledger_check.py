@@ -16,8 +16,8 @@ import yaml
 
 REQUIRED_RULES = {
     "candidate_queue_order_is_immutable",
-    "dsr_trial_count_equals_opened_oos_candidates",
-    "oos_opening_increments_trial_count",
+    "first_original_or_modified_is_materialization_increments_selection_trial_count",
+    "cost_scenarios_add_trials",
     "oos_opening_is_single_use_per_hash",
     "post_freeze_rule_change_creates_new_candidate",
     "failed_or_rejected_candidates_are_append_only",
@@ -50,9 +50,19 @@ def validate_ledger(path: Path) -> list[str]:
     if not isinstance(rules, dict):
         failures.append("rules must be a mapping")
     else:
-        for rule in sorted(REQUIRED_RULES):
+        for rule in sorted(REQUIRED_RULES - {"cost_scenarios_add_trials"}):
             if rules.get(rule) is not True:
                 failures.append(f"required rule must be true: {rule}")
+        if rules.get("cost_scenarios_add_trials") is not False:
+            failures.append("cost scenarios must not add trials")
+        if rules.get("historical_opened_oos_trial_count") != 3:
+            failures.append("historical opened-OOS trial count must be 3")
+        if not isinstance(rules.get("selection_trial_count"), int) or rules["selection_trial_count"] < 0:
+            failures.append("selection trial count must be a nonnegative integer")
+        if rules.get("dsr_trial_count_formula") != "3 + selection_trial_count":
+            failures.append("DSR trial formula must be 3 + selection_trial_count")
+        if "dsr_trial_count_equals_opened_oos_candidates" in rules:
+            failures.append("legacy opened-OOS DSR rule must be absent")
 
     candidates = data.get("candidates")
     if not isinstance(candidates, list) or not candidates:

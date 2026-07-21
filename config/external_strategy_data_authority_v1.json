@@ -1,0 +1,44 @@
+{
+  "schema_version": "external-strategy-data-authority-v1",
+  "status": "frozen_zero_result_pre_runtime",
+  "canonical_content_hash": "a6e613140b4daf60ac3f8da51ccbcbc9db8118f80bc575f6e10dcf124d5faa4a",
+  "authority": {
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "adr0015_policy_hash": "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04",
+    "adr0015_algorithm_hash": "8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff",
+    "manifest_identity": "19_of_19_exact",
+    "point_in_time_membership_only": true,
+    "current_membership_history_backfill": false,
+    "lifecycle_authority_required": true,
+    "invalid_interval_authority_required": true
+  },
+  "bound_manifests": [
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/source_freeze_manifest.json","byte_sha256":"71ef8d900ceca6618d0557ce62db0b63814793502789bc8346ba02abc3bb96fb","semantic_hash":"c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c","relation":"root_source_freeze"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/source_manifest.json","byte_sha256":"f15d28e22447034ef82a72db20217aafc82d3b3ed5561e7b8bdaea579de6ff18","semantic_hash":"2d7df8798445964cf68c99d7635c18c01ec5d6de264a7facdcea4adb958d405c","relation":"qualified_source"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/active_universe_manifest.json","byte_sha256":"d77aada8e1b17b5dbfab2be461a06787f718f79cbb74930c93b2548cbc690675","semantic_hash":"416941b6c8f50472c4ec6fe0edf5070982f508bc68d803e03b7f94995898379d","relation":"point_in_time_active_universe"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/membership_manifest.json","byte_sha256":"d3dbf7508b1cd8373834a70cf7ee307937de754643687bd9ad9928f082aea72f","semantic_hash":"bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5","relation":"point_in_time_membership"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/qualified_panel_manifest.json","byte_sha256":"ff8126bdab8984ccdbb9f5940d83e777f0e13ecdd8d8e452bb212b37560b9fad","semantic_hash":"712bf111b093c80a088fd9685aa9d1faacc49d875c3da7ce550a76c1798480cc","relation":"qualified_panel"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/candidate_eligibility_manifest.json","byte_sha256":"dfeb793222bed0d12f6c07e67fae51322ff162a6df75c096d09ceaa845e9faf8","semantic_hash":"2d116eb8c22419f124a6865937b3a3e5adad4c6c3fefd4f81a3f93719b389d06","relation":"eligibility"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/lifecycle_policy_manifest.json","byte_sha256":"7b39e2666fe1c6c9c62210c78bb2779255a1e65829122bbe71dbc156fc025033","semantic_hash":"9ba2dfdd310319475a719291c81eaf93930273732db169d997c9c8252a107f13","relation":"lifecycle_policy"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/lifecycle_resolution_registry.json","byte_sha256":"a19b8ef83e07faf748d93ce5b7cf6c93299ce95120e9f753a8676de33b1f3b92","semantic_hash":"adccc1f752c171096e6906057225710dd58632744d80927f53f7a1e4a587fbef","relation":"lifecycle_registry"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/invalid_interval_policy_manifest.json","byte_sha256":"93305c6ffb2670a8e5596d4fd0aa1a348fe0455f781545649c7d66cebcab7249","semantic_hash":"8c2efd2f2598d851523cfc54ad361d7ab3639558b821fcec2e04fbb4a83fabc7","relation":"invalid_interval_policy"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/invalid_interval_slot_mask_manifest.json","byte_sha256":"e51be975f31b97dc928e827fc33461b145bb2a2039a6e64969fcf7e2eaea4406","semantic_hash":"23e78e15a4484af9167b03e29bf9d499a39ff1e1c8195a056fae72b984285487","relation":"invalid_interval_mask"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/complete_day_mask.json","byte_sha256":"ff3bd509986a5b21326d1221cb651f53a482e4193d82fe30048b951f15d4fe2f","semantic_hash":"1cd6b17593aed5b29e85cb80175b9f51565939f361a9309f9ccd3975daa710be","relation":"complete_day_mask"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_requalification/requalification_run_manifest.json","byte_sha256":"b31413ea0e054ecc287b85f0945a47073e21469f29dbbd7217936443ae12d468","semantic_hash":"a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9","relation":"requalification_run"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/audit_summary.json","byte_sha256":"987d2a0ceba4afc90d6953fe2fe32e37b20f9b0e2a843b9e22fcd8a4e58fcea1","semantic_hash":"e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4","relation":"independent_audit"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/independent_manifest_hashes.json","byte_sha256":"74c1dc6555e6d696b6f2bd2c47465372b354caf3c78f46e526b890ea80d4592d","semantic_hash":"8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3","relation":"independent_manifest_set"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/production_comparison.json","byte_sha256":"be9280330567e96e11d4773a3b5a294b494650cf6febe044b5900177067f834d","semantic_hash":"39be8e9ff03541020db427d654f287fc89bc7eaab3b03fed606b117a0502755a","relation":"production_comparison"},
+    {"path":"reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/traversal_identity.json","byte_sha256":"ba6d2234fc63cac439173ad9acb36a7cf55cceb921e24e9fd63baabbd6ed0722","semantic_hash":"7bfc5442eb6738317b68da25c7e31dd721e7248b8898856ae28789577d805ba9","relation":"three_order_identity"}
+  ],
+  "time_boundaries": {"source_warmup_start":"2020-01-01T00:00:00Z","evaluated_full_start":"2020-07-01T00:00:00Z","is_start":"2020-07-01T00:00:00Z","is_end":"2024-09-11T00:00:00Z","sealed_oos_start":"2024-09-11T00:00:00Z","sealed_oos_end":"2026-07-01T00:00:00Z","full_days":2191,"is_days":1533,"sealed_oos_days":658,"actual_sealed_oos_fraction":"0.300319488818"},
+  "timeframes": {
+    "canonical_execution_detail":"5m",
+    "candidate_source":{"Supertrend":"1h","Strategy001":"5m","UniversalMACD":"5m","Bandtastic":"15m","Diamond":"5m","Heracles":"4h"},
+    "derived":{"15m":3,"1h":12,"4h":48},
+    "rules":["complete_ended_5m_only","no_partial_candle","no_forward_fill","no_lifecycle_or_mask_crossing","no_current_member_backfill","completed_signal_candle_only","earliest_fill_next_eligible_5m_open"],
+    "implementation_authority":{"path":"src/btc_eth_dual_quant/audit/completed_candle_derivation.py","byte_sha256":"5343c7431bdbbd01caf15a0cc130b0aa1713699fb060a7c67ec280b0891e0d6f","functions":["derive_completed_candles","next_eligible_five_minute_open"],"mode":"strict_complete_5m_windows_result_free"},
+    "synthetic_fixture":{"test_path":"tests/test_external_strategy_completed_candles.py","normal_reverse_shuffled_equal":true,"contains_market_or_oos_values":false,"canonical_hash":"a23c3ae7d3057d690b55ce4c083b8c1ca7b21ae6f3a53739a6414bb302b8b1b2"}
+  },
+  "result_access":{"market_values_decoded":0,"oos_values_decoded":0,"performance_results_materialized":0}
+}

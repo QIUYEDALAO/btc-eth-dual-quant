@@ -12,6 +12,22 @@ import yaml
 
 ALLOWED = {
     (
+        "ADR-0016 pre-runtime contract complete pending PR #112 exact-head review",
+        "pre_runtime_contract_complete_pending_exact_head_review_runtime_not_authorized_zero_load_zero_causal_zero_is_zero_oos_no_m2",
+    ): "EXISTING-STRATEGY-ROADMAP",
+    (
+        "External-strategy license, source, parameter and unified-IS contracts frozen; fixed runtime unavailable",
+        "external_strategy_review_revisions_complete_blocked_runtime_zero_load_zero_is_zero_oos_no_trading_no_m2",
+    ): "EXISTING-STRATEGY-ROADMAP",
+    (
+        "U-25 paused pending expert review of existing-strategy adaptation roadmap",
+        "u25_paused_expert_review_only_no_strategy_download_no_backtest_no_oos_no_trading_no_m2",
+    ): "EXISTING-STRATEGY-ROADMAP",
+    (
+        "U-25 independent outcome-blind hypothesis design authorized",
+        "u25_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-25-DECISION",
+    (
         "U-24 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized",
         "u24_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2",
     ): "U-24-PAPER-OBSERVATION",
@@ -994,7 +1010,7 @@ def validate(state: dict) -> list[str]:
         for item in open_work
         if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07", "U-07-PROTOCOL", "U-07-DATA-QUALIFICATION", "U-07-PAPER-OBSERVATION", "U-08-DECISION", "U-08", "U-08-PROTOCOL", "U-08-DATA-QUALIFICATION", "U-08-PAPER-OBSERVATION", "U-09-DECISION", "U-09", "U-09-PROTOCOL", "U-09-PROTOCOL-REVIEW", "U-09-DATA-QUALIFICATION", "U-09-PAPER-OBSERVATION", "U-10-DECISION", "U-10", "U-10-PROTOCOL", "U-10-PROTOCOL-REVIEW", "U-10-DATA-QUALIFICATION", "U-10-PAPER-OBSERVATION", "U-11-DECISION", "U-11", "U-11-PROTOCOL", "U-11-PROTOCOL-REVIEW", "U-11-DATA-QUALIFICATION", "U-11-PAPER-OBSERVATION", "U-12-DECISION", "U-12", "U-12-PROTOCOL", "U-12-DATA-QUALIFICATION", "U-12-PAPER-OBSERVATION", "U-13-DECISION", "U-13", "U-13-PROTOCOL", "U-13-DATA-QUALIFICATION", "U-13-PAPER-OBSERVATION", "U-14-DECISION", "U-14", "U-14-PROTOCOL"}
     ]
-    active.extend(item for item in open_work if item.get("id") in {"U-14-DATA-QUALIFICATION", "U-14-PAPER-OBSERVATION", "U-15-DECISION", "U-15", "U-15-PROTOCOL", "U-15-PROTOCOL-REVIEW", "U-15-DATA-QUALIFICATION", "U-16", "U-16-PROTOCOL", "U-16-PROTOCOL-REVIEW", "U-16-DATA-QUALIFICATION", "U-16-PAPER-OBSERVATION", "U-17", "U-17-PROTOCOL", "U-17-PROTOCOL-REVIEW", "U-17-DATA-QUALIFICATION", "U-18", "U-18-PROTOCOL", "U-18-PROTOCOL-REVIEW", "U-18-DATA-QUALIFICATION", "U-18-PAPER-OBSERVATION", "U-19", "U-19-PROTOCOL", "U-19-PROTOCOL-REVIEW", "U-19-DATA-QUALIFICATION", "U-19-PAPER-OBSERVATION", "U-20", "U-20-PROTOCOL", "U-20-PROTOCOL-REVIEW", "U-20-DATA-QUALIFICATION", "U-20-PAPER-OBSERVATION", "U-21", "U-21-PROTOCOL", "U-21-PROTOCOL-REVIEW", "U-21-DATA-QUALIFICATION", "U-22", "U-22-PROTOCOL", "U-22-PROTOCOL-REVIEW", "U-22-DATA-QUALIFICATION", "U-22-PAPER-OBSERVATION", "U-23", "U-23-PROTOCOL", "U-23-PROTOCOL-REVIEW", "U-23-DATA-QUALIFICATION", "U-23-PAPER-OBSERVATION", "U-24", "U-24-PROTOCOL", "U-24-PROTOCOL-REVIEW", "U-24-DATA-QUALIFICATION", "U-24-PAPER-OBSERVATION"})
+    active.extend(item for item in open_work if item.get("id") in {"U-14-DATA-QUALIFICATION", "U-14-PAPER-OBSERVATION", "U-15-DECISION", "U-15", "U-15-PROTOCOL", "U-15-PROTOCOL-REVIEW", "U-15-DATA-QUALIFICATION", "U-16", "U-16-PROTOCOL", "U-16-PROTOCOL-REVIEW", "U-16-DATA-QUALIFICATION", "U-16-PAPER-OBSERVATION", "U-17", "U-17-PROTOCOL", "U-17-PROTOCOL-REVIEW", "U-17-DATA-QUALIFICATION", "U-18", "U-18-PROTOCOL", "U-18-PROTOCOL-REVIEW", "U-18-DATA-QUALIFICATION", "U-18-PAPER-OBSERVATION", "U-19", "U-19-PROTOCOL", "U-19-PROTOCOL-REVIEW", "U-19-DATA-QUALIFICATION", "U-19-PAPER-OBSERVATION", "U-20", "U-20-PROTOCOL", "U-20-PROTOCOL-REVIEW", "U-20-DATA-QUALIFICATION", "U-20-PAPER-OBSERVATION", "U-21", "U-21-PROTOCOL", "U-21-PROTOCOL-REVIEW", "U-21-DATA-QUALIFICATION", "U-22", "U-22-PROTOCOL", "U-22-PROTOCOL-REVIEW", "U-22-DATA-QUALIFICATION", "U-22-PAPER-OBSERVATION", "U-23", "U-23-PROTOCOL", "U-23-PROTOCOL-REVIEW", "U-23-DATA-QUALIFICATION", "U-23-PAPER-OBSERVATION", "U-24", "U-24-PROTOCOL", "U-24-PROTOCOL-REVIEW", "U-24-DATA-QUALIFICATION", "U-24-PAPER-OBSERVATION", "U-25-DECISION", "EXISTING-STRATEGY-ROADMAP"})
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
         merged_prs = {item.get("number") for item in state.get("latest_merged_prs", [])}

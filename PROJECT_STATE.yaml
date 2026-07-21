@@ -1,12 +1,81 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-19T00:00:00Z"
-current_phase: U-24 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized
-current_status: u24_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2
+last_updated_utc: "2026-07-21T00:00:00Z"
+current_phase: "ADR-0016 pre-runtime contract complete pending PR #112 exact-head review"
+current_status: pre_runtime_contract_complete_pending_exact_head_review_runtime_not_authorized_zero_load_zero_causal_zero_is_zero_oos_no_m2
+context_sync_policy:
+  update_on_every_user_instruction: true
+  required_files:
+    - PROJECT_STATE.yaml
+    - PROJECT_LEDGER.md
+    - NEXT_ACTION.md
+    - AGENTS.md
+    - PROJECT_EXECUTION_CHECKLIST.md
+  reports_index_when_reports_change: true
+  context_only_pull_request_required: false
+  context_only_ci_required: false
+  context_only_commit_skip_ci: true
+  authority_expansion: false
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: ADR-0016 external-strategy source inventory and static screen
+    status: pre_runtime_contract_complete_pending_exact_head_review
+    evidence: reports/m1/U25_SUPERSESSION_AND_EXTERNAL_STRATEGY_ROUTE.md
+    machine_evidence: reports/m1/evidence/external_strategy_source_screen_v1.json
+    screen_content_hash: ca7d949e8383bf634341ad3521e768bad785a433182b4785beccd0d1f9d25858
+    freeze_content_hash: 50a732cc9119cfab3f12d5658b17e62a20f66916fd8c73f0ee902c0376cdc2ac
+    unified_is_protocol_content_hash: ebac92aaf77498db5c9918d83866c9b63dc0ba58878bd7c272c043fe3c8c3693
+    data_authority_content_hash: a6e613140b4daf60ac3f8da51ccbcbc9db8118f80bc575f6e10dcf124d5faa4a
+    benchmark_content_hash: 6ef39c1dc73caf553b5907e0983214ccf68ebc980f8b20819903ffa35143e653
+    dsr_reference_content_hash: ca2009f5af39b40b30f8785102086c3ef938b16833c581a638224a44cf2e0b88
+    completed_candle_implementation_byte_hash: 5343c7431bdbbd01caf15a0cc130b0aa1713699fb060a7c67ec280b0891e0d6f
+    evaluated_full_days: 2191
+    is_days: 1533
+    sealed_oos_days: 658
+    pre_runtime_root_freeze_byte_hash: aafbf0628109668b9d8c1ba193c54d8443c04e660cd105c899d66e6f1a172bc8
+    redistributed_source_count: 19
+    unverified_not_redistributed_count: 1
+    branch: codex/u25-design-authorization
+    u25_status: superseded_unexecuted_by_existing_strategy_route
+    inventory_count: 20
+    frozen_candidate_count: 6
+    freqtrade_loads: 0
+    causal_validations: 0
+    selection_trial_count: 0
+    is_trials_materialized: 0
+    oos_authorized: false
+    oos_opened: false
+    oos_runs: 0
+    oos_rows_decoded: 0
+    trading_authorized: false
+    m2_authorized: false
+  - phase: Existing-strategy adaptation roadmap for expert review
+    status: proposal_for_expert_review_project_paused
+    evidence: reports/m1/EXISTING_STRATEGY_ADAPTATION_ROADMAP_FOR_EXPERT_REVIEW.md
+    branch: codex/u25-design-authorization
+    u25_execution_paused: true
+    strategy_download_authorized: false
+    strategy_adaptation_authorized: false
+    backtesting_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-25 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U25_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u25_design_authorization_v1.json
+    branch: codex/u25-design-authorization
+    decision_content_hash: 577bd189120bb5dc76a79141cc1213b541e19487516bb8c0b7c65a3477606771
+    prior_candidate: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
+    prior_run_content_hash: 131266a00f2b3742dd3bb2963bc5184ba55ae5aef22b97cfb0f26d2d02c697dd
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - phase: U-24 unique sealed-IS lottery-demand-avoidance Paper observation
     status: failed_feasibility
     evidence: reports/m1/U24_CROSS_SECTIONAL_PAPER_OBSERVATION.md
@@ -2700,6 +2769,30 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: EXISTING-STRATEGY-ROADMAP
+    phase: ADR-0016 pre-runtime contract exact-head review
+    status: pre_runtime_contract_complete_pending_exact_head_review
+    report: reports/m1/U25_SUPERSESSION_AND_EXTERNAL_STRATEGY_ROUTE.md
+    u25_continuation_authorized: false
+    strategy_download_authorized: true
+    strategy_adaptation_authorized: false
+    backtesting_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-25-DECISION
+    phase: separate independent candidate authorization
+    status: completed_authorize_design_only
+    decision_content_hash: 577bd189120bb5dc76a79141cc1213b541e19487516bb8c0b7c65a3477606771
+    maximum_hypotheses: 1
+    u25_hypothesis_design_authorized: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: U-24-PAPER-OBSERVATION
     phase: unique sealed-IS lottery-demand-avoidance Paper observation
     status: completed_failed_feasibility
@@ -3120,6 +3213,11 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
+  - "A separate exact-head independent review of PR #112 pre-runtime contracts is the only next route stage."
+  - "Result-free diagnostic inspection of frozen contract hashes and synthetic fixtures is allowed; runtime load and causal validation are not authorized."
+  - "U-25 and automatic U-26+ from-scratch design remain superseded; source order, hashes, candidate freeze and parameters may not change."
+  - "IS execution remains blocked until at least five frozen candidates pass all compatibility and causal checks in the pinned runtime."
+  - "U-04 through U-24 outcomes, signs, Gates, concentrations, censor patterns, defects and failures may not select U-25; U-24 inversion or repair is prohibited."
   - "U-24 is permanently closed after six frozen Paper Gates failed; no tuning, inversion, second observation, review, fixed rules, strategy, backtest or OOS step is authorized."
   - "Continuing the research objective requires a separate U-25 independent-candidate design authorization that must not use U-24 outcomes to select or invert the next mechanism."
   - "Exactly one U-24 sealed-IS Paper observation may execute the frozen protocol over IS only in normal, reverse and deterministic-shuffled order."
@@ -3190,6 +3288,18 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U25_SUPERSESSION_AND_EXTERNAL_STRATEGY_ROUTE.md
+    phase: ADR-0016 external-strategy route
+    status: pre_runtime_contract_complete_pending_exact_head_review
+    status_marker: '- Status: `pre_runtime_contract_complete_pending_exact_head_review`'
+  - path: reports/m1/EXISTING_STRATEGY_ADAPTATION_ROADMAP_FOR_EXPERT_REVIEW.md
+    phase: Existing-strategy adaptation roadmap for expert review
+    status: proposal_for_expert_review_project_paused
+    status_marker: '- 状态：`proposal_for_expert_review_project_paused`'
+  - path: reports/m0/U25_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-25 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
   - path: reports/m1/U24_CROSS_SECTIONAL_PAPER_OBSERVATION.md
     phase: U-24 unique sealed-IS Paper observation
     status: failed_feasibility

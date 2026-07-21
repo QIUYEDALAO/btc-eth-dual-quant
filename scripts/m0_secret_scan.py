@@ -127,10 +127,14 @@ def scan_file(path: str) -> list[tuple[int, str]]:
             value = match.group("value")
             if len(value) >= 16 and not is_placeholder(value):
                 findings.append((line_no, f"hardcoded_secret_assignment:{match.group('name')}"))
-        for match in LONG_TOKEN_RE.finditer(line):
-            value = match.group(1)
-            if looks_like_high_entropy_secret(value):
-                findings.append((line_no, "high_entropy_32_plus_token"))
+        # Read-only upstream strategies contain public donation addresses.
+        # Continue checking key assignments/private keys/token prefixes, but
+        # do not classify public address-like entropy as a repository secret.
+        if not path.startswith("external_strategies/original/"):
+            for match in LONG_TOKEN_RE.finditer(line):
+                value = match.group(1)
+                if looks_like_high_entropy_secret(value):
+                    findings.append((line_no, "high_entropy_32_plus_token"))
     return findings
 
 

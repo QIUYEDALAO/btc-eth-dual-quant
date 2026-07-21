@@ -1,5 +1,13 @@
 # Project Ledger
 
+## 2026-07-20 — PR #112/#113 review revisions
+
+- PR #113 replay now copies each hash-bound source into an independent temporary read-only snapshot and verifies root/snapshot hashes plus clean historical worktrees before and after every one of 21 stages.
+- PR #112 is squashed above the archive base so unverified ElliotV5_SMA source is absent from all route commits; its metadata/hash remains with `unverified_not_redistributed`.
+- All 19 redistributed sources have separate repository/file license evidence; Bandtastic remains MIT at file level.
+- Fail-closed checker uses explicit failures under normal and `python -O`, compares local files to pinned archive members, and binds screen/freeze/protocol/OOS hashes.
+- Unified IS protocol `809c3932...d7a851` and trial formula `3 + selection_trial_count` are frozen with zero loads, causal validations, IS trials and OOS rows.
+
 This ledger is append-only. Add new records at the bottom. Do not store API keys,
 server private keys, account data, raw payloads, balances, income amounts, or
 private exchange responses here.
@@ -2785,3 +2793,67 @@ private exchange responses here.
 - Sample: 78 complete episodes, projected 107 full and 29 sealed-OOS episodes, 20 symbols, 52 months and four qualifying years; three sample/projection Gates fail.
 - Economics: median 24h relative lottery-demand-avoidance premium `+0.3452%`, absolute displacement `-0.1052%`, and positive fraction `57.69%`; all three frozen economic Gates fail.
 - Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-24 is permanently closed.
+
+## 2026-07-19 - U-25 Independent Design Authorized
+
+- Decision: `577bd189120bb5dc76a79141cc1213b541e19487516bb8c0b7c65a3477606771`; exactly one economically independent, outcome-blind U-25 hypothesis design.
+- Binding: U-24 remains permanently closed under run `131266a0...697dd`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-24 outcomes, signs, Gates, concentrations, censor patterns, defects and failures may not select U-25. U-24 inversion, repair, relabeling or repackaging is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false. A synthetic exact-core feasibility pass is required before protocol freeze.
+
+## 2026-07-20 - Project Paused for Existing-Strategy Roadmap Expert Review
+
+- Report: `reports/m1/EXISTING_STRATEGY_ADAPTATION_ROADMAP_FOR_EXPERT_REVIEW.md` proposes replacing continued U-25/U-26 invention with source-pinned public-strategy screening, Freqtrade compatibility ports, uniform IS validation and at most one final OOS candidate.
+- Status: `proposal_for_expert_review_project_paused`; U-25 continuation is suspended.
+- Review needed: candidate count, spot/DCA exclusions, source download scope, IS-result authority, fixed numerical Gates, benchmark and multiple-comparison treatment.
+- Guardrails: no strategy download/adaptation/backtest, OOS, dry-run, API/trading, `execution/live` or M2 before reviewed authorization.
+
+## 2026-07-20 - ADR-0016 Adopted; U-25 Superseded; Runtime Hard Block
+
+- U-25: original decision `577bd189...06771` remains immutable and is append-only superseded as `superseded_unexecuted_by_existing_strategy_route`; automatic U-26+ invention is closed.
+- History/CI: U-04 through U-24 are isolated in a stacked archive with eight exact-head reachability anchors and exact-stage validator replay; final-head safety Gates remain mandatory.
+- Sources: all 20 fixed entries were acquired and text/AST-scanned at pinned commits. Revised screen evidence is `5fbbf66e...fec060`; 19 source files are redistributed and Elliot is metadata-only.
+- Frozen set: Supertrend, Strategy001, UniversalMACD, Bandtastic, Diamond and Heracles; revised freeze `86c5f091...0042e`. Freqtrade load, causal, IS and OOS result rows are zero.
+- Rejections: six nateemma entries require dynamic path mutation and a model-framework dependency closure; NFI uses forbidden future/index, position-adjustment and short/leverage constructs; TheoBrigitte lacks a verified license.
+- Blocker: no local Docker binary/socket and no `VPS_HOST`; fixed Freqtrade 2026.6 causal/runtime validation cannot run. No strategy load, compatibility PASS, IS trial, selection or audit is claimed.
+- Isolation: historical opened-OOS trials remain 3; current-route IS trials 0; OOS authorized/opened/runs/decoded rows are false/false/0/0. Trading and M2 remain prohibited.
+
+## 2026-07-20 - ADR-0016 Pre-Runtime Contract Root Frozen
+
+- Root: `config/adr0016_pre_runtime_contract_freeze_v1.json` binds the ADR and every route contract; the checker independently hard-codes its byte identity.
+- Data/benchmark: audited V4 data authority `1186806c...456809` and prior-only active-universe benchmark `7af3b138...41aabf` are frozen with zero OOS/result rows and synthetic-only benchmark tests.
+- Protocol: unified IS `b75e9fd6...f1b32` fixes portfolio, execution, costs, independent Gates and expert selection order. Trial accounting is manifest-derived and remains zero.
+- Parameters: required external files/overrides are zero; observed values and all six runtime effective/resolved hashes remain null.
+- Stop: PR #112 exact-head review/merge, VPS runtime identity, runtime parameter freeze, causal checks and at least five causal passes are all outstanding. Runtime, IS, OOS and trading remain unauthorized.
+
+## 2026-07-21 - ADR-0016 Unified Validation Defects Corrected
+
+- Benchmark: risk matching now uses prior 90-day candidate returns and an independently generated fixed-50%-gross shadow benchmark; the risk-matched curve never supplies its own denominator history and every Monday gross is traceable.
+- Daily MTM: supports at most five concurrent different pairs, rejects same-pair overlap and a sixth position, handles arbitrary close order, same-day closes, costs and input-order determinism while retaining the one-position regression.
+- Calendar/data: source warmup begins 2020-01-01; evaluated full/IS/OOS are fixed result-blind at 2,191/1,533/658 days with actual OOS fraction 0.300319488818. Strict synthetic 5m derivation permits only exact 3/12/48-row 15m/1h/4h windows and strict next eligible open.
+- Trial/DSR: manifests bind candidate/source/adapter/runtime/protocol/data/benchmark/DSR identities and per-result path/kind/scenario/byte/semantic hashes; traversal, file reuse, failed-original rescue and four-cost drift fail closed. DSR freezes separate M1A/M1B/M1C Base and CostX2 sequences under `891fab7d...36a4ca`.
+- Root: updated pre-runtime freeze is `2a500ad3536fe214493fb3664f418ac5c05657a6d045b9b337e05de31119537f`; screen and all six sources/order remain unchanged. Loads, causal validations, IS/selection trials and OOS rows remain zero; runtime/OOS/trading/M2 stay unauthorized.
+- Validation: compile, 1,312-test full regression, project Gate 9/9, route validator 17/17, optimize-mode bypass protection, trial accounting, secret/no-trading/`execution/live`, diff checks and U-04–U-24 archive replay 21/21 all pass without Docker, Freqtrade, IS or OOS execution.
+
+## 2026-07-21 - ADR-0016 Trial/DSR, Lifecycle Exit and Equity-Calendar Revision
+
+- Trial results now require exact common envelopes plus metrics/equity/trades schemas; at most one original and one modified manifest per candidate, at most three modified candidates, passing-original and unique preregistered-package rules all fail closed.
+- Base/CostX2 DSR Sharpes are derived only from hash-bound metrics files in `(first_materialized_utc, trial_id)` order. StressA/B are excluded. Historical M1A/M1B/M1C inputs are explicitly heterogeneous and deliberately conservative, with expected maxima 3.146768898019/3.001365569591.
+- Benchmark exits an ineligible holding once at the current open before Monday rebalance, requires close only for holdings remaining after open transactions, and is order deterministic. Equity labels are half-open from anchor 2020-06-30 through final return 2026-06-30, with exact 2,191/1,533/658 counts.
+- New root freeze is `a9826c8d5d6f24fe51591ef878cf7af9ac77cc4614db598281a1ab1f3c952259`; candidate/protocol/benchmark/DSR canonical hashes are `12ffd04b...8867d`, `a588eb87...4cf2f`, `6ef39c1d...3e653`, and `b9dbdb1a...0fa71`. Six candidates and source order are unchanged; runtime, IS, OOS and trading counters remain zero.
+- Validation passed: compile, 1,318 tests plus 413 subtests, project 9/9, route 20/20 including optimize mode and trial negatives, archive replay 21/21, actual stacked-base selective Gate, secret/no-trading/`execution/live`, and diff checks. No Docker, Freqtrade, runtime, IS or OOS command ran.
+
+## 2026-07-21 - Mandatory GitHub Context Synchronization Rule
+
+- Every new user instruction must update the GitHub-backed project context before handoff: state, append-only ledger, next action, AGENTS and execution checklist; the report index changes only when report inventory changes.
+- Context-only synchronization does not require a new PR or CI run and uses a skip-CI commit on the active GitHub branch.
+- This workflow rule grants no strategy, runtime, data, IS/OOS, dry-run, API/live, order-placement or M2 authority.
+
+## 2026-07-21 - ADR-0016 Result Reconciliation and Variant-State Freeze
+
+- Result authority: `net_return`, daily-MTM Sharpe, PSR and MaxDD are independently recomputed from the exact hash-bound equity curve; completed-trade count is recomputed from the exact trades file. Declared metrics cannot override either source.
+- DSR: Base and CostX2 selection Sharpes come from recomputed equity results in `(first_materialized_utc, trial_id)` order, and each trial DSR is independently recomputed against the complete historical-plus-selection sequence. StressA/B remain excluded.
+- State machine: unmaterialized originals cannot pass or rescue a modified variant; modified variants require a passing materialized original, a later valid UTC timestamp and an exact one-to-one preregistered package whose before/after executable identities match.
+- Isolation: evaluated trades are constrained to `[2020-07-01, 2024-09-11)` and equity to the frozen half-open IS calendar. Warmup trades, OOS trades, boundary-crossing positions and OOS equity rows fail closed.
+- Freeze: root `aafbf0628109668b9d8c1ba193c54d8443c04e660cd105c899d66e6f1a172bc8`; screen `ca7d949e...25858`; candidate freeze `50a732cc...dc2ac`; protocol `ebac92aa...c3693`; DSR `ca2009f5...e0b88`. Six candidates/source order are unchanged and every runtime/result/OOS/trading counter remains zero.
+- Local verification: compile, 1,323 tests plus 425 subtests, project Gate 9/9, route 25/25, archive replay 21/21 and the exact stacked-base selective Gate all pass.

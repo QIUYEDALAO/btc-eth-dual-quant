@@ -26,7 +26,29 @@ After any task, the agent must update:
 - `reports/INDEX.md` if reports changed
 - `PROJECT_EXECUTION_CHECKLIST.md`
 
+## Mandatory GitHub Context Sync
+
+- Every new user instruction must be reflected in the repository context before
+  the task is handed back, including instructions that only change workflow or
+  operating rules.
+- The required context set is `PROJECT_STATE.yaml`, `PROJECT_LEDGER.md`,
+  `NEXT_ACTION.md`, `AGENTS.md`, and `PROJECT_EXECUTION_CHECKLIST.md`;
+  `reports/INDEX.md` is updated whenever report inventory changes.
+- Context-only synchronization does not require a pull request or CI run. Use a
+  commit marked to skip CI and push it to the active GitHub branch unless the
+  user explicitly requests a different publication target.
+- Context synchronization never expands runtime, data, OOS, trading, API, live,
+  or M2 authority.
+
 ## Current Stage
+
+- ADR-0016 pre-runtime contracts are complete pending PR #112 exact-head review. Root freeze `aafbf0628109668b9d8c1ba193c54d8443c04e660cd105c899d66e6f1a172bc8` anchors screen `ca7d949e...25858`, candidate freeze `50a732cc...dc2ac`, unified protocol `ebac92aa...c3693`, data authority `a6e61314...faa4a`, benchmark `6ef39c1d...3e653` and DSR reference `ca2009f5...e0b88`. The fixed half-open calendar is 2,191/1,533/658 full/IS/OOS returns. Trial metrics and Base/CostX2 DSR inputs must be independently recomputed from hash-bound equity/trade results; modified variants require a passing materialized original plus exact package/executable identity. Lifecycle exits occur at open. Six sources remain unchanged. Loads, causal validations, IS/selection trials and OOS rows are zero.
+
+- Runtime is not authorized. Blockers are PR #112 exact-head review/merge, unverified VPS runtime identity, null runtime effective/resolved parameter hashes, no causal checks and fewer than five causal PASS candidates. Required external parameter/config counts are zero; observed values remain null. OOS, dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 remain false.
+
+- U-25 and automatic U-26+ invention remain superseded append-only. Only review of the frozen pre-runtime route is allowed now; strategy import/load, runtime causal work, performance results, OOS, dry-run, API/trading, execution/live and M2 remain unauthorized.
+
+- Separate decision `577bd189120bb5dc76a79141cc1213b541e19487516bb8c0b7c65a3477606771` authorizes U-25 only for one economically independent, outcome-blind cross-sectional hypothesis design. U-24 remains closed; its outcomes may not select, invert or repair U-25. Public data, parameters, events, returns, strategy/backtesting, OOS, API/trading, execution/live and M2 remain unauthorized.
 
 - U-24's unique sealed-IS Paper observation is deterministically `failed_feasibility` under run `131266a00f2b3742dd3bb2963bc5184ba55ae5aef22b97cfb0f26d2d02c697dd`: 78 complete episodes, projections 107/29, median 24h relative premium +0.3452%, absolute displacement -0.1052%, and positive fraction 57.69%; six frozen Gates fail. U-24 is closed with OOS sealed, no formal return and no second run. Only a separate U-25 independent-design authorization may follow.
 

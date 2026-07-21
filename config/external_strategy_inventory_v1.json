@@ -1,0 +1,41 @@
+{
+  "schema_version": "external-strategy-inventory-v1",
+  "route": "ADR-0016-existing-strategy-adaptation",
+  "selection_rule": "scan_all_in_fixed_order_then_freeze_first_six_pass_or_five_if_exactly_five_pass",
+  "repositories": {
+    "official": {"repository": "freqtrade/freqtrade-strategies", "commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4", "repo_license": "GPL-3.0-only", "license_path": "LICENSE", "archive_path": "external_strategies/upstream_archives/official.tar.gz"},
+    "nate": {"repository": "nateemma/strategies", "commit": "a8bff4cce2d4e4b02904c0764f05188ee37b60ae", "repo_license": "GPL-3.0-only", "license_path": "LICENSE", "archive_path": "external_strategies/upstream_archives/nate.tar.gz"},
+    "nfi": {"repository": "iterativv/NostalgiaForInfinity", "commit": "5e168431991e05a889514eb1e16fdbebc6a09811", "repo_license": "GPL-3.0-only", "license_path": "LICENSE", "archive_path": "external_strategies/upstream_archives/nfi.tar.gz"},
+    "theo": {"repository": "TheoBrigitte/freqtrade", "commit": "b9feaaa2f845aed5612b3c7726a0590ee233c846", "repo_license": "UNVERIFIED", "license_path": null, "archive_path": null}
+  },
+  "candidates": [
+    {"order": 1, "id": "Supertrend", "repo": "official", "source_path": "user_data/strategies/Supertrend.py"},
+    {"order": 2, "id": "BBRevert", "repo": "nate", "source_path": "SimpleStrategies/BBRevert.py"},
+    {"order": 3, "id": "Strategy001", "repo": "official", "source_path": "user_data/strategies/Strategy001.py"},
+    {"order": 4, "id": "DCBreakout", "repo": "nate", "source_path": "SimpleStrategies/DCBreakout.py"},
+    {"order": 5, "id": "UniversalMACD", "repo": "official", "source_path": "user_data/strategies/UniversalMACD.py"},
+    {"order": 6, "id": "EMACross", "repo": "nate", "source_path": "SimpleStrategies/EMACross.py"},
+    {"order": 7, "id": "Bandtastic", "repo": "official", "source_path": "user_data/strategies/Bandtastic.py"},
+    {"order": 8, "id": "DCRevert", "repo": "nate", "source_path": "SimpleStrategies/DCRevert.py"},
+    {"order": 9, "id": "Diamond", "repo": "official", "source_path": "user_data/strategies/Diamond.py"},
+    {"order": 10, "id": "BBBreakout", "repo": "nate", "source_path": "SimpleStrategies/BBBreakout.py"},
+    {"order": 11, "id": "Heracles", "repo": "official", "source_path": "user_data/strategies/Heracles.py"},
+    {"order": 12, "id": "SMACross", "repo": "nate", "source_path": "SimpleStrategies/SMACross.py"},
+    {"order": 13, "id": "MultiMa", "repo": "official", "source_path": "user_data/strategies/MultiMa.py"},
+    {"order": 14, "id": "PowerTower", "repo": "official", "source_path": "user_data/strategies/PowerTower.py"},
+    {"order": 15, "id": "Strategy002", "repo": "official", "source_path": "user_data/strategies/Strategy002.py"},
+    {"order": 16, "id": "Strategy003", "repo": "official", "source_path": "user_data/strategies/Strategy003.py"},
+    {"order": 17, "id": "Strategy004", "repo": "official", "source_path": "user_data/strategies/Strategy004.py"},
+    {"order": 18, "id": "Strategy005", "repo": "official", "source_path": "user_data/strategies/Strategy005.py"},
+    {"order": 19, "id": "NostalgiaForInfinityX7", "repo": "nfi", "source_path": "NostalgiaForInfinityX7.py"},
+    {"order": 20, "id": "ElliotV5_SMA", "repo": "theo", "source_path": "strategies/ElliotV5_SMA/ElliotV5_SMA.py", "license_status": "unverified_not_redistributed", "source_materialized": false}
+  ],
+  "runtime_identity": {
+    "freqtrade_version": "2026.6",
+    "image_digest": "sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6"
+  },
+  "calendar_authority": {
+    "path": "config/external_strategy_unified_is_protocol_v1.json",
+    "content_hash": "ebac92aaf77498db5c9918d83866c9b63dc0ba58878bd7c272c043fe3c8c3693"
+  }
+}

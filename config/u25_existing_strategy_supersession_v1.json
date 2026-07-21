@@ -1,0 +1,19 @@
+{
+  "schema_version": "u25-supersession-v1",
+  "superseded_authorization": "577bd189120bb5dc76a79141cc1213b541e19487516bb8c0b7c65a3477606771",
+  "status": "superseded_unexecuted_by_existing_strategy_route",
+  "append_only": true,
+  "original_record_immutable": "config/u25_design_authorization_v1.json",
+  "permissions": {
+    "u25_design": false,
+    "u26_plus_from_scratch_design": false,
+    "external_source_inventory": true,
+    "static_safety_screen": true,
+    "fixture_only_adapter": true,
+    "is_run": false,
+    "oos": false,
+    "dry_run": false,
+    "api_or_live": false,
+    "m2": false
+  }
+}

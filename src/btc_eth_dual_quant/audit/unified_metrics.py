@@ -23,6 +23,23 @@ class EquityPoint:
 
 
 @dataclass(frozen=True)
+class WeeklyGrossTrace:
+    rebalance_day: date
+    gross_exposure: float
+    candidate_volatility: float | None
+    shadow_benchmark_volatility: float | None
+    history_start: date | None
+    history_end: date | None
+
+
+@dataclass(frozen=True)
+class ActiveUniverseBenchmarkAudit:
+    equity: tuple[EquityPoint, ...]
+    shadow_equity: tuple[EquityPoint, ...]
+    weekly_gross_trace: tuple[WeeklyGrossTrace, ...]
+
+
+@dataclass(frozen=True)
 class UnifiedMetrics:
     observations: int
     total_return: float
@@ -238,34 +255,58 @@ def build_daily_mtm_equity(
 ) -> list[EquityPoint]:
     if end < start or initial_equity <= 0:
         raise ValueError("invalid MTM range or initial equity")
-    ordered = sorted(trades, key=lambda item: item.open_time)
+    ordered = sorted(trades, key=lambda item: (item.open_time, item.close_time, item.pair))
     if any(trade.open_time.date() < start or trade.close_time.date() > end for trade in ordered):
         raise ValueError("trade crosses the fresh-capital MTM evaluation boundary")
-    for previous, current in zip(ordered, ordered[1:]):
-        if current.open_time < previous.close_time:
-            raise ValueError("overlapping trades violate the one-position audit contract")
+    if any(trade.close_time < trade.open_time for trade in ordered):
+        raise ValueError("trade close must not precede open")
+
+    by_pair: dict[str, list[AuditTrade]] = {}
+    for item in ordered:
+        by_pair.setdefault(item.pair, []).append(item)
+    for pair, pair_trades in by_pair.items():
+        for previous, current in zip(pair_trades, pair_trades[1:]):
+            if current.open_time < previous.close_time:
+                raise ValueError(f"overlapping trades for the same pair: {pair}")
+
+    # Half-open intervals mean a close and a new open at the same instant do
+    # not overlap.  Close events therefore sort before open events.
+    duration_trades = [item for item in ordered if item.close_time > item.open_time]
+    events = sorted(
+        [(item.open_time, 1, item.pair) for item in duration_trades]
+        + [(item.close_time, -1, item.pair) for item in duration_trades],
+        key=lambda value: (value[0], value[1], value[2]),
+    )
+    open_count = 0
+    for _, delta, _ in events:
+        open_count += delta
+        if open_count > 5:
+            raise ValueError("more than five concurrent positions")
+        if open_count < 0:
+            raise ValueError("invalid position event ordering")
 
     points: list[EquityPoint] = []
+    closed_profit_by_day: dict[date, float] = {}
+    for item in ordered:
+        closed_profit_by_day[item.close_time.date()] = closed_profit_by_day.get(item.close_time.date(), 0.0) + item.profit_abs
     realized_equity = initial_equity
-    trade_index = 0
     current_day = start
     while current_day <= end:
-        while trade_index < len(ordered) and ordered[trade_index].close_time.date() <= current_day:
-            realized_equity += ordered[trade_index].profit_abs
-            trade_index += 1
-        active = ordered[trade_index] if trade_index < len(ordered) and ordered[trade_index].open_time.date() <= current_day else None
+        realized_equity += closed_profit_by_day.get(current_day, 0.0)
+        active = [
+            item for item in ordered
+            if item.open_time.date() <= current_day < item.close_time.date()
+        ]
         equity = realized_equity
-        if active is not None:
-            mark = daily_close.get((active.symbol, current_day))
+        for item in active:
+            mark = daily_close.get((item.symbol, current_day))
             if mark is None or mark <= 0:
-                raise ValueError(f"missing positive daily mark for {active.symbol}:{current_day}")
-            equity = realized_equity + active.stake_amount * (
-                (float(mark) / active.open_rate) * active.liquidation_factor - 1.0
+                raise ValueError(f"missing positive daily mark for {item.symbol}:{current_day}")
+            equity += item.stake_amount * (
+                (float(mark) / item.open_rate) * item.liquidation_factor - 1.0
             )
         points.append(EquityPoint(current_day, equity))
         current_day += timedelta(days=1)
-    if trade_index < len(ordered) and ordered[trade_index].open_time.date() <= end:
-        raise ValueError("trade range ends before a legal close valuation")
     validate_daily_curve(points)
     return points
 
@@ -307,6 +348,150 @@ def build_policy_benchmark(
         day += timedelta(days=1)
     validate_daily_curve(points)
     return points
+
+
+def build_active_universe_benchmark(
+    *,
+    daily_open: Mapping[tuple[str, date], float],
+    daily_close: Mapping[tuple[str, date], float],
+    active_universe: Mapping[date, Sequence[str]],
+    start: date,
+    end: date,
+    initial_equity: float,
+    cost_per_side: float,
+    maximum_gross_exposure: float = 0.50,
+    candidate_daily_returns: Mapping[date, float] | None = None,
+    risk_match_lookback_days: int = 90,
+) -> list[EquityPoint]:
+    """Build the ADR-0016 prior-only active-universe benchmark.
+
+    With ``candidate_daily_returns`` omitted this is the 50%-gross equal-weight
+    benchmark.  With it supplied, Monday gross is scaled from the preceding 90
+    complete UTC days and remains cash-only until both histories are complete.
+    Missing authority or price inputs fail closed; membership is never filled.
+    """
+    return list(build_active_universe_benchmark_audit(
+        daily_open=daily_open,
+        daily_close=daily_close,
+        active_universe=active_universe,
+        start=start,
+        end=end,
+        initial_equity=initial_equity,
+        cost_per_side=cost_per_side,
+        maximum_gross_exposure=maximum_gross_exposure,
+        candidate_daily_returns=candidate_daily_returns,
+        risk_match_lookback_days=risk_match_lookback_days,
+    ).equity)
+
+
+def _benchmark_pass(
+    *,
+    daily_open: Mapping[tuple[str, date], float],
+    daily_close: Mapping[tuple[str, date], float],
+    active_universe: Mapping[date, Sequence[str]],
+    start: date,
+    end: date,
+    initial_equity: float,
+    cost_per_side: float,
+    gross_by_monday: Mapping[date, float],
+) -> tuple[EquityPoint, ...]:
+    cash = initial_equity
+    quantities: dict[str, float] = {}
+    points: list[EquityPoint] = []
+    day = start
+    while day <= end:
+        members = tuple(sorted(active_universe.get(day, ())))
+        if not members:
+            raise ValueError(f"missing point-in-time active universe for {day}")
+        # A lifecycle/membership exit is executed at the day's open before a
+        # possible Monday rebalance.  Consequently an exited asset needs an
+        # open, but never a same-day close.  This ordering also prevents the
+        # exit from being charged a second time by the rebalance turnover.
+        held_symbols = set(quantities)
+        open_symbols = held_symbols | (set(members) if day.weekday() == 0 else set())
+        open_prices = {symbol: float(daily_open.get((symbol, day), 0.0)) for symbol in open_symbols}
+        if any(value <= 0 or not math.isfinite(value) for value in open_prices.values()):
+            raise ValueError(f"missing eligible benchmark open for {day}")
+        for symbol in sorted(set(quantities) - set(members)):
+            cash += quantities.pop(symbol) * open_prices[symbol] * (1.0 - cost_per_side)
+        if day.weekday() == 0:
+            pre_trade_equity = cash + sum(quantity * open_prices[symbol] for symbol, quantity in quantities.items())
+            gross = gross_by_monday[day]
+            target_notional = pre_trade_equity * gross / len(members)
+            target_quantities = {symbol: target_notional / open_prices[symbol] for symbol in members}
+            turnover = sum(
+                abs(target_quantities.get(symbol, 0.0) - quantities.get(symbol, 0.0)) * open_prices[symbol]
+                for symbol in set(target_quantities) | set(quantities)
+            )
+            cash = pre_trade_equity - target_notional * len(members) - turnover * cost_per_side
+            quantities = target_quantities
+        close_prices = {symbol: float(daily_close.get((symbol, day), 0.0)) for symbol in quantities}
+        if any(value <= 0 or not math.isfinite(value) for value in close_prices.values()):
+            raise ValueError(f"missing eligible benchmark close for {day}")
+        points.append(EquityPoint(day, cash + sum(quantity * close_prices[symbol] for symbol, quantity in quantities.items())))
+        day += timedelta(days=1)
+    validate_daily_curve(points)
+    return tuple(points)
+
+
+def build_active_universe_benchmark_audit(
+    *,
+    daily_open: Mapping[tuple[str, date], float],
+    daily_close: Mapping[tuple[str, date], float],
+    active_universe: Mapping[date, Sequence[str]],
+    start: date,
+    end: date,
+    initial_equity: float,
+    cost_per_side: float,
+    maximum_gross_exposure: float = 0.50,
+    candidate_daily_returns: Mapping[date, float] | None = None,
+    risk_match_lookback_days: int = 90,
+) -> ActiveUniverseBenchmarkAudit:
+    """Return benchmark equity plus the immutable weekly gross audit trace.
+
+    The volatility denominator is always derived from an independently built
+    fixed-50%-gross shadow curve.  It never feeds back from the risk-matched
+    curve being constructed.
+    """
+    if end < start or initial_equity <= 0 or not 0 <= cost_per_side < 1:
+        raise ValueError("invalid active-universe benchmark contract")
+    if not 0 <= maximum_gross_exposure <= 1 or risk_match_lookback_days != 90:
+        raise ValueError("invalid benchmark gross cap or lookback")
+    mondays = [start + timedelta(days=offset) for offset in range((end - start).days + 1) if (start + timedelta(days=offset)).weekday() == 0]
+    shadow_gross = {day: maximum_gross_exposure for day in mondays}
+    shadow = _benchmark_pass(
+        daily_open=daily_open, daily_close=daily_close, active_universe=active_universe,
+        start=start, end=end, initial_equity=initial_equity, cost_per_side=cost_per_side,
+        gross_by_monday=shadow_gross,
+    )
+    shadow_returns = {point.day: value for point, value in zip(shadow[1:], daily_returns(shadow))}
+    gross_by_monday: dict[date, float] = {}
+    trace: list[WeeklyGrossTrace] = []
+    for day in mondays:
+        candidate_vol: float | None = None
+        shadow_vol: float | None = None
+        history_start: date | None = None
+        history_end: date | None = None
+        gross = maximum_gross_exposure
+        if candidate_daily_returns is not None:
+            prior_days = [day - timedelta(days=offset) for offset in range(risk_match_lookback_days, 0, -1)]
+            candidate_window = [candidate_daily_returns.get(item) for item in prior_days]
+            shadow_window = [shadow_returns.get(item) for item in prior_days]
+            if any(value is None or not math.isfinite(float(value)) for value in candidate_window + shadow_window):
+                gross = 0.0
+            else:
+                history_start, history_end = prior_days[0], prior_days[-1]
+                candidate_vol = _sample_std([float(value) for value in candidate_window])
+                shadow_vol = _sample_std([float(value) for value in shadow_window])
+                gross = 0.0 if shadow_vol == 0 else min(maximum_gross_exposure, maximum_gross_exposure * candidate_vol / shadow_vol)
+        gross_by_monday[day] = gross
+        trace.append(WeeklyGrossTrace(day, gross, candidate_vol, shadow_vol, history_start, history_end))
+    equity = _benchmark_pass(
+        daily_open=daily_open, daily_close=daily_close, active_universe=active_universe,
+        start=start, end=end, initial_equity=initial_equity, cost_per_side=cost_per_side,
+        gross_by_monday=gross_by_monday,
+    )
+    return ActiveUniverseBenchmarkAudit(equity, shadow, tuple(trace))
 
 
 def cost_attribution(trades: Iterable[AuditTrade]) -> CostAttribution:

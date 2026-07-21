@@ -1,5 +1,57 @@
 # Next Action
 
+## Mandatory Context Synchronization
+
+For every new user instruction, update the GitHub-backed project context before
+handoff: `PROJECT_STATE.yaml`, `PROJECT_LEDGER.md`, `NEXT_ACTION.md`, `AGENTS.md`
+and `PROJECT_EXECUTION_CHECKLIST.md`; update `reports/INDEX.md` when reports
+change. A context-only synchronization uses a skip-CI commit and does not need a
+new PR or CI run. It must not change any research, runtime, OOS or trading
+authorization.
+
+## Hard Block: Exact-Head Review Before Any Runtime Work
+
+ADR-0016 is adopted. U-25 and automatic U-26+ invention are permanently
+superseded. The fixed 20 sources have been screened and six candidates are
+source-frozen: Supertrend, Strategy001, UniversalMACD, Bandtastic, Diamond and
+Heracles.
+
+Pre-runtime revisions are frozen under root byte hash `aafbf062...a172bc8`,
+source screen `ca7d949e...25858`, candidate freeze `50a732cc...dc2ac`,
+unified protocol `ebac92aa...c3693`, data authority `a6e61314...faa4a`,
+benchmark `6ef39c1d...3e653` and DSR reference `ca2009f5...e0b88`.
+The result-blind evaluated calendar is fixed at 2,191/1,533/658 full/IS/OOS
+days. Benchmark shadow-history, five-position daily-MTM, strict completed-
+candle derivation, half-open daily labels, lifecycle-open exits, result envelopes
+and append-only trial/DSR identities are frozen and tested. Materialized
+metrics are independently recomputed from the hash-bound equity curve and
+trades before Gate or DSR use; modified variants require a passing materialized
+original and exact executable/package identities.
+ElliotV5_SMA is metadata/hash-only and not redistributed; Bandtastic retains
+its file-level MIT declaration. The next action is PR #112 exact-head review
+and merge, not runtime execution. Later runtime work additionally requires the
+pinned VPS identity, non-null effective-settings and resolved-parameter hashes,
+observed external parameter/config counts of zero, completed causal checks and
+at least five passing candidates. Do not change source order, source bytes or
+the frozen set to resolve a failure.
+
+OOS, dry-run, API/trading, `execution/live` and M2 remain prohibited. The older
+U-25 and U-24 sections below are retained as historical append-only context and
+do not grant current authority.
+
+## U-25 Outcome-Blind Hypothesis Design
+
+Decision `577bd189...06771` authorizes exactly one economically independent,
+outcome-blind U-25 cross-sectional hypothesis design. It binds U-24's immutable
+failed run `131266a...697dd` and prohibits inversion, repair, relabeling,
+repackaging or use of U-04 through U-24 outcomes to select the mechanism.
+
+The design may freeze only its economic mechanism, causal timing, failure
+regimes and non-duplication. Public data, parameters, events, returns, fixed
+rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2
+remain false. Any later protocol requires a pre-freeze synthetic exact-core
+complexity feasibility pass.
+
 ## Stop: U-24 Failed Paper Feasibility
 
 The unique run `131266a...697dd` is deterministic across normal, reverse and
