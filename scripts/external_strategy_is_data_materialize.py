@@ -159,6 +159,7 @@ def main() -> int:
     membership_rows = [
         row for row in membership["content"]
         if "2020-01" <= row["effective_month"][:7] <= "2024-09"
+        and row.get("eligibility_status") == "qualified"
     ]
     symbols = sorted({row["symbol"] for row in membership_rows})
     active_months: dict[str, list[str]] = defaultdict(list)

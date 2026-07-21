@@ -12,6 +12,10 @@ import yaml
 
 ALLOWED = {
     (
+        "External-strategy boundary authority blocked: official exact RNDRUSDT source unavailable",
+        "external_strategy_boundary_authority_blocked_official_rndr_source_missing_zero_is_zero_oos_no_trading_no_m2",
+    ): "EXTERNAL-STRATEGY-IS-DATA-BOUNDARY",
+    (
         "External-strategy runtime and causal validation complete; IS blocked by frozen membership-exit data authority",
         "external_strategy_runtime_causal_pass_is_blocked_missing_92_exit_boundaries_zero_is_zero_oos_no_trading_no_m2",
     ): "EXTERNAL-STRATEGY-IS-DATA-BOUNDARY",

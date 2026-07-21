@@ -1,0 +1,884 @@
+{
+  "archive_bytes_downloaded": 0,
+  "archives_downloaded": 0,
+  "authority_frozen": false,
+  "authorization_hash": "82acac46ce4e81cdab071635d986b17dfe1996091e4aa55cba3de5007b49cea4",
+  "available_source_count": 91,
+  "command": "python3 scripts/external_strategy_boundary_source_preflight.py --write",
+  "construction_order_hashes": {
+    "deterministic_shuffled": "53efb4c39d8ae3fa2d82c4b23d3736e7e20fa58de2b1d53c6935b4dff18c529b",
+    "normal": "53efb4c39d8ae3fa2d82c4b23d3736e7e20fa58de2b1d53c6935b4dff18c529b",
+    "reverse": "53efb4c39d8ae3fa2d82c4b23d3736e7e20fa58de2b1d53c6935b4dff18c529b"
+  },
+  "content_hash": "5746b9824ddce364cbe291ea5d7f9b499246683cb8b909a5fc9e19383150537e",
+  "fixed_boundary_count": 92,
+  "forbidden_fallbacks": [
+    "alternate_symbol",
+    "rest_api_substitution",
+    "earlier_exit",
+    "later_first_available_price",
+    "synthetic_or_last_price",
+    "unfrozen_source"
+  ],
+  "generated_utc": "2026-07-21T09:25:46Z",
+  "hard_stop": true,
+  "is_trials_materialized": 0,
+  "market_rows_decoded": 0,
+  "missing_source_count": 1,
+  "missing_sources": [
+    {
+      "content_length": null,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-08-01.zip",
+      "error": "HTTP Error 404: Not Found",
+      "http_status": 404,
+      "membership_end_exclusive": "2024-08-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-08-01.zip",
+      "symbol": "RNDRUSDT"
+    }
+  ],
+  "official_source_base": "https://data.binance.vision/data/spot/daily/klines",
+  "oos_rows_decoded": 0,
+  "original_is_authorized": false,
+  "qualification_hash": "e9844902eaa7234a5476a080e937cfbf51f70913cb9ff1b903b907cad08280fa",
+  "request_method": "HEAD",
+  "runtime_identity": {
+    "implementation": "CPython",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.6"
+  },
+  "schema_version": "external-strategy-boundary-source-preflight-v1",
+  "selection_trial_count": 0,
+  "source_checks": [
+    {
+      "content_length": 12279,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ADAUSDT/5m/ADAUSDT-5m-2023-11-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-11-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ADAUSDT/5m/ADAUSDT-5m-2023-11-01.zip",
+      "symbol": "ADAUSDT"
+    },
+    {
+      "content_length": 11426,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ADAUSDT/5m/ADAUSDT-5m-2024-06-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-06-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ADAUSDT/5m/ADAUSDT-5m-2024-06-01.zip",
+      "symbol": "ADAUSDT"
+    },
+    {
+      "content_length": 12096,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ARBUSDT/5m/ARBUSDT-5m-2024-09-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-09-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ARBUSDT/5m/ARBUSDT-5m-2024-09-01.zip",
+      "symbol": "ARBUSDT"
+    },
+    {
+      "content_length": 12633,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2020-10-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-10-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2020-10-01.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "content_length": 13180,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2021-01-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-01-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2021-01-01.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "content_length": 13479,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2021-05-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-05-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2021-05-01.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "content_length": 11871,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2021-12-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-12-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2021-12-01.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "content_length": 11714,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2022-05-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-05-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2022-05-01.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "content_length": 12721,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2023-02-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-02-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ATOMUSDT/5m/ATOMUSDT-5m-2023-02-01.zip",
+      "symbol": "ATOMUSDT"
+    },
+    {
+      "content_length": 10792,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/AVAXUSDT/5m/AVAXUSDT-5m-2022-12-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-12-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/AVAXUSDT/5m/AVAXUSDT-5m-2022-12-01.zip",
+      "symbol": "AVAXUSDT"
+    },
+    {
+      "content_length": 10784,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/AVAXUSDT/5m/AVAXUSDT-5m-2023-05-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-05-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/AVAXUSDT/5m/AVAXUSDT-5m-2023-05-01.zip",
+      "symbol": "AVAXUSDT"
+    },
+    {
+      "content_length": 11429,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/AVAXUSDT/5m/AVAXUSDT-5m-2023-11-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-11-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/AVAXUSDT/5m/AVAXUSDT-5m-2023-11-01.zip",
+      "symbol": "AVAXUSDT"
+    },
+    {
+      "content_length": 12947,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/BANDUSDT/5m/BANDUSDT-5m-2020-12-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-12-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/BANDUSDT/5m/BANDUSDT-5m-2020-12-01.zip",
+      "symbol": "BANDUSDT"
+    },
+    {
+      "content_length": 14267,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/BCHUSDT/5m/BCHUSDT-5m-2021-08-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-08-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/BCHUSDT/5m/BCHUSDT-5m-2021-08-01.zip",
+      "symbol": "BCHUSDT"
+    },
+    {
+      "content_length": 11383,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/BCHUSDT/5m/BCHUSDT-5m-2024-01-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-01-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/BCHUSDT/5m/BCHUSDT-5m-2024-01-01.zip",
+      "symbol": "BCHUSDT"
+    },
+    {
+      "content_length": 9751,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/BLZUSDT/5m/BLZUSDT-5m-2023-12-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-12-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/BLZUSDT/5m/BLZUSDT-5m-2023-12-01.zip",
+      "symbol": "BLZUSDT"
+    },
+    {
+      "content_length": 11973,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/5m/BTTUSDT-5m-2020-04-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-04-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/5m/BTTUSDT-5m-2020-04-01.zip",
+      "symbol": "BTTUSDT"
+    },
+    {
+      "content_length": 13793,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/5m/BTTUSDT-5m-2021-07-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-07-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/BTTUSDT/5m/BTTUSDT-5m-2021-07-01.zip",
+      "symbol": "BTTUSDT"
+    },
+    {
+      "content_length": 10122,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/CFXUSDT/5m/CFXUSDT-5m-2023-09-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-09-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/CFXUSDT/5m/CFXUSDT-5m-2023-09-01.zip",
+      "symbol": "CFXUSDT"
+    },
+    {
+      "content_length": 11844,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/CHZUSDT/5m/CHZUSDT-5m-2021-09-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-09-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/CHZUSDT/5m/CHZUSDT-5m-2021-09-01.zip",
+      "symbol": "CHZUSDT"
+    },
+    {
+      "content_length": 10646,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/CHZUSDT/5m/CHZUSDT-5m-2023-03-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-03-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/CHZUSDT/5m/CHZUSDT-5m-2023-03-01.zip",
+      "symbol": "CHZUSDT"
+    },
+    {
+      "content_length": 13417,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/DASHUSDT/5m/DASHUSDT-5m-2020-08-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-08-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/DASHUSDT/5m/DASHUSDT-5m-2020-08-01.zip",
+      "symbol": "DASHUSDT"
+    },
+    {
+      "content_length": 14215,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/DASHUSDT/5m/DASHUSDT-5m-2021-03-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-03-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/DASHUSDT/5m/DASHUSDT-5m-2021-03-01.zip",
+      "symbol": "DASHUSDT"
+    },
+    {
+      "content_length": 11727,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/DOGEUSDT/5m/DOGEUSDT-5m-2022-04-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-04-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/DOGEUSDT/5m/DOGEUSDT-5m-2022-04-01.zip",
+      "symbol": "DOGEUSDT"
+    },
+    {
+      "content_length": 12227,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/DOTUSDT/5m/DOTUSDT-5m-2023-02-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-02-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/DOTUSDT/5m/DOTUSDT-5m-2023-02-01.zip",
+      "symbol": "DOTUSDT"
+    },
+    {
+      "content_length": 12609,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/DOTUSDT/5m/DOTUSDT-5m-2024-03-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-03-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/DOTUSDT/5m/DOTUSDT-5m-2024-03-01.zip",
+      "symbol": "DOTUSDT"
+    },
+    {
+      "content_length": 11041,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/DYDXUSDT/5m/DYDXUSDT-5m-2023-06-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-06-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/DYDXUSDT/5m/DYDXUSDT-5m-2023-06-01.zip",
+      "symbol": "DYDXUSDT"
+    },
+    {
+      "content_length": 11813,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/DYDXUSDT/5m/DYDXUSDT-5m-2024-02-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-02-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/DYDXUSDT/5m/DYDXUSDT-5m-2024-02-01.zip",
+      "symbol": "DYDXUSDT"
+    },
+    {
+      "content_length": 11846,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/EOSUSDT/5m/EOSUSDT-5m-2021-11-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-11-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/EOSUSDT/5m/EOSUSDT-5m-2021-11-01.zip",
+      "symbol": "EOSUSDT"
+    },
+    {
+      "content_length": 13128,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ETCUSDT/5m/ETCUSDT-5m-2020-09-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-09-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ETCUSDT/5m/ETCUSDT-5m-2020-09-01.zip",
+      "symbol": "ETCUSDT"
+    },
+    {
+      "content_length": 13455,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ETCUSDT/5m/ETCUSDT-5m-2021-03-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-03-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ETCUSDT/5m/ETCUSDT-5m-2021-03-01.zip",
+      "symbol": "ETCUSDT"
+    },
+    {
+      "content_length": 11887,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ETCUSDT/5m/ETCUSDT-5m-2021-11-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-11-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ETCUSDT/5m/ETCUSDT-5m-2021-11-01.zip",
+      "symbol": "ETCUSDT"
+    },
+    {
+      "content_length": 9618,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ETCUSDT/5m/ETCUSDT-5m-2023-01-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-01-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ETCUSDT/5m/ETCUSDT-5m-2023-01-01.zip",
+      "symbol": "ETCUSDT"
+    },
+    {
+      "content_length": 11248,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/FETUSDT/5m/FETUSDT-5m-2024-08-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-08-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/FETUSDT/5m/FETUSDT-5m-2024-08-01.zip",
+      "symbol": "FETUSDT"
+    },
+    {
+      "content_length": 11545,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/FILUSDT/5m/FILUSDT-5m-2022-01-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-01-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/FILUSDT/5m/FILUSDT-5m-2022-01-01.zip",
+      "symbol": "FILUSDT"
+    },
+    {
+      "content_length": 11415,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/FILUSDT/5m/FILUSDT-5m-2023-08-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-08-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/FILUSDT/5m/FILUSDT-5m-2023-08-01.zip",
+      "symbol": "FILUSDT"
+    },
+    {
+      "content_length": 11346,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/FILUSDT/5m/FILUSDT-5m-2024-06-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-06-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/FILUSDT/5m/FILUSDT-5m-2024-06-01.zip",
+      "symbol": "FILUSDT"
+    },
+    {
+      "content_length": 11179,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/FTMUSDT/5m/FTMUSDT-5m-2022-09-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-09-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/FTMUSDT/5m/FTMUSDT-5m-2022-09-01.zip",
+      "symbol": "FTMUSDT"
+    },
+    {
+      "content_length": 10656,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/FTMUSDT/5m/FTMUSDT-5m-2023-10-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-10-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/FTMUSDT/5m/FTMUSDT-5m-2023-10-01.zip",
+      "symbol": "FTMUSDT"
+    },
+    {
+      "content_length": 11763,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/GALAUSDT/5m/GALAUSDT-5m-2023-07-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-07-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/GALAUSDT/5m/GALAUSDT-5m-2023-07-01.zip",
+      "symbol": "GALAUSDT"
+    },
+    {
+      "content_length": 10927,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/INJUSDT/5m/INJUSDT-5m-2023-08-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-08-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/INJUSDT/5m/INJUSDT-5m-2023-08-01.zip",
+      "symbol": "INJUSDT"
+    },
+    {
+      "content_length": 11572,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/INJUSDT/5m/INJUSDT-5m-2024-05-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-05-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/INJUSDT/5m/INJUSDT-5m-2024-05-01.zip",
+      "symbol": "INJUSDT"
+    },
+    {
+      "content_length": 11627,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/IOTAUSDT/5m/IOTAUSDT-5m-2020-02-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-02-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/IOTAUSDT/5m/IOTAUSDT-5m-2020-02-01.zip",
+      "symbol": "IOTAUSDT"
+    },
+    {
+      "content_length": 11720,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/LINKUSDT/5m/LINKUSDT-5m-2022-01-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-01-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/LINKUSDT/5m/LINKUSDT-5m-2022-01-01.zip",
+      "symbol": "LINKUSDT"
+    },
+    {
+      "content_length": 12000,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/LINKUSDT/5m/LINKUSDT-5m-2022-10-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-10-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/LINKUSDT/5m/LINKUSDT-5m-2022-10-01.zip",
+      "symbol": "LINKUSDT"
+    },
+    {
+      "content_length": 11924,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/LINKUSDT/5m/LINKUSDT-5m-2023-04-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-04-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/LINKUSDT/5m/LINKUSDT-5m-2023-04-01.zip",
+      "symbol": "LINKUSDT"
+    },
+    {
+      "content_length": 12205,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/LINKUSDT/5m/LINKUSDT-5m-2024-06-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-06-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/LINKUSDT/5m/LINKUSDT-5m-2024-06-01.zip",
+      "symbol": "LINKUSDT"
+    },
+    {
+      "content_length": 11981,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/LTCUSDT/5m/LTCUSDT-5m-2021-10-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-10-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/LTCUSDT/5m/LTCUSDT-5m-2021-10-01.zip",
+      "symbol": "LTCUSDT"
+    },
+    {
+      "content_length": 12154,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/LTCUSDT/5m/LTCUSDT-5m-2024-01-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-01-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/LTCUSDT/5m/LTCUSDT-5m-2024-01-01.zip",
+      "symbol": "LTCUSDT"
+    },
+    {
+      "content_length": 14592,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/LUNAUSDT/5m/LUNAUSDT-5m-2022-06-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-06-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/LUNAUSDT/5m/LUNAUSDT-5m-2022-06-01.zip",
+      "symbol": "LUNAUSDT"
+    },
+    {
+      "content_length": 12268,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/MANAUSDT/5m/MANAUSDT-5m-2022-04-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-04-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/MANAUSDT/5m/MANAUSDT-5m-2022-04-01.zip",
+      "symbol": "MANAUSDT"
+    },
+    {
+      "content_length": 11517,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/MASKUSDT/5m/MASKUSDT-5m-2023-03-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-03-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/MASKUSDT/5m/MASKUSDT-5m-2023-03-01.zip",
+      "symbol": "MASKUSDT"
+    },
+    {
+      "content_length": 12008,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/MATICUSDT/5m/MATICUSDT-5m-2020-09-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-09-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/MATICUSDT/5m/MATICUSDT-5m-2020-09-01.zip",
+      "symbol": "MATICUSDT"
+    },
+    {
+      "content_length": 14481,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/MATICUSDT/5m/MATICUSDT-5m-2021-05-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-05-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/MATICUSDT/5m/MATICUSDT-5m-2021-05-01.zip",
+      "symbol": "MATICUSDT"
+    },
+    {
+      "content_length": 11351,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/MATICUSDT/5m/MATICUSDT-5m-2022-06-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-06-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/MATICUSDT/5m/MATICUSDT-5m-2022-06-01.zip",
+      "symbol": "MATICUSDT"
+    },
+    {
+      "content_length": 12774,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/MATICUSDT/5m/MATICUSDT-5m-2024-05-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-05-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/MATICUSDT/5m/MATICUSDT-5m-2024-05-01.zip",
+      "symbol": "MATICUSDT"
+    },
+    {
+      "content_length": 11024,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/NEARUSDT/5m/NEARUSDT-5m-2022-12-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-12-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/NEARUSDT/5m/NEARUSDT-5m-2022-12-01.zip",
+      "symbol": "NEARUSDT"
+    },
+    {
+      "content_length": 10968,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/NEARUSDT/5m/NEARUSDT-5m-2023-03-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-03-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/NEARUSDT/5m/NEARUSDT-5m-2023-03-01.zip",
+      "symbol": "NEARUSDT"
+    },
+    {
+      "content_length": 12086,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/NEOUSDT/5m/NEOUSDT-5m-2020-05-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-05-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/NEOUSDT/5m/NEOUSDT-5m-2020-05-01.zip",
+      "symbol": "NEOUSDT"
+    },
+    {
+      "content_length": 13238,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/NEOUSDT/5m/NEOUSDT-5m-2021-02-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-02-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/NEOUSDT/5m/NEOUSDT-5m-2021-02-01.zip",
+      "symbol": "NEOUSDT"
+    },
+    {
+      "content_length": 13807,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/NEOUSDT/5m/NEOUSDT-5m-2021-04-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-04-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/NEOUSDT/5m/NEOUSDT-5m-2021-04-01.zip",
+      "symbol": "NEOUSDT"
+    },
+    {
+      "content_length": 10990,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ONTUSDT/5m/ONTUSDT-5m-2020-04-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-04-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ONTUSDT/5m/ONTUSDT-5m-2020-04-01.zip",
+      "symbol": "ONTUSDT"
+    },
+    {
+      "content_length": 11840,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ONTUSDT/5m/ONTUSDT-5m-2020-11-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-11-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ONTUSDT/5m/ONTUSDT-5m-2020-11-01.zip",
+      "symbol": "ONTUSDT"
+    },
+    {
+      "content_length": 13053,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/OPUSDT/5m/OPUSDT-5m-2024-01-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-01-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/OPUSDT/5m/OPUSDT-5m-2024-01-01.zip",
+      "symbol": "OPUSDT"
+    },
+    {
+      "content_length": 13088,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/OPUSDT/5m/OPUSDT-5m-2024-05-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-05-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/OPUSDT/5m/OPUSDT-5m-2024-05-01.zip",
+      "symbol": "OPUSDT"
+    },
+    {
+      "content_length": 11271,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/QTUMUSDT/5m/QTUMUSDT-5m-2020-02-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-02-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/QTUMUSDT/5m/QTUMUSDT-5m-2020-02-01.zip",
+      "symbol": "QTUMUSDT"
+    },
+    {
+      "content_length": 11078,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2023-09-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-09-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2023-09-01.zip",
+      "symbol": "RNDRUSDT"
+    },
+    {
+      "content_length": null,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-08-01.zip",
+      "error": "HTTP Error 404: Not Found",
+      "http_status": 404,
+      "membership_end_exclusive": "2024-08-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-08-01.zip",
+      "symbol": "RNDRUSDT"
+    },
+    {
+      "content_length": 11878,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/RUNEUSDT/5m/RUNEUSDT-5m-2024-04-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-04-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/RUNEUSDT/5m/RUNEUSDT-5m-2024-04-01.zip",
+      "symbol": "RUNEUSDT"
+    },
+    {
+      "content_length": 12232,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/SANDUSDT/5m/SANDUSDT-5m-2022-07-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-07-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/SANDUSDT/5m/SANDUSDT-5m-2022-07-01.zip",
+      "symbol": "SANDUSDT"
+    },
+    {
+      "content_length": 11406,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/SANDUSDT/5m/SANDUSDT-5m-2022-09-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-09-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/SANDUSDT/5m/SANDUSDT-5m-2022-09-01.zip",
+      "symbol": "SANDUSDT"
+    },
+    {
+      "content_length": 12595,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/SHIBUSDT/5m/SHIBUSDT-5m-2023-06-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-06-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/SHIBUSDT/5m/SHIBUSDT-5m-2023-06-01.zip",
+      "symbol": "SHIBUSDT"
+    },
+    {
+      "content_length": 13207,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/SHIBUSDT/5m/SHIBUSDT-5m-2023-11-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-11-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/SHIBUSDT/5m/SHIBUSDT-5m-2023-11-01.zip",
+      "symbol": "SHIBUSDT"
+    },
+    {
+      "content_length": 12714,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/SHIBUSDT/5m/SHIBUSDT-5m-2024-02-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-02-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/SHIBUSDT/5m/SHIBUSDT-5m-2024-02-01.zip",
+      "symbol": "SHIBUSDT"
+    },
+    {
+      "content_length": 13486,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/THETAUSDT/5m/THETAUSDT-5m-2021-07-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-07-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/THETAUSDT/5m/THETAUSDT-5m-2021-07-01.zip",
+      "symbol": "THETAUSDT"
+    },
+    {
+      "content_length": 12272,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/THETAUSDT/5m/THETAUSDT-5m-2021-11-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-11-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/THETAUSDT/5m/THETAUSDT-5m-2021-11-01.zip",
+      "symbol": "THETAUSDT"
+    },
+    {
+      "content_length": 13650,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/TRBUSDT/5m/TRBUSDT-5m-2024-01-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-01-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/TRBUSDT/5m/TRBUSDT-5m-2024-01-01.zip",
+      "symbol": "TRBUSDT"
+    },
+    {
+      "content_length": 13621,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/TRXUSDT/5m/TRXUSDT-5m-2021-09-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-09-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/TRXUSDT/5m/TRXUSDT-5m-2021-09-01.zip",
+      "symbol": "TRXUSDT"
+    },
+    {
+      "content_length": 13233,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/TRXUSDT/5m/TRXUSDT-5m-2022-03-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-03-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/TRXUSDT/5m/TRXUSDT-5m-2022-03-01.zip",
+      "symbol": "TRXUSDT"
+    },
+    {
+      "content_length": 12423,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/TRXUSDT/5m/TRXUSDT-5m-2022-10-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-10-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/TRXUSDT/5m/TRXUSDT-5m-2022-10-01.zip",
+      "symbol": "TRXUSDT"
+    },
+    {
+      "content_length": 12485,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/TRXUSDT/5m/TRXUSDT-5m-2023-03-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2023-03-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/TRXUSDT/5m/TRXUSDT-5m-2023-03-01.zip",
+      "symbol": "TRXUSDT"
+    },
+    {
+      "content_length": 12604,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/TRXUSDT/5m/TRXUSDT-5m-2024-01-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2024-01-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/TRXUSDT/5m/TRXUSDT-5m-2024-01-01.zip",
+      "symbol": "TRXUSDT"
+    },
+    {
+      "content_length": 14065,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/VETUSDT/5m/VETUSDT-5m-2021-10-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-10-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/VETUSDT/5m/VETUSDT-5m-2021-10-01.zip",
+      "symbol": "VETUSDT"
+    },
+    {
+      "content_length": 11416,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/WAVESUSDT/5m/WAVESUSDT-5m-2022-07-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-07-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/WAVESUSDT/5m/WAVESUSDT-5m-2022-07-01.zip",
+      "symbol": "WAVESUSDT"
+    },
+    {
+      "content_length": 12378,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/XLMUSDT/5m/XLMUSDT-5m-2020-10-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-10-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/XLMUSDT/5m/XLMUSDT-5m-2020-10-01.zip",
+      "symbol": "XLMUSDT"
+    },
+    {
+      "content_length": 14109,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/XLMUSDT/5m/XLMUSDT-5m-2021-06-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-06-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/XLMUSDT/5m/XLMUSDT-5m-2021-06-01.zip",
+      "symbol": "XLMUSDT"
+    },
+    {
+      "content_length": 13786,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/XMRUSDT/5m/XMRUSDT-5m-2021-02-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-02-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/XMRUSDT/5m/XMRUSDT-5m-2021-02-01.zip",
+      "symbol": "XMRUSDT"
+    },
+    {
+      "content_length": 13253,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/XTZUSDT/5m/XTZUSDT-5m-2020-12-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-12-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/XTZUSDT/5m/XTZUSDT-5m-2020-12-01.zip",
+      "symbol": "XTZUSDT"
+    },
+    {
+      "content_length": 14071,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ZECUSDT/5m/ZECUSDT-5m-2021-03-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-03-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ZECUSDT/5m/ZECUSDT-5m-2021-03-01.zip",
+      "symbol": "ZECUSDT"
+    },
+    {
+      "content_length": 12603,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ZILUSDT/5m/ZILUSDT-5m-2020-10-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2020-10-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ZILUSDT/5m/ZILUSDT-5m-2020-10-01.zip",
+      "symbol": "ZILUSDT"
+    },
+    {
+      "content_length": 13206,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ZILUSDT/5m/ZILUSDT-5m-2021-04-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2021-04-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ZILUSDT/5m/ZILUSDT-5m-2021-04-01.zip",
+      "symbol": "ZILUSDT"
+    },
+    {
+      "content_length": 12837,
+      "effective_url": "https://data.binance.vision/data/spot/daily/klines/ZILUSDT/5m/ZILUSDT-5m-2022-08-01.zip",
+      "error": null,
+      "http_status": 200,
+      "membership_end_exclusive": "2022-08-01T00:00:00Z",
+      "source_url": "https://data.binance.vision/data/spot/daily/klines/ZILUSDT/5m/ZILUSDT-5m-2022-08-01.zip",
+      "symbol": "ZILUSDT"
+    }
+  ],
+  "status": "blocked_official_boundary_source_missing",
+  "strategy_result_rows_read": 0,
+  "user_agent": "btc-eth-dual-quant-boundary-authority/1"
+}

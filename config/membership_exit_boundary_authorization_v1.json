@@ -1,0 +1,71 @@
+{
+  "schema_version": "membership-exit-boundary-authorization-v1",
+  "decision_status": "authorized_design_acquire_validate_freeze_only",
+  "reviewed_pr": 115,
+  "reviewed_head": "60e49ee7cb6812593098c2f13049b921e5b3b4b5",
+  "reviewed_base": "1e8a87682835544b23c82e4aab1d0072e274d59a",
+  "merge_commit": "e19962f50b091b5c1fea363d20ee078fcd69cc37",
+  "review_verdict": "approve",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "reviewer_provided_canonical_content_hash": "82acac46ce4e81cdab071635d986b17dfe1996091e4aa55cba3de5007b49cea4",
+  "fixed_boundary_authority": {
+    "qualification_hash": "e9844902eaa7234a5476a080e937cfbf51f70913cb9ff1b903b907cad08280fa",
+    "boundary_count": 92,
+    "identity_fields": ["symbol", "membership_end_exclusive"],
+    "allow_add": false,
+    "allow_remove": false,
+    "allow_replace": false
+  },
+  "source_rules": {
+    "official_public_only": true,
+    "prefer_minimal_daily_archive": true,
+    "missing_source_stops": true,
+    "required_provenance": ["source_url_or_path", "archive_byte_size", "archive_sha256", "member_identity", "member_sha256", "acquired_at_utc", "acquisition_tool_runtime_identity"]
+  },
+  "row_rules": {
+    "open_time_equals_membership_end_exclusive": true,
+    "close_time_delta_ms": 299999,
+    "finite_legal_ohlcv": true,
+    "lifecycle_valid": true,
+    "invalid_interval_authority_valid": true,
+    "forward_search_allowed": false,
+    "synthetic_or_last_price_allowed": false
+  },
+  "isolation": {
+    "oos_start_utc": "2024-09-11T00:00:00Z",
+    "oos_rows_decoded_required": 0,
+    "strategy_results_read_allowed": false,
+    "forced_exit_lookup_only": true,
+    "append_to_candidate_ohlcv_allowed": false,
+    "append_to_indicator_history_allowed": false,
+    "indicator_state_cross_inactive_interval_allowed": false,
+    "reset_and_rewarm_contract_required": true
+  },
+  "acceptance": {
+    "required_pass_count": 92,
+    "partial_authority_allowed": false,
+    "normal_reverse_shuffled_identity_required": true,
+    "tamper_negatives_required": true,
+    "archive_and_row_hash_required": true,
+    "full_command_text_required": true,
+    "exit_code_and_stdout_stderr_hashes_required": true,
+    "independent_exact_head_review_and_merge_required_before_is": true
+  },
+  "authorizations": {
+    "boundary_authority_design": true,
+    "official_public_data_acquisition": true,
+    "boundary_validation": true,
+    "boundary_freeze": true,
+    "original_is": false,
+    "modified_is": false,
+    "selection_trial_materialization": false,
+    "oos": false,
+    "dry_run": false,
+    "api_private_endpoints": false,
+    "paper_live": false,
+    "order_placement": false,
+    "execution_live": false,
+    "m2": false
+  }
+}

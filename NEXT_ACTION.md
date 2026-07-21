@@ -9,7 +9,46 @@ change. A context-only synchronization uses a skip-CI commit and does not need a
 new PR or CI run. It must not change any research, runtime, OOS or trading
 authorization.
 
-## Hard Stop: Frozen Membership-Exit Data Authority
+## Current Hard Stop: Official RNDRUSDT Boundary Source Missing
+
+The authorized result-blind source preflight reached only 91/92 official daily
+archives. The required official Binance URL for `RNDRUSDT` at
+`2024-08-01T00:00:00Z` returns HTTP 404. Evidence `5746b982...537e` records zero
+archive downloads, zero market/result/OOS rows and zero IS/selection trials.
+
+Do not acquire the other 91 archives, substitute RENDER or another symbol, use
+REST, search forward/backward, synthesize a price or modify the fixed boundary
+set. The boundary authority is not frozen and original IS remains prohibited.
+The only possible next research action is a separate explicit decision changing
+the official-source requirement or the holding/universe contract.
+
+Draft PR #116 contains the terminal evidence and defensive qualified-membership
+guard. It may receive exact-head review but must not be interpreted as authority
+to run IS or as permission to substitute the missing source.
+
+## Historical Authorization: IS-Only Membership-Exit Boundary Authority
+
+PR #115 exact head `60e49ee7...b3b4b5` was independently approved with zero
+critical/high findings and merged without changing the reviewed head as
+`e19962f5...9cc37`. Decision `82acac46...9cea4` authorizes one result-blind,
+IS-only authority for the fixed 92 `(symbol, membership_end_exclusive)`
+boundaries bound by qualification `e9844902...80fa`.
+
+The next task may design, acquire from official public archives, validate and
+freeze all 92 exact boundary rows. It must prefer minimal official daily
+archives, bind URL/path/size/archive and member hashes, require exact open and
+close times, validate finite OHLCV/lifecycle/mask status, produce identical
+normal/reverse/shuffled identities, record full commands plus exit/stdout/stderr
+hashes, and retain zero OOS rows. Boundary rows are forced-exit lookup only and
+must never enter strategy OHLCV or indicator history. Indicator state must reset
+and rewarm across inactive membership intervals.
+
+The authority passes only at 92/92. Any missing, invalid, masked, time-mismatched
+or provenance-drifting row remains a hard stop. The frozen authority requires a
+separate exact-head review and merge before any IS materialization or selection
+trial may resume.
+
+## Historical Hard Stop: Frozen Membership-Exit Data Authority
 
 ADR-0017 was merged as `1e8a8768...d59a`. The exact pinned VPS runtime passed
 under `a88f0c59...eed1`; all six frozen candidates loaded and passed the
@@ -22,12 +61,11 @@ next-boundary 5m archives. Qualification evidence `e9844902...80fa` therefore
 fails closed before performance. Synthetic/last-price exits, forward search,
 unfrozen archives and future-membership exits are prohibited.
 
-The next action requires a new explicit decision that freezes a legitimate
-membership-exit price authority or revises the holding/universe contract. It is
-not covered by ADR-0017 automatic continuation. Until then: original/modified
-IS trials and selection count remain zero; OOS remains false/false/0/0; dry-run
-bot, API/private endpoints, paper/live, orders, `execution/live` and M2 remain
-false.
+That explicit decision now exists, but authorizes only boundary-authority
+construction and freeze. Original/modified IS trials and selection count remain
+zero until the authority's independent exact-head review and merge; OOS remains
+false/false/0/0; dry-run bot, API/private endpoints, paper/live, orders,
+`execution/live` and M2 remain false.
 
 ## Historical ADR-0017 Authorization
 

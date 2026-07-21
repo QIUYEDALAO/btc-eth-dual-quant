@@ -393,6 +393,7 @@ class KlaySourceConflictTests(unittest.TestCase):
         status = state["current_status"]
         self.assertTrue(
             re.match(r"^U-\d{2} ", phase)
+            or phase == "External-strategy boundary authority blocked: official exact RNDRUSDT source unavailable"
             or phase == "External-strategy runtime and causal validation complete; IS blocked by frozen membership-exit data authority"
             or phase == "External-strategy license, source, parameter and unified-IS contracts frozen; fixed runtime unavailable"
             or phase == "ADR-0016 pre-runtime contract complete pending PR #112 exact-head review"
@@ -400,6 +401,7 @@ class KlaySourceConflictTests(unittest.TestCase):
         )
         self.assertTrue(
             re.match(r"^u\d{2}_", status)
+            or status == "external_strategy_boundary_authority_blocked_official_rndr_source_missing_zero_is_zero_oos_no_trading_no_m2"
             or status == "external_strategy_runtime_causal_pass_is_blocked_missing_92_exit_boundaries_zero_is_zero_oos_no_trading_no_m2"
             or status == "external_strategy_review_revisions_complete_blocked_runtime_zero_load_zero_is_zero_oos_no_trading_no_m2"
             or status == "pre_runtime_contract_complete_pending_exact_head_review_runtime_not_authorized_zero_load_zero_causal_zero_is_zero_oos_no_m2"

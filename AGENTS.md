@@ -42,6 +42,18 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- The authorized result-blind boundary source preflight is hard-blocked. Exactly 91/92 official Binance daily ZIP URLs exist; the required `RNDRUSDT-5m-2024-08-01.zip` returns HTTP 404. Evidence `5746b982...537e` records zero archive downloads, zero market/result/OOS rows and no IS trials. Do not substitute a renamed symbol, REST response, earlier/later row, synthetic/last price or unfrozen source.
+
+- The boundary authority is not frozen and original IS remains unauthorized. Resuming now requires a separate explicit decision changing the source or holding/universe contract. The materializer has an explicit `eligibility_status == qualified` guard; this hardening grants no additional authority.
+
+- Draft PR #116 publishes only the terminal source-preflight evidence and defensive guard. Keep it Draft pending exact-head review; do not merge it as runtime/IS authority.
+
+- PR #115 exact head `60e49ee7...b3b4b5` is independently approved with 0 critical/high and merged unchanged as `e19962f5...9cc37`. The review and machine authorization are recorded in `reports/expert/PR115_EXACT_HEAD_REVIEW.md` and `config/membership_exit_boundary_authorization_v1.json`; the reviewer-provided decision identity is `82acac46...9cea4`.
+
+- A new result-blind, IS-only membership-exit boundary authority is authorized for exactly the 92 transitions bound by `e9844902...80fa`. Work may design, acquire official public daily archives, validate exact rows and freeze the authority. It must remain separate from strategy OHLCV/indicator history, reset/rewarm state across inactive intervals, decode zero OOS rows, pass 92/92 and receive a separate exact-head review and merge before original IS.
+
+- Original IS remains unauthorized. No selection trial may materialize; OOS, dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 remain false. Missing/invalid/masked/time-drifted rows or unavailable official sources keep the hard stop. Synthetic/last price, forward search, unfrozen sources, future membership and current-member backfill remain prohibited.
+
 - PR #113, PR #112 and ADR-0017 are merged as `d657994b...a3ce`, `d119593d...3a18` and `1e8a876...d59a`. ADR-0017 identity is `8a4b1d6d...48cdd`.
 
 - Pinned Freqtrade 2026.6 runtime identity `a88f0c59...eed1` passed with network disabled, read-only source, no secrets/private endpoints and no trading process. Six candidates loaded with zero external parameter/config overrides; all six passed synthetic golden, deterministic, lookahead and recursive causal checks under `473dd739...a107`.

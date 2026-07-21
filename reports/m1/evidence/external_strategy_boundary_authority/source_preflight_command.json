@@ -1,0 +1,17 @@
+{
+  "schema_version": "external-strategy-boundary-source-preflight-command-v1",
+  "generated_utc": "2026-07-21T00:00:00Z",
+  "command": "python3 scripts/external_strategy_boundary_source_preflight.py --write",
+  "exit_code": 0,
+  "stdout_sha256": "b55f44a7c8601732ec1d46899ceaa7f9a5e7c232e03f473c745944583a4245f6",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "evidence_content_hash": "5746b9824ddce364cbe291ea5d7f9b499246683cb8b909a5fc9e19383150537e",
+  "result": "blocked_valid",
+  "available_source_count": 91,
+  "missing_source_count": 1,
+  "archives_downloaded": 0,
+  "archive_bytes_downloaded": 0,
+  "market_rows_decoded": 0,
+  "oos_rows_decoded": 0,
+  "content_hash": "3e648c9ffc9113b96c7ead2c67164e0ec4d1bb637938a46b4287c56d81072e48"
+}
