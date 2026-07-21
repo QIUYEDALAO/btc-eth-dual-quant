@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "review_id": "U13-04-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "verdict": "approve",
+  "target_commit": "6ef1024033aa9a86ef3c8f07558ba966270625a7",
+  "target_base_commit": "3c4aa926c2caaeb3adec8cf40bb2c9ff1a2436d5",
+  "protocol_content_hash": "1cf6dade6e75900278ba5aeee30018d3f0ff93d83d982e212d58033800993288",
+  "target_file_sha256": {
+    "config/u13_cross_sectional_paper_protocol_v1.json": "a0613dbe85e0b6f99637523a33e7a04719aa30bb47a70eae5134bf1691618e54",
+    "reports/m1/U13_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "7b2aee6f2073a7bbdc03bc69c07659d8f31a1b57da329f44ceed1a1065be708c",
+    "scripts/u13_cross_sectional_paper_protocol_check.py": "7003a6851905d60c876354599963a2fa864f89b8404bda777c9fc40e6f3d1616",
+    "scripts/u13_cross_sectional_paper_protocol_validate.sh": "58774a21da786b679f6d2897b1521d2a6e3e97725f6a12909ffe83e12acc611b",
+    "tests/test_u13_cross_sectional_paper_protocol.py": "c0295f28c878aca9e363cc284d3c96b9d565ce5927abb2782028df6f82c69524"
+  },
+  "dimensions": {
+    "exact_target_identity": "pass",
+    "authority_bindings": "pass",
+    "completed_common_shock_and_breadth": "pass",
+    "prior_only_2160h_lag_history": "pass",
+    "historical_followup_causal_completion": "pass",
+    "disjoint_half_persistence": "pass",
+    "permanent_weakness_exclusion": "pass",
+    "deterministic_candidate_identity": "pass",
+    "same_reader_implementation_data_scope_preflight": "pass",
+    "pre_result_sample_ceiling": "pass",
+    "causal_reference_open": "pass",
+    "clustering_and_fixed_peer_paths": "pass",
+    "paper_gates_and_is_oos_isolation": "pass",
+    "non_duplication_and_leakage_prevention": "pass",
+    "authorization_scope": "pass"
+  },
+  "remaining_critical_findings": 0,
+  "remaining_high_findings": 0,
+  "target_modified": false,
+  "authorizations": {
+    "data_qualification_and_preflight": true,
+    "common_component_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "strategy": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "review_content_hash": "be552dad055234b0107810a7299656793ccea2a97f09a2cba22fa8ffc33ed5e0",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

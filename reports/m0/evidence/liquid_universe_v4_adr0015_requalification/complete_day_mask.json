@@ -1,0 +1,216 @@
+{
+  "content": {
+    "invalid_interval_quarantined_days": [
+      {
+        "active_members": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "BTTUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "ONTUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT"
+        ],
+        "event_id": "98a6dad94678fe8ac383719cd3e8d86b600da9ca15f784f97877edd144c50e7e",
+        "open_time_ms": 1582112100000,
+        "utc_day": "2020-02-19",
+        "window_eligible": false
+      },
+      {
+        "active_members": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "BTTUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "ONTUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT"
+        ],
+        "event_id": "dffab1b20b5ff38be63dca21538dcc132c9704b3f7eabda68a73561e1828c722",
+        "open_time_ms": 1583313600000,
+        "utc_day": "2020-03-04",
+        "window_eligible": false
+      },
+      {
+        "active_members": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "NEOUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XMRUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ],
+        "event_id": "96aef6ff4ad7502eea0a1082da0d36bfc450e6591127705ceec8f16a9576845e",
+        "open_time_ms": 1608559500000,
+        "utc_day": "2020-12-21",
+        "window_eligible": false
+      },
+      {
+        "active_members": [
+          "ADAUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DASHUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT",
+          "ZECUSDT"
+        ],
+        "event_id": "48c4dae41a014ec9a1503de93089cc2df4ae3cebdef82f913305c6a566e51cfd",
+        "open_time_ms": 1613014800000,
+        "utc_day": "2021-02-11",
+        "window_eligible": false
+      },
+      {
+        "active_members": [
+          "ADAUSDT",
+          "ATOMUSDT",
+          "BCHUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "EOSUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XLMUSDT",
+          "XRPUSDT"
+        ],
+        "event_id": "42b12854123110c2c14093be4508f4917e673e35cb12ef41e3a3564649d47b41",
+        "open_time_ms": 1619323200000,
+        "utc_day": "2021-04-25",
+        "window_eligible": false
+      },
+      {
+        "active_members": [
+          "ADAUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "CHZUSDT",
+          "DOGEUSDT",
+          "EOSUSDT",
+          "ETCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "THETAUSDT",
+          "TRXUSDT",
+          "VETUSDT",
+          "XRPUSDT"
+        ],
+        "event_id": "41ecf37e7490ce9cac833e8b9e7fe81407eae913c33626973d9631fa0d5b5f79",
+        "open_time_ms": 1628819700000,
+        "utc_day": "2021-08-13",
+        "window_eligible": false
+      },
+      {
+        "active_members": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "DOTUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "FTMUSDT",
+          "LINKUSDT",
+          "LUNAUSDT",
+          "MATICUSDT",
+          "SOLUSDT",
+          "TRXUSDT",
+          "XRPUSDT"
+        ],
+        "event_id": "b730840202d13136adf8cb33b7c624918776d531ac41d2c6d9f82435faacf8b2",
+        "open_time_ms": 1640321700000,
+        "utc_day": "2021-12-24",
+        "window_eligible": false
+      },
+      {
+        "active_members": [
+          "ADAUSDT",
+          "AVAXUSDT",
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "FILUSDT",
+          "FTMUSDT",
+          "GALAUSDT",
+          "LINKUSDT",
+          "LTCUSDT",
+          "MATICUSDT",
+          "SHIBUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ],
+        "event_id": "8a5be699bffb21e1a673a15a45c4f7f843395ad9f8c4a862dcded2987d687006",
+        "open_time_ms": 1679661300000,
+        "utc_day": "2023-03-24",
+        "window_eligible": false
+      }
+    ],
+    "invalid_interval_quarantined_days_window_eligible": false,
+    "partial_days": [
+      [
+        "KLAYUSDT",
+        "1d",
+        1730073600000
+      ]
+    ],
+    "partial_days_window_eligible": false,
+    "terminated_days": [
+      [
+        "KLAYUSDT",
+        "1d",
+        1730160000000
+      ],
+      [
+        "KLAYUSDT",
+        "1d",
+        1730246400000
+      ]
+    ]
+  },
+  "content_hash": "1cd6b17593aed5b29e85cb80175b9f51565939f361a9309f9ccd3975daa710be",
+  "contract_hash": "816a354a1fe20ebab4c162ecaefbde47a90d61567f40873e2b477a983d06ee83",
+  "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+  "manifest_type": "complete_day_mask",
+  "schema_version": 4
+}

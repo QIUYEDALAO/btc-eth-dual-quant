@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "review_id": "U09-04-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "verdict": "approve",
+  "target_commit": "1bee65ff9dcdf0b9b3e49e37601140068cc968c8",
+  "target_base_commit": "29018d811a53abd2f96377c8ac3ab25981965824",
+  "protocol_content_hash": "874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae",
+  "target_file_sha256": {
+    "config/u09_cross_sectional_paper_protocol_v1.json": "9856468590dff8388996196116a344d31bee30aa1f8b2e37e9c46168e71d80fa",
+    "reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "a140e9ec67a24305379c4ea7d853a386ed3ed97eac8b75ad72a541787a479de4",
+    "scripts/u09_cross_sectional_paper_protocol_check.py": "508632d21ed2b9fb60ea433acd06f7e01003f1046700a43742c191dd0af0ad69",
+    "scripts/u09_cross_sectional_paper_protocol_validate.sh": "d8a28f23f869c5c45861c81d3b869f70e9fc8590326d7a5b9c374113ac57a1bd",
+    "tests/test_u09_cross_sectional_paper_protocol.py": "b006966352c840cbd553b22b619ee85a335e56d1a3311d6b5cb561fd7f58cb3e"
+  },
+  "dimensions": {
+    "exact_target_identity": "pass", "authority_bindings": "pass",
+    "decision_schedule_and_nonoverlap": "pass", "common_component_and_residual_estimator": "pass",
+    "persistent_low_volatility_cohort": "pass", "point_in_time_membership_and_lifecycle": "pass",
+    "causal_reference_open": "pass", "fixed_peer_path_completeness": "pass",
+    "paper_gates": "pass", "is_oos_isolation": "pass",
+    "research_leakage_prevention": "pass", "no_premature_strategy_or_return": "pass",
+    "authorization_scope": "pass"
+  },
+  "remaining_critical_findings": 0,
+  "remaining_high_findings": 0,
+  "target_modified": false,
+  "authorizations": {
+    "data_qualification": true,
+    "event_scan": false, "path_observation": false, "formal_returns": false,
+    "strategy": false, "backtesting": false, "oos": false,
+    "api_trading": false, "execution_live": false, "m2": false
+  },
+  "review_content_hash": "dd6779dab8be86fffa17d08a6a64b3085963e3e89b1889b24b6f125f64bb2947",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

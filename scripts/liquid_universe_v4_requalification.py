@@ -16,6 +16,7 @@ from btc_eth_dual_quant.data.liquid_universe import canonical_hash
 from btc_eth_dual_quant.data.liquid_universe_artifacts import write_manifest
 from btc_eth_dual_quant.data.liquid_universe_pipeline import artifact_set_hash
 from btc_eth_dual_quant.data.lifecycle_artifacts import V4_MANIFEST_TYPES
+from btc_eth_dual_quant.data.invalid_interval_quarantine import ADR0015_MANIFEST_TYPES
 from scripts.liquid_universe_public_run import DEFAULT_RAW, ROOT
 from scripts.liquid_universe_v4_public_run import run
 
@@ -24,6 +25,7 @@ REQUIRED_SOURCE_FREEZE_HASH = "c86310f8a734da214e4119268af874db6398d1b2552426c22
 REPAIRED_EVIDENCE = ROOT / "reports/m0/evidence/liquid_universe_v4_repair_requalification"
 REPAIRED_REPORT = ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_REQUALIFICATION_REPORT.md"
 REPAIRED_DIFF_REPORT = ROOT / "reports/m0/LIQUID_SPOT_UNIVERSE_V4_REPAIR_V3_V4_DIFF_REPORT.md"
+REQUALIFICATION_MANIFEST_TYPES = V4_MANIFEST_TYPES | set(ADR0015_MANIFEST_TYPES)
 
 
 def file_sha256(path: Path) -> str:
@@ -75,10 +77,12 @@ def assert_three_way(builds: dict, reports: dict, diffs: dict) -> None:
     if set(builds) != {"cold", "warm", "worker"}:
         raise ValueError("cold/warm/worker builds are required")
     for name in ("warm", "worker"):
+        if set(builds[name]) != set(builds["cold"]):
+            raise ValueError(f"{name} manifest inventory mismatch")
         if artifact_set_hash(builds[name]) != artifact_set_hash(builds["cold"]):
             raise ValueError(f"{name} artifact-set mismatch")
         mismatches = [
-            key for key in sorted(V4_MANIFEST_TYPES)
+            key for key in sorted(builds["cold"])
             if builds[name][key]["content_hash"] != builds["cold"][key]["content_hash"]
         ]
         if mismatches:
@@ -141,6 +145,7 @@ def verify_report_binding(report_path: Path, run_manifest: dict) -> str:
 def execute(
     *, raw_root: Path, work_root: Path, evidence_dir: Path, report_path: Path,
     diff_report_path: Path, workers_cold: int, workers_warm: int, workers_variant: int,
+    run_bindings: dict | None = None,
 ) -> dict:
     shutil.rmtree(work_root, ignore_errors=True)
     source_before = freeze_sources(raw_root)
@@ -180,7 +185,11 @@ def execute(
     cold = builds["cold"]
     summary = cold["qualification_summary"]["content"]
     evidence_dir.mkdir(parents=True, exist_ok=True)
-    for name in sorted(V4_MANIFEST_TYPES):
+    if set(cold) != REQUALIFICATION_MANIFEST_TYPES:
+        missing = sorted(REQUALIFICATION_MANIFEST_TYPES - set(cold))
+        unexpected = sorted(set(cold) - REQUALIFICATION_MANIFEST_TYPES)
+        raise ValueError(f"requalification manifest inventory drift: missing={missing} unexpected={unexpected}")
+    for name in sorted(cold):
         shutil.copyfile(work_root / "cold" / f"{name}.json", evidence_dir / f"{name}.json")
     shutil.copyfile(diffs["cold"], diff_report_path)
     write_manifest(evidence_dir / "source_freeze_manifest.json", source_before)
@@ -224,6 +233,7 @@ def execute(
         "synthetic_fills": summary["synthetic_fills"],
         "replacement_members": summary["replacement_members"],
         "authorizations": summary["authorizations"],
+        "bindings": run_bindings or {},
         "generated_utc": datetime.now(timezone.utc).isoformat(),
     }
     run_manifest = {

@@ -1780,3 +1780,1008 @@ private exchange responses here.
 - Execution status: no public archive read or execution; no cold/warm/worker requalification; no audit.
 - Next Gate: project-state ancestry/blob invariant, full local suite, one selective PR Gate, merge commit preserving ancestry, then consolidated main Gate.
 - Safety: fixed-range requalification remains blocked until integration and its main Gate pass. New audit, U-04, strategy/OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-17 - ADR-0015 Controlled Integration And Fixed-Range Requalification Completed
+
+- Task IDs: ADR-0015-IMPL / ADR-0015-RQ.
+- Controlled integration: PR #111 merged at `e2112a31908f1587eb657a4123f1f114cf2016fe`; selective run `29572828915` and main run `29573400780` passed. Exact reviewed implementation head `67e7d29eaed63a3edb903dd618184bc9f02c5748` remains an ancestor and the seven reviewed implementation blobs are exact.
+- Local execution mode: `codex/adr-0015-fixed-range-requalification`; no GitHub push, PR or Actions were used for the requalification task.
+- Source: exact 27,736 frozen local archives, `2020-01` through `2026-06`, source-freeze hash `c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c`.
+- Result: cold, warm and worker all `pass`; artifact set `8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3`; deterministic mismatches `0`.
+- Machine evidence: `reports/m0/evidence/liquid_universe_v4_adr0015_requalification/requalification_run_manifest.json`; content hash `a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9`.
+- Invalid-interval accounting: 8 synchronous events, 119 invalid physical rows, 1 valid-minority row and 120 total active-member slots quarantined. The eight affected hours and UTC days are ineligible for complete windows.
+- Quality result: processing errors, unresolved gaps, policy blockers, synthetic fills and replacement members are all zero; report and all 19 manifests are hash-bound and exact across the three builds.
+- Next Gate: only a new independent audit protocol may be designed and frozen. The real audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.
+
+## 2026-07-17 - ADR-0015 New Independent Audit Protocol Frozen Locally
+
+- Task ID: ADR-0015-AUDIT-PROTOCOL.
+- Branch/base: `codex/adr-0015-new-independent-audit-protocol` / local requalification commit `a16b844`.
+- Protocol: `ADR0015-LIQUID-UNIVERSE-V4-INDEPENDENT-AUDIT-V1`; content hash `9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b`.
+- Exact bindings: source freeze `c86310f8...ec6c`, run `a2f12224...cdf9`, artifact set `8784b564...348c3`, runtime policy `0ac074cf...62d04`, algorithm `8f8a3668...ea4ff` and all 19 production manifests.
+- Frozen method: independent ZIP/raw-row/integer-time/source/membership/lifecycle/ADR-0015 event-mask-accounting and post-mask grid/hour/day/panel recomputation in normal, reverse and deterministic-shuffled order.
+- Pass Gate: 19/19 exact, zero semantic/order mismatch, zero critical/high, and exact 8-event / 119-invalid / 1-valid-minority / 120-slot accounting.
+- Independence: production builders, production invalid-interval module and production Markdown cannot be used as the audit algorithm or computation input. No economic-materiality waiver, timestamp repair, fill, replacement or date/symbol/row exception is allowed.
+- Execution status: protocol checker and tamper tests pass; real frozen-source audit was not run. Frozen source and requalification/historical evidence remain unchanged.
+- Next Gate: only independent auditor fixture implementation, fault injection and later exact-head review are authorized. The real audit, U-04, strategy/backtesting/OOS, API/trading, execution/live and M2 remain unauthorized.
+## 2026-07-18 - ADR-0015 Independent Auditor Fixture Implementation Complete
+
+- Task: `ADR-0015-AUDITOR`.
+- Branch: `codex/adr-0015-independent-auditor-implementation`; local Git only.
+- Frozen protocol: `9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b`.
+- Implementation content hash: `b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c`.
+- Scope: new independent ZIP/raw-row/integer-time/member-lifecycle/event-mask/accounting primitives, 19-manifest orchestration, guarded runner, checker, synthetic fixtures and 16 fault IDs.
+- Independence: the production invalid-interval module is not imported as the audit algorithm; copied-production function scan is empty; the historical U-03F independent auditor files have zero diff and their exact-hash regression passes.
+- Validation: implementation/protocol/review regression 25/25; full repository unit suite 700/700; compile passes.
+- Execution: no frozen public archive audit, network, production evidence mutation, strategy result, OOS, API or trading action occurred.
+- Next Gate: freeze the exact local implementation commit and complete a separate exact-head review with `approve`, 0 critical and 0 high before the real audit can be authorized.
+- Safety: U-04, strategy/backtesting/OOS, API/trading, `execution/live` and M2 remain unauthorized.
+
+## 2026-07-18 - ADR-0015 Independent Auditor Exact-Head Review Approved
+
+- Task: `ADR-0015-AUDITOR-REVIEW`; local Git only.
+- Exact target: `6b4a9687f50d2ede8ba4b5ccfd0549ddecb0e92d`.
+- Protocol/implementation: `9a1768f0...b970b` / `b4bc01d5...004c`.
+- Verdict: `approve`; remaining critical/high findings: `0 / 0`.
+- Review content hash: `c0b0cb6bf6c40b06cb8edf3af2f1b6d4718a779ff139aa4a5633c0b855b33b0a`.
+- Authorization: only the real three-order frozen-source independent audit is enabled. U-04, strategy, returns, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - ADR-0015 Real-Audit Preflight Failed Closed; Auditor Fixed
+
+- The first frozen-source pass stopped on a valid native-microsecond close timestamp whose sub-millisecond remainder the independent auditor incorrectly rejected.
+- No audit result evidence or production evidence mutation was produced; this is an auditor implementation defect, not a source or policy verdict.
+- Fix: preserve exact raw microsecond fields and use independent integer-floor normalization to the frozen millisecond contract, matching the authority semantics without importing production code.
+- Corrected implementation content hash: `95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb`.
+- The old exact-head approval cannot authorize the changed code. A replacement exact-head review is mandatory before the real audit restarts.
+
+## 2026-07-18 - ADR-0015 Corrected Auditor Replacement Review Approved
+
+- Exact target: `4bebdf32786818b7f451474c864ba9ee3109a26b`; implementation `95c40583...b6eb`.
+- Replacement verdict: `approve`; remaining critical/high: `0 / 0`; review `77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0`.
+- The native-microsecond regression passes without raw-field rewriting, policy exception or production-algorithm import.
+- Only the real three-order audit is reauthorized. U-04, strategy, returns, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - ADR-0015 16/19 Audit Diagnostic and Envelope Fix
+
+- Three traversal identities match exactly; accounting matches 8 events, 119 invalid rows, 1 valid minority and 120 slots.
+- 16/19 manifests are exact. The three differences are independent-auditor envelope defects, not production evidence failures.
+- Fixes are narrowly limited to accepted `close precedes open` blocker reconciliation, full daily archive dates and recomputed `V3_V4_diff.v4_status`.
+- Corrected implementation: `d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb`.
+- No Gate was lowered; replacement exact-head review is required before another full audit.
+
+## 2026-07-18 - ADR-0015 Envelope-Fix Exact-Head Review Approved
+
+- Exact target `301e910ea669c702a34598e500826a456663a5fb`; implementation `d183b3f9...afcb`.
+- Verdict `approve`, remaining critical/high `0 / 0`; review `f04f87f849966d188dc39cff0bc72f12a71d6c1d601249d202a08ce4686b7c26`.
+- Only the unchanged real audit is reauthorized; all research, OOS, trading and M2 authorizations remain false.
+
+## 2026-07-18 - ADR-0015 18/19 Audit Diagnostic and Source Ordering Fix
+
+- All three order identities and accounting remain exact; 18/19 manifests match.
+- The sole mismatch is list ordering after daily source periods were normalized to full dates.
+- The source manifest is now re-sorted by the frozen `(symbol, interval, archive_month, canonical_key)` key; fixture coverage added.
+- Implementation `f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e`; replacement exact-head review required.
+
+## 2026-07-18 - ADR-0015 Source-Order Exact-Head Review Approved
+
+- Target `e935d6b287eaf66f825d9f73181fa35160cb5225`; review `fb63d2f3b3e0843927a348fb5a9fb94a5b3873d15a132d8bd968d10fe7980fe0`.
+- Verdict `approve`, remaining critical/high `0 / 0`; only the real audit is authorized.
+
+## 2026-07-18 - ADR-0015 Real Independent Audit Passed
+
+- Exact frozen source: 27,736 archives; normal, reverse and deterministic-shuffled identities all `8784b564...348c3`.
+- Production comparison: 19/19 manifests exact; artifact sets exact.
+- Accounting: 8 events, 119 invalid physical rows, 1 valid-minority row and 120 total active slots.
+- Findings: 0 critical, 0 high; verdict `pass`; summary `e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4`.
+- Production evidence mutated: no; network accessed: no.
+- Result itself authorizes no U-04, strategy, returns, backtesting, OOS, API/trading, `execution/live` or M2. Only a separate U-04 governance decision may follow.
+
+## 2026-07-18 - U-04 Design Authorization Decision
+
+- Decision: authorize exactly one outcome-blind, preregistered point-in-time cross-sectional liquid-spot hypothesis design.
+- Binding: audit summary `e26c9a08...06c4`, artifact set `8784b564...348c3`, 19/19 and 0 critical/high.
+- Decision content hash: `84d9b499329169719a880af80b1e2e7f0d5d5cbbc6c62a6aa762cd738aa04e89`.
+- Event scans, thresholds, signals, returns, strategy rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain unauthorized.
+- A separate outcome-blind protocol is mandatory before any event scan; lifecycle-intersecting fixed-rule work requires a separate delisting/execution policy review.
+
+## 2026-07-18 - U-04 Residual-Reversal Hypothesis Design Complete
+
+- Task: `U-04`; branch `codex/u04-cross-sectional-residual-reversal-design`; local Git only.
+- Candidate: `U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL`; hypothesis `85e9fc11e8f6b69597fecdb6a40485611eb24163a20cea4534e81d0f08e5ec7a`.
+- Design content hash: `b384e6484180a0ec358125fbb0338d7376b860372ab065fe7043667931f178b8`.
+- Mechanism: remove the contemporaneous common move of the exact point-in-time active cross-section and study whether a temporary asset-specific negative residual can partially reverse.
+- Non-duplication: distinct from M1C momentum, M1G absolute panic, M1E breakout continuation, M1H funding crowding and M1A trend.
+- Execution: no public data read, event scan, signal, return, fixed rule, Freqtrade code, backtest or OOS access.
+- Authorization: only a separate outcome-blind U-04 paper-protocol design may follow. Protocol execution, strategy, API/trading, `execution/live` and M2 remain false.
+- Lifecycle Gate: any future lifecycle-intersecting fixed rule remains blocked pending a separately reviewed delisting/execution policy.
+
+## 2026-07-18 - U-04 Paper Protocol Exact-Head Review Approved
+
+- Independent local review target: `6523b83d6b6ba93771ec1bad15625eb191fa07be`; parent `ab85814c...ffeab9`.
+- Protocol/review hashes: `7b0e462d...9629d6` / `34fe2efd...646b1`.
+- Thirteen identity, authority, causal, estimator, threshold, clustering, path, Gate, leakage and safety dimensions pass.
+- Verdict: `approve`; remaining critical/high findings: `0 / 0`; target modified: no.
+- Only frozen-source data qualification and IS/OOS isolation are authorized next. No events, paths, returns, strategy, OOS, trading or M2 are authorized.
+
+## 2026-07-18 - U-04 Frozen-Source Data Qualification Passed
+
+- Task: `U-04-DATA-QUALIFICATION`; local Git only; no GitHub publication.
+- Result: 27,736/27,736 frozen ZIP size/SHA-256/CRC checks and 19/19 audited V4 manifests pass.
+- Determinism: normal, reverse and deterministic-shuffled identity `ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa`.
+- Contract/result: `fc45ba3...52af2` / `4bdebb52...5a8c`.
+- Isolation: OOS OHLC decoded 0; U-04 event/path/return rows generated 0; no network or production-evidence mutation.
+- Decision: authorize exactly one sealed-IS paper observation. No tuning, second scan, formal returns, strategy/backtesting, OOS, API/trading, `execution/live` or M2.
+
+## 2026-07-18 - U-04 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run: `9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2`; three-order identity `4c512f59...1b42`.
+- Sample: 2,890 timestamp representatives, 420 connected episodes and 397 complete 24h episodes; full/OOS count projections and all concentration Gates pass.
+- Failed frozen Gates: median 24h relative recovery `-0.8556%` and absolute close displacement `-0.7946%`, each below `+1.80%`.
+- Isolation: OOS opened false; OOS rows decoded 0; no formal return, fill, position or equity output; no second run or parameter change.
+- Decision: `U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL` is closed as `failed_feasibility`. No paper-result review, lifecycle/fixed-rule work, strategy/backtesting, OOS, trading or M2 follows.
+
+## 2026-07-18 - U-05 Independent Design Authorized
+
+- Task: `U-05-DECISION`; branch `codex/u05-design-authorization`; local Git only.
+- Decision: authorize exactly one independent outcome-blind point-in-time cross-sectional hypothesis design.
+- Decision content hash: `48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c`.
+- Binding: U-04 remains `failed_feasibility` under run `9182c9e3...eebc2` with OOS sealed; ADR-0015 audit remains `19/19`, `0/0`.
+- Independence: U-04 event signs and failed recovery measurements may not be inverted, relabeled or used to choose U-05.
+- Plan: the continuous dependency chain from design through Paper, IS, optional OOS and final audit is frozen in `docs/superpowers/plans/2026-07-18-u05-cross-sectional-research-mainline.md`.
+- Authorization: U-05 hypothesis design only. Event scans, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-05 Breadth-Demand Persistence Design Complete
+
+- Task: `U-05`; branch `codex/u05-cross-sectional-breadth-demand-persistence-design`; local Git only.
+- Candidate: `U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE`; hypothesis `ad164b1d9a94d9d61145bf7431a805cfa795a77a6c8aef2cdc488f6bd9e7349b`.
+- Design content hash: `ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb`.
+- Mechanism: distributed positive participation across the exact active liquid cross-section may identify diversified common demand that persists beyond a completed observation.
+- Independence: not derived from the U-04 event sign or recovery failure; distinct from M1C winner rotation, M1E compression breakout, M1G panic, M1H funding and M1A indicators.
+- Execution: no public data read, event/path scan, return, timeframe, threshold, fixed rule, backtest or OOS access.
+- Authorization: only a separately frozen outcome-blind Paper protocol may follow; all strategy, OOS, trading and M2 permissions remain false.
+
+## 2026-07-18 - U-05 Paper Protocol Exact-Head Review Approved
+
+- Review branch: `codex/u05-cross-sectional-paper-protocol-review`; target `8d8652796e22a15285ba682b4524baa0218ca5a6`; parent `f66dcbdf5ad48b35e7bba2f112257e446563288c`.
+- Protocol/review hashes: `c8bd5523...e214` / `8602f209...d914f`.
+- Thirteen identity, authority, membership, causal, threshold, clustering, path, Gate, leakage, independence and safety dimensions pass.
+- Verdict: `approve`; remaining critical/high findings: `0 / 0`; target modified: no.
+- Execution: no public data, event/path result, formal return or OOS value was read.
+- Authorization: only frozen-source data qualification and IS/OOS isolation may follow. Event scanning, path observation, returns, strategy/backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-05 Frozen-Source Data Qualification Passed
+
+- Task: `U-05-DATA-QUALIFICATION`; branch `codex/u05-cross-sectional-data-qualification`; local Git only.
+- Contract/result hashes: `f1374b5c...f562c3` / `348e8029...f7cb4f`.
+- Result: 27,736/27,736 frozen ZIP size/SHA-256/CRC checks and 19/19 audited V4 manifests pass.
+- Determinism: normal, reverse and deterministic-shuffled identity `ca7d59b3...44aa`.
+- 4h authority: 854,280 constituent 1h rows and 213,570 aligned expected 4h member-blocks; quarantined constituents invalidate whole blocks without substitution.
+- Isolation: OOS OHLC decoded 0; breadth/event/path/return rows generated 0; network false; production evidence unchanged.
+- Authorization: exactly one sealed-IS Paper observation. No tuning, second run, formal returns, strategy/backtesting, OOS, API/trading, `execution/live` or M2.
+
+## 2026-07-18 - U-05 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Task: `U-05-PAPER-OBSERVATION`; branch `codex/u05-cross-sectional-paper-observation`; local Git only.
+- Run: `874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a`; three-order identity `ac4b36ac...f267b0` with exact event/episode/path/accounting hashes.
+- Sample: 1,488 candidate events, 509 independent episodes and 490 complete 24h episodes. Count projections, year/quarter concentration and event-month Gates pass.
+- Failed frozen Gates: median 24h common-demand close displacement `0.0759%` versus `1.20%`; median positive-member fraction `53.33%` versus `60%`.
+- Isolation: OOS opened false; OOS rows decoded 0; no formal return, fill, position or equity output; no network, second run or parameter change.
+- Decision: `U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE` is closed as `failed_feasibility`. No Paper-result review, lifecycle/fixed-rule work, strategy/backtesting, OOS, trading or M2 follows.
+
+## 2026-07-18 - U-06 Independent Design Authorized
+
+- Task: `U-06-DECISION`; branch `codex/u06-design-authorization`; local Git only.
+- Decision content hash: `596eacbcf2caec7dd1da27bb66ee8bb5859c5b6992c067f22d40e5305cb74662`.
+- Binding: U-05 remains `failed_feasibility` under run `874cdac3...e7e4a`, U-04 remains closed, both OOS sets remain sealed, and the ADR-0015 audit remains `19/19`, `0/0`.
+- Independence: event signs, observed paths and failed Gate values from U-04/U-05 may not be inverted, relabeled or used to choose U-06.
+- Authorization: exactly one outcome-blind U-06 hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-06 Volume-Share Absorption Design Complete
+
+- Candidate: `U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING`; hypothesis `e6cb136b...c259b`; design `694e5a43...966a5`.
+- Mechanism: prior-only growth in an asset's exact-active-universe quote-volume share without commensurate relative price response may reflect absorption and delayed repricing.
+- Independence: no U-04/U-05 outcome inversion; distinct from prior price momentum, compression, panic, funding and indicator families.
+- Execution: no public data, event/path scan, return, timeframe, threshold, fixed rule, backtest or OOS access.
+- Authorization: only a separate outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-06 Paper Protocol Exact-Head Review Approved
+
+- Review target/base: `1bb59f1a...e8cd` / `175ffb82...8f99`; protocol/review `7b53860e...5f289` / `e4f0af0d...e81b3`.
+- All five target blobs and thirteen review dimensions pass; verdict `approve`, critical/high `0/0`, target unchanged.
+- No public data, event/path result, return or OOS value was read.
+- Authorization: frozen-source data qualification and IS/OOS isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-06 Frozen-Source Data Qualification Passed
+
+- Contract/result: `cc05249a...e0d6c` / `e6a4a0eb...b95a67`; branch `codex/u06-cross-sectional-data-qualification`.
+- 27,736/27,736 ZIP identities/CRCs, 19/19 V4 manifests and all three traversal orders pass under `ca7d59b3...44aa`.
+- Daily authority: 10,251,360 expected 5m rows, 1,170 positive finite quote-volume membership rows and 288 bars per complete UTC day.
+- Isolation: OOS values decoded 0; daily signal/event/path/return rows 0; network false; production evidence unchanged.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, second run, strategy, OOS or trading.
+
+## 2026-07-18 - U-06 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `2f715394...1382a` / `b60423c2...e762c`; 106 events, 60 episodes, 56 complete 72h paths; three orders exact.
+- Failed sample Gates: 56 < 60 complete episodes and projected full 77 < 80; sealed-OOS projection 21 passes.
+- Failed economic Gates: median 24h relative repricing `-0.1438%` and absolute displacement `-0.3029%`, both below `+1.80%`.
+- Isolation: OOS decode 0; no formal return, fill, position, equity, parameter change or second run.
+- Decision: U-06 closed `failed_feasibility`; no result review, rules, strategy, backtest or OOS.
+
+## 2026-07-18 - U-07 Independent Design Authorized
+
+- Task: `U-07-DECISION`; branch `codex/u07-design-authorization`; local Git only.
+- Decision: `58f8301035e593b0621add93cfa876a11a5af52df0a3afae38d7b41f095e37d5`; exactly one economically independent, outcome-blind U-07 hypothesis design.
+- Binding: U-04/U-05/U-06 remain `failed_feasibility`, single-run and OOS-sealed; the ADR-0015 audit remains 19/19 with zero critical/high.
+- Independence: prior event signs, measured paths and failed Gate values may not be inverted, relabeled or used to choose U-07.
+- Authorization: hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-07 Market-Stress Relative-Strength Design Complete
+
+- Task: `U-07`; branch `codex/u07-cross-sectional-market-stress-relative-strength-design`; local Git only.
+- Candidate: `U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION`; hypothesis `3130450c...b3de3`; design `272eabd4...21795`.
+- Mechanism: broad completed cross-sectional selling pressure plus asset-specific relative resilience may reveal inelastic demand and continuation after stress subsides.
+- Independence: state-conditioned Top-15 resilience, not U-04 reversal, U-05 positive breadth, U-06 volume absorption or M1C unconditional long-cycle rotation.
+- Execution: no public data, timeframe, threshold, event, path, return, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
+
+## 2026-07-18 - U-07 Paper Protocol Exact-Head Review Approved
+
+- Review target/base: `3aed4c33...b3791` / `f282f452...e50d09`; protocol/review `d62dd323...50195` / `fa9d90f7...c70b6`.
+- All five target blobs and thirteen review dimensions pass; verdict `approve`, critical/high `0/0`, target unchanged.
+- No public data, event/path result, return or OOS value was read.
+- Authorization: frozen-source data qualification and IS/OOS isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-07 Frozen-Source Data Qualification Passed
+
+- Task: `U-07-DATA-QUALIFICATION`; branch `codex/u07-cross-sectional-data-qualification`; local Git only.
+- Contract/result: `0dd9a159...5fb8` / `fa65f340...e123`; protocol target `3aed4c33...b3791` and review `fa9d90f7...c70b6` remain exact.
+- Source: 27,736/27,736 frozen ZIP identities/CRCs and 19/19 audited V4 manifests pass.
+- Determinism: normal, reverse and deterministic-shuffled traversal share `ca7d59b3...44aa`.
+- 4h authority: 213,570 expected member blocks from 854,280 constituent 1h rows; 1,170 membership rows and 2,283 quarantined 1h rows are accounted exactly.
+- Isolation: OOS OHLC decoded 0; stress, resilience, event, path and return rows generated 0; network false; production evidence unchanged.
+- Authorization: exactly one sealed-IS Paper observation. No tuning, second run, formal returns, strategy/backtesting, OOS, API/trading, `execution/live` or M2.
+
+## 2026-07-18 - U-07 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Task: `U-07-PAPER-OBSERVATION`; branch `codex/u07-cross-sectional-paper-observation`; local Git only.
+- Run/order: `8c637a3f...352c` / `2714c2bf...00ee`; events, episodes, paths and accounting are exact across normal, reverse and deterministic-shuffled traversal.
+- Sample: 125 events, 92 connected episodes and 82 complete 48h episodes; all count, projection, year, symbol and month Gates pass.
+- Failed frozen economic Gates: median 24h relative continuation `0.4288%` versus `1.80%`; candidate absolute displacement `1.1607%` versus `1.80%`; positive relative-continuation fraction `52.44%` versus `60%`.
+- Isolation: OOS opened false and rows decoded 0; no formal return, fill, position or equity output; no network, parameter change or second run.
+- Decision: U-07 closes `failed_feasibility`. No result review, rules, strategy, backtest or OOS; only a separate independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-08 Independent Design Authorized
+
+- Task: `U-08-DECISION`; branch `codex/u08-design-authorization`; local Git only.
+- Decision: `813267f29fd2f019b7d856d95a5eaaa7927a3f072327cc643e6a1ecd51af1cf9`; exactly one economically independent, outcome-blind U-08 hypothesis design.
+- Binding: U-04 through U-07 remain failed, single-run and OOS-sealed; ADR-0015 audit remains 19/19 pass.
+- Independence: prior event signs, paths and failed Gate values may not be inverted, relabeled or used to choose U-08.
+- Authorization: hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-08 Liquidity-Rank Entry Demand-Persistence Design Complete
+
+- Candidate: `U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE`; hypothesis `5d091b72...45f6`; design `247d652e...d717`.
+- Mechanism: prior-only monthly Top-15 admission may broaden investability, attention and mandate eligibility, producing gradual demand after membership becomes effective.
+- Independence: membership-authority transition, not residual reversal, breadth, price/volume absorption, stress resilience, price momentum, compression, panic, funding or indicator logic.
+- Execution: no public data, event/path scan, return, timeframe, threshold, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
+
+## 2026-07-18 - U-08 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `a516efb3...9361` / `579c179`; protocol/review `98752a07...0283` / `316fe577...8acf`.
+- All five target blobs and thirteen identity, authority, membership, causal, path, Gate, leakage and safety dimensions pass.
+- Verdict: `approve`; critical/high `0/0`; target unchanged.
+- No public data, event/path result, return or OOS value was read.
+- Authorization: frozen-source data qualification and isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-08 Frozen-Source Data Qualification Passed
+
+- Contract/result: `0adc8d49...f51e` / `1ec26ef7...7cb5`; branch `codex/u08-cross-sectional-data-qualification`.
+- 27,736 ZIPs, 19 V4 manifests, 78 membership months and 1,170 exact rank rows pass.
+- Every month has unique ranks 1–15/symbols, positive finite liquidity and prior-only window endpoints.
+- Three orders share `ca7d59b3...44aa`; OOS OHLC, entry events, paths and returns are zero.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, second run, strategy, OOS or trading.
+
+## 2026-07-18 - U-08 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Task: `U-08-PAPER-OBSERVATION`; branch `codex/u08-cross-sectional-paper-observation`; local Git only.
+- Run/order: `f6fbcdee...ca3e` / `5e77484b...b928`; events, episodes, paths and accounting are exact across normal, reverse and deterministic-shuffled traversal.
+- Sample: 50 events, 50 episodes, 44 complete 336h paths and 6 censored paths; all count, projection and concentration Gates pass.
+- Failed frozen economic Gates: median 336h relative persistence `-0.4690%` versus `+1.80%`; candidate absolute displacement `-3.3543%` versus `+1.80%`; positive relative-persistence fraction `45.45%` versus `60%`.
+- Isolation: OOS opened false and rows decoded 0; no formal return, fill, position or equity output; no parameter change or second result-bearing run.
+- Decision: U-08 closes `failed_feasibility`. No result review, rules, strategy, backtest or OOS; only a separate independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-09 Independent Design Authorized
+
+- Task: `U-09-DECISION`; branch `codex/u09-design-authorization`; local Git only.
+- Decision: `2d643678e00575c93dad0331fff089fd620b214f658ca8d174dfe9bbcc06e477`; exactly one economically independent, outcome-blind U-09 hypothesis design.
+- Binding: U-04 through U-08 remain failed, single-run and OOS-sealed; ADR-0015 audit remains 19/19 pass and source freeze remains exact.
+- Independence: prior event signs, measured paths and failed Gate values may not be inverted, relabeled or used to choose U-09.
+- Authorization: hypothesis design only. Events, parameters, returns, fixed rules, Freqtrade code, backtesting, OOS, API/trading, `execution/live` and M2 remain false.
+
+## 2026-07-18 - U-09 Idiosyncratic-Volatility Quality-Persistence Design Complete
+
+- Candidate: `U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE`; hypothesis `cb91d77d...14c92`; design `4830e361...ee6f2`.
+- Mechanism: persistently lower asset-specific variability after common-market removal may proxy for deeper liquidity, lower disagreement and broader capital eligibility.
+- Independence: variability/quality, not residual reversal, positive breadth, volume absorption, stress resilience, membership entry, price momentum, compression, panic, funding or indicator logic.
+- Execution: no public data, event/path scan, return, timeframe, estimator, threshold, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
+
+## 2026-07-18 - U-09 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae`; branch `codex/u09-cross-sectional-paper-protocol`; local Git only.
+- Identity: fixed 336h anchors; preceding 168 completed 1h returns; exact active-member median common component; population residual volatility.
+- Cohort: intersection of the lowest quartile in both 84h halves and the full window; no replacement, backfill, future price or outcome selection.
+- Observation: strict next expected 5m open; 24/72/168/336h paths; 336h primary episodes non-overlapping.
+- Gates: 80 complete IS, projected 110 full/30 sealed OOS, distribution controls, 1.80% relative and absolute medians, 60% positive relative persistence and zero mismatches.
+- Authorization: exact-head independent review only; no public data, event/path scan, formal return, strategy, OOS or trading.
+
+## 2026-07-18 - U-09 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `1bee65ff...68c8` / `29018d81...5824`; protocol/review `874b93ce...84ae` / `dd6779da...2947`.
+- All five target blobs and thirteen identity, authority, schedule, estimator, cohort, membership, causal, path, Gate, leakage and safety dimensions pass.
+- Verdict: `approve`; critical/high `0/0`; target unchanged.
+- No public data, event/path result, return or OOS value was read.
+- Authorization: frozen-source data qualification and isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-09 Frozen-Source Data Qualification Passed
+
+- Contract/result: `f1bd609d...ead9a` / `c323798a...56aee`; branch `codex/u09-cross-sectional-data-qualification`; local Git only.
+- 27,736 ZIPs, 19 V4 manifests, 78 membership months and 1,170 exact rank rows pass.
+- Schedule: 123 IS anchors before the boundary and 122 anchors with complete non-overlapping 336h primary horizons.
+- Three orders share `ca7d59b3...44aa`; OOS OHLC, cohort, event, path and return rows are zero.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, second run, strategy, OOS or trading.
+
+## 2026-07-18 - U-09 Qualification Sample-Ceiling Correction Closed Candidate
+
+- Correction: `c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479`; branch `codex/u09-qualification-sample-ceiling-correction`; local Git only.
+- The earlier qualification admission omitted the monthly-membership-boundary ceiling and is superseded.
+- Deterministic maximum: 66 constant-membership 336h episodes versus frozen minimum 80; shortfall 14.
+- Isolation: zero price, cohort, event, path, return and OOS rows; the Paper observation never ran.
+- Decision: U-09 closes before results. No Gate reduction, protocol modification or rerun; only a separate U-10 independent-candidate decision may follow.
+
+## 2026-07-18 - U-10 Independent Design Authorized
+
+- Task: `U-10-DECISION`; branch `codex/u10-design-authorization`; local Git only.
+- Decision: `e196cc0fdd20e8b8fc84872b440baa09ae69e0752c75005bebefb51a4060c7a0`; exactly one economically independent, outcome-blind U-10 hypothesis design.
+- Binding: U-04 through U-08 remain failed and OOS-sealed; U-09 remains closed before results under correction `c6902525...4479`; V4 audit/source freeze remain exact.
+- Independence: prior outcome signs and U-09's protocol-feasibility defect may not be inverted, repaired, relabeled or used to choose U-10.
+- Authorization: hypothesis design only. Events, parameters, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-10 Volume-Confirmed Relative-Trend Design Complete
+
+- Candidate: `U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION`; hypothesis `5fc3529f...c536`; design `af9ac640...40e5`.
+- Mechanism: asset-specific positive relative price trend plus persistent quote-volume-share expansion may reveal scalable continuing demand rather than thin-price noise.
+- Independence: joint price/volume confirmation, not U-06 unconfirmed absorption, U-07 stress resilience, U-09 low-volatility quality or M1C BTC/ETH absolute rotation.
+- Execution: no public data, timeframe, estimator, threshold, event/path, return, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
+
+## 2026-07-18 - U-10 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `be205bf40dcab624667b97e43bc158ea2473fe15de2ce9846a6bb198575fa43b`; branch `codex/u10-cross-sectional-paper-protocol`; local Git only.
+- Identity: completed UTC days, 7d relative trend ≥3% and top quartile, recent-3/prior-21 quote-volume-share ratio ≥1.25 and top quartile, persistent 3d expansion.
+- One deterministic representative per day; all-symbol 72h connected clustering; strict next expected 5m reference.
+- Pre-result ceiling: at least 400 theoretical constant-membership 72h episodes versus frozen Gate 90.
+- Economic Gates: median 72h relative and absolute displacement ≥1.80%, positive fraction ≥60%, distribution and zero-mismatch controls.
+- Authorization: exact-head independent review only; no public data, events, returns, OOS or trading.
+
+## 2026-07-18 - U-10 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `f468b7ae...776f` / `6f21347d...54bf6`; protocol/review `be205bf4...43b` / `e42d3170...9009`.
+- Five target blobs and 13 identity, authority, daily data, estimators, candidate, ceiling, causal, path, Gate, leakage and safety dimensions pass.
+- Verdict `approve`; critical/high `0/0`; target unchanged; no public result or OOS access.
+- Authorization: frozen-source qualification and isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-10 Frozen-Source Data Qualification Passed
+
+- Contract/result: `c47701dca14ffab10b94efe2a855dd85c68ab01647c2feede3b8db86c80661bf` / `0029def278eeadf6b3951e1e1f62d16b0919889950eb68e0cdd3fe97fe727ee2`; branch `codex/u10-cross-sectional-data-qualification`; local Git only.
+- All 27,736 ZIPs and 19 frozen manifests pass identity, CRC, daily price/quote-volume, membership, lifecycle, invalid-interval and IS/OOS isolation checks.
+- Normal, reverse and deterministic-shuffled traversals share identity `ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa`.
+- The metadata-only maximum is 418 constant-membership 72h episodes, above the frozen preflight minimum 400 and Paper Gate 90.
+- OOS values decoded and event/path/return rows generated are all zero.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, second result-bearing run, formal return, strategy, OOS, trading or M2.
+
+## 2026-07-18 - U-10 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Task: `U-10-PAPER-OBSERVATION`; branch `codex/u10-cross-sectional-paper-observation`; local Git only.
+- Run/order: `9972a95fe662ac65f7e0e2c0bb4d88eb9743097beb9c7c536f3507d9a316d22f` / `83540c78bf6afed742fa09254b7e6c172014f2f599215335944fdeb9a67de11d`; all four manifests are exact across three orders.
+- Sample: 179 candidate events, 39 independent episodes, 7 complete 72h paths and 32 membership-change right-censors.
+- Failed frozen Gates include count/projection/distribution and median 72h relative continuation `0.7972%` versus `1.80%`.
+- Median absolute displacement `2.2812%` and positive relative fraction `71.43%` pass but cannot override any failed Gate.
+- Isolation: OOS opened false, rows decoded 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
+- Decision: U-10 closes `failed_feasibility`; only a separate U-11 independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-11 Independent Design Authorized
+
+- Task: `U-11-DECISION`; branch `codex/u11-design-authorization`; local Git only.
+- Decision: `c5db3dc0c01bc4e1ffe381150c132742446ce4b05b3fb8c381dc03612cff274a`; exactly one economically independent, outcome-blind U-11 hypothesis design.
+- Binding: U-10 remains failed, single-run and OOS-sealed under `9972a95f...d22f`; prior U-04 through U-09 evidence and V4 audit/source freeze remain exact.
+- Independence: prior event signs, measured paths, failed Gates, censor patterns and protocol defects may not be inverted, repaired, relabeled or used to choose U-11.
+- Authorization: hypothesis design only. Events, parameters, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-11 Asymmetric Market-Capture Quality Design Complete
+
+- Candidate: `U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE`; hypothesis `1c9ef854...3e74`; design `0572daf7...9e4c`.
+- Mechanism: persistent participation in positive common-market states plus lower sensitivity in negative states may indicate a stable demand base and lower forced-selling sensitivity.
+- Independence: conditional asymmetric capture, not U-07 one-off stress resilience, U-09 unconditional low residual volatility, U-10 price/volume trend or other prior families.
+- Execution: no public data, timeframe, estimator, threshold, event/path, return, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design and later exact-head review only.
+
+## 2026-07-18 - U-11 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc`; branch `codex/u11-cross-sectional-paper-protocol`; local Git only.
+- Identity: prior 360 completed 4h observations, exact historical active-member median common component and positive/negative zero-intercept capture.
+- Persistence: two 180-observation halves plus full-window top quartile; full upside ≥0.80, downside ≤0.70 and asymmetry ≥0.30.
+- State Gates: full positive/negative counts ≥60 each and each half ≥24 each; invalid denominators fail closed.
+- Observation: strict next expected 5m open; 72h connected episodes and 1/2/4/8/12/24/48/72h diagnostics.
+- Authorization: exact-head independent review only; no public data, common-state/event/path scan, return, OOS, strategy or trading.
+
+## 2026-07-18 - U-11 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `e7f621ec...166a` / `aacd8624...4aac`; protocol/review `3d78bbc8...42dc` / `4e8fea7a...d9fc`.
+- Five target blobs and 13 identity, authority, 4h data, common-state, capture, persistence, ceiling, causal, path, Gate, leakage and safety dimensions pass.
+- Verdict: `approve`; critical/high `0/0`; target unchanged.
+- No public data, common-state/event/path result, return or OOS value was read.
+- Authorization: frozen-source qualification and isolation only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-11 Frozen-Source Data Qualification Passed
+
+- Contract/result: `b376f6c8...cfcc` / `b0476b5e...05b6`; branch `codex/u11-cross-sectional-data-qualification`; local Git only.
+- All 27,736 ZIPs, 19 manifests, complete 4h authority, membership, lifecycle, invalid-interval and boundary checks pass in three orders.
+- Metadata preflight: 8,690 eligible history/constant-path decision times and 473 maximum independent theoretical episodes versus frozen 200/90 Gates.
+- OOS values and common-state/capture/candidate/event/path/return rows are zero.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, rerun, formal return, strategy, OOS or trading.
+
+## 2026-07-18 - U-11 Paper Observation Invalidated and Candidate Closed
+
+- Task: `U-11-PAPER-OBSERVATION`; branch `codex/u11-cross-sectional-paper-observation`; local Git only.
+- Raw attempt: run `0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521`; three-order identity `558f4af6858315d3355d5c8cc42975b5799a620249d4e3108ed020c64b4226c8`.
+- Defect: the active-month reader omitted the previous-boundary close across monthly membership transitions; 9,925 of 9,931 decision times were rejected before capture and zero events remained.
+- Adjudication: `failed_execution_invalid_observation`. The raw generated `failed_feasibility` manifest is immutable attempt evidence, not admissible economic evidence.
+- Isolation: OOS opened false, formal returns false, network access false and second result-bearing run false.
+- Decision: U-11 is closed with no repair or retry. Only a separate U-12 independent-candidate authorization decision may follow; strategy, backtesting, OOS, trading and M2 remain prohibited.
+
+## 2026-07-18 - U-12 Independent Design Authorized
+
+- Task: `U-12-DECISION`; branch `codex/u12-design-authorization`; local Git only.
+- Decision: `ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7`; exactly one economically independent, outcome-blind U-12 hypothesis design.
+- Binding: U-11 remains closed `failed_execution_invalid_observation` under attempt `0a55b61c...a9521`; its zero-event output is not economic evidence and no retry is authorized. Prior U-04 through U-10 evidence and V4 audit/source freeze remain exact.
+- Independence: U-11's defect and all prior result signs, paths, failed Gates and censor patterns may not select U-12.
+- Authorization: hypothesis design only. Public-data reads, events, parameters, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-12 Recurring Calendar-Flow Seasonality Design Complete
+
+- Candidate: `U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY`; hypothesis `5942e15d...f54d`; design `e53003e7...d5dc`.
+- Mechanism: an asset-specific relative-return pattern recurring in a predeclared UTC calendar state across disjoint prior subperiods may reflect repeating regional participation, settlement, treasury or mandate flows.
+- Independence: calendar-conditioned recurrence, not residual reversal, breadth, volume absorption, stress resilience, membership entry, low volatility, price/volume trend, asymmetric capture or prior BTC/ETH families.
+- Execution: no public data, timeframe, calendar granularity, estimator, threshold, event/path, return, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design with mandatory pre-result implementation/data-scope preflight; all downstream permissions remain false.
+
+## 2026-07-18 - U-12 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `a8cfc0b74e82bdf455bae5dda7a620bc5c0c53f1022d39494800f1053dd80b8a`; exact target `11caf6f5160bfd03a127b6fc3565ad0b84c43d82`; local Git only.
+- Identity: ensuing UTC weekday only, complete 288-slot UTC days, prior 52 same-weekday opportunities split into two disjoint 26-cell halves, and historical point-in-time active-member median common components.
+- Persistence: full median residual at least 0.60%, each-half median at least 0.30%, current active-member top quartile, deterministic single representative and 24h connected clustering.
+- Preflight: month-boundary prior closes, daily slots, same-weekday cells, three-order identity and metadata-only ceiling at least 300 are mandatory before outcomes.
+- Authorization: exact-head review only; no public result, event, path, return, OOS, strategy or trading access.
+
+## 2026-07-18 - U-12 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `11caf6f5...3d82` / `21670295...d40`; protocol/review `a8cfc0b7...0b8a` / `81262bf1...8813`.
+- Five target blobs and 14 identity, authority, calendar, daily-data, estimator, persistence, preflight, ceiling, causality, clustering/path, Gate, leakage and safety dimensions pass.
+- Verdict: `approve`; critical/high `0/0`; target unchanged.
+- No public data, event, path, return or OOS value was read.
+- Authorization: frozen-source qualification and same-reader preflight only; no events, returns, strategy, OOS or trading.
+
+## 2026-07-18 - U-12 Frozen-Source Qualification and Same-Reader Preflight Passed
+
+- Contract/result: `a65aa923...4ed3` / `c9a5b548...0510`; branch `codex/u12-cross-sectional-data-qualification`; local Git only.
+- All 27,736 ZIPs and 19 V4 manifests are exact; normal, reverse and deterministic-shuffled source traversals share `ca7d59b3...44aa`.
+- The same daily-input reader checks 962 symbol-month tasks in three orders with identity `5dfc833d...2af3`.
+- Preflight: 1,623 complete active-member UTC days, 1,275 metadata-eligible calendar decisions and 647 maximum independent theoretical 24h episodes versus minimum 300.
+- Missing prior-month inputs and masked/incomplete days were excluded without fill, repair or replacement.
+- OOS OHLCV and common-component/candidate/event/path/return rows are zero.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, rerun, formal return, strategy, OOS, trading or M2.
+
+## 2026-07-18 - U-12 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Task: `U-12-PAPER-OBSERVATION`; branch `codex/u12-cross-sectional-paper-observation`; local Git only.
+- Run/order: `b42a539c...7995` / `db4b8e74...a124`; event, episode, path and accounting manifests are exact across all three orders.
+- Sample: 88 complete episodes, 7 symbols, 12 months and only 2 years with at least 12 episodes.
+- Economics: median 24h relative persistence `0.1178%`, median absolute displacement `0.3621%`, positive relative fraction `52.27%`; frozen minima are `1.80%`, `1.80%` and `60%`.
+- Concentration: maximum year `73.86%` versus `35%`; maximum symbol `42.05%` versus `25%`.
+- Isolation: OOS opened false, rows decoded 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
+- Decision: U-12 closes `failed_feasibility`; only a separate U-13 independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-13 Independent Design Authorized
+
+- Task: `U-13-DECISION`; branch `codex/u13-design-authorization`; local Git only.
+- Decision: `8900ada4819a2d951fd26ab6a1d61e18e0e43de939207787c63e05f925866ce6`; exactly one economically independent, outcome-blind U-13 hypothesis design.
+- Binding: U-12 remains failed, single-run and OOS-sealed under `b42a539c...7995`; U-04 through U-11 and exact V4 audit/source authorities remain bound.
+- Independence: prior signs, paths, failed Gates, concentration, censor patterns and defects may not choose or shape U-13.
+- Authorization: hypothesis design only. Data, parameters, events, returns, rules, Freqtrade code, backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-13 Common-Shock Lagged-Diffusion Design Complete
+
+- Candidate: `U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION`; hypothesis `39f1848f...db5c`; design `982cb951...3477`.
+- Mechanism: a completed positive common information/capital-flow shock may propagate at different speeds, allowing an asset with a stable prior-only delayed response to catch up after the next eligible open.
+- Independence: temporal cross-asset propagation, not residual reversal, breadth demand, volume absorption, stress resilience, membership entry, low volatility, trend/volume, asymmetric capture or calendar flow.
+- Execution: no public data, timeframe, estimator, threshold, event/path, return, rule, backtest or OOS access.
+- Authorization: one separate outcome-blind Paper protocol design with mandatory pre-result preflight; all downstream permissions remain false.
+
+## 2026-07-18 - U-13 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `6ef1024033aa9a86ef3c8f07558ba966270625a7` / `3c4aa926c2caaeb3adec8cf40bb2c9ff1a2436d5`; protocol `1cf6dade...3288`.
+- Review: `be552dad055234b0107810a7299656793ccea2a97f09a2cba22fa8ffc33ed5e0`; verdict `approve`, 15/15 dimensions, remaining critical/high `0/0`, target modified false.
+- Scope: independent review used `git show` on five exact target blobs and read no public data, result or OOS value.
+- Authorization: frozen-source qualification plus same-reader preflight only. Events, paths, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-13 Frozen-Source Qualification and Preflight Passed
+
+- Contract/result: `e9b82085...5ce7` / `5c4a61ef...0590`; branch `codex/u13-cross-sectional-data-qualification`; local Git only.
+- Authority: all 27,736 archives and 19 manifests exact; source identity `ca7d59b3...44aa`, same-reader identity `5dfc833d...2af3` across normal/reverse/shuffled.
+- Preflight: 40,383 complete active-member 1h intervals, 36,716 structural decisions and theoretical 24h episode ceiling 1,490 versus minimum 400.
+- Isolation: OOS OHLCV decoded 0; OHLCV fields decoded during preflight 0; common-component/candidate/event/path/return rows 0.
+- Authorization: exactly one sealed-IS Paper observation. No tuning, retry, formal returns, strategy/backtesting, OOS, trading or M2.
+
+## 2026-07-18 - U-13 Unique Sealed-IS Paper Observation Failed
+
+- Run/order: `b94ffc31...eb3d` / `54ebf660...d460`; normal, reverse and deterministic-shuffled manifests match exactly.
+- Result: one complete episode, one symbol and one month; full/OOS projection, year/symbol/month distribution and count Gates fail.
+- Economics: median 24h relative lagged diffusion `-2.8821%`, absolute displacement `-7.1543%`, positive relative fraction `0`; all frozen economic Gates fail.
+- Isolation: OOS opened false, rows decoded 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
+- Decision: U-13 closes `failed_feasibility`; only a separate U-14 independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-14 Independent Design Authorized
+
+- Decision: `ebcf8b78a75911a2567bf84d58363d3c4bd554ec0495bb63457c4d593e34e640`; one independent outcome-blind U-14 hypothesis design only.
+- Binding: U-13 remains failed, single-run and OOS-sealed under `b94ffc31...eb3d`; prior U-04 through U-12 and V4 authorities remain bound through the prior decision chain.
+- Independence: prior signs, paths, Gates, concentrations, censor patterns and defects may not choose U-14; repair, retry, inversion or relabeling is prohibited.
+- Engineering: any later result runner must pass a result-blind complexity benchmark before consuming its unique run.
+- Authorization: hypothesis design only; all data/result/strategy/OOS/trading permissions remain false.
+
+## 2026-07-18 - U-14 Downside-Rejection Persistence Design Complete
+
+- Candidate/hypothesis/design: `U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE` / `b88f2321...b87d` / `a6c3cc47...6691`.
+- Mechanism: under completed common selling pressure, an asset bought back from its intraperiod low to an unusually high relative close-location may reveal passive demand that persists after the next eligible open.
+- Independence: completed high/low/close auction geometry, not U-04 reversal, U-06 volume share, U-07 close-return strength, U-09 low volatility, U-10 trend/volume, U-11 capture, U-12 calendar flow or U-13 lagged diffusion.
+- Execution: no data, timeframe, estimator, threshold, event/path, return, strategy or OOS access.
+- Authorization: separate outcome-blind Paper protocol with mandatory result-blind complexity benchmark; downstream permissions remain false.
+
+## 2026-07-18 - U-14 Paper Protocol Exact-Head Review Approved
+
+- Target/base: `dd8eb34aa0cae8455ba15163831b992820461ebf` / `9ea3a7cabbd06bc8209678ef3e35bb5402a74a74`; protocol `a0b606d3...ac57`.
+- Review: `873f4435909ebc550f898972714e43ffc553b386700068ad65cecc7bef2fbbc2`; verdict `approve`, 15/15 dimensions, remaining critical/high `0/0`, target modified false.
+- Scope: independent review used exact target blobs and read no public data, event, path, return or OOS value.
+- Authorization: frozen-source qualification, the three-pass one-million-row synthetic complexity benchmark and same-reader structural preflight only. Events, paths, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-14 Frozen-Source Qualification, Complexity and Preflight Passed
+
+- Contract/result: `bea82ceabcab8ff22f8c5e0d8beab636886ab42e776bfe93be382e0719b45951` / `417b329a31984482027c35048db1862a10d79e1680ac23eaded8778afb88aaa7`; local Git only.
+- Authority: all 27,736 archives and 19 manifests exact; source and same-reader identities match across normal/reverse/shuffled.
+- Preflight: 10,094 complete 4h auctions, 9,690 structural decisions and maximum independent 24h ceiling 1,405 versus 400.
+- Complexity: same event/path evaluator passes three one-million-row runs; maximum 1.093112 seconds and 27.234 MiB; output hash exact.
+- Isolation: OOS decoded 0 and market OHLCV/common-state/candidate/event/path/return rows 0.
+- Authorization: exactly one sealed-IS Paper observation; no tuning, rerun, formal return, strategy/backtesting, OOS, trading or M2.
+
+## 2026-07-18 - U-14 Pre-Result All-Member Rank Gate Corrected
+
+- Before any U-14 market event/path scan, inspection found the shared core ranked residual only among threshold-passing candidates instead of all active members.
+- The Gate now ranks every active member first and admits a threshold-passing candidate only when it is inside the frozen top `ceil(active/4)` set.
+- A targeted all-member rank fixture passes; all sources and six traversals remain exact; the three corrected one-million-row passes remain under 1.090370 seconds and 27.391 MiB.
+- Corrected qualification `4db5eb7938cbf7f8063a00164fa6986d53629968ea0a8a4516de01e3a859dec5` supersedes `417b329a...aaa7` before outcomes. The unique Paper observation authority remains unused.
+
+## 2026-07-18 - U-14 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c` / `1436911ba8c6f4fd3adbba1c5ebf391f98d82d80987c7f8b2308b95c42414b69`; all four manifests match across three orders.
+- Sample: 92 complete episodes, 29 symbols, 46 months and five years with at least 12 episodes; all count, projection and concentration Gates pass.
+- Economics: median 24h relative rejection persistence `0.1380%`, absolute displacement `0.7737%`, positive fraction `54.35%`; frozen minima `1.80%`, `1.80%`, `60%` all fail.
+- Isolation: OOS opened false, decoded rows 0, formal returns/fills/positions/equity 0, parameters unchanged and second run false.
+- Decision: U-14 closes `failed_feasibility`; only a separate U-15 independent-candidate authorization decision may follow.
+
+## 2026-07-18 - U-15 Independent Design Authorized
+
+- Decision: `98d4ec9049d3b40ded8f98c045405eda8a010c783b5597653586853a825b7e68`; exactly one economically independent, outcome-blind U-15 hypothesis design.
+- Binding: U-14 remains failed, single-run and OOS-sealed under `38247311...1f5c`; prior chain and exact V4 authorities remain bound.
+- Independence: U-04 through U-14 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-15; repair, retry, inversion and relabeling are prohibited.
+
+## 2026-07-18 - U-15 Taker-Buy Absorption Persistence Design Complete
+
+- Candidate: `U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE`; hypothesis `5b99a5d8...15dd`; design `14ba25a0...57b1c`.
+- Mechanism: unusually high completed aggressive taker-buy participation with muted relative price impact may reflect finite passive sell inventory; unresolved demand may adjust price only after the next eligible open.
+- Data authority: no data was read. The future protocol must independently define and qualify official taker-buy fields before any event scan and fail closed if unavailable or ambiguous.
+- Independence: not residual reversal, breadth, total-volume-share absorption, relative strength, membership, volatility quality, trend, beta asymmetry, calendar, diffusion or downside rejection.
+- Next action: one outcome-blind Paper protocol design only. No events, paths, returns, fixed rules, strategy, OOS or trading are authorized.
+
+## 2026-07-18 - U-15 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U15-03-TAKER-BUY-ABSORPTION-PERSISTENCE-PAPER-V1`; content `3b58d6a2...b577a`; frozen before any market field, event, path or result read.
+- Identity: completed UTC 4h from 48 qualified 5m rows; taker-buy quote share at least 60%, robust cross-sectional z at least 2.0, relative return `[-0.40%, 0]`, absolute log return at most 0.60%; deterministic one-per-time and 24h connected clustering.
+- Hard prerequisite: independently qualify exact official taker-buy columns and every consumed raw-row binding; missing/ambiguous/revised fields may not be inferred, repaired, filled or substituted.
+- Observation/Gates: next expected 5m open, 1/2/4/8/12/24h paths, 90 complete episodes and frozen projection/distribution/economic Gates; no fill, position, equity or formal return.
+- Next action: separate exact-head independent protocol review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-18 - U-15 Paper Protocol Exact-Head Review Approved
+
+- Target: `5438dec609aaaed675e8ecba6f15ae9bb6f6da5a`; protocol `3b58d6a2...b577a`; five target blobs remain exact.
+- Verdict: `approve`, 15/15 dimensions, 0 critical and 0 high; review `2686c3ac...8ceb`.
+- Finding: official taker-buy quote field identity is explicit and cannot be inferred or substituted; timing, estimator, thresholds, clustering, paths, Gates, complexity and isolation are causal and fixed.
+- Authorization: only a separate field/data qualification, sample ceiling, synthetic complexity benchmark and result-free scope preflight. Events, paths, returns, strategy, OOS and trading remain false.
+
+## 2026-07-18 - U-15 Failed Pre-Result Field Qualification
+
+- Failure: checksum-bound `ADAUSDT` 2020-01 official 5m row at `1577855700000` has quote volume `0.00000000`, violating the frozen strictly-positive denominator invariant.
+- Identity: archive `2b6db817...ab9c`, raw row `4683df3b...57a`, evidence `83eb8ac2...63c28`.
+- Fail closed: scan stopped on the first failure; reverse/shuffled field scans, structural preflight, complexity and Paper observation were not run.
+- Isolation: taker-state/candidate/event/path/return rows and OOS values are all zero. No threshold relaxation, field repair, inference, fill, substitution or second run is allowed.
+- Decision: U-15 is permanently closed before results. No successor is authorized; a separate independent-candidate authorization decision is required to continue the research goal.
+
+## 2026-07-18 - U-16 Independent Design Authorized
+
+- Decision: `05346312b0e47168a17a77cd19d1a73525b17eb9f64de29b2b157a5c673528fc`; exactly one independent, outcome-blind U-16 hypothesis design.
+- Binding: U-15 remains closed before results under `83eb8ac2...63c28`; event/return/OOS access and second runs remain zero.
+- Independence: U-04 through U-15 outcomes, signs, Gates, concentrations, censor patterns, defects and field failures may not select U-16. U-15 field-contract repair or relaxation is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-20 Negative Coskewness Risk Premium Design Complete
+
+- Candidate: `U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM`; hypothesis `9d17a514...e46bdb`; design `3995e92a...a1e5b5`.
+- Mechanism: persistent negative third co-moment between common-adjusted asset return and squared common return may expose holders to disproportionate relative losses during large common moves, for which they demand compensation.
+- Independence: not directional capture beta, asset-only downside tails, volatility-of-volatility, one-off stress resilience, trend, liquidity or reversal; no prior result selected the mechanism.
+- Scope: no data or outcome read; all clocks, estimators, normalization, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-16 Correlation-Breakdown Information Persistence Design Complete
+
+- Candidate: `U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE`; hypothesis `78109352...2f1`; design `8574e5c5...075d1`.
+- Mechanism: positive relative displacement combined with prior-only decoupling from the complete peer common path may reflect gradual asset-specific information incorporation and may persist after the next eligible open.
+- Independence: not single-period reversal, stress resilience, residual-volatility quality, trend/volume confirmation, beta capture, lagged diffusion, downside rejection or taker-buy absorption.
+- Scope: no data or outcome read; all timeframes, estimators, thresholds, paths, costs and rules remain unresolved. OOS sealed.
+- Next action: one outcome-blind Paper protocol design only.
+
+## 2026-07-18 - U-16 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U16-03-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE-PAPER-V1`; content `18e302de...5633a`; frozen before data or results.
+- History: 48 completed hourly returns; oldest 36h baseline Pearson correlation at least 0.50, newest 12h at most 0.10, drop at least 0.50, using candidate-specific peer medians.
+- Event: recent relative log displacement at least 2.40%, at least 7/12 positive relative hours, max single candidate hour 6%, terminal-hour contribution at most 50%; deterministic representative and 24h cluster.
+- Observation: strict next 5m open and 1/2/4/8/12/24h paths only; 90-episode and fixed distribution/economic Gates; no formal return.
+- Next action: exact-head independent review only.
+
+## 2026-07-18 - U-16 Paper Protocol Exact-Head Review Approved
+
+- Target: `9cafb08dbe59faa48c948458151eb7cb7d6c1ddb`; protocol `18e302de...5633a`; five target blobs exact.
+- Verdict: approve 16/16 with 0 critical/high; review `2f708c0f...34e3`.
+- Causality: future membership/lifecycle information is excluded from event identity and used only to right-censor incomplete future Paper paths.
+- Authorization: frozen-source data qualification, structural ceiling and synthetic complexity only; no common-path, correlation, event, result or OOS scan.
+
+## 2026-07-18 - U-16 Frozen-Source Qualification and Preflight Passed
+
+- Result: `5dc4850a1d940d05581774a1270ec6c9cdc4d5f8702a5614a81a01928842e949`; exact 27,736 archives, 19 manifests and three source/same-reader orders.
+- Structure: 9,016 eligible decisions and maximum 1,331 independent 24h episodes; years 2020-2024 each exceed the eventual distribution floor.
+- Complexity: three one-million-row exact-evaluator passes at 3.000204/3.068404/3.002533 seconds and 26.719 MiB; output `a9c3ac3e...eeb4` exact.
+- Correction: pre-result runner measurement was reordered before source qualification because process-lifetime RSS contaminated the initial combined attempt; protocol/evaluator/results were unchanged and market outcomes remained unread.
+- Isolation: price/common/correlation/candidate/event/path/return and OOS decoded rows all zero. Exactly one sealed-IS Paper observation is authorized.
+
+## 2026-07-18 - U-16 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14` / `fb25bbc789068bf7c8a5d56e81e9ab90a34d7c57a7b551d107fb5b51cef3add4`; all manifests exact across three orders.
+- Sample: 169 complete episodes, 38 symbols, 51 months and five qualifying years; every count, projection and concentration Gate passes.
+- Economics: median 24h relative persistence `0.1003%`, absolute displacement `-0.0427%`, positive fraction `52.66%`; frozen minima `1.80%`, `1.80%`, `60%` all fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false.
+- Decision: U-16 is permanently closed. No fixed rule, strategy, review or OOS step; any U-17 candidate needs a separate authorization decision.
+
+## 2026-07-18 - U-17 Independent Design Authorized
+
+- Decision: `eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b`; exactly one economically independent, outcome-blind U-17 hypothesis design.
+- Binding: U-16 remains closed after its unique run `322fda77...4d14`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-16 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-17. U-16 Gate repair, relaxation, inversion or repackaging is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-17 Liquidity-Risk Premium Design Complete
+
+- Candidate: `U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM`; hypothesis `19b0e7ea...1fea`; design `ad3b6a4c...20fe`.
+- Mechanism: an asset that remains investable in the point-in-time Top-15 but persistently carries lower trading liquidity may earn compensation for immediacy, crowding-exit and capacity risk after the next eligible open.
+- Independence: not a volume shock, membership event, residual reversal, trend confirmation, taker imbalance or correlation breakdown; no prior outcome selected the mechanism.
+- Scope: no data or outcome read; all clocks, estimators, thresholds, cohorts, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-17 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U17-03-LIQUIDITY-RISK-PREMIUM-PAPER-V1`; content `81501338...6089`; frozen before any data or result read.
+- Identity: 28 completed UTC days, all-active-member daily quote-volume rank, low-liquidity membership on at least 21/28 days, deterministic representative and 28-day clustering.
+- Observation/Gates: strict boundary 5m open, 1/3/7/14/28-day diagnostics, 40 complete IS episodes and fixed projection/distribution/economic Gates; no formal return.
+- Next action: separate exact-head independent review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-18 - U-17 Paper Protocol Exact-Head Review Approved
+
+- Target: `c4990fbdc3a237c90fc73a2bf2a538109fcad31a`; protocol `81501338...6089`; five target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `c9696e61...0a64`.
+- Finding: daily assembly, all-member liquidity rank, 21/28 persistence, continuing investability, 28-day clustering, paths, Gates, complexity and isolation are causal and fixed.
+- Authorization: only separate data qualification, sample ceiling, synthetic complexity and result-free preflight. Liquidity/event/path scans, returns, strategy, OOS and trading remain false.
+
+## 2026-07-18 - U-17 Failed Pre-Result Structural Sample Ceiling
+
+- Evidence: `434d8a58a19306e9ff340da3b8df0c85fe15848c2686ed15491dee05ac64af91`; exact 27,736 archives and 19 manifests; three structural orders exact.
+- Ceiling: 13 structurally eligible daily decisions collapse to 3 independent 28-day episodes, below the frozen minimum 50.
+- Complexity: three deterministic one-million-logical-row passes complete below 0.10 seconds and 27.141 MiB.
+- Isolation: quote-volume/price fields, liquidity ranks, candidates, events, paths, returns and OOS values are zero. The evidence-envelope rerun changed no Gate or protocol.
+- Decision: U-17 closes before results; no protocol relaxation, admission retry or Paper observation. Any U-18 candidate requires a separate authorization decision.
+
+## 2026-07-18 - U-18 Independent Design Authorized
+
+- Decision: `eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1`; exactly one economically independent, outcome-blind U-18 hypothesis design.
+- Binding: U-17 remains closed before results under `434d8a58...af91`; event/return/OOS access remains zero.
+- Independence: U-04 through U-17 outcomes, Gates, concentrations, censor patterns and defects may not select U-18. U-17 sample-contract repair or shortening is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-18 Downside-Tail Risk Premium Design Complete
+
+- Candidate: `U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM`; hypothesis `e6b84d1b...78c4`; design `487d9b11...2df8`.
+- Mechanism: persistent left-tail asymmetry after removing the active-peer common component may expose holders to crash, liquidation and liquidity-withdrawal risk for which they demand compensation.
+- Independence: not a panic/reversal event, market-stress resilience, low residual volatility, beta capture, downside rejection or liquidity-risk characteristic; no prior result selected the mechanism.
+- Scope: no data or outcome read; all clocks, estimators, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-18 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U18-03-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM-PAPER-V1`; content `7571d2cb...c671`; frozen before data/results.
+- Identity: 168 completed 1h residuals split into two 84h halves; each requires at least two median-minus-2×scale tail points, 25% tail energy and 65% single-point cap.
+- Observation/Gates: strict next 5m open, 1/2/4/8/12/24h diagnostics, 90 complete IS episodes and fixed distribution/economic Gates; no formal return.
+- Next action: separate exact-head review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-18 - U-19 Paper Protocol Exact-Head Review Approved
+
+- Target: `8b8b03f0869463c046668e28fbb22618383addf4`; protocol `8f50ee40...40f9`; five target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `d215e444...f4a91`.
+- Finding: 336h residual construction, two disjoint 168h halves, 24h block RMS, normalized MAD variability, two-half threshold/rank persistence, clustering, paths, complexity and isolation are causal and fixed.
+- Authorization: only separate frozen-source data qualification, structural ceiling, synthetic complexity and result-free preflight. Residual/volatility/event/path scans, returns, strategy, OOS and trading remain false.
+
+## 2026-07-18 - U-19 Frozen-Source Qualification and Preflight Passed
+
+- Result: `62b7ac38cc1eb9ab89d2c2af8571181ef2f06a2f3873d70f61c917d3c23db499`; exact 27,736 archives, 19 manifests and three source/same-reader traversal orders.
+- Structure: 5,179 eligible decisions and maximum 752 independent theoretical 24h episodes versus the frozen minimum 400.
+- Complexity: three deterministic one-million-row exact-evaluator passes complete in at most 19.826369 seconds and 26.781 MiB; output `e82bf4dc...7f17` exact.
+- Isolation: price, return, residual, volatility-statistic, candidate, event, path, formal-return and OOS decoded rows are all zero. Exactly one sealed-IS Paper observation is authorized.
+
+## 2026-07-18 - U-19 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4` / `e09ff40bd68e37829bc48a9f2ad434364efda240dab16d595a2cfe68564afb2f`; all three traversal orders and four manifests are exact.
+- Sample: 54 complete episodes, 27 symbols and 50 months; count, projection and qualifying-year Gates fail while concentration Gates pass.
+- Economics: median 24h relative premium `-0.5663%`, absolute displacement `-0.7466%`, and positive fraction `37.04%`; frozen minima `+1.80%`, `+1.80%` and `60%` all fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-19 is permanently closed.
+
+## 2026-07-18 - U-20 Independent Design Authorized
+
+- Decision: `b4e9d5c94957d69142e328a05dfb00474840efe3347dd5347c55997115b64455`; exactly one economically independent, outcome-blind U-20 hypothesis design.
+- Binding: U-19 remains closed under run `38daffb0...3f3d4`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-19 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-20. U-19 inversion, repair, relabeling or repackaging is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-18 Paper Protocol Exact-Head Review Approved
+
+- Target: `39a766c50de5a0855d7ee85c2aab743ec8b738e5`; protocol `7571d2cb...c671`; five target blobs exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `5fb6a8d2...1dd3`.
+- Finding: residual construction, two-half robust tails, count/energy/dominance Gates, membership, clustering, paths, complexity and isolation are causal and fixed.
+- Authorization: only separate data qualification, sample ceiling, synthetic complexity and result-free preflight. Tail/event/path scans, returns, strategy, OOS and trading remain false.
+
+## 2026-07-18 - U-18 Frozen-Source Qualification and Preflight Passed
+
+- Result: `088ebed218ce7960621ebeda539ec78c5aeebbef5b98f608a4f044f78e3dc6e0`; exact 27,736 archives, 19 manifests and three source/same-reader traversal orders.
+- Structure: 7,278 eligible decisions and maximum 1,054 independent theoretical 24h episodes versus the frozen minimum 400.
+- Complexity: three deterministic one-million-row exact-evaluator passes complete in at most 23.626789 seconds and 26.438 MiB; output `26773603...1bf` exact.
+- Isolation: price, return, residual, tail, candidate, event, path, formal-return and OOS decoded rows are all zero.
+- Next action: exactly one sealed-IS Paper observation. No tuning, second run, formal returns, strategy, OOS, trading or M2.
+
+## 2026-07-18 - U-18 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `213c303dc81f23f0f8bb0d37c1f114636ca0cbd76c0bae1f3c432a5b2cf9c3cd` / `08108538897db5769665743f1d2fc54509fc80601199eaf03252d754877ee592`; all three traversal orders and four manifests are exact.
+- Sample: 157 complete episodes, 36 symbols, 56 months and five qualifying years; all sample, projection, concentration and authority Gates pass.
+- Economics: median 24h relative premium `-0.1245%`, absolute displacement `-0.3378%`, and positive fraction `47.77%`; frozen minima `+1.80%`, `+1.80%` and `60%` all fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false.
+- Decision: U-18 is permanently closed. No review, fixed rules, strategy or OOS; any U-19 candidate requires a separate authorization decision.
+
+## 2026-07-18 - U-19 Independent Design Authorized
+
+- Decision: `0996522977d3a54fe35f29220bcd0ca9dd4f2aebd1533d610c6aececf250c3a9`; exactly one economically independent, outcome-blind U-19 hypothesis design.
+- Binding: U-18 remains closed under run `213c303d...9c3cd`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-18 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-19. U-18 inversion, repair, relabeling or repackaging is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-19 Volatility-of-Volatility Risk Premium Design Complete
+
+- Candidate: `U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM`; hypothesis `6b3cd19b...7c52`; design `89cd46e6...fe80`.
+- Mechanism: persistent variability of common-component-adjusted volatility may impose unstable risk-budget, hedging and liquidity-capital demands for which investors require compensation.
+- Independence: not low idiosyncratic volatility, downside-tail asymmetry, beta capture, trading liquidity risk, trend, panic, absorption or correlation breakdown; no prior result selected it.
+- Scope: no data or outcome read; all clocks, estimators, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-19 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U19-03-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM-PAPER-V1`; content `8f50ee40...40f9`; frozen before data/results.
+- Identity: 336 completed hourly residuals split into two 168h halves; each has seven non-overlapping 24h residual-RMS blocks and normalized `1.4826 × MAD / median` variability.
+- Persistence/Gates: both halves require at least 0.25 and highest cross-sectional quarter rank; base volatility level and return direction are not Gates; 24h clustering/paths and standard immutable Paper Gates apply.
+- Next action: separate exact-head review only. Data qualification, events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-18 - U-20 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U20-03-NEGATIVE-COSKEWNESS-RISK-PREMIUM-PAPER-V1`; content `d909cd57...e2dec9`; frozen before data/results.
+- Identity: 336 completed hourly observations split into two 168h halves; each computes the standardized candidate common-adjusted-return/common-squared third comoment.
+- Persistence/Gates: both halves require coskewness at most `-0.20` and bottom-quarter rank; mean direction, volatility, tail, drawdown and terminal-bar direction are not Gates.
+- Next action: separate exact-head review only. Data qualification, coskewness/events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-18 - U-20 Paper Protocol Exact-Head Review Approved
+
+- Target: `6a2207c05c7045e82b47f9685c01a5c2d0b30755`; protocol `d909cd57...e2dec9`; all five target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `eb452e74...e20f5`.
+- Finding: common-adjusted-return construction, standardized third comoment, two-half threshold/rank persistence, clustering, paths, complexity and isolation are causal and fixed.
+- Authorization: only frozen-source structural qualification, sample ceiling, synthetic complexity and result-free preflight. Coskewness/event/path scans, formal returns, strategy, OOS and trading remain false.
+
+## 2026-07-18 - U-20 Frozen-Source Qualification and Preflight Passed
+
+- Result: `de61add6f8ef2a22f62166c14aeb4c30565cb8b3003e6395909fa7b7a85e2368`; exact 27,736 archives, 19 manifests and three source/same-reader traversal orders.
+- Structure: 5,179 eligible decisions and maximum 752 independent theoretical 24h episodes versus the frozen minimum 400.
+- Complexity: three deterministic one-million-row exact-evaluator passes complete in at most 27.207247 seconds and 26.250 MiB; output `59beecf0...ade4` exact.
+- Isolation: price, return, common-adjusted-return, coskewness, candidate, event, path, formal-return and OOS decoded rows are all zero. Exactly one sealed-IS Paper observation is authorized.
+
+## 2026-07-18 - U-20 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `587def88ac42d016a0ac5de97789164be6e6f1bf447b7a239eeed95137a9ede1` / `c59e127f989240229dda5e129ca8e333a47eea910bfeb971d7015b5d37d13f91`; all three traversal orders and four manifests are exact.
+- Sample: 110 complete episodes, 36 symbols, 54 months and five qualifying years; every sample, projection, concentration and authority Gate passes.
+- Economics: median 24h relative premium `-0.0375%`, absolute displacement `-0.2133%`, and positive fraction `48.18%`; frozen minima `+1.80%`, `+1.80%` and `60%` all fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-20 is permanently closed.
+
+## 2026-07-18 - U-21 Independent Design Authorized
+
+- Decision: `58c4be44b0d3753d8cf36f96df374880d2a929d4f091e7aac19b14619c17b247`; exactly one economically independent, outcome-blind U-21 hypothesis design.
+- Binding: U-20 remains closed under run `587def88...9ede1`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-20 outcomes, signs, Gates, concentrations, censor patterns and defects may not select U-21. U-20 inversion, repair, relabeling or repackaging is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-18 - U-21 Systematic Cokurtosis Risk Premium Design Complete
+
+- Candidate: `U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM`; hypothesis `90761268...420b6`; design `a4507537...8568b`.
+- Mechanism: persistent joint intensity of squared common-adjusted and squared common returns may consume liquidity and risk capital during marketwide volatility, requiring compensation.
+- Independence: unsigned fourth comoment, not signed coskewness, asset-only tails, volatility-of-volatility, beta capture, trend, panic, absorption or correlation breakdown; no prior result selected it.
+- Scope: no data or outcome read; all clocks, estimators, thresholds, paths, costs and rules remain unresolved. Only outcome-blind Paper protocol design may follow.
+
+## 2026-07-18 - U-21 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U21-03-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM-PAPER-V1`; content `b8cad855...73551e`; frozen before data/results.
+- Identity: 336 completed hourly observations split into two 168h halves; each computes standardized `E[z_candidate² × z_common²]` with independent baseline 1.0.
+- Persistence/Gates: both halves require at least 1.50 and top-quarter rank; signed direction, coskewness, volatility, tail, drawdown and terminal-bar direction are not Gates.
+- Next action: separate exact-head review only. Data qualification, cokurtosis/events, strategy, OOS and trading remain unauthorized.
+
+## 2026-07-19 - U-21 Paper Protocol Exact-Head Review Approved
+
+- Target: `d76714752825f9018427e9cd55cdd69802928d42`; protocol `b8cad855...73551e`; all five target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `809dcdf6...355ff`.
+- Finding: common adjustment, unsigned standardized fourth comoment, two-half threshold/rank persistence, clustering, paths, complexity and isolation are causal and fixed.
+- Authorization: only frozen-source structural qualification, sample ceiling, synthetic complexity and result-free preflight. Cokurtosis/event/path scans, formal returns, strategy, OOS and trading remain false.
+
+## 2026-07-19 - U-21 Qualification Failed Pre-Result Complexity
+
+- Failure: `33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b`; first required one-million-row exact-evaluator pass triggered the frozen combined complexity guard.
+- Isolation: the failure occurred before opening any frozen source archive; market price/return/cokurtosis/event/path and OOS rows are all zero.
+- Decision: U-21 is closed before results. No optimization, retry, Paper observation, formal return, strategy or OOS is authorized.
+
+## 2026-07-19 - U-22 Independent Design Authorized
+
+- Decision: `82aef7f378a1aaa46ded62cfc21dedb67e6d86a8d0c27c24f66280d8c124e29d`; exactly one economically independent, outcome-blind U-22 hypothesis design.
+- Binding: U-21 remains closed under failure `33e53b7f...147a1b`; no frozen archive, market result or OOS value was opened.
+- Independence: U-04 through U-21 outcomes, Gates, concentrations, censor patterns, defects and the U-21 complexity failure may not select U-22; U-21 optimization or retry is prohibited.
+- Authorization: hypothesis design plus synthetic-only exact-core complexity feasibility before protocol freeze; public data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false.
+
+## 2026-07-19 - U-22 Dispersion-Expansion Leader Continuation Design Complete
+
+- Candidate: `U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION`; hypothesis `4ec9eba4...cb77d3`; design `652677b1...153abe`.
+- Mechanism: multi-observation positive peer-relative leadership during broadening cross-sectional dispersion may persist through segmented attention, capital rotation and gradual price discovery.
+- Independence: not market-stress strength, volume trend, common-shock lagged diffusion, correlation breakdown, reversal, absorption or a higher-moment risk premium; no prior result or failure selected it.
+- Scope: no public data or outcome read and no timeframe, estimator, threshold, horizon or strategy rule selected. Protocol design may proceed only with a pre-freeze synthetic exact-core complexity pass.
+
+## 2026-07-19 - U-22 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U22-03-DISPERSION-EXPANSION-LEADER-CONTINUATION-PAPER-V1`; content `0fdc7eb2...d1b4fa`; frozen before public data or results.
+- Pre-freeze feasibility: `4476d5b5...e6940b`; three 1,000,080-row synthetic passes complete in at most 0.213096 seconds and 22.000 MiB with identical digest.
+- Identity: 24 completed hours, 12h/12h robust dispersion expansion, 2.40% relative leader, 8/12 positive hours, both halves positive and 50% single-hour dominance ceiling.
+- Scope: no public archive, market result or OOS value read. Only separate exact-head independent review is authorized next.
+
+## 2026-07-19 - U-22 Paper Protocol Exact-Head Review Approved
+
+- Target: `d4f254f876dfeab73494c79a48e90c86dfd0ee16`; protocol `0fdc7eb2...d1b4fa`; all nine target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `e2a920c2...18cd57`.
+- Finding: pre-freeze core/evidence, 24h robust dispersion, coherent leader, point-in-time membership, clustering, paths, Gates and isolation are fixed and causal.
+- Authorization: frozen-source structural qualification and result-free preflight only; returns, dispersion/leaders/events/paths, formal returns, strategy, OOS and trading remain false.
+
+## 2026-07-19 - U-22 Frozen-Source Qualification Passed
+
+- Result: `9b009c6b940e338cc77f8f3ea9e8dd473689c739d6c247ad0ba078c3f40a2334`; 27,736 archives, 19 manifests and all source/reader orders exact.
+- Structure: 37,401 eligible decisions and maximum 1,514 independent 24h episodes versus 400 required; every IS year exceeds the eventual floor.
+- Isolation: price, return, dispersion, leader, event, path, formal-return and OOS decoded rows are all zero.
+- Authorization: exactly one sealed-IS Paper observation; no strategy, backtest, OOS or trading.
+
+## 2026-07-19 - U-22 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c`; all three traversal orders and four manifests are exact.
+- Sample: 198 episodes, 43 symbols, 54 months and five qualifying years; every sample, projection, concentration and authority Gate passes.
+- Economics: median 24h relative continuation `-0.1688%`, absolute displacement `+0.1115%`, positive fraction `47.98%`; all three frozen economic Gates fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-22 is permanently closed.
+
+## 2026-07-19 - U-23 Independent Design Authorized
+
+- Decision: `70c60434bb7c78344eb733eb8a8d4393538f60bbc97bff60e840c68f10998d5a`; exactly one economically independent, outcome-blind U-23 hypothesis design.
+- Binding: U-22 remains permanently closed under run `12a756e2...01531c`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-22 outcomes, signs, Gates, concentrations, censor patterns, defects and failures may not select U-23. U-22 inversion, repair, relabeling or repackaging is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false. A synthetic exact-core feasibility pass is required before protocol freeze.
+
+## 2026-07-19 - U-23 Range-Expansion Close-Strength Design Complete
+
+- Candidate: `U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION`; hypothesis `6c099769...98627f`; design `351ddd25...96e6e0`.
+- Mechanism: unusually expanded completed auction range, a close near that range's high and positive complete-peer-relative displacement may reveal aggressive demand and incomplete price discovery.
+- Independence: not U-22 dispersion leadership, U-10 volume trend, U-14 downside rejection or M1E compression breakout; no prior result or failure selected it.
+- Scope: no public data or outcome read and no timeframe, estimator, threshold, horizon or strategy rule selected. Protocol design may proceed only with a pre-freeze synthetic exact-core complexity pass.
+
+## 2026-07-19 - U-23 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U23-03-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION-PAPER-V1`; content `52807bd0...3e5611`; frozen before public data or results.
+- Pre-freeze feasibility: `6010529c...45637e`; three 1,000,395-logical-OHLC-bar synthetic passes complete in at most 0.349712 seconds and 22.016 MiB with identical digest.
+- Identity: 42 prior completed 4h ranges; current range at least 4%, 2x baseline and 3 robust scales; close location 90%, body share 60%, peer-relative return 2.5%.
+- Scope: no public archive, market result or OOS value read. Only separate exact-head independent review is authorized next.
+
+## 2026-07-19 - U-23 Paper Protocol Exact-Head Review Approved
+
+- Target: `1d0b21282b1e499fdef0d9cab88e7a918a5d5913`; protocol `52807bd0...3e5611`; all nine target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `f2a8a5fd...37c4a4`.
+- Finding: pre-freeze core/evidence, 42+1 completed 4h bars, own-range expansion, same-bar close/body strength, peer-relative identity, clustering, paths, Gates and isolation are fixed and causal.
+- Authorization: frozen-source structural qualification and result-free preflight only; OHLC/range/return/event/path scans, formal returns, strategy, OOS and trading remain false.
+
+## 2026-07-19 - U-23 Frozen-Source Qualification Passed
+
+- Result: `08166fb534daf691e069f6ae743b472f0c06879dd060c58f816e4f2d5acef2c5`; 27,736 archives, 19 manifests and all source/reader orders exact.
+- Structure: 7,122 eligible decisions and maximum 1,031 independent 24h episodes versus 400 required; every IS year exceeds the eventual floor.
+- Isolation: OHLC, range, return, candidate, event, path, formal-return and OOS decoded/generated rows are all zero.
+- Authorization: exactly one sealed-IS Paper observation; no strategy, backtest, OOS or trading.
+
+## 2026-07-19 - U-23 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `771ce48d80dc48fd2d8f984528541c8a8c1cef4f756892647d66f49b9ffb2604`; all three traversal orders and four manifests are exact.
+- Sample: 178 episodes, 41 symbols, 52 months and five qualifying years; every sample, projection, concentration and authority Gate passes.
+- Economics: median 24h relative continuation `-1.1952%`, absolute displacement `-0.9181%`, positive fraction `34.83%`; all three frozen economic Gates fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-23 is permanently closed.
+
+## 2026-07-19 - U-24 Independent Design Authorized
+
+- Decision: `745152692cdada8dad9e0abaf5ea171fb3a1d55d70dbfab32b66c7d2edbdfac5`; exactly one economically independent, outcome-blind U-24 hypothesis design.
+- Binding: U-23 remains permanently closed under run `771ce48d...fb2604`; OOS, formal returns and second-run flags remain false.
+- Independence: U-04 through U-23 outcomes, signs, Gates, concentrations, censor patterns, defects and failures may not select U-24. U-23 inversion, repair, relabeling or repackaging is prohibited.
+- Authorization: hypothesis design only; data, parameters, events, returns, strategy/backtesting, OOS, trading and M2 remain false. A synthetic exact-core feasibility pass is required before protocol freeze.
+
+## 2026-07-19 - U-24 Lottery-Demand Avoidance Design Complete
+
+- Candidate: `U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM`; hypothesis `0b420693...18ff34`; design `c99f7002...14d0c1`.
+- Mechanism: after completed active-peer common adjustment, persistently lower asset-specific right-tail lottery payoff may avoid preference-driven overpricing and earn a relative premium.
+- Independence: not low volatility, downside-tail compensation, negative coskewness, systematic cokurtosis, residual reversal or range-expansion continuation; no prior result selected it.
+- Scope: no public data or outcome read and no timeframe, estimator, rank, persistence, threshold, horizon or strategy rule selected. Protocol design may proceed only with a pre-freeze synthetic exact-core complexity pass.
+
+## 2026-07-19 - U-24 Outcome-Blind Paper Protocol Frozen
+
+- Protocol: `U24-03-LOTTERY-DEMAND-AVOIDANCE-PREMIUM-PAPER-V1`; content `5110c3f4...39c7ce7`; frozen before public data or results.
+- Pre-freeze feasibility: `ce8b0f79...957484`; three 1,002,960-logical-return synthetic passes complete in at most 0.472842 seconds and 21.641 MiB with identical digest.
+- Identity: 336 completed 1h returns in two halves; candidate-specific peer median; maximum positive residual payoff no greater than 8% and lowest-quarter in both halves.
+- Scope: no public archive, market result or OOS value read. Only separate exact-head independent review is authorized next.
+
+## 2026-07-19 - U-24 Paper Protocol Exact-Head Review Approved
+
+- Target: `cafbd5a90f5fd3a435d15ff03af0ecec2df98c3f`; protocol `5110c3f4...39c7ce7`; all nine target blobs remain exact.
+- Verdict: `approve`, 16/16 dimensions, 0 critical and 0 high; review `b032f88a...57db17`.
+- Finding: pre-freeze core/evidence, 336h history, candidate-specific peer adjustment, rank-before-threshold, two-half lottery payoff persistence, clustering, paths, Gates and isolation are fixed and causal.
+- Authorization: frozen-source structural qualification and result-free preflight only; returns/payoffs/events/paths, formal returns, strategy, OOS and trading remain false.
+
+## 2026-07-19 - U-24 Frozen-Source Qualification Passed
+
+- Result: `02e1dd27ae4d04cf10c3cbd14578eb06b633b02ec749233eba22b72f9ada9627`; 27,736 archives, 19 manifests and all source/reader orders are exact.
+- Structure: 4,897 eligible decisions and maximum 711 independent 24h episodes versus 400 required.
+- Isolation: price, return, common-adjustment, lottery-payoff, event, path, formal-return and OOS decoded/generated rows are all zero.
+- Authorization: exactly one sealed-IS Paper observation; no strategy, backtest, OOS or trading.
+
+## 2026-07-19 - U-24 Unique Sealed-IS Paper Observation Failed Feasibility
+
+- Run/order: `131266a00f2b3742dd3bb2963bc5184ba55ae5aef22b97cfb0f26d2d02c697dd` / `0e8ae9785503f1fc59bbb419d031c31856ff90520a3432ff66306c1c7bc138e1`; all three traversal orders and four manifests are exact.
+- Sample: 78 complete episodes, projected 107 full and 29 sealed-OOS episodes, 20 symbols, 52 months and four qualifying years; three sample/projection Gates fail.
+- Economics: median 24h relative lottery-demand-avoidance premium `+0.3452%`, absolute displacement `-0.1052%`, and positive fraction `57.69%`; all three frozen economic Gates fail.
+- Isolation: OOS false/zero, formal returns/fills/positions/equity zero, parameters unchanged and second run false. U-24 is permanently closed.

@@ -16,6 +16,15 @@ bash scripts/project_validate.sh
 git diff --check "$BASE_SHA" HEAD
 
 SELECTED_VALIDATORS=""
+ARCHIVE_MODE=false
+ARCHIVE_HEAD_BRANCH="$($PY_CMD -c 'import json; print(json.load(open("config/u04_u24_history_archive_v1.json"))["archive_head_branch"])' 2>/dev/null || true)"
+CURRENT_HEAD_BRANCH="${GITHUB_HEAD_REF:-$(git branch --show-current)}"
+if [[ -n "$ARCHIVE_HEAD_BRANCH" && "$CURRENT_HEAD_BRANCH" == "$ARCHIVE_HEAD_BRANCH" ]] \
+  && printf '%s\n' "$CHANGED_FILES" | rg -q '^config/u04_u24_history_archive_v1.json$' \
+  && [[ -f config/u04_u24_history_archive_v1.json ]] \
+  && "$PY_CMD" scripts/u04_u24_history_archive_check.py; then
+  ARCHIVE_MODE=true
+fi
 workflow_body_changed() {
   local workflow_path="$1"
   local diff_line trimmed
@@ -54,7 +63,10 @@ if printf '%s\n' "$CHANGED_FILES" | rg -q '^\.github/workflows/'; then
 fi
 
 SELECTED_VALIDATORS="$(printf '%s' "$SELECTED_VALIDATORS" | sed '/^$/d' | sort -u)"
-if [[ -z "$SELECTED_VALIDATORS" ]]; then
+if [[ "$ARCHIVE_MODE" == "true" ]]; then
+  echo "Historical archive mode: replaying each stage at its exact terminal tree."
+  ARCHIVE_REPLAY=1 bash scripts/u04_u24_history_archive_validate.sh
+elif [[ -z "$SELECTED_VALIDATORS" ]]; then
   echo "No stage-specific validator changed; project Gate is sufficient."
 else
   while IFS= read -r validator; do

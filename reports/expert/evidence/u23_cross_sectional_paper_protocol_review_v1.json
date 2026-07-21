@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "status": "approve",
+  "review_id": "U23-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "target": {
+    "head_sha": "1d0b21282b1e499fdef0d9cab88e7a918a5d5913",
+    "parent_sha": "989bb94a6ac03af640c5e5a998ff7b7b6a068485",
+    "protocol_content_hash": "52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611",
+    "synthetic_feasibility_content_hash": "6010529c89627e8607919272af3c85c7dd5c3fdd4e48f549b8fe055e3245637e",
+    "files": {
+      "config/u23_cross_sectional_paper_protocol_v1.json": "c9ed20def86fa8e429918768ff9474f2edbec4ae7ee8a3d8de230671071d0da3",
+      "reports/m1/U23_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "475cc56cb1f2fb2f55a1a49a1086ec11918a670b38d2e98a4c19961d76fb43b0",
+      "reports/m1/evidence/u23_synthetic_core_feasibility_v1.json": "4de45faa59b00f6216c3af1ebaad907102a5d97dacf62c2ac796b9f6b8a03442",
+      "scripts/u23_cross_sectional_paper_protocol_check.py": "31aaf62b4b5c457479d3246e8ff623023aef616b17e7d5c03b14cb42a7195ad9",
+      "scripts/u23_cross_sectional_paper_protocol_validate.sh": "287fe6dcaf9bf61b88f1d825f1ba4be11395c17eca2f69f591434f68c50e7c33",
+      "scripts/u23_synthetic_core_benchmark.py": "f3c35c3f3f288b7efc45458229abb1da3c775a4b5b56416501bd1a48c63a51b0",
+      "src/btc_eth_dual_quant/data/u23_range_expansion.py": "ffba8a38981c954024e1efa96dce3595a13a1f3be53330b9b9c776fef6881aa7",
+      "tests/test_u23_cross_sectional_paper_protocol.py": "477aab21a57e6dfe6f8913607d5771b144f66c6eac1f5b6e5d4df3bd629d9a14",
+      "tests/test_u23_range_expansion.py": "96c6b5d541e8c36e9c6587b2a252198dfe74a6aef1ab40677d23fa62f83f6cc1"
+    }
+  },
+  "verdict": "approve",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "review_dimensions": {
+    "candidate_design_authorization_and_u22_failure_binding": "pass",
+    "pre_freeze_synthetic_feasibility_and_exact_core_binding": "pass",
+    "complete_42_plus_1_4h_history_and_all_active_members": "pass",
+    "completed_5m_to_utc_4h_aggregation_causality": "pass",
+    "own_history_median_mad_range_expansion_gates": "pass",
+    "current_minimum_range_ratio_and_robust_z": "pass",
+    "same_bar_close_location_and_positive_body_share": "pass",
+    "complete_peer_median_relative_return_and_identity": "pass",
+    "no_volume_dispersion_compression_or_downside_rejection_identity": "pass",
+    "point_in_time_membership_lifecycle_and_mask": "pass",
+    "event_tie_break_and_24h_clustering": "pass",
+    "strict_next_open_and_path_censoring": "pass",
+    "result_blind_sample_ceiling": "pass",
+    "sample_projection_distribution_and_economic_gates": "pass",
+    "public_data_scope_cost_reference_and_oos_isolation": "pass",
+    "authorization_matrix": "pass"
+  },
+  "authorization_after_review": {
+    "data_qualification_and_preflight": true,
+    "ohlc_range_return_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "fixed_rule_contract": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "review_content_hash": "f2a8a5fdf770419bcc6f29abda3539d251b9e6e0f1dc97d5a4e824ab4f37c4a4",
+  "generated_utc": "2026-07-19T00:00:00Z"
+}

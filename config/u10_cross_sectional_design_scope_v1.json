@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "status": "economic_hypothesis_pass_protocol_design_only",
+  "candidate_id": "U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION",
+  "hypothesis_sha256": "5fc3529f7afa3df2344517f3bd567c5b3bf89a23bc0e071ff853bc80e50ec536",
+  "bindings": {
+    "u10_design_authorization_hash": "e196cc0fdd20e8b8fc84872b440baa09ae69e0752c75005bebefb51a4060c7a0",
+    "u09_correction_content_hash": "c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479",
+    "u08_closed_run_hash": "f6fbcdee846b855883a5e356ea49e6a98901bfcc6a9dbd5a2cbb07ebed9eca3e",
+    "u07_closed_run_hash": "8c637a3f13dad4410beb446094af011582ab2cde0ac449e32d044cbaa709352c",
+    "u06_closed_run_hash": "2f715394411ca260f9889304ddc84da926d37ec1dfc9d4316493f23f6881382a",
+    "u05_closed_run_hash": "874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a",
+    "u04_closed_run_hash": "9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d"
+  },
+  "research_scope": {
+    "market": "binance_spot_usdt",
+    "universe": "exact_point_in_time_monthly_top15_liquid_spot_members",
+    "direction": "spot_long_cash_only",
+    "oos_opened": false,
+    "public_data_read_in_design": false,
+    "event_outcomes_read_in_design": false,
+    "returns_computed_in_design": false
+  },
+  "economic_hypothesis": {
+    "family": "cross_sectional_volume_confirmed_relative_trend_continuation",
+    "return_source": "gradual_price_incorporation_of_scalable_demand_confirmed_by_expanding_cross_sectional_quote_volume_share",
+    "mechanism": [
+      "measure_only_completed_asset_price_change_relative_to_the_exact_active_member_common_component",
+      "require_the_relative_price_trend_to_be_accompanied_by_persistent_cross_sectional_quote_volume_share_expansion",
+      "joint_price_and_volume_share_confirmation_may_separate_scalable_demand_from_thin_price_noise",
+      "gradual_information_diffusion_and_participant_rebalancing_may_allow_relative_trend_to_continue_after_the_next_eligible_open"
+    ],
+    "failure_regimes": [
+      "volume_share_expansion_is_wash_activity_or_temporary_attention",
+      "price_and_volume_confirmation_marks_exhaustion_rather_than_continuing_demand",
+      "one_large_trade_or_listing_event_distorts_completed_volume_share",
+      "common_component_estimation_is_dominated_by_concentrated_market_moves",
+      "relative_strength_reverses_when_market_leadership_rotates",
+      "market_wide_decline_overwhelms_relative_continuation",
+      "lifecycle_transition_or_listing_discontinuity_breaks_comparability",
+      "membership_source_lifecycle_or_invalid_interval_authority_drift",
+      "sample_concentration_turnover_or_transaction_costs_consume_any_continuation"
+    ]
+  },
+  "causal_and_membership_invariants": {
+    "completed_observations_only": true,
+    "exact_point_in_time_active_members_required": true,
+    "relative_price_and_volume_share_must_both_precede_future_reference_open": true,
+    "quote_volume_share_denominator_uses_all_complete_active_members": true,
+    "current_membership_hindsight_prohibited": true,
+    "replacement_members_prohibited": true,
+    "survivorship_rewrite_prohibited": true,
+    "post_outcome_candidate_selection_prohibited": true,
+    "u04_through_u08_outcome_inversion_prohibited": true,
+    "u09_protocol_defect_reuse_prohibited": true,
+    "lifecycle_crossing_assumption_prohibited": true,
+    "next_eligible_open_earliest_future_entry": true
+  },
+  "non_duplication": {
+    "u04_residual_reversal_prohibited": true,
+    "u05_positive_breadth_persistence_prohibited": true,
+    "u06_unconfirmed_volume_share_absorption_prohibited": true,
+    "u07_market_stress_relative_strength_prohibited": true,
+    "u08_membership_entry_demand_prohibited": true,
+    "u09_low_idiosyncratic_volatility_quality_prohibited": true,
+    "m1c_btc_eth_absolute_winner_rotation_prohibited": true,
+    "m1e_compression_breakout_prohibited": true,
+    "m1g_panic_reversal_prohibited": true,
+    "m1h_funding_input_prohibited": true,
+    "m1a_indicator_bundle_prohibited": true,
+    "failed_candidate_outcome_derived_rule_prohibited": true
+  },
+  "unresolved_until_separate_protocol": [
+    "is_oos_boundary", "completed_observation_timeframe", "common_component_algorithm",
+    "relative_trend_estimator", "quote_volume_share_baseline", "volume_share_persistence_definition",
+    "joint_candidate_threshold_and_tie_break", "reference_open_definition",
+    "cross_sectional_cluster_and_episode_rule", "future_observation_horizons",
+    "sample_and_concentration_gates", "cost_coverage_gate", "fixed_rule_exit_family",
+    "lifecycle_intersection_treatment", "benchmark_definition"
+  ],
+  "authorizations": {
+    "u10_paper_protocol_design": true,
+    "event_scan": false, "signals": false, "returns": false,
+    "fixed_rule_contract": false, "freqtrade_strategy_code": false,
+    "backtesting": false, "oos": false, "api_trading": false,
+    "execution_live": false, "m2": false
+  },
+  "content_hash": "af9ac64043adacad08ef834567ff976b26723fb1468d1a7a0d43e6fa5eaa40e5",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

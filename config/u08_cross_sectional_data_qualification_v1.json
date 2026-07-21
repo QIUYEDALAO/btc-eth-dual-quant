@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "qualification_id": "U08-05-CROSS-SECTIONAL-DATA-QUALIFICATION-V1",
+  "status": "frozen_source_qualification_pending_run",
+  "generated_utc": "2026-07-18T00:00:00Z",
+  "candidate_id": "U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE",
+  "protocol_target_commit": "a516efb32f2058b603918365a6eeaef0fe509361",
+  "protocol_content_hash": "98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283",
+  "protocol_review_content_hash": "316fe577050555bf0b8c237c6a5bc374885132c863ba647fe2c826971aca8acf",
+  "authority_bindings": {
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "source_archive_count": 27736,
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+    "expected_grid_manifest_hash": "aacea2d14948714c07c188d1774536c7e47530527fc979db5936f940246ce328",
+    "qualified_panel_manifest_hash": "712bf111b093c80a088fd9685aa9d1faacc49d875c3da7ce550a76c1798480cc",
+    "complete_day_mask_hash": "1cd6b17593aed5b29e85cb80175b9f51565939f361a9309f9ccd3975daa710be",
+    "invalid_interval_slot_mask_hash": "23e78e15a4484af9167b03e29bf9d499a39ff1e1c8195a056fae72b984285487",
+    "invalid_interval_accounting_hash": "77789efb7535dd487abdd5d575b341e1699a46bfd46a1d5fa874f6431d45d65d"
+  },
+  "source_verification": {
+    "source_mode": "frozen_local_only", "network_allowed": false,
+    "traversal_orders": ["normal","reverse","deterministic_shuffled"],
+    "deterministic_shuffle_seed": 271828
+  },
+  "data_authority_gates": {
+    "production_manifests_exact_required": 19,
+    "membership_rows": 1170,
+    "monthly_members": 15,
+    "minimum_active_members": 10,
+    "expected_months": 78,
+    "invalid_interval_events": 8,
+    "invalid_physical_rows": 119,
+    "valid_minority_rows": 1,
+    "total_active_slots_masked": 120,
+    "unresolved_gaps": 0,
+    "processing_errors": 0,
+    "source_revisions": 0,
+    "replacement_members": 0,
+    "synthetic_fills": 0
+  },
+  "membership_rank_gates": {
+    "expected_months": 78, "members_per_month": 15, "membership_rows": 1170,
+    "required_ranks": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+    "ranking_window_end_must_equal_effective_month": true,
+    "history_window_end_must_equal_effective_month": true,
+    "positive_finite_median_daily_quote_volume_required": true,
+    "duplicate_symbol_or_rank_allowed": false,
+    "genesis_month_event_qualification_allowed": false
+  },
+  "isolation_contract": {
+    "is_start": "2020-01-01T00:00:00Z", "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z", "oos_end_exclusive": "2026-07-01T00:00:00Z",
+    "oos_archive_access": "opaque_identity_and_crc_only", "oos_ohlc_decode_allowed": false,
+    "event_enumeration_allowed": false, "path_observation_allowed": false
+  },
+  "authorizations": {
+    "frozen_source_identity_verification": true, "data_qualification": true,
+    "isolation_gate_implementation": true, "event_scan": false,
+    "path_observation": false, "formal_returns": false, "strategy": false,
+    "backtesting": false, "oos": false, "api_trading": false,
+    "execution_live": false, "m2": false
+  },
+  "content_hash": "0adc8d4928e245e05a981f6ad997be01cd1fea876c0717e6a8d85ee8ca31f51e"
+}

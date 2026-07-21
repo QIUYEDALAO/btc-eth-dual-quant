@@ -1,0 +1,21 @@
+{
+  "schema_version":1,"review_id":"U10-04-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1","verdict":"approve",
+  "target_commit":"f468b7aeaaf02f803125b4ab6037086fb353776f","target_base_commit":"6f21347d37b5b0de2db18e826f66696c86d54bf6",
+  "protocol_content_hash":"be205bf40dcab624667b97e43bc158ea2473fe15de2ce9846a6bb198575fa43b",
+  "target_file_sha256":{
+    "config/u10_cross_sectional_paper_protocol_v1.json":"c86123c4290bade42e1ef1b5f54542d13f4528e33426357e8759921b01b21ebe",
+    "reports/m1/U10_CROSS_SECTIONAL_PAPER_PROTOCOL.md":"f34374c45d844d0ecc17684bbd0da2ee692a363d050a31299adc66d883634853",
+    "scripts/u10_cross_sectional_paper_protocol_check.py":"445fd3472ceef759f6744ace4c0465a137cd0db287ccd4d399b59ec756452ea1",
+    "scripts/u10_cross_sectional_paper_protocol_validate.sh":"58e20ac113f04a93d6c73999d0b6df36a50526dcc9cb75dd8bf870f1f53bb294",
+    "tests/test_u10_cross_sectional_paper_protocol.py":"927b45bc2e7857b34250f9c93fac3b5822e157ef50bd6afbd9d588b9d238f58e"
+  },
+  "dimensions":{
+    "exact_target_identity":"pass","authority_bindings":"pass","completed_daily_data_identity":"pass",
+    "relative_trend_estimator":"pass","quote_volume_share_estimator":"pass","joint_candidate_and_tie_break":"pass",
+    "pre_result_sample_ceiling":"pass","causal_reference_open":"pass","clustering_and_fixed_peer_paths":"pass",
+    "paper_gates":"pass","is_oos_isolation":"pass","research_leakage_prevention":"pass","authorization_scope":"pass"
+  },
+  "remaining_critical_findings":0,"remaining_high_findings":0,"target_modified":false,
+  "authorizations":{"data_qualification":true,"event_scan":false,"path_observation":false,"formal_returns":false,"strategy":false,"backtesting":false,"oos":false,"api_trading":false,"execution_live":false,"m2":false},
+  "review_content_hash":"e42d31706fe98fb089f148d563b010b4312e53e9b33ba1c33faafe7f63379009","generated_utc":"2026-07-18T00:00:00Z"
+}

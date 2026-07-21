@@ -388,14 +388,15 @@ class KlaySourceConflictTests(unittest.TestCase):
 
     def test_repository_governance_closes_adjudication_and_limits_adoption(self):
         state = yaml.safe_load((ROOT / "PROJECT_STATE.yaml").read_text())
-        self.assertEqual(
-            state["current_phase"],
-            "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
+        self.assertRegex(state["current_phase"], r"^U-\d{2} ")
+        self.assertRegex(state["current_status"], r"^u\d{2}_")
+        u04 = next(
+            item for item in state["completed_milestones"]
+            if item.get("phase") == "U-04 unique sealed-IS paper observation"
         )
-        self.assertEqual(
-            state["current_status"],
-            "adr0015_generic_policy_controlled_integration_pending_ci_no_requalification_no_u04_no_m2",
-        )
+        self.assertEqual(u04["status"], "failed_feasibility")
+        self.assertFalse(u04["oos_opened"])
+        self.assertTrue(u04["candidate_closed"])
         self.assertFalse(any(item["id"] == "U-03E-V3-ADJ" for item in state["open_work"]))
         milestone = next(
             item
@@ -435,17 +436,10 @@ class KlaySourceConflictTests(unittest.TestCase):
             policy_adoption["merge_commit"],
             "141481fa445bdc03b453844a666dbd2639c3cdf7",
         )
-        implementation = next(
-            item for item in state["open_work"]
-            if item["id"] == "ADR-0015-IMPL"
-        )
+        implementation = state["adr0015_invalid_interval_policy_implementation"]
         self.assertEqual(
             implementation["status"],
-            "implementation_exact_head_approved_controlled_integration_pending_gate",
-        )
-        self.assertEqual(
-            implementation["adoption_content_hash"],
-            "d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19",
+            "implementation_integrated_requalification_pass",
         )
         self.assertEqual(
             implementation["policy_hash"],
@@ -455,17 +449,30 @@ class KlaySourceConflictTests(unittest.TestCase):
             implementation["algorithm_hash"],
             "8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff",
         )
-        self.assertTrue(implementation["generic_policy_implemented"])
-        self.assertTrue(implementation["fixture_validation_complete"])
-        self.assertTrue(implementation["fault_injection_complete"])
         self.assertFalse(implementation["exact_head_implementation_review_required"])
         self.assertTrue(implementation["exact_head_implementation_review_complete"])
         self.assertEqual(implementation["review_pr"], 110)
-        self.assertFalse(implementation["fixed_range_public_requalification_authorized"])
+        self.assertTrue(implementation["fixed_range_public_requalification_authorized"])
+        self.assertTrue(implementation["fixed_range_public_requalification_complete"])
         self.assertFalse(implementation["new_independent_audit_authorized"])
         self.assertFalse(implementation["u04_authorized"])
         self.assertFalse(implementation["m2_authorized"])
-        self.assertFalse(implementation["public_data_run_executed"])
+        self.assertTrue(implementation["public_data_run_executed"])
+        self.assertFalse(any(item["id"].startswith("U-04") for item in state["open_work"]))
+        audit_protocol = state["adr0015_invalid_interval_independent_audit_protocol"]
+        self.assertEqual(
+            audit_protocol["protocol_content_hash"],
+            "9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b",
+        )
+        self.assertEqual(audit_protocol["production_manifests_exact_required"], 19)
+        self.assertFalse(audit_protocol["real_independent_audit_authorized"])
+        requalification = next(
+            item for item in state["completed_milestones"]
+            if item["phase"] == "ADR-0015 fixed-range invalid-interval requalification"
+        )
+        self.assertEqual(requalification["status"], "pass_local_complete")
+        self.assertEqual(requalification["invalid_physical_rows_quarantined"], 119)
+        self.assertEqual(requalification["valid_minority_rows_quarantined"], 1)
         repair = next(
             item
             for item in state["completed_milestones"]
@@ -490,7 +497,25 @@ class KlaySourceConflictTests(unittest.TestCase):
         )
         self.assertFalse(any(item["id"] == "ADR-0014-ADOPT" for item in state["open_work"]))
         self.assertFalse(any(item["id"] == "ADR-0014-REVIEW" for item in state["open_work"]))
-        self.assertFalse(any(state["research_authorizations"].values()))
+        for key in (
+            "strategy_code", "returns", "backtesting",
+            "oos_opened", "m2", "api_or_trading",
+        ):
+            self.assertFalse(state["research_authorizations"][key], key)
+        event_scan_phases = {
+            "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+            "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+            "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+            "U-07 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+            "U-08 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+            "U-09 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+            "U-10 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+            "U-11 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        }
+        self.assertEqual(
+            state["research_authorizations"]["event_scan"],
+            state["current_phase"] in event_scan_phases,
+        )
 
 
 if __name__ == "__main__":

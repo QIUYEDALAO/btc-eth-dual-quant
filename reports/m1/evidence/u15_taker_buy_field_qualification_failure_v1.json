@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "qualification_id": "U15-05-TAKER-BUY-FIELD-DATA-QUALIFICATION-COMPLEXITY-PREFLIGHT-V1",
+  "status": "failed_pre_result_field_qualification",
+  "candidate_id": "U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE",
+  "contract_content_hash": "26dbc745779efa2b42f18cd8f0b1760795eb6a15c3f89911c1e8b6c1f33f37c8",
+  "protocol_target_commit": "5438dec609aaaed675e8ecba6f15ae9bb6f6da5a",
+  "protocol_content_hash": "3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a",
+  "protocol_review_content_hash": "2686c3acc1f5d46d7b37295530c54268f314cca177197306db7358bb8aa38ceb",
+  "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+  "failure": {
+    "gate": "official_field_contract.required_numeric_invariants.quote_asset_volume_strictly_positive",
+    "symbol": "ADAUSDT",
+    "month": "2020-01",
+    "open_time_ms": 1577855700000,
+    "archive_relative_path": "data/spot/monthly/klines/ADAUSDT/5m/ADAUSDT-5m-2020-01.zip",
+    "archive_sha256": "2b6db817003d1ba07bf4382220bc5455045d7ca713b57a4a95b6401ddc56ab9c",
+    "archive_size": 364032,
+    "raw_line_sha256": "4683df3b1fc1ba2122f7939a228639ee41ee692654902144a634d7dcefaaa57a",
+    "raw_line_size": 119,
+    "column_count": 12,
+    "quote_asset_volume": "0.00000000",
+    "taker_buy_base_asset_volume": "0.00000000",
+    "taker_buy_quote_asset_volume": "0.00000000",
+    "number_of_trades": 0
+  },
+  "execution_accounting": {
+    "base_frozen_source_qualification_completed_before_field_scan": true,
+    "field_scan_stopped_at_first_failure": true,
+    "three_order_field_scan_completed": false,
+    "structural_preflight_completed": false,
+    "complexity_benchmark_completed": false,
+    "taker_state_rows_generated": 0,
+    "candidate_rows_generated": 0,
+    "event_rows_generated": 0,
+    "path_rows_generated": 0,
+    "return_rows_generated": 0,
+    "oos_values_decoded": 0,
+    "second_run_executed": false
+  },
+  "decision": {
+    "candidate_closed": true,
+    "threshold_or_contract_change_allowed": false,
+    "field_inference_repair_fill_or_substitution_allowed": false,
+    "paper_observation_authorized": false,
+    "strategy_authorized": false,
+    "oos_authorized": false,
+    "trading_authorized": false,
+    "m2_authorized": false
+  },
+  "content_hash": "83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

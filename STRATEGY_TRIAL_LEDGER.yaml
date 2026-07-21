@@ -9,6 +9,132 @@ rules:
   dsr_trial_count_equals_opened_oos_candidates: true
   candidate_queue_order_is_immutable: true
 candidates:
+  - id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
+    status: failed_feasibility
+    hypothesis: "U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose common-component-adjusted return distribution persistently offers less idiosyncratic right-tail lottery payoff than active peers may attract less preference-driven overpricing, so a relative premium may accrue after the next eligible open; no U-04 through U-23 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 0b420693a6206504c4ab6644b2f8e3c9194300bfe096b831d80c12762b18ff34
+    oos_opened: false
+    notes: "The unique sealed-IS Paper observation produced 78 complete episodes, projected 107 full and 29 sealed-OOS episodes, and failed six frozen sample/projection/economic Gates. Median 24h relative premium was +0.3452%, absolute displacement -0.1052%, and positive fraction 57.69%. OOS remained sealed; no formal return, strategy or backtest was run."
+  - id: U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION
+    status: failed_feasibility
+    hypothesis: "U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION: Binance spot USDT long/cash only; using only completed prior OHLC observations from the exact point-in-time active member set, an asset whose completed trading range expands unusually relative to its own completed history while its close remains near the completed range high and positive relative to active peers may reveal aggressive demand and incomplete price discovery, so relative strength may continue after the next eligible open; no U-04 through U-22 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 6c099769b5fb89d7faf032d68c114540a6b93f8546bbedee26c2e9397e98627f
+    oos_opened: false
+    notes: "The unique sealed-IS Paper observation produced 178 complete episodes and passed all sample, projection, year, symbol, month, concentration and authority Gates, but failed all three economic Gates: relative continuation -1.1952%, absolute displacement -0.9181%, positive fraction 34.83%. OOS remained sealed; no formal return, strategy or backtest was run."
+  - id: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
+    status: failed_feasibility
+    hypothesis: "U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, a broadening cross-sectional return-dispersion regime in which one asset develops multi-observation positive peer-relative leadership without single-observation dominance may reflect segmented attention, capital rotation and gradual price discovery, so relative leadership may continue after the next eligible open; no U-04 through U-21 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 4ec9eba4d04169fe90caf50f4eaa914f1784339802b148a1cff43f5a07cb77d3
+    oos_opened: false
+    notes: "The unique sealed-IS Paper observation produced 198 complete episodes and passed all sample, projection, year, symbol, month, concentration and authority Gates, but failed all three economic Gates: relative continuation -0.1688%, absolute displacement +0.1115%, positive fraction 47.98%. OOS remained sealed; no formal return, strategy or backtest was run."
+  - id: U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM
+    status: failed_pre_result_complexity
+    hypothesis: "U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose squared common-adjusted returns exhibit persistently high comovement with squared active-universe common returns may consume risk capital during large market moves, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-20 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 90761268042081c9f80a4fb446ed7e805242608ec6700f6c18b8419bf24420b6
+    oos_opened: false
+    notes: "The first frozen one-million-row exact-core complexity pass failed the combined 30-second/RSS/input-count Gate before any frozen-source archive was opened. No retry, market result, Paper observation, formal return or OOS access occurred."
+  - id: U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM
+    status: failed_feasibility
+    hypothesis: "U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose common-adjusted returns exhibit persistently negative coskewness with the active-universe common return may deliver disproportionately poor relative outcomes during large common moves, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-19 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 9d17a514b9e13eff5dd885382ab7c9df5c14e9a71283a219d43c901648e46bdb
+    oos_opened: false
+    notes: "The unique sealed-IS Paper observation produced 110 complete episodes and passed every sample/distribution/authority Gate, but failed all three frozen 24h economic Gates: relative premium -0.0375%, absolute displacement -0.2133%, positive fraction 48.18%. OOS remained sealed; no formal return, strategy or backtest was run."
+  - id: U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM
+    status: failed_feasibility
+    hypothesis: "U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose common-component-adjusted volatility itself varies persistently and unpredictably may impose unstable risk-budget, hedging and liquidity-capital demands, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-18 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 6b3cd19be7fedab64bfc43ad6c667cdbe774d58994073446a340cf7f55217c52
+    oos_opened: false
+    notes: "The unique sealed-IS Paper observation produced 54 complete episodes and failed count/projection/year plus all three frozen 24h economic Gates: relative premium -0.5663%, absolute displacement -0.7466%, positive fraction 37.04%. OOS remained sealed; no formal return, strategy or backtest was run."
+  - id: U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM
+    status: declared_unopened
+    hypothesis: "U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset whose returns retain persistent left-tail asymmetry after removing the contemporaneous peer common component may expose holders to crash, liquidation and liquidity-withdrawal risk, and investors may require a positive cross-sectional premium that can accrue after the next eligible open; no U-04 through U-17 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: e6b84d1b6e9cb979dd973fed42c20821858704c362e24b4a342aef25359778c4
+    oos_opened: false
+    notes: "Outcome-blind design only. Observation timeframe, history, common component, tail estimator, persistence, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+  - id: U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM
+    status: failed_pre_result_sample_ceiling
+    hypothesis: "U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM: Binance spot USDT long/cash only; using only completed prior observations from the exact point-in-time active member set, an asset that remains investable inside the frozen liquid universe yet persistently ranks below its active peers in trading liquidity may require compensation for marginal immediacy, crowding-exit and capital-capacity risk, and that cross-sectional liquidity risk premium may accrue after the next eligible open; no U-04 through U-16 outcome, defect or failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 19b0e7eaa4d9f8432b733d3660a76226c9e3351674d21a819adf266515261fea
+    oos_opened: false
+    notes: "Closed before results. The frozen 28-day history plus 28-day future constant-membership requirement permits at most 3 independent structural episodes versus 50 required. Quote volume, price, liquidity ranks, events, paths, returns and OOS values remained unread/zero; no protocol relaxation or retry is allowed."
+  - id: U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE
+    status: failed_feasibility
+    hypothesis: "U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, an asset that develops positive relative price displacement while its prior-only return path decouples from the contemporaneous peer common component may reflect asset-specific information being incorporated gradually and may continue after the next eligible open; no U-04 through U-15 outcome, defect or field-failure reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 781093529714314144be705cef84c0563a59630e71243827950b47cf6c15f2f1
+    oos_opened: false
+    notes: "The unique sealed-IS Paper observation produced 169 complete episodes but failed all three frozen 24h economic Gates: relative persistence 0.1003%, absolute displacement -0.0427%, positive fraction 52.66%. OOS remained sealed; no formal return, strategy or backtest was run."
+  - id: U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE
+    status: failed_pre_result_field_qualification
+    hypothesis: "U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE: Binance spot USDT long/cash only; using only a completed observation and exact point-in-time active members, unusually high aggressive taker-buy participation combined with muted contemporaneous relative price response may reveal urgent buy demand absorbed by finite passive sell inventory and may produce positive relative adjustment after the next eligible open if that inventory exhausts; required taker-buy fields must be independently qualified before any event scan; no U-04 through U-14 outcome reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 5b99a5d830f40a6d9a5744771dafd3e85a64a55ea172b107465c46b10de115dd
+    oos_opened: false
+    notes: "Closed before observation. The first field scan found a checksum-bound ADAUSDT 2020-01 official 5m row with quote volume 0, violating the frozen strict-positive denominator invariant. No repair, retry, taker state, event, path, return or OOS value was allowed."
+  - id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
+    status: declared_unopened
+    hypothesis: "U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE: Binance spot USDT long/cash only; using only a completed common selling-pressure observation and exact point-in-time active members, an asset that absorbs intraperiod selling and closes unusually high within its own completed range relative to peers may reveal latent demand and continue outperforming after the next eligible open; no U-04 through U-13 outcome reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: b88f2321269863e385129465c93fbee8ecd35fa0dc6bc19e10bacf12d851b87d
+    oos_opened: false
+    notes: "Outcome-blind design only. Timeframe, selling-pressure state, range/close-location estimator, persistence, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+  - id: U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION
+    status: declared_unopened
+    hypothesis: "U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION: Binance spot USDT long/cash only; using only completed observations and exact point-in-time active members, a broad positive common-market information or capital-flow shock may be absorbed at different speeds across assets, and an asset with a preregistered prior-only tendency to respond with delay rather than permanent weakness may continue catching up after the next eligible open; no U-04 through U-12 outcome reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 39f1848fe195be8e6c406a5e21b734ce9c469a9df5c08eaa0a70de348988db5c
+    oos_opened: false
+    notes: "Outcome-blind design only. Timeframe, common-shock and lag estimators, persistence, permanent-weakness exclusion, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+  - id: U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY
+    status: declared_unopened
+    hypothesis: "U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY: Binance spot USDT long/cash only; using only completed prior occurrences and the exact point-in-time active member set, an asset-specific relative return pattern that recurs in the same predeclared UTC calendar state across disjoint historical subperiods may reflect recurring regional participation, settlement, treasury or mandate flows and may persist after the next eligible open; no U-04 through U-10 outcome reuse, U-11 invalid-result or defect reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 5942e15d4c4dde246979ef980f0fc3c2a3f545e9e6717159355ee4312c87f54d
+    oos_opened: false
+    notes: "Outcome-blind design only. Calendar-state family/granularity, timeframe, common component, history, subperiods, estimators, multiple-testing control, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+  - id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    status: declared_unopened
+    hypothesis: "U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, an asset that persistently participates in positive common-market moves while preserving capital during negative common-market moves may reflect a stable demand base, lower forced-selling sensitivity and asymmetric quality that can persist after the next eligible open; no U-04 through U-10 outcome or defect reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 1c9ef854245c3f46000712894392b5b97a865013355c4553e372c6d168f63e74
+    oos_opened: false
+    notes: "Outcome-blind design only. Timeframe, common-market states, capture estimators, persistence, sample requirements, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+  - id: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
+    status: declared_unopened
+    hypothesis: "U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, asset-specific positive relative price trend accompanied by a persistent rise in cross-sectional quote-volume share may reflect scalable informed demand rather than thin-price noise and may continue after the next eligible open; no U-04/U-05/U-06/U-07/U-08 outcome inversion, U-09 protocol-defect reuse, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 5fc3529f7afa3df2344517f3bd567c5b3bf89a23bc0e071ff853bc80e50ec536
+    oos_opened: false
+    notes: "Outcome-blind design only. Observation timeframe, relative-trend and volume-share estimators, persistence rule, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+  - id: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
+    status: declared_unopened
+    hypothesis: "U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, an asset with persistently lower asset-specific volatility after removing the contemporaneous common market component may reflect deeper liquidity, lower disagreement and broader capital eligibility that can preserve relative quality after the next eligible open; no U-04/U-05/U-06/U-07/U-08 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: cb91d77d11b0f877007848330df7e05e1d4e9257142fce4d339edefe75e14c92
+    oos_opened: false
+    notes: "Outcome-blind design only. Observation timeframe, common-factor and idiosyncratic-volatility estimators, persistence rule, thresholds, horizons, fixed rules and performance Gates remain unresolved. No public data, events, paths, returns or OOS were read."
+  - id: U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE
+    status: declared_unopened
+    hypothesis: "U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE: Binance spot USDT long/cash only; when an asset enters the exact point-in-time monthly Top-15 liquid universe using only prior-complete ranking inputs, broadened investability, attention and mandate eligibility may create demand that persists after membership becomes effective and no earlier than the next eligible open; no U-04/U-05/U-06/U-07 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 5d091b72b4ac77669bfe26659d7a95554bb182ba5c138ca20959e93a2e2345f6
+    oos_opened: false
+    notes: "Outcome-blind design only. Protocol, observation horizons, Gates, fixed rules and returns remain unresolved. No public data, events, paths, returns or OOS were read."
+  - id: U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION
+    status: declared_unopened
+    hypothesis: "U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION: Binance spot USDT long/cash only; using only completed observations from the exact point-in-time active member set, broad contemporaneous market selling pressure combined with an asset retaining unusually strong relative price may indicate inelastic asset-specific demand that can continue to lead after the stress flow subsides and no earlier than the next eligible open; no U-04/U-05/U-06 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: 3130450cd7bd7cddab4bce0c89b274ae93e50bed278379011cc4d09e15fb3de3
+    oos_opened: false
+    notes: "Outcome-blind design only. Timeframe, market-stress and resilience definitions, thresholds, horizons, fixed rules and performance Gates remain unresolved until separate protocols. No public data, events, paths, returns or OOS were read."
+  - id: U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING
+    status: declared_unopened
+    hypothesis: "U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING: Binance spot USDT long/cash only; using completed prior observations from exact active members, a persistent increase in an asset's cross-sectional quote-volume share without a commensurate relative price advance may reflect liquidity absorption and latent demand that can reprice after the next eligible open; no U-04/U-05 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: e6cb136b5bfaa4948b1681696b33496a43b7f9ab1f4fc25dcea63714700c259b
+    oos_opened: false
+    notes: "Outcome-blind design only. Timeframe, volume-share baseline, thresholds, horizons, fixed rules and performance Gates remain unresolved until separate protocols. No events, paths, returns or OOS were read."
+  - id: U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE
+    status: declared_unopened
+    hypothesis: "U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE: Binance spot USDT long/cash only; at a completed UTC observation time, broadly distributed positive participation across the exact point-in-time active liquid universe may identify diversified common demand rather than an isolated asset move, and that demand may persist after the next eligible open; no U-04 outcome inversion, current-membership hindsight, replacement members, shorting, leverage, loss adding, or lifecycle-crossing assumption."
+    sha256: ad164b1d9a94d9d61145bf7431a805cfa795a77a6c8aef2cdc488f6bd9e7349b
+    oos_opened: false
+    notes: "Outcome-blind design only. Timeframe, breadth definition, thresholds, horizons, fixed rules and performance Gates remain unresolved until separate protocols. No events, paths, returns or OOS were read."
+  - id: U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL
+    status: failed_feasibility
+    hypothesis: "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL: Binance spot USDT long/cash only; at a completed UTC observation time, the prior-only price move of each asset is compared with the contemporaneous move of the exact point-in-time active liquid universe; an asset-specific negative residual may reflect temporary local liquidity pressure and may partially reverse after the next eligible open; no shorting, leverage, loss adding, current-membership hindsight, replacement members, or lifecycle-crossing assumption."
+    sha256: 85e9fc11e8f6b69597fecdb6a40485611eb24163a20cea4534e81d0f08e5ec7a
+    oos_opened: false
+    notes: "The unique sealed-IS paper observation produced 397 complete episodes but failed both frozen 24h recovery Gates: median relative recovery -0.8556% and absolute displacement -0.7946% versus +1.80% required. OOS remained sealed; no formal return, strategy or backtest was run. Candidate closed without tuning or a second observation."
   - id: M1E-1H-TREND-BREAKOUT
     status: failed_feasibility
     hypothesis: "M1E-1H-TREND-BREAKOUT: BTC/USDT and ETH/USDT Binance spot, long/cash only; completed UTC 1h candles define a trend-breakout candidate family distinct from M1A; entries may execute no earlier than the next available 5m open after the completed signal candle; completed 4h candles may be used only as a regime filter; no shorting or leverage."

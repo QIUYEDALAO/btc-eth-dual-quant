@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "status": "economic_hypothesis_pass_protocol_design_only",
+  "candidate_id": "U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE",
+  "hypothesis_sha256": "781093529714314144be705cef84c0563a59630e71243827950b47cf6c15f2f1",
+  "bindings": {
+    "u16_design_authorization_hash": "05346312b0e47168a17a77cd19d1a73525b17eb9f64de29b2b157a5c673528fc",
+    "u15_failure_content_hash": "83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d"
+  },
+  "research_scope": {"market":"binance_spot_usdt","universe":"exact_point_in_time_monthly_top15_liquid_spot_members","direction":"spot_long_cash_only","oos_opened":false,"public_data_read_in_design":false,"event_outcomes_read_in_design":false,"returns_computed_in_design":false},
+  "economic_hypothesis": {
+    "family": "cross_sectional_correlation_breakdown_information_persistence",
+    "return_source": "gradual_incorporation_of_asset_specific_information_after_decoupling_from_peer_common_path",
+    "mechanism": [
+      "estimate_each_assets_prior_only_completed_return_path_against_the_complete_active_peer_common_component",
+      "identify_positive_relative_displacement_that_coincides_with_a_breakdown_in_prior_path_correlation",
+      "distinguish_asset_specific_decoupling_from_common_market_strength_simple_residual_reversal_or_volume_confirmation",
+      "interpret_sustained_positive_decoupling_as_possible_gradual_incorporation_of_asset_specific_information",
+      "any_future_effect_may_begin_no_earlier_than_the_next_eligible_open"
+    ],
+    "failure_regimes": [
+      "correlation_breakdown_is_estimation_noise_from_a_short_or_sparse_path",
+      "positive_decoupling_is_an_uninformed_manipulative_or_terminal_price_spike",
+      "asset_specific_information_is_fully_incorporated_before_the_reference_open",
+      "peer_common_component_is_distorted_by_cross_sectional_dependence_or_one_dominant_asset",
+      "regime_wide_dispersion_increase_is_misclassified_as_asset_specific_information",
+      "correlation_instability_makes_historical_path_comparisons_nonstationary",
+      "relative_strength_reverses_when_broad_market_risk_changes",
+      "lifecycle_transition_or_listing_discontinuity_interrupts_persistence",
+      "membership_source_lifecycle_or_invalid_interval_authority_drift",
+      "sample_concentration_turnover_or_transaction_costs_consume_the_move"
+    ]
+  },
+  "causal_and_membership_invariants": {"completed_observations_only":true,"prior_only_return_path_required":true,"exact_point_in_time_active_members_required":true,"all_complete_active_members_required_for_peer_common_component":true,"positive_relative_displacement_and_correlation_breakdown_both_required":true,"single_period_residual_or_absolute_return_alone_prohibited":true,"volume_or_taker_field_required":false,"current_membership_hindsight_prohibited":true,"replacement_members_prohibited":true,"survivorship_rewrite_prohibited":true,"post_outcome_state_or_candidate_selection_prohibited":true,"u04_through_u15_outcome_defect_or_failure_reuse_prohibited":true,"u15_field_contract_repair_or_relaxation_prohibited":true,"lifecycle_crossing_assumption_prohibited":true,"next_eligible_open_earliest_future_entry":true},
+  "non_duplication": {"u04_residual_reversal_prohibited":true,"u05_breadth_persistence_prohibited":true,"u06_volume_share_absorption_prohibited":true,"u07_market_stress_relative_strength_prohibited":true,"u08_membership_entry_demand_prohibited":true,"u09_low_idiosyncratic_volatility_prohibited":true,"u10_trend_volume_confirmation_prohibited":true,"u11_asymmetric_market_capture_prohibited":true,"u12_calendar_flow_prohibited":true,"u13_lagged_diffusion_prohibited":true,"u14_downside_rejection_prohibited":true,"u15_taker_buy_absorption_prohibited":true,"m1e_compression_breakout_prohibited":true,"m1g_panic_reversal_prohibited":true,"m1h_funding_input_prohibited":true,"failed_or_invalid_candidate_derived_rule_prohibited":true},
+  "unresolved_until_separate_protocol": ["is_oos_boundary","completed_observation_timeframe","prior_path_length","return_sampling_grid","peer_common_component_estimator","correlation_estimator","correlation_breakdown_baseline","positive_relative_displacement_estimator","persistence_or_path_coherence_requirement","minimum_sample_gates","candidate_threshold_and_tie_break","reference_open_definition","cross_sectional_cluster_and_episode_rule","future_observation_horizons","sample_and_concentration_gates","cost_coverage_gate","result_blind_complexity_benchmark","fixed_rule_exit_family","lifecycle_intersection_treatment","benchmark_definition"],
+  "authorizations": {"u16_paper_protocol_design":true,"public_data_read":false,"event_scan":false,"signals":false,"returns":false,"fixed_rule_contract":false,"freqtrade_strategy_code":false,"backtesting":false,"oos":false,"api_trading":false,"execution_live":false,"m2":false},
+  "content_hash": "8574e5c5aa068f10a561d8cfae26d4a45d5b9eb17287156912fa4d8b5fd075d1",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

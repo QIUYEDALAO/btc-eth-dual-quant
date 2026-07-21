@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_result_pending_exact_head_review",
+  "protocol_id": "U04-02-CROSS-SECTIONAL-RESIDUAL-REVERSAL-PAPER-V1",
+  "candidate_id": "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL",
+  "hypothesis_sha256": "85e9fc11e8f6b69597fecdb6a40485611eb24163a20cea4534e81d0f08e5ec7a",
+  "design_content_hash": "b384e6484180a0ec358125fbb0338d7376b860372ab065fe7043667931f178b8",
+  "authority_bindings": {
+    "u04_design_authorization_hash": "84d9b499329169719a880af80b1e2e7f0d5d5cbbc6c62a6aa762cd738aa04e89",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+    "invalid_interval_runtime_policy_hash": "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04",
+    "invalid_interval_algorithm_hash": "8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff"
+  },
+  "scope": {
+    "exchange": "binance",
+    "market": "spot_usdt",
+    "direction": "long_cash_only",
+    "is_start": "2020-01-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z",
+    "oos_end_exclusive": "2026-07-01T00:00:00Z",
+    "is_calendar_days": 1715,
+    "oos_calendar_days": 658,
+    "full_calendar_days": 2373,
+    "signal_timeframe": "1h",
+    "path_timeframe": "5m",
+    "oos_opened": false
+  },
+  "point_in_time_universe": {
+    "source": "exact_monthly_active_membership_after_end_exclusive_lifecycle_mask",
+    "minimum_active_members": 10,
+    "maximum_monthly_members": 15,
+    "all_active_members_required": true,
+    "current_and_previous_completed_1h_close_required": true,
+    "duplicate_missing_nonmember_or_quarantined_row_action": "observation_time_ineligible",
+    "replacement_member_allowed": false,
+    "current_membership_backfill_allowed": false,
+    "lifecycle_crossing_assumption_allowed": false
+  },
+  "residual_event": {
+    "member_return": "natural_log_completed_1h_close_over_previous_completed_1h_close",
+    "common_component": "cross_sectional_median_member_log_return",
+    "raw_residual": "member_log_return_minus_common_component",
+    "mad": "cross_sectional_median_absolute_deviation_of_raw_residuals",
+    "robust_scale": "1.4826_times_mad",
+    "zero_or_nonfinite_scale_action": "no_event_and_increment_scale_ineligible_count",
+    "standardized_residual": "raw_residual_divided_by_robust_scale",
+    "standardized_residual_maximum": "-3.0",
+    "relative_simple_return": "exp_raw_residual_minus_one",
+    "relative_simple_return_maximum": "-0.0180",
+    "absolute_decline_alone_allowed": false,
+    "completed_information_only": true,
+    "same_timestamp_selection": [
+      "standardized_residual_ascending",
+      "raw_residual_ascending",
+      "symbol_ascending"
+    ],
+    "same_timestamp_representatives": 1
+  },
+  "episode_clustering": {
+    "scope": "all_symbols_global",
+    "connected_window_hours": 24,
+    "representative": "first_event_only",
+    "boundary": "new_episode_only_when_candidate_time_is_strictly_more_than_24h_after_prior_connected_candidate",
+    "future_information_used": false
+  },
+  "observation_contract": {
+    "decision_time": "completed_event_1h_close",
+    "reference": "first_expected_5m_open_strictly_after_decision_time",
+    "search_later_if_reference_missing": false,
+    "horizon_hours": [1, 2, 4, 8, 12, 24],
+    "primary_horizon_hours": 24,
+    "peer_set": "event_time_active_members_excluding_candidate",
+    "peer_common_path": "cross_sectional_median_peer_log_return_from_reference",
+    "relative_recovery": "candidate_log_return_from_reference_minus_peer_common_path",
+    "absolute_close_displacement": "candidate_close_over_reference_open_minus_one",
+    "required_path_diagnostics": [
+      "absolute_close_displacement_by_horizon",
+      "relative_peer_median_recovery_by_horizon",
+      "maximum_favorable_excursion_24h",
+      "maximum_adverse_excursion_24h",
+      "first_recovery_time_to_zero_relative_displacement"
+    ],
+    "complete_event_time_peer_set_required_through_each_horizon": true,
+    "missing_quarantine_membership_change_or_lifecycle_intersection": "right_censor_without_later_search",
+    "fill_position_exit_or_equity_model": false,
+    "formal_strategy_return": false
+  },
+  "cost_reference_roundtrip": {
+    "base": "0.0030",
+    "cost_x2": "0.0060",
+    "stress_a": "0.0080",
+    "stress_b": "0.0110"
+  },
+  "projection": {
+    "source": "complete_is_independent_episodes_only",
+    "full": "floor_complete_is_episodes_times_2373_divided_by_1715",
+    "sealed_oos": "floor_complete_is_episodes_times_658_divided_by_1715",
+    "may_read_oos_events_prices_or_counts": false
+  },
+  "paper_gates": {
+    "complete_is_independent_episodes_minimum": 90,
+    "projected_full_independent_episodes_minimum": 120,
+    "projected_sealed_oos_independent_episodes_minimum": 30,
+    "minimum_years_with_ten_complete_episodes": 3,
+    "maximum_single_year_episode_share": "0.45",
+    "maximum_single_symbol_episode_share": "0.25",
+    "minimum_distinct_event_symbols": 8,
+    "combined_median_24h_relative_recovery_minimum": "0.0180",
+    "combined_median_24h_absolute_close_displacement_minimum": "0.0180",
+    "qualification_quarantine_lifecycle_or_order_mismatches_maximum": 0
+  },
+  "research_leakage_prevention": {
+    "change_timeframe_estimator_threshold_cluster_or_horizon_after_results": false,
+    "change_gate_from_event_count_or_outcome": false,
+    "delete_symbol_year_or_regime_from_performance": false,
+    "select_current_members_or_replacement_members": false,
+    "use_prior_candidate_outcomes_to_change_rules": false,
+    "protocol_change_after_result_creates_new_candidate": true
+  },
+  "authorizations": {
+    "paper_protocol_frozen": true,
+    "exact_head_independent_review": true,
+    "data_qualification": false,
+    "event_scan": false,
+    "path_observation": false,
+    "signals": false,
+    "formal_returns": false,
+    "fixed_rule_contract": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "content_hash": "7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

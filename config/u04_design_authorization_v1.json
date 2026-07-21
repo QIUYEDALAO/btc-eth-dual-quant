@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "decision_id": "U04-CROSS-SECTIONAL-DESIGN-AUTHORIZATION-V1",
+  "status": "authorized_for_one_preregistered_hypothesis_design_only",
+  "bindings": {
+    "adr0015_protocol_content_hash": "9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "audit_manifests_exact": 19,
+    "audit_critical_findings": 0,
+    "audit_high_findings": 0
+  },
+  "decision": {
+    "u04_design_authorized": true,
+    "maximum_hypotheses": 1,
+    "design_family": "point_in_time_cross_sectional_liquid_spot",
+    "outcome_blind_preregistration_required": true,
+    "separate_protocol_before_any_event_scan": true,
+    "freqtrade_first_for_any_later_single_leg_implementation": true,
+    "lifecycle_intersection_requires_separate_delisting_execution_policy": true
+  },
+  "authorizations": {
+    "u04_hypothesis_design": true,
+    "event_scan": false,
+    "signals": false,
+    "returns": false,
+    "strategy_rule_selection": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "stop_conditions": [
+    "Any audit, protocol, source-freeze or artifact-set hash drift fails closed.",
+    "The design must select exactly one economic hypothesis without reading outcomes.",
+    "No parameter threshold, event scan, return, strategy rule, backtest or OOS access is authorized.",
+    "Any possible position intersection with a lifecycle event blocks fixed-rule work pending a separate delisting/execution policy review."
+  ],
+  "content_hash": "84d9b499329169719a880af80b1e2e7f0d5d5cbbc6c62a6aa762cd738aa04e89",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

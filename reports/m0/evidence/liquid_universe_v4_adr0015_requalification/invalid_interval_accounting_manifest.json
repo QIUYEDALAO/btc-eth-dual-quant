@@ -1,0 +1,22 @@
+{
+  "content": {
+    "blockers": [],
+    "evaluation_content_hash": "e831874c910d0491eac627108ce78f5db3fdb35ee4f1d335cec56e4b2fb1cade",
+    "event_count": 8,
+    "full_slot_reconciliation": true,
+    "invalid_rows_quarantined": 119,
+    "raw_rows_rewritten": 0,
+    "replacement_members": 0,
+    "status": "accepted",
+    "synthetic_fills": 0,
+    "total_rows_quarantined": 120,
+    "valid_minority_rows_quarantined": 1
+  },
+  "content_hash": "77789efb7535dd487abdd5d575b341e1699a46bfd46a1d5fa874f6431d45d65d",
+  "generated_utc": null,
+  "manifest_type": "invalid_interval_accounting_manifest",
+  "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+  "policy_canonical_hash": "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04",
+  "schema_version": 1,
+  "source_freeze_content_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
+}

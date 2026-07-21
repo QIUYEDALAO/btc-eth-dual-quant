@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "decision_id": "U15-CROSS-SECTIONAL-DESIGN-AUTHORIZATION-V1",
+  "status": "authorized_for_one_independent_outcome_blind_hypothesis_design_only",
+  "bindings": {
+    "u14_candidate_id": "U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE",
+    "u14_run_content_hash": "3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c",
+    "u14_three_order_identity_hash": "1436911ba8c6f4fd3adbba1c5ebf391f98d82d80987c7f8b2308b95c42414b69",
+    "u14_status": "failed_feasibility",
+    "u14_oos_opened": false,
+    "u14_second_run_executed": false,
+    "u14_design_authorization_hash": "ebcf8b78a75911a2567bf84d58363d3c4bd554ec0495bb63457c4d593e34e640",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c"
+  },
+  "decision": {
+    "u15_design_authorized": true,
+    "maximum_hypotheses": 1,
+    "design_family": "point_in_time_cross_sectional_liquid_spot",
+    "independent_economic_rationale_required": true,
+    "u04_through_u14_outcome_direction_threshold_rule_or_censor_reuse_prohibited": true,
+    "prior_failed_candidate_repair_retry_or_inversion_prohibited": true,
+    "outcome_blind_preregistration_required": true,
+    "separate_protocol_before_any_event_scan": true,
+    "pre_result_complexity_benchmark_required": true,
+    "pre_result_implementation_and_data_scope_preflight_required": true,
+    "freqtrade_first_for_any_later_single_leg_implementation": true
+  },
+  "authorizations": {
+    "u15_hypothesis_design": true,
+    "public_data_read": false,
+    "event_scan": false,
+    "signals": false,
+    "returns": false,
+    "strategy_rule_selection": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "stop_conditions": [
+    "Any U-14, audit, source-freeze or artifact-set hash drift fails closed.",
+    "The U-15 design must select exactly one economically independent hypothesis without reading additional outcomes.",
+    "U-04 through U-14 signs, paths, Gates, concentrations, censor patterns and defects may not select U-15.",
+    "No prior candidate may be repaired, retried, inverted, relabeled or repackaged as U-15.",
+    "No parameter, public-data read, event scan, return, strategy rule, backtest or OOS access is authorized."
+  ],
+  "content_hash": "98d4ec9049d3b40ded8f98c045405eda8a010c783b5597653586853a825b7e68",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

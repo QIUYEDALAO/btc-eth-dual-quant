@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "qualification_id": "U20-05-CROSS-SECTIONAL-DATA-QUALIFICATION-COMPLEXITY-PREFLIGHT-V1",
+  "status": "frozen_source_qualification_pending_run",
+  "candidate_id": "U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM",
+  "protocol_target_commit": "6a2207c05c7045e82b47f9685c01a5c2d0b30755",
+  "protocol_content_hash": "d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9",
+  "protocol_review_content_hash": "eb452e7440b5058b6516629f65a9793f06dfa5748961c58e87229d4c3a1e20f5",
+  "base_v4_qualification_contract_hash": "0dd9a159382f1d515fed0269c9122adcd042a1fd726431bc36a9e4f6e01d5fb8",
+  "authority_bindings": {
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "source_archive_count": 27736,
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+    "invalid_interval_slot_mask_hash": "23e78e15a4484af9167b03e29bf9d499a39ff1e1c8195a056fae72b984285487"
+  },
+  "structural_preflight": {
+    "is_start": "2020-01-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "decision_step_hours": 4,
+    "history_hours": 336,
+    "future_path_hours": 24,
+    "constituent_5m_rows_per_hour": 12,
+    "minimum_active_members": 10,
+    "cluster_connected_window_hours": 24,
+    "minimum_theoretical_eligible_24h_episodes": 400,
+    "traversal_orders": ["normal", "reverse", "deterministic_shuffled"],
+    "deterministic_shuffle_seed": 161803,
+    "ohlcv_fields_decoded": 0,
+    "result_rows_generated": 0
+  },
+  "complexity_benchmark": {
+    "synthetic_fixture_rows": 1000000,
+    "synthetic_active_members": 15,
+    "benchmark_passes_required": 3,
+    "maximum_elapsed_seconds_per_pass": 30,
+    "maximum_peak_rss_mib": 1024,
+    "same_common_adjustment_coskewness_event_and_path_code_path": "btc_eth_dual_quant.data.u20_negative_coskewness.evaluate_stream",
+    "decision_times_history_nested_scan_allowed": false,
+    "market_outcomes_allowed": false
+  },
+  "isolation_contract": {
+    "is_start": "2020-01-01T00:00:00Z",
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z",
+    "oos_end_exclusive": "2026-07-01T00:00:00Z",
+    "oos_archive_access": "opaque_identity_and_crc_only",
+    "oos_ohlcv_decode_allowed": false
+  },
+  "authorizations": {
+    "frozen_source_identity_verification": true,
+    "data_qualification": true,
+    "synthetic_complexity_benchmark": true,
+    "structural_preflight": true,
+    "return_common_adjustment_coskewness_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "strategy": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "content_hash": "7bae7234c15f6f378b5b28667d3e805e51a34465bd95c736b0a3ef2109f49f80",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

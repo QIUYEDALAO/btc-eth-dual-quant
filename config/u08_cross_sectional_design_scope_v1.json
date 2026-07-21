@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "status": "economic_hypothesis_pass_protocol_design_only",
+  "candidate_id": "U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE",
+  "hypothesis_sha256": "5d091b72b4ac77669bfe26659d7a95554bb182ba5c138ca20959e93a2e2345f6",
+  "bindings": {
+    "u08_design_authorization_hash": "813267f29fd2f019b7d856d95a5eaaa7927a3f072327cc643e6a1ecd51af1cf9",
+    "u07_closed_run_hash": "8c637a3f13dad4410beb446094af011582ab2cde0ac449e32d044cbaa709352c",
+    "u06_closed_run_hash": "2f715394411ca260f9889304ddc84da926d37ec1dfc9d4316493f23f6881382a",
+    "u05_closed_run_hash": "874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a",
+    "u04_closed_run_hash": "9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d"
+  },
+  "research_scope": {
+    "market": "binance_spot_usdt",
+    "universe": "exact_point_in_time_monthly_top15_liquid_spot_members",
+    "direction": "spot_long_cash_only",
+    "oos_opened": false,
+    "public_data_read_in_design": false,
+    "event_outcomes_read_in_design": false,
+    "returns_computed_in_design": false
+  },
+  "economic_hypothesis": {
+    "family": "point_in_time_liquidity_rank_entry_demand_persistence",
+    "return_source": "broadened_investability_attention_and_mandate_eligibility_after_prior_only_liquidity_rank_admission",
+    "mechanism": [
+      "identify_only_members_newly_admitted_by_the_frozen_prior_complete_monthly_top15_authority",
+      "membership_effectiveness_may_expand_visibility_investability_and_eligibility_for_liquidity_constrained_participants",
+      "newly_broadened_demand_may_arrive_gradually_after_the_membership_effective_time",
+      "any_future_entry_must_be_no_earlier_than_the_next_eligible_open_after_membership_is_effective"
+    ],
+    "failure_regimes": [
+      "rank_entry_only_reflects_a_completed_attention_cycle_with_no_remaining_demand",
+      "liquidity_growth_is_temporary_or_wash_activity",
+      "new_member_price_already_fully_incorporates_broadened_eligibility",
+      "rank_churn_creates_excessive_turnover_and_cost",
+      "market_wide_decline_overwhelms_membership_related_demand",
+      "lifecycle_transition_or_listing_discontinuity_breaks_comparability",
+      "membership_source_lifecycle_or_invalid_interval_authority_drift",
+      "sample_size_or_entry_concentration_is_insufficient",
+      "transaction_costs_consume_any_persistence"
+    ]
+  },
+  "causal_and_membership_invariants": {
+    "prior_complete_ranking_inputs_only": true,
+    "membership_effective_time_is_end_exclusive_authority": true,
+    "new_entry_requires_absence_from_immediately_prior_frozen_membership": true,
+    "current_membership_hindsight_prohibited": true,
+    "replacement_members_prohibited": true,
+    "survivorship_rewrite_prohibited": true,
+    "post_outcome_entry_selection_prohibited": true,
+    "u04_u05_u06_u07_outcome_inversion_prohibited": true,
+    "lifecycle_crossing_assumption_prohibited": true,
+    "next_eligible_open_earliest_future_entry": true
+  },
+  "non_duplication": {
+    "u04_residual_reversal_prohibited": true,
+    "u05_positive_breadth_persistence_prohibited": true,
+    "u06_volume_share_absorption_prohibited": true,
+    "u07_market_stress_relative_strength_prohibited": true,
+    "m1c_price_winner_rotation_prohibited": true,
+    "m1e_compression_breakout_prohibited": true,
+    "m1g_panic_reversal_prohibited": true,
+    "m1h_funding_input_prohibited": true,
+    "m1a_indicator_bundle_prohibited": true,
+    "failed_candidate_outcome_derived_rule_prohibited": true
+  },
+  "unresolved_until_separate_protocol": [
+    "is_oos_boundary", "eligible_membership_entry_definition_and_genesis_month_treatment",
+    "completed_observation_timeframe", "reference_open_definition", "candidate_tie_break",
+    "cross_sectional_cluster_and_episode_rule", "future_observation_horizons",
+    "sample_and_concentration_gates", "cost_coverage_gate", "future_entry_detail",
+    "fixed_rule_exit_family", "risk_invalidation_stop", "position_cap",
+    "lifecycle_intersection_treatment", "benchmark_definition"
+  ],
+  "authorizations": {
+    "u08_paper_protocol_design": true,
+    "event_scan": false, "signals": false, "returns": false,
+    "fixed_rule_contract": false, "freqtrade_strategy_code": false,
+    "backtesting": false, "oos": false, "api_trading": false,
+    "execution_live": false, "m2": false
+  },
+  "content_hash": "247d652ecc3eb6b3df6ffcfc75c8a54c98716bc9d369e738745bdbd66337d717",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

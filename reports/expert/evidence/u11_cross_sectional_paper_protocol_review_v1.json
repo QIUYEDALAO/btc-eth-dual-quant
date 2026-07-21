@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "review_id": "U11-04-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "verdict": "approve",
+  "target_commit": "e7f621ec400fcb24833038f9201df5ffa5fa166a",
+  "target_base_commit": "aacd8624fbac49020cb9aedb4ac80c142d334aac",
+  "protocol_content_hash": "3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc",
+  "target_file_sha256": {
+    "config/u11_cross_sectional_paper_protocol_v1.json": "4ca2f048ec8a393b0e91bb92affafca74ffe1368e9aab8e653bdb85b67c815ec",
+    "reports/m1/U11_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "ec8733c29f33fcad5e6733334ff876cd17285820d0ad0826522b8b2b4c167a3f",
+    "scripts/u11_cross_sectional_paper_protocol_check.py": "a5f7c339ec1fa892591217f387b6c9dab2e26ae5c6ffffef09c17bf457e328e5",
+    "scripts/u11_cross_sectional_paper_protocol_validate.sh": "0d14bf87866470fa865e918015930acd350cb4030527d3f07fa45e6300f5c526",
+    "tests/test_u11_cross_sectional_paper_protocol.py": "3ce20f21fa5a4d0a67b39dfa2e46981abef83ff3524e0c0f3aacd381509fbb12"
+  },
+  "dimensions": {
+    "exact_target_identity": "pass",
+    "authority_bindings": "pass",
+    "completed_4h_data_identity": "pass",
+    "historical_point_in_time_common_component": "pass",
+    "positive_negative_state_identity": "pass",
+    "zero_intercept_capture_estimators": "pass",
+    "persistence_and_tie_break": "pass",
+    "pre_result_sample_ceiling": "pass",
+    "causal_reference_open": "pass",
+    "clustering_and_fixed_peer_paths": "pass",
+    "paper_gates_and_is_oos_isolation": "pass",
+    "non_duplication_and_leakage_prevention": "pass",
+    "authorization_scope": "pass"
+  },
+  "remaining_critical_findings": 0,
+  "remaining_high_findings": 0,
+  "target_modified": false,
+  "authorizations": {
+    "data_qualification": true,
+    "common_state_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "strategy": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "review_content_hash": "4e8fea7a28e19742baab225f9b0e8b98be16749792b9a68b9416c7d287a4d9fc",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

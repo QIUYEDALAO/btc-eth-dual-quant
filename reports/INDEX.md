@@ -1,5 +1,307 @@
 # Reports Index
 
+| `reports/m1/U24_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-24 unique sealed-IS Paper observation | failed_feasibility | 78 episodes; six sample/projection/economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u24_cross_sectional_paper_observation/run_manifest.json` | U-24 Paper run machine evidence | content `131266a0...697dd` | Three-order exact failure with no downstream authority. | no |
+
+
+| `reports/m1/U24_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-24 frozen-source qualification | pass_local_complete | Exact sources/orders; ceiling 711; zero price/result/OOS rows. | no |
+| `reports/m1/evidence/u24_cross_sectional_data_qualification_v1.json` | U-24 qualification machine evidence | content `02e1dd27...ada9627` | Binds sources, 336h history/24h path structure, isolation and one-run authority. | no |
+
+
+| `reports/expert/U24_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-24 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `cafbd5a9...f98c3f`, nine exact blobs and pre-freeze feasibility; authorizes only qualification. | no |
+| `reports/expert/evidence/u24_cross_sectional_paper_protocol_review_v1.json` | U-24 review machine evidence | content `b032f88a...57db17` | Binds 16 dimensions, exact core/evidence and qualification-only authority. | no |
+
+
+| `reports/m1/U24_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-24 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes two-half right-tail lottery payoff persistence, clustering, paths and Gates after pre-freeze complexity pass. | no |
+| `config/u24_cross_sectional_paper_protocol_v1.json` | U-24 machine Paper protocol | content `5110c3f4...39c7ce7` | Only exact-head review is true; data/results/trading permissions remain false. | no |
+| `reports/m1/evidence/u24_synthetic_core_feasibility_v1.json` | U-24 pre-freeze synthetic core feasibility | content `ce8b0f79...957484` | 3x1,002,960 logical returns pass deterministically with zero public-data/OOS access. | no |
+
+
+| `reports/m1/U24_LOTTERY_DEMAND_AVOIDANCE_PREMIUM_DESIGN.md` | U-24 hypothesis design | economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only | Freezes right-tail lottery-demand avoidance without public data, parameters, results or OOS. | no |
+| `reports/m1/U24_NON_DUPLICATION_REVIEW.md` | U-24 non-duplication | pass_design_level | Separates right-tail preference pricing from volatility, downside-tail, comoment, reversal and continuation families. | no |
+| `config/u24_cross_sectional_design_scope_v1.json` | U-24 machine design scope | content `c99f7002...14d0c1` | Enables only protocol design and synthetic exact-core feasibility; all result/trading permissions false. | no |
+
+
+| `reports/m0/U24_DESIGN_AUTHORIZATION_DECISION.md` | U-24 design authorization | one independent outcome-blind design authorized | Binds U-23 failed result, prohibits inversion/reuse and requires synthetic exact-core feasibility before protocol freeze. | no |
+| `config/u24_design_authorization_v1.json` | U-24 machine authorization | content `74515269...bdfac5` | Only U-24 hypothesis design is true; all result, strategy, OOS and trading permissions remain false. | no |
+
+
+| `reports/m1/U23_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-23 unique sealed-IS Paper observation | failed_feasibility | 178 episodes; sample/distribution pass, three economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u23_cross_sectional_paper_observation/run_manifest.json` | U-23 Paper run machine evidence | content `771ce48d...fb2604` | Three-order exact failure with zero downstream authority. | no |
+
+
+| `reports/m1/U23_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-23 frozen-source qualification | pass_local_complete | Exact sources/orders; ceiling 1,031; zero OHLC/result/OOS rows. | no |
+| `reports/m1/evidence/u23_cross_sectional_data_qualification_v1.json` | U-23 qualification machine evidence | content `08166fb5...acef2c5` | Binds sources, 7d history/24h path structure, isolation and one-run authority. | no |
+
+
+| `reports/expert/U23_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-23 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1d0b2128...5d5913`, nine exact blobs and pre-freeze feasibility; authorizes only qualification. | no |
+| `reports/expert/evidence/u23_cross_sectional_paper_protocol_review_v1.json` | U-23 review machine evidence | content `f2a8a5fd...37c4a4` | Binds 16 dimensions, exact core/evidence and qualification-only authority. | no |
+
+
+| `reports/m1/U23_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-23 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 4h own-range expansion, close strength, peer-relative identity, clustering, paths and Gates after pre-freeze complexity pass. | no |
+| `config/u23_cross_sectional_paper_protocol_v1.json` | U-23 machine Paper protocol | content `52807bd0...3e5611` | Only exact-head review is true; data/results/trading permissions remain false. | no |
+| `reports/m1/evidence/u23_synthetic_core_feasibility_v1.json` | U-23 pre-freeze synthetic core feasibility | content `6010529c...45637e` | 3x1,000,395 logical OHLC bars pass deterministically with zero public-data/OOS access. | no |
+
+
+| `reports/m1/U23_RANGE_EXPANSION_CLOSE_STRENGTH_CONTINUATION_DESIGN.md` | U-23 hypothesis design | economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only | Freezes completed range-expansion close-strength continuation without public data, parameters, results or OOS. | no |
+| `reports/m1/U23_NON_DUPLICATION_REVIEW.md` | U-23 non-duplication | pass_design_level | Separates same-auction range/close geometry from dispersion leaders, volume trend, downside rejection and compression breakout. | no |
+| `config/u23_cross_sectional_design_scope_v1.json` | U-23 machine design scope | content `351ddd25...96e6e0` | Enables only protocol design and synthetic exact-core feasibility; all result/trading permissions false. | no |
+
+
+| `reports/m0/U23_DESIGN_AUTHORIZATION_DECISION.md` | U-23 design authorization | one independent outcome-blind design authorized | Binds U-22 failed result, prohibits inversion/reuse and requires synthetic exact-core feasibility before protocol freeze. | no |
+| `config/u23_design_authorization_v1.json` | U-23 machine authorization | content `70c60434...98d5a` | Only U-23 hypothesis design is true; all result, strategy, OOS and trading permissions remain false. | no |
+
+
+| `reports/m1/U22_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-22 unique sealed-IS Paper observation | failed_feasibility | 198 episodes; sample/distribution pass, three economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u22_cross_sectional_paper_observation/run_manifest.json` | U-22 Paper run machine evidence | content `12a756e2...01531c` | Three-order exact failure with zero downstream authority. | no |
+
+| `reports/m1/U22_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-22 frozen-source qualification | pass_local_complete | Exact sources/orders; ceiling 1,514; zero result/OOS rows. | no |
+| `reports/m1/evidence/u22_cross_sectional_data_qualification_v1.json` | U-22 qualification machine evidence | content `9b009c6b...0a2334` | Binds sources, structure, isolation and one-run authority. | no |
+
+| `reports/expert/U22_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-22 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `d4f254f8...d0ee16`, nine exact blobs and pre-freeze feasibility; authorizes only qualification. | no |
+| `reports/expert/evidence/u22_cross_sectional_paper_protocol_review_v1.json` | U-22 review machine evidence | content `e2a920c2...18cd57` | Binds 16 dimensions, exact core/evidence and qualification-only authority. | no |
+
+
+| `reports/m1/U22_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-22 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 24h dispersion expansion, coherent leader, clustering, paths and Gates after pre-freeze complexity pass. | no |
+| `config/u22_cross_sectional_paper_protocol_v1.json` | U-22 machine Paper protocol | content `0fdc7eb2...d1b4fa` | Only exact-head review is true; data/results/trading permissions remain false. | no |
+| `reports/m1/evidence/u22_synthetic_core_feasibility_v1.json` | U-22 pre-freeze synthetic core feasibility | content `4476d5b5...e6940b` | 3×1,000,080 logical rows pass deterministically with zero public-data/OOS access. | no |
+
+
+| `reports/m1/U22_DISPERSION_EXPANSION_LEADER_CONTINUATION_DESIGN.md` | U-22 hypothesis design | economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only | Freezes dispersion-expansion leader continuation without public data, parameters, results or OOS. | no |
+| `reports/m1/U22_NON_DUPLICATION_REVIEW.md` | U-22 non-duplication | pass_design_level | Separates dispersion expansion from stress strength, volume trend, common-shock diffusion and correlation breakdown. | no |
+| `config/u22_cross_sectional_design_scope_v1.json` | U-22 machine design scope | content `652677b1...153abe` | Enables only protocol design and synthetic exact-core feasibility; all result/trading permissions false. | no |
+
+
+| `reports/m0/U22_DESIGN_AUTHORIZATION_DECISION.md` | U-22 design authorization | one independent outcome-blind design authorized | Binds U-21 pre-result failure and prohibits optimization/reuse; requires synthetic exact-core feasibility before protocol freeze. | no |
+| `config/u22_design_authorization_v1.json` | U-22 machine authorization | content `82aef7f3...124e29d` | Public data, events, returns, strategy, OOS, trading and M2 remain false. | no |
+
+
+| `reports/m1/U21_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-21 frozen-source qualification | failed_pre_result_complexity | First synthetic million-row pass fails fixed complexity guard before any source/result read. | no |
+| `reports/m1/evidence/u21_cross_sectional_data_qualification_v1.json` | U-21 qualification failure evidence | content `33e53b7f...147a1b` | Zero source archives, market outcomes, OOS values and downstream authority; retry false. | no |
+
+
+| `reports/expert/U21_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-21 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `d7671475...28d42` unchanged and authorizes only qualification. | no |
+| `reports/expert/evidence/u21_cross_sectional_paper_protocol_review_v1.json` | U-21 review machine evidence | content `809dcdf6...355ff` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
+
+
+| `reports/m1/U21_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-21 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 336h two-half systematic-cokurtosis persistence, clustering, paths, Gates and preflight. | no |
+| `config/u21_cross_sectional_paper_protocol_v1.json` | U-21 machine Paper protocol | content `b8cad855...73551e` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
+
+
+| `reports/m1/U21_SYSTEMATIC_COKURTOSIS_RISK_PREMIUM_DESIGN.md` | U-21 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes compensated systematic fourth-comoment risk without data, parameters, results or OOS. | no |
+| `reports/m1/U21_NON_DUPLICATION_REVIEW.md` | U-21 non-duplication | pass_design_level | Separates unsigned joint tail-risk intensity from signed coskewness, asset-only tails and volatility variability. | no |
+| `config/u21_cross_sectional_design_scope_v1.json` | U-21 machine design scope | content `a4507537...8568b` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
+
+
+| `reports/m0/U21_DESIGN_AUTHORIZATION_DECISION.md` | U-21 design authorization | one independent outcome-blind design authorized | Binds U-20 failed result and prohibits inversion/reuse; enables only one new design. | no |
+| `config/u21_design_authorization_v1.json` | U-21 machine authorization | content `58c4be44...7b247` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
+
+
+| `reports/m1/U20_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-20 unique sealed-IS Paper observation | failed_feasibility | 110 episodes; all sample/distribution Gates pass but all three 24h economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u20_cross_sectional_paper_observation/run_manifest.json` | U-20 Paper run machine evidence | content `587def88...9ede1` | Three-order exact result, immutable failed Gates and zero downstream authority. | no |
+
+
+| `reports/m1/U20_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-20 frozen-source qualification and preflight | pass_local_complete | 27,736 archives, 19 manifests, ceiling 752 and 3×1M complexity pass; zero outcomes/OOS. | no |
+| `reports/m1/evidence/u20_cross_sectional_data_qualification_v1.json` | U-20 qualification machine evidence | content `de61add6...e2368` | Binds exact sources/orders, structural ceiling, complexity, isolation and one-run authority. | no |
+
+
+| `reports/expert/U20_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-20 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `6a2207c0...30755` unchanged and authorizes only qualification. | no |
+| `reports/expert/evidence/u20_cross_sectional_paper_protocol_review_v1.json` | U-20 review machine evidence | content `eb452e74...e20f5` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
+
+
+| `reports/m1/U20_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-20 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 336h two-half negative-coskewness persistence, clustering, paths, Gates and preflight. | no |
+| `config/u20_cross_sectional_paper_protocol_v1.json` | U-20 machine Paper protocol | content `d909cd57...e2dec9` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
+
+
+| `reports/m1/U20_NEGATIVE_COSKEWNESS_RISK_PREMIUM_DESIGN.md` | U-20 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes compensated systematic third-comoment risk without data, parameters, results or OOS. | no |
+| `reports/m1/U20_NON_DUPLICATION_REVIEW.md` | U-20 non-duplication | pass_design_level | Separates negative coskewness from directional capture, asset-only tails, volatility variability and prior event families. | no |
+| `config/u20_cross_sectional_design_scope_v1.json` | U-20 machine design scope | content `3995e92a...a1e5b5` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
+
+| `reports/m0/U20_DESIGN_AUTHORIZATION_DECISION.md` | U-20 design authorization | one independent outcome-blind design authorized | Binds U-19 failed result and prohibits inversion/reuse; enables only one new design. | no |
+| `config/u20_design_authorization_v1.json` | U-20 machine authorization | content `b4e9d5c9...b64455` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
+
+| `reports/m1/U19_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-19 unique sealed-IS Paper observation | failed_feasibility | 54 episodes; count/projection/year and all three 24h economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u19_cross_sectional_paper_observation/run_manifest.json` | U-19 Paper run machine evidence | content `38daffb0...3f3d4` | Three-order exact result, immutable failed Gates and zero downstream authority. | no |
+
+| `reports/m1/U19_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-19 frozen-source qualification and preflight | pass_local_complete | 27,736 archives, 19 manifests, ceiling 752 and 3×1M complexity pass; zero outcomes/OOS. | no |
+| `reports/m1/evidence/u19_cross_sectional_data_qualification_v1.json` | U-19 qualification machine evidence | content `62b7ac38...db499` | Binds exact sources/orders, structural ceiling, complexity, isolation and one-run authority. | no |
+
+| `reports/expert/U19_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-19 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `8b8b03f0...addf4` unchanged and authorizes only qualification. | no |
+| `reports/expert/evidence/u19_cross_sectional_paper_protocol_review_v1.json` | U-19 review machine evidence | content `d215e444...f4a91` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
+
+| `reports/m1/U19_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-19 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 336h two-half volatility-of-volatility persistence, clustering, paths, Gates and preflight. | no |
+| `config/u19_cross_sectional_paper_protocol_v1.json` | U-19 machine Paper protocol | content `8f50ee40...40f9` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
+
+| `reports/m1/U19_IDIOSYNCRATIC_VOLATILITY_OF_VOLATILITY_RISK_PREMIUM_DESIGN.md` | U-19 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes compensated variability-of-asset-specific-risk mechanism without data, parameters, results or OOS. | no |
+| `reports/m1/U19_NON_DUPLICATION_REVIEW.md` | U-19 non-duplication | pass_design_level | Separates risk instability from low volatility, downside tails and prior event families. | no |
+| `config/u19_cross_sectional_design_scope_v1.json` | U-19 machine design scope | content `89cd46e6...fe80` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
+
+| `reports/m0/U19_DESIGN_AUTHORIZATION_DECISION.md` | U-19 design authorization | one independent outcome-blind design authorized | Binds U-18 failed result and prohibits inversion/reuse; enables only one new design. | no |
+| `config/u19_design_authorization_v1.json` | U-19 machine authorization | content `09965229...c3a9` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
+
+| `reports/m1/U18_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-18 unique sealed-IS Paper observation | failed_feasibility | 157 episodes; count/distribution pass but all three 24h economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u18_cross_sectional_paper_observation/run_manifest.json` | U-18 Paper run machine evidence | content `213c303d...9c3cd` | Three-order exact result, immutable failed Gates and zero downstream authority. | no |
+
+| `reports/m1/U18_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-18 frozen-source qualification and preflight | pass_local_complete | 27,736 archives, 19 manifests, ceiling 1,054 and 3×1M complexity pass; zero outcomes/OOS. | no |
+| `reports/m1/evidence/u18_cross_sectional_data_qualification_v1.json` | U-18 qualification machine evidence | content `088ebed2...c6e0` | Binds exact sources/orders, structural ceiling, complexity, isolation and one-run authority. | no |
+
+| `reports/expert/U18_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-18 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `39a766c5...38e5` unchanged and authorizes only qualification. | no |
+| `reports/expert/evidence/u18_cross_sectional_paper_protocol_review_v1.json` | U-18 review machine evidence | content `5fb6a8d2...1dd3` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
+
+| `reports/m1/U18_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-18 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 168h two-half downside-tail persistence, clustering, paths, Gates and preflight. | no |
+| `config/u18_cross_sectional_paper_protocol_v1.json` | U-18 machine Paper protocol | content `7571d2cb...c671` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
+
+| `reports/m1/U18_DOWNSIDE_TAIL_RISK_PREMIUM_DESIGN.md` | U-18 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes asset-specific downside-tail risk as a compensated characteristic without data, parameters, results or OOS. | no |
+| `reports/m1/U18_NON_DUPLICATION_REVIEW.md` | U-18 non-duplication | pass_design_level | Separates persistent tail asymmetry from U-04 through U-17 and prior strategy families. | no |
+| `config/u18_cross_sectional_design_scope_v1.json` | U-18 machine design scope | content `487d9b11...2df8` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
+
+| `reports/m0/U18_DESIGN_AUTHORIZATION_DECISION.md` | U-18 design authorization | one independent outcome-blind design authorized | Binds U-17 pre-result closure and prohibits defect repair/reuse; enables only one new design. | no |
+| `config/u18_design_authorization_v1.json` | U-18 machine authorization | content `eb78548e...c0b1` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
+
+| `reports/m1/U17_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-17 frozen-source qualification | failed_pre_result_sample_ceiling | Maximum 3 independent 28-day episodes versus 50 required; zero result/OOS access. | no |
+| `reports/m1/evidence/u17_cross_sectional_data_qualification_v1.json` | U-17 qualification failure evidence | content `434d8a58...af91` | Binds exact sources, three orders, complexity, isolation and permanent candidate closure. | no |
+
+| `reports/expert/U17_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-17 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `c4990fbd...d31a` unchanged; future membership only right-censors paths. | no |
+| `reports/expert/evidence/u17_cross_sectional_paper_protocol_review_v1.json` | U-17 review machine evidence | content `c9696e61...0a64` | Binds five exact target blobs, 16 dimensions and qualification-only authority. | no |
+
+| `reports/m1/U17_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-17 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 28-day liquidity rank persistence, clustering, paths, Gates and preflight before data. | no |
+| `config/u17_cross_sectional_paper_protocol_v1.json` | U-17 machine Paper protocol | content `81501338...6089` | Only protocol freeze and exact-head review are true; result/trading permissions remain false. | no |
+
+| `reports/m1/U17_LIQUIDITY_RISK_PREMIUM_DESIGN.md` | U-17 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes persistent relative liquidity risk as a compensated characteristic without data, parameters, results or OOS. | no |
+| `reports/m1/U17_NON_DUPLICATION_REVIEW.md` | U-17 non-duplication | pass_design_level | Separates a liquidity-risk characteristic from U-04 through U-16 and prior strategy families. | no |
+| `config/u17_cross_sectional_design_scope_v1.json` | U-17 machine design scope | content `ad3b6a4c...20fe` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
+
+| `reports/m0/U17_DESIGN_AUTHORIZATION_DECISION.md` | U-17 design authorization | one independent outcome-blind design authorized | Binds U-16 failed run and prohibits result repair/reuse; enables only one new design. | no |
+| `config/u17_design_authorization_v1.json` | U-17 machine authorization | content `eb93310f...420b` | Data, events, returns, strategy, OOS, trading and M2 remain false. | no |
+
+| `reports/m1/U16_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-16 sealed-IS Paper observation | failed_feasibility | 169 episodes; three economic Gates fail; OOS remains sealed. | no |
+| `reports/m1/evidence/u16_cross_sectional_paper_observation/` | U-16 Paper machine evidence | run `322fda77...4d14` | Three orders exact under `fb25bbc7...add4`; immutable failure authorizes no downstream work. | no |
+| `reports/m1/U16_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-16 frozen-source qualification | pass / one sealed-IS observation authorized | 27,736 archives, 19 manifests, ceiling 1,331 and 3×1M synthetic passes; result/OOS rows zero. | no |
+| `reports/m1/evidence/u16_cross_sectional_data_qualification_v1.json` | U-16 qualification machine evidence | content `5dc4850a...e949` | Binds source/order/ceiling/complexity/isolation and one-run-only authority. | no |
+| `reports/expert/U16_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-16 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `9cafb08d...1ddb` unchanged; future membership only right-censors paths. | no |
+| `reports/expert/evidence/u16_cross_sectional_paper_protocol_review_v1.json` | U-16 review machine evidence | content `2f708c0f...34e3` | Binds five target blobs, 16 dimensions and qualification-only authority. | no |
+| `reports/m1/U16_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-16 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes 48h path decoupling, correlation/displacement/spike identity, paths, Gates and preflight. | no |
+| `config/u16_cross_sectional_paper_protocol_v1.json` | U-16 machine Paper protocol | content `18e302de...5633a` | Only protocol freeze and exact-head review are true; result/trading permissions false. | no |
+| `reports/m1/U16_CORRELATION_BREAKDOWN_INFORMATION_PERSISTENCE_DESIGN.md` | U-16 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes positive relative decoupling as gradual asset-specific information without data, parameters, results or OOS. | no |
+| `reports/m1/U16_NON_DUPLICATION_REVIEW.md` | U-16 non-duplication | pass_design_level | Separates multi-path peer decoupling from U-04 through U-15 and prior strategy families. | no |
+| `config/u16_cross_sectional_design_scope_v1.json` | U-16 machine design scope | content `8574e5c5...075d1` | Binds one declared-unopened candidate and enables only Paper protocol design. | no |
+| `reports/m0/U16_DESIGN_AUTHORIZATION_DECISION.md` | U-16 design authorization | one independent outcome-blind design authorized | Binds U-15 pre-result failure and prohibits taker-field repair/reuse; enables only one new design. | no |
+| `config/u16_design_authorization_v1.json` | U-16 machine authorization | content `05346312...528fc` | Keeps data, events, strategy, OOS, trading and M2 false. | no |
+| `reports/m1/U15_TAKER_BUY_FIELD_DATA_QUALIFICATION.md` | U-15 official taker-buy field qualification | failed_pre_result_field_qualification | First official ADAUSDT row has zero quote volume and violates the frozen strict-positive denominator Gate; stopped before outcomes. | no |
+| `reports/m1/evidence/u15_taker_buy_field_qualification_failure_v1.json` | U-15 field failure evidence | content `83eb8ac2...63c28` | Binds archive/raw-row identity, zero result access and permanent candidate closure. | no |
+| `reports/expert/U15_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-15 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `5438dec6...da5a` unchanged and authorizes only field/data qualification and preflight. | no |
+| `reports/expert/evidence/u15_cross_sectional_paper_protocol_review_v1.json` | U-15 protocol review machine evidence | content `2686c3ac...8ceb` | Binds five exact target files, 15 review dimensions and qualification-only authority. | no |
+| `reports/m1/U15_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-15 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes official taker-buy field contract, completed 4h identity, paths, Gates, isolation and pre-result checks. | no |
+| `config/u15_cross_sectional_paper_protocol_v1.json` | U-15 machine Paper protocol | content `3b58d6a2...b577a` | Only protocol freeze and exact-head review are true; result and trading permissions remain false. | no |
+| `reports/m1/U15_TAKER_BUY_ABSORPTION_PERSISTENCE_DESIGN.md` | U-15 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes aggressive taker-buy absorption and latent demand persistence without parameters, data, results or OOS. | no |
+| `reports/m1/U15_NON_DUPLICATION_REVIEW.md` | U-15 non-duplication | pass_design_level | Separates taker-side flow/price-impact disagreement from U-04 through U-14 and prior strategy families. | no |
+| `config/u15_cross_sectional_design_scope_v1.json` | U-15 machine design scope | content `14ba25a0...57b1c` | Binds one declared unopened candidate, requires taker-field qualification and enables only Paper protocol design. | no |
+| `reports/m1/U11_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-11 frozen-source qualification | pass / one sealed-IS observation authorized | ZIPs, manifests, 4h authority, ceiling 473 and three orders pass; outcomes zero. | no |
+| `reports/m1/evidence/u11_cross_sectional_data_qualification_v1.json` | U-11 qualification machine evidence | content `b0476b5e...05b6` | Binds exact authorities, metadata ceiling, isolation and one-run-only authorization. | no |
+| `reports/expert/U11_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-11 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `e7f621ec...166a` unchanged and authorizes only qualification. | no |
+| `reports/expert/evidence/u11_cross_sectional_paper_protocol_review_v1.json` | U-11 protocol review machine evidence | content `4e8fea7a...d9fc` | Binds five target files, 13 dimensions and qualification-only authority. | no |
+| `reports/m1/U11_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-11 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes asymmetric capture identity, 72h paths, ceiling, Gates and sealed OOS. | no |
+| `config/u11_cross_sectional_paper_protocol_v1.json` | U-11 machine Paper protocol | content `3d78bbc8...42dc` | Only protocol freeze and exact-head review are true; all result/trading permissions false. | no |
+| `reports/m1/U11_ASYMMETRIC_MARKET_CAPTURE_QUALITY_DESIGN.md` | U-11 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes asymmetric positive/negative common-market capture quality without parameters, results or OOS. | no |
+| `reports/m1/U11_NON_DUPLICATION_REVIEW.md` | U-11 non-duplication | pass_design_level | Separates persistent conditional capture from U-04 through U-10 and prior strategy families. | no |
+| `config/u11_cross_sectional_design_scope_v1.json` | U-11 machine design scope | content `0572daf7...9e4c` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
+| `reports/m0/U11_DESIGN_AUTHORIZATION_DECISION.md` | U-11 design authorization | one independent outcome-blind design authorized | Binds U-10 failed run and all prior evidence; enables only one U-11 hypothesis design. | no |
+| `config/u11_design_authorization_v1.json` | U-11 machine authorization | content `c5db3dc0...274a` | Prohibits prior-outcome/defect reuse and keeps events, strategy, OOS, trading and M2 false. | no |
+| `reports/m1/U10_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-10 sealed-IS Paper observation | failed_feasibility | 7 complete episodes; count, distribution and 72h relative-continuation Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u10_cross_sectional_paper_observation/` | U-10 Paper machine evidence | run `9972a95f...d22f` | Three orders exact under `83540c78...11d`; immutable failure authorizes no downstream work. | no |
+| `reports/m1/U10_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-10 frozen-source qualification | pass / one sealed-IS observation authorized | 27,736 ZIPs, 19 manifests, daily authority, ceiling 418 and three orders pass; OOS/outcomes zero. | no |
+| `reports/m1/evidence/u10_cross_sectional_data_qualification_v1.json` | U-10 qualification machine evidence | content `0029def2...ee2` | Binds contract `c47701dc...1bf`, exact authorities, ceiling and one-run-only authorization. | no |
+| `reports/expert/U10_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-10 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `f468b7ae...776f` unchanged and authorizes only qualification. | no |
+| `reports/expert/evidence/u10_cross_sectional_paper_protocol_review_v1.json` | U-10 protocol review machine evidence | content `e42d3170...9009` | Binds five target files, 13 dimensions and qualification-only authority. | no |
+| `reports/m1/U10_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-10 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes joint price/volume identity, 72h paths, sample ceiling, Gates and sealed OOS. | no |
+| `config/u10_cross_sectional_paper_protocol_v1.json` | U-10 machine Paper protocol | content `be205bf4...43b` | Only protocol freeze and exact-head review are true; all result/trading permissions false. | no |
+| `reports/m1/U10_VOLUME_CONFIRMED_RELATIVE_TREND_CONTINUATION_DESIGN.md` | U-10 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes joint relative-price and volume-share confirmation without parameters, results or OOS. | no |
+| `reports/m1/U10_NON_DUPLICATION_REVIEW.md` | U-10 non-duplication | pass_design_level | Separates joint confirmation from U-04 through U-09 and prior strategy families. | no |
+| `config/u10_cross_sectional_design_scope_v1.json` | U-10 machine design scope | content `af9ac640...40e5` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
+| `reports/m0/U10_DESIGN_AUTHORIZATION_DECISION.md` | U-10 design authorization | one independent outcome-blind design authorized | Binds five failed observations, U-09 pre-result closure and passing V4 audit; enables only U-10 design. | no |
+| `config/u10_design_authorization_v1.json` | U-10 machine authorization | content `e196cc0f...c7a0` | Prohibits prior-outcome and U-09 protocol-defect reuse; all downstream permissions false. | no |
+| `reports/m1/U09_QUALIFICATION_SAMPLE_CEILING_CORRECTION.md` | U-09 pre-observation qualification correction | failed_pre_observation_sample_ceiling | Maximum 66 constant-membership episodes is below frozen 80; no price/result access. | no |
+| `reports/m1/evidence/u09_qualification_sample_ceiling_correction_v1.json` | U-09 sample-ceiling machine evidence | content `c6902525...4479` | Supersedes qualification admission and closes U-09 without changing protocol or Gate. | no |
+| `reports/m1/U09_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-09 frozen-source qualification | pass / one sealed-IS observation authorized | ZIPs, manifests, membership ranks, schedule and three orders pass; outcomes zero. | no |
+| `reports/m1/evidence/u09_cross_sectional_data_qualification_v1.json` | U-09 qualification machine evidence | content `c323798a...56aee` | Binds exact authorities, 123/122 anchors, isolation and one-run-only authorization. | no |
+| `reports/expert/U09_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-09 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1bee65ff...68c8` unchanged and authorizes only data qualification. | no |
+| `reports/expert/evidence/u09_cross_sectional_paper_protocol_review_v1.json` | U-09 protocol review machine evidence | content `dd6779da...2947` | Binds five target files, 13 dimensions and qualification-only authority. | no |
+| `reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-09 outcome-blind Paper protocol | frozen_before_result_pending_exact_head_review | Fixes residual-volatility cohort, 336h anchors, paths, Gates and sealed OOS before results. | no |
+| `config/u09_cross_sectional_paper_protocol_v1.json` | U-09 machine Paper protocol | content `874b93ce...84ae` | Only protocol freeze and exact-head review are true; all result and trading permissions remain false. | no |
+| `reports/m1/U09_IDIOSYNCRATIC_VOLATILITY_QUALITY_PERSISTENCE_DESIGN.md` | U-09 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes low idiosyncratic variability as a quality mechanism without parameters, outcomes, rules or OOS. | no |
+| `reports/m1/U09_NON_DUPLICATION_REVIEW.md` | U-09 non-duplication | pass_design_level | Separates quality/variability from U-04 through U-08 and prior strategy families. | no |
+| `config/u09_cross_sectional_design_scope_v1.json` | U-09 machine design scope | content `4830e361...ee6f2` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
+| `reports/m0/U09_DESIGN_AUTHORIZATION_DECISION.md` | U-09 design authorization | one independent outcome-blind design authorized | Binds five failed candidates and passing V4 audit; enables only one U-09 hypothesis design. | no |
+| `config/u09_design_authorization_v1.json` | U-09 machine authorization | content `2d643678...e477` | Prohibits prior-outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
+| `reports/m1/U08_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-08 sealed-IS Paper observation | failed_feasibility | 44 complete 336h episodes; all three frozen economic Gates fail; OOS remains sealed. | no |
+| `reports/m1/evidence/u08_cross_sectional_paper_observation/` | U-08 Paper machine evidence | run `f6fbcdee...ca3e` | Three orders exact under `5e77484b...b928`; failed result is immutable and authorizes no downstream work. | no |
+| `reports/m1/U08_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-08 frozen-source qualification | pass / one sealed-IS observation authorized | ZIPs, manifests, membership ranks and three orders pass; outcomes zero. | no |
+| `reports/m1/evidence/u08_cross_sectional_data_qualification_v1.json` | U-08 qualification machine evidence | content `1ec26ef7...7cb5` | Binds exact authorities, ranks, isolation and one-run-only authorization. | no |
+| `reports/expert/U08_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-08 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `a516efb3...9361` unchanged and authorizes only data qualification. | no |
+| `reports/expert/evidence/u08_cross_sectional_paper_protocol_review_v1.json` | U-08 protocol review machine evidence | content `316fe577...8acf` | Binds five target files, 13 dimensions and qualification-only authority. | no |
+| `reports/m1/U08_LIQUIDITY_RANK_ENTRY_DEMAND_PERSISTENCE_DESIGN.md` | U-08 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes membership-entry demand persistence without parameters, outcomes, rules or OOS. | no |
+| `reports/m1/U08_NON_DUPLICATION_REVIEW.md` | U-08 non-duplication | pass_design_level | Separates membership transition from U-04 through U-07 and prior strategy families. | no |
+| `config/u08_cross_sectional_design_scope_v1.json` | U-08 machine design scope | content `247d652e...d717` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
+| `reports/m0/U08_DESIGN_AUTHORIZATION_DECISION.md` | U-08 design authorization | one independent outcome-blind design authorized | Binds four failed candidates and passing V4 audit; enables only one U-08 hypothesis design. | no |
+| `config/u08_design_authorization_v1.json` | U-08 machine authorization | content `813267f2...1cf9` | Prohibits prior-outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
+| `reports/m1/U07_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-07 sealed-IS Paper observation | failed_feasibility | 82 complete episodes; all three frozen 24h economic Gates fail; OOS remains sealed. | no |
+| `reports/m1/evidence/u07_cross_sectional_paper_observation/` | U-07 Paper machine evidence | run `8c637a3f...352c` | Three orders exact under `2714c2bf...00ee`; failed result is immutable and authorizes no downstream work. | no |
+| `reports/m1/U07_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-07 frozen-source qualification and IS/OOS isolation | pass / one sealed-IS observation authorized | 27,736 ZIPs, 19 manifests and three orders pass; OOS/outcome rows remain zero. | no |
+| `reports/m1/evidence/u07_cross_sectional_data_qualification_v1.json` | U-07 qualification machine evidence | content `fa65f340...e123` | Binds contract `0dd9a159...5fb8`, three-order `ca7d59b3...44aa` and zero OOS/outcomes. | no |
+| `reports/expert/U07_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-07 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `3aed4c33...b3791` without modification and authorizes only data qualification. | no |
+| `reports/expert/evidence/u07_cross_sectional_paper_protocol_review_v1.json` | U-07 protocol review machine evidence | content `fa9d90f7...c70b6` | Binds five target files, 13 dimensions and data-qualification-only authority. | no |
+| `reports/m1/U07_CROSS_SECTIONAL_PAPER_PROTOCOL.md` at target `3aed4c33...b3791` | U-07 outcome-blind Paper protocol | frozen exact-head approved | Fixes stress/resilience, 48h episodes, paths, Gates and sealed OOS before results. | no |
+| `config/u07_cross_sectional_paper_protocol_v1.json` at target `3aed4c33...b3791` | U-07 machine Paper protocol | content `d62dd323...50195` | Only protocol freeze and exact-head review were true at target. | no |
+| `reports/m1/U07_CROSS_SECTIONAL_MARKET_STRESS_RELATIVE_STRENGTH_DESIGN.md` | U-07 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes state-conditioned relative resilience without timeframe, threshold, outcomes, rules or OOS. | no |
+| `reports/m1/U07_NON_DUPLICATION_REVIEW.md` | U-07 non-duplication | pass_design_level | Separates stress-state resilience from U-04/U-05/U-06 and prior strategy families. | no |
+| `config/u07_cross_sectional_design_scope_v1.json` | U-07 machine design scope | content `272eabd4...21795` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
+| `reports/m0/U07_DESIGN_AUTHORIZATION_DECISION.md` | U-07 design authorization | one independent outcome-blind design authorized | Binds closed U-04/U-05/U-06 results and passing V4 audit; enables only one U-07 hypothesis design. | no |
+| `config/u07_design_authorization_v1.json` | U-07 machine authorization | content `58f83010...e37d5` | Prohibits prior-outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
+| `reports/m1/U06_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-06 sealed-IS Paper observation | failed_feasibility | 56 complete episodes; count and both 24h economic Gates fail; OOS sealed. | no |
+| `reports/m1/evidence/u06_cross_sectional_paper_observation/` | U-06 Paper machine evidence | run `2f715394...1382a` | Three-order exact under `b60423c2...e762c`; immutable failed Gates. | no |
+| `reports/m1/U06_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-06 frozen-source qualification | pass / OOS sealed | 27,736 ZIPs, 19 manifests, daily quote-volume authority and three orders pass; outcome rows zero. | no |
+| `reports/m1/evidence/u06_cross_sectional_data_qualification_v1.json` | U-06 qualification machine evidence | content `e6a4a0eb...b95a67` | Binds exact protocol/review, frozen V4 authority and one-run-only IS authorization. | no |
+| `reports/expert/U06_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-06 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `1bb59f1a...e8cd` without modification and authorizes only data qualification. | no |
+| `reports/expert/evidence/u06_cross_sectional_paper_protocol_review_v1.json` | U-06 protocol review machine evidence | content `e4f0af0d...e81b3` | Binds five target files, 13 dimensions and data-qualification-only authority. | no |
+| `reports/m1/U06_CROSS_SECTIONAL_VOLUME_SHARE_ABSORPTION_DESIGN.md` | U-06 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes volume-share absorption/repricing without timeframe, threshold, outcomes, rules or OOS. | no |
+| `reports/m1/U06_NON_DUPLICATION_REVIEW.md` | U-06 non-duplication | pass_design_level | Separates price/volume disagreement from U-04/U-05 and prior candidates. | no |
+| `config/u06_cross_sectional_design_scope_v1.json` | U-06 machine design scope | content `694e5a43...966a5` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
+| `reports/m0/U06_DESIGN_AUTHORIZATION_DECISION.md` | U-06 design authorization | one independent outcome-blind design authorized | Binds closed U-04/U-05 results and passing V4 audit; enables only one U-06 hypothesis design. | no |
+| `config/u06_design_authorization_v1.json` | U-06 machine authorization | content `596eacbc...b74662` | Prohibits prior-outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
+| `reports/m1/U05_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-05 sealed-IS Paper observation | failed_feasibility | 490 complete episodes; frozen 24h displacement and positive-member-fraction Gates fail; OOS remains sealed. | no |
+| `reports/m1/evidence/u05_cross_sectional_paper_observation/` | U-05 Paper machine evidence | run `874cdac3...e7e4a` | Three orders exact under `ac4b36ac...f267b0`; events, episodes, paths, accounting and failed Gates are hash-bound. | no |
+| `reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md` | U-05 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes distributed common-demand persistence without timeframes, thresholds, outcomes, rules or OOS. | no |
+| `reports/expert/U05_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-05 Paper-protocol exact-head review | approve / 0 critical-high | Reviews target `8d865279...ca5a6` without modification and authorizes only data qualification. | no |
+| `reports/m1/U05_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-05 frozen-source data qualification | pass / OOS sealed | 27,736 ZIPs, 19 manifests, 4h/1h/5m authority and three traversal orders pass; outcome rows remain zero. | no |
+| `reports/m1/evidence/u05_cross_sectional_data_qualification_v1.json` | U-05 qualification machine evidence | content `348e8029...f7cb4f` | Binds the exact reviewed protocol, frozen source and one-run-only sealed-IS authorization. | no |
+| `reports/expert/evidence/u05_cross_sectional_paper_protocol_review_v1.json` | U-05 protocol review machine evidence | content `8602f209...d914f` | Binds five exact target files, 13 dimensions and a data-qualification-only authorization. | no |
+| `reports/m1/U05_NON_DUPLICATION_REVIEW.md` | U-05 non-duplication | pass_design_level | Separates breadth/common demand from U-04 residuals and all prior candidate families. | no |
+| `config/u05_cross_sectional_design_scope_v1.json` | U-05 machine design scope | content `ae12172a...8c2bb` | Binds one declared unopened candidate and enables only Paper protocol design. | no |
+| `reports/m0/U05_DESIGN_AUTHORIZATION_DECISION.md` | U-05 design authorization | one independent outcome-blind design authorized | Binds the closed U-04 run and passing V4 audit; enables only one U-05 hypothesis design. | no |
+| `config/u05_design_authorization_v1.json` | U-05 machine authorization | content `48482a1d...6dc2c` | Prohibits U-04 outcome inversion and keeps events, strategy, OOS, trading and M2 false. | no |
+| `docs/superpowers/plans/2026-07-18-u05-cross-sectional-research-mainline.md` | U-05 full mainline | planned dependency chain | Defines continuous fail-closed stages through Paper, IS, OOS, final audit and permission pauses. | no |
+| `reports/m1/U04_CROSS_SECTIONAL_RESIDUAL_REVERSAL_DESIGN.md` | U-04 hypothesis design | economic_hypothesis_pass_protocol_design_only | Freezes one point-in-time active-universe residual-reversal mechanism without events, returns, parameters or OOS. | no |
+| `reports/m1/U04_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-04 sealed-IS paper observation | failed_feasibility | 397 complete episodes; both frozen +1.80% 24h recovery Gates fail; OOS remains sealed. | no |
+| `reports/m1/evidence/u04_cross_sectional_paper_observation/` | U-04 paper machine evidence | run `9182c9e3...eebc2` | Three orders exact under `4c512f59...1b42`; events, episodes, paths, accounting and failed Gates are hash-bound. | no |
+| `reports/m1/U04_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-04 data qualification | pass / OOS sealed | 27,736 ZIPs, 19 manifests and three orders exact; OOS OHLC decode and U-04 result rows remain zero. | no |
+| `reports/m1/evidence/u04_cross_sectional_data_qualification_v1.json` | U-04 data qualification machine evidence | content `4bdebb52...5a8c` | Binds frozen source, grid, membership, lifecycle, invalid-interval mask and one-run-only next authorization. | no |
+| `reports/expert/U04_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-04 paper-protocol exact-head review | approve / 0 critical-high | Reviews target `6523b83d...07be` without modification and authorizes only frozen-source data qualification. | no |
+| `reports/expert/evidence/u04_cross_sectional_paper_protocol_review_v1.json` | U-04 protocol review machine evidence | content `34fe2efd...646b1` | Binds five exact target files, 13 review dimensions and a data-qualification-only authorization. | no |
+| `reports/m1/U04_NON_DUPLICATION_REVIEW.md` | U-04 non-duplication review | pass_design_level | Separates U-04 from M1C momentum, M1G absolute panic, M1E breakout, M1H funding and M1A trend. | no |
+| `config/u04_cross_sectional_design_scope_v1.json` | U-04 machine design scope | content `b384e648...f178b8` | Binds candidate `85e9fc11...5ec7a`, audit and point-in-time data authorities; only paper-protocol design is enabled. | no |
+| `reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md` | ADR-0015 independent auditor implementation | source order fixed pending replacement exact-head review | Content `f0c0ee6d...8d5e`; prior run deterministic and 18/19 exact; 19/19 Gate unchanged. | no |
+| `reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_REPORT.md` | ADR-0015 real independent audit | pass / 19 of 19 / 0 critical-high | Three orders equal artifact `8784b564...348c3`; 8/119/1/120 exact; no network or production mutation. | no |
+| `reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/audit_summary.json` | ADR-0015 audit machine result | deterministic pass | Summary `e26c9a08...06c4`; binds comparison, traversal and zero downstream authorization. | no |
+| `reports/m0/U04_DESIGN_AUTHORIZATION_DECISION.md` | U-04 design authorization decision | one outcome-blind hypothesis design authorized | Binds 19/19 audit pass; no event scan, strategy, OOS, trading or M2. | no |
+| `config/u04_design_authorization_v1.json` | U-04 authorization machine decision | content `84d9b499...04e89` | Exact audit/artifact bindings and narrow one-design authorization matrix. | no |
+| `reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md` | ADR-0015 independent auditor source-order exact-head review | approve / 0 critical / 0 high | Binds target `e935d6b2...5225`, protocol and four implementation files; authorizes only the real audit. | no |
+| `reports/expert/evidence/adr0015_independent_auditor_review.json` | ADR-0015 auditor review machine evidence | deterministic replacement approve | Review content `fb63d2f3...0fe0`; all downstream research/trading authorizations false. | no |
+| `config/liquid_universe_v4_adr0015_independent_auditor_implementation.json` | ADR-0015 auditor machine identity | deterministic fixture-only implementation | Binds protocol, four implementation files, 16 fault IDs and a review-only authorization matrix. | no |
+| `reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_PROTOCOL.md` | ADR-0015 new independent audit protocol | frozen locally before auditor implementation/result | Freezes 19/19 exact and semantic comparison, three traversal orders, 0 critical/high Gate, independent ADR-0015 event/full-slot accounting and zero real-audit/downstream authority. | no |
+| `config/liquid_universe_v4_adr0015_independent_audit_protocol.json` | ADR-0015 independent audit machine protocol | content hash `9a1768f0...b970b` | Binds source freeze, requalification run/artifact set, runtime policy/algorithm, all 19 manifest identities, severity rules and fixture-only auditor implementation authorization. | no |
+| `reports/m0/LIQUID_SPOT_UNIVERSE_V4_ADR0015_REQUALIFICATION_REPORT.md` | ADR-0015 fixed-range invalid-interval requalification | pass / cold-warm-worker exact / local complete | Exact frozen 27,736 archives; artifact set `8784b564...348c3`; run `a2f12224...cdf9`; 8 events, 119 invalid rows, 1 valid minority and 120 total slots quarantined; all blocking counters zero. | no |
+| `reports/m0/evidence/liquid_universe_v4_adr0015_requalification/requalification_run_manifest.json` | ADR-0015 requalification machine authority | deterministic pass | Binds exact reviewed/integrated implementation, source freeze, all 19 manifests, three build variants and final report hash. | no |
+| `reports/m0/LIQUID_SPOT_UNIVERSE_V4_ADR0015_V3_V4_DIFF_REPORT.md` | ADR-0015 V3/V4 diagnostic diff | deterministic comparison only | V3 remains immutable blocked history; V4 requalification status is pass without mutating V3. | no |
 | `reports/expert/ADR_0015_INVALID_INTERVAL_IMPLEMENTATION_REVIEW.md` | ADR-0015 exact-head implementation review | approve merged / PR #110 / `a02d4df` / 0 critical / 0 high | Binds PR #109 head `67e7d29...5748`, policy `0ac074cf...62d04`, algorithm `8f8a3668...ea4ff` and implementation `7cc4f9a3...020f`; review and main Gates passed with no public run. | no |
 | `reports/expert/evidence/adr0015_invalid_interval_implementation_review.json` | ADR-0015 implementation review machine evidence | deterministic exact-head approve evidence | Exact target/blob/hash bindings, 12 passing review dimensions, target run `29565196104`, synthetic regressions and merge-only authorization under review hash `9a073643...e5af1`. | no |
 | `reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_IMPLEMENTATION_STATUS.md` | ADR-0015 generic invalid-interval policy implementation | fixture-only pass / exact-head approved / controlled integration pending | Records runtime policy `0ac074cf...62d04`, algorithm `8f8a3668...ea4ff`, full-slot masking, 16 fault cases, deterministic manifests and no public-data execution. | no |
@@ -142,3 +444,43 @@ No report in this repository currently approves live trading, paper trading with
 | --- | --- | --- | --- | --- |
 | `reports/expert/U03F_V4_REPAIR_EXACT_HEAD_REVIEW.md` | U-03F repair exact-head review | approve / PR #99 merged / `9f1480f` | Binds PR #98 exact head `27e6436...9743`, 110/110 target checks, repair/protocol/auditor/source hashes and zero remaining critical/high; the later requalification blocked and granted no downstream authorization. | no |
 | `reports/expert/evidence/u03f_v4_repair_exact_head_review.json` | U-03F repair review machine evidence | deterministic exact-head review | Machine-readable target blobs, review dimensions, resolved findings, remaining findings and false downstream authorizations. | no |
+| `reports/m1/U11_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-11 raw Paper observation attempt | immutable_invalid_attempt_evidence | Deterministic three-order raw attempt under `0a55b61c...a9521`; its generated `failed_feasibility` status is not admissible economic evidence. | no |
+| `reports/m1/evidence/u11_cross_sectional_paper_observation/run_manifest.json` | U-11 raw attempt machine evidence | deterministic_invalid_attempt | Binds all four manifests and three-order identity `558f4af6...26c8`; OOS/formal returns/second run remain false. | no |
+| `reports/m1/U11_PAPER_OBSERVATION_ADJUDICATION.md` | U-11 fail-closed observation adjudication | failed_execution_invalid_observation | Records the monthly-boundary previous-close defect, 9,925/9,931 rejection accounting, candidate closure and no-retry decision. | no |
+| `reports/m0/U12_DESIGN_AUTHORIZATION_DECISION.md` | U-12 design authorization | authorized_design_only | Authorizes one independent outcome-blind hypothesis design while binding U-11 as invalid non-economic evidence and keeping all result/trading permissions false. | no |
+| `config/u12_design_authorization_v1.json` | U-12 design authorization machine evidence | deterministic_narrow_authorization | Hash `ecb8fd78...02e7` binds prior candidates, V4 authority, no-retry semantics and the exact authorization matrix. | no |
+| `reports/m1/U12_RECURRING_CALENDAR_FLOW_SEASONALITY_DESIGN.md` | U-12 hypothesis design | economic_hypothesis_pass_protocol_design_only | Declares recurring asset-specific UTC calendar-flow seasonality without selecting protocol parameters or reading outcomes. | no |
+| `config/u12_cross_sectional_design_scope_v1.json` | U-12 design machine scope | deterministic_design | Hash `e53003e7...d5dc` binds the hypothesis, causal invariants, non-duplication, unresolved protocol choices and narrow permissions. | no |
+| `reports/m1/U12_NON_DUPLICATION_REVIEW.md` | U-12 design review | pass_design_level | Distinguishes recurring calendar flows from U-04 through U-11 and prior BTC/ETH strategy families. | no |
+| `reports/expert/U12_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-12 Paper-protocol exact-head review | approve_local_complete | Approves target `11caf6f...3d82` under review `81262bf...8813`, 14/14 dimensions, 0 critical/high and target unchanged. | no |
+| `reports/expert/evidence/u12_cross_sectional_paper_protocol_review_v1.json` | U-12 Paper-protocol review machine evidence | deterministic_exact_head_review | Binds exact target/base/protocol and target blobs; authorizes qualification/preflight only. | no |
+| `reports/m1/U12_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-12 data qualification and same-reader preflight | pass_local_complete | Proves exact frozen authority, daily boundary/slot availability, six-order identity and ceiling 647 with zero outcomes/OOS. | no |
+| `reports/m1/evidence/u12_cross_sectional_data_qualification_v1.json` | U-12 qualification machine evidence | deterministic_pre_result_pass | Hash `c9a5b548...0510` binds source, preflight accounting, isolation and one-observation-only authorization. | no |
+| `reports/m1/U12_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-12 unique sealed-IS Paper observation | failed_feasibility | Records 88 complete episodes and failed count/distribution/economic Gates; candidate closed. | no |
+| `reports/m1/evidence/u12_cross_sectional_paper_observation/run_manifest.json` | U-12 Paper observation machine evidence | deterministic_failed_feasibility | Run `b42a539c...7995`; three orders exact, OOS/formal returns/second run false. | no |
+| `reports/m0/U13_DESIGN_AUTHORIZATION_DECISION.md` | U-13 design authorization | authorized_design_only | Authorizes one independent outcome-blind hypothesis design while binding U-12 closed and all downstream permissions false. | no |
+| `config/u13_design_authorization_v1.json` | U-13 design authorization machine evidence | deterministic_narrow_authorization | Hash `8900ada4...ce6` binds U-04 through U-12 and exact V4 authority. | no |
+| `reports/m1/U13_COMMON_SHOCK_LAGGED_DIFFUSION_DESIGN.md` | U-13 hypothesis design | economic_hypothesis_pass_protocol_design_only | Declares delayed absorption of a completed broad positive common shock without parameters or outcomes. | no |
+| `config/u13_cross_sectional_design_scope_v1.json` | U-13 design machine scope | deterministic_design | Hash `982cb951...3477` binds mechanism, causal invariants, non-duplication and unresolved protocol choices. | no |
+| `reports/m1/U13_NON_DUPLICATION_REVIEW.md` | U-13 design review | pass_design_level | Distinguishes temporal shock diffusion from U-04 through U-12 and prior BTC/ETH families. | no |
+| `reports/expert/U13_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-13 Paper-protocol exact-head review | approve_local_complete | Approves target `6ef10240...625a7` under review `be552dad...d5e0`, 15/15 dimensions, 0 critical/high and target unchanged. | no |
+| `reports/expert/evidence/u13_cross_sectional_paper_protocol_review_v1.json` | U-13 protocol review machine evidence | deterministic_exact_head_review | Binds exact target/base/protocol and five target blobs; authorizes qualification/preflight only. | no |
+| `reports/m1/U13_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-13 frozen-source qualification | pass_local_complete | 27,736 archives, 19 manifests, six traversal identities and ceiling 1490 pass with zero outcomes/OOS. | no |
+| `reports/m1/evidence/u13_cross_sectional_data_qualification_v1.json` | U-13 qualification machine evidence | deterministic_pre_result_pass | Result `5c4a61ef...0590` authorizes exactly one sealed-IS Paper observation. | no |
+| `reports/m1/U13_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-13 sealed-IS Paper observation | failed_feasibility | One complete episode; count/distribution and all three 24h economic Gates fail; OOS remains sealed. | no |
+| `reports/m1/evidence/u13_cross_sectional_paper_observation/` | U-13 Paper machine evidence | run `b94ffc31...eb3d` | Three orders exact under `54ebf660...d460`; candidate closed with no formal returns/OOS. | no |
+| `reports/m0/U14_DESIGN_AUTHORIZATION_DECISION.md` | U-14 design authorization | authorized_design_only | Binds U-13 closed and authorizes one economically independent outcome-blind hypothesis design only. | no |
+| `config/u14_design_authorization_v1.json` | U-14 authorization machine evidence | deterministic_narrow_authorization | Decision `ebcf8b78...e640` binds prior chain, V4 authority and result-blind complexity precheck. | no |
+| `reports/m1/U14_DOWNSIDE_REJECTION_PERSISTENCE_DESIGN.md` | U-14 hypothesis design | economic_hypothesis_pass_protocol_design_only | Declares completed-range downside rejection as latent demand without parameters or outcomes. | no |
+| `config/u14_cross_sectional_design_scope_v1.json` | U-14 design machine scope | deterministic_design | Design `a6c3cc47...6691` binds mechanism, causal invariants, non-duplication and unresolved protocol choices. | no |
+| `reports/m1/U14_NON_DUPLICATION_REVIEW.md` | U-14 design review | pass_design_level | Distinguishes intraperiod auction geometry from U-04 through U-13 and prior strategy families. | no |
+| `reports/m1/U14_CROSS_SECTIONAL_PAPER_PROTOCOL.md` | U-14 Paper protocol | frozen_before_result_review_approved | Protocol `a0b606d3...ac57` freezes completed 4h selling/rejection identity, complexity precheck, paths and Gates. | no |
+| `config/u14_cross_sectional_paper_protocol_v1.json` | U-14 Paper protocol machine contract | deterministic_frozen | Exact target `dd8eb34a...61ebf`; generation time excluded from content identity. | no |
+| `reports/expert/U14_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md` | U-14 Paper protocol exact-head review | approve_local_complete | Exact target `dd8eb34a...61ebf`; 15/15 pass, critical/high 0/0, target unchanged. | no |
+| `reports/expert/evidence/u14_cross_sectional_paper_protocol_review_v1.json` | U-14 protocol review machine evidence | deterministic_approve | Review `873f4435...fbbc2` authorizes qualification, complexity and preflight only. | no |
+| `reports/m1/U14_CROSS_SECTIONAL_DATA_QUALIFICATION.md` | U-14 data qualification, complexity and preflight | pass_local_complete | Exact sources, six traversal identities, ceiling 1,405 and three 1M-row benchmarks pass with zero outcomes/OOS. | no |
+| `reports/m1/evidence/u14_cross_sectional_data_qualification_v1.json` | U-14 qualification machine evidence | corrected_deterministic_pre_result_pass | Corrected result `4db5eb79...dec5` supersedes `417b329a...aaa7` before outcomes and authorizes one observation. | no |
+| `reports/m1/U14_CROSS_SECTIONAL_PAPER_OBSERVATION.md` | U-14 sealed-IS Paper observation | failed_feasibility | 92 episodes pass count/distribution but all three 24h economic Gates fail; candidate closed. | no |
+| `reports/m1/evidence/u14_cross_sectional_paper_observation/` | U-14 Paper machine evidence | deterministic_failed_feasibility | Run `38247311...1f5c`; three orders exact, OOS/formal returns/second run false. | no |
+| `reports/m0/U15_DESIGN_AUTHORIZATION_DECISION.md` | U-15 design authorization | authorized_design_only | Binds U-14 closed and authorizes one independent outcome-blind hypothesis design only. | no |
+| `config/u15_design_authorization_v1.json` | U-15 authorization machine evidence | deterministic_narrow_authorization | Decision `98d4ec90...7e68`; all downstream permissions false. | no |

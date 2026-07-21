@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "qualification_id": "U21-05-CROSS-SECTIONAL-DATA-QUALIFICATION-COMPLEXITY-PREFLIGHT-V1",
+  "status": "failed_pre_result_complexity",
+  "contract_content_hash": "7e159601a935a90d4ac156bb64f2fa379abca5bedb4471570e43aef348d9ee5c",
+  "protocol_target_commit": "d76714752825f9018427e9cd55cdd69802928d42",
+  "protocol_content_hash": "b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e",
+  "protocol_review_content_hash": "809dcdf63d096d8b2742c13004c83151780a7e8078dcde85da7cc65946a355ff",
+  "failure": {
+    "stage": "first_synthetic_million_row_complexity_pass",
+    "guard": "elapsed_time_or_peak_rss_or_exact_input_row_count",
+    "message": "complexity Gate failed",
+    "maximum_elapsed_seconds_per_pass": 30,
+    "maximum_peak_rss_mib": 1024,
+    "required_fixture_rows": 1000000,
+    "benchmark_passes_completed": 0,
+    "retry_executed": false
+  },
+  "isolation": {
+    "frozen_source_archives_opened": 0,
+    "price_fields_decoded": 0,
+    "return_rows_generated": 0,
+    "common_adjusted_return_rows_generated": 0,
+    "cokurtosis_statistic_rows_generated_from_market_data": 0,
+    "candidate_rows_generated_from_market_data": 0,
+    "event_rows_generated": 0,
+    "path_rows_generated": 0,
+    "formal_return_rows_generated": 0,
+    "oos_opened": false,
+    "oos_ohlcv_values_decoded": 0
+  },
+  "authorizations": {
+    "one_sealed_is_paper_observation": false,
+    "qualification_retry": false,
+    "strategy": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "network_accessed": false,
+  "production_evidence_mutated": false,
+  "candidate_closed": true,
+  "qualification_content_hash": "33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b"
+}

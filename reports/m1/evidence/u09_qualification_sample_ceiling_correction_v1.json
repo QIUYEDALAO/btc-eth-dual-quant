@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "correction_id": "U09-05A-QUALIFICATION-SAMPLE-CEILING-CORRECTION-V1",
+  "status": "failed_pre_observation_sample_ceiling",
+  "protocol_target_commit": "1bee65ff9dcdf0b9b3e49e37601140068cc968c8",
+  "protocol_content_hash": "874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae",
+  "superseded_qualification_content_hash": "c323798a9de04c423b8bb59c33604b2203715e1453f9b95b3f13022f71656aee",
+  "calendar_inputs": {
+    "first_anchor": "2020-01-06T00:00:00Z",
+    "anchor_interval_hours": 336,
+    "reference_offset_minutes": 5,
+    "primary_horizon_hours": 336,
+    "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "membership_effective_boundary": "monthly_utc_start"
+  },
+  "counts": {
+    "is_primary_complete_anchors_before_membership_constraint": 122,
+    "maximum_constant_membership_primary_episodes": 66,
+    "frozen_minimum_complete_is_episodes": 80,
+    "shortfall": 14,
+    "maximum_by_year": {"2020":14,"2021":14,"2022":14,"2023":14,"2024":10}
+  },
+  "decision": {
+    "qualification_pass_superseded": true,
+    "paper_observation_authorized": false,
+    "protocol_change_authorized": false,
+    "gate_reduction_authorized": false,
+    "candidate_closed": true,
+    "next_independent_candidate_decision_only": true
+  },
+  "isolation": {
+    "price_rows_read_for_correction": 0,
+    "event_rows_generated": 0,
+    "path_rows_generated": 0,
+    "return_rows_generated": 0,
+    "oos_opened": false,
+    "second_result_bearing_run_executed": false
+  },
+  "content_hash": "c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

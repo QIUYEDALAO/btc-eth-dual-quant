@@ -1,12 +1,2251 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-17T09:30:00Z"
-current_phase: ADR-0015 invalid-interval implementation controlled integration pending PR validation
-current_status: adr0015_generic_policy_controlled_integration_pending_ci_no_requalification_no_u04_no_m2
+last_updated_utc: "2026-07-19T00:00:00Z"
+current_phase: U-24 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized
+current_status: u24_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: U-24 unique sealed-IS lottery-demand-avoidance Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U24_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u24_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u24-cross-sectional-paper-observation
+    run_content_hash: 131266a00f2b3742dd3bb2963bc5184ba55ae5aef22b97cfb0f26d2d02c697dd
+    order_content_hash: 0e8ae9785503f1fc59bbb419d031c31856ff90520a3432ff66306c1c7bc138e1
+    complete_is_independent_episodes: 78
+    projected_full_independent_episodes: 107
+    projected_sealed_oos_independent_episodes: 29
+    median_24h_relative_lottery_demand_avoidance_premium: '0.003451638265937481372102744676'
+    median_24h_candidate_absolute_close_displacement: '-0.001052104938464466894353960344'
+    fraction_positive: '0.5769230769230769230769230769'
+    failed_gate_count: 6
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-24 frozen-source data qualification and result-free preflight
+    status: pass_local_complete
+    evidence: reports/m1/U24_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u24_cross_sectional_data_qualification_v1.json
+    branch: codex/u24-cross-sectional-data-qualification
+    contract_content_hash: 639421137157c61808664576691f62741e5eea8cbd4551d4870013f6008d8a58
+    qualification_content_hash: 02e1dd27ae4d04cf10c3cbd14578eb06b633b02ec749233eba22b72f9ada9627
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 4897
+    maximum_independent_theoretical_24h_episodes: 711
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-24 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U24_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u24_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u24-cross-sectional-paper-protocol-review
+    target_head_sha: cafbd5a90f5fd3a435d15ff03af0ecec2df98c3f
+    protocol_content_hash: 5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7
+    review_content_hash: b032f88ab2f8c6cfd42c15a7665ebc3122187c72bdcc14d1a319b03bcb57db17
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-24 outcome-blind lottery-demand avoidance Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U24_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u24_cross_sectional_paper_protocol_v1.json
+    synthetic_feasibility_evidence: reports/m1/evidence/u24_synthetic_core_feasibility_v1.json
+    branch: codex/u24-cross-sectional-paper-protocol
+    candidate_id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
+    protocol_content_hash: 5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7
+    synthetic_feasibility_content_hash: ce8b0f7998cc1c8e3928c605cccd0da37087a620d37e8058ae55e02f26957484
+    synthetic_complexity_passes: 3
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-24 lottery-demand avoidance premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only
+    evidence: reports/m1/U24_LOTTERY_DEMAND_AVOIDANCE_PREMIUM_DESIGN.md
+    machine_evidence: config/u24_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U24_NON_DUPLICATION_REVIEW.md
+    branch: codex/u24-cross-sectional-lottery-demand-avoidance-design
+    candidate_id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
+    hypothesis_sha256: 0b420693a6206504c4ab6644b2f8e3c9194300bfe096b831d80c12762b18ff34
+    design_content_hash: c99f7002b006d635d5c03936055e8d4bc498ace02b45551af52cdf80dd14d0c1
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-24 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U24_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u24_design_authorization_v1.json
+    branch: codex/u24-design-authorization
+    decision_content_hash: 745152692cdada8dad9e0abaf5ea171fb3a1d55d70dbfab32b66c7d2edbdfac5
+    prior_candidate: U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION
+    prior_run_content_hash: 771ce48d80dc48fd2d8f984528541c8a8c1cef4f756892647d66f49b9ffb2604
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-23 unique sealed-IS range-expansion Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U23_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u23_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u23-cross-sectional-paper-observation
+    run_content_hash: 771ce48d80dc48fd2d8f984528541c8a8c1cef4f756892647d66f49b9ffb2604
+    complete_is_independent_episodes: 178
+    median_24h_relative_close_strength_continuation: '-0.01195215777238291818366680124'
+    median_24h_candidate_absolute_close_displacement: '-0.009181371869888384699633004195'
+    fraction_positive_24h_relative_close_strength_continuation: '0.3483146067415730337078651685'
+    failed_gates: [median_24h_relative_close_strength_continuation, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_close_strength_continuation]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-23 frozen-source data qualification and result-free preflight
+    status: pass_local_complete
+    evidence: reports/m1/U23_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u23_cross_sectional_data_qualification_v1.json
+    branch: codex/u23-cross-sectional-data-qualification
+    contract_content_hash: 37c1c9b0bdbb13639aea36a1da525163ba4a8142ec1f808bc8cbe1ca0aed7909
+    qualification_content_hash: 08166fb534daf691e069f6ae743b472f0c06879dd060c58f816e4f2d5acef2c5
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 7122
+    maximum_independent_theoretical_24h_episodes: 1031
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-23 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U23_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u23_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u23-cross-sectional-paper-protocol-review
+    target_head_sha: 1d0b21282b1e499fdef0d9cab88e7a918a5d5913
+    protocol_content_hash: 52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611
+    review_content_hash: f2a8a5fdf770419bcc6f29abda3539d251b9e6e0f1dc97d5a4e824ab4f37c4a4
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-23 outcome-blind range-expansion close-strength Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U23_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u23_cross_sectional_paper_protocol_v1.json
+    synthetic_feasibility_evidence: reports/m1/evidence/u23_synthetic_core_feasibility_v1.json
+    branch: codex/u23-cross-sectional-paper-protocol
+    candidate_id: U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION
+    protocol_content_hash: 52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611
+    synthetic_feasibility_content_hash: 6010529c89627e8607919272af3c85c7dd5c3fdd4e48f549b8fe055e3245637e
+    synthetic_complexity_passes: 3
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-23 range-expansion close-strength continuation hypothesis design
+    status: economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only
+    evidence: reports/m1/U23_RANGE_EXPANSION_CLOSE_STRENGTH_CONTINUATION_DESIGN.md
+    machine_evidence: config/u23_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U23_NON_DUPLICATION_REVIEW.md
+    branch: codex/u23-cross-sectional-range-expansion-close-strength-design
+    candidate_id: U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION
+    hypothesis_sha256: 6c099769b5fb89d7faf032d68c114540a6b93f8546bbedee26c2e9397e98627f
+    design_content_hash: 351ddd25e3c8708e55a21e81921d104f4c360b65966945b846fa40ba1e96e6e0
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-23 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U23_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u23_design_authorization_v1.json
+    branch: codex/u23-design-authorization
+    decision_content_hash: 70c60434bb7c78344eb733eb8a8d4393538f60bbc97bff60e840c68f10998d5a
+    prior_candidate: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
+    prior_run_content_hash: 12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-22 unique sealed-IS dispersion-expansion Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U22_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u22_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u22-cross-sectional-paper-observation
+    run_content_hash: 12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c
+    complete_is_independent_episodes: 198
+    median_24h_relative_leader_continuation: '-0.001687854951459260169225285968'
+    median_24h_candidate_absolute_close_displacement: '0.001114962219070440020390258450'
+    fraction_positive_24h_relative_leader_continuation: '0.4797979797979797979797979798'
+    failed_gates: [median_24h_relative_leader_continuation, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_leader_continuation]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-22 frozen-source data qualification and result-free preflight
+    status: pass_local_complete
+    evidence: reports/m1/U22_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u22_cross_sectional_data_qualification_v1.json
+    branch: codex/u22-cross-sectional-data-qualification
+    contract_content_hash: 59cf9567c06b73418404202063407f716056c80d584993b2b50a4b5b75482875
+    qualification_content_hash: 9b009c6b940e338cc77f8f3ea9e8dd473689c739d6c247ad0ba078c3f40a2334
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 37401
+    maximum_independent_theoretical_24h_episodes: 1514
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-22 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U22_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u22_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u22-cross-sectional-paper-protocol-review
+    target_head_sha: d4f254f876dfeab73494c79a48e90c86dfd0ee16
+    protocol_content_hash: 0fdc7eb264e5f9a24dbcb746bbee6af0b1af2218cc101d6674099769f5d1b4fa
+    review_content_hash: e2a920c29105a32764016d478d22efa0d234a2fc5362ce5cae17f4671218cd57
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-22 outcome-blind dispersion-expansion Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U22_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u22_cross_sectional_paper_protocol_v1.json
+    synthetic_feasibility_evidence: reports/m1/evidence/u22_synthetic_core_feasibility_v1.json
+    branch: codex/u22-cross-sectional-paper-protocol
+    candidate_id: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
+    protocol_content_hash: 0fdc7eb264e5f9a24dbcb746bbee6af0b1af2218cc101d6674099769f5d1b4fa
+    synthetic_feasibility_content_hash: 4476d5b5cc38b23c3f031b2438e77224a8da3c80ee011dba719cf43b76e6940b
+    synthetic_complexity_passes: 3
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-22 dispersion-expansion leader-continuation hypothesis design
+    status: economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only
+    evidence: reports/m1/U22_DISPERSION_EXPANSION_LEADER_CONTINUATION_DESIGN.md
+    machine_evidence: config/u22_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U22_NON_DUPLICATION_REVIEW.md
+    branch: codex/u22-cross-sectional-dispersion-expansion-design
+    candidate_id: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
+    hypothesis_sha256: 4ec9eba4d04169fe90caf50f4eaa914f1784339802b148a1cff43f5a07cb77d3
+    design_content_hash: 652677b1e0c070d27d854166c9c7d692e93d7f58236eced06c94f01abb153abe
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-22 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U22_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u22_design_authorization_v1.json
+    branch: codex/u22-design-authorization
+    decision_content_hash: 82aef7f378a1aaa46ded62cfc21dedb67e6d86a8d0c27c24f66280d8c124e29d
+    prior_candidate: U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM
+    prior_qualification_content_hash: 33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-21 frozen-source data qualification and complexity preflight
+    status: failed_pre_result_complexity
+    evidence: reports/m1/U21_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u21_cross_sectional_data_qualification_v1.json
+    branch: codex/u21-cross-sectional-data-qualification
+    contract_content_hash: 7e159601a935a90d4ac156bb64f2fa379abca5bedb4471570e43aef348d9ee5c
+    qualification_content_hash: 33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b
+    frozen_source_archives_opened: 0
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    retry_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-21 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U21_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u21_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u21-cross-sectional-paper-protocol-review
+    target_head_sha: d76714752825f9018427e9cd55cdd69802928d42
+    protocol_content_hash: b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e
+    review_content_hash: 809dcdf63d096d8b2742c13004c83151780a7e8078dcde85da7cc65946a355ff
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-21 outcome-blind systematic-cokurtosis risk-premium Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U21_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u21_cross_sectional_paper_protocol_v1.json
+    branch: codex/u21-cross-sectional-paper-protocol
+    candidate_id: U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM
+    protocol_content_hash: b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-21 systematic-cokurtosis risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U21_SYSTEMATIC_COKURTOSIS_RISK_PREMIUM_DESIGN.md
+    machine_evidence: config/u21_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U21_NON_DUPLICATION_REVIEW.md
+    branch: codex/u21-cross-sectional-cokurtosis-risk-premium-design
+    candidate_id: U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM
+    hypothesis_sha256: 90761268042081c9f80a4fb446ed7e805242608ec6700f6c18b8419bf24420b6
+    design_content_hash: a45075371103acf28981ce3a1f0cd47a029b15f5cf3ef9a878b5c682e248568b
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-21 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U21_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u21_design_authorization_v1.json
+    branch: codex/u21-design-authorization
+    decision_content_hash: 58c4be44b0d3753d8cf36f96df374880d2a929d4f091e7aac19b14619c17b247
+    prior_candidate: U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM
+    prior_run_content_hash: 587def88ac42d016a0ac5de97789164be6e6f1bf447b7a239eeed95137a9ede1
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-20 unique sealed-IS negative-coskewness Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U20_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u20_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u20-cross-sectional-paper-observation
+    run_content_hash: 587def88ac42d016a0ac5de97789164be6e6f1bf447b7a239eeed95137a9ede1
+    complete_is_independent_episodes: 110
+    median_24h_relative_negative_coskewness_risk_premium: '-0.0003754158321982493350830023864'
+    median_24h_candidate_absolute_close_displacement: '-0.002132740137685605583093262452'
+    fraction_positive_24h_relative_negative_coskewness_risk_premium: '0.4818181818181818181818181818'
+    failed_gates: [median_24h_relative_negative_coskewness_risk_premium, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_negative_coskewness_risk_premium]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-20 frozen-source data qualification, complexity and preflight
+    status: pass_local_complete
+    evidence: reports/m1/U20_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u20_cross_sectional_data_qualification_v1.json
+    branch: codex/u20-cross-sectional-data-qualification
+    contract_content_hash: 7bae7234c15f6f378b5b28667d3e805e51a34465bd95c736b0a3ef2109f49f80
+    qualification_content_hash: de61add6f8ef2a22f62166c14aeb4c30565cb8b3003e6395909fa7b7a85e2368
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 5179
+    maximum_independent_theoretical_24h_episodes: 752
+    complexity_passes: 3
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-20 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U20_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u20_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u20-cross-sectional-paper-protocol-review
+    target_head_sha: 6a2207c05c7045e82b47f9685c01a5c2d0b30755
+    protocol_content_hash: d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9
+    review_content_hash: eb452e7440b5058b6516629f65a9793f06dfa5748961c58e87229d4c3a1e20f5
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-20 outcome-blind negative-coskewness risk-premium Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U20_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u20_cross_sectional_paper_protocol_v1.json
+    branch: codex/u20-cross-sectional-paper-protocol
+    candidate_id: U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM
+    protocol_content_hash: d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-20 negative-coskewness risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U20_NEGATIVE_COSKEWNESS_RISK_PREMIUM_DESIGN.md
+    machine_evidence: config/u20_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U20_NON_DUPLICATION_REVIEW.md
+    branch: codex/u20-cross-sectional-coskewness-risk-premium-design
+    candidate_id: U20-CROSS-SECTIONAL-NEGATIVE-COSKEWNESS-RISK-PREMIUM
+    hypothesis_sha256: 9d17a514b9e13eff5dd885382ab7c9df5c14e9a71283a219d43c901648e46bdb
+    design_content_hash: 3995e92a9ae69fd64f8258b33b620c801d63e235e1ed90a254a3d99d70a1e5b5
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-20 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U20_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u20_design_authorization_v1.json
+    branch: codex/u20-design-authorization
+    decision_content_hash: b4e9d5c94957d69142e328a05dfb00474840efe3347dd5347c55997115b64455
+    prior_candidate: U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM
+    prior_run_content_hash: 38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-19 unique sealed-IS volatility-of-volatility Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U19_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u19_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u19-cross-sectional-paper-observation
+    run_content_hash: 38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4
+    complete_is_independent_episodes: 54
+    median_24h_relative_volatility_of_volatility_risk_premium: '-0.005662930782679990644577366795'
+    median_24h_candidate_absolute_close_displacement: '-0.007465514604395529545951321365'
+    fraction_positive_24h_relative_volatility_of_volatility_risk_premium: '0.3703703703703703703703703704'
+    failed_gates: [complete_is_independent_episodes, projected_full_independent_episodes, projected_sealed_oos_independent_episodes, years_with_twelve_complete_episodes, median_24h_relative_volatility_of_volatility_risk_premium, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_volatility_of_volatility_risk_premium]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-19 frozen-source data qualification, complexity and preflight
+    status: pass_local_complete
+    evidence: reports/m1/U19_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u19_cross_sectional_data_qualification_v1.json
+    branch: codex/u19-cross-sectional-data-qualification
+    contract_content_hash: 7b60e967dca3c3300beb8a77e589e257346bfe5ffd24b3ec99bea2058c50e4a0
+    qualification_content_hash: 62b7ac38cc1eb9ab89d2c2af8571181ef2f06a2f3873d70f61c917d3c23db499
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 5179
+    maximum_independent_theoretical_24h_episodes: 752
+    complexity_passes: 3
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-19 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U19_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u19_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u19-cross-sectional-paper-protocol-review
+    target_head_sha: 8b8b03f0869463c046668e28fbb22618383addf4
+    protocol_content_hash: 8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9
+    review_content_hash: d215e444595036412cc680b83cc0adf8449edbe6c283ac82b632c67e623f4a91
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-19 outcome-blind volatility-of-volatility risk-premium Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U19_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u19_cross_sectional_paper_protocol_v1.json
+    branch: codex/u19-cross-sectional-paper-protocol
+    candidate_id: U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM
+    protocol_content_hash: 8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-19 idiosyncratic volatility-of-volatility risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U19_IDIOSYNCRATIC_VOLATILITY_OF_VOLATILITY_RISK_PREMIUM_DESIGN.md
+    machine_evidence: config/u19_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U19_NON_DUPLICATION_REVIEW.md
+    branch: codex/u19-cross-sectional-idiosyncratic-volatility-of-volatility-design
+    candidate_id: U19-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-OF-VOLATILITY-RISK-PREMIUM
+    hypothesis_sha256: 6b3cd19be7fedab64bfc43ad6c667cdbe774d58994073446a340cf7f55217c52
+    design_content_hash: 89cd46e632d5d890b5c2b13c71a63642ab1ed5a2167904df0f722a5d4279fe80
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-19 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U19_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u19_design_authorization_v1.json
+    branch: codex/u19-design-authorization
+    decision_content_hash: 0996522977d3a54fe35f29220bcd0ca9dd4f2aebd1533d610c6aececf250c3a9
+    prior_candidate: U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM
+    prior_run_content_hash: 213c303dc81f23f0f8bb0d37c1f114636ca0cbd76c0bae1f3c432a5b2cf9c3cd
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-18 unique sealed-IS downside-tail-risk-premium Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U18_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u18_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u18-cross-sectional-paper-observation
+    run_content_hash: 213c303dc81f23f0f8bb0d37c1f114636ca0cbd76c0bae1f3c432a5b2cf9c3cd
+    complete_is_independent_episodes: 157
+    median_24h_relative_downside_tail_risk_premium: '-0.0012453014163554798489821906695580157498865088123'
+    median_24h_candidate_absolute_close_displacement: '-0.00337837837837837837837837837837837837837837837838'
+    fraction_positive_24h_relative_downside_tail_risk_premium: '0.4777070063694267515923566879'
+    failed_gates: [median_24h_relative_downside_tail_risk_premium, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_downside_tail_risk_premium]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-18 frozen-source data qualification, complexity and preflight
+    status: pass_local_complete
+    evidence: reports/m1/U18_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u18_cross_sectional_data_qualification_v1.json
+    branch: codex/u18-cross-sectional-data-qualification
+    contract_content_hash: 9da995a6bb271147aa31a0fa81bf582bfa442e4a5d67bf59ca2753e209828338
+    qualification_content_hash: 088ebed218ce7960621ebeda539ec78c5aeebbef5b98f608a4f044f78e3dc6e0
+    source_archive_count: 27736
+    manifests_exact: 19
+    eligible_structural_decisions: 7278
+    maximum_independent_theoretical_24h_episodes: 1054
+    complexity_passes: 3
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-18 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U18_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u18_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u18-cross-sectional-paper-protocol-review
+    target_head_sha: 39a766c50de5a0855d7ee85c2aab743ec8b738e5
+    protocol_content_hash: 7571d2cb2408e30ac03d626544243f1e00595dc9ed85e6a7107b7d9a2062c671
+    review_content_hash: 5fb6a8d2d8efe95c6b2970b3368c78c40f17b187a5239f0b907f37ce341e1dd3
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-18 outcome-blind downside-tail-risk-premium Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U18_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u18_cross_sectional_paper_protocol_v1.json
+    branch: codex/u18-cross-sectional-paper-protocol
+    candidate_id: U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM
+    protocol_content_hash: 7571d2cb2408e30ac03d626544243f1e00595dc9ed85e6a7107b7d9a2062c671
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-18 idiosyncratic downside-tail-risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U18_DOWNSIDE_TAIL_RISK_PREMIUM_DESIGN.md
+    machine_evidence: config/u18_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U18_NON_DUPLICATION_REVIEW.md
+    branch: codex/u18-cross-sectional-downside-tail-risk-premium-design
+    candidate_id: U18-CROSS-SECTIONAL-IDIOSYNCRATIC-DOWNSIDE-TAIL-RISK-PREMIUM
+    hypothesis_sha256: e6b84d1b6e9cb979dd973fed42c20821858704c362e24b4a342aef25359778c4
+    design_content_hash: 487d9b11883d2eb38f2171bf6fe57b1e2e5040b31032e03de73cea9bb5c62df8
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-18 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U18_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u18_design_authorization_v1.json
+    branch: codex/u18-design-authorization
+    decision_content_hash: eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1
+    prior_candidate: U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM
+    prior_failure_content_hash: 434d8a58a19306e9ff340da3b8df0c85fe15848c2686ed15491dee05ac64af91
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-17 frozen-source data qualification and preflight
+    status: failed_pre_result_sample_ceiling
+    evidence: reports/m1/U17_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u17_cross_sectional_data_qualification_v1.json
+    branch: codex/u17-cross-sectional-data-qualification
+    qualification_content_hash: 434d8a58a19306e9ff340da3b8df0c85fe15848c2686ed15491dee05ac64af91
+    maximum_independent_theoretical_28d_episodes: 3
+    required_independent_theoretical_28d_episodes: 50
+    quote_volume_or_price_fields_decoded: 0
+    event_rows_generated: 0
+    return_rows_generated: 0
+    oos_values_decoded: 0
+    candidate_closed: true
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-17 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U17_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u17_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u17-cross-sectional-paper-protocol-review
+    target_head_sha: c4990fbdc3a237c90fc73a2bf2a538109fcad31a
+    protocol_content_hash: 815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089
+    review_content_hash: c9696e6124f8c6e93bff4318f239bcdee1452fffb5449a0c61479f803a540a64
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-17 outcome-blind liquidity-risk-premium Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U17_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u17_cross_sectional_paper_protocol_v1.json
+    branch: codex/u17-cross-sectional-paper-protocol
+    candidate_id: U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM
+    protocol_content_hash: 815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-17 cross-sectional liquidity-risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U17_LIQUIDITY_RISK_PREMIUM_DESIGN.md
+    machine_evidence: config/u17_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U17_NON_DUPLICATION_REVIEW.md
+    branch: codex/u17-cross-sectional-liquidity-risk-premium-design
+    candidate_id: U17-CROSS-SECTIONAL-LIQUIDITY-RISK-PREMIUM
+    hypothesis_sha256: 19b0e7eaa4d9f8432b733d3660a76226c9e3351674d21a819adf266515261fea
+    design_content_hash: ad3b6a4cabc61bd41890684ccf30b8ee4ae3a2811fcc4dd08abcf45a4bf420fe
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-17 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U17_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u17_design_authorization_v1.json
+    branch: codex/u17-design-authorization
+    decision_content_hash: eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b
+    prior_candidate: U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE
+    prior_run_content_hash: 322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-16 unique sealed-IS correlation-breakdown Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U16_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u16_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u16-cross-sectional-paper-observation
+    run_content_hash: 322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14
+    complete_is_independent_episodes: 169
+    median_24h_relative_information_persistence: '0.0010025265182264580534731423602822784465997897076'
+    median_24h_candidate_absolute_close_displacement: '-0.00042674253200568990042674253200568990042674253201'
+    fraction_positive_24h_relative_information_persistence: '0.5266272189349112426035502959'
+    failed_gates: [median_24h_relative_information_persistence, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_information_persistence]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-16 frozen-source data qualification, complexity benchmark and preflight
+    status: pass_local_complete
+    evidence: reports/m1/U16_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u16_cross_sectional_data_qualification_v1.json
+    branch: codex/u16-cross-sectional-data-qualification
+    qualification_content_hash: 5dc4850a1d940d05581774a1270ec6c9cdc4d5f8702a5614a81a01928842e949
+    maximum_independent_theoretical_24h_episodes: 1331
+    complexity_passes: 3
+    market_outcome_rows: 0
+    oos_values_decoded: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-16 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U16_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u16_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u16-cross-sectional-paper-protocol-review
+    target_head_sha: 9cafb08dbe59faa48c948458151eb7cb7d6c1ddb
+    protocol_content_hash: 18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a
+    review_content_hash: 2f708c0f6ac7b4e79428a4a7b1e9850182120c2dfcb3b06b53f973123f5c34e3
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-16 outcome-blind correlation-breakdown Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U16_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u16_cross_sectional_paper_protocol_v1.json
+    branch: codex/u16-cross-sectional-paper-protocol
+    candidate_id: U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE
+    protocol_content_hash: 18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-16 correlation-breakdown information-persistence hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U16_CORRELATION_BREAKDOWN_INFORMATION_PERSISTENCE_DESIGN.md
+    machine_evidence: config/u16_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U16_NON_DUPLICATION_REVIEW.md
+    branch: codex/u16-cross-sectional-correlation-breakdown-design
+    candidate_id: U16-CROSS-SECTIONAL-CORRELATION-BREAKDOWN-INFORMATION-PERSISTENCE
+    hypothesis_sha256: 781093529714314144be705cef84c0563a59630e71243827950b47cf6c15f2f1
+    design_content_hash: 8574e5c5aa068f10a561d8cfae26d4a45d5b9eb17287156912fa4d8b5fd075d1
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-16 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U16_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u16_design_authorization_v1.json
+    branch: codex/u16-design-authorization
+    decision_content_hash: 05346312b0e47168a17a77cd19d1a73525b17eb9f64de29b2b157a5c673528fc
+    prior_candidate: U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE
+    prior_failure_content_hash: 83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-15 official taker-buy field/data qualification
+    status: failed_pre_result_field_qualification
+    evidence: reports/m1/U15_TAKER_BUY_FIELD_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u15_taker_buy_field_qualification_failure_v1.json
+    branch: codex/u15-taker-buy-field-data-qualification
+    failure_content_hash: 83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28
+    blocker: official ADAUSDT 2020-01 5m row has zero quote volume under strict-positive protocol invariant
+    field_scan_stopped_at_first_failure: true
+    event_rows_generated: 0
+    return_rows_generated: 0
+    oos_values_decoded: 0
+    candidate_closed: true
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-15 Paper-protocol exact-head independent review
+    status: approve
+    evidence: reports/expert/U15_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u15_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u15-cross-sectional-paper-protocol-review
+    target_head_sha: 5438dec609aaaed675e8ecba6f15ae9bb6f6da5a
+    protocol_content_hash: 3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a
+    review_content_hash: 2686c3acc1f5d46d7b37295530c54268f314cca177197306db7358bb8aa38ceb
+    critical_findings: 0
+    high_findings: 0
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-15 outcome-blind taker-buy absorption Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U15_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u15_cross_sectional_paper_protocol_v1.json
+    branch: codex/u15-cross-sectional-paper-protocol
+    candidate_id: U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE
+    protocol_content_hash: 3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a
+    field_authority_qualification_required: true
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-15 taker-buy absorption persistence hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U15_TAKER_BUY_ABSORPTION_PERSISTENCE_DESIGN.md
+    machine_evidence: config/u15_cross_sectional_design_scope_v1.json
+    non_duplication_review: reports/m1/U15_NON_DUPLICATION_REVIEW.md
+    branch: codex/u15-cross-sectional-taker-buy-absorption-design
+    candidate_id: U15-CROSS-SECTIONAL-TAKER-BUY-ABSORPTION-PERSISTENCE
+    hypothesis_sha256: 5b99a5d830f40a6d9a5744771dafd3e85a64a55ea172b107465c46b10de115dd
+    design_content_hash: 14ba25a0d8f3c50b3acd6a1ae50720dd4a113554d3bdc17776bf190b51b57b1c
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-15 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U15_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u15_design_authorization_v1.json
+    branch: codex/u15-design-authorization
+    decision_content_hash: 98d4ec9049d3b40ded8f98c045405eda8a010c783b5597653586853a825b7e68
+    prior_candidate: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
+    prior_run_content_hash: 3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-14 unique sealed-IS downside-rejection Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U14_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u14_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u14-cross-sectional-paper-observation
+    run_content_hash: 3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c
+    three_order_identity_hash: 1436911ba8c6f4fd3adbba1c5ebf391f98d82d80987c7f8b2308b95c42414b69
+    complete_is_independent_episodes: 92
+    median_24h_relative_rejection_persistence: '0.001380259434304533953207550691'
+    median_24h_candidate_absolute_close_displacement: '0.00773724142851497775358313756'
+    fraction_positive_24h_relative_rejection_persistence: '0.5434782608695652173913043478'
+    failed_gates: [median_24h_relative_rejection_persistence, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_rejection_persistence]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-14 pre-result all-member rank-gate correction
+    status: corrected_and_requalified_before_any_market_result
+    evidence: reports/m1/U14_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u14_cross_sectional_data_qualification_v1.json
+    branch: codex/u14-qualification-core-correction
+    superseded_qualification_content_hash: 417b329a31984482027c35048db1862a10d79e1680ac23eaded8778afb88aaa7
+    corrected_qualification_content_hash: 4db5eb7938cbf7f8063a00164fa6986d53629968ea0a8a4516de01e3a859dec5
+    correction: residual top quartile is computed across all active members
+    market_events_scanned_before_correction: 0
+    market_paths_scanned_before_correction: 0
+    oos_opened: false
+    one_sealed_is_paper_observation_authorized: true
+    second_run_authorized: false
+  - phase: U-14 frozen-source data qualification, complexity benchmark and preflight
+    status: pass_local_complete
+    evidence: reports/m1/U14_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u14_cross_sectional_data_qualification_v1.json
+    branch: codex/u14-cross-sectional-data-qualification
+    protocol_target_commit: dd8eb34aa0cae8455ba15163831b992820461ebf
+    contract_content_hash: bea82ceabcab8ff22f8c5e0d8beab636886ab42e776bfe93be382e0719b45951
+    qualification_content_hash: 4db5eb7938cbf7f8063a00164fa6986d53629968ea0a8a4516de01e3a859dec5
+    source_archive_count: 27736
+    manifests_exact: 19
+    complete_active_member_4h_auctions: 10094
+    eligible_structural_decision_auctions: 9690
+    maximum_independent_theoretical_24h_episodes: 1405
+    complexity_benchmark_passes: 3
+    complexity_fixture_rows_per_pass: 1000000
+    complexity_maximum_elapsed_seconds: '1.090370'
+    complexity_maximum_peak_rss_mib: '27.391'
+    oos_ohlcv_values_decoded: 0
+    market_ohlcv_fields_decoded_during_preflight: 0
+    common_state_rows_generated: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-14 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U14_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u14_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u14-cross-sectional-paper-protocol-review
+    target_commit: dd8eb34aa0cae8455ba15163831b992820461ebf
+    target_base_commit: 9ea3a7cabbd06bc8209678ef3e35bb5402a74a74
+    protocol_content_hash: a0b606d3996f0edd13790178f370bed92e3a6d06bf2298eea78ba8a46907ac57
+    review_content_hash: 873f4435909ebc550f898972714e43ffc553b386700068ad65cecc7bef2fbbc2
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    public_data_read: false
+    result_rows_read: 0
+    oos_opened: false
+    data_qualification_complexity_and_preflight_authorized: true
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-14 outcome-blind downside-rejection Paper protocol
+    status: frozen_before_result_exact_head_review_approved
+    evidence: reports/m1/U14_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u14_cross_sectional_paper_protocol_v1.json
+    branch: codex/u14-cross-sectional-paper-protocol
+    target_commit: dd8eb34aa0cae8455ba15163831b992820461ebf
+    candidate_id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
+    protocol_content_hash: a0b606d3996f0edd13790178f370bed92e3a6d06bf2298eea78ba8a46907ac57
+    public_data_read: false
+    events_evaluated: false
+    paths_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    complexity_benchmark_required_before_result: true
+    data_qualification_authorized: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-14 downside-rejection persistence hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U14_DOWNSIDE_REJECTION_PERSISTENCE_DESIGN.md
+    machine_evidence: config/u14_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U14_NON_DUPLICATION_REVIEW.md
+    branch: codex/u14-cross-sectional-downside-rejection-design
+    candidate_id: U14-CROSS-SECTIONAL-DOWNSIDE-REJECTION-PERSISTENCE
+    hypothesis_sha256: b88f2321269863e385129465c93fbee8ecd35fa0dc6bc19e10bacf12d851b87d
+    design_content_hash: a6c3cc47c3cadf33e5673e59ce47c639d6df1d49c57f88c51cc1c8579b446691
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    paper_protocol_design_authorized: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-14 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U14_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u14_design_authorization_v1.json
+    branch: codex/u14-design-authorization
+    decision_content_hash: ebcf8b78a75911a2567bf84d58363d3c4bd554ec0495bb63457c4d593e34e640
+    prior_candidate: U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION
+    prior_run_content_hash: b94ffc31598899186a005ea1eaba28b274faac2ad9f3fae034e9f71d5868eb3d
+    prior_status: failed_feasibility
+    maximum_hypotheses: 1
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-13 unique sealed-IS common-shock lagged-diffusion Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U13_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u13_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u13-cross-sectional-paper-observation
+    run_content_hash: b94ffc31598899186a005ea1eaba28b274faac2ad9f3fae034e9f71d5868eb3d
+    three_order_identity_hash: 54ebf66033d72a68e1a601875268d444923348dddfdf74a1dd3dd30a2d9fd460
+    complete_is_independent_episodes: 1
+    median_24h_relative_lagged_diffusion: '-0.02882081340015003472958888745843479988669649607176'
+    median_24h_candidate_absolute_close_displacement: '-0.07154272528123611360145938740031027574002323170114'
+    fraction_positive_24h_relative_lagged_diffusion: '0'
+    failed_gates: [complete_is_independent_episodes, projected_full_independent_episodes, projected_sealed_oos_independent_episodes, years_with_twelve_complete_episodes, maximum_single_year_episode_share, maximum_single_symbol_episode_share, distinct_event_symbols, distinct_event_months, median_24h_relative_lagged_diffusion, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_lagged_diffusion]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-13 frozen-source data qualification and same-reader preflight
+    status: pass_local_complete
+    evidence: reports/m1/U13_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u13_cross_sectional_data_qualification_v1.json
+    branch: codex/u13-cross-sectional-data-qualification
+    protocol_target_commit: 6ef1024033aa9a86ef3c8f07558ba966270625a7
+    contract_content_hash: e9b820855abbd5e5278d3f433ab3f06f7e17a73e792f04de924bed685a0e5ce7
+    qualification_content_hash: 5c4a61efc177415b1bd0a03697f4a3028f9ab8bed908adc12100bc03e9b90590
+    source_archive_count: 27736
+    manifests_exact: 19
+    complete_active_member_1h_intervals: 40383
+    eligible_structural_decision_hours: 36716
+    maximum_independent_theoretical_24h_episodes: 1490
+    oos_ohlcv_values_decoded: 0
+    common_component_rows_generated: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-13 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U13_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u13_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u13-cross-sectional-paper-protocol-review
+    target_commit: 6ef1024033aa9a86ef3c8f07558ba966270625a7
+    target_base_commit: 3c4aa926c2caaeb3adec8cf40bb2c9ff1a2436d5
+    protocol_content_hash: 1cf6dade6e75900278ba5aeee30018d3f0ff93d83d982e212d58033800993288
+    review_content_hash: be552dad055234b0107810a7299656793ccea2a97f09a2cba22fa8ffc33ed5e0
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    public_data_read: false
+    result_rows_read: 0
+    oos_opened: false
+    data_qualification_and_preflight_authorized: true
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-13 common-shock lagged-diffusion hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U13_COMMON_SHOCK_LAGGED_DIFFUSION_DESIGN.md
+    machine_evidence: config/u13_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U13_NON_DUPLICATION_REVIEW.md
+    branch: codex/u13-cross-sectional-lagged-diffusion-design
+    candidate_id: U13-CROSS-SECTIONAL-COMMON-SHOCK-LAGGED-DIFFUSION
+    hypothesis_sha256: 39f1848fe195be8e6c406a5e21b734ce9c469a9df5c08eaa0a70de348988db5c
+    design_content_hash: 982cb95125a94dd10d5524dab0c241fbd7642639e1dd3461da760024d9fd3477
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-13 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U13_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u13_design_authorization_v1.json
+    branch: codex/u13-design-authorization
+    decision_content_hash: 8900ada4819a2d951fd26ab6a1d61e18e0e43de939207787c63e05f925866ce6
+    prior_candidate: U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY
+    prior_run_content_hash: b42a539c555e37b8b3871910bf5fc21397db3ea01044dee3bbfe3bf7902e7995
+    prior_status: failed_feasibility
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-12 unique sealed-IS recurring calendar-flow Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U12_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u12_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u12-cross-sectional-paper-observation
+    run_content_hash: b42a539c555e37b8b3871910bf5fc21397db3ea01044dee3bbfe3bf7902e7995
+    three_order_identity_hash: db4b8e740250a74dad348aa1b5b789cd03606e648b3c36456157fbfca72ea124
+    complete_is_independent_episodes: 88
+    median_24h_relative_calendar_flow_persistence: '0.001177628752703688706929802888'
+    median_24h_candidate_absolute_close_displacement: '0.003620753393619485368336276454'
+    fraction_positive_24h_relative_calendar_flow_persistence: '0.5227272727272727272727272727'
+    failed_gates: [complete_is_independent_episodes, years_with_twelve_complete_episodes, maximum_single_year_episode_share, maximum_single_symbol_episode_share, distinct_event_symbols, distinct_event_months, median_24h_relative_calendar_flow_persistence, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_calendar_flow_persistence]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-12 frozen-source data qualification and same-reader preflight
+    status: pass_local_complete
+    evidence: reports/m1/U12_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u12_cross_sectional_data_qualification_v1.json
+    branch: codex/u12-cross-sectional-data-qualification
+    protocol_target_commit: 11caf6f5160bfd03a127b6fc3565ad0b84c43d82
+    contract_content_hash: a65aa923b256d83eeb79aa0afb4483525e33ad28eda9bc9adc823008fc324ed3
+    qualification_content_hash: c9a5b5480081ef0583604910ce2550029086b9c9f7bd0a147c723006859a0510
+    source_archive_count: 27736
+    manifests_exact: 19
+    source_traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    same_reader_traversal_identity_hash: 5dfc833dc7897f14a9cb691738c2e5fc4b7770254c36d3b1ac316d0cafc02af3
+    complete_active_member_utc_days: 1623
+    eligible_calendar_decision_days: 1275
+    maximum_independent_theoretical_24h_episodes: 647
+    oos_ohlcv_values_decoded: 0
+    common_component_rows_generated: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-12 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U12_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u12_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u12-cross-sectional-paper-protocol-review
+    target_commit: 11caf6f5160bfd03a127b6fc3565ad0b84c43d82
+    target_base_commit: 2167029546bec5fc028c9fc8262db3a27ebf1d40
+    protocol_content_hash: a8cfc0b74e82bdf455bae5dda7a620bc5c0c53f1022d39494800f1053dd80b8a
+    review_content_hash: 81262bf19b2c32d7cfb37a6d42106ec7bc21bd674a4d0d106b3e0ccfd58b8813
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    public_data_read: false
+    result_rows_read: 0
+    oos_opened: false
+    data_qualification_and_preflight_authorized: true
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-12 recurring UTC calendar-flow seasonality hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U12_RECURRING_CALENDAR_FLOW_SEASONALITY_DESIGN.md
+    machine_evidence: config/u12_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U12_NON_DUPLICATION_REVIEW.md
+    branch: codex/u12-cross-sectional-recurring-calendar-flow-design
+    candidate_id: U12-CROSS-SECTIONAL-RECURRING-CALENDAR-FLOW-SEASONALITY
+    hypothesis_sha256: 5942e15d4c4dde246979ef980f0fc3c2a3f545e9e6717159355ee4312c87f54d
+    design_content_hash: e53003e7c9255fc11d976a646f8700532cc98ad6fd1c410b00647957daa6d5dc
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-12 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U12_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u12_design_authorization_v1.json
+    branch: codex/u12-design-authorization
+    decision_content_hash: ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7
+    prior_candidate: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    prior_attempt_content_hash: 0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521
+    prior_status: failed_execution_invalid_observation
+    prior_economic_result_admissible: false
+    prior_retry_authorized: false
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    public_data_read: false
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-11 unique sealed-IS Paper observation attempt and fail-closed adjudication
+    status: failed_execution_invalid_observation
+    evidence: reports/m1/U11_PAPER_OBSERVATION_ADJUDICATION.md
+    raw_attempt_evidence: reports/m1/U11_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u11_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u11-cross-sectional-paper-observation
+    candidate_id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    run_content_hash: 0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521
+    three_order_identity_hash: 558f4af6858315d3355d5c8cc42975b5799a620249d4e3108ed020c64b4226c8
+    decision_times_considered: 9931
+    cross_section_ineligible: 9925
+    candidate_events: 0
+    defect: monthly_membership_transition_previous_boundary_close_missing_from_active_month_reader
+    economic_result_admissible: false
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    retry_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-11 frozen-source data qualification and IS/OOS isolation
+    status: pass_local_complete
+    evidence: reports/m1/U11_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u11_cross_sectional_data_qualification_v1.json
+    branch: codex/u11-cross-sectional-data-qualification
+    protocol_target_commit: e7f621ec400fcb24833038f9201df5ffa5fa166a
+    contract_content_hash: b376f6c8250a6810a32dd2ceca5cca94431f7e5cf0e1249ded364700940ccfcc
+    qualification_content_hash: b0476b5e8cdd60769f49312e682329376daf5fa6f4163358d9bd4c84f0ca05b6
+    source_archive_count: 27736
+    manifests_exact: 19
+    traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    eligible_history_and_constant_path_decision_times: 8690
+    maximum_independent_theoretical_episodes: 473
+    oos_ohlcv_values_decoded: 0
+    common_state_rows_generated: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-11 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U11_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u11_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u11-cross-sectional-paper-protocol-review
+    target_commit: e7f621ec400fcb24833038f9201df5ffa5fa166a
+    target_base_commit: aacd8624fbac49020cb9aedb4ac80c142d334aac
+    protocol_content_hash: 3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc
+    review_content_hash: 4e8fea7a28e19742baab225f9b0e8b98be16749792b9a68b9416c7d287a4d9fc
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-11 outcome-blind asymmetric market-capture quality Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    evidence: reports/m1/U11_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u11_cross_sectional_paper_protocol_v1.json
+    branch: codex/u11-cross-sectional-paper-protocol
+    candidate_id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    protocol_content_hash: 3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc
+    pre_result_theoretical_episode_minimum: 200
+    frozen_complete_is_episode_gate: 90
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+    exact_head_independent_review_authorized: true
+    data_qualification_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-11 cross-sectional asymmetric market-capture quality-persistence hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U11_ASYMMETRIC_MARKET_CAPTURE_QUALITY_DESIGN.md
+    machine_evidence: config/u11_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U11_NON_DUPLICATION_REVIEW.md
+    branch: codex/u11-cross-sectional-asymmetric-market-capture-design
+    candidate_id: U11-CROSS-SECTIONAL-ASYMMETRIC-MARKET-CAPTURE-QUALITY-PERSISTENCE
+    hypothesis_sha256: 1c9ef854245c3f46000712894392b5b97a865013355c4553e372c6d168f63e74
+    design_content_hash: 0572daf7511c673a89dff6e737ad12528dde6c40845b672d62bbd3b1aeca9e4c
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-11 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U11_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u11_design_authorization_v1.json
+    branch: codex/u11-design-authorization
+    decision_content_hash: c5db3dc0c01bc4e1ffe381150c132742446ce4b05b3fb8c381dc03612cff274a
+    prior_candidate: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
+    prior_run_content_hash: 9972a95fe662ac65f7e0e2c0bb4d88eb9743097beb9c7c536f3507d9a316d22f
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    prior_outcome_reuse_prohibited: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-10 unique sealed-IS Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U10_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u10_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u10-cross-sectional-paper-observation
+    run_content_hash: 9972a95fe662ac65f7e0e2c0bb4d88eb9743097beb9c7c536f3507d9a316d22f
+    three_order_identity_hash: 83540c78bf6afed742fa09254b7e6c172014f2f599215335944fdeb9a67de11d
+    complete_is_independent_episodes: 7
+    median_72h_relative_continuation: '0.007971619522185805237735347941231168470184480243915'
+    median_72h_candidate_absolute_close_displacement: '0.0228120258210529022966334902142324409124810328421'
+    fraction_positive_72h_relative_continuation: '0.7142857142857142857142857143'
+    failed_gates: [complete_is_independent_episodes, projected_full_independent_episodes, projected_sealed_oos_independent_episodes, years_with_twelve_complete_episodes, maximum_single_year_episode_share, maximum_single_symbol_episode_share, distinct_event_symbols, distinct_event_months, median_72h_relative_continuation]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-10 frozen-source data qualification and IS/OOS isolation
+    status: pass_local_complete
+    evidence: reports/m1/U10_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u10_cross_sectional_data_qualification_v1.json
+    branch: codex/u10-cross-sectional-data-qualification
+    protocol_target_commit: f468b7aeaaf02f803125b4ab6037086fb353776f
+    contract_content_hash: c47701dca14ffab10b94efe2a855dd85c68ab01647c2feede3b8db86c80661bf
+    qualification_content_hash: 0029def278eeadf6b3951e1e1f62d16b0919889950eb68e0cdd3fe97fe727ee2
+    source_archive_count: 27736
+    manifests_exact: 19
+    traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    eligible_constant_membership_decision_days: 1603
+    maximum_independent_constant_membership_episodes: 418
+    oos_ohlcv_values_decoded: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-10 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U10_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u10_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u10-cross-sectional-paper-protocol-review
+    target_commit: f468b7aeaaf02f803125b4ab6037086fb353776f
+    target_base_commit: 6f21347d37b5b0de2db18e826f66696c86d54bf6
+    protocol_content_hash: be205bf40dcab624667b97e43bc158ea2473fe15de2ce9846a6bb198575fa43b
+    review_content_hash: e42d31706fe98fb089f148d563b010b4312e53e9b33ba1c33faafe7f63379009
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-10 outcome-blind volume-confirmed relative-trend Paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence: reports/m1/U10_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u10_cross_sectional_paper_protocol_v1.json
+    branch: codex/u10-cross-sectional-paper-protocol
+    target_commit: f468b7aeaaf02f803125b4ab6037086fb353776f
+    candidate_id: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
+    protocol_content_hash: be205bf40dcab624667b97e43bc158ea2473fe15de2ce9846a6bb198575fa43b
+    pre_result_theoretical_episode_minimum: 400
+    frozen_complete_is_episode_gate: 90
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+    exact_head_independent_review_authorized: true
+    data_qualification_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-10 cross-sectional volume-confirmed relative-trend continuation hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U10_VOLUME_CONFIRMED_RELATIVE_TREND_CONTINUATION_DESIGN.md
+    machine_evidence: config/u10_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U10_NON_DUPLICATION_REVIEW.md
+    branch: codex/u10-cross-sectional-volume-confirmed-relative-trend-design
+    candidate_id: U10-CROSS-SECTIONAL-VOLUME-CONFIRMED-RELATIVE-TREND-CONTINUATION
+    hypothesis_sha256: 5fc3529f7afa3df2344517f3bd567c5b3bf89a23bc0e071ff853bc80e50ec536
+    design_content_hash: af9ac64043adacad08ef834567ff976b26723fb1468d1a7a0d43e6fa5eaa40e5
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-10 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U10_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u10_design_authorization_v1.json
+    branch: codex/u10-design-authorization
+    decision_content_hash: e196cc0fdd20e8b8fc84872b440baa09ae69e0752c75005bebefb51a4060c7a0
+    prior_candidate: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
+    prior_correction_content_hash: c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    prior_outcome_or_protocol_defect_reuse_prohibited: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-09 qualification sample-ceiling correction
+    status: failed_pre_observation_sample_ceiling
+    evidence: reports/m1/U09_QUALIFICATION_SAMPLE_CEILING_CORRECTION.md
+    machine_evidence: reports/m1/evidence/u09_qualification_sample_ceiling_correction_v1.json
+    branch: codex/u09-qualification-sample-ceiling-correction
+    correction_content_hash: c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479
+    superseded_qualification_content_hash: c323798a9de04c423b8bb59c33604b2203715e1453f9b95b3f13022f71656aee
+    maximum_constant_membership_primary_episodes: 66
+    frozen_minimum_complete_is_episodes: 80
+    price_rows_read: 0
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+    paper_observation_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-09 frozen-source data qualification and IS/OOS isolation
+    status: pass_local_complete
+    evidence: reports/m1/U09_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u09_cross_sectional_data_qualification_v1.json
+    branch: codex/u09-cross-sectional-data-qualification
+    protocol_target_commit: 1bee65ff9dcdf0b9b3e49e37601140068cc968c8
+    contract_content_hash: f1bd609d74210f6aa1b31f902d2dfecb79448bed4a0db8532a37be7321cead9a
+    qualification_content_hash: c323798a9de04c423b8bb59c33604b2203715e1453f9b95b3f13022f71656aee
+    source_archive_count: 27736
+    manifests_exact: 19
+    traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    membership_months: 78
+    membership_rank_rows: 1170
+    is_anchors_before_boundary: 123
+    is_primary_complete_anchors: 122
+    oos_ohlc_values_decoded: 0
+    cohort_rows_generated: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-09 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U09_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u09_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u09-cross-sectional-paper-protocol-review
+    target_commit: 1bee65ff9dcdf0b9b3e49e37601140068cc968c8
+    target_base_commit: 29018d811a53abd2f96377c8ac3ab25981965824
+    protocol_content_hash: 874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae
+    review_content_hash: dd6779dab8be86fffa17d08a6a64b3085963e3e89b1889b24b6f125f64bb2947
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-09 outcome-blind idiosyncratic-volatility quality-persistence Paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence: reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u09_cross_sectional_paper_protocol_v1.json
+    branch: codex/u09-cross-sectional-paper-protocol
+    target_commit: 1bee65ff9dcdf0b9b3e49e37601140068cc968c8
+    candidate_id: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
+    protocol_content_hash: 874b93ce7c300c14663147041d351efae7dd22a4a20ab76d837474ca6b2584ae
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+    exact_head_independent_review_authorized: true
+    data_qualification_authorized: false
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-09 cross-sectional idiosyncratic-volatility quality-persistence hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U09_IDIOSYNCRATIC_VOLATILITY_QUALITY_PERSISTENCE_DESIGN.md
+    machine_evidence: config/u09_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U09_NON_DUPLICATION_REVIEW.md
+    branch: codex/u09-cross-sectional-idiosyncratic-volatility-quality-design
+    candidate_id: U09-CROSS-SECTIONAL-IDIOSYNCRATIC-VOLATILITY-QUALITY-PERSISTENCE
+    hypothesis_sha256: cb91d77d11b0f877007848330df7e05e1d4e9257142fce4d339edefe75e14c92
+    design_content_hash: 4830e361b66cd434e54a5ed284d0ad1e85c1e9270d3542dacf3efec5f4eee6f2
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-09 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U09_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u09_design_authorization_v1.json
+    branch: codex/u09-design-authorization
+    decision_content_hash: 2d643678e00575c93dad0331fff089fd620b214f658ca8d174dfe9bbcc06e477
+    prior_candidate: U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE
+    prior_run_content_hash: f6fbcdee846b855883a5e356ea49e6a98901bfcc6a9dbd5a2cbb07ebed9eca3e
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    prior_outcome_derived_rule_prohibited: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-08 unique sealed-IS Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U08_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u08_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u08-cross-sectional-paper-observation
+    run_content_hash: f6fbcdee846b855883a5e356ea49e6a98901bfcc6a9dbd5a2cbb07ebed9eca3e
+    three_order_identity_hash: 5e77484b1db6365787ea4e5acffc33e4d599b81fa7b95925257e7d2d6448b928
+    complete_is_independent_episodes: 44
+    median_336h_relative_persistence: '-0.004690053061224479018914325351'
+    median_336h_candidate_absolute_close_displacement: '-0.03354318740899883968767093616'
+    fraction_positive_336h_relative_persistence: '0.4545454545454545454545454545'
+    failed_gates: [median_336h_relative_persistence, median_336h_candidate_absolute_close_displacement, fraction_positive_336h_relative_persistence]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-08 frozen-source data qualification and IS/OOS isolation
+    status: pass_local_complete
+    evidence: reports/m1/U08_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u08_cross_sectional_data_qualification_v1.json
+    branch: codex/u08-cross-sectional-data-qualification
+    protocol_target_commit: a516efb32f2058b603918365a6eeaef0fe509361
+    contract_content_hash: 0adc8d4928e245e05a981f6ad997be01cd1fea876c0717e6a8d85ee8ca31f51e
+    qualification_content_hash: 1ec26ef74b80c2b46cfd0dcb231ee8863ae2bd0ff01fabf33dd4028b13807cb5
+    source_archive_count: 27736
+    manifests_exact: 19
+    traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    membership_months: 78
+    membership_rank_rows: 1170
+    oos_ohlc_values_decoded: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-08 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U08_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u08_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u08-cross-sectional-paper-protocol-review
+    target_commit: a516efb32f2058b603918365a6eeaef0fe509361
+    target_base_commit: 579c179
+    protocol_content_hash: 98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283
+    review_content_hash: 316fe577050555bf0b8c237c6a5bc374885132c863ba647fe2c826971aca8acf
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-08 outcome-blind liquidity-rank entry demand-persistence Paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence_at_target: reports/m1/U08_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence_at_target: config/u08_cross_sectional_paper_protocol_v1.json
+    branch: codex/u08-cross-sectional-paper-protocol
+    target_commit: a516efb32f2058b603918365a6eeaef0fe509361
+    protocol_content_hash: 98752a0722383ac582ceecf88cbd3f014a97eb56f9cb8a80fd805c55fa0b0283
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+  - phase: U-08 point-in-time liquidity-rank entry demand-persistence hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U08_LIQUIDITY_RANK_ENTRY_DEMAND_PERSISTENCE_DESIGN.md
+    machine_evidence: config/u08_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U08_NON_DUPLICATION_REVIEW.md
+    branch: codex/u08-liquidity-rank-entry-demand-persistence-design
+    candidate_id: U08-POINT-IN-TIME-LIQUIDITY-RANK-ENTRY-DEMAND-PERSISTENCE
+    hypothesis_sha256: 5d091b72b4ac77669bfe26659d7a95554bb182ba5c138ca20959e93a2e2345f6
+    design_content_hash: 247d652ecc3eb6b3df6ffcfc75c8a54c98716bc9d369e738745bdbd66337d717
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-08 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U08_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u08_design_authorization_v1.json
+    branch: codex/u08-design-authorization
+    decision_content_hash: 813267f29fd2f019b7d856d95a5eaaa7927a3f072327cc643e6a1ecd51af1cf9
+    prior_candidate: U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION
+    prior_run_content_hash: 8c637a3f13dad4410beb446094af011582ab2cde0ac449e32d044cbaa709352c
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    prior_outcome_derived_rule_prohibited: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-07 unique sealed-IS Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U07_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u07_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u07-cross-sectional-paper-observation
+    run_content_hash: 8c637a3f13dad4410beb446094af011582ab2cde0ac449e32d044cbaa709352c
+    three_order_identity_hash: 2714c2bf0fee08ddd9531eeac2ef531904c7c416eb4c809a666f5f75e4cf00ee
+    complete_is_independent_episodes: 82
+    median_24h_relative_continuation: '0.004287821384236292564275564571'
+    median_24h_candidate_absolute_close_displacement: '0.01160736483333721153810826070'
+    fraction_positive_24h_relative_continuation: '0.5243902439024390243902439024'
+    failed_gates: [median_24h_relative_continuation, median_24h_candidate_absolute_close_displacement, fraction_positive_24h_relative_continuation]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-07 frozen-source data qualification and IS/OOS isolation
+    status: pass_local_complete
+    evidence: reports/m1/U07_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u07_cross_sectional_data_qualification_v1.json
+    branch: codex/u07-cross-sectional-data-qualification
+    protocol_target_commit: 3aed4c337ff984b3e07ad9a4c7cda898425b3791
+    contract_content_hash: 0dd9a159382f1d515fed0269c9122adcd042a1fd726431bc36a9e4f6e01d5fb8
+    qualification_content_hash: fa65f34089854cd5faf950234b3488eb64b3058d1ab47f3dab500bbfb395e123
+    source_archive_count: 27736
+    manifests_exact: 19
+    traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    expected_4h_member_blocks: 213570
+    constituent_1h_rows: 854280
+    oos_ohlc_values_decoded: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-07 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U07_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u07_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u07-cross-sectional-paper-protocol-review
+    target_commit: 3aed4c337ff984b3e07ad9a4c7cda898425b3791
+    target_base_commit: f282f45229dbab3fd20767b2097a07a481e50d09
+    protocol_content_hash: d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195
+    review_content_hash: fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-07 outcome-blind market-stress relative-strength Paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence_at_target: reports/m1/U07_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence_at_target: config/u07_cross_sectional_paper_protocol_v1.json
+    branch: codex/u07-cross-sectional-paper-protocol
+    target_commit: 3aed4c337ff984b3e07ad9a4c7cda898425b3791
+    protocol_content_hash: d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+  - phase: U-07 cross-sectional market-stress relative-strength continuation hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U07_CROSS_SECTIONAL_MARKET_STRESS_RELATIVE_STRENGTH_DESIGN.md
+    machine_evidence: config/u07_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U07_NON_DUPLICATION_REVIEW.md
+    branch: codex/u07-cross-sectional-market-stress-relative-strength-design
+    candidate_id: U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION
+    hypothesis_sha256: 3130450cd7bd7cddab4bce0c89b274ae93e50bed278379011cc4d09e15fb3de3
+    design_content_hash: 272eabd4ab1737566698309b98cc13b952a8d39b86c457674d58ff56de021795
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-07 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U07_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u07_design_authorization_v1.json
+    branch: codex/u07-design-authorization
+    decision_content_hash: 58f8301035e593b0621add93cfa876a11a5af52df0a3afae38d7b41f095e37d5
+    prior_candidate: U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING
+    prior_run_content_hash: 2f715394411ca260f9889304ddc84da926d37ec1dfc9d4316493f23f6881382a
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    prior_outcome_derived_rule_prohibited: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-06 unique sealed-IS Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U06_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u06_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u06-cross-sectional-paper-observation
+    run_content_hash: 2f715394411ca260f9889304ddc84da926d37ec1dfc9d4316493f23f6881382a
+    three_order_identity_hash: b60423c216a6a9a109ac47d645d5ccae5f3f7c3d0fb9a9ffd0df9204bcee762c
+    complete_is_independent_episodes: 56
+    median_24h_relative_repricing: '-0.001437523976085089153319753825'
+    median_24h_candidate_absolute_close_displacement: '-0.0030291579131649309986646607'
+    failed_gates: [complete_is_independent_episodes, projected_full_independent_episodes, median_24h_relative_repricing, median_24h_candidate_absolute_close_displacement]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-06 frozen-source data qualification and IS/OOS isolation
+    status: pass_local_complete
+    evidence: reports/m1/U06_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u06_cross_sectional_data_qualification_v1.json
+    branch: codex/u06-cross-sectional-data-qualification
+    protocol_target_commit: 1bb59f1ac9d9e0fd5bacc8c55e572b9a1fbce8cd
+    contract_content_hash: cc05249a55a9fcb4705b06fa013592d472f9766428f1acc26938490ee26e0d6c
+    qualification_content_hash: e6a4a0eb47af2d88f30ab827d4456969549f86c5c81b7affedb91b034cb95a67
+    source_archive_count: 27736
+    manifests_exact: 19
+    traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    quote_volume_authority_rows: 1170
+    expected_five_minute_rows: 10251360
+    oos_ohlcv_values_decoded: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-06 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U06_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u06_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u06-cross-sectional-paper-protocol-review
+    target_commit: 1bb59f1ac9d9e0fd5bacc8c55e572b9a1fbce8cd
+    target_base_commit: 175ffb82057e9bbdfae385f041ab02f959008f99
+    protocol_content_hash: 7b53860efa2a5c52d727f1d4d4694ddf39ff34517dfde6aaf4b6abe31f35f289
+    review_content_hash: e4f0af0d817990d825081b7922b395dc3c76d05fc662e9c404fa82ce344e81b3
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-06 outcome-blind volume-share absorption Paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence_at_target: reports/m1/U06_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence_at_target: config/u06_cross_sectional_paper_protocol_v1.json
+    branch: codex/u06-cross-sectional-paper-protocol
+    target_commit: 1bb59f1ac9d9e0fd5bacc8c55e572b9a1fbce8cd
+    protocol_content_hash: 7b53860efa2a5c52d727f1d4d4694ddf39ff34517dfde6aaf4b6abe31f35f289
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+  - phase: U-06 cross-sectional volume-share absorption hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U06_CROSS_SECTIONAL_VOLUME_SHARE_ABSORPTION_DESIGN.md
+    machine_evidence: config/u06_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U06_NON_DUPLICATION_REVIEW.md
+    branch: codex/u06-cross-sectional-volume-share-absorption-design
+    candidate_id: U06-CROSS-SECTIONAL-VOLUME-SHARE-ABSORPTION-REPRICING
+    hypothesis_sha256: e6cb136b5bfaa4948b1681696b33496a43b7f9ab1f4fc25dcea63714700c259b
+    design_content_hash: 694e5a4344481bf785b09ff9f69a7c170d6c3d7061407902306cee70176966a5
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-06 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U06_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u06_design_authorization_v1.json
+    branch: codex/u06-design-authorization
+    decision_content_hash: 596eacbcf2caec7dd1da27bb66ee8bb5859c5b6992c067f22d40e5305cb74662
+    prior_candidate: U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE
+    prior_run_content_hash: 874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    prior_outcome_derived_rule_prohibited: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-05 unique sealed-IS Paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U05_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u05_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u05-cross-sectional-paper-observation
+    run_content_hash: 874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a
+    three_order_identity_hash: ac4b36ac2c04d55c25f9db62f9d59598bac8bb1861b97d4e01f701be398267b0
+    complete_is_independent_episodes: 490
+    median_24h_common_demand_close_displacement: '0.0007591260524623880214213314285'
+    median_24h_positive_member_fraction: '0.5333333333333333333333333335'
+    failed_gates: [median_24h_common_demand_close_displacement, median_24h_positive_member_fraction]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-05 frozen-source data qualification and IS/OOS isolation
+    status: pass_local_complete
+    evidence: reports/m1/U05_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u05_cross_sectional_data_qualification_v1.json
+    branch: codex/u05-cross-sectional-data-qualification
+    protocol_target_commit: 8d8652796e22a15285ba682b4524baa0218ca5a6
+    contract_content_hash: f1374b5c7bf7a103be7dacf3985d45cd332388afe601bd849271b30d63f562c3
+    qualification_content_hash: 348e80291ced6f7cbbb929c0b88c6bbce0b86e23cdbed33718b884810df7cb4f
+    source_archive_count: 27736
+    manifests_exact: 19
+    traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    expected_4h_member_blocks: 213570
+    oos_ohlc_values_decoded: 0
+    breadth_rows_generated: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-05 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U05_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u05_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u05-cross-sectional-paper-protocol-review
+    target_commit: 8d8652796e22a15285ba682b4524baa0218ca5a6
+    target_base_commit: f66dcbdf5ad48b35e7bba2f112257e446563288c
+    protocol_content_hash: c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214
+    review_content_hash: 8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-05 outcome-blind breadth-demand Paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence_at_target: reports/m1/U05_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence_at_target: config/u05_cross_sectional_paper_protocol_v1.json
+    branch: codex/u05-cross-sectional-paper-protocol
+    target_commit: 8d8652796e22a15285ba682b4524baa0218ca5a6
+    protocol_content_hash: c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+  - phase: U-05 cross-sectional breadth-demand persistence hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md
+    machine_evidence: config/u05_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U05_NON_DUPLICATION_REVIEW.md
+    branch: codex/u05-cross-sectional-breadth-demand-persistence-design
+    candidate_id: U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE
+    hypothesis_sha256: ad164b1d9a94d9d61145bf7431a805cfa795a77a6c8aef2cdc488f6bd9e7349b
+    design_content_hash: ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    api_trading_authorized: false
+    m2_authorized: false
+  - phase: U-05 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    evidence: reports/m0/U05_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u05_design_authorization_v1.json
+    branch: codex/u05-design-authorization
+    decision_content_hash: 48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c
+    prior_candidate: U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL
+    prior_run_content_hash: 9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2
+    maximum_hypotheses: 1
+    independent_economic_rationale_required: true
+    u04_outcome_derived_rule_prohibited: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-04 unique sealed-IS paper observation
+    status: failed_feasibility
+    evidence: reports/m1/U04_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    machine_evidence: reports/m1/evidence/u04_cross_sectional_paper_observation/run_manifest.json
+    branch: codex/u04-cross-sectional-paper-observation
+    run_content_hash: 9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2
+    three_order_identity_hash: 4c512f5900b15969cf13c1481317e388d94d3ac6c2b26dc576914863b5201b42
+    candidate_events: 2890
+    independent_episodes: 420
+    complete_is_independent_episodes: 397
+    median_24h_relative_recovery: '-0.008556398568655178767341556211667999570187556831814'
+    median_24h_absolute_close_displacement: '-0.00794575696578027333403962284140269096302574425257'
+    failed_gates: [median_24h_relative_recovery, median_24h_absolute_close_displacement]
+    oos_opened: false
+    formal_returns_computed: false
+    second_run_executed: false
+    candidate_closed: true
+    strategy_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-04 frozen-source data qualification and IS/OOS isolation
+    status: pass_local_complete
+    evidence: reports/m1/U04_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    machine_evidence: reports/m1/evidence/u04_cross_sectional_data_qualification_v1.json
+    branch: codex/u04-cross-sectional-data-qualification
+    contract_content_hash: fc45ba3a07776aa94ec8805d6e855bc34905a9aaac7d9a27af098a3f80352af2
+    qualification_content_hash: 4bdebb527494386d43f85189bf835e7fa1426325c5ef5383ec6fa46c2bb55a8c
+    source_archive_count: 27736
+    manifests_exact: 19
+    traversal_identity_hash: ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa
+    oos_ohlc_values_decoded: 0
+    event_rows_generated: 0
+    path_rows_generated: 0
+    return_rows_generated: 0
+    one_sealed_is_paper_observation_authorized: true
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-04 paper-protocol exact-head independent review
+    status: approve_local_complete
+    evidence: reports/expert/U04_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    machine_evidence: reports/expert/evidence/u04_cross_sectional_paper_protocol_review_v1.json
+    branch: codex/u04-cross-sectional-paper-protocol-review
+    target_commit: 6523b83d6b6ba93771ec1bad15625eb191fa07be
+    target_base_commit: ab85814c4f242502681f4a68db750ad565ffeab9
+    protocol_content_hash: 7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6
+    review_content_hash: 34fe2efdf4788b20b915f34b3b6442f60ddaa364103ae90b920dc2cacf9646b1
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    target_modified: false
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - phase: U-04 outcome-blind cross-sectional paper protocol
+    status: frozen_before_result_exact_head_approved
+    evidence: reports/m1/U04_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    machine_evidence: config/u04_cross_sectional_paper_protocol_v1.json
+    branch: codex/u04-cross-sectional-paper-protocol
+    target_commit: 6523b83d6b6ba93771ec1bad15625eb191fa07be
+    protocol_content_hash: 7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6
+    public_data_read: false
+    events_evaluated: false
+    paths_observed: false
+    returns_computed: false
+    oos_opened: false
+  - phase: U-04 cross-sectional residual-reversal hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    evidence: reports/m1/U04_CROSS_SECTIONAL_RESIDUAL_REVERSAL_DESIGN.md
+    machine_evidence: config/u04_cross_sectional_design_scope_v1.json
+    non_duplication_evidence: reports/m1/U04_NON_DUPLICATION_REVIEW.md
+    branch: codex/u04-cross-sectional-residual-reversal-design
+    candidate_id: U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL
+    hypothesis_sha256: 85e9fc11e8f6b69597fecdb6a40485611eb24163a20cea4534e81d0f08e5ec7a
+    design_content_hash: b384e6484180a0ec358125fbb0338d7376b860372ab065fe7043667931f178b8
+    public_data_read: false
+    events_evaluated: false
+    returns_computed: false
+    oos_opened: false
+    strategy_authorized: false
+    paper_protocol_design_authorized: true
+    api_trading_authorized: false
+    m2_authorized: false
+  - phase: U-04 design authorization decision
+    status: authorized_for_one_preregistered_hypothesis_design_only
+    evidence: reports/m0/U04_DESIGN_AUTHORIZATION_DECISION.md
+    machine_evidence: config/u04_design_authorization_v1.json
+    branch: codex/u04-design-authorization-decision
+    decision_content_hash: 84d9b499329169719a880af80b1e2e7f0d5d5cbbc6c62a6aa762cd738aa04e89
+    audit_summary_hash: e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4
+    maximum_hypotheses: 1
+    outcome_blind_design_authorized: true
+    event_scan_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    api_trading_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 real independent frozen-source audit
+    status: pass_local_complete
+    evidence: reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_REPORT.md
+    machine_evidence: reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/audit_summary.json
+    branch: codex/adr-0015-independent-audit-run-v4
+    protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
+    reviewed_target: e935d6b287eaf66f825d9f73181fa35160cb5225
+    review_content_hash: fb63d2f3b3e0843927a348fb5a9fb94a5b3873d15a132d8bd968d10fe7980fe0
+    audit_summary_hash: e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4
+    artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
+    traversal_orders: [normal, reverse, deterministic_shuffled]
+    manifests_exact: 19
+    manifests_total: 19
+    invalid_interval_events: 8
+    invalid_physical_rows: 119
+    valid_minority_rows: 1
+    total_active_slots_masked: 120
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    production_evidence_mutated: false
+    network_accessed: false
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 independent auditor source-order exact-head review
+    status: approve_local_complete
+    branch: codex/adr-0015-independent-auditor-source-order-review
+    target_commit: e935d6b287eaf66f825d9f73181fa35160cb5225
+    implementation_content_hash: f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e
+    review_content_hash: fb63d2f3b3e0843927a348fb5a9fb94a5b3873d15a132d8bd968d10fe7980fe0
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    real_independent_audit_authorized: true
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 independent auditor source ordering fix
+    status: fixture_complete_pending_replacement_exact_head_review
+    branch: codex/adr-0015-independent-auditor-source-order-fix
+    implementation_content_hash: f0c0ee6d1fae740c5c306925408760bb2a3f6b94b7115652c4da24d178188d5e
+    prior_audit_exact_manifests: 18
+    prior_audit_total_manifests: 19
+    prior_audit_three_order_identity: true
+    replacement_exact_head_review_required: true
+    real_independent_audit_authorized: false
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 independent auditor envelope-fix exact-head review
+    status: approve_local_complete
+    branch: codex/adr-0015-independent-auditor-envelope-review
+    target_commit: 301e910ea669c702a34598e500826a456663a5fb
+    implementation_content_hash: d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb
+    review_content_hash: f04f87f849966d188dc39cff0bc72f12a71d6c1d601249d202a08ce4686b7c26
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    real_independent_audit_authorized: true
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 independent auditor envelope reconciliation fix
+    status: fixture_complete_pending_replacement_exact_head_review
+    branch: codex/adr-0015-independent-auditor-envelope-fix
+    implementation_content_hash: d183b3f91b27bc8b71e7b84bc9f70c3d3b927e7da914620d228bf165a1abafcb
+    prior_audit_exact_manifests: 16
+    prior_audit_total_manifests: 19
+    prior_audit_three_order_identity: true
+    prior_audit_accounting_exact: true
+    production_evidence_failed: false
+    replacement_exact_head_review_required: true
+    real_independent_audit_authorized: false
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 independent auditor replacement exact-head review
+    status: approve_local_complete
+    evidence: reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md
+    machine_evidence: reports/expert/evidence/adr0015_independent_auditor_review.json
+    branch: codex/adr-0015-independent-auditor-replacement-review
+    target_commit: 4bebdf32786818b7f451474c864ba9ee3109a26b
+    protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
+    implementation_content_hash: 95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb
+    review_content_hash: 77abc29349c2ef347e8c975d8d30cbb5083c7759f48d159baa3f4d38ca2010f0
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    real_independent_audit_authorized: true
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 independent auditor microsecond normalization fix
+    status: fixture_complete_pending_replacement_exact_head_review
+    evidence: reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md
+    machine_evidence: config/liquid_universe_v4_adr0015_independent_auditor_implementation.json
+    branch: codex/adr-0015-independent-auditor-microsecond-fix
+    implementation_content_hash: 95c40583d9fc7ba1a2e081284db0f5aa34967de17d7142c044efc442a124b6eb
+    discovered_by_real_audit_preflight: true
+    production_evidence_failed: false
+    prior_review_target_superseded: true
+    replacement_exact_head_review_required: true
+    real_independent_audit_authorized: false
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 independent auditor exact-head review
+    status: approve_local_complete
+    evidence: reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md
+    machine_evidence: reports/expert/evidence/adr0015_independent_auditor_review.json
+    branch: codex/adr-0015-independent-auditor-review
+    target_commit: 6b4a9687f50d2ede8ba4b5ccfd0549ddecb0e92d
+    protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
+    implementation_content_hash: b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c
+    review_content_hash: c0b0cb6bf6c40b06cb8edf3af2f1b6d4718a779ff139aa4a5633c0b855b33b0a
+    verdict: approve
+    remaining_critical_findings: 0
+    remaining_high_findings: 0
+    real_independent_audit_authorized: true
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 independent auditor fixture implementation
+    status: fixture_complete_pending_exact_head_review
+    evidence: reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md
+    machine_evidence: config/liquid_universe_v4_adr0015_independent_auditor_implementation.json
+    branch: codex/adr-0015-independent-auditor-implementation
+    protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
+    implementation_content_hash: b4bc01d5508975447664b82b2ccc79d21aedb916001855f267bbdb74a2f6004c
+    synthetic_tests: 10
+    full_unit_tests: 700
+    historical_auditor_modified: false
+    production_policy_imported_as_audit_algorithm: false
+    real_audit_executed: false
+    exact_head_review_required: true
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 invalid-interval independent audit protocol
+    status: frozen_local_complete_before_auditor_implementation_or_result
+    evidence: reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_PROTOCOL.md
+    machine_evidence: config/liquid_universe_v4_adr0015_independent_audit_protocol.json
+    branch: codex/adr-0015-new-independent-audit-protocol
+    starting_local_commit: a16b844
+    protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
+    source_mode: frozen_local_only
+    source_archive_count: 27736
+    source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+    requalification_run_manifest_hash: a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9
+    requalification_artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
+    production_manifests_total: 19
+    production_manifests_exact_required: 19
+    traversal_orders: [normal, reverse, deterministic_shuffled]
+    independent_auditor_fixture_implementation_authorized: true
+    independent_auditor_fault_injection_authorized: true
+    independent_auditor_exact_head_review_required: true
+    real_audit_executed: false
+    real_audit_authorized: false
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 fixed-range invalid-interval requalification
+    status: pass_local_complete
+    evidence: reports/m0/LIQUID_SPOT_UNIVERSE_V4_ADR0015_REQUALIFICATION_REPORT.md
+    machine_evidence: reports/m0/evidence/liquid_universe_v4_adr0015_requalification/requalification_run_manifest.json
+    branch: codex/adr-0015-fixed-range-requalification
+    source_mode: frozen_local_only
+    source_archive_count: 27736
+    source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+    builds_completed: [cold, warm, worker]
+    determinism_status: pass
+    deterministic_mismatches: 0
+    artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
+    run_manifest_hash: a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9
+    invalid_interval_events: 8
+    invalid_physical_rows_quarantined: 119
+    valid_minority_rows_quarantined: 1
+    total_active_slots_quarantined: 120
+    processing_errors: 0
+    unresolved_gaps: 0
+    synthetic_fills: 0
+    replacement_members: 0
+    new_independent_audit_protocol_authorized: true
+    new_independent_audit_authorized: false
+    u04_authorized: false
+    m2_authorized: false
+  - phase: ADR-0015 invalid-interval implementation controlled integration
+    status: merged_main_gate_pass
+    merged_pr: 111
+    merge_commit: e2112a31908f1587eb657a4123f1f114cf2016fe
+    reviewed_head_ancestor: 67e7d29eaed63a3edb903dd618184bc9f02c5748
+    selective_run: 29572828915
+    main_run: 29573400780
+    reviewed_implementation_blobs_exact: true
   - phase: ADR-0015 invalid-interval implementation exact-head independent review
     status: approve_merged
     evidence: reports/expert/ADR_0015_INVALID_INTERVAL_IMPLEMENTATION_REVIEW.md
@@ -461,43 +2700,360 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
-  - id: ADR-0015-IMPL
-    phase: Generic synchronized invalid-interval policy implementation
-    status: implementation_exact_head_approved_controlled_integration_pending_gate
-    branch: codex/adr-0015-invalid-interval-controlled-integration
-    pr: runtime_current_pr
-    head_sha: runtime_current_pr_head
-    base_main_sha: 141481fa445bdc03b453844a666dbd2639c3cdf7
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_IMPLEMENTATION_STATUS.md
-    policy_hash: 0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04
-    algorithm_hash: 8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff
-    adoption_content_hash: d9b220657d3867941f4f42fd112339c4058e7bc734aa9db72a5b7f81ac78fc19
-    generic_policy_implemented: true
-    fixture_validation_complete: true
-    fault_injection_complete: true
-    reviewed_target_pr: 109
-    reviewed_target_head_sha: 67e7d29eaed63a3edb903dd618184bc9f02c5748
-    exact_head_implementation_review_required: false
-    exact_head_implementation_review_complete: true
-    review_pr: 110
-    review_merge_commit: a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f
-    review_content_hash: 9a0736431f4df6e27ce0b8e35d28e90d22838aef684e78fbd4c76bd79efe5af1
-    fixed_range_public_requalification_authorized: false
-    new_independent_audit_authorized: false
-    u04_authorized: false
+  - id: U-24-PAPER-OBSERVATION
+    phase: unique sealed-IS lottery-demand-avoidance Paper observation
+    status: completed_failed_feasibility
+    qualification_content_hash: 02e1dd27ae4d04cf10c3cbd14578eb06b633b02ec749233eba22b72f9ada9627
+    protocol_content_hash: 5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7
+    run_content_hash: 131266a00f2b3742dd3bb2963bc5184ba55ae5aef22b97cfb0f26d2d02c697dd
+    candidate_closed: true
+    second_run_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
     m2_authorized: false
-    public_data_run_executed: false
-    blocker: "The controlled integration must preserve the exact reviewed implementation as an ancestor and pass its selective and main Gates before fixed-range requalification starts."
-  - id: U-04
-    phase: Cross-sectional hypothesis preregistration
-    status: not_authorized
-    branch: not_created
-    pr: none
-    head_sha: none
-    checklist: PROJECT_EXECUTION_CHECKLIST.md
-    evidence: docs/decisions/ADR-0012-liquid-universe-qualification-correctness-v2.md
-    blocker: "U-03F merged as failed_audit. V4 is audit_blocked and requires an independently reviewed repair plus fixed-range requalification before any new audit pass can be considered."
+  - id: U-24-DATA-QUALIFICATION
+    phase: frozen-source data qualification and result-free preflight
+    status: completed_pass
+    contract_content_hash: 639421137157c61808664576691f62741e5eea8cbd4551d4870013f6008d8a58
+    qualification_content_hash: 02e1dd27ae4d04cf10c3cbd14578eb06b633b02ec749233eba22b72f9ada9627
+    eligible_structural_decisions: 4897
+    maximum_independent_theoretical_24h_episodes: 711
+    one_sealed_is_paper_observation_authorized: true
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-24-PROTOCOL-REVIEW
+    phase: exact-head independent Paper-protocol review
+    status: completed_approve
+    target_head_sha: cafbd5a90f5fd3a435d15ff03af0ecec2df98c3f
+    protocol_content_hash: 5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7
+    review_content_hash: b032f88ab2f8c6cfd42c15a7665ebc3122187c72bdcc14d1a319b03bcb57db17
+    critical_findings: 0
+    high_findings: 0
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-24-PROTOCOL
+    phase: outcome-blind lottery-demand avoidance Paper protocol
+    status: completed_pending_exact_head_review
+    candidate_id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
+    design_content_hash: c99f7002b006d635d5c03936055e8d4bc498ace02b45551af52cdf80dd14d0c1
+    protocol_content_hash: 5110c3f455274f291391ed9b34affe6e5f61beb9198723d4fb0b8f07439c7ce7
+    synthetic_feasibility_content_hash: ce8b0f7998cc1c8e3928c605cccd0da37087a620d37e8058ae55e02f26957484
+    exact_head_review_authorized: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-24
+    phase: lottery-demand avoidance premium hypothesis design
+    status: completed_design_protocol_and_synthetic_core_only
+    authorization_content_hash: 745152692cdada8dad9e0abaf5ea171fb3a1d55d70dbfab32b66c7d2edbdfac5
+    candidate_id: U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM
+    hypothesis_sha256: 0b420693a6206504c4ab6644b2f8e3c9194300bfe096b831d80c12762b18ff34
+    design_content_hash: c99f7002b006d635d5c03936055e8d4bc498ace02b45551af52cdf80dd14d0c1
+    maximum_hypotheses: 1
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-23-PAPER-OBSERVATION
+    phase: unique sealed-IS range-expansion Paper observation
+    status: completed_failed_feasibility
+    qualification_content_hash: 08166fb534daf691e069f6ae743b472f0c06879dd060c58f816e4f2d5acef2c5
+    protocol_content_hash: 52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611
+    run_content_hash: 771ce48d80dc48fd2d8f984528541c8a8c1cef4f756892647d66f49b9ffb2604
+    candidate_closed: true
+    second_run_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-23-DATA-QUALIFICATION
+    phase: frozen-source data qualification and result-free preflight
+    status: completed_pass
+    contract_content_hash: 37c1c9b0bdbb13639aea36a1da525163ba4a8142ec1f808bc8cbe1ca0aed7909
+    qualification_content_hash: 08166fb534daf691e069f6ae743b472f0c06879dd060c58f816e4f2d5acef2c5
+    eligible_structural_decisions: 7122
+    maximum_independent_theoretical_24h_episodes: 1031
+    one_sealed_is_paper_observation_authorized: true
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-23-PROTOCOL-REVIEW
+    phase: exact-head independent Paper-protocol review
+    status: completed_approve
+    target_head_sha: 1d0b21282b1e499fdef0d9cab88e7a918a5d5913
+    protocol_content_hash: 52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611
+    review_content_hash: f2a8a5fdf770419bcc6f29abda3539d251b9e6e0f1dc97d5a4e824ab4f37c4a4
+    critical_findings: 0
+    high_findings: 0
+    data_qualification_authorized: true
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-23-PROTOCOL
+    phase: outcome-blind range-expansion close-strength Paper protocol
+    status: completed_pending_exact_head_review
+    candidate_id: U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION
+    design_content_hash: 351ddd25e3c8708e55a21e81921d104f4c360b65966945b846fa40ba1e96e6e0
+    protocol_content_hash: 52807bd0e2c0bd2276c88e1d919a7e4a375c480f51fe479f0934d8c0063e5611
+    synthetic_feasibility_content_hash: 6010529c89627e8607919272af3c85c7dd5c3fdd4e48f549b8fe055e3245637e
+    exact_head_review_authorized: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-23
+    phase: range-expansion close-strength continuation hypothesis design
+    status: completed_design_protocol_and_synthetic_core_only
+    authorization_content_hash: 70c60434bb7c78344eb733eb8a8d4393538f60bbc97bff60e840c68f10998d5a
+    candidate_id: U23-CROSS-SECTIONAL-RANGE-EXPANSION-CLOSE-STRENGTH-CONTINUATION
+    hypothesis_sha256: 6c099769b5fb89d7faf032d68c114540a6b93f8546bbedee26c2e9397e98627f
+    design_content_hash: 351ddd25e3c8708e55a21e81921d104f4c360b65966945b846fa40ba1e96e6e0
+    maximum_hypotheses: 1
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-22-PAPER-OBSERVATION
+    phase: unique sealed-IS dispersion-expansion Paper observation
+    status: completed_failed_feasibility
+    authorization_content_hash: 82aef7f378a1aaa46ded62cfc21dedb67e6d86a8d0c27c24f66280d8c124e29d
+    prior_qualification_content_hash: 33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b
+    candidate_id: U22-CROSS-SECTIONAL-DISPERSION-EXPANSION-LEADER-CONTINUATION
+    design_content_hash: 652677b1e0c070d27d854166c9c7d692e93d7f58236eced06c94f01abb153abe
+    protocol_content_hash: 0fdc7eb264e5f9a24dbcb746bbee6af0b1af2218cc101d6674099769f5d1b4fa
+    synthetic_feasibility_content_hash: 4476d5b5cc38b23c3f031b2438e77224a8da3c80ee011dba719cf43b76e6940b
+    review_content_hash: e2a920c29105a32764016d478d22efa0d234a2fc5362ce5cae17f4671218cd57
+    critical_findings: 0
+    high_findings: 0
+    qualification_content_hash: 9b009c6b940e338cc77f8f3ea9e8dd473689c739d6c247ad0ba078c3f40a2334
+    run_content_hash: 12a756e2fa8a0fa2e2b87f69c8dc00559f3021a27368a0ac4efc8f5e8001531c
+    candidate_closed: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-21-DATA-QUALIFICATION
+    phase: frozen-source data qualification and complexity preflight
+    status: completed_failed_pre_result_complexity
+    protocol_content_hash: b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e
+    protocol_review_content_hash: 809dcdf63d096d8b2742c13004c83151780a7e8078dcde85da7cc65946a355ff
+    contract_content_hash: 7e159601a935a90d4ac156bb64f2fa379abca5bedb4471570e43aef348d9ee5c
+    qualification_content_hash: 33e53b7fd32c6610349f99bb01cf71143ab9837289198266fd1b25f6e7147a1b
+    one_sealed_is_paper_observation_authorized: false
+    qualification_retry_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-21-PROTOCOL-REVIEW
+    phase: exact-head independent Paper-protocol review
+    status: completed_approve_local
+    target_head_sha: d76714752825f9018427e9cd55cdd69802928d42
+    protocol_content_hash: b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e
+    review_content_hash: 809dcdf63d096d8b2742c13004c83151780a7e8078dcde85da7cc65946a355ff
+    critical_findings: 0
+    high_findings: 0
+    data_qualification_complexity_and_preflight_authorized: true
+    public_data_read_authorized: true
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-21-PROTOCOL
+    phase: outcome-blind systematic-cokurtosis risk-premium Paper protocol
+    status: completed_local_pending_exact_head_review
+    design_content_hash: a45075371103acf28981ce3a1f0cd47a029b15f5cf3ef9a878b5c682e248568b
+    protocol_content_hash: b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e
+    paper_protocol_design_authorized: false
+    exact_head_independent_review_authorized: true
+    data_qualification_complexity_and_preflight_authorized: false
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-21
+    phase: systematic-cokurtosis risk-premium hypothesis design
+    status: completed_local
+    authorization_content_hash: 58c4be44b0d3753d8cf36f96df374880d2a929d4f091e7aac19b14619c17b247
+    prior_run_content_hash: 587def88ac42d016a0ac5de97789164be6e6f1bf447b7a239eeed95137a9ede1
+    maximum_hypotheses: 1
+    design_content_hash: a45075371103acf28981ce3a1f0cd47a029b15f5cf3ef9a878b5c682e248568b
+    hypothesis_design_authorized: false
+    paper_protocol_design_authorized: true
+    exact_head_independent_review_authorized: false
+    data_qualification_complexity_and_preflight_authorized: false
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-20-PAPER-OBSERVATION
+    phase: unique sealed-IS negative-coskewness Paper observation
+    status: completed_failed_feasibility
+    protocol_content_hash: d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9
+    qualification_content_hash: de61add6f8ef2a22f62166c14aeb4c30565cb8b3003e6395909fa7b7a85e2368
+    run_content_hash: 587def88ac42d016a0ac5de97789164be6e6f1bf447b7a239eeed95137a9ede1
+    second_result_run_authorized: false
+    paper_result_independent_review_authorized: false
+    fixed_rule_contract_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-20-DATA-QUALIFICATION
+    phase: frozen-source data qualification, complexity and preflight
+    status: completed_pass_local
+    protocol_content_hash: d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9
+    protocol_review_content_hash: eb452e7440b5058b6516629f65a9793f06dfa5748961c58e87229d4c3a1e20f5
+    contract_content_hash: 7bae7234c15f6f378b5b28667d3e805e51a34465bd95c736b0a3ef2109f49f80
+    qualification_content_hash: de61add6f8ef2a22f62166c14aeb4c30565cb8b3003e6395909fa7b7a85e2368
+    maximum_independent_theoretical_24h_episodes: 752
+    one_sealed_is_paper_observation_authorized: true
+    second_result_run_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-20-PROTOCOL-REVIEW
+    phase: exact-head independent Paper-protocol review
+    status: completed_approve_local
+    target_head_sha: 6a2207c05c7045e82b47f9685c01a5c2d0b30755
+    protocol_content_hash: d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9
+    review_content_hash: eb452e7440b5058b6516629f65a9793f06dfa5748961c58e87229d4c3a1e20f5
+    critical_findings: 0
+    high_findings: 0
+    exact_head_independent_review_authorized: false
+    data_qualification_complexity_and_preflight_authorized: true
+    public_data_read_authorized: true
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-20-PROTOCOL
+    phase: outcome-blind negative-coskewness risk-premium Paper protocol
+    status: completed_local_pending_exact_head_review
+    design_content_hash: 3995e92a9ae69fd64f8258b33b620c801d63e235e1ed90a254a3d99d70a1e5b5
+    protocol_content_hash: d909cd57bbed8c1eaa859905909ce0503d8e653d671b499af0868b1713e2dec9
+    paper_protocol_design_authorized: false
+    exact_head_independent_review_authorized: true
+    data_qualification_complexity_and_preflight_authorized: false
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-20
+    phase: negative-coskewness risk-premium hypothesis design
+    status: completed_local
+    authorization_content_hash: b4e9d5c94957d69142e328a05dfb00474840efe3347dd5347c55997115b64455
+    prior_run_content_hash: 38daffb0834c28a769108c74f256b601f08667c7076d107bc97f48925b63f3d4
+    maximum_hypotheses: 1
+    design_content_hash: 3995e92a9ae69fd64f8258b33b620c801d63e235e1ed90a254a3d99d70a1e5b5
+    hypothesis_design_authorized: false
+    paper_protocol_design_authorized: true
+    exact_head_independent_review_authorized: false
+    data_qualification_complexity_and_preflight_authorized: false
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-17-DATA-QUALIFICATION
+    phase: frozen-source structural qualification and sample ceiling
+    status: completed_failed_pre_result_sample_ceiling
+    authorization_content_hash: eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b
+    design_content_hash: ad3b6a4cabc61bd41890684ccf30b8ee4ae3a2811fcc4dd08abcf45a4bf420fe
+    protocol_content_hash: 815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089
+    maximum_hypotheses: 1
+    hypothesis_design_authorized: false
+    paper_protocol_design_authorized: false
+    exact_head_independent_review_authorized: false
+    data_qualification_complexity_and_preflight_authorized: false
+    candidate_closed: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+  - id: U-16-PAPER-OBSERVATION
+    phase: unique sealed-IS correlation-breakdown Paper observation
+    status: completed_failed_feasibility
+    protocol_content_hash: 18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a
+    review_content_hash: 2f708c0f6ac7b4e79428a4a7b1e9850182120c2dfcb3b06b53f973123f5c34e3
+    qualification_content_hash: 5dc4850a1d940d05581774a1270ec6c9cdc4d5f8702a5614a81a01928842e949
+    one_run_authorized: false
+    second_run_authorized: false
+    run_content_hash: 322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14
+    candidate_closed: true
+    public_data_read_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
+    event_scan_authorized: false
+    path_observation_authorized: false
+    returns_authorized: false
+    strategy_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: M1C-P4-AUDIT
     phase: P4 M1C independent audit
     status: blocked
@@ -564,14 +3120,41 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Complete the controlled integration with PR #109 exact head 67e7d29 as an ancestor and all reviewed implementation blobs unchanged."
-  - "Merge only after the integration selective Gate passes; do not rewrite the reviewed target branch to resolve governance conflicts."
-  - "Fixed-range public requalification remains unauthorized until the controlled integration merges and its consolidated main Gate passes."
-  - "Diagnostics remain immutable evidence only; no new diagnostic, source download or source replacement is authorized."
-  - "No unrelated design review or Draft policy ADR is authorized by this adoption."
-  - "Any source/hash/order mismatch stops as blocked_evidence_mismatch; no exception registry, source replacement or Gate reduction is allowed."
-  - Cross-sectional design remains blocked because U-03F failed; U-04 is not authorized.
-  - Strategy code, event scanning, returns, backtesting, OOS and M2 remain unauthorized.
+  - "U-24 is permanently closed after six frozen Paper Gates failed; no tuning, inversion, second observation, review, fixed rules, strategy, backtest or OOS step is authorized."
+  - "Continuing the research objective requires a separate U-25 independent-candidate design authorization that must not use U-24 outcomes to select or invert the next mechanism."
+  - "Exactly one U-24 sealed-IS Paper observation may execute the frozen protocol over IS only in normal, reverse and deterministic-shuffled order."
+  - "The observation may compute frozen returns/payoff/event/path diagnostics but no fills, positions, equity, formal returns, OOS values, tuning or second run."
+  - "U-24 frozen-source data qualification may verify exact archives/manifests, 336h history, 24h path structure, point-in-time membership, lifecycle/mask order, sample ceiling and isolation without decoding returns or results."
+  - "Any authority, order, scope or theoretical-episode ceiling failure closes U-24 before results."
+  - "A separate read-only exact-head independent review of the frozen U-24 protocol is the only next task."
+  - "The review may authorize only frozen-source data qualification and result-free preflight; it may not authorize events, paths, formal returns, strategy, OOS or trading."
+  - "U-24 may design one result-blind Paper protocol only after its intended exact statistic core passes a synthetic-only complexity feasibility Gate."
+  - "The U-24 protocol may freeze clocks, estimators, thresholds, persistence, clustering, paths and Paper Gates, but may not read public data or outcomes."
+  - "U-24 may freeze exactly one economically independent outcome-blind hypothesis design; a synthetic exact-core complexity pass is required before any later protocol freeze."
+  - "No public data, outcomes, parameters, events, returns, strategy, backtest, OOS, API/trading, execution/live or M2 work is authorized for U-24 design."
+  - "U-23 is closed. Only a separate U-24 independent-candidate design authorization decision may follow without using U-23 results to select the mechanism."
+  - "No U-23 tuning, inversion, second observation, fixed rule, strategy, backtest or OOS step is authorized."
+  - "Exactly one U-23 sealed-IS Paper observation may execute the frozen protocol over IS only in normal, reverse and deterministic-shuffled order."
+  - "The observation may compute frozen OHLC/range/return/event/path diagnostics but no fills, positions, equity, formal returns, OOS values, tuning or second run."
+  - "U-23 frozen-source data qualification may verify exact archives/manifests, 7d history, 24h path structure, point-in-time membership, lifecycle/mask order, sample ceiling and isolation without decoding OHLC or results."
+  - "Any authority, order, scope or theoretical-episode ceiling failure closes U-23 before results."
+  - "A separate read-only exact-head independent review of the frozen U-23 protocol is the only next task."
+  - "The review may authorize only frozen-source data qualification and result-free preflight; it may not authorize events, paths, formal returns, strategy, OOS or trading."
+  - "U-23 may design one result-blind Paper protocol only after its intended exact statistic core passes a synthetic-only complexity feasibility Gate."
+  - "The U-23 protocol may freeze clocks, estimators, thresholds, clustering, paths and Paper Gates, but may not read public data or outcomes."
+  - "U-23 may freeze exactly one economically independent outcome-blind hypothesis design; a synthetic exact-core complexity pass is required before any later protocol freeze."
+  - "No public data, outcomes, parameters, events, returns, strategy, backtest, OOS, API/trading, execution/live or M2 work is authorized for U-23 design."
+  - "U-22 is closed. Only a separate U-23 independent-candidate design authorization decision may follow without using U-22 results to select the mechanism."
+  - "No U-22 tuning, inversion, second observation, fixed rule, strategy, backtest or OOS step is authorized."
+  - "U-04 through U-21 outcomes, Gates, defects, censor patterns and the U-21 complexity failure may not select U-22."
+  - "No U-21 optimization, qualification retry, Paper observation, fixed rule, strategy, backtest or OOS step is authorized."
+  - "No U-20 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
+  - "U-04 through U-20 outcomes, Gates, defects and censor patterns may not select U-21."
+  - "No U-19 inversion, repair, relabeling, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
+  - "U-04 through U-19 outcomes, Gates, defects and censor patterns may not select U-20."
+  - "No U-16 threshold change, second observation, result review, fixed rule, strategy, backtest or OOS step is authorized."
+  - "U-04 through U-16 outcomes, signs, failed Gates, concentrations, censor patterns and defects may not select U-17."
+  - Strategy code, signals, formal returns, fixed rules, backtesting, OOS and M2 remain unauthorized.
   - M1E, M1G and M1H exhausted the ADR-0010 BTC/ETH two-asset candidate queue. A fourth BTC/ETH indicator candidate is prohibited.
   - The repair/requalification path must not lower validation thresholds, mutate frozen historical evidence or implement execution.
   - Do not enter M2.
@@ -607,6 +3190,746 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/m1/U24_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-24 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/U24_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-24 frozen-source qualification
+    status: pass_local_complete
+    status_marker: '- Status: `pass_local_complete`'
+  - path: reports/expert/U24_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-24 Paper-protocol exact-head review
+    status: approve
+    status_marker: '- Verdict: `approve`'
+  - path: reports/m1/U24_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-24 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: reports/m1/U24_LOTTERY_DEMAND_AVOIDANCE_PREMIUM_DESIGN.md
+    phase: U-24 lottery-demand avoidance premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_and_synthetic_core_feasibility_only`'
+  - path: reports/m1/U24_NON_DUPLICATION_REVIEW.md
+    phase: U-24 non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: reports/m0/U24_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-24 design authorization decision
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: reports/m1/U19_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-19 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u19_cross_sectional_paper_protocol_v1.json
+    phase: U-19 machine Paper protocol
+    status: deterministic_exact_head_review_only_authority
+    status_marker: '"content_hash": "8f50ee407a79f2787de53e79b1a4a6de27af89c9ca1c58b5409271039ffd40f9"'
+  - path: reports/m1/U19_IDIOSYNCRATIC_VOLATILITY_OF_VOLATILITY_RISK_PREMIUM_DESIGN.md
+    phase: U-19 hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U19_NON_DUPLICATION_REVIEW.md
+    phase: U-19 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u19_cross_sectional_design_scope_v1.json
+    phase: U-19 machine design scope
+    status: deterministic_protocol_design_only_authority
+    status_marker: '"content_hash": "89cd46e632d5d890b5c2b13c71a63642ab1ed5a2167904df0f722a5d4279fe80"'
+  - path: reports/m0/U19_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-19 design authorization
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u19_design_authorization_v1.json
+    phase: U-19 design authorization machine decision
+    status: deterministic_design_only_authority
+    status_marker: '"content_hash": "0996522977d3a54fe35f29220bcd0ca9dd4f2aebd1533d610c6aececf250c3a9"'
+  - path: reports/m1/U18_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-18 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u18_cross_sectional_paper_observation/run_manifest.json
+    phase: U-18 Paper observation machine evidence
+    status: deterministic_failed_feasibility_candidate_closed
+    status_marker: '"run_content_hash":"213c303dc81f23f0f8bb0d37c1f114636ca0cbd76c0bae1f3c432a5b2cf9c3cd"'
+  - path: reports/m1/U18_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-18 frozen-source data qualification and preflight
+    status: pass_local_complete
+    status_marker: '- Status: `pass_local_complete`'
+  - path: reports/m1/evidence/u18_cross_sectional_data_qualification_v1.json
+    phase: U-18 qualification machine evidence
+    status: deterministic_one_paper_observation_authority
+    status_marker: '"qualification_content_hash":"088ebed218ce7960621ebeda539ec78c5aeebbef5b98f608a4f044f78e3dc6e0"'
+  - path: reports/expert/U18_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-18 Paper-protocol exact-head review
+    status: approve_zero_critical_high
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u18_cross_sectional_paper_protocol_review_v1.json
+    phase: U-18 protocol review machine evidence
+    status: deterministic_qualification_only_authority
+    status_marker: '"review_content_hash": "5fb6a8d2d8efe95c6b2970b3368c78c40f17b187a5239f0b907f37ce341e1dd3"'
+  - path: reports/m1/U18_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-18 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u18_cross_sectional_paper_protocol_v1.json
+    phase: U-18 machine Paper protocol
+    status: deterministic_exact_head_review_only_authority
+    status_marker: '"content_hash": "7571d2cb2408e30ac03d626544243f1e00595dc9ed85e6a7107b7d9a2062c671"'
+  - path: reports/m1/U18_DOWNSIDE_TAIL_RISK_PREMIUM_DESIGN.md
+    phase: U-18 downside-tail-risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U18_NON_DUPLICATION_REVIEW.md
+    phase: U-18 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u18_cross_sectional_design_scope_v1.json
+    phase: U-18 machine design scope
+    status: deterministic_protocol_design_only_authority
+    status_marker: '"content_hash": "487d9b11883d2eb38f2171bf6fe57b1e2e5040b31032e03de73cea9bb5c62df8"'
+  - path: reports/m0/U18_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-18 design authorization
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u18_design_authorization_v1.json
+    phase: U-18 design authorization machine decision
+    status: deterministic_design_only_authority
+    status_marker: '"content_hash": "eb78548edfb57859deea0433412ef772e92bad6c249caab8e3e3af3e91fcc0b1"'
+  - path: reports/m1/U17_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-17 data qualification and structural ceiling
+    status: failed_pre_result_sample_ceiling
+    status_marker: '- Status: `failed_pre_result_sample_ceiling`'
+  - path: reports/m1/evidence/u17_cross_sectional_data_qualification_v1.json
+    phase: U-17 qualification failure machine evidence
+    status: deterministic_pre_result_failure
+    status_marker: '"qualification_content_hash":"434d8a58a19306e9ff340da3b8df0c85fe15848c2686ed15491dee05ac64af91"'
+  - path: reports/expert/U17_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-17 Paper-protocol exact-head review
+    status: approve_zero_critical_high
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u17_cross_sectional_paper_protocol_review_v1.json
+    phase: U-17 protocol review machine evidence
+    status: deterministic_qualification_only_authority
+    status_marker: '"review_content_hash": "c9696e6124f8c6e93bff4318f239bcdee1452fffb5449a0c61479f803a540a64"'
+  - path: reports/m1/U17_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-17 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u17_cross_sectional_paper_protocol_v1.json
+    phase: U-17 machine Paper protocol
+    status: deterministic_exact_head_review_only_authority
+    status_marker: '"content_hash": "815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089"'
+  - path: reports/m1/U17_LIQUIDITY_RISK_PREMIUM_DESIGN.md
+    phase: U-17 liquidity-risk-premium hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U17_NON_DUPLICATION_REVIEW.md
+    phase: U-17 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u17_cross_sectional_design_scope_v1.json
+    phase: U-17 machine design scope
+    status: deterministic_protocol_design_only_authority
+    status_marker: '"content_hash": "ad3b6a4cabc61bd41890684ccf30b8ee4ae3a2811fcc4dd08abcf45a4bf420fe"'
+  - path: reports/m0/U17_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-17 design authorization
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u17_design_authorization_v1.json
+    phase: U-17 design authorization machine decision
+    status: deterministic_design_only_authority
+    status_marker: '"content_hash": "eb93310f631709ff4fb3514a0ffccac24a16f5ef401156e3f158beaca397420b"'
+  - path: reports/m1/U16_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-16 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u16_cross_sectional_paper_observation/run_manifest.json
+    phase: U-16 Paper observation machine evidence
+    status: deterministic_failed_feasibility
+    status_marker: '"run_content_hash":"322fda776158c5c035a30821460ac3acd7477a99b747aa6d08bfa68a55984d14"'
+  - path: reports/m1/U16_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-16 data qualification and complexity preflight
+    status: pass_local_complete
+    status_marker: '- Status: `pass_local_complete`'
+  - path: reports/m1/evidence/u16_cross_sectional_data_qualification_v1.json
+    phase: U-16 qualification machine evidence
+    status: deterministic_pre_result_pass
+    status_marker: '"qualification_content_hash":"5dc4850a1d940d05581774a1270ec6c9cdc4d5f8702a5614a81a01928842e949"'
+  - path: reports/expert/U16_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-16 Paper-protocol exact-head review
+    status: approve_zero_critical_high
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u16_cross_sectional_paper_protocol_review_v1.json
+    phase: U-16 protocol review machine evidence
+    status: deterministic_qualification_only
+    status_marker: '"review_content_hash": "2f708c0f6ac7b4e79428a4a7b1e9850182120c2dfcb3b06b53f973123f5c34e3"'
+  - path: reports/m1/U16_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-16 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u16_cross_sectional_paper_protocol_v1.json
+    phase: U-16 machine Paper protocol
+    status: deterministic_review_only
+    status_marker: '"content_hash": "18e302deb6a3d9fddf8b2b5b8866d39355a95519c91f609ce670d64168f5633a"'
+  - path: reports/m1/U16_CORRELATION_BREAKDOWN_INFORMATION_PERSISTENCE_DESIGN.md
+    phase: U-16 correlation-breakdown information-persistence design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: config/u16_cross_sectional_design_scope_v1.json
+    phase: U-16 design machine scope
+    status: deterministic_protocol_design_only
+    status_marker: '"content_hash": "8574e5c5aa068f10a561d8cfae26d4a45d5b9eb17287156912fa4d8b5fd075d1"'
+  - path: reports/m1/U16_NON_DUPLICATION_REVIEW.md
+    phase: U-16 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: reports/m0/U16_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-16 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u16_design_authorization_v1.json
+    phase: U-16 authorization machine evidence
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "05346312b0e47168a17a77cd19d1a73525b17eb9f64de29b2b157a5c673528fc"'
+  - path: reports/m1/U15_TAKER_BUY_FIELD_DATA_QUALIFICATION.md
+    phase: U-15 official taker-buy field/data qualification
+    status: failed_pre_result_field_qualification
+    status_marker: '- Status: `failed_pre_result_field_qualification`'
+  - path: reports/m1/evidence/u15_taker_buy_field_qualification_failure_v1.json
+    phase: U-15 field qualification failure machine evidence
+    status: deterministic_fail_closed
+    status_marker: '"content_hash": "83eb8ac2ec1726884f9b3f37bcfe0c13620bca06e98e7539a0e79466d8d63c28"'
+  - path: reports/expert/U15_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-15 Paper-protocol exact-head review
+    status: approve_zero_critical_high
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u15_cross_sectional_paper_protocol_review_v1.json
+    phase: U-15 protocol review machine evidence
+    status: deterministic_qualification_only
+    status_marker: '"review_content_hash": "2686c3acc1f5d46d7b37295530c54268f314cca177197306db7358bb8aa38ceb"'
+  - path: reports/m1/U15_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-15 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u15_cross_sectional_paper_protocol_v1.json
+    phase: U-15 machine Paper protocol
+    status: deterministic_review_only
+    status_marker: '"content_hash": "3b58d6a23cc78e3b644d935599e625c04267317d42608adf2f0321ec51ab577a"'
+  - path: reports/m1/U15_TAKER_BUY_ABSORPTION_PERSISTENCE_DESIGN.md
+    phase: U-15 taker-buy absorption persistence design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: config/u15_cross_sectional_design_scope_v1.json
+    phase: U-15 design machine scope
+    status: deterministic_protocol_design_only
+    status_marker: '"content_hash": "14ba25a0d8f3c50b3acd6a1ae50720dd4a113554d3bdc17776bf190b51b57b1c"'
+  - path: reports/m1/U15_NON_DUPLICATION_REVIEW.md
+    phase: U-15 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: reports/m0/U15_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-15 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u15_design_authorization_v1.json
+    phase: U-15 authorization machine evidence
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "98d4ec9049d3b40ded8f98c045405eda8a010c783b5597653586853a825b7e68"'
+  - path: reports/m1/U14_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-14 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u14_cross_sectional_paper_observation/run_manifest.json
+    phase: U-14 Paper observation machine evidence
+    status: deterministic_failed_feasibility
+    status_marker: '"run_content_hash":"3824731159e682d1fe0e249fc24a586ef87b8b2d53a4f716d42f66c9d72f1f5c"'
+  - path: reports/m1/U14_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-14 data qualification, complexity benchmark and preflight
+    status: pass_local_complete
+    status_marker: '- Status: `pass_local_complete`'
+  - path: reports/m1/evidence/u14_cross_sectional_data_qualification_v1.json
+    phase: U-14 qualification machine evidence
+    status: deterministic_pre_result_pass
+    status_marker: '"qualification_content_hash":"4db5eb7938cbf7f8063a00164fa6986d53629968ea0a8a4516de01e3a859dec5"'
+  - path: reports/expert/U14_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-14 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u14_cross_sectional_paper_protocol_review_v1.json
+    phase: U-14 Paper-protocol review machine evidence
+    status: deterministic_approve
+    status_marker: '"review_content_hash": "873f4435909ebc550f898972714e43ffc553b386700068ad65cecc7bef2fbbc2"'
+  - path: reports/m1/U14_DOWNSIDE_REJECTION_PERSISTENCE_DESIGN.md
+    phase: U-14 downside-rejection persistence design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: config/u14_cross_sectional_design_scope_v1.json
+    phase: U-14 design machine scope
+    status: deterministic_design
+    status_marker: '"content_hash": "a6c3cc47c3cadf33e5673e59ce47c639d6df1d49c57f88c51cc1c8579b446691"'
+  - path: reports/m1/U14_NON_DUPLICATION_REVIEW.md
+    phase: U-14 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: reports/m0/U14_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-14 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u14_design_authorization_v1.json
+    phase: U-14 design authorization machine evidence
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "ebcf8b78a75911a2567bf84d58363d3c4bd554ec0495bb63457c4d593e34e640"'
+  - path: reports/m1/U13_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-13 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u13_cross_sectional_paper_observation/run_manifest.json
+    phase: U-13 Paper observation machine evidence
+    status: deterministic_failed_feasibility
+    status_marker: '"run_content_hash":"b94ffc31598899186a005ea1eaba28b274faac2ad9f3fae034e9f71d5868eb3d"'
+  - path: reports/m1/U13_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-13 frozen-source qualification and preflight
+    status: pass_local_complete
+    status_marker: '- Status: `pass_local_complete`'
+  - path: reports/m1/evidence/u13_cross_sectional_data_qualification_v1.json
+    phase: U-13 qualification machine evidence
+    status: deterministic_pre_result_pass
+    status_marker: '"qualification_content_hash":"5c4a61efc177415b1bd0a03697f4a3028f9ab8bed908adc12100bc03e9b90590"'
+  - path: reports/expert/U13_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-13 Paper-protocol exact-head independent review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u13_cross_sectional_paper_protocol_review_v1.json
+    phase: U-13 Paper-protocol review machine evidence
+    status: deterministic_exact_head_review
+    status_marker: '"review_content_hash": "be552dad055234b0107810a7299656793ccea2a97f09a2cba22fa8ffc33ed5e0"'
+  - path: reports/m1/U13_COMMON_SHOCK_LAGGED_DIFFUSION_DESIGN.md
+    phase: U-13 common-shock lagged-diffusion design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: config/u13_cross_sectional_design_scope_v1.json
+    phase: U-13 design machine scope
+    status: deterministic_design
+    status_marker: '"content_hash": "982cb95125a94dd10d5524dab0c241fbd7642639e1dd3461da760024d9fd3477"'
+  - path: reports/m1/U13_NON_DUPLICATION_REVIEW.md
+    phase: U-13 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: reports/m0/U13_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-13 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u13_design_authorization_v1.json
+    phase: U-13 design authorization machine evidence
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "8900ada4819a2d951fd26ab6a1d61e18e0e43de939207787c63e05f925866ce6"'
+  - path: reports/m1/U12_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-12 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u12_cross_sectional_paper_observation/run_manifest.json
+    phase: U-12 Paper observation machine evidence
+    status: deterministic_failed_feasibility
+    status_marker: '"run_content_hash":"b42a539c555e37b8b3871910bf5fc21397db3ea01044dee3bbfe3bf7902e7995"'
+  - path: reports/m1/U12_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-12 data qualification and same-reader preflight
+    status: pass_local_complete
+    status_marker: '- Status: `pass_local_complete`'
+  - path: reports/m1/evidence/u12_cross_sectional_data_qualification_v1.json
+    phase: U-12 qualification machine evidence
+    status: deterministic_pre_result_pass
+    status_marker: '"qualification_content_hash":"c9a5b5480081ef0583604910ce2550029086b9c9f7bd0a147c723006859a0510"'
+  - path: reports/expert/U12_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-12 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u12_cross_sectional_paper_protocol_review_v1.json
+    phase: U-12 Paper-protocol review machine evidence
+    status: deterministic_exact_head_review
+    status_marker: '"review_content_hash": "81262bf19b2c32d7cfb37a6d42106ec7bc21bd674a4d0d106b3e0ccfd58b8813"'
+  - path: reports/m1/U12_RECURRING_CALENDAR_FLOW_SEASONALITY_DESIGN.md
+    phase: U-12 recurring calendar-flow hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: config/u12_cross_sectional_design_scope_v1.json
+    phase: U-12 design machine scope
+    status: deterministic_design
+    status_marker: '"content_hash": "e53003e7c9255fc11d976a646f8700532cc98ad6fd1c410b00647957daa6d5dc"'
+  - path: reports/m1/U12_NON_DUPLICATION_REVIEW.md
+    phase: U-12 design non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: reports/m0/U12_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-12 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u12_design_authorization_v1.json
+    phase: U-12 design authorization machine evidence
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "ecb8fd7801eda5a42652091a27bad46368d4193240d58423827cdc8c8c8602e7"'
+  - path: reports/m1/U11_PAPER_OBSERVATION_ADJUDICATION.md
+    phase: U-11 Paper observation fail-closed adjudication
+    status: failed_execution_invalid_observation
+    status_marker: '- Status: `failed_execution_invalid_observation`'
+  - path: reports/m1/U11_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-11 raw Paper observation attempt evidence
+    status: immutable_invalid_attempt_evidence
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u11_cross_sectional_paper_observation/run_manifest.json
+    phase: U-11 raw attempt machine evidence
+    status: deterministic_invalid_attempt
+    status_marker: '"run_content_hash":"0a55b61c83daea4c2f7c61e35db06b50c563a108c23cb74d35b1cb55888a9521"'
+  - path: reports/m1/U11_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-11 data qualification
+    status: pass_local_complete
+    status_marker: '- Status: `pass`'
+  - path: reports/m1/evidence/u11_cross_sectional_data_qualification_v1.json
+    phase: U-11 qualification machine evidence
+    status: deterministic_pass
+    status_marker: '"qualification_content_hash":"b0476b5e8cdd60769f49312e682329376daf5fa6f4163358d9bd4c84f0ca05b6"'
+  - path: reports/expert/U11_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-11 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u11_cross_sectional_paper_protocol_review_v1.json
+    phase: U-11 protocol review machine evidence
+    status: deterministic_approve
+    status_marker: '"review_content_hash": "4e8fea7a28e19742baab225f9b0e8b98be16749792b9a68b9416c7d287a4d9fc"'
+  - path: reports/m1/U11_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-11 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u11_cross_sectional_paper_protocol_v1.json
+    phase: U-11 machine Paper protocol
+    status: deterministic_frozen_before_result
+    status_marker: '"content_hash": "3d78bbc86049bf7f0a2b3e0b30a25c6a747640043868d76132cf2cf2324d42dc"'
+  - path: reports/m1/U11_ASYMMETRIC_MARKET_CAPTURE_QUALITY_DESIGN.md
+    phase: U-11 hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U11_NON_DUPLICATION_REVIEW.md
+    phase: U-11 non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u11_cross_sectional_design_scope_v1.json
+    phase: U-11 machine design scope
+    status: deterministic_design
+    status_marker: '"content_hash": "0572daf7511c673a89dff6e737ad12528dde6c40845b672d62bbd3b1aeca9e4c"'
+  - path: reports/m0/U11_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-11 design authorization
+    status: authorized_for_one_independent_outcome_blind_hypothesis_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u11_design_authorization_v1.json
+    phase: U-11 machine design authorization
+    status: deterministic_narrow_authorization
+    status_marker: '"content_hash": "c5db3dc0c01bc4e1ffe381150c132742446ce4b05b3fb8c381dc03612cff274a"'
+  - path: reports/m1/U10_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-10 sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u10_cross_sectional_paper_observation/run_manifest.json
+    phase: U-10 Paper machine evidence
+    status: deterministic_failed_feasibility
+    status_marker: '"run_content_hash":"9972a95fe662ac65f7e0e2c0bb4d88eb9743097beb9c7c536f3507d9a316d22f"'
+  - path: reports/m1/U10_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-10 data qualification
+    status: pass_local_complete
+    status_marker: '- Status: `pass`'
+  - path: reports/m1/evidence/u10_cross_sectional_data_qualification_v1.json
+    phase: U-10 qualification machine evidence
+    status: deterministic_pass
+    status_marker: '"qualification_content_hash":"0029def278eeadf6b3951e1e1f62d16b0919889950eb68e0cdd3fe97fe727ee2"'
+  - path: reports/expert/U10_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-10 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u10_cross_sectional_paper_protocol_review_v1.json
+    phase: U-10 protocol review machine evidence
+    status: deterministic_approve
+    status_marker: '"review_content_hash":"e42d31706fe98fb089f148d563b010b4312e53e9b33ba1c33faafe7f63379009"'
+  - path: reports/m1/U10_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-10 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u10_cross_sectional_paper_protocol_v1.json
+    phase: U-10 machine Paper protocol
+    status: deterministic_frozen_before_result
+    status_marker: '"paper_protocol_frozen":true'
+  - path: reports/m1/U10_VOLUME_CONFIRMED_RELATIVE_TREND_CONTINUATION_DESIGN.md
+    phase: U-10 hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U10_NON_DUPLICATION_REVIEW.md
+    phase: U-10 non-duplication
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u10_cross_sectional_design_scope_v1.json
+    phase: U-10 design machine scope
+    status: deterministic_design_only
+    status_marker: '"u10_paper_protocol_design": true'
+  - path: reports/m0/U10_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-10 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u10_design_authorization_v1.json
+    phase: U-10 design authorization machine decision
+    status: deterministic_narrow_authorization
+    status_marker: '"u10_hypothesis_design": true'
+  - path: reports/m1/U09_QUALIFICATION_SAMPLE_CEILING_CORRECTION.md
+    phase: U-09 pre-observation sample-ceiling correction
+    status: failed_pre_observation_sample_ceiling
+    status_marker: '- Status: `failed_pre_observation_sample_ceiling`'
+  - path: reports/m1/evidence/u09_qualification_sample_ceiling_correction_v1.json
+    phase: U-09 sample-ceiling machine evidence
+    status: deterministic_failed_pre_observation
+    status_marker: '"content_hash": "c6902525fd4163b0cf929242dc0b88404422421f03745385f615c9dafb3f4479"'
+  - path: reports/m1/U09_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-09 data qualification
+    status: pass_local_complete
+    status_marker: '- Status: `pass`'
+  - path: reports/m1/evidence/u09_cross_sectional_data_qualification_v1.json
+    phase: U-09 data qualification machine evidence
+    status: deterministic_pass
+    status_marker: '"qualification_content_hash":"c323798a9de04c423b8bb59c33604b2203715e1453f9b95b3f13022f71656aee"'
+  - path: reports/expert/U09_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-09 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u09_cross_sectional_paper_protocol_review_v1.json
+    phase: U-09 protocol review machine evidence
+    status: deterministic_approve
+    status_marker: '"review_content_hash": "dd6779dab8be86fffa17d08a6a64b3085963e3e89b1889b24b6f125f64bb2947"'
+  - path: reports/m1/U09_CROSS_SECTIONAL_PAPER_PROTOCOL.md
+    phase: U-09 outcome-blind Paper protocol
+    status: frozen_before_result_pending_exact_head_review
+    status_marker: '- Status: `frozen_before_result_pending_exact_head_review`'
+  - path: config/u09_cross_sectional_paper_protocol_v1.json
+    phase: U-09 machine Paper protocol
+    status: deterministic_frozen_before_result
+    status_marker: '"paper_protocol_frozen": true'
+  - path: reports/m1/U09_IDIOSYNCRATIC_VOLATILITY_QUALITY_PERSISTENCE_DESIGN.md
+    phase: U-09 hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U09_NON_DUPLICATION_REVIEW.md
+    phase: U-09 non-duplication
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u09_cross_sectional_design_scope_v1.json
+    phase: U-09 design machine scope
+    status: deterministic_design_only
+    status_marker: '"u09_paper_protocol_design": true'
+  - path: reports/m0/U09_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-09 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u09_design_authorization_v1.json
+    phase: U-09 design authorization machine decision
+    status: deterministic_narrow_authorization
+    status_marker: '"u09_hypothesis_design": true'
+  - path: reports/m1/U08_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-08 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/U08_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-08 data qualification
+    status: pass_local_complete
+    status_marker: '- Status: `pass`'
+  - path: reports/expert/U08_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-08 protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/m1/U08_LIQUIDITY_RANK_ENTRY_DEMAND_PERSISTENCE_DESIGN.md
+    phase: U-08 hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m0/U08_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-08 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: config/u08_design_authorization_v1.json
+    phase: U-08 design authorization machine decision
+    status: deterministic_narrow_authorization
+    status_marker: '"u08_hypothesis_design": true'
+  - path: reports/m1/U07_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-07 unique sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u07_cross_sectional_paper_observation/run_manifest.json
+    phase: U-07 Paper observation machine evidence
+    status: deterministic_failed_feasibility
+    status_marker: '"status":"failed_feasibility"'
+  - path: reports/m1/U07_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-07 data qualification
+    status: pass_local_complete
+    status_marker: '- Status: `pass`'
+  - path: reports/m1/evidence/u07_cross_sectional_data_qualification_v1.json
+    phase: U-07 data qualification machine evidence
+    status: deterministic_pass
+    status_marker: '"status":"pass"'
+  - path: reports/expert/U07_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-07 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u07_cross_sectional_paper_protocol_review_v1.json
+    phase: U-07 Paper-protocol review machine evidence
+    status: approve_zero_critical_high
+    status_marker: '"verdict": "approve"'
+  - path: reports/m1/U07_CROSS_SECTIONAL_MARKET_STRESS_RELATIVE_STRENGTH_DESIGN.md
+    phase: U-07 hypothesis design
+    status: design_pass_protocol_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U07_NON_DUPLICATION_REVIEW.md
+    phase: U-07 non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: reports/m0/U07_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-07 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: reports/m1/U06_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-06 sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u06_cross_sectional_paper_observation/run_manifest.json
+    phase: U-06 Paper observation machine result
+    status: deterministic_failed_feasibility
+    status_marker: '"status":"failed_feasibility"'
+  - path: reports/m1/U06_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-06 data qualification
+    status: pass_local_complete
+    status_marker: '- Status: `pass`'
+  - path: reports/m1/evidence/u06_cross_sectional_data_qualification_v1.json
+    phase: U-06 qualification machine evidence
+    status: deterministic_pass
+    status_marker: '"status":"pass"'
+  - path: reports/expert/U06_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-06 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Status: `approve_local_complete`'
+  - path: reports/expert/evidence/u06_cross_sectional_paper_protocol_review_v1.json
+    phase: U-06 Paper-protocol review machine evidence
+    status: approve_zero_critical_high
+    status_marker: '"verdict": "approve"'
+  - path: reports/m1/U06_CROSS_SECTIONAL_VOLUME_SHARE_ABSORPTION_DESIGN.md
+    phase: U-06 hypothesis design
+    status: design_pass_protocol_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U06_NON_DUPLICATION_REVIEW.md
+    phase: U-06 non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: reports/m0/U06_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-06 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: reports/m1/U05_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-05 sealed-IS Paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u05_cross_sectional_paper_observation/run_manifest.json
+    phase: U-05 Paper observation machine result
+    status: deterministic_failed_feasibility
+    status_marker: '"status":"failed_feasibility"'
+  - path: reports/m1/U05_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-05 data qualification and isolation
+    status: pass_local_complete
+    status_marker: '- Status: `pass`'
+  - path: reports/m1/evidence/u05_cross_sectional_data_qualification_v1.json
+    phase: U-05 data qualification machine evidence
+    status: deterministic_pass
+    status_marker: '"status":"pass"'
+  - path: reports/expert/U05_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-05 Paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u05_cross_sectional_paper_protocol_review_v1.json
+    phase: U-05 Paper-protocol review machine evidence
+    status: approve_zero_critical_high
+    status_marker: '"verdict": "approve"'
+  - path: reports/m1/U05_CROSS_SECTIONAL_BREADTH_DEMAND_PERSISTENCE_DESIGN.md
+    phase: U-05 hypothesis design
+    status: design_pass_protocol_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U05_NON_DUPLICATION_REVIEW.md
+    phase: U-05 non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: reports/m0/U05_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-05 design authorization
+    status: authorized_design_only
+    status_marker: '- Status: `authorized_for_one_independent_outcome_blind_hypothesis_design_only`'
+  - path: reports/m1/U04_CROSS_SECTIONAL_PAPER_OBSERVATION.md
+    phase: U-04 sealed-IS paper observation
+    status: failed_feasibility
+    status_marker: '- Status: `failed_feasibility`'
+  - path: reports/m1/evidence/u04_cross_sectional_paper_observation/run_manifest.json
+    phase: U-04 paper observation machine result
+    status: deterministic_failed_feasibility
+    status_marker: '"status":"failed_feasibility"'
+  - path: reports/m1/U04_CROSS_SECTIONAL_DATA_QUALIFICATION.md
+    phase: U-04 data qualification and isolation
+    status: pass_local_complete
+    status_marker: '- Status: `pass`'
+  - path: reports/m1/evidence/u04_cross_sectional_data_qualification_v1.json
+    phase: U-04 data qualification machine evidence
+    status: deterministic_pass
+    status_marker: '"status":"pass"'
+  - path: reports/expert/U04_CROSS_SECTIONAL_PAPER_PROTOCOL_REVIEW.md
+    phase: U-04 paper-protocol exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/u04_cross_sectional_paper_protocol_review_v1.json
+    phase: U-04 paper-protocol review machine evidence
+    status: approve_zero_critical_high
+    status_marker: '"verdict": "approve"'
+  - path: reports/m1/U04_CROSS_SECTIONAL_RESIDUAL_REVERSAL_DESIGN.md
+    phase: U-04 cross-sectional hypothesis design
+    status: economic_hypothesis_pass_protocol_design_only
+    status_marker: '- Status: `economic_hypothesis_pass_protocol_design_only`'
+  - path: reports/m1/U04_NON_DUPLICATION_REVIEW.md
+    phase: U-04 non-duplication review
+    status: pass_design_level
+    status_marker: '- Status: `pass_design_level`'
+  - path: config/u04_cross_sectional_design_scope_v1.json
+    phase: U-04 machine design scope
+    status: deterministic_outcome_blind_design
+    status_marker: '"status": "economic_hypothesis_pass_protocol_design_only"'
+  - path: reports/m0/U04_DESIGN_AUTHORIZATION_DECISION.md
+    phase: U-04 design authorization decision
+    status: one_outcome_blind_hypothesis_design_authorized
+    status_marker: '- Decision: `authorized_for_one_preregistered_hypothesis_design_only`'
+  - path: config/u04_design_authorization_v1.json
+    phase: U-04 design authorization machine decision
+    status: deterministic_narrow_authorization
+    status_marker: '"status": "authorized_for_one_preregistered_hypothesis_design_only"'
+  - path: reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_REPORT.md
+    phase: ADR-0015 real independent audit
+    status: pass_19_of_19_zero_critical_high
+    status_marker: '- Verdict: `pass`'
+  - path: reports/m0/evidence/liquid_universe_v4_adr0015_independent_audit/audit_summary.json
+    phase: ADR-0015 independent audit machine result
+    status: deterministic_pass
+    status_marker: '"verdict":"pass"'
+  - path: reports/expert/ADR_0015_INDEPENDENT_AUDITOR_REVIEW.md
+    phase: ADR-0015 independent auditor exact-head review
+    status: approve_local_complete
+    status_marker: '- Verdict: `approve`'
+  - path: reports/expert/evidence/adr0015_independent_auditor_review.json
+    phase: ADR-0015 independent auditor exact-head review machine evidence
+    status: approve_zero_critical_high
+    status_marker: '"verdict":"approve"'
+  - path: reports/m0/ADR_0015_INDEPENDENT_AUDITOR_IMPLEMENTATION_STATUS.md
+    phase: ADR-0015 independent auditor fixture implementation
+    status: fixture_complete_pending_exact_head_review
+    status_marker: '- Status: `fixture_complete_pending_exact_head_review`'
+  - path: config/liquid_universe_v4_adr0015_independent_auditor_implementation.json
+    phase: ADR-0015 independent auditor machine identity
+    status: deterministic_fixture_only_implementation
+    status_marker: '"status": "fixture_complete_pending_exact_head_review"'
   - path: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_IMPLEMENTATION_STATUS.md
     phase: ADR-0015 generic invalid-interval policy implementation
     status: implementation_pass_fixture_only_pending_exact_head_review
@@ -1007,6 +4330,9 @@ latest_tags:
   - project-context-system-v0.4.0
   - post-m1b-review-no-m2-v0.6.0
 latest_merged_prs:
+  - number: 111
+    merge_commit: e2112a31908f1587eb657a4123f1f114cf2016fe
+    purpose: controlled integration of exact reviewed ADR-0015 implementation
   - number: 110
     merge_commit: a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f
     purpose: ADR-0015 exact-head implementation review approve with zero critical/high
@@ -1324,6 +4650,7 @@ required_context_files:
   - AGENTS.md
   - PROJECT_EXECUTION_CHECKLIST.md
 validation_commands:
+  - bash scripts/adr0015_invalid_interval_audit_protocol_validate.sh
   - bash scripts/adr0015_invalid_interval_implementation_validate.sh
   - bash scripts/adr0015_adoption_validate.sh
   - bash scripts/adr0015_policy_draft_validate.sh
@@ -1528,30 +4855,36 @@ adr0015_conditional_adoption:
   u04_authorized: false
   m2_authorized: false
 adr0015_invalid_interval_policy_implementation:
-  status: implementation_exact_head_approved_controlled_integration_pending_gate
+  status: implementation_integrated_requalification_pass
   branch: codex/adr-0015-invalid-interval-controlled-integration
-  pr: runtime_current_pr
-  head_sha: runtime_current_pr_head
+  pr: 111
+  head_sha: 7e27bb5a9d1726e169ce42bb469bbf5686e97bd6
+  merge_commit: e2112a31908f1587eb657a4123f1f114cf2016fe
   base_main_sha: 141481fa445bdc03b453844a666dbd2639c3cdf7
   report: reports/m0/ADR_0015_INVALID_INTERVAL_POLICY_IMPLEMENTATION_STATUS.md
   policy_config: config/liquid_spot_invalid_interval_policy_v1.json
   policy_hash: 0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04
   algorithm_hash: 8f8a36681f35c64a244a7fc0e7155fdcdeb8fb6e5ace2054d261ef8daadea4ff
-  fixture_only: true
+  fixture_only: false
   fault_cases: 16
   full_active_slot_mask: true
   valid_minority_masked: true
   production_pipeline_code_modified: true
-  public_data_run_executed: false
+  public_data_run_executed: true
   reviewed_target_pr: 109
   reviewed_target_head_sha: 67e7d29eaed63a3edb903dd618184bc9f02c5748
   review_pr: 110
   review_merge_commit: a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f
   review_content_hash: 9a0736431f4df6e27ce0b8e35d28e90d22838aef684e78fbd4c76bd79efe5af1
-  fixed_range_public_requalification_authorized: false
+  fixed_range_public_requalification_authorized: true
+  fixed_range_public_requalification_complete: true
+  requalification_run_manifest_hash: a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9
+  requalification_artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
   exact_head_implementation_review_required: false
   exact_head_implementation_review_complete: true
   new_independent_audit_authorized: false
+  new_independent_audit_protocol_complete: true
+  new_independent_audit_protocol_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
   u04_authorized: false
   m2_authorized: false
 adr0015_invalid_interval_implementation_review:
@@ -1575,10 +4908,36 @@ adr0015_invalid_interval_implementation_review:
   verdict: approve
   critical_findings: 0
   high_findings: 0
-  implementation_target_merged: false
-  controlled_integration_pending: true
+  implementation_target_merged: true
+  controlled_integration_pending: false
   public_data_read_or_executed: false
   fixed_range_public_requalification_authorized: false
   new_independent_audit_authorized: false
   u04_authorized: false
+  m2_authorized: false
+adr0015_invalid_interval_independent_audit_protocol:
+  status: frozen_local_complete_before_auditor_implementation_or_result
+  branch: codex/adr-0015-new-independent-audit-protocol
+  starting_local_commit: a16b844
+  protocol: config/liquid_universe_v4_adr0015_independent_audit_protocol.json
+  report: reports/m0/ADR_0015_INVALID_INTERVAL_INDEPENDENT_AUDIT_PROTOCOL.md
+  protocol_content_hash: 9a1768f01e7891f8c76f74293fb3836339e75fafa039fe12ebf3a7ddfdbb970b
+  source_mode: frozen_local_only
+  source_archive_count: 27736
+  source_freeze_hash: c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c
+  requalification_run_manifest_hash: a2f122244e34408071c49f457b96f90b6eba219c6b1304bcdcd9ab7d7d89cdf9
+  requalification_artifact_set_hash: 8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3
+  production_manifests_total: 19
+  production_manifests_exact_required: 19
+  traversal_orders: [normal, reverse, deterministic_shuffled]
+  auditor_fixture_implementation_authorized: true
+  auditor_fault_injection_authorized: true
+  exact_head_auditor_review_required: true
+  real_independent_audit_executed: false
+  real_independent_audit_authorized: false
+  u04_authorized: false
+  strategy_authorized: false
+  oos_authorized: false
+  api_trading_authorized: false
+  execution_live_authorized: false
   m2_authorized: false

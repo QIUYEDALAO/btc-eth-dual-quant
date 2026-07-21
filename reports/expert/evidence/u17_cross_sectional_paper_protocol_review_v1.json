@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "approve",
+  "review_id": "U17-PAPER-PROTOCOL-EXACT-HEAD-REVIEW-V1",
+  "target": {
+    "head_sha": "c4990fbdc3a237c90fc73a2bf2a538109fcad31a",
+    "parent_sha": "9495249e3d2c473a5b13b9d0f20ace368d605d91",
+    "protocol_content_hash": "815013384df29fe2e803ee3e9dde22d0561cf1b67a24504290344ddef1ee6089",
+    "files": {
+      "config/u17_cross_sectional_paper_protocol_v1.json": "6f86bd42f7361b8e3b57dd74c7765d88565c7017e4f8fad91deb603ba703ebc9",
+      "reports/m1/U17_CROSS_SECTIONAL_PAPER_PROTOCOL.md": "34dca24eab593baaf487006d3f7c2888c21f11261dc951df25698fb31d004257",
+      "scripts/u17_cross_sectional_paper_protocol_check.py": "5a4fbb7eae3bc03594295055c53ce077e8aa2e6d71c7d15ba2dd10b1673a0863",
+      "scripts/u17_cross_sectional_paper_protocol_validate.sh": "787d446cf553e1f0bd5c68b578d905c69b5065721f74859b56db391ddfadde0f",
+      "tests/test_u17_cross_sectional_paper_protocol.py": "da5ac18fcccd7e2fff7d253afeeee7329a5bc4c71cab0769ed5009fa71954fdd"
+    }
+  },
+  "verdict": "approve",
+  "critical_findings": 0,
+  "high_findings": 0,
+  "review_dimensions": {
+    "candidate_design_and_u16_failure_binding": "pass",
+    "complete_28_day_history": "pass",
+    "exact_288_row_daily_quote_volume": "pass",
+    "all_active_member_daily_rank": "pass",
+    "low_liquidity_quartile_integer_definition": "pass",
+    "twenty_one_of_twenty_eight_persistence": "pass",
+    "continuing_investability_without_membership_event": "pass",
+    "point_in_time_membership_and_lifecycle": "pass",
+    "future_membership_used_only_for_path_right_censor_not_event_selection": "pass",
+    "invalid_interval_mask_before_daily_assembly": "pass",
+    "event_tie_break_and_28_day_clustering": "pass",
+    "strict_boundary_open_and_path_censoring": "pass",
+    "sample_projection_distribution_gates": "pass",
+    "economic_and_cost_gates": "pass",
+    "complexity_scope_and_oos_isolation": "pass",
+    "authorization_matrix": "pass"
+  },
+  "authorization_after_review": {
+    "data_qualification_complexity_and_preflight": true,
+    "liquidity_rank_scan": false,
+    "event_scan": false,
+    "path_observation": false,
+    "formal_returns": false,
+    "fixed_rule_contract": false,
+    "freqtrade_strategy_code": false,
+    "backtesting": false,
+    "oos": false,
+    "api_trading": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "review_content_hash": "c9696e6124f8c6e93bff4318f239bcdee1452fffb5449a0c61479f803a540a64",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}

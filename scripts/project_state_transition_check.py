@@ -12,6 +12,266 @@ import yaml
 
 ALLOWED = {
     (
+        "U-24 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized",
+        "u24_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2",
+    ): "U-24-PAPER-OBSERVATION",
+    (
+        "U-24 frozen-source qualification passed; one sealed-IS Paper observation is the only next task",
+        "u24_qualification_pass_one_paper_observation_only_no_formal_returns_no_oos_no_trading_no_m2",
+    ): "U-24-DATA-QUALIFICATION",
+    (
+        "U-24 Paper protocol exact-head review approved; frozen-source data qualification and result-free preflight are the only next task",
+        "u24_protocol_review_approve_qualification_only_no_results_no_oos_no_trading_no_m2",
+    ): "U-24-PROTOCOL-REVIEW",
+    (
+        "U-24 lottery-demand avoidance Paper protocol frozen after synthetic-core feasibility pass; exact-head independent review is the only next task",
+        "u24_paper_protocol_frozen_pending_exact_head_review_no_public_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-24-PROTOCOL",
+    (
+        "U-24 lottery-demand avoidance premium design completed; result-blind Paper protocol and synthetic-core feasibility are the only next task",
+        "u24_hypothesis_design_pass_protocol_and_synthetic_core_only_no_public_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-24",
+    (
+        "U-24 independent outcome-blind hypothesis design authorized",
+        "u24_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-24",
+    (
+        "U-23 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized",
+        "u23_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2",
+    ): "U-23-PAPER-OBSERVATION",
+    (
+        "U-23 frozen-source qualification passed; one sealed-IS Paper observation is the only next task",
+        "u23_qualification_pass_one_paper_observation_only_no_formal_returns_no_oos_no_trading_no_m2",
+    ): "U-23-DATA-QUALIFICATION",
+    (
+        "U-23 Paper protocol exact-head review approved; frozen-source data qualification and result-free preflight are the only next task",
+        "u23_protocol_review_approve_qualification_only_no_results_no_oos_no_trading_no_m2",
+    ): "U-23-PROTOCOL-REVIEW",
+    (
+        "U-23 range-expansion close-strength Paper protocol frozen after synthetic-core feasibility pass; exact-head independent review is the only next task",
+        "u23_paper_protocol_frozen_pending_exact_head_review_no_public_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-23-PROTOCOL",
+    (
+        "U-23 range-expansion close-strength continuation design completed; result-blind Paper protocol and synthetic-core feasibility are the only next task",
+        "u23_hypothesis_design_pass_protocol_and_synthetic_core_only_no_public_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-23",
+    (
+        "U-23 independent outcome-blind hypothesis design authorized",
+        "u23_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-23",
+    (
+        "U-22 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized",
+        "u22_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2",
+    ): "U-22-PAPER-OBSERVATION",
+    (
+        "U-22 frozen-source qualification passed; one sealed-IS Paper observation is the only next task",
+        "u22_qualification_pass_one_paper_observation_only_no_formal_returns_no_oos_no_trading_no_m2",
+    ): "U-22-DATA-QUALIFICATION",
+    (
+        "U-22 Paper protocol exact-head review approved; frozen-source data qualification and result-free preflight are the only next task",
+        "u22_protocol_review_approve_qualification_only_no_results_no_oos_no_trading_no_m2",
+    ): "U-22-PROTOCOL-REVIEW",
+    (
+        "U-22 dispersion-expansion Paper protocol frozen after synthetic-core feasibility pass; exact-head independent review is the only next task",
+        "u22_paper_protocol_frozen_pending_exact_head_review_no_public_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-22-PROTOCOL",
+    (
+        "U-22 dispersion-expansion leader-continuation design completed; result-blind Paper protocol and synthetic-core feasibility are the only next task",
+        "u22_hypothesis_design_pass_protocol_and_synthetic_core_only_no_public_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-22",
+    (
+        "U-22 independent outcome-blind hypothesis design authorized",
+        "u22_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-22",
+    (
+        "U-21 closed after pre-result complexity Gate failed; no successor is authorized",
+        "u21_failed_pre_result_complexity_closed_no_market_results_no_oos_no_trading_no_m2",
+    ): "U-21-DATA-QUALIFICATION",
+    (
+        "U-21 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task",
+        "u21_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-21-PROTOCOL-REVIEW",
+    (
+        "U-21 systematic-cokurtosis Paper protocol frozen; exact-head independent review is the only next task",
+        "u21_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-21-PROTOCOL",
+    (
+        "U-21 systematic-cokurtosis risk-premium design completed; outcome-blind Paper protocol design is the only next task",
+        "u21_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-21",
+    (
+        "U-21 independent outcome-blind hypothesis design authorized",
+        "u21_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-21",
+    (
+        "U-20 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized",
+        "u20_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2",
+    ): "U-20-PAPER-OBSERVATION",
+    (
+        "U-20 data qualification and complexity preflight passed; one sealed-IS Paper observation is the only next task",
+        "u20_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2",
+    ): "U-20-DATA-QUALIFICATION",
+    (
+        "U-20 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task",
+        "u20_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-20-PROTOCOL-REVIEW",
+    (
+        "U-20 negative-coskewness Paper protocol frozen; exact-head independent review is the only next task",
+        "u20_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-20-PROTOCOL",
+    (
+        "U-20 negative-coskewness risk-premium design completed; outcome-blind Paper protocol design is the only next task",
+        "u20_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-20",
+    (
+        "U-20 independent outcome-blind hypothesis design authorized",
+        "u20_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-20",
+    (
+        "U-19 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized",
+        "u19_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2",
+    ): "U-19-PAPER-OBSERVATION",
+    (
+        "U-19 data qualification and complexity preflight passed; one sealed-IS Paper observation is the only next task",
+        "u19_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2",
+    ): "U-19-DATA-QUALIFICATION",
+    (
+        "U-19 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task",
+        "u19_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-19-PROTOCOL-REVIEW",
+    (
+        "U-19 volatility-of-volatility Paper protocol frozen; exact-head independent review is the only next task",
+        "u19_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-19-PROTOCOL",
+    (
+        "U-19 volatility-of-volatility risk-premium design completed; outcome-blind Paper protocol design is the only next task",
+        "u19_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-19",
+    (
+        "U-19 independent outcome-blind hypothesis design authorized",
+        "u19_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-19",
+    (
+        "U-18 closed after unique sealed-IS Paper observation failed feasibility; no successor is authorized",
+        "u18_failed_feasibility_closed_no_second_run_no_oos_no_trading_no_m2",
+    ): "U-18-PAPER-OBSERVATION",
+    (
+        "U-18 data qualification and complexity preflight passed; one sealed-IS Paper observation is the only next task",
+        "u18_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2",
+    ): "U-18-DATA-QUALIFICATION",
+    (
+        "U-18 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task",
+        "u18_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-18-PROTOCOL-REVIEW",
+    (
+        "U-18 downside-tail-risk-premium Paper protocol frozen; exact-head independent review is the only next task",
+        "u18_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-18-PROTOCOL",
+    (
+        "U-18 downside-tail-risk-premium design completed; outcome-blind Paper protocol design is the only next task",
+        "u18_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-18",
+    (
+        "U-18 independent outcome-blind hypothesis design authorized",
+        "u18_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-18",
+    (
+        "U-17 closed on failed pre-result structural sample ceiling; no successor is authorized",
+        "u17_failed_pre_result_sample_ceiling_closed_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-17-DATA-QUALIFICATION",
+    (
+        "U-17 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task",
+        "u17_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-17-PROTOCOL-REVIEW",
+    (
+        "U-17 liquidity-risk-premium Paper protocol frozen; exact-head independent review is the only next task",
+        "u17_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-17-PROTOCOL",
+    (
+        "U-17 liquidity-risk-premium design completed; outcome-blind Paper protocol design is the only next task",
+        "u17_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-17",
+    (
+        "U-17 independent outcome-blind hypothesis design authorized",
+        "u17_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2",
+    ): "U-17",
+    (
+        "U-16 closed failed feasibility; no successor is authorized",
+        "u16_failed_feasibility_closed_no_returns_no_oos_no_trading_no_m2",
+    ): "U-16-PAPER-OBSERVATION",
+    (
+        "U-16 data qualification and complexity preflight passed; one frozen sealed-IS Paper observation is the only next task",
+        "u16_qualification_pass_one_paper_observation_only_no_returns_no_oos_no_trading_no_m2",
+    ): "U-16-PAPER-OBSERVATION",
+    (
+        "U-16 Paper protocol exact-head review approved; data qualification, complexity and preflight are the only next task",
+        "u16_protocol_review_approve_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-16-DATA-QUALIFICATION",
+    (
+        "U-16 correlation-breakdown Paper protocol frozen; exact-head independent review is the only next task",
+        "u16_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-16-PROTOCOL-REVIEW",
+    (
+        "U-16 correlation-breakdown information-persistence design completed; outcome-blind Paper protocol design is the only next task",
+        "u16_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-16-PROTOCOL",
+    (
+        "U-16 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u16_one_independent_hypothesis_design_authorized_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-16",
+    (
+        "U-15 closed on failed pre-result taker-buy field qualification; no successor is authorized",
+        "u15_failed_pre_result_field_qualification_closed_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-15-DATA-QUALIFICATION",
+    (
+        "U-15 Paper protocol exact-head review approved; field/data qualification, complexity and preflight are the only next task",
+        "u15_protocol_review_approve_field_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-15-DATA-QUALIFICATION",
+    (
+        "U-15 taker-buy absorption Paper protocol frozen; exact-head independent review is the only next task",
+        "u15_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-15-PROTOCOL-REVIEW",
+    (
+        "U-15 taker-buy absorption persistence design completed; outcome-blind Paper protocol design is the only next task",
+        "u15_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-15-PROTOCOL",
+    (
+        "U-15 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u15_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-15",
+    (
+        "U-14 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "u14_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-15-DECISION",
+    (
+        "U-14 data qualification and complexity preflight passed; one frozen sealed-IS Paper observation is the only next task",
+        "u14_data_qualification_complexity_preflight_pass_one_sealed_is_paper_observation_authorized_no_returns_no_oos_no_trading_no_m2",
+    ): "U-14-PAPER-OBSERVATION",
+    (
+        "U-14 Paper protocol exact-head review approved; qualification, complexity benchmark and preflight are the only next task",
+        "u14_paper_protocol_review_approve_qualification_complexity_preflight_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-14-DATA-QUALIFICATION",
+    (
+        "U-14 downside-rejection persistence design completed; outcome-blind Paper protocol design is the only next task",
+        "u14_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-14-PROTOCOL",
+    (
+        "U-14 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u14_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-14",
+    (
+        "U-13 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "u13_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-14-DECISION",
+    (
+        "U-13 data qualification passed; one frozen sealed-IS Paper observation is the only next task",
+        "u13_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-13-PAPER-OBSERVATION",
+    (
+        "U-13 Paper protocol exact-head review approved; frozen-source qualification and preflight are the only next task",
+        "u13_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-13-DATA-QUALIFICATION",
+    (
         "Liquid universe V2 correctness hardening pending review",
         "liquid_universe_v1_superseded_v2_hardening_pending_requalification_no_strategy_no_m2",
     ): "U-03D",
@@ -148,6 +408,234 @@ ALLOWED = {
         "adr0015_generic_policy_controlled_integration_pending_ci_no_requalification_no_u04_no_m2",
     ): "ADR-0015-IMPL",
     (
+        "ADR-0015 fixed-range requalification passed; new independent audit protocol is the only authorized next task",
+        "adr0015_requalification_pass_new_audit_protocol_authorized_no_audit_no_u04_no_m2",
+    ): "ADR-0015-AUDIT-PROTOCOL",
+    (
+        "ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task",
+        "adr0015_audit_protocol_frozen_auditor_fixture_implementation_authorized_no_real_audit_no_u04_no_m2",
+    ): "ADR-0015-AUDITOR",
+    (
+        "ADR-0015 independent auditor fixture implementation complete; exact-head review is the only authorized next task",
+        "adr0015_independent_auditor_fixture_complete_pending_exact_head_review_no_real_audit_no_u04_no_m2",
+    ): "ADR-0015-AUDITOR-REVIEW",
+    (
+        "ADR-0015 independent auditor exact-head review approved; real independent audit is the only authorized next task",
+        "adr0015_independent_auditor_review_approve_real_audit_authorized_no_u04_no_m2",
+    ): "ADR-0015-AUDIT",
+    (
+        "ADR-0015 independent auditor microsecond normalization fixed; replacement exact-head review is the only authorized next task",
+        "adr0015_independent_auditor_microsecond_fix_pending_re_review_no_real_audit_no_u04_no_m2",
+    ): "ADR-0015-AUDITOR-REVIEW",
+    (
+        "ADR-0015 independent auditor envelope reconciliation fixed; replacement exact-head review is the only authorized next task",
+        "adr0015_independent_auditor_envelope_fix_pending_re_review_no_real_audit_no_u04_no_m2",
+    ): "ADR-0015-AUDITOR-REVIEW",
+    (
+        "ADR-0015 independent audit passed; separate U-04 authorization decision is the only authorized next task",
+        "adr0015_independent_audit_pass_pending_separate_u04_decision_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-04-DECISION",
+    (
+        "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
+        "u04_one_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-04",
+    (
+        "U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task",
+        "u04_residual_reversal_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ): "U-04-PROTOCOL",
+    (
+        "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "u04_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-04-DATA-QUALIFICATION",
+    (
+        "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+        "u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-04-PAPER-OBSERVATION",
+    (
+        "U-04 paper feasibility failed; candidate closed without OOS",
+        "u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-04-CLOSED",
+    (
+        "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u05_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-05",
+    (
+        "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
+        "u05_breadth_demand_persistence_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ): "U-05-PROTOCOL",
+    (
+        "U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "u05_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-05-DATA-QUALIFICATION",
+    (
+        "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u05_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-05-PAPER-OBSERVATION",
+    (
+        "U-05 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "u05_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-06-DECISION",
+    (
+        "U-06 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u06_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-06",
+    (
+        "U-06 volume-share absorption design complete; outcome-blind Paper protocol design is the only next task",
+        "u06_volume_share_absorption_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ): "U-06-PROTOCOL",
+    (
+        "U-06 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "u06_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-06-DATA-QUALIFICATION",
+    (
+        "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u06_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-06-PAPER-OBSERVATION",
+    (
+        "U-06 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "u06_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-07-DECISION",
+    (
+        "U-07 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u07_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-07",
+    (
+        "U-07 market-stress relative-strength design complete; outcome-blind Paper protocol design is the only next task",
+        "u07_market_stress_relative_strength_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ): "U-07-PROTOCOL",
+    (
+        "U-07 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "u07_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-07-DATA-QUALIFICATION",
+    (
+        "U-07 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u07_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-07-PAPER-OBSERVATION",
+    (
+        "U-07 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "u07_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-08-DECISION",
+    (
+        "U-08 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u08_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-08",
+    (
+        "U-08 liquidity-rank entry demand-persistence design complete; outcome-blind Paper protocol design is the only next task",
+        "u08_liquidity_rank_entry_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ): "U-08-PROTOCOL",
+    (
+        "U-08 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "u08_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-08-DATA-QUALIFICATION",
+    (
+        "U-08 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u08_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-08-PAPER-OBSERVATION",
+    (
+        "U-08 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "u08_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-09-DECISION",
+    (
+        "U-09 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u09_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-09",
+    (
+        "U-09 idiosyncratic-volatility quality-persistence design complete; outcome-blind Paper protocol design is the only next task",
+        "u09_idiosyncratic_volatility_quality_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ): "U-09-PROTOCOL",
+    (
+        "U-09 Paper protocol frozen; exact-head independent review is the only authorized next task",
+        "u09_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-09-PROTOCOL-REVIEW",
+    (
+        "U-09 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "u09_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-09-DATA-QUALIFICATION",
+    (
+        "U-09 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u09_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-09-PAPER-OBSERVATION",
+    (
+        "U-09 closed before observation on deterministic sample ceiling; only a separate independent-candidate authorization decision may follow",
+        "u09_failed_pre_observation_sample_ceiling_closed_no_result_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-10-DECISION",
+    (
+        "U-10 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u10_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-10",
+    (
+        "U-10 volume-confirmed relative-trend design complete; outcome-blind Paper protocol design is the only next task",
+        "u10_volume_confirmed_relative_trend_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ): "U-10-PROTOCOL",
+    (
+        "U-10 Paper protocol frozen; exact-head independent review is the only authorized next task",
+        "u10_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-10-PROTOCOL-REVIEW",
+    (
+        "U-10 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "u10_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-10-DATA-QUALIFICATION",
+    (
+        "U-10 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u10_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-10-PAPER-OBSERVATION",
+    (
+        "U-10 Paper observation failed feasibility; separate U-11 independent-candidate authorization decision is the only next task",
+        "u10_paper_failed_feasibility_candidate_closed_u11_decision_only_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-11-DECISION",
+    (
+        "U-11 independent design authorized; one outcome-blind hypothesis design is the only next task",
+        "u11_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-11",
+    (
+        "U-11 asymmetric market-capture quality design completed; outcome-blind Paper protocol design is the only next task",
+        "u11_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-11-PROTOCOL",
+    (
+        "U-11 Paper protocol frozen before results; exact-head independent review is the only next task",
+        "u11_paper_protocol_frozen_pending_exact_head_review_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-11-PROTOCOL-REVIEW",
+    (
+        "U-11 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "u11_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-11-DATA-QUALIFICATION",
+    (
+        "U-11 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u11_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-11-PAPER-OBSERVATION",
+    (
+        "U-11 Paper observation invalid due execution defect; separate U-12 independent-candidate authorization decision is the only next task",
+        "u11_failed_execution_invalid_observation_candidate_closed_u12_decision_only_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-12-DECISION",
+    (
+        "U-12 independent design authorized; one outcome-blind hypothesis design is the only next task",
+        "u12_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-12",
+    (
+        "U-12 recurring calendar-flow seasonality design completed; outcome-blind Paper protocol design is the only next task",
+        "u12_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-12-PROTOCOL",
+    (
+        "U-12 Paper protocol exact-head review approved; data qualification and same-reader preflight are the only next task",
+        "u12_paper_protocol_review_approve_data_qualification_preflight_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-12-DATA-QUALIFICATION",
+    (
+        "U-12 data qualification and same-reader preflight passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u12_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-12-PAPER-OBSERVATION",
+    (
+        "U-12 Paper observation failed feasibility; separate U-13 independent-candidate authorization decision is the only next task",
+        "u12_failed_feasibility_candidate_closed_u13_decision_only_no_strategy_no_oos_no_trading_no_m2",
+    ): "U-13-DECISION",
+    (
+        "U-13 independent design authorized; one outcome-blind hypothesis design is the only next task",
+        "u13_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-13",
+    (
+        "U-13 common-shock lagged-diffusion design completed; outcome-blind Paper protocol design is the only next task",
+        "u13_hypothesis_design_pass_paper_protocol_only_no_data_no_events_no_returns_no_oos_no_trading_no_m2",
+    ): "U-13-PROTOCOL",
+    (
         "Liquid universe V2 qualification independently audited; hypothesis preregistration requires separate task",
         "liquid_universe_v2_qualification_audited_pass_no_hypothesis_no_oos_no_m2",
     ): "U-03F",
@@ -217,6 +705,21 @@ ADR0015_CONTROLLED_INTEGRATION_PAIR = (
     "adr0015_generic_policy_controlled_integration_pending_ci_no_requalification_no_u04_no_m2",
 )
 
+ADR0015_REQUALIFICATION_PASS_PAIR = (
+    "ADR-0015 fixed-range requalification passed; new independent audit protocol is the only authorized next task",
+    "adr0015_requalification_pass_new_audit_protocol_authorized_no_audit_no_u04_no_m2",
+)
+
+ADR0015_AUDIT_PROTOCOL_PAIR = (
+    "ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task",
+    "adr0015_audit_protocol_frozen_auditor_fixture_implementation_authorized_no_real_audit_no_u04_no_m2",
+)
+
+ADR0015_AUDITOR_REVIEW_PAIR = (
+    "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
+    "u04_one_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
 ADR0015_REVIEWED_IMPLEMENTATION_HEAD = "67e7d29eaed63a3edb903dd618184bc9f02c5748"
 ADR0015_IMPLEMENTATION_REVIEW_MERGE = "a02d4dfbe752bb7e26e8a7b41971a9f089ddc57f"
 ADR0015_EXACT_IMPLEMENTATION_FILES = (
@@ -232,6 +735,10 @@ ADR0015_EXACT_IMPLEMENTATION_FILES = (
 CLOSED_TASK_PAIRS = {
     FAILED_U03F_CLOSEOUT_PAIR,
     REPAIR_CHAIN_CLOSED_PAIR,
+    (
+        "U-04 paper feasibility failed; candidate closed without OOS",
+        "u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2",
+    ),
 }
 
 AUDIT_BLOCKED_PAIRS = {
@@ -246,6 +753,65 @@ AUDIT_BLOCKED_PAIRS = {
     ADR0015_ADOPTION_PAIR,
     ADR0015_IMPLEMENTATION_PAIR,
     ADR0015_CONTROLLED_INTEGRATION_PAIR,
+    ADR0015_REQUALIFICATION_PASS_PAIR,
+    ADR0015_AUDIT_PROTOCOL_PAIR,
+    ADR0015_AUDITOR_REVIEW_PAIR,
+    (
+        "U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task",
+        "u04_residual_reversal_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "u04_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+        "u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-04 paper feasibility failed; candidate closed without OOS",
+        "u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u05_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
+        "u05_breadth_demand_persistence_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "u05_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u05_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-05 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "u05_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-06 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "u06_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-06 volume-share absorption design complete; outcome-blind Paper protocol design is the only next task",
+        "u06_volume_share_absorption_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-06 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "u06_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "u06_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+    ),
+    (
+        "U-06 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "u06_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+    ),
 }
 
 EXPECTED_AUTH = {
@@ -259,6 +825,111 @@ EXPECTED_AUTH = {
     "api_or_trading": False,
 }
 
+U04_DESIGN_PAIR = (
+    "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
+    "u04_one_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U04_PROTOCOL_PAIR = (
+    "U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task",
+    "u04_residual_reversal_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+)
+
+U04_PROTOCOL_REVIEW_APPROVED_PAIR = (
+    "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+    "u04_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+)
+
+U04_DATA_QUALIFICATION_PASS_PAIR = (
+    "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+    "u04_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U04_FAILED_FEASIBILITY_PAIR = (
+    "U-04 paper feasibility failed; candidate closed without OOS",
+    "u04_failed_feasibility_negative_24h_recovery_candidate_closed_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U05_DESIGN_PAIR = (
+    "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
+    "u05_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U05_PROTOCOL_PAIR = (
+    "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
+    "u05_breadth_demand_persistence_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+)
+
+U05_PROTOCOL_REVIEW_APPROVED_PAIR = (
+    "U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+    "u05_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+)
+
+U05_DATA_QUALIFICATION_PASS_PAIR = (
+    "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+    "u05_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U05_CLOSED_PAIR = (
+    "U-05 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+    "u05_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U06_DESIGN_PAIR = (
+    "U-06 independent design authorized; outcome-blind hypothesis design is the only next task",
+    "u06_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U07_DESIGN_PAIR = (
+    "U-07 independent design authorized; outcome-blind hypothesis design is the only next task",
+    "u07_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U07_PROTOCOL_PAIR = (
+    "U-07 market-stress relative-strength design complete; outcome-blind Paper protocol design is the only next task",
+    "u07_market_stress_relative_strength_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+)
+
+U07_PROTOCOL_REVIEW_APPROVED_PAIR = (
+    "U-07 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+    "u07_paper_protocol_review_approve_data_qualification_only_no_events_no_returns_no_oos_no_trading_no_m2",
+)
+
+U07_DATA_QUALIFICATION_PASS_PAIR = (
+    "U-07 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+    "u07_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U07_FAILED_FEASIBILITY_PAIR = (
+    "U-07 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+    "u07_failed_feasibility_closed_no_rerun_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U08_DESIGN_PAIR = (
+    "U-08 independent design authorized; outcome-blind hypothesis design is the only next task",
+    "u08_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U09_DESIGN_PAIR = (
+    "U-09 independent design authorized; outcome-blind hypothesis design is the only next task",
+    "u09_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U10_DESIGN_PAIR = (
+    "U-10 independent design authorized; outcome-blind hypothesis design is the only next task",
+    "u10_one_independent_hypothesis_design_authorized_no_event_scan_no_strategy_no_oos_no_trading_no_m2",
+)
+
+U08_PROTOCOL_DESIGN_PAIR = (
+    "U-08 liquidity-rank entry demand-persistence design complete; outcome-blind Paper protocol design is the only next task",
+    "u08_liquidity_rank_entry_design_complete_protocol_design_only_no_event_scan_no_returns_no_oos_no_trading_no_m2",
+)
+
+U06_DATA_QUALIFICATION_PASS_PAIR = (
+    "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+    "u06_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2",
+)
+
 
 def validate(state: dict) -> list[str]:
     failures = []
@@ -266,9 +937,14 @@ def validate(state: dict) -> list[str]:
     expected_task = ALLOWED.get(pair)
     if expected_task is None:
         failures.append(f"unsupported V2 phase/status pair: {pair}")
-    if state.get("research_authorizations") != EXPECTED_AUTH:
+    expected_auth = dict(EXPECTED_AUTH)
+    if pair in {U04_DESIGN_PAIR, U05_DESIGN_PAIR, U06_DESIGN_PAIR, U07_DESIGN_PAIR, U08_DESIGN_PAIR, U09_DESIGN_PAIR, U10_DESIGN_PAIR, ("U-11 independent design authorized; one outcome-blind hypothesis design is the only next task", "u11_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2"), ("U-12 independent design authorized; one outcome-blind hypothesis design is the only next task", "u12_design_authorized_one_hypothesis_only_no_events_no_returns_no_oos_no_trading_no_m2"), ("U-17 independent outcome-blind hypothesis design authorized", "u17_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2"), ("U-18 independent outcome-blind hypothesis design authorized", "u18_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2"), ("U-24 independent outcome-blind hypothesis design authorized", "u24_design_only_authorized_no_data_no_results_no_oos_no_trading_no_m2")}:
+        expected_auth["hypothesis_preregistration"] = True
+    if pair in {U04_DATA_QUALIFICATION_PASS_PAIR, U05_DATA_QUALIFICATION_PASS_PAIR, U06_DATA_QUALIFICATION_PASS_PAIR, U07_DATA_QUALIFICATION_PASS_PAIR} or pair in {("U-08 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task", "u08_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2"), ("U-09 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task", "u09_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2"), ("U-10 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task", "u10_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2"), ("U-11 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task", "u11_data_qualification_pass_one_sealed_is_paper_observation_authorized_no_strategy_no_oos_no_trading_no_m2")}:
+        expected_auth["event_scan"] = True
+    if state.get("research_authorizations") != expected_auth:
         failures.append("research authorization matrix changed")
-    if pair == ADR0015_CONTROLLED_INTEGRATION_PAIR:
+    if pair in {ADR0015_CONTROLLED_INTEGRATION_PAIR, ADR0015_REQUALIFICATION_PASS_PAIR, ADR0015_AUDIT_PROTOCOL_PAIR, ADR0015_AUDITOR_REVIEW_PAIR}:
         for commit, label in (
             (ADR0015_REVIEWED_IMPLEMENTATION_HEAD, "reviewed implementation head"),
             (ADR0015_IMPLEMENTATION_REVIEW_MERGE, "implementation review merge"),
@@ -316,8 +992,9 @@ def validate(state: dict) -> list[str]:
     active = [
         item
         for item in open_work
-        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL"}
+        if item.get("id") in {"U-03D", "U-03E", "U-03E-ADJ", "ADR-0013-REVIEW", "ADR-0013-ADOPT", "U-03E-V3-IMPL", "U-03E-V3-RUN", "U-03E-V3-ADJ", "ADR-0014-DRAFT", "ADR-0014-REVIEW", "ADR-0014-ADOPT", "U-03E-V4-IMPL", "U-03E-V4-RUN", "U-03F", "U-03F-REPAIR-REQUALIFICATION", "U-03F-R2-PROTOCOL", "U-03F-R2-DIAGNOSTIC", "ADR-0015-DRAFT", "ADR-0015-REVIEW", "ADR-0015-ADOPT", "ADR-0015-IMPL", "ADR-0015-AUDIT-PROTOCOL", "ADR-0015-AUDITOR", "ADR-0015-AUDITOR-REVIEW", "ADR-0015-AUDIT", "U-04-DECISION", "U-04", "U-04-PROTOCOL", "U-04-DATA-QUALIFICATION", "U-04-PAPER-OBSERVATION", "U-05", "U-05-PROTOCOL", "U-05-DATA-QUALIFICATION", "U-05-PAPER-OBSERVATION", "U-06-DECISION", "U-06", "U-06-PROTOCOL", "U-06-DATA-QUALIFICATION", "U-06-PAPER-OBSERVATION", "U-07-DECISION", "U-07", "U-07-PROTOCOL", "U-07-DATA-QUALIFICATION", "U-07-PAPER-OBSERVATION", "U-08-DECISION", "U-08", "U-08-PROTOCOL", "U-08-DATA-QUALIFICATION", "U-08-PAPER-OBSERVATION", "U-09-DECISION", "U-09", "U-09-PROTOCOL", "U-09-PROTOCOL-REVIEW", "U-09-DATA-QUALIFICATION", "U-09-PAPER-OBSERVATION", "U-10-DECISION", "U-10", "U-10-PROTOCOL", "U-10-PROTOCOL-REVIEW", "U-10-DATA-QUALIFICATION", "U-10-PAPER-OBSERVATION", "U-11-DECISION", "U-11", "U-11-PROTOCOL", "U-11-PROTOCOL-REVIEW", "U-11-DATA-QUALIFICATION", "U-11-PAPER-OBSERVATION", "U-12-DECISION", "U-12", "U-12-PROTOCOL", "U-12-DATA-QUALIFICATION", "U-12-PAPER-OBSERVATION", "U-13-DECISION", "U-13", "U-13-PROTOCOL", "U-13-DATA-QUALIFICATION", "U-13-PAPER-OBSERVATION", "U-14-DECISION", "U-14", "U-14-PROTOCOL"}
     ]
+    active.extend(item for item in open_work if item.get("id") in {"U-14-DATA-QUALIFICATION", "U-14-PAPER-OBSERVATION", "U-15-DECISION", "U-15", "U-15-PROTOCOL", "U-15-PROTOCOL-REVIEW", "U-15-DATA-QUALIFICATION", "U-16", "U-16-PROTOCOL", "U-16-PROTOCOL-REVIEW", "U-16-DATA-QUALIFICATION", "U-16-PAPER-OBSERVATION", "U-17", "U-17-PROTOCOL", "U-17-PROTOCOL-REVIEW", "U-17-DATA-QUALIFICATION", "U-18", "U-18-PROTOCOL", "U-18-PROTOCOL-REVIEW", "U-18-DATA-QUALIFICATION", "U-18-PAPER-OBSERVATION", "U-19", "U-19-PROTOCOL", "U-19-PROTOCOL-REVIEW", "U-19-DATA-QUALIFICATION", "U-19-PAPER-OBSERVATION", "U-20", "U-20-PROTOCOL", "U-20-PROTOCOL-REVIEW", "U-20-DATA-QUALIFICATION", "U-20-PAPER-OBSERVATION", "U-21", "U-21-PROTOCOL", "U-21-PROTOCOL-REVIEW", "U-21-DATA-QUALIFICATION", "U-22", "U-22-PROTOCOL", "U-22-PROTOCOL-REVIEW", "U-22-DATA-QUALIFICATION", "U-22-PAPER-OBSERVATION", "U-23", "U-23-PROTOCOL", "U-23-PROTOCOL-REVIEW", "U-23-DATA-QUALIFICATION", "U-23-PAPER-OBSERVATION", "U-24", "U-24-PROTOCOL", "U-24-PROTOCOL-REVIEW", "U-24-DATA-QUALIFICATION", "U-24-PAPER-OBSERVATION"})
     if pair == BLOCKED_REQUALIFICATION_PAIR:
         completed = state.get("completed_milestones", [])
         merged_prs = {item.get("number") for item in state.get("latest_merged_prs", [])}
@@ -338,7 +1015,10 @@ def validate(state: dict) -> list[str]:
         and not any(item.get("id") == expected_task for item in active)
     ):
         failures.append(f"current V2 task missing from open_work: {expected_task}")
-    if pair[0] in {
+    if any(
+        item.get("phase") == "ADR-0014 required-changes independent conformance review"
+        for item in state.get("completed_milestones", [])
+    ) or pair[0] in {
         "ADR-0014 required-changes independent conformance review completed",
         "ADR-0014 conditional adoption pending merge",
         "Liquid universe V4 lifecycle availability implementation pending independent review",
@@ -364,6 +1044,29 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 conditional adoption pending PR validation",
         "ADR-0015 generic invalid-interval policy implementation pending exact-head review",
         "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
+        "ADR-0015 fixed-range requalification passed; new independent audit protocol is the only authorized next task",
+        "ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task",
+        "ADR-0015 independent auditor fixture implementation complete; exact-head review is the only authorized next task",
+        "ADR-0015 independent auditor exact-head review approved; real independent audit is the only authorized next task",
+        "ADR-0015 independent auditor microsecond normalization fixed; replacement exact-head review is the only authorized next task",
+        "ADR-0015 independent auditor envelope reconciliation fixed; replacement exact-head review is the only authorized next task",
+        "ADR-0015 independent audit passed; separate U-04 authorization decision is the only authorized next task",
+        "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
+        "U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task",
+        "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+        "U-04 paper feasibility failed; candidate closed without OOS",
+        "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
+        "U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "U-05 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "U-06 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "U-06 volume-share absorption design complete; outcome-blind Paper protocol design is the only next task",
+        "U-06 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "U-06 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "U-07 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
     }:
         milestones = [
             item
@@ -383,7 +1086,11 @@ def validate(state: dict) -> list[str]:
             milestones[0].get(key) != value for key, value in expected_milestone.items()
         ):
             failures.append("ADR-0014 conformance milestone binding changed")
-    if pair[0] in {
+    historical_failed_u03f_audit = any(
+        item.get("phase") == "U-03F V4 independent audit" and item.get("status") == "failed_audit"
+        for item in state.get("completed_milestones", [])
+    )
+    if historical_failed_u03f_audit or pair[0] in {
         "Liquid universe V4 lifecycle availability implementation pending independent review",
         "Liquid universe V4 implementation approved and merged; fixed-range public requalification authorized not started",
         "Liquid universe V4 public requalification passed pending review and merge",
@@ -666,7 +1373,7 @@ def validate(state: dict) -> list[str]:
                 }
                 if any(item.get(key) != value for key, value in expected_evidence.items()):
                     failures.append("V4 public requalification evidence binding changed")
-    if pair[0] in {
+    if historical_failed_u03f_audit or pair[0] in {
         "Liquid universe V4 public requalification passed; U-03F independent audit is the only authorized next task",
         "U-03F V4 independent audit protocol frozen pending review",
         "U-03F V4 independent auditor implementation pending independent review",
@@ -683,6 +1390,29 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 conditional adoption pending PR validation",
         "ADR-0015 generic invalid-interval policy implementation pending exact-head review",
         "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
+        "ADR-0015 fixed-range requalification passed; new independent audit protocol is the only authorized next task",
+        "ADR-0015 independent audit protocol frozen; independent auditor implementation is the only authorized next task",
+        "ADR-0015 independent auditor fixture implementation complete; exact-head review is the only authorized next task",
+        "ADR-0015 independent auditor exact-head review approved; real independent audit is the only authorized next task",
+        "ADR-0015 independent auditor microsecond normalization fixed; replacement exact-head review is the only authorized next task",
+        "ADR-0015 independent auditor envelope reconciliation fixed; replacement exact-head review is the only authorized next task",
+        "ADR-0015 independent audit passed; separate U-04 authorization decision is the only authorized next task",
+        "U-04 cross-sectional hypothesis design authorized; outcome-blind preregistration is the only authorized next task",
+        "U-04 cross-sectional residual-reversal design complete; outcome-blind paper protocol design is the only authorized next task",
+        "U-04 paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "U-04 data qualification passed; one frozen sealed-IS paper observation is the only authorized next task",
+        "U-04 paper feasibility failed; candidate closed without OOS",
+        "U-05 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "U-05 breadth-demand persistence design complete; outcome-blind paper protocol design is the only next task",
+        "U-05 Paper protocol exact-head review approved; data qualification and isolation are the only authorized next task",
+        "U-05 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "U-05 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "U-06 independent design authorized; outcome-blind hypothesis design is the only next task",
+        "U-06 volume-share absorption design complete; outcome-blind Paper protocol design is the only next task",
+        "U-06 Paper protocol exact-head review approved; data qualification and isolation are the only next task",
+        "U-06 data qualification passed; one frozen sealed-IS Paper observation is the only authorized next task",
+        "U-06 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
+        "U-07 closed failed feasibility; only a separate independent-candidate authorization decision may follow",
     }:
         milestones = [
             item
@@ -692,7 +1422,7 @@ def validate(state: dict) -> list[str]:
         expected_milestone = {
             "status": (
                 "pass_revalidation_required_after_failed_independent_audit"
-                if pair in AUDIT_BLOCKED_PAIRS
+                if pair in AUDIT_BLOCKED_PAIRS or historical_failed_u03f_audit
                 else "pass_active_qualification_authority"
             ),
             "merged_pr": 89,
@@ -707,7 +1437,7 @@ def validate(state: dict) -> list[str]:
             failures.append("merged V4 requalification milestone binding changed")
         if any(item.get("id") == "U-03E-V4-RUN" for item in open_work):
             failures.append("merged V4 requalification must not remain in open_work")
-        if pair not in AUDIT_BLOCKED_PAIRS:
+        if pair not in AUDIT_BLOCKED_PAIRS and not historical_failed_u03f_audit:
             audit = [item for item in open_work if item.get("id") == "U-03F"]
             expected_audit_status = {
                 "U-03F V4 independent audit protocol frozen pending review": "protocol_frozen_pending_review",
@@ -724,7 +1454,10 @@ def validate(state: dict) -> list[str]:
             )
             if not audit or audit[0].get("evidence") != expected_evidence:
                 failures.append("U-03F must audit the V4 machine authority")
-    if pair in AUDIT_BLOCKED_PAIRS:
+    if pair in AUDIT_BLOCKED_PAIRS or any(
+        item.get("phase") == "U-03F V4 independent audit" and item.get("status") == "failed_audit"
+        for item in state.get("completed_milestones", [])
+    ):
         if any(item.get("id") == "U-03F" for item in open_work):
             failures.append("merged failed U-03F must not remain in open_work")
         audit_milestones = [
@@ -805,6 +1538,7 @@ def validate(state: dict) -> list[str]:
         "ADR-0015 conditional adoption pending PR validation",
         "ADR-0015 generic invalid-interval policy implementation pending exact-head review",
         "ADR-0015 invalid-interval implementation controlled integration pending PR validation",
+        "ADR-0015 fixed-range requalification passed; new independent audit protocol is the only authorized next task",
     }:
         reviews = [
             item for item in state.get("completed_milestones", [])
@@ -835,8 +1569,551 @@ def validate(state: dict) -> list[str]:
             failures.append("U-03F auditor review milestone binding changed")
         if len(implementations) != 1 or any(implementations[0].get(key) != value for key, value in expected_implementation.items()):
             failures.append("U-03F auditor implementation milestone binding changed")
-    if any("U-04" == item.get("id") and item.get("status") != "not_authorized" for item in open_work):
-        failures.append("U-04 authorized without a separate post-audit task")
+    u04_items = [item for item in open_work if item.get("id") == "U-04"]
+    if any(item.get("status") != "not_authorized" for item in u04_items):
+        if pair != U04_DESIGN_PAIR:
+            failures.append("U-04 authorized without a separate post-audit task")
+        elif len(u04_items) != 1 or any(
+            u04_items[0].get(key) != value
+            for key, value in {
+                "status": "authorized_ready",
+                "maximum_hypotheses": 1,
+                "outcome_blind_preregistration_required": True,
+                "event_scan_authorized": False,
+                "strategy_authorized": False,
+                "oos_authorized": False,
+                "trading_authorized": False,
+                "m2_authorized": False,
+            }.items()
+        ):
+            failures.append("U-04 narrow design authorization binding changed")
+    u04_protocol_items = [item for item in open_work if item.get("id") == "U-04-PROTOCOL"]
+    if pair == U04_PROTOCOL_PAIR:
+        if len(u04_protocol_items) != 1 or any(
+            u04_protocol_items[0].get(key) != value
+            for key, value in {
+                "status": "authorized_ready",
+                "candidate_id": "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL",
+                "outcome_blind_protocol_required": True,
+                "event_scan_authorized": False,
+                "strategy_authorized": False,
+                "oos_authorized": False,
+                "trading_authorized": False,
+                "m2_authorized": False,
+            }.items()
+        ):
+            failures.append("U-04 paper-protocol design authorization binding changed")
+    u04_data_items = [item for item in open_work if item.get("id") == "U-04-DATA-QUALIFICATION"]
+    if pair == U04_PROTOCOL_REVIEW_APPROVED_PAIR:
+        if len(u04_data_items) != 1 or any(
+            u04_data_items[0].get(key) != value
+            for key, value in {
+                "status": "authorized_ready",
+                "candidate_id": "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL",
+                "protocol_content_hash": "7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6",
+                "review_content_hash": "34fe2efdf4788b20b915f34b3b6442f60ddaa364103ae90b920dc2cacf9646b1",
+                "source_mode": "frozen_local_only",
+                "data_qualification_authorized": True,
+                "event_scan_authorized": False,
+                "strategy_authorized": False,
+                "oos_authorized": False,
+                "trading_authorized": False,
+                "m2_authorized": False,
+            }.items()
+        ):
+            failures.append("U-04 data-qualification authorization binding changed")
+    u04_observation_items = [item for item in open_work if item.get("id") == "U-04-PAPER-OBSERVATION"]
+    if pair == U04_DATA_QUALIFICATION_PASS_PAIR:
+        if len(u04_observation_items) != 1 or any(
+            u04_observation_items[0].get(key) != value
+            for key, value in {
+                "status": "authorized_ready",
+                "candidate_id": "U04-CROSS-SECTIONAL-RESIDUAL-REVERSAL",
+                "protocol_content_hash": "7b0e462dd9d4f51de1419005bb8701b859f4d2be6148121c1e68cdd0089629d6",
+                "review_content_hash": "34fe2efdf4788b20b915f34b3b6442f60ddaa364103ae90b920dc2cacf9646b1",
+                "qualification_content_hash": "4bdebb527494386d43f85189bf835e7fa1426325c5ef5383ec6fa46c2bb55a8c",
+                "source_mode": "frozen_local_is_only",
+                "paper_observation_authorized": True,
+                "event_scan_authorized": True,
+                "path_observation_authorized": True,
+                "formal_returns_authorized": False,
+                "second_run_authorized": False,
+                "strategy_authorized": False,
+                "oos_authorized": False,
+                "trading_authorized": False,
+                "m2_authorized": False,
+            }.items()
+        ):
+            failures.append("U-04 sealed-IS paper-observation authorization binding changed")
+    if pair == U04_FAILED_FEASIBILITY_PAIR:
+        if any(item.get("id", "").startswith("U-04") for item in open_work):
+            failures.append("failed U-04 candidate must not remain in open_work")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-04 unique sealed-IS paper observation"]
+        expected_failure = {
+            "status": "failed_feasibility",
+            "run_content_hash": "9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2",
+            "three_order_identity_hash": "4c512f5900b15969cf13c1481317e388d94d3ac6c2b26dc576914863b5201b42",
+            "complete_is_independent_episodes": 397,
+            "failed_gates": ["median_24h_relative_recovery", "median_24h_absolute_close_displacement"],
+            "oos_opened": False,
+            "second_run_executed": False,
+            "candidate_closed": True,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_failure.items()):
+            failures.append("U-04 failed-feasibility milestone binding changed")
+    if pair == U05_DESIGN_PAIR:
+        u05_items = [item for item in open_work if item.get("id") == "U-05"]
+        expected_u05 = {
+            "status": "authorized_ready",
+            "maximum_hypotheses": 1,
+            "independent_economic_rationale_required": True,
+            "u04_outcome_derived_rule_prohibited": True,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(u05_items) != 1 or any(u05_items[0].get(key) != value for key, value in expected_u05.items()):
+            failures.append("U-05 narrow design authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-05 design authorization decision"]
+        expected_decision = {
+            "status": "authorized_for_one_independent_outcome_blind_hypothesis_design_only",
+            "decision_content_hash": "48482a1d72b34d4925e3b0ed8ab218df202d560af7d8057c4fa8be403c46dc2c",
+            "prior_run_content_hash": "9182c9e3fb2aad6959d98ccbe18c77e411a3d5ce5adc6fdf352da76cd53eebc2",
+            "maximum_hypotheses": 1,
+            "u04_outcome_derived_rule_prohibited": True,
+            "event_scan_authorized": False,
+            "oos_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_decision.items()):
+            failures.append("U-05 design authorization milestone binding changed")
+    if pair == U05_PROTOCOL_PAIR:
+        protocol_items = [item for item in open_work if item.get("id") == "U-05-PROTOCOL"]
+        expected_protocol = {
+            "status": "authorized_ready",
+            "candidate_id": "U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE",
+            "design_content_hash": "ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb",
+            "outcome_blind_protocol_required": True,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(protocol_items) != 1 or any(protocol_items[0].get(key) != value for key, value in expected_protocol.items()):
+            failures.append("U-05 paper-protocol design authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-05 cross-sectional breadth-demand persistence hypothesis design"]
+        expected_design = {
+            "status": "economic_hypothesis_pass_protocol_design_only",
+            "candidate_id": "U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE",
+            "hypothesis_sha256": "ad164b1d9a94d9d61145bf7431a805cfa795a77a6c8aef2cdc488f6bd9e7349b",
+            "design_content_hash": "ae12172aeea45c8447cb40d39dc7d83c4cd85852138a3ee994bf977112b8c2bb",
+            "events_evaluated": False,
+            "returns_computed": False,
+            "oos_opened": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_design.items()):
+            failures.append("U-05 design milestone binding changed")
+    if pair == U05_PROTOCOL_REVIEW_APPROVED_PAIR:
+        data_items = [item for item in open_work if item.get("id") == "U-05-DATA-QUALIFICATION"]
+        expected_data = {
+            "status": "authorized_ready",
+            "candidate_id": "U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE",
+            "target_commit": "8d8652796e22a15285ba682b4524baa0218ca5a6",
+            "protocol_content_hash": "c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214",
+            "review_content_hash": "8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f",
+            "frozen_source_only": True,
+            "three_traversal_orders_required": True,
+            "oos_ohlc_decode_authorized": False,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(data_items) != 1 or any(data_items[0].get(key) != value for key, value in expected_data.items()):
+            failures.append("U-05 data-qualification-only authorization binding changed")
+        reviews = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-05 Paper-protocol exact-head independent review"]
+        expected_review = {
+            "status": "approve_local_complete",
+            "target_commit": "8d8652796e22a15285ba682b4524baa0218ca5a6",
+            "target_base_commit": "f66dcbdf5ad48b35e7bba2f112257e446563288c",
+            "protocol_content_hash": "c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214",
+            "review_content_hash": "8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f",
+            "verdict": "approve",
+            "remaining_critical_findings": 0,
+            "remaining_high_findings": 0,
+            "target_modified": False,
+            "data_qualification_authorized": True,
+            "event_scan_authorized": False,
+            "oos_authorized": False,
+        }
+        if len(reviews) != 1 or any(reviews[0].get(key) != value for key, value in expected_review.items()):
+            failures.append("U-05 protocol review milestone binding changed")
+        protocols = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-05 outcome-blind breadth-demand Paper protocol"]
+        expected_protocol = {
+            "status": "frozen_before_result_exact_head_approved",
+            "target_commit": "8d8652796e22a15285ba682b4524baa0218ca5a6",
+            "protocol_content_hash": "c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214",
+            "public_data_read": False,
+            "events_evaluated": False,
+            "paths_observed": False,
+            "returns_computed": False,
+            "oos_opened": False,
+        }
+        if len(protocols) != 1 or any(protocols[0].get(key) != value for key, value in expected_protocol.items()):
+            failures.append("U-05 reviewed protocol milestone binding changed")
+    if pair == U05_DATA_QUALIFICATION_PASS_PAIR:
+        observations = [item for item in open_work if item.get("id") == "U-05-PAPER-OBSERVATION"]
+        expected_observation = {
+            "status": "authorized_once_not_started",
+            "candidate_id": "U05-CROSS-SECTIONAL-BREADTH-DEMAND-PERSISTENCE",
+            "target_commit": "8d8652796e22a15285ba682b4524baa0218ca5a6",
+            "protocol_content_hash": "c8bd5523e94fc410e6ed4e5a28bb81864ed648d85c9d039ba26aab6dd8bae214",
+            "review_content_hash": "8602f209c3e80ea31b4b1175967acfba2bb20252254d3fbdf5cc72ea128d914f",
+            "qualification_content_hash": "348e80291ced6f7cbbb929c0b88c6bbce0b86e23cdbed33718b884810df7cb4f",
+            "maximum_runs": 1,
+            "sealed_is_only": True,
+            "three_traversal_orders_required": True,
+            "oos_ohlc_decode_authorized": False,
+            "event_scan_authorized": True,
+            "path_observation_authorized": True,
+            "formal_returns_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(observations) != 1 or any(observations[0].get(key) != value for key, value in expected_observation.items()):
+            failures.append("U-05 sealed-IS Paper observation authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-05 frozen-source data qualification and IS/OOS isolation"]
+        expected_qualification = {
+            "status": "pass_local_complete",
+            "protocol_target_commit": "8d8652796e22a15285ba682b4524baa0218ca5a6",
+            "contract_content_hash": "f1374b5c7bf7a103be7dacf3985d45cd332388afe601bd849271b30d63f562c3",
+            "qualification_content_hash": "348e80291ced6f7cbbb929c0b88c6bbce0b86e23cdbed33718b884810df7cb4f",
+            "source_archive_count": 27736,
+            "manifests_exact": 19,
+            "traversal_identity_hash": "ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa",
+            "expected_4h_member_blocks": 213570,
+            "oos_ohlc_values_decoded": 0,
+            "breadth_rows_generated": 0,
+            "event_rows_generated": 0,
+            "path_rows_generated": 0,
+            "return_rows_generated": 0,
+            "one_sealed_is_paper_observation_authorized": True,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_qualification.items()):
+            failures.append("U-05 data qualification milestone binding changed")
+    if pair == U05_CLOSED_PAIR:
+        observations = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-05 unique sealed-IS Paper observation"]
+        expected_observation = {
+            "status": "failed_feasibility",
+            "run_content_hash": "874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a",
+            "three_order_identity_hash": "ac4b36ac2c04d55c25f9db62f9d59598bac8bb1861b97d4e01f701be398267b0",
+            "complete_is_independent_episodes": 490,
+            "median_24h_common_demand_close_displacement": "0.0007591260524623880214213314285",
+            "median_24h_positive_member_fraction": "0.5333333333333333333333333335",
+            "oos_opened": False,
+            "formal_returns_computed": False,
+            "second_run_executed": False,
+            "candidate_closed": True,
+            "strategy_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(observations) != 1 or any(observations[0].get(key) != value for key, value in expected_observation.items()):
+            failures.append("U-05 failed observation milestone binding changed")
+        if any(item.get("id") == "U-05-PAPER-OBSERVATION" for item in open_work):
+            failures.append("closed U-05 observation remains open")
+    if pair == U06_DESIGN_PAIR:
+        designs = [item for item in open_work if item.get("id") == "U-06"]
+        expected_design = {
+            "status": "authorized_ready",
+            "authorization_content_hash": "596eacbcf2caec7dd1da27bb66ee8bb5859c5b6992c067f22d40e5305cb74662",
+            "maximum_hypotheses": 1,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(designs) != 1 or any(designs[0].get(key) != value for key, value in expected_design.items()):
+            failures.append("U-06 hypothesis-design-only authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-06 design authorization decision"]
+        expected_decision = {
+            "status": "authorized_for_one_independent_outcome_blind_hypothesis_design_only",
+            "decision_content_hash": "596eacbcf2caec7dd1da27bb66ee8bb5859c5b6992c067f22d40e5305cb74662",
+            "prior_run_content_hash": "874cdac32b63535f4b5636420dc55719e8dc795a66e5eca2be96f88ca3737e4a",
+            "maximum_hypotheses": 1,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_decision.items()):
+            failures.append("U-06 design decision milestone binding changed")
+    if pair == U07_DESIGN_PAIR:
+        designs = [item for item in open_work if item.get("id") == "U-07"]
+        expected_design = {
+            "status": "authorized_ready",
+            "authorization_content_hash": "58f8301035e593b0621add93cfa876a11a5af52df0a3afae38d7b41f095e37d5",
+            "maximum_hypotheses": 1,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(designs) != 1 or any(designs[0].get(key) != value for key, value in expected_design.items()):
+            failures.append("U-07 hypothesis-design-only authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-07 design authorization decision"]
+        expected_decision = {
+            "status": "authorized_for_one_independent_outcome_blind_hypothesis_design_only",
+            "decision_content_hash": "58f8301035e593b0621add93cfa876a11a5af52df0a3afae38d7b41f095e37d5",
+            "prior_run_content_hash": "2f715394411ca260f9889304ddc84da926d37ec1dfc9d4316493f23f6881382a",
+            "maximum_hypotheses": 1,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_decision.items()):
+            failures.append("U-07 design decision milestone binding changed")
+    if pair == U07_PROTOCOL_PAIR:
+        protocols = [item for item in open_work if item.get("id") == "U-07-PROTOCOL"]
+        expected_protocol = {
+            "status": "authorized_ready",
+            "candidate_id": "U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION",
+            "design_content_hash": "272eabd4ab1737566698309b98cc13b952a8d39b86c457674d58ff56de021795",
+            "outcome_blind_required": True,
+            "exact_head_review_required": True,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(protocols) != 1 or any(protocols[0].get(key) != value for key, value in expected_protocol.items()):
+            failures.append("U-07 Paper-protocol-design-only authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-07 cross-sectional market-stress relative-strength continuation hypothesis design"]
+        expected_design = {
+            "status": "economic_hypothesis_pass_protocol_design_only",
+            "candidate_id": "U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION",
+            "hypothesis_sha256": "3130450cd7bd7cddab4bce0c89b274ae93e50bed278379011cc4d09e15fb3de3",
+            "design_content_hash": "272eabd4ab1737566698309b98cc13b952a8d39b86c457674d58ff56de021795",
+            "public_data_read": False,
+            "events_evaluated": False,
+            "returns_computed": False,
+            "oos_opened": False,
+            "strategy_authorized": False,
+            "paper_protocol_design_authorized": True,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_design.items()):
+            failures.append("U-07 hypothesis design milestone binding changed")
+    if pair == U07_PROTOCOL_REVIEW_APPROVED_PAIR:
+        data_items = [item for item in open_work if item.get("id") == "U-07-DATA-QUALIFICATION"]
+        expected_data = {
+            "status": "authorized_ready",
+            "candidate_id": "U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION",
+            "target_commit": "3aed4c337ff984b3e07ad9a4c7cda898425b3791",
+            "protocol_content_hash": "d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195",
+            "review_content_hash": "fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6",
+            "frozen_source_only": True,
+            "three_traversal_orders_required": True,
+            "oos_ohlc_decode_authorized": False,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(data_items) != 1 or any(data_items[0].get(key) != value for key, value in expected_data.items()):
+            failures.append("U-07 data-qualification-only authorization binding changed")
+        reviews = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-07 Paper-protocol exact-head independent review"]
+        expected_review = {
+            "status": "approve_local_complete",
+            "target_commit": "3aed4c337ff984b3e07ad9a4c7cda898425b3791",
+            "target_base_commit": "f282f45229dbab3fd20767b2097a07a481e50d09",
+            "protocol_content_hash": "d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195",
+            "review_content_hash": "fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6",
+            "verdict": "approve",
+            "remaining_critical_findings": 0,
+            "remaining_high_findings": 0,
+            "target_modified": False,
+            "data_qualification_authorized": True,
+            "event_scan_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(reviews) != 1 or any(reviews[0].get(key) != value for key, value in expected_review.items()):
+            failures.append("U-07 protocol review milestone binding changed")
+        protocols = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-07 outcome-blind market-stress relative-strength Paper protocol"]
+        expected_protocol = {
+            "status": "frozen_before_result_exact_head_approved",
+            "target_commit": "3aed4c337ff984b3e07ad9a4c7cda898425b3791",
+            "protocol_content_hash": "d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195",
+            "public_data_read": False,
+            "events_evaluated": False,
+            "paths_observed": False,
+            "returns_computed": False,
+            "oos_opened": False,
+        }
+        if len(protocols) != 1 or any(protocols[0].get(key) != value for key, value in expected_protocol.items()):
+            failures.append("U-07 reviewed protocol milestone binding changed")
+    if pair == U07_DATA_QUALIFICATION_PASS_PAIR:
+        observations = [item for item in open_work if item.get("id") == "U-07-PAPER-OBSERVATION"]
+        expected_observation = {
+            "status": "authorized_once_not_started",
+            "candidate_id": "U07-CROSS-SECTIONAL-MARKET-STRESS-RELATIVE-STRENGTH-CONTINUATION",
+            "target_commit": "3aed4c337ff984b3e07ad9a4c7cda898425b3791",
+            "protocol_content_hash": "d62dd323a01507eeb5a78afe646cec196e417faeddd7d84129b2bd8834250195",
+            "review_content_hash": "fa9d90f7ebb30d4072662a9d8a733760a703eb04031abda23f3b6b0846bc70b6",
+            "qualification_content_hash": "fa65f34089854cd5faf950234b3488eb64b3058d1ab47f3dab500bbfb395e123",
+            "maximum_runs": 1,
+            "sealed_is_only": True,
+            "three_traversal_orders_required": True,
+            "oos_ohlc_decode_authorized": False,
+            "event_scan_authorized": True,
+            "path_observation_authorized": True,
+            "formal_returns_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(observations) != 1 or any(observations[0].get(key) != value for key, value in expected_observation.items()):
+            failures.append("U-07 sealed-IS Paper observation authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-07 frozen-source data qualification and IS/OOS isolation"]
+        expected_qualification = {
+            "status": "pass_local_complete",
+            "protocol_target_commit": "3aed4c337ff984b3e07ad9a4c7cda898425b3791",
+            "contract_content_hash": "0dd9a159382f1d515fed0269c9122adcd042a1fd726431bc36a9e4f6e01d5fb8",
+            "qualification_content_hash": "fa65f34089854cd5faf950234b3488eb64b3058d1ab47f3dab500bbfb395e123",
+            "source_archive_count": 27736,
+            "manifests_exact": 19,
+            "traversal_identity_hash": "ca7d59b32a4c0a187e6692a0e0f84015780f6f7400217edac130d1abf3f044aa",
+            "expected_4h_member_blocks": 213570,
+            "constituent_1h_rows": 854280,
+            "oos_ohlc_values_decoded": 0,
+            "event_rows_generated": 0,
+            "path_rows_generated": 0,
+            "return_rows_generated": 0,
+            "one_sealed_is_paper_observation_authorized": True,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_qualification.items()):
+            failures.append("U-07 data qualification milestone binding changed")
+    if pair == U07_FAILED_FEASIBILITY_PAIR:
+        decisions = [item for item in open_work if item.get("id") == "U-08-DECISION"]
+        expected_decision = {
+            "status": "authorized_ready",
+            "predecessor_run_content_hash": "8c637a3f13dad4410beb446094af011582ab2cde0ac449e32d044cbaa709352c",
+            "maximum_new_hypotheses": 1,
+            "independent_economic_rationale_required": True,
+            "outcome_inversion_prohibited": True,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(decisions) != 1 or any(decisions[0].get(key) != value for key, value in expected_decision.items()):
+            failures.append("U-08 independent-candidate decision authorization changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-07 unique sealed-IS Paper observation"]
+        expected_result = {
+            "status": "failed_feasibility",
+            "run_content_hash": "8c637a3f13dad4410beb446094af011582ab2cde0ac449e32d044cbaa709352c",
+            "three_order_identity_hash": "2714c2bf0fee08ddd9531eeac2ef531904c7c416eb4c809a666f5f75e4cf00ee",
+            "complete_is_independent_episodes": 82,
+            "median_24h_relative_continuation": "0.004287821384236292564275564571",
+            "median_24h_candidate_absolute_close_displacement": "0.01160736483333721153810826070",
+            "fraction_positive_24h_relative_continuation": "0.5243902439024390243902439024",
+            "oos_opened": False,
+            "formal_returns_computed": False,
+            "second_run_executed": False,
+            "candidate_closed": True,
+            "strategy_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_result.items()):
+            failures.append("U-07 failed Paper result binding changed")
+    if pair == U08_DESIGN_PAIR:
+        designs = [item for item in open_work if item.get("id") == "U-08"]
+        expected_design = {
+            "status": "authorized_ready",
+            "decision_content_hash": "813267f29fd2f019b7d856d95a5eaaa7927a3f072327cc643e6a1ecd51af1cf9",
+            "maximum_hypotheses": 1,
+            "independent_economic_rationale_required": True,
+            "outcome_inversion_prohibited": True,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(designs) != 1 or any(designs[0].get(key) != value for key, value in expected_design.items()):
+            failures.append("U-08 design-only authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-08 design authorization decision"]
+        expected_decision = {
+            "status": "authorized_for_one_independent_outcome_blind_hypothesis_design_only",
+            "decision_content_hash": "813267f29fd2f019b7d856d95a5eaaa7927a3f072327cc643e6a1ecd51af1cf9",
+            "prior_run_content_hash": "8c637a3f13dad4410beb446094af011582ab2cde0ac449e32d044cbaa709352c",
+            "maximum_hypotheses": 1,
+            "independent_economic_rationale_required": True,
+            "prior_outcome_derived_rule_prohibited": True,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_decision.items()):
+            failures.append("U-08 authorization milestone binding changed")
+    if pair == U09_DESIGN_PAIR:
+        designs = [item for item in open_work if item.get("id") == "U-09"]
+        expected_design = {
+            "status": "authorized_not_started",
+            "decision_content_hash": "2d643678e00575c93dad0331fff089fd620b214f658ca8d174dfe9bbcc06e477",
+            "maximum_hypotheses": 1,
+            "event_scan_authorized": False,
+            "parameter_selection_authorized": False,
+            "formal_returns_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(designs) != 1 or any(designs[0].get(key) != value for key, value in expected_design.items()):
+            failures.append("U-09 design-only authorization binding changed")
+        milestones = [item for item in state.get("completed_milestones", []) if item.get("phase") == "U-09 design authorization decision"]
+        expected_decision = {
+            "status": "authorized_for_one_independent_outcome_blind_hypothesis_design_only",
+            "decision_content_hash": "2d643678e00575c93dad0331fff089fd620b214f658ca8d174dfe9bbcc06e477",
+            "prior_run_content_hash": "f6fbcdee846b855883a5e356ea49e6a98901bfcc6a9dbd5a2cbb07ebed9eca3e",
+            "maximum_hypotheses": 1,
+            "independent_economic_rationale_required": True,
+            "prior_outcome_derived_rule_prohibited": True,
+            "event_scan_authorized": False,
+            "strategy_authorized": False,
+            "oos_authorized": False,
+            "trading_authorized": False,
+            "m2_authorized": False,
+        }
+        if len(milestones) != 1 or any(milestones[0].get(key) != value for key, value in expected_decision.items()):
+            failures.append("U-09 authorization milestone binding changed")
     if pair == INVALID_INTERVAL_PROTOCOL_PAIR:
         protocol = state.get("u03f_v4_invalid_interval_adjudication_protocol", {})
         expected_protocol = {

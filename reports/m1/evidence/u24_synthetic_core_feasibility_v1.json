@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "status": "pass_before_protocol_freeze",
+  "candidate_id": "U24-CROSS-SECTIONAL-LOTTERY-DEMAND-AVOIDANCE-PREMIUM",
+  "design_content_hash": "c99f7002b006d635d5c03936055e8d4bc498ace02b45551af52cdf80dd14d0c1",
+  "core_sha256": "9817e4ad55399146eff2ae4f7b08e175a18400a68290d8dea2f1ec6100fae7cd",
+  "benchmark_runner_sha256": "07d3d0c98941614077ab44e837598d4cd6e5a1c2aef7d3b531e244821e8640e8",
+  "minimum_logical_hourly_member_returns": 1000000,
+  "actual_logical_hourly_member_returns_per_pass": 1002960,
+  "maximum_elapsed_seconds_per_pass": 30,
+  "maximum_peak_rss_mib": 1024,
+  "passes": [
+    {"elapsed_seconds":"0.470472","peak_rss_mib":"21.641","event_digest":"3f081c6572dde5fc9115844598456627d67b7ab0d1577d09156370c0c360e572"},
+    {"elapsed_seconds":"0.471722","peak_rss_mib":"21.297","event_digest":"3f081c6572dde5fc9115844598456627d67b7ab0d1577d09156370c0c360e572"},
+    {"elapsed_seconds":"0.472842","peak_rss_mib":"21.312","event_digest":"3f081c6572dde5fc9115844598456627d67b7ab0d1577d09156370c0c360e572"}
+  ],
+  "deterministic_output": true,
+  "public_data_read": false,
+  "frozen_source_archives_opened": 0,
+  "market_outcome_rows": 0,
+  "oos_values_decoded": 0,
+  "content_hash": "ce8b0f7998cc1c8e3928c605cccd0da37087a620d37e8058ae55e02f26957484",
+  "generated_utc": "2026-07-19T00:00:00Z"
+}

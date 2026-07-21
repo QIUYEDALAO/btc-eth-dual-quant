@@ -1,0 +1,43 @@
+from __future__ import annotations
+
+import copy
+import unittest
+
+from scripts.u04_cross_sectional_data_qualification import load_json
+from scripts.u18_cross_sectional_paper_observation_check import RUN, validate
+
+
+class U18ObservationTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.run = load_json(RUN)
+
+    def test_exact(self) -> None:
+        self.assertEqual(validate(self.run), [])
+
+    def test_result_or_order_tamper_fails(self) -> None:
+        changed = copy.deepcopy(self.run)
+        changed["metrics"]["complete_is_independent_episodes"] = 158
+        self.assertTrue(validate(changed))
+        changed = copy.deepcopy(self.run)
+        changed["orders"][1]["content_identity_hash"] = "0" * 64
+        self.assertTrue(validate(changed))
+
+    def test_failed_gate_or_permission_tamper_fails(self) -> None:
+        changed = copy.deepcopy(self.run)
+        changed["paper_gate_checks"]["median_24h_relative_downside_tail_risk_premium"] = True
+        self.assertTrue(validate(changed))
+        changed = copy.deepcopy(self.run)
+        changed["authorizations"]["strategy"] = True
+        self.assertTrue(validate(changed))
+
+    def test_oos_or_second_run_tamper_fails(self) -> None:
+        changed = copy.deepcopy(self.run)
+        changed["oos_opened"] = True
+        self.assertTrue(validate(changed))
+        changed = copy.deepcopy(self.run)
+        changed["second_run_executed"] = True
+        self.assertTrue(validate(changed))
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_result_pending_exact_head_review",
+  "protocol_id": "U21-03-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM-PAPER-V1",
+  "candidate_id": "U21-CROSS-SECTIONAL-SYSTEMATIC-COKURTOSIS-RISK-PREMIUM",
+  "hypothesis_sha256": "90761268042081c9f80a4fb446ed7e805242608ec6700f6c18b8419bf24420b6",
+  "design_content_hash": "a45075371103acf28981ce3a1f0cd47a029b15f5cf3ef9a878b5c682e248568b",
+  "authority_bindings": {
+    "u21_design_authorization_hash": "58c4be44b0d3753d8cf36f96df374880d2a929d4f091e7aac19b14619c17b247",
+    "u20_run_content_hash": "587def88ac42d016a0ac5de97789164be6e6f1bf447b7a239eeed95137a9ede1",
+    "adr0015_audit_summary_hash": "e26c9a084767e0f3f29a479552d14d24ac27d0a0fff426f953c811bac3d606c4",
+    "v4_artifact_set_hash": "8784b564e8ce21c88b54045b3236021a16344998356a7a15a332188a441348c3",
+    "source_freeze_hash": "c86310f8a734da214e4119268af874db6398d1b2552426c22431f97d1cffec6c",
+    "membership_manifest_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_authority_hash": "52aa8cc97b24d1f092fb5b222c44b22012406d6a74a5664d8feef176523093e2",
+    "lifecycle_registry_hash": "a78c52b183e0270c713dbb9965bd42b1035759b7b2182e49a3416cd8ae73904d",
+    "invalid_interval_runtime_policy_hash": "0ac074cf6849918065569fe6fb77eb8bd68f30d416325a70d4f55eef02262d04"
+  },
+  "scope": {
+    "exchange": "binance", "market": "spot_usdt", "direction": "long_cash_only",
+    "is_start": "2020-01-01T00:00:00Z", "is_end_exclusive": "2024-09-11T00:00:00Z",
+    "oos_start": "2024-09-11T00:00:00Z", "oos_end_exclusive": "2026-07-01T00:00:00Z",
+    "is_calendar_days": 1715, "oos_calendar_days": 658, "full_calendar_days": 2373,
+    "decision_step": "completed_utc_4h_boundary", "signal_input_timeframe": "1h_utc_from_complete_5m",
+    "path_timeframe": "5m", "oos_opened": false
+  },
+  "history_contract": {
+    "history_hours": 336,
+    "half_window_hours": 168,
+    "minimum_active_members": 10,
+    "all_336_completed_hourly_returns_for_every_decision_time_active_member_required": true,
+    "membership_must_be_constant_for_history_and_future_24h_path": true,
+    "hourly_return": "natural_log_current_completed_1h_close_divided_by_previous_completed_1h_close",
+    "candidate_specific_peer_common_return_each_hour": "median_all_decision_time_active_members_excluding_candidate",
+    "candidate_common_adjusted_return": "candidate_hourly_log_return_minus_candidate_specific_peer_common_hourly_log_return",
+    "missing_duplicate_quarantined_or_lifecycle_intersecting_hour": "whole_candidate_decision_ineligible",
+    "current_membership_backfill_or_replacement_allowed": false
+  },
+  "systematic_cokurtosis_contract": {
+    "half_windows": "oldest_168_and_newest_168_completed_common_adjusted_returns_and_peer_common_returns",
+    "half_common_center": "arithmetic_mean_of_half_peer_common_returns",
+    "half_candidate_center": "arithmetic_mean_of_half_candidate_common_adjusted_returns",
+    "half_common_scale": "population_standard_deviation_of_half_peer_common_returns",
+    "half_candidate_scale": "population_standard_deviation_of_half_candidate_common_adjusted_returns",
+    "half_cokurtosis": "arithmetic_mean_of_squared_candidate_centered_return_times_squared_common_centered_return_divided_by_candidate_variance_times_common_variance",
+    "independent_finite_variance_baseline": "1.0",
+    "zero_or_nonfinite_scale_or_cokurtosis": "candidate_decision_ineligible_and_counted",
+    "minimum_cokurtosis_per_half": "1.50",
+    "cross_sectional_rank_scope": "all_eligible_decision_time_active_members_before_threshold_filter",
+    "required_rank_per_half": "highest_ceiling_active_member_count_divided_by_four",
+    "both_halves_must_pass_absolute_and_rank_gates": true,
+    "common_or_candidate_mean_return_direction_gate_used": false,
+    "signed_coskewness_volatility_tail_drawdown_or_terminal_bar_gate_used": false
+  },
+  "event_identity": {
+    "simultaneous_representative": "highest_minimum_two_half_cokurtosis_then_highest_maximum_half_cokurtosis_then_symbol",
+    "representatives_per_decision_time": 1,
+    "post_outcome_candidate_selection": false
+  },
+  "episode_clustering": {
+    "scope": "all_symbols_connected_event_window", "connected_window_hours": 24,
+    "representative": "first_event_only",
+    "boundary": "new_episode_only_when_event_time_is_strictly_more_than_24h_after_prior_connected_event",
+    "future_information_used": false
+  },
+  "implementation_data_scope_preflight": {
+    "required_before_any_return_common_adjustment_cokurtosis_event_or_path_scan": true,
+    "runs_during_frozen_source_qualification_only": true,
+    "uses_same_membership_lifecycle_mask_1h_history_4h_decision_and_5m_path_assembly_as_future_observation": true,
+    "verifies_336h_history_and_next_24h_path_slot_availability_without_decoding_returns": true,
+    "verifies_normal_reverse_and_deterministic_shuffled_input_identity": true,
+    "oos_ohlcv_values_decoded": 0,
+    "return_common_adjustment_cokurtosis_event_path_or_result_rows_generated": 0,
+    "any_scope_or_boundary_mismatch": "fail_closed_before_result_run"
+  },
+  "pre_result_complexity_benchmark": {
+    "required_before_unique_result_run": true,
+    "synthetic_fixture_rows": 1000000, "synthetic_active_members": 15,
+    "same_common_adjustment_cokurtosis_event_and_path_code_path_required": true,
+    "maximum_elapsed_seconds": 30, "maximum_peak_rss_mib": 1024,
+    "maximum_asymptotic_behavior": "linear_in_hourly_rows_plus_event_path_rows_without_decision_times_history_nested_scan",
+    "benchmark_passes_required": 3, "benchmark_output_may_contain_market_outcomes": false,
+    "failure": "fail_closed_before_result_run"
+  },
+  "pre_result_sample_ceiling": {
+    "method": "calendar_membership_lifecycle_mask_336h_history_and_24h_path_availability_only_before_return_scan",
+    "minimum_theoretical_eligible_24h_episodes": 400,
+    "frozen_complete_is_episode_gate": 90,
+    "must_pass_before_any_return_common_adjustment_cokurtosis_event_or_path_scan": true
+  },
+  "observation_contract": {
+    "reference": "first_expected_5m_open_strictly_after_completed_4h_boundary_decision",
+    "search_later_if_reference_missing": false,
+    "horizon_hours": [1, 2, 4, 8, 12, 24], "primary_horizon_hours": 24,
+    "peer_members": "decision_time_exact_active_members_excluding_candidate",
+    "candidate_close_displacement": "candidate_close_over_candidate_reference_open_minus_one",
+    "peer_median_close_displacement": "median_peer_close_over_peer_reference_open_minus_one",
+    "relative_systematic_cokurtosis_risk_premium": "candidate_close_displacement_minus_peer_median_close_displacement",
+    "required_path_diagnostics": [
+      "candidate_absolute_close_displacement_by_horizon", "peer_median_close_displacement_by_horizon",
+      "relative_systematic_cokurtosis_risk_premium_by_horizon",
+      "candidate_maximum_favorable_excursion_through_24h", "candidate_maximum_adverse_excursion_through_24h",
+      "first_time_relative_systematic_cokurtosis_risk_premium_reaches_base_cost"
+    ],
+    "complete_candidate_and_all_event_time_peers_required_through_each_horizon": true,
+    "missing_quarantine_membership_change_or_lifecycle_intersection": "right_censor_without_later_search",
+    "fill_position_exit_or_equity_model": false, "formal_strategy_return": false
+  },
+  "cost_reference_roundtrip": {"base": "0.0030", "cost_x2": "0.0060", "stress_a": "0.0080", "stress_b": "0.0110"},
+  "projection": {
+    "source": "complete_is_independent_episodes_only",
+    "full": "floor_complete_is_episodes_times_2373_divided_by_1715",
+    "sealed_oos": "floor_complete_is_episodes_times_658_divided_by_1715",
+    "may_read_oos_events_prices_or_counts": false
+  },
+  "paper_gates": {
+    "complete_is_independent_episodes_minimum": 90,
+    "projected_full_independent_episodes_minimum": 120,
+    "projected_sealed_oos_independent_episodes_minimum": 30,
+    "minimum_years_with_twelve_complete_episodes": 4,
+    "maximum_single_year_episode_share": "0.35", "maximum_single_symbol_episode_share": "0.25",
+    "minimum_distinct_event_symbols": 8, "minimum_distinct_event_months": 30,
+    "combined_median_24h_relative_systematic_cokurtosis_risk_premium_minimum": "0.0180",
+    "combined_median_24h_candidate_absolute_close_displacement_minimum": "0.0180",
+    "fraction_complete_episodes_with_positive_24h_relative_systematic_cokurtosis_risk_premium_minimum": "0.60",
+    "qualification_preflight_complexity_quarantine_lifecycle_or_order_mismatches_maximum": 0
+  },
+  "research_leakage_prevention": {
+    "change_history_estimator_threshold_rank_cluster_or_horizon_after_results": false,
+    "change_gate_from_event_count_or_outcome": false,
+    "delete_symbol_month_year_or_regime_from_performance": false,
+    "select_current_members_or_replacement_members": false,
+    "use_prior_candidate_outcomes_defects_or_failures_to_change_rules": false,
+    "protocol_change_after_result_creates_new_candidate": true
+  },
+  "authorizations": {
+    "paper_protocol_frozen": true, "exact_head_independent_review": true,
+    "data_qualification_complexity_and_preflight": false,
+    "return_common_adjustment_cokurtosis_scan": false, "event_scan": false,
+    "path_observation": false, "signals": false, "formal_returns": false,
+    "fixed_rule_contract": false, "freqtrade_strategy_code": false, "backtesting": false,
+    "oos": false, "api_trading": false, "execution_live": false, "m2": false
+  },
+  "content_hash": "b8cad855459c0cb10cff0b1abb927c9bac84b9e54686cc2ea7277aac5f73551e",
+  "generated_utc": "2026-07-18T00:00:00Z"
+}
