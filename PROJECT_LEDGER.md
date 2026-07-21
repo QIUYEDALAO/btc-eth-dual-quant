@@ -2922,3 +2922,4 @@ private exchange responses here.
 - No other boundary archive was requested or downloaded. One fixed IS boundary row and zero OOS/result rows were decoded; IS and selection trials remain zero.
 - The completed 92-boundary authority is not frozen and NB-01 is not yet satisfied for the full set. The next stage may build the full revised authority from the unchanged 91 official sources plus the RNDR replacement, but original IS remains prohibited until a separate exact-head review and merge.
 - OOS remains false/false/0/0. Dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 remain false.
+- Draft PR #118 publishes the preflight from functional commit `e799111af04469ebfcf28c7cc6e16228065ff37b`; it remains Draft and carries no completed-authority or IS authorization.

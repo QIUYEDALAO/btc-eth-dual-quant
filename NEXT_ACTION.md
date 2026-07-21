@@ -38,6 +38,10 @@ hash `89be4f17...e4f50`. Only this archive and its checksum were requested. The
 other 91 archive request/download counts remain zero, market rows decoded are
 one, and OOS rows decoded are zero.
 
+Draft PR #118 publishes the preflight from functional commit
+`e799111af04469ebfcf28c7cc6e16228065ff37b`. It is review evidence only and
+does not freeze the complete boundary authority or authorize IS.
+
 The next task is the complete revised 92-boundary authority stage. It must use
 the fixed RNDR replacement plus the unchanged 91 official daily sources,
 perform genuinely independent normal/reverse/deterministic-shuffled full

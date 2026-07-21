@@ -32,6 +32,9 @@ external_project_review:
 completed_milestones:
   - phase: RNDR original-symbol boundary archive and exact-row preflight
     status: pass_single_archive_single_row_full_authority_not_frozen
+    branch: codex/rndr-original-symbol-preflight
+    draft_pr: 118
+    functional_head_sha: e799111af04469ebfcf28c7cc6e16228065ff37b
     report: reports/m1/EXTERNAL_STRATEGY_RNDR_ORIGINAL_SYMBOL_PREFLIGHT.md
     machine_evidence: reports/m1/evidence/external_strategy_boundary_authority/rndr_original_symbol_preflight.json
     command_evidence: reports/m1/evidence/external_strategy_boundary_authority/rndr_original_symbol_preflight_command.json

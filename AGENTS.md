@@ -46,6 +46,8 @@ After any task, the agent must update:
 
 - The RNDR original-symbol one-item preflight passed under `eceafea1...9b38be`. The official `RNDRUSDT-5m-2024-07-22.zip` is 1,720 bytes with SHA-256 `e2da006e...91587`; exact row `2024-07-22T02:55:00Z` / `02:59:59.999Z` has raw-line hash `89be4f17...e4f50`. Only this archive and checksum were requested, one market row and zero OOS rows were decoded, and the other 91 archives were not requested or downloaded.
 
+- Draft PR #118 publishes this one-item preflight from functional commit `e799111a...f37b`. Keep it Draft for review; it is not the completed 92-boundary authority and grants no IS authority.
+
 - The completed 92-boundary authority is not frozen. The next authorized stage may acquire and validate the unchanged 91 official daily sources plus the frozen RNDR replacement, but must perform genuinely independent normal/reverse/deterministic-shuffled full constructions, keep boundary rows out of strategy OHLCV/indicator history, preserve reset/rewarm semantics, and receive a separate exact-head review and merge before original IS.
 
 - The 2026-07-22 `HKUDS/AI-Trader` request is a completed read-only external-project assessment at exact head `d03ff6c...c8df`. Do not install its remote skills, register an agent, call its APIs, import its source, or interpret the assessment as strategy/runtime/data/IS/OOS/trading authority. Static inspection completed; tests did not start because isolated PyPI dependency installation timed out.
