@@ -2,6 +2,8 @@
 
 | Artifact | Purpose | Status | Key evidence | Trading authority |
 |---|---|---|---|---|
+| `docs/decisions/ADR-0017-current-route-selection-and-runtime.md` | Final pre-runtime selection and continuous runtime authorization | adopted pending merge | contract `8a4b1d6d...48cdd`; DSR is mandatory primary rank, not absolute hard Gate; OOS sealed | no |
+| `config/adr0017_current_route_selection_runtime_v1.json` | Machine ADR-0017 authority | frozen pending merge | binds merged #113/#112, ADR-0016 root, six candidates, one-time final selection and false OOS/live permissions | no |
 | `reports/m1/U25_SUPERSESSION_AND_EXTERNAL_STRATEGY_ROUTE.md` | ADR-0016 pre-runtime contract freeze | pending exact-head review | root `aafbf062...a172bc8`; protocol `ebac92aa...c3693`; DSR `ca2009f5...e0b88`; independently recomputed metrics/DSR; zero runtime/results | no |
 | `config/external_strategy_dsr_reference_trials_v1.json` | Frozen Base/CostX2 DSR historical and future append rules | frozen zero selection trials | M1A/M1B/M1C report hashes; count `3 + 0` | no |
 | `src/btc_eth_dual_quant/audit/completed_candle_derivation.py` | Strict synthetic 5m→15m/1h/4h derivation | frozen pre-runtime implementation | exact 3/12/48 windows; no fill/lifecycle/mask crossing | no |

@@ -2857,3 +2857,13 @@ private exchange responses here.
 - Isolation: evaluated trades are constrained to `[2020-07-01, 2024-09-11)` and equity to the frozen half-open IS calendar. Warmup trades, OOS trades, boundary-crossing positions and OOS equity rows fail closed.
 - Freeze: root `aafbf0628109668b9d8c1ba193c54d8443c04e660cd105c899d66e6f1a172bc8`; screen `ca7d949e...25858`; candidate freeze `50a732cc...dc2ac`; protocol `ebac92aa...c3693`; DSR `ca2009f5...e0b88`. Six candidates/source order are unchanged and every runtime/result/OOS/trading counter remains zero.
 - Local verification: compile, 1,323 tests plus 425 subtests, project Gate 9/9, route 25/25, archive replay 21/21 and the exact stacked-base selective Gate all pass.
+
+## 2026-07-21 - Approved Stacked Route Merged and ADR-0017 Frozen
+
+- PR #113 exact head `11cd55fd...5ceb` passed GitHub Gate and was merged with required ordinary merge commit `d657994b69289d8330acca90f5c1ed301863a3ce`.
+- PR #112 approved head `2467123c...8b13` was retargeted to main and rebased as `58c87495...3cb6`; both trees are exactly `d294a7c1...87cf`. Its new main-base selective Gate passed and it was squash-merged as `d119593d069a0ec5f0851802cb8ab0df514e3a18`.
+- Merged main passed Project Gate 9/9. No runtime, Freqtrade, causal, IS or OOS work occurred during merging.
+- ADR-0017 machine identity is `8a4b1d6d859c683bf3a61fd55784083bc04c8169a9cd1cab2362273177b48cdd`. Historical M1A/M1B/M1C remain reported/append-only but are not a current-route same-distribution DSR family.
+- Current-route Base/CostX2 DSR is mandatory and the primary ranking statistic, not an absolute hard Gate. Final DSR is recomputed once after all allowed trials close; per-trial immutable metrics exclude final DSR.
+- After ADR-0017 merges, fixed runtime/causal work and automated original/limited-modification IS are authorized subject to at least five causal PASS candidates. OOS, dry-run, API/private endpoints, paper/live, orders, execution/live and M2 remain false.
+- Local acceptance is complete: ADR-specific tests pass 7/7, the project Gate passes 9/9 with the 1,330-test regression, and the actual main-base selective Gate passes. No runtime, Freqtrade, IS or OOS command was used.

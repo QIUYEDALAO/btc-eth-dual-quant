@@ -9,7 +9,29 @@ change. A context-only synchronization uses a skip-CI commit and does not need a
 new PR or CI run. It must not change any research, runtime, OOS or trading
 authorization.
 
-## Hard Block: Exact-Head Review Before Any Runtime Work
+## ADR-0017 Final Pre-Runtime Authorization
+
+PR #113 was merged with ordinary merge commit `d657994b...a3ce`. PR #112 was
+rebased to `main` with an identical approved tree, passed the new selective
+Gate, and was squash-merged as `d119593d...3a18`. Main Project Gate passed 9/9.
+
+ADR-0017 is frozen under `8a4b1d6d...48cdd` as the last pre-runtime governance
+change. It keeps M1A/M1B/M1C in historical reporting but removes them from the
+current-route same-distribution DSR family. Current-route original and modified
+trials alone form separate Base and CostX2 sequences. DSR is mandatory and the
+primary ranking statistic, but not an absolute hard Gate.
+
+After ADR-0017 merges, proceed continuously through exact VPS runtime identity,
+six frozen-candidate compatibility/causal validation, original IS, at most
+three eligible pre-registered modifications, and one final selection report.
+IS requires at least five causal PASS candidates. Stop immediately on the
+frozen hard-stop conditions or after reaching
+`pending_explicit_unique_oos_authorization`.
+
+OOS, dry-run, API/private endpoints, paper/live, order placement,
+`execution/live` and M2 remain prohibited.
+
+## Historical ADR-0016 Freeze
 
 ADR-0016 is adopted. U-25 and automatic U-26+ invention are permanently
 superseded. The fixed 20 sources have been screened and six candidates are
@@ -28,8 +50,7 @@ metrics are independently recomputed from the hash-bound equity curve and
 trades before Gate or DSR use; modified variants require a passing materialized
 original and exact executable/package identities.
 ElliotV5_SMA is metadata/hash-only and not redistributed; Bandtastic retains
-its file-level MIT declaration. The next action is PR #112 exact-head review
-and merge, not runtime execution. Later runtime work additionally requires the
+its file-level MIT declaration. Runtime work requires the
 pinned VPS identity, non-null effective-settings and resolved-parameter hashes,
 observed external parameter/config counts of zero, completed causal checks and
 at least five passing candidates. Do not change source order, source bytes or

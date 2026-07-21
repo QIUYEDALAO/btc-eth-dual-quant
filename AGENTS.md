@@ -42,9 +42,13 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- ADR-0016 pre-runtime contracts are complete pending PR #112 exact-head review. Root freeze `aafbf0628109668b9d8c1ba193c54d8443c04e660cd105c899d66e6f1a172bc8` anchors screen `ca7d949e...25858`, candidate freeze `50a732cc...dc2ac`, unified protocol `ebac92aa...c3693`, data authority `a6e61314...faa4a`, benchmark `6ef39c1d...3e653` and DSR reference `ca2009f5...e0b88`. The fixed half-open calendar is 2,191/1,533/658 full/IS/OOS returns. Trial metrics and Base/CostX2 DSR inputs must be independently recomputed from hash-bound equity/trade results; modified variants require a passing materialized original plus exact package/executable identity. Lifecycle exits occur at open. Six sources remain unchanged. Loads, causal validations, IS/selection trials and OOS rows are zero.
+- PR #113 and PR #112 are merged as `d657994b...a3ce` and `d119593d...3a18`; the approved/rebased PR #112 trees are identical. Main Project Gate passed 9/9. ADR-0017 is frozen pending validation/merge under `8a4b1d6d...48cdd` as the last pre-runtime governance change.
 
-- Runtime is not authorized. Blockers are PR #112 exact-head review/merge, unverified VPS runtime identity, null runtime effective/resolved parameter hashes, no causal checks and fewer than five causal PASS candidates. Required external parameter/config counts are zero; observed values remain null. OOS, dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 remain false.
+- ADR-0017 retains M1A/M1B/M1C as heterogeneous historical records but excludes them from the current-route same-distribution DSR family. All materialized current-route original/modified trials form separate Base/CostX2 sequences; DSR is mandatory/reportable and the primary rank, not an absolute hard Gate. Per-trial final DSR is not immutable; the one-time final selection report recomputes it after all allowed trials close.
+
+- After ADR-0017 merges, runtime load, causal validation, automated IS after at least five causal PASS candidates and one limited modification for at most three eligible candidates are authorized. Ordinary code/container/test fixes continue without new governance loops. P0 safety, license, OOS leakage and numerical errors remain hard stops.
+
+- Runtime has not executed. Its remaining preconditions are ADR-0017 merge, exact pinned VPS runtime identity, null-to-exact runtime effective/resolved parameter hashes, observed external parameter/config counts of zero and at least five causal PASS candidates before IS. OOS, dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 remain false.
 
 - U-25 and automatic U-26+ invention remain superseded append-only. Only review of the frozen pre-runtime route is allowed now; strategy import/load, runtime causal work, performance results, OOS, dry-run, API/trading, execution/live and M2 remain unauthorized.
 

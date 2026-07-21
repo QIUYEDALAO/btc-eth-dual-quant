@@ -2,8 +2,8 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-21T00:00:00Z"
-current_phase: "ADR-0016 pre-runtime contract complete pending PR #112 exact-head review"
-current_status: pre_runtime_contract_complete_pending_exact_head_review_runtime_not_authorized_zero_load_zero_causal_zero_is_zero_oos_no_m2
+current_phase: "ADR-0017 final pre-runtime selection/runtime authorization pending merge"
+current_status: adr0017_frozen_pending_merge_runtime_not_yet_executed_oos_sealed_no_trading_no_m2
 context_sync_policy:
   update_on_every_user_instruction: true
   required_files:
@@ -20,6 +20,27 @@ context_sync_policy:
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: ADR-0017 current-route selection and runtime authorization
+    status: frozen_pending_validation_and_merge
+    decision: docs/decisions/ADR-0017-current-route-selection-and-runtime.md
+    machine_contract: config/adr0017_current_route_selection_runtime_v1.json
+    content_hash: 8a4b1d6d859c683bf3a61fd55784083bc04c8169a9cd1cab2362273177b48cdd
+    pr113_approved_head: 11cd55fd3e8a784df61bbcb370d4109be82a5ceb
+    pr113_merge_commit: d657994b69289d8330acca90f5c1ed301863a3ce
+    pr112_approved_head: 2467123cf4d0de29ac719ae622706dfdc6138b13
+    pr112_equal_tree_head: 58c8749556b3c92f679c05e69f84e8be8c923cb6
+    pr112_merge_commit: d119593d069a0ec5f0851802cb8ab0df514e3a18
+    runtime_load_authorized_after_merge: true
+    causal_validation_authorized_after_merge: true
+    is_after_automated_causal_gate_authorized_after_merge: true
+    oos_authorized: false
+    oos_opened: false
+    oos_runs: 0
+    oos_rows_decoded: 0
+    dry_run_authorized: false
+    api_authorized: false
+    live_authorized: false
+    m2_authorized: false
   - phase: ADR-0016 external-strategy source inventory and static screen
     status: pre_runtime_contract_complete_pending_exact_head_review
     evidence: reports/m1/U25_SUPERSESSION_AND_EXTERNAL_STRATEGY_ROUTE.md
@@ -2769,6 +2790,19 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: EXTERNAL-STRATEGY-ADR0017
+    phase: final pre-runtime selection and runtime authorization
+    status: frozen_pending_validation_and_merge
+    content_hash: 8a4b1d6d859c683bf3a61fd55784083bc04c8169a9cd1cab2362273177b48cdd
+    runtime_load_authorized_after_merge: true
+    causal_validation_authorized_after_merge: true
+    is_after_automated_causal_gate_authorized_after_merge: true
+    minimum_causal_pass_candidates: 5
+    oos_authorized: false
+    dry_run_authorized: false
+    api_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: EXISTING-STRATEGY-ROADMAP
     phase: ADR-0016 pre-runtime contract exact-head review
     status: pre_runtime_contract_complete_pending_exact_head_review
