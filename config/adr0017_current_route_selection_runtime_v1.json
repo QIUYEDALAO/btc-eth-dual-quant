@@ -1,0 +1,143 @@
+{
+  "schema_version": "adr0017-current-route-selection-runtime-v1",
+  "decision_id": "ADR-0017-CURRENT-ROUTE-SELECTION-AND-RUNTIME",
+  "status": "adopted_last_pre_runtime_governance_oos_sealed",
+  "bindings": {
+    "pr113_approved_head": "11cd55fd3e8a784df61bbcb370d4109be82a5ceb",
+    "pr113_merge_commit": "d657994b69289d8330acca90f5c1ed301863a3ce",
+    "pr112_approved_head": "2467123cf4d0de29ac719ae622706dfdc6138b13",
+    "pr112_rebased_equal_tree_head": "58c8749556b3c92f679c05e69f84e8be8c923cb6",
+    "pr112_merge_commit": "d119593d069a0ec5f0851802cb8ab0df514e3a18",
+    "approved_and_rebased_tree": "d294a7c1739c4a225ee6166f507739e1fcf087cf",
+    "adr0016_root_freeze_sha256": "aafbf0628109668b9d8c1ba193c54d8443c04e660cd105c899d66e6f1a172bc8",
+    "contract_byte_hashes": {
+      "config/adr0016_existing_strategy_route_v1.json": "b15afc7a7c4b541a4f42f3224ca9add62164ee6335e9cde1bfac1c70c7cb6513",
+      "config/adr0016_pre_runtime_contract_freeze_v1.json": "aafbf0628109668b9d8c1ba193c54d8443c04e660cd105c899d66e6f1a172bc8",
+      "config/external_strategy_inventory_v1.json": "fc34d329272cd69f6d2176ce9ad3a292bab8b0878bf0493e40a359ffa8e84d66",
+      "config/external_strategy_candidate_freeze_v1.json": "8615113fd7a0429d3717634ebff9bb6c4ac49a741fc23946d272762330a041a7",
+      "config/external_strategy_unified_is_protocol_v1.json": "b6237334c86d9a857382b2984da8444cf4eb093e49d4b1a6eadf7e8f0c133953",
+      "config/external_strategy_data_authority_v1.json": "687aa47450ddc812a3ea444a8e571d9511c43130d71253d6e80ad2d240237ebe",
+      "config/external_strategy_benchmark_v1.json": "916749c0623d53a4d51ddeda6e7147887f031fd2dad2ecf281a43cdec27ac047",
+      "config/external_strategy_dsr_reference_trials_v1.json": "3456e1472e59ea23f44588efc6a47821cef01920a7ff2f3e685c4731594b08b4",
+      "config/external_strategy_oos_guard_v1.json": "952cb2bf67e579b5976099494b18177c3eafd9102658f5caf18f516494b2b1e8",
+      "STRATEGY_TRIAL_LEDGER.yaml": "f1a2f68ced17f8e1c82c391a8bbb4efaa2de77294b36360ace17cc6c93a4a91f"
+    },
+    "frozen_candidates": ["Supertrend", "Strategy001", "UniversalMACD", "Bandtastic", "Diamond", "Heracles"]
+  },
+  "statistical_selection": {
+    "historical_m1a_m1b_m1c": {
+      "retained_in_historical_trial_ledger": true,
+      "reported": true,
+      "deleted": false,
+      "current_route_same_distribution_reference": false,
+      "reason": "heterogeneous instrument / scope / window / return process"
+    },
+    "current_route_trial_family": {
+      "members": ["all materialized current-route original trials", "all materialized current-route modified trials"],
+      "scenario_sequences": ["Base", "CostX2"],
+      "stress_scenarios_add_trials": false,
+      "append_order": "first_materialized_utc_then_trial_id",
+      "failed_trials_append_only": true
+    },
+    "dsr": {
+      "mandatory_to_compute": true,
+      "mandatory_to_report": true,
+      "primary_selection_rank": true,
+      "absolute_is_hard_gate": false,
+      "base_and_costx2_separate": true
+    },
+    "non_dsr_hard_gates": [
+      "net_return_strictly_positive",
+      "daily_mtm_sharpe_at_least_1.0",
+      "psr_at_least_0.95",
+      "max_drawdown_at_most_0.15",
+      "delete_best_3_return_at_least_0.0",
+      "profitable_subperiods_at_least_3_of_4",
+      "is_completed_trades_at_least_56",
+      "projected_full_trades_at_least_80",
+      "projected_oos_trades_at_least_20",
+      "beat_equal_weight_benchmark",
+      "beat_risk_matched_benchmark",
+      "causal_execution_and_repricing_gates_pass"
+    ],
+    "all_hard_gates_pass_excludes_absolute_dsr_threshold": true,
+    "selection_order": [
+      "all_non_dsr_hard_gates_pass",
+      "base_dsr_desc",
+      "costx2_dsr_desc",
+      "costx2_daily_mtm_sharpe_desc",
+      "costx2_max_drawdown_asc",
+      "turnover_asc",
+      "candidate_id_asc"
+    ],
+    "per_trial_immutable_metrics": ["equity_recomputed_sharpe", "psr", "max_drawdown", "net_return"],
+    "per_trial_final_dsr_stored": false,
+    "optional_materialization_fields": ["dsr_at_materialization", "reference_sequence_hash"]
+  },
+  "final_selection": {
+    "path": "reports/m1/evidence/external_strategy_selection/final_is_selection.json",
+    "generate_once_after_all_original_and_allowed_modified_trials_close": true,
+    "required_fields": [
+      "schema_version",
+      "status",
+      "complete_current_route_trial_sequence",
+      "base_final_dsr",
+      "costx2_final_dsr",
+      "hard_gate_matrix",
+      "selection_order",
+      "selected_candidate",
+      "selection_report_hash"
+    ],
+    "maximum_selected_candidates": 1,
+    "no_hard_gate_passer_status": "failed_selection",
+    "no_hard_gate_passer_selected_candidate": null,
+    "terminal_success_status": "pending_explicit_unique_oos_authorization"
+  },
+  "runtime_orchestration": {
+    "minimum_causal_pass_candidates_before_is": 5,
+    "maximum_frozen_candidates": 6,
+    "replacement_candidate_allowed": false,
+    "original_trials_per_causal_pass_candidate": 1,
+    "maximum_modified_candidates": 3,
+    "modification_packages_per_candidate": 1,
+    "atomic_changes_per_package": 2,
+    "modified_requires_original_non_dsr_hard_gate_pass": true,
+    "second_rescue_round_allowed": false,
+    "ordinary_runtime_container_and_test_errors_repaired_continuously": true,
+    "new_pre_runtime_review_cycle_allowed": false,
+    "new_pre_runtime_review_cycle_exceptions": ["P0 safety", "license", "OOS leakage", "numerical calculation error"]
+  },
+  "permissions": {
+    "runtime_load": true,
+    "causal_validation": true,
+    "is_after_automated_causal_gate": true,
+    "limited_modification_after_original_hard_gate": true,
+    "oos": false,
+    "dry_run": false,
+    "api": false,
+    "paper_live": false,
+    "order_placement": false,
+    "execution_live": false,
+    "m2": false
+  },
+  "zero_state_at_adoption": {
+    "freqtrade_loads": 0,
+    "causal_validations": 0,
+    "is_trials": 0,
+    "selection_trial_count": 0,
+    "oos_authorized": false,
+    "oos_opened": false,
+    "oos_runs": 0,
+    "oos_rows_decoded": 0
+  },
+  "hard_stop_conditions": [
+    "runtime identity mismatch",
+    "fewer than five causal PASS candidates",
+    "data or OOS isolation failure",
+    "all original candidates fail non-DSR hard gates",
+    "numerical recomputation mismatch",
+    "safety or license failure"
+  ],
+  "content_hash": "8a4b1d6d859c683bf3a61fd55784083bc04c8169a9cd1cab2362273177b48cdd",
+  "generated_utc": "2026-07-21T00:00:00Z"
+}
