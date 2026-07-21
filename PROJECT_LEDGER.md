@@ -2884,3 +2884,11 @@ private exchange responses here.
 - The authority is IS-only and result blind. It may not inspect signals, trades, equity, metrics, DSR or selection output; it must decode zero OOS rows and keep boundary prices out of strategy OHLCV and indicator history.
 - Pass requires 92/92 exact open/close rows, official provenance, finite OHLCV, lifecycle/mask validity, normal/reverse/shuffled identity, tamper negatives, full command text and exit/stdout/stderr hashes, plus reset/rewarm semantics across inactive intervals.
 - Original IS remains unauthorized until the frozen authority receives a separate exact-head review and merge. IS/selection trials remain 0/0; OOS remains false/false/0/0; dry-run/API/live/M2 remain false.
+
+## 2026-07-21 - Boundary Authority Official-Source Preflight Hard Stop
+
+- The result-blind preflight reconstructed all 92 fixed boundary identities from qualification `e9844902...80fa` and checked only their official Binance daily ZIP availability.
+- Exactly 91 sources were available. Required source `RNDRUSDT-5m-2024-08-01.zip` returned HTTP 404, so the 92/92 Gate failed and acquisition stopped.
+- Evidence `5746b9824ddce364cbe291ea5d7f9b499246683cb8b909a5fc9e19383150537e` fixes normal/reverse/shuffled identity, the single missing boundary and all zero-access counters.
+- No archive body was downloaded; market/result/OOS rows and IS/selection trials remain zero. No alternate symbol, REST data, time search, synthetic/last price or unfrozen source was used.
+- The boundary authority is not frozen. Original IS remains unauthorized; resumption requires a separate explicit source or holding/universe-contract decision. The materializer now also requires explicit `eligibility_status == qualified`.

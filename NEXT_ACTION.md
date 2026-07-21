@@ -9,7 +9,20 @@ change. A context-only synchronization uses a skip-CI commit and does not need a
 new PR or CI run. It must not change any research, runtime, OOS or trading
 authorization.
 
-## Authorized Next Stage: IS-Only Membership-Exit Boundary Authority
+## Current Hard Stop: Official RNDRUSDT Boundary Source Missing
+
+The authorized result-blind source preflight reached only 91/92 official daily
+archives. The required official Binance URL for `RNDRUSDT` at
+`2024-08-01T00:00:00Z` returns HTTP 404. Evidence `5746b982...537e` records zero
+archive downloads, zero market/result/OOS rows and zero IS/selection trials.
+
+Do not acquire the other 91 archives, substitute RENDER or another symbol, use
+REST, search forward/backward, synthesize a price or modify the fixed boundary
+set. The boundary authority is not frozen and original IS remains prohibited.
+The only possible next research action is a separate explicit decision changing
+the official-source requirement or the holding/universe contract.
+
+## Historical Authorization: IS-Only Membership-Exit Boundary Authority
 
 PR #115 exact head `60e49ee7...b3b4b5` was independently approved with zero
 critical/high findings and merged without changing the reviewed head as

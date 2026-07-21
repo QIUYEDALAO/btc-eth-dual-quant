@@ -42,6 +42,10 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- The authorized result-blind boundary source preflight is hard-blocked. Exactly 91/92 official Binance daily ZIP URLs exist; the required `RNDRUSDT-5m-2024-08-01.zip` returns HTTP 404. Evidence `5746b982...537e` records zero archive downloads, zero market/result/OOS rows and no IS trials. Do not substitute a renamed symbol, REST response, earlier/later row, synthetic/last price or unfrozen source.
+
+- The boundary authority is not frozen and original IS remains unauthorized. Resuming now requires a separate explicit decision changing the source or holding/universe contract. The materializer has an explicit `eligibility_status == qualified` guard; this hardening grants no additional authority.
+
 - PR #115 exact head `60e49ee7...b3b4b5` is independently approved with 0 critical/high and merged unchanged as `e19962f5...9cc37`. The review and machine authorization are recorded in `reports/expert/PR115_EXACT_HEAD_REVIEW.md` and `config/membership_exit_boundary_authorization_v1.json`; the reviewer-provided decision identity is `82acac46...9cea4`.
 
 - A new result-blind, IS-only membership-exit boundary authority is authorized for exactly the 92 transitions bound by `e9844902...80fa`. Work may design, acquire official public daily archives, validate exact rows and freeze the authority. It must remain separate from strategy OHLCV/indicator history, reset/rewarm state across inactive intervals, decode zero OOS rows, pass 92/92 and receive a separate exact-head review and merge before original IS.
