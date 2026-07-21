@@ -1,0 +1,55 @@
+{
+  "bindings": {
+    "boundary_qualification_hash": "e9844902eaa7234a5476a080e937cfbf51f70913cb9ff1b903b907cad08280fa",
+    "prior_boundary_design_authorization_hash": "82acac46ce4e81cdab071635d986b17dfe1996091e4aa55cba3de5007b49cea4",
+    "source_preflight_command_hash": "3e648c9ffc9113b96c7ead2c67164e0ec4d1bb637938a46b4287c56d81072e48",
+    "source_preflight_content_hash": "5746b9824ddce364cbe291ea5d7f9b499246683cb8b909a5fc9e19383150537e"
+  },
+  "confirmed_state": {
+    "archives_downloaded": 0,
+    "fixed_boundaries": 92,
+    "is_trials": 0,
+    "market_rows_decoded": 0,
+    "missing_identity": {
+      "http_status": 404,
+      "membership_end_exclusive": "2024-08-01T00:00:00Z",
+      "symbol": "RNDRUSDT"
+    },
+    "official_daily_sources_available": 91,
+    "official_daily_sources_missing": 1,
+    "oos": {
+      "authorized": false,
+      "opened": false,
+      "rows_decoded": 0,
+      "runs": 0
+    },
+    "selection_trial_count": 0,
+    "strategy_result_rows_read": 0
+  },
+  "content_hash": "b873227e3777db6a867294c35986a021fdff12dee4353a7c40312e0a1bc4b10d",
+  "critical_findings": 0,
+  "github_state_at_review": {
+    "draft": true,
+    "exact_head_workflow_runs_observed": 0,
+    "formal_review_write_succeeded": false,
+    "write_blocker": "GitHub integration returned Resource not accessible by integration"
+  },
+  "high_findings": 0,
+  "merge_authority": {
+    "may_authorize_original_is": false,
+    "may_be_interpreted_as_boundary_authority": false,
+    "may_merge_as_blocked_evidence_after_exact_head_gate_success": true
+  },
+  "non_blocking_finding": {
+    "effect": "Does not weaken the 91/92 HTTP availability hard stop. A completed authority must perform genuinely independent normal, reverse, and deterministic-shuffled construction passes.",
+    "id": "NB-01",
+    "title": "Recorded three-order hashes are canonical-order repetitions"
+  },
+  "pull_request": 116,
+  "repository": "QIUYEDALAO/btc-eth-dual-quant",
+  "review_scope": "immutable blocked official-source preflight evidence only",
+  "reviewed_base": "e19962f50b091b5c1fea363d20ee078fcd69cc37",
+  "reviewed_head": "edf753f28f26f6a168798fa40b49bcbd121a2adc",
+  "schema_version": "pr116-exact-head-review-v1",
+  "verdict": "approve_pending_exact_head_github_gate"
+}

@@ -1,0 +1,121 @@
+{
+  "bindings": {
+    "original_boundary_qualification_hash": "e9844902eaa7234a5476a080e937cfbf51f70913cb9ff1b903b907cad08280fa",
+    "pr116_command_evidence_hash": "3e648c9ffc9113b96c7ead2c67164e0ec4d1bb637938a46b4287c56d81072e48",
+    "pr116_reviewed_head": "edf753f28f26f6a168798fa40b49bcbd121a2adc",
+    "pr116_source_preflight_hash": "5746b9824ddce364cbe291ea5d7f9b499246683cb8b909a5fc9e19383150537e",
+    "prior_boundary_design_authorization_hash": "82acac46ce4e81cdab071635d986b17dfe1996091e4aa55cba3de5007b49cea4",
+    "repository": "QIUYEDALAO/btc-eth-dual-quant"
+  },
+  "boundary_set_revision": {
+    "additions_beyond_replacement": 0,
+    "deletions_beyond_replacement": 0,
+    "must_receive_new_canonical_hash": true,
+    "one_for_one_replacement": {
+      "add": [
+        "RNDRUSDT",
+        "2024-07-22T02:55:00Z"
+      ],
+      "remove": [
+        "RNDRUSDT",
+        "2024-08-01T00:00:00Z"
+      ]
+    },
+    "result_blind": true,
+    "total_identity_count": 92,
+    "unchanged_original_monthly_boundaries": 91
+  },
+  "content_hash": "8761fabac1f32d518d6c75c08dcf0a37288262059fe3192b87fb44de836b46e9",
+  "decision": {
+    "allow_rest_fallback": false,
+    "allow_successor_symbol_price_substitution": false,
+    "allow_synthetic_or_last_price": false,
+    "change_holding_and_lifecycle_contract": true,
+    "rationale": "A scheduled cessation known before execution is an executable lifecycle event. RENDER is a successor SPL token created through a cross-chain 1:1 upgrade, not an identical RNDRUSDT market-data path, so successor prices must not repair the predecessor boundary.",
+    "relax_official_source_requirement": false
+  },
+  "decision_id": "ADR-0018-SCHEDULED-MARKET-CESSATION-FORCED-EXIT",
+  "generic_rule": {
+    "announcement_exact_timestamp_required_before_authority_freeze": true,
+    "announcement_must_be_known_before_forced_exit": true,
+    "append_boundary_row_to_candidate_ohlcv": false,
+    "append_boundary_row_to_indicator_history": false,
+    "availability_end_exclusive": "official_venue_spot_trading_cessation_utc",
+    "boundary_row_use": "forced_exit_lookup_only",
+    "event_type": "scheduled_spot_market_cessation",
+    "forced_exit_open_rule": "greatest exact eligible 5m open whose close_time is strictly before availability_end_exclusive",
+    "forced_exit_precedence": [
+      "close every already-open position in the predecessor symbol at the forced-exit open",
+      "reject any new entry scheduled for the same open",
+      "reject all later predecessor-symbol signals and fills"
+    ],
+    "forward_search_allowed": false,
+    "indicator_state_crosses_inactive_interval": false,
+    "official_venue_announcement_required": true,
+    "reset_and_rewarm_required_after_any_later_readmission": true,
+    "successor_inherits_history_or_rank": false,
+    "successor_inherits_position": false,
+    "successor_symbol_authority": "provenance_only"
+  },
+  "permissions": {
+    "adr0018_contract_design": true,
+    "api_private_endpoints": false,
+    "boundary_archive_acquisition_before_adr0018_merge": false,
+    "boundary_authority_freeze_before_adr0018_merge": false,
+    "dry_run": false,
+    "execution_live": false,
+    "m2": false,
+    "modified_is": false,
+    "official_public_preflight_for_rndr_original_symbol": true,
+    "oos": false,
+    "order_placement": false,
+    "original_is": false,
+    "paper_live": false,
+    "pr116_blocked_evidence_merge_after_gate": true,
+    "selection_trial_materialization": false
+  },
+  "process": {
+    "adr0018_exact_head_review_and_merge_required": true,
+    "adr0018_requires_separate_small_pr": true,
+    "boundary_authority_acquisition_and_freeze_after_adr0018_merge": true,
+    "completed_boundary_authority_requires_separate_exact_head_review_and_merge": true,
+    "original_is_may_resume_only_after_all_prior_steps": true,
+    "pr116_may_merge_only_as_blocked_evidence_after_exact_head_gate": true
+  },
+  "required_preflight_before_freeze": {
+    "archive_byte_size_and_sha256_required": true,
+    "exact_close_time_required": "2024-07-22T02:59:59.999Z",
+    "exact_open_time_required": "2024-07-22T02:55:00Z",
+    "finite_legal_ohlcv_required": true,
+    "full_command_exit_stdout_stderr_evidence_required": true,
+    "lifecycle_and_invalid_interval_status_required": true,
+    "market_rows_outside_fixed_boundary_rows": 0,
+    "normal_reverse_shuffled_independent_constructions_required": true,
+    "official_announcement_body_and_publication_identity_hash_bound": true,
+    "oos_rows_decoded": 0,
+    "original_symbol_archive_http_200_required": true,
+    "strategy_results_read": 0,
+    "tamper_negatives_required": true,
+    "zip_member_identity_and_sha256_required": true
+  },
+  "rndr_event": {
+    "candidate_forced_exit_close_time_utc": "2024-07-22T02:59:59.999Z",
+    "candidate_forced_exit_open_utc": "2024-07-22T02:55:00Z",
+    "economic_asset_label": "Render",
+    "exact_archive_and_row_not_yet_validated": true,
+    "official_announcement_id": "d1f2ae8d99b24439a7a900caa9bb6b3b",
+    "official_announcement_publication_date": "2024-07-10",
+    "predecessor_symbol": "RNDRUSDT",
+    "replaced_monthly_membership_boundary_utc": "2024-08-01T00:00:00Z",
+    "required_original_symbol_daily_archive": "data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-07-22.zip",
+    "spot_trading_cessation_utc": "2024-07-22T03:00:00Z",
+    "successor_symbol": "RENDERUSDT",
+    "successor_trading_open_utc": "2024-07-26T08:00:00Z",
+    "swap_and_successor_fields_are_provenance_only": true,
+    "swap_ratio": "1 RNDR = 1 RENDER",
+    "use_render_history_for_rndr_or_future_membership": false,
+    "use_render_price_for_rndr_exit": false
+  },
+  "schema_version": "adr0018-scheduled-market-cessation-forced-exit-v1",
+  "status": "authorized_contract_design_and_official_source_preflight_only"
+}

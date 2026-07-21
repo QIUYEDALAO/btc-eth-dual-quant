@@ -42,6 +42,16 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- The 2026-07-22 `HKUDS/AI-Trader` request is a completed read-only external-project assessment at exact head `d03ff6c...c8df`. Do not install its remote skills, register an agent, call its APIs, import its source, or interpret the assessment as strategy/runtime/data/IS/OOS/trading authority. Static inspection completed; tests did not start because isolated PyPI dependency installation timed out.
+
+- PR #116 exact head `edf753f2...a2adc` passed exact-head GitHub run `29829112223` and merged only as blocked evidence under `d2c54d5d...e6440`. Independent review `b873227e...b10d` has 0 critical/high. It does not complete the boundary authority or authorize IS.
+
+- ADR-0018 scheduled-market-cessation forced-exit contract `8761faba...46e9` is frozen pending separate exact-head review and merge. It retains official original-symbol sourcing, derives the RNDR candidate forced-exit open as `2024-07-22T02:55:00Z`, and treats RENDER as provenance-only. No archive or row has been acquired or validated in this stage.
+
+- Draft PR #117 is the ADR-0018 review target. Keep it Draft until an independent exact-head verdict and matching GitHub Gate exist; do not merge it as boundary authority or IS authorization.
+
+- Until ADR-0018 is reviewed and merged, do not preflight or download the RNDR archive. After merge, preflight only the official RNDR 2024-07-22 daily ZIP and exact 02:55 row before downloading any of the other 91 archives. Completed authority construction must run genuinely independent normal/reverse/shuffled passes; repeating one canonical hash does not satisfy NB-01.
+
 - The authorized result-blind boundary source preflight is hard-blocked. Exactly 91/92 official Binance daily ZIP URLs exist; the required `RNDRUSDT-5m-2024-08-01.zip` returns HTTP 404. Evidence `5746b982...537e` records zero archive downloads, zero market/result/OOS rows and no IS trials. Do not substitute a renamed symbol, REST response, earlier/later row, synthetic/last price or unfrozen source.
 
 - The boundary authority is not frozen and original IS remains unauthorized. Resuming now requires a separate explicit decision changing the source or holding/universe contract. The materializer has an explicit `eligibility_status == qualified` guard; this hardening grants no additional authority.

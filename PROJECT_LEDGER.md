@@ -2893,3 +2893,22 @@ private exchange responses here.
 - No archive body was downloaded; market/result/OOS rows and IS/selection trials remain zero. No alternate symbol, REST data, time search, synthetic/last price or unfrozen source was used.
 - The boundary authority is not frozen. Original IS remains unauthorized; resumption requires a separate explicit source or holding/universe-contract decision. The materializer now also requires explicit `eligibility_status == qualified`.
 - Draft PR #116 publishes this immutable blocked evidence for exact-head review. It is not authorized for automatic merge and grants no IS authority.
+
+## 2026-07-21 - PR #116 Gate/Merge and ADR-0018 Contract Freeze
+
+- PR #116 exact head `edf753f28f26f6a168798fa40b49bcbd121a2adc` received independent verdict `approve_pending_exact_head_github_gate` with 0 critical/high and review identity `b873227e...b10d`.
+- Because its final required context commit carried `[skip ci]`, the unchanged exact head was validated through the repository's manual Main Regression entry, which invokes the same selective script. GitHub run `29829112223` succeeded on the exact head.
+- PR #116 was ordinary-merged as `d2c54d5d81e1e323d9581904df015afe368e6440`, preserving the reviewed head as an ancestor, strictly as blocked evidence.
+- ADR-0018 `8761fabac1f32d518d6c75c08dcf0a37288262059fe3192b87fb44de836b46e9` freezes a generic pre-announced market-cessation forced-exit contract. RNDR exits at the candidate original-symbol 02:55 open before 03:00 cessation; RENDER is provenance-only and cannot supply price, position, history or rank.
+- No archive or market row was acquired in the ADR stage. The RNDR archive/row remains explicitly unvalidated. IS/selection trials remain 0/0, OOS false/false/0/0 and all trading/M2 permissions false.
+- NB-01 is carried forward: a completed authority must perform three genuinely independent normal/reverse/deterministic-shuffled constructions before canonical comparison.
+- Draft PR #117 publishes the frozen ADR-0018 contract for independent exact-head review. It remains Draft and is not authorized to merge before that review and GitHub Gate.
+
+## 2026-07-22 - HKUDS AI-Trader Read-Only Assessment
+
+- User instruction: read and analyze `https://github.com/HKUDS/AI-Trader`.
+- Scope: exact head `d03ff6c056b32ced735adf7c19ed8175adb1c8df`; repository/web inspection plus a temporary shallow clone only.
+- Finding boundary: AI-Trader is primarily an agent-native signal, simulated portfolio/copy-trading, experiment/challenge and research-data platform, not a demonstrated exchange-execution engine or a strategy backtesting framework.
+- Safety: no remote skill was installed, no account registered, no token issued, no API called, no source imported and no market/trading action performed.
+- Verification: 21 backend test files were identified. Tests did not start because the host lacked pytest and isolated dependency installation repeatedly timed out against PyPI; no test pass/fail claim is made.
+- Governance: this external assessment changes no ADR-0018, boundary, IS/OOS, runtime, API, paper/live, order, `execution/live` or M2 authority. Draft PR #117 exact-head review remains the only project next action.
