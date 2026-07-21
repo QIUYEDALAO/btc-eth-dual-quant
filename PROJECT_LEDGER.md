@@ -2903,3 +2903,12 @@ private exchange responses here.
 - No archive or market row was acquired in the ADR stage. The RNDR archive/row remains explicitly unvalidated. IS/selection trials remain 0/0, OOS false/false/0/0 and all trading/M2 permissions false.
 - NB-01 is carried forward: a completed authority must perform three genuinely independent normal/reverse/deterministic-shuffled constructions before canonical comparison.
 - Draft PR #117 publishes the frozen ADR-0018 contract for independent exact-head review. It remains Draft and is not authorized to merge before that review and GitHub Gate.
+
+## 2026-07-22 - HKUDS AI-Trader Read-Only Assessment
+
+- User instruction: read and analyze `https://github.com/HKUDS/AI-Trader`.
+- Scope: exact head `d03ff6c056b32ced735adf7c19ed8175adb1c8df`; repository/web inspection plus a temporary shallow clone only.
+- Finding boundary: AI-Trader is primarily an agent-native signal, simulated portfolio/copy-trading, experiment/challenge and research-data platform, not a demonstrated exchange-execution engine or a strategy backtesting framework.
+- Safety: no remote skill was installed, no account registered, no token issued, no API called, no source imported and no market/trading action performed.
+- Verification: 21 backend test files were identified. Tests did not start because the host lacked pytest and isolated dependency installation repeatedly timed out against PyPI; no test pass/fail claim is made.
+- Governance: this external assessment changes no ADR-0018, boundary, IS/OOS, runtime, API, paper/live, order, `execution/live` or M2 authority. Draft PR #117 exact-head review remains the only project next action.

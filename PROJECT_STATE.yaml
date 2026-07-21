@@ -1,7 +1,7 @@
 project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
-last_updated_utc: "2026-07-21T00:00:00Z"
+last_updated_utc: "2026-07-22T00:00:00Z"
 current_phase: "ADR-0018 scheduled market-cessation contract frozen pending exact-head review"
 current_status: adr0018_contract_frozen_pending_exact_head_review_no_boundary_acquisition_zero_is_zero_oos_no_trading_no_m2
 context_sync_policy:
@@ -17,6 +17,16 @@ context_sync_policy:
   context_only_ci_required: false
   context_only_commit_skip_ci: true
   authority_expansion: false
+external_project_review:
+  repository: HKUDS/AI-Trader
+  reviewed_head: d03ff6c056b32ced735adf7c19ed8175adb1c8df
+  reviewed_utc: "2026-07-22T00:00:00Z"
+  scope: read_only_architecture_capability_operability_and_risk_assessment
+  source_or_skill_installed: false
+  platform_registration_performed: false
+  api_or_trading_action_performed: false
+  project_authority_changed: false
+  verification: static_review_complete_tests_not_started_due_pypi_timeout
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:

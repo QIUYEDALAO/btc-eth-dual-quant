@@ -42,6 +42,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- The 2026-07-22 `HKUDS/AI-Trader` request is a completed read-only external-project assessment at exact head `d03ff6c...c8df`. Do not install its remote skills, register an agent, call its APIs, import its source, or interpret the assessment as strategy/runtime/data/IS/OOS/trading authority. Static inspection completed; tests did not start because isolated PyPI dependency installation timed out.
+
 - PR #116 exact head `edf753f2...a2adc` passed exact-head GitHub run `29829112223` and merged only as blocked evidence under `d2c54d5d...e6440`. Independent review `b873227e...b10d` has 0 critical/high. It does not complete the boundary authority or authorize IS.
 
 - ADR-0018 scheduled-market-cessation forced-exit contract `8761faba...46e9` is frozen pending separate exact-head review and merge. It retains official original-symbol sourcing, derives the RNDR candidate forced-exit open as `2024-07-22T02:55:00Z`, and treats RENDER as provenance-only. No archive or row has been acquired or validated in this stage.

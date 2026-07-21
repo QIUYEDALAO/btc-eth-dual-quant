@@ -9,6 +9,20 @@ change. A context-only synchronization uses a skip-CI commit and does not need a
 new PR or CI run. It must not change any research, runtime, OOS or trading
 authorization.
 
+## Completed Read-Only External Project Assessment
+
+The 2026-07-22 instruction to read and analyze `HKUDS/AI-Trader` was completed
+against exact head `d03ff6c056b32ced735adf7c19ed8175adb1c8df`. The work was limited to
+repository/web inspection and a temporary shallow clone. No remote skill was
+installed, no platform account was registered, no API/trading action occurred,
+and no AI-Trader source was imported into this project. The bundled test suite
+was not started because isolated dependency installation repeatedly timed out
+against PyPI; conclusions are therefore explicitly static-review conclusions.
+
+This external assessment does not change the current next action: independent
+exact-head review and GitHub Gate for Draft PR #117. It grants no runtime, data,
+IS/OOS, API, paper/live, order-placement, `execution/live` or M2 authority.
+
 ## Current Stage: ADR-0018 Exact-Head Review
 
 PR #116 exact head `edf753f2...a2adc` passed GitHub run `29829112223` and
