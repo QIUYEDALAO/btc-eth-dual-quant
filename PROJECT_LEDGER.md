@@ -2912,3 +2912,13 @@ private exchange responses here.
 - Safety: no remote skill was installed, no account registered, no token issued, no API called, no source imported and no market/trading action performed.
 - Verification: 21 backend test files were identified. Tests did not start because the host lacked pytest and isolated dependency installation repeatedly timed out against PyPI; no test pass/fail claim is made.
 - Governance: this external assessment changes no ADR-0018, boundary, IS/OOS, runtime, API, paper/live, order, `execution/live` or M2 authority. Draft PR #117 exact-head review remains the only project next action.
+
+## 2026-07-22 - PR #117 Approved/Merged; RNDR Original-Symbol Preflight Passed
+
+- Independent review approved PR #117 exact head `bb22a08cc7bcd31c458ca7d362e536d88c0ca1e2` with 0 critical/high under review `41f4360976a3b2dff2408bf3262fff548b23b3bf1460314d3c8882c1e9ad780f`.
+- GitHub Main Regression run `29871317869` succeeded on that exact head. PR #117 was ordinary-merged as `336563c67a6b23cc9ebbf91c7abd007db0df048b`, preserving the reviewed head as its second parent.
+- Only after merge, the fixed official `RNDRUSDT-5m-2024-07-22.zip` and checksum were acquired. The 1,720-byte archive and official checksum are `e2da006e...91587`; member hash is `b321e6a2...5f72c`.
+- The exact 02:55 row closes at 02:59:59.999, has legal OHLCV and raw-line hash `89be4f17...e4f50`, is qualified by July membership and is not masked. Evidence is `eceafea1...9b38be`; command evidence is `cf3d7f83...e72d1f`.
+- No other boundary archive was requested or downloaded. One fixed IS boundary row and zero OOS/result rows were decoded; IS and selection trials remain zero.
+- The completed 92-boundary authority is not frozen and NB-01 is not yet satisfied for the full set. The next stage may build the full revised authority from the unchanged 91 official sources plus the RNDR replacement, but original IS remains prohibited until a separate exact-head review and merge.
+- OOS remains false/false/0/0. Dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 remain false.

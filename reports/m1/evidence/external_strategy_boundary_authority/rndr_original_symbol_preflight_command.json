@@ -1,0 +1,14 @@
+{
+  "archive_requests": 1,
+  "checksum_requests": 1,
+  "command": "python3 scripts/external_strategy_rndr_boundary_preflight.py --acquire --write",
+  "content_hash": "cf3d7f83730ca93b5df679806cf87f47ee3b3b485f38073779854632d4e72d1f",
+  "evidence_content_hash": "eceafea174381268c22df88b3262a3702a828a3aac079b8e060000686c9b38be",
+  "exit_code": 0,
+  "market_rows_decoded": 1,
+  "oos_rows_decoded": 0,
+  "other_91_archives_requested": 0,
+  "schema_version": "external-strategy-rndr-boundary-preflight-command-v1",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "85ec5f20e26ce005f109f57d36019dc56e215cd8c08c43665d02b4f2340e3ae4"
+}

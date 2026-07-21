@@ -2,8 +2,12 @@
 
 | Artifact | Purpose | Status | Key evidence | Trading authority |
 |---|---|---|---|---|
-| `docs/decisions/ADR-0018-scheduled-market-cessation-forced-exit.md` | Result-blind scheduled market-cessation holding/lifecycle contract | frozen pending exact-head review | canonical `8761faba...46e9`; RNDR 02:55 candidate only; RENDER provenance-only; no archive acquisition | no |
-| `config/adr0018_scheduled_market_cessation_forced_exit_v1.json` | Machine ADR-0018 contract | design and post-merge RNDR preflight only | one-for-one 92-boundary revision; true three-order construction required; IS/OOS/live false | no |
+| `reports/m1/EXTERNAL_STRATEGY_RNDR_ORIGINAL_SYMBOL_PREFLIGHT.md` | RNDR-only official archive and exact-row preflight | pass / completed authority still pending | evidence `eceafea1...9b38be`; archive `e2da006e...91587`; row `89be4f17...e4f50`; other-91/OOS zero | no |
+| `reports/m1/evidence/external_strategy_boundary_authority/rndr_original_symbol_preflight.json` | Machine RNDR preflight evidence | deterministic pass | one archive/checksum request, one exact row, three distinct traversal traces, full authority and IS false | no |
+| `reports/expert/PR117_EXACT_HEAD_REVIEW.md` | ADR-0018 exact-head independent review | approve / merged after Gate | head `bb22a08c...a1e2`; review `41f43609...780f`; run `29871317869`; merge `336563c6...048b` | no |
+| `reports/expert/evidence/pr117_exact_head_review_v1.json` | Machine PR #117 review | approve | 0 critical/high; exact merge conditions and post-merge RNDR-only scope | no |
+| `docs/decisions/ADR-0018-scheduled-market-cessation-forced-exit.md` | Result-blind scheduled market-cessation holding/lifecycle contract | adopted / PR #117 merged | canonical `8761faba...46e9`; RNDR 02:55 forced-exit open; RENDER provenance-only | no |
+| `config/adr0018_scheduled_market_cessation_forced_exit_v1.json` | Machine ADR-0018 contract | adopted for boundary construction only | one-for-one 92-boundary revision; true three-order construction required; IS/OOS/live false | no |
 | `reports/expert/PR116_EXACT_HEAD_REVIEW.md` | PR #116 blocked-evidence exact-head review | approve / merged after Gate | head `edf753f2...a2adc`; review `b873227e...b10d`; run `29829112223`; merge `d2c54d5d...e6440` | no |
 | `reports/expert/evidence/pr116_exact_head_review_v1.json` | Machine PR #116 review | approve pending Gate satisfied | 0 critical/high; NB-01 freezes genuine independent three-order requirement for completed authority | no |
 | `reports/m1/EXTERNAL_STRATEGY_BOUNDARY_AUTHORITY_SOURCE_PREFLIGHT_STOP.md` | Result-blind official boundary-source preflight | hard stop / no acquisition | 91/92 available; required RNDRUSDT 2024-08-01 official daily ZIP HTTP 404; evidence `5746b982...537e`; zero market/OOS rows | no |
