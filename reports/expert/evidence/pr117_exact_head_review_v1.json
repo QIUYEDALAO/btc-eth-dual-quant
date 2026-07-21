@@ -1,0 +1,76 @@
+{
+  "adr0018_canonical_hash": "8761fabac1f32d518d6c75c08dcf0a37288262059fe3192b87fb44de836b46e9",
+  "base": "d2c54d5d81e1e323d9581904df015afe368e6440",
+  "bindings": {
+    "boundary_count_before_and_after": 92,
+    "candidate_forced_exit_close_utc": "2024-07-22T02:59:59.999Z",
+    "candidate_forced_exit_open_utc": "2024-07-22T02:55:00Z",
+    "pr116_gate_run": 29829112223,
+    "pr116_merge_commit": "d2c54d5d81e1e323d9581904df015afe368e6440",
+    "pr116_reviewed_head": "edf753f28f26f6a168798fa40b49bcbd121a2adc",
+    "rndr_spot_cessation_utc": "2024-07-22T03:00:00Z",
+    "successor_symbol": "RENDERUSDT"
+  },
+  "content_hash": "41f4360976a3b2dff2408bf3262fff548b23b3bf1460314d3c8882c1e9ad780f",
+  "critical_findings": 0,
+  "current_github_state": {
+    "draft": true,
+    "formal_review_write_succeeded": false,
+    "ready_transition_succeeded": false,
+    "workflow_runs_observed_for_reviewed_head": 0,
+    "write_blocker": "Resource not accessible by integration"
+  },
+  "handoff_requested_head": "30cca38018017e0b1f74763c2861d9fee60c7026",
+  "high_findings": 0,
+  "merge_authority": {
+    "allowed_after_exact_head_gate_success": true,
+    "expected_head_must_equal": "bb22a08cc7bcd31c458ca7d362e536d88c0ca1e2",
+    "head_change_invalidates_review": true,
+    "merge_grants_boundary_archive_acquisition": false,
+    "merge_grants_boundary_authority_freeze": false,
+    "merge_grants_oos_or_trading": false,
+    "merge_grants_original_or_modified_is": false
+  },
+  "non_blocking_notes": [
+    {
+      "disposition": "Review is anchored to bb22a08c…; update PR metadata without changing the head.",
+      "id": "NB-117-01",
+      "summary": "The PR body and handoff still name 30cca380… while GitHub head is bb22a08c…."
+    },
+    {
+      "disposition": "No ADR document, machine contract, checker, or ADR test identity changed.",
+      "id": "NB-117-02",
+      "summary": "The extra commit after 30cca380… changes only mandatory project-context files."
+    },
+    {
+      "disposition": "ADR-0018 preserves this as a mandatory pre-freeze requirement.",
+      "id": "NB-117-03",
+      "summary": "The completed boundary authority must execute genuinely independent normal, reverse, and deterministic-shuffled construction passes."
+    }
+  ],
+  "pull_request": 117,
+  "repository": "QIUYEDALAO/btc-eth-dual-quant",
+  "review_dimensions": {
+    "boundary_set_one_for_one_replacement": "pass",
+    "forced_exit_same_open_precedence": "pass",
+    "forced_exit_timing": "pass",
+    "nb01_independent_three_pass_requirement": "pass",
+    "permissions_and_oos_guard": "pass",
+    "pr116_review_gate_merge_binding": "pass",
+    "predecessor_successor_isolation": "pass",
+    "result_blindness": "pass"
+  },
+  "reviewed_head": "bb22a08cc7bcd31c458ca7d362e536d88c0ca1e2",
+  "safety_state": {
+    "archive_or_market_row_acquisition_authorized_in_this_pr": false,
+    "dry_run_api_paper_live_orders_execution_live_m2": false,
+    "is_trials": 0,
+    "oos_authorized": false,
+    "oos_opened": false,
+    "oos_rows_decoded": 0,
+    "oos_runs": 0,
+    "selection_trial_count": 0
+  },
+  "schema_version": "pr117-exact-head-review-v1",
+  "verdict": "approve"
+}

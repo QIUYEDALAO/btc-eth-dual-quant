@@ -19,24 +19,36 @@ and no AI-Trader source was imported into this project. The bundled test suite
 was not started because isolated dependency installation repeatedly timed out
 against PyPI; conclusions are therefore explicitly static-review conclusions.
 
-This external assessment does not change the current next action: independent
-exact-head review and GitHub Gate for Draft PR #117. It grants no runtime, data,
+This external assessment did not change the ADR-0018 route. PR #117 has since
+passed exact-head review and Gate and merged; the RNDR-only preflight below is
+the current authority boundary. The assessment grants no runtime, data,
 IS/OOS, API, paper/live, order-placement, `execution/live` or M2 authority.
 
-## Current Stage: ADR-0018 Exact-Head Review
+## Current Stage: RNDR Preflight Passed; Complete Boundary Authority Pending
 
-PR #116 exact head `edf753f2...a2adc` passed GitHub run `29829112223` and
-merged as immutable blocked evidence under `d2c54d5d...e6440`. ADR-0018
-scheduled-market-cessation contract `8761faba...46e9` is now frozen on a
-separate branch in Draft PR #117. The only next action is its independent
-exact-head review, GitHub Gate and merge.
+PR #117 exact head `bb22a08c...a1e2` is independently approved with zero
+critical/high findings under review `41f43609...780f`. Exact-head GitHub run
+`29871317869` succeeded, and the reviewed head was ordinary-merged as
+`336563c6...048b`.
 
-Do not acquire any boundary archive in the ADR PR. After ADR-0018 review and
-merge, preflight only official original-symbol archive
-`RNDRUSDT-5m-2024-07-22.zip` and exact row `2024-07-22T02:55:00Z`. Only if that
-passes may a later authority stage download the other 91 archives. RENDER stays
-provenance-only; genuine independent normal/reverse/shuffled construction is
-mandatory.
+The authorized one-item original-symbol preflight passed under evidence
+`eceafea1...9b38be`. The official RNDR daily archive is 1,720 bytes with SHA-256
+`e2da006e...91587`; its exact 02:55 row closes at 02:59:59.999 and has raw-line
+hash `89be4f17...e4f50`. Only this archive and its checksum were requested. The
+other 91 archive request/download counts remain zero, market rows decoded are
+one, and OOS rows decoded are zero.
+
+Draft PR #118 publishes the preflight from functional commit
+`e799111af04469ebfcf28c7cc6e16228065ff37b`. It is review evidence only and
+does not freeze the complete boundary authority or authorize IS.
+
+The next task is the complete revised 92-boundary authority stage. It must use
+the fixed RNDR replacement plus the unchanged 91 official daily sources,
+perform genuinely independent normal/reverse/deterministic-shuffled full
+constructions, validate exact archive/member/row hashes and lifecycle/mask
+status, and keep every boundary row out of strategy OHLCV and indicator
+history. The completed authority must then receive a separate exact-head review
+and merge before original IS.
 
 Original IS/selection trials remain zero. OOS remains false/false/0/0, and
 dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 are

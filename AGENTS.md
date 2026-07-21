@@ -42,15 +42,23 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- PR #117 exact head `bb22a08c...a1e2` is independently approved with 0 critical/high under review `41f43609...780f`, passed exact-head GitHub run `29871317869`, and ordinary-merged as `336563c6...048b`. ADR-0018 `8761faba...46e9` is adopted only as the scheduled-market-cessation contract; the merge did not authorize IS or a completed boundary authority.
+
+- The RNDR original-symbol one-item preflight passed under `eceafea1...9b38be`. The official `RNDRUSDT-5m-2024-07-22.zip` is 1,720 bytes with SHA-256 `e2da006e...91587`; exact row `2024-07-22T02:55:00Z` / `02:59:59.999Z` has raw-line hash `89be4f17...e4f50`. Only this archive and checksum were requested, one market row and zero OOS rows were decoded, and the other 91 archives were not requested or downloaded.
+
+- Draft PR #118 publishes this one-item preflight from functional commit `e799111a...f37b`. Keep it Draft for review; it is not the completed 92-boundary authority and grants no IS authority.
+
+- The completed 92-boundary authority is not frozen. The next authorized stage may acquire and validate the unchanged 91 official daily sources plus the frozen RNDR replacement, but must perform genuinely independent normal/reverse/deterministic-shuffled full constructions, keep boundary rows out of strategy OHLCV/indicator history, preserve reset/rewarm semantics, and receive a separate exact-head review and merge before original IS.
+
 - The 2026-07-22 `HKUDS/AI-Trader` request is a completed read-only external-project assessment at exact head `d03ff6c...c8df`. Do not install its remote skills, register an agent, call its APIs, import its source, or interpret the assessment as strategy/runtime/data/IS/OOS/trading authority. Static inspection completed; tests did not start because isolated PyPI dependency installation timed out.
 
 - PR #116 exact head `edf753f2...a2adc` passed exact-head GitHub run `29829112223` and merged only as blocked evidence under `d2c54d5d...e6440`. Independent review `b873227e...b10d` has 0 critical/high. It does not complete the boundary authority or authorize IS.
 
-- ADR-0018 scheduled-market-cessation forced-exit contract `8761faba...46e9` is frozen pending separate exact-head review and merge. It retains official original-symbol sourcing, derives the RNDR candidate forced-exit open as `2024-07-22T02:55:00Z`, and treats RENDER as provenance-only. No archive or row has been acquired or validated in this stage.
+- ADR-0018 scheduled-market-cessation forced-exit contract `8761faba...46e9` retains official original-symbol sourcing, derives the RNDR forced-exit open as `2024-07-22T02:55:00Z`, and treats RENDER as provenance-only. Its exact archive and row are now validated only through the isolated preflight above.
 
-- Draft PR #117 is the ADR-0018 review target. Keep it Draft until an independent exact-head verdict and matching GitHub Gate exist; do not merge it as boundary authority or IS authorization.
+- PR #117 is merged contract evidence, not boundary-authority or IS authorization.
 
-- Until ADR-0018 is reviewed and merged, do not preflight or download the RNDR archive. After merge, preflight only the official RNDR 2024-07-22 daily ZIP and exact 02:55 row before downloading any of the other 91 archives. Completed authority construction must run genuinely independent normal/reverse/shuffled passes; repeating one canonical hash does not satisfy NB-01.
+- The RNDR-only preflight prerequisite is complete. Completed authority construction must still run genuinely independent normal/reverse/shuffled passes; repeating one canonical hash does not satisfy NB-01.
 
 - The authorized result-blind boundary source preflight is hard-blocked. Exactly 91/92 official Binance daily ZIP URLs exist; the required `RNDRUSDT-5m-2024-08-01.zip` returns HTTP 404. Evidence `5746b982...537e` records zero archive downloads, zero market/result/OOS rows and no IS trials. Do not substitute a renamed symbol, REST response, earlier/later row, synthetic/last price or unfrozen source.
 

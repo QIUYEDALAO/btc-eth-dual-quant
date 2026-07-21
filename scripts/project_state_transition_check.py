@@ -12,6 +12,10 @@ import yaml
 
 ALLOWED = {
     (
+        "External-strategy RNDR original-symbol boundary preflight passed; full 92-boundary authority pending",
+        "external_strategy_rndr_preflight_pass_full_boundary_authority_pending_zero_is_zero_oos_no_trading_no_m2",
+    ): "EXTERNAL-STRATEGY-IS-DATA-BOUNDARY",
+    (
         "ADR-0018 scheduled market-cessation contract frozen pending exact-head review",
         "adr0018_contract_frozen_pending_exact_head_review_no_boundary_acquisition_zero_is_zero_oos_no_trading_no_m2",
     ): "EXTERNAL-STRATEGY-ADR0018",

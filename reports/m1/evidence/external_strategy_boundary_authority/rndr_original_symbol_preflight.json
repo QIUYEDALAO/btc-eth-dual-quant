@@ -1,0 +1,137 @@
+{
+  "archive": {
+    "member_count": 1,
+    "member_name": "RNDRUSDT-5m-2024-07-22.csv",
+    "member_sha256": "b321e6a21cc704ca8535e35f964f693c7b380482115448692dbffc0386e5f72c",
+    "member_size": 4946
+  },
+  "authority_bindings": {
+    "adr0018_hash": "8761fabac1f32d518d6c75c08dcf0a37288262059fe3192b87fb44de836b46e9",
+    "invalid_interval_event_hash": "8a4e022a9c837b1fb9d4fe7539b7e9c45605660d605e2dcdf71fff0ac34103a6",
+    "invalid_interval_mask_hash": "23e78e15a4484af9167b03e29bf9d499a39ff1e1c8195a056fae72b984285487",
+    "invalid_interval_policy_hash": "8c2efd2f2598d851523cfc54ad361d7ab3639558b821fcec2e04fbb4a83fabc7",
+    "lifecycle_authority": "ADR-0018-SCHEDULED-MARKET-CESSATION-FORCED-EXIT",
+    "lifecycle_registry_hash": "adccc1f752c171096e6906057225710dd58632744d80927f53f7a1e4a587fbef",
+    "membership_hash": "bcd93c0a4fdc7b1ca235ff8aa62722ecd38a6b990302886a3e91318763077ec5",
+    "membership_row": {
+      "asset_registry_hash": "d8c7fc6b034f1b0c82dc2e41f7b4f2c67122311246b33505f22ad694a3d0b091",
+      "contract_hash": "f41f5fedf6002487c9d576a39927ade4409d55e1bc0442aa097e6b2ed054b3ed",
+      "effective_month": "2024-07-01",
+      "eligibility_status": "qualified",
+      "exclusion_reason": null,
+      "history_days": 365,
+      "history_window_end_exclusive": "2024-07-01",
+      "history_window_start": "2023-07-02",
+      "input_provenance_hash": "7e2c3e9955aa5dec0e877420b163e5158b3e6a56095f68fd238bf0c4bc8aa818",
+      "median_daily_quote_volume_90d": "56245006.68830500",
+      "rank": 15,
+      "ranking_window_end_exclusive": "2024-07-01",
+      "ranking_window_start": "2024-04-02",
+      "symbol": "RNDRUSDT"
+    },
+    "pr117_gate_run": 29871317869,
+    "pr117_merge_commit": "336563c67a6b23cc9ebbf91c7abd007db0df048b",
+    "pr117_review_hash": "41f4360976a3b2dff2408bf3262fff548b23b3bf1460314d3c8882c1e9ad780f",
+    "pr117_reviewed_head": "bb22a08cc7bcd31c458ca7d362e536d88c0ca1e2",
+    "target_masked": false
+  },
+  "completed_authority_nb01_satisfied": false,
+  "completed_authority_nb01_status": "deferred_until_all_92_sources_are_separately_constructed",
+  "construction_passes_executed": 3,
+  "construction_result_hashes": {
+    "deterministic_shuffled": "2d4002793ede501113daec61d04e6f83e6f655f609cb3e88cd4d8dd0db294272",
+    "normal": "2d4002793ede501113daec61d04e6f83e6f655f609cb3e88cd4d8dd0db294272",
+    "reverse": "2d4002793ede501113daec61d04e6f83e6f655f609cb3e88cd4d8dd0db294272"
+  },
+  "construction_trace_hashes": {
+    "deterministic_shuffled": "760236f6149a00fe57cfe8cabe32a04c98c9e43c0060adc38356e3cef5fc09c8",
+    "normal": "02e99fd62f6f540ab038420ccae4d559eeff82837530ee80520686aea761e7b7",
+    "reverse": "8c59a724719ad7ec24c1c52155d90133c726b25f721b4e0be72e8cb7cc052633"
+  },
+  "content_hash": "eceafea174381268c22df88b3262a3702a828a3aac079b8e060000686c9b38be",
+  "exact_row": {
+    "close_time_ms": 1721617199999,
+    "close_time_utc": "2024-07-22T02:59:59.999Z",
+    "interval": "5m",
+    "line_number": 36,
+    "open_time_ms": 1721616900000,
+    "open_time_utc": "2024-07-22T02:55:00Z",
+    "raw_fields": [
+      "1721616900000",
+      "7.07700000",
+      "7.07800000",
+      "7.02600000",
+      "7.03000000",
+      "9418.24000000",
+      "1721617199999",
+      "66388.27864000",
+      "188",
+      "1854.17000000",
+      "13070.84827000",
+      "0"
+    ],
+    "raw_line_sha256": "89be4f1712abbe2ffe08277e6ac6cafbe28666513734be5595afc0a10dfe4f50",
+    "symbol": "RNDRUSDT"
+  },
+  "generated_utc": "2026-07-21T22:03:20Z",
+  "isolation": {
+    "appended_to_candidate_ohlcv": false,
+    "appended_to_indicator_history": false,
+    "archive_requests": 1,
+    "checksum_requests": 1,
+    "forced_exit_lookup_only": true,
+    "is_trials_materialized": 0,
+    "market_rows_decoded": 1,
+    "market_rows_outside_fixed_boundary": 0,
+    "oos_rows_decoded": 0,
+    "other_91_archives_downloaded": 0,
+    "other_91_archives_requested": 0,
+    "selection_trial_count": 0,
+    "strategy_result_rows_read": 0
+  },
+  "next_stage": {
+    "boundary_authority_frozen": false,
+    "later_full_authority_acquisition_eligible": true,
+    "later_full_authority_acquisition_executed": false,
+    "original_is_authorized": false,
+    "separate_completed_authority_exact_head_review_required": true
+  },
+  "permissions": {
+    "api_private_endpoints": false,
+    "dry_run": false,
+    "execution_live": false,
+    "m2": false,
+    "modified_is": false,
+    "oos": false,
+    "order_placement": false,
+    "original_is": false,
+    "paper_live": false,
+    "selection_trial_materialization": false
+  },
+  "schema_version": "external-strategy-rndr-boundary-preflight-v1",
+  "scope": "single_result_blind_rndr_original_symbol_preflight_only",
+  "source": {
+    "acquired_at_utc": "2026-07-21T22:03:20Z",
+    "acquisition_tool_runtime": {
+      "implementation": "CPython",
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "python": "3.14.6",
+      "user_agent": "btc-eth-dual-quant-rndr-boundary-preflight/1"
+    },
+    "archive_byte_size": 1720,
+    "archive_http_status": 200,
+    "archive_sha256": "e2da006ea431071e7eb1796dddaa72da8646f57ba1ecf75e0127c6e769491587",
+    "archive_url": "https://data.binance.vision/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-07-22.zip",
+    "checksum_http_status": 200,
+    "checksum_payload_sha256": "857e76ea96b82b9d1116dd63640fcb3aa3f622d821da5dd5e4d27e2c9568b34a",
+    "checksum_url": "https://data.binance.vision/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-07-22.zip.CHECKSUM",
+    "content_type": "application/zip",
+    "effective_archive_url": "https://data.binance.vision/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-07-22.zip",
+    "effective_checksum_url": "https://data.binance.vision/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-07-22.zip.CHECKSUM",
+    "etag": "\"9e5c3f7cba504a4947f36926ca3b03f1\"",
+    "last_modified": "Tue, 23 Jul 2024 05:32:54 GMT",
+    "local_archive_path": "storage/raw/external_strategy_boundary_authority/data/spot/daily/klines/RNDRUSDT/5m/RNDRUSDT-5m-2024-07-22.zip",
+    "official_checksum_sha256": "e2da006ea431071e7eb1796dddaa72da8646f57ba1ecf75e0127c6e769491587"
+  },
+  "status": "pass_rndr_original_symbol_archive_and_exact_row"
+}
