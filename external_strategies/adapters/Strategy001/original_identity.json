@@ -1,0 +1,9 @@
+{
+  "candidate_id": "Strategy001",
+  "content_hash": "8d27078c0fdd7fe4e3eeec44f1b3d4a0bbe93fdf1114e17e9e8067a536cb6d71",
+  "schema_version": "external-strategy-original-identity-v1",
+  "source_commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+  "source_declaration_hash": "aad6f6d58bec4a02a5b4f7b6ffe3c27f645f15b2ca1b90297735d9f95d915278",
+  "source_path": "external_strategies/original/03-Strategy001/Strategy001.py",
+  "source_sha256": "2357996e6594458e8db45b5f757918462afa3c998de9d06e2af0c009ddc4b80d"
+}

@@ -1,0 +1,193 @@
+{
+  "base_adapter_hash": "f5f648119f741beb54aee09827c67a01fa9383fc40c58a0b10c707ff48e2db8b",
+  "can_short": false,
+  "candidate_id": "Bandtastic",
+  "causal_result_hash": "66547f8f8408b43b7c431f9850926ef1f4936b67a5bad3699b48db97d391ec07",
+  "container_manifest_hash": "6e8e54141ddc5f643722a336fb756245e852c7905eecdcaae8eac9654d58fb56",
+  "content_hash": "9932a7499e3c6a3e55be7d3ce37ff328729c50da38bf79297c453b384244d18d",
+  "dependency_manifest_hash": "665256bb8229d02db727948fefd4d26eab027a6c4c65d86a180cf8fe45eb7f64",
+  "executable_components": {
+    "adapter_sha256": "f5f648119f741beb54aee09827c67a01fa9383fc40c58a0b10c707ff48e2db8b",
+    "dependencies": {
+      "original/original_source.py": "15dcb60d49a3681241cd39645f0fe8e6dc247687bf878c2026f37bb1c5790b57"
+    },
+    "original_sha256": "15dcb60d49a3681241cd39645f0fe8e6dc247687bf878c2026f37bb1c5790b57"
+  },
+  "generated_utc": "2026-07-21T01:59:16Z",
+  "load_command_kind": "freqtrade_list_strategies",
+  "load_exit_code": 0,
+  "load_stdout_stderr_sha256": "33f38fd521514c4e5ba65ed22d72bb53b88c7c69d030b5afd5a354e4de781558",
+  "observed_config_override_count": 0,
+  "observed_external_parameter_file_count": 0,
+  "position_increase_capability": false,
+  "runtime_effective_settings": {
+    "can_short": false,
+    "exit_profit_only": false,
+    "ignore_roi_if_entry_signal": false,
+    "max_entry_position_adjustment": -1,
+    "minimal_roi": {
+      "0": 0.162,
+      "229": 0.061,
+      "566": 0,
+      "69": 0.097
+    },
+    "order_time_in_force": {
+      "entry": "GTC",
+      "exit": "GTC"
+    },
+    "order_types": {
+      "entry": "limit",
+      "exit": "limit",
+      "stoploss": "limit",
+      "stoploss_on_exchange": false,
+      "stoploss_on_exchange_interval": 60
+    },
+    "position_adjustment_enable": false,
+    "process_only_new_candles": true,
+    "startup_candle_count": 999,
+    "stoploss": -0.345,
+    "timeframe": "15m",
+    "trailing_only_offset_is_reached": false,
+    "trailing_stop": true,
+    "trailing_stop_positive": 0.01,
+    "trailing_stop_positive_offset": 0.058,
+    "use_exit_signal": true
+  },
+  "runtime_effective_settings_hash": "32b67ae4c032f5858549527bce85e3e5f3ef1f547b761d27f179090eda1b6328",
+  "runtime_identity_hash": "a88f0c591bc40d6acdaa3bb8e4fafe5b0dcda398f076f8f265a339caffb9eed1",
+  "runtime_probe_sha256": "33adcfafac013ec14f5e861eca79dfd328727d8dcfc04c44e113ec91de4e3c5d",
+  "runtime_resolved_parameters": {
+    "buy_ema_enabled": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        false
+      ],
+      "value": false
+    },
+    "buy_fastema": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        211
+      ],
+      "value": 211
+    },
+    "buy_mfi": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        30
+      ],
+      "value": 30
+    },
+    "buy_mfi_enabled": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        false
+      ],
+      "value": false
+    },
+    "buy_rsi": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        52
+      ],
+      "value": 52
+    },
+    "buy_rsi_enabled": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        false
+      ],
+      "value": false
+    },
+    "buy_slowema": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        250
+      ],
+      "value": 250
+    },
+    "buy_trigger": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        "bb_lower1"
+      ],
+      "value": "bb_lower1"
+    },
+    "sell_ema_enabled": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        false
+      ],
+      "value": false
+    },
+    "sell_fastema": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        7
+      ],
+      "value": 7
+    },
+    "sell_mfi": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        46
+      ],
+      "value": 46
+    },
+    "sell_mfi_enabled": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        true
+      ],
+      "value": true
+    },
+    "sell_rsi": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        57
+      ],
+      "value": 57
+    },
+    "sell_rsi_enabled": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        false
+      ],
+      "value": false
+    },
+    "sell_slowema": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        6
+      ],
+      "value": 6
+    },
+    "sell_trigger": {
+      "load": true,
+      "optimize": true,
+      "range": [
+        "sell-bb_upper2"
+      ],
+      "value": "sell-bb_upper2"
+    }
+  },
+  "runtime_resolved_parameters_hash": "28bb9685d89dbc916b62d7ada2b2d6bd139333e19baa2995786dce1265c2bdfb",
+  "schema_version": "external-strategy-runtime-probe-v1",
+  "status": "causal_pass",
+  "variant_executable_hash": "2d5c60098ebc2e0786fed5a3fb28f7be3803894e0033a837dd3efca17c5820ac"
+}

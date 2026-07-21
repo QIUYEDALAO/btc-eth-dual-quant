@@ -9,22 +9,43 @@ change. A context-only synchronization uses a skip-CI commit and does not need a
 new PR or CI run. It must not change any research, runtime, OOS or trading
 authorization.
 
-## ADR-0017 Final Pre-Runtime Authorization
+## Hard Stop: Frozen Membership-Exit Data Authority
+
+ADR-0017 was merged as `1e8a8768...d59a`. The exact pinned VPS runtime passed
+under `a88f0c59...eed1`; all six frozen candidates loaded and passed the
+synthetic golden/lookahead/recursive causal suite under `473dd739...a107`.
+
+Do not run original IS. The IS-only materialization `628bec95...9def` decoded
+7,393,658 IS 5m rows and zero OOS rows, but the subsequent point-in-time
+membership audit found 92 active-to-inactive boundaries and zero frozen
+next-boundary 5m archives. Qualification evidence `e9844902...80fa` therefore
+fails closed before performance. Synthetic/last-price exits, forward search,
+unfrozen archives and future-membership exits are prohibited.
+
+The next action requires a new explicit decision that freezes a legitimate
+membership-exit price authority or revises the holding/universe contract. It is
+not covered by ADR-0017 automatic continuation. Until then: original/modified
+IS trials and selection count remain zero; OOS remains false/false/0/0; dry-run
+bot, API/private endpoints, paper/live, orders, `execution/live` and M2 remain
+false.
+
+## Historical ADR-0017 Authorization
 
 PR #113 was merged with ordinary merge commit `d657994b...a3ce`. PR #112 was
 rebased to `main` with an identical approved tree, passed the new selective
 Gate, and was squash-merged as `d119593d...3a18`. Main Project Gate passed 9/9.
 
-ADR-0017 is frozen under `8a4b1d6d...48cdd` as the last pre-runtime governance
-change. It keeps M1A/M1B/M1C in historical reporting but removes them from the
+ADR-0017 was adopted and merged under `8a4b1d6d...48cdd` as the last pre-runtime
+governance change. It keeps M1A/M1B/M1C in historical reporting but removes them from the
 current-route same-distribution DSR family. Current-route original and modified
 trials alone form separate Base and CostX2 sequences. DSR is mandatory and the
 primary ranking statistic, but not an absolute hard Gate.
 
-After ADR-0017 merges, proceed continuously through exact VPS runtime identity,
+Its automatic path allowed continuous exact VPS runtime identity,
 six frozen-candidate compatibility/causal validation, original IS, at most
 three eligible pre-registered modifications, and one final selection report.
-IS requires at least five causal PASS candidates. Stop immediately on the
+IS requires at least five causal PASS candidates. The runtime/causal portion is
+complete, but the data-boundary hard stop above now controls. Stop immediately on the
 frozen hard-stop conditions or after reaching
 `pending_explicit_unique_oos_authorization`.
 

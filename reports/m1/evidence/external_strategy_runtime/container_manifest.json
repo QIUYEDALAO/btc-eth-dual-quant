@@ -1,0 +1,32 @@
+{
+  "configured_user": "ftuser",
+  "content_hash": "6e8e54141ddc5f643722a336fb756245e852c7905eecdcaae8eac9654d58fb56",
+  "generated_utc": "2026-07-21T01:59:16Z",
+  "image": "freqtradeorg/freqtrade:2026.6@sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6",
+  "image_id": "sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6",
+  "platform": {
+    "architecture": "amd64",
+    "os": "linux"
+  },
+  "repo_digests": [
+    "freqtradeorg/freqtrade@sha256:d451af021d5e08b70580c0eea5848534e9846b57391b34821c0a5814416397e6"
+  ],
+  "schema_version": "external-strategy-container-manifest-v1",
+  "security_flags": [
+    "--rm",
+    "--network",
+    "none",
+    "--read-only",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "--tmpfs",
+    "/tmp:rw,noexec,nosuid,size=64m,mode=1777",
+    "--tmpfs",
+    "/freqtrade/user_data:rw,nosuid,size=64m,mode=1777",
+    "--user",
+    "1000:1000"
+  ],
+  "status": "pass"
+}

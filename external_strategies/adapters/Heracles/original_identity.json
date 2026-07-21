@@ -1,0 +1,9 @@
+{
+  "candidate_id": "Heracles",
+  "content_hash": "9174a6d3396625f774abe25b37f1613996febe91372d8a788e4369e44c0b8c90",
+  "schema_version": "external-strategy-original-identity-v1",
+  "source_commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+  "source_declaration_hash": "f0b117a17f498bf9946d0aea3c7d64e5a01dd3e4ac7a1d1837de1e3157984323",
+  "source_path": "external_strategies/original/11-Heracles/Heracles.py",
+  "source_sha256": "5fbdeadd0a848830e50d0326f819874f204c5b0f212f57df3032551deeecdfb7"
+}

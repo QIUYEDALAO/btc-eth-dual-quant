@@ -1,0 +1,58 @@
+{
+  "causal_validations": 6,
+  "content_hash": "473dd739da1566c1a978984896c4645ab7a6235aa8b0754e122a7325f514a107",
+  "fixture_manifest_hash": "e122fbea4f29546bc1b35f2438fbcce99b053f4cd6756527262bd0967f6fa6e5",
+  "generated_utc": "2026-07-21T02:00:40Z",
+  "market_or_oos_rows": 0,
+  "minimum_required_before_is": 5,
+  "offline_market_fixture_sha256": "83546b0476da6c4401179bd6d4f769c753ff860183973117c63111ccc4eecef9",
+  "oos_rows_decoded": 0,
+  "pass_count": 6,
+  "results": [
+    {
+      "candidate_id": "Supertrend",
+      "causal_result_hash": "49a350f28a3172d32b6f426e70420cd78bd25b48e0a3afd88ed2a3eefe8ad812",
+      "compatibility_manifest_hash": "e9740b1c59a2d16ee42c1e4937231b1fb18fec9899bad21c38db1149761f1b3e",
+      "failures": [],
+      "status": "PASS"
+    },
+    {
+      "candidate_id": "Strategy001",
+      "causal_result_hash": "5dd3987552fe9c73fc36ea6aa6f15200935af5d662ef25b6ea3bbad48eba19bc",
+      "compatibility_manifest_hash": "006e0d1c296b9e84cc175e21c86da2387d302f0d379db1d1124e5a6e9313bd51",
+      "failures": [],
+      "status": "PASS"
+    },
+    {
+      "candidate_id": "UniversalMACD",
+      "causal_result_hash": "e5ce2fd5c88d54514b205e34dfe9db73775307e2fd93a58fdf72cd68f72b750c",
+      "compatibility_manifest_hash": "96dd9322fb292e57ffa20791d60f11fd400284ac82f8d18003bdff52b3388d08",
+      "failures": [],
+      "status": "PASS"
+    },
+    {
+      "candidate_id": "Bandtastic",
+      "causal_result_hash": "66547f8f8408b43b7c431f9850926ef1f4936b67a5bad3699b48db97d391ec07",
+      "compatibility_manifest_hash": "9932a7499e3c6a3e55be7d3ce37ff328729c50da38bf79297c453b384244d18d",
+      "failures": [],
+      "status": "PASS"
+    },
+    {
+      "candidate_id": "Diamond",
+      "causal_result_hash": "e2170bd88ce27518f09d3c96484d406cf3e6934221ed72146a0b9cf0359d8f90",
+      "compatibility_manifest_hash": "2b6e4b93f6eb8ad79d26f403225ceacd5ffacf3148031a803d94f05857838d8d",
+      "failures": [],
+      "status": "PASS"
+    },
+    {
+      "candidate_id": "Heracles",
+      "causal_result_hash": "f5cefa8e87a62bd60010652b93cd751f0267e1589ac83dfb06df598b3019babd",
+      "compatibility_manifest_hash": "918cf46161aa8e12908164dfcb0e3436ae9405f7a8ddf722198f38451b523415",
+      "failures": [],
+      "status": "PASS"
+    }
+  ],
+  "runtime_route_manifest_hash": "d68d774df69a3ebfde5d73229479c1e789e4f9bf8176b4a3ac0f2e128d75d646",
+  "schema_version": "external-strategy-causal-summary-v1",
+  "status": "pass"
+}

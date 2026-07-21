@@ -1,0 +1,9 @@
+{
+  "candidate_id": "Diamond",
+  "content_hash": "9b62e0dbfdb960ca724db24e6dc690dc31881b457633d2f429bc3347b076573f",
+  "schema_version": "external-strategy-original-identity-v1",
+  "source_commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+  "source_declaration_hash": "b3f1b8865c210918afe1c2e25eaaf359c34e4518305ad0a13f884b0c3baf6a8e",
+  "source_path": "external_strategies/original/09-Diamond/Diamond.py",
+  "source_sha256": "98f108f9df8f22b4b9be921b912ada3eff7669b25fc9ec455992ec902a385902"
+}

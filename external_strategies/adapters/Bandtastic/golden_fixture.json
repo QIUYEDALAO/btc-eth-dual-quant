@@ -1,0 +1,37 @@
+{
+  "adapter_original_equal": true,
+  "candidate_id": "Bandtastic",
+  "content_hash": "7f2152d9a2fcdfd77d20480edf94988b07c40559d0d1baefda031c1d7621ac0f",
+  "entry_signals": 1692,
+  "exit_signals": 396,
+  "fixture_manifest_hash": "e122fbea4f29546bc1b35f2438fbcce99b053f4cd6756527262bd0967f6fa6e5",
+  "market_or_oos_rows": 0,
+  "normal_reverse_shuffled_equal": true,
+  "profile": "default",
+  "profile_identity": {
+    "price_scale": 1.0,
+    "timeframes": {
+      "15m": {
+        "rows": 6000,
+        "sha256": "94b3e74ff4bfb7d31345dc900ce63982b13becd889abfbead2cc047f54f736ac"
+      },
+      "1h": {
+        "rows": 1500,
+        "sha256": "34844b02f28d29bac88ba62bdbfa373277b4a17ad01066948a199dec3c7a8e95"
+      },
+      "4h": {
+        "rows": 375,
+        "sha256": "eff9d1bb896fca69ddfb76c5155bbbd91ab924b0149e288d1bab1dafa0f41437"
+      },
+      "5m": {
+        "rows": 18000,
+        "sha256": "0d7612a739bc46e755e69cf8c2351f57a0441f5e69e457a396eb10173a6001b6"
+      }
+    },
+    "trend_per_bar": 0.0
+  },
+  "schema_version": "external-strategy-golden-fixture-v1",
+  "signal_hash": "83129a943b11785f14f5e1b83d81ce9b0ab47b2e9f75ed2de030d09262fb7837",
+  "source_is_synthetic": true,
+  "timeframe": "15m"
+}

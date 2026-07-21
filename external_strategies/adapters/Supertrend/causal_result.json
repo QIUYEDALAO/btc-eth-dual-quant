@@ -1,0 +1,76 @@
+{
+  "candidate_id": "Supertrend",
+  "content_hash": "49a350f28a3172d32b6f426e70420cd78bd25b48e0a3afd88ed2a3eefe8ad812",
+  "direct_command_exit_code": 0,
+  "direct_probe": {
+    "candidate_id": "Supertrend",
+    "diagnostics": {},
+    "entry_signals": 685,
+    "exit_signals": 9,
+    "failures": [],
+    "normal_signal_hash": "ef939dff6bcdaecc5ce14eab0564017cb589f665b3d1e37725e9af4f80ad7bdb",
+    "original_signal_hash": "ef939dff6bcdaecc5ce14eab0564017cb589f665b3d1e37725e9af4f80ad7bdb",
+    "prefix_checks": [
+      {
+        "actual": [
+          0,
+          0
+        ],
+        "expected": [
+          0,
+          0
+        ],
+        "row": 249
+      },
+      {
+        "actual": [
+          0,
+          0
+        ],
+        "expected": [
+          0,
+          0
+        ],
+        "row": 750
+      },
+      {
+        "actual": [
+          1,
+          0
+        ],
+        "expected": [
+          1,
+          0
+        ],
+        "row": 1499
+      }
+    ],
+    "reverse_signal_hash": "ef939dff6bcdaecc5ce14eab0564017cb589f665b3d1e37725e9af4f80ad7bdb",
+    "rows": 1500,
+    "schema_version": "external-strategy-causal-probe-v1",
+    "shuffled_signal_hash": "ef939dff6bcdaecc5ce14eab0564017cb589f665b3d1e37725e9af4f80ad7bdb",
+    "status": "PASS",
+    "timeframe": "1h"
+  },
+  "direct_stdout_stderr_sha256": "066e8483c8bf9847a9c0e1816d0379c88c917cd093524218c4a9f0441480fe7b",
+  "dry_run_bot_started": false,
+  "earliest_fill": "next_eligible_5m_open",
+  "failures": [],
+  "generated_utc": "2026-07-21T02:00:40Z",
+  "golden_fixture_hash": "d9909c0e7cf113ca9ee4d2fefc2689679df246ea4dbf45dc1047de23508d87f7",
+  "informative_pairs": [],
+  "lifecycle_or_mask_crossing_allowed": false,
+  "lookahead_command_exit_code": 0,
+  "lookahead_findings": 0,
+  "lookahead_stdout_stderr_sha256": "af023c25f58bb7acadcde939ce4be0df080f15aa5f0f370b948b6b811219e43e",
+  "network_mode": "none_with_hash_bound_offline_market_fixture",
+  "oos_rows_decoded": 0,
+  "partial_candle_allowed": false,
+  "position_increase_allowed": false,
+  "recursive_command_exit_code": 0,
+  "recursive_findings": 0,
+  "recursive_stdout_stderr_sha256": "10bc092446cbef855279a69de116cb9d6e3153bd39a309e62a7c6b3c790b29dc",
+  "same_bar_close_fill_allowed": false,
+  "schema_version": "external-strategy-causal-result-v1",
+  "status": "PASS"
+}

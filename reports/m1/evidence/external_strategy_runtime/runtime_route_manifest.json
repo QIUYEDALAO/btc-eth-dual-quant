@@ -1,0 +1,89 @@
+{
+  "adr0017_hash": "8a4b1d6d859c683bf3a61fd55784083bc04c8169a9cd1cab2362273177b48cdd",
+  "api_live": false,
+  "candidates": [
+    {
+      "base_adapter_hash": "1017f36659ba0075e09c5f89586ba3e172e95c522192321a1c7e9b7d3e0fb85e",
+      "candidate_id": "Supertrend",
+      "compatibility_manifest_hash": "f581a972d174a093e87c7b4d5282916793b61515d0ffccec6ff8b87fa62b3f38",
+      "load_status": "PASS",
+      "observed_config_override_count": 0,
+      "observed_external_parameter_file_count": 0,
+      "runtime_effective_settings_hash": "7c62389a16838c464748a551c4e803ab43ab737b38f430d920d582d745ff81fe",
+      "runtime_resolved_parameters_hash": "00d2faf8ecbe9f3d74fe69611c379668755e4a3b12192773fec8fde0a3b5adac",
+      "variant_executable_hash": "af0597c800ebced22821a5bb0f3721ce15ab32a47038f94c42d332dd99e6f4d1"
+    },
+    {
+      "base_adapter_hash": "c7347d28a6a98fe2887e682c98ba59ebcf16a39fbd172438ea3b84cfbeb361e4",
+      "candidate_id": "Strategy001",
+      "compatibility_manifest_hash": "3ff17f6f5cb4ca773ebbb768f417ec582a98633caa6f83f25f9e15bb73f145a4",
+      "load_status": "PASS",
+      "observed_config_override_count": 0,
+      "observed_external_parameter_file_count": 0,
+      "runtime_effective_settings_hash": "1fffc787bce2f230db764d3eea7b0923876116cdf035b0597ec788a653165229",
+      "runtime_resolved_parameters_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "variant_executable_hash": "e0491386e8222b8b97dd0a5caa93d69a1e36d16c2e2d5f2e490af13a253d682e"
+    },
+    {
+      "base_adapter_hash": "46cca5c1d02d35d1f8c11cf3b95137dd3f04328d1e0aaee823817604ef1b146a",
+      "candidate_id": "UniversalMACD",
+      "compatibility_manifest_hash": "c1a8fb3249a996c3b379b4bc61bb9f2a476a3aa3bb74a87b029894f08c3c3541",
+      "load_status": "PASS",
+      "observed_config_override_count": 0,
+      "observed_external_parameter_file_count": 0,
+      "runtime_effective_settings_hash": "2b8e2d7a659d74571224c60685a37caaa23fdd25dff38d431dde1db47e7883b0",
+      "runtime_resolved_parameters_hash": "e4b4ee4406e3c597eed39cc2e40cfc3d552a77e03b3df1bfc493219de0e8794d",
+      "variant_executable_hash": "183bb3eda761c8cc7bfc6cf844b70a386c89cb9804068a7cebbd257026fd0cfa"
+    },
+    {
+      "base_adapter_hash": "f5f648119f741beb54aee09827c67a01fa9383fc40c58a0b10c707ff48e2db8b",
+      "candidate_id": "Bandtastic",
+      "compatibility_manifest_hash": "4bd1cf05fd48c722af51eee178408ebadaa3239622154de890a8a5a6395a60e3",
+      "load_status": "PASS",
+      "observed_config_override_count": 0,
+      "observed_external_parameter_file_count": 0,
+      "runtime_effective_settings_hash": "32b67ae4c032f5858549527bce85e3e5f3ef1f547b761d27f179090eda1b6328",
+      "runtime_resolved_parameters_hash": "28bb9685d89dbc916b62d7ada2b2d6bd139333e19baa2995786dce1265c2bdfb",
+      "variant_executable_hash": "2d5c60098ebc2e0786fed5a3fb28f7be3803894e0033a837dd3efca17c5820ac"
+    },
+    {
+      "base_adapter_hash": "410a5b1530c6abea72dab9e82fb81299a638203da8bc103b46dbb04c655c76f6",
+      "candidate_id": "Diamond",
+      "compatibility_manifest_hash": "ea29ae2efdaa72bb02c1817cde2e72f005b0a2ed77d6ecf0c6ac0c32645f2b3b",
+      "load_status": "PASS",
+      "observed_config_override_count": 0,
+      "observed_external_parameter_file_count": 0,
+      "runtime_effective_settings_hash": "4422b27e21a93916b219d8b53739a1c62974f82b1ebdb3139741c956c2456978",
+      "runtime_resolved_parameters_hash": "cb48129ff0c2286416a5d956ab60e2e5e27b90bfa8a9dc927845cc32ffd9bb3a",
+      "variant_executable_hash": "5f6c1ace456ba3e6890112ec382a568cf150bb4e0977961e80fe62edbba27a30"
+    },
+    {
+      "base_adapter_hash": "cae381f5cd518de38e86d8cc140e63efabcc9c84e737747d922faa24ebaa2a2f",
+      "candidate_id": "Heracles",
+      "compatibility_manifest_hash": "d9d83fa16e2dd074c71cc713ba52f85bbd757ea4be87e83c1d4615cfb50c6287",
+      "load_status": "PASS",
+      "observed_config_override_count": 0,
+      "observed_external_parameter_file_count": 0,
+      "runtime_effective_settings_hash": "e4c625d2bac14d9642a1d66473a8fc25958157a9dcb33168b34371f5a4636695",
+      "runtime_resolved_parameters_hash": "9e5a11d1f9d056a16d06611c364dbd7933e9b916b0a0a6672f6ef7856e05da69",
+      "variant_executable_hash": "0803de9e0e3c80e1784b083a71827ecef73444e31950db54f3c1fb5e1c69a270"
+    }
+  ],
+  "causal_validations": 0,
+  "container_manifest_hash": "6e8e54141ddc5f643722a336fb756245e852c7905eecdcaae8eac9654d58fb56",
+  "content_hash": "d68d774df69a3ebfde5d73229479c1e789e4f9bf8176b4a3ac0f2e128d75d646",
+  "dependency_manifest_hash": "665256bb8229d02db727948fefd4d26eab027a6c4c65d86a180cf8fe45eb7f64",
+  "dry_run": false,
+  "freqtrade_loads": 6,
+  "generated_utc": "2026-07-21T01:59:16Z",
+  "is_trials": 0,
+  "m2": false,
+  "oos_authorized": false,
+  "oos_opened": false,
+  "oos_rows_decoded": 0,
+  "oos_runs": 0,
+  "runtime_identity_hash": "a88f0c591bc40d6acdaa3bb8e4fafe5b0dcda398f076f8f265a339caffb9eed1",
+  "schema_version": "external-strategy-runtime-route-v1",
+  "selection_trial_count": 0,
+  "status": "runtime_identity_and_six_loads_pass_causal_pending"
+}

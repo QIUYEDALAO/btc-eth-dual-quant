@@ -1,0 +1,9 @@
+{
+  "candidate_id": "UniversalMACD",
+  "content_hash": "d2fbfce5891a51362a218ac2e0d01bef386a688de3b2429f678a042ded0f11ad",
+  "schema_version": "external-strategy-original-identity-v1",
+  "source_commit": "dbd5b0b21cfbf5ee80588d37458ace2467b7f8a4",
+  "source_declaration_hash": "fbf7822af8c23e49d0db17eb31d4a3bd986eaf6c97461597adf15aad2c4611d6",
+  "source_path": "external_strategies/original/05-UniversalMACD/UniversalMACD.py",
+  "source_sha256": "b3a62e0d8a26024e7ab5f3613d0964e3954373bc3735c1ffd0678d84ce1b1e32"
+}

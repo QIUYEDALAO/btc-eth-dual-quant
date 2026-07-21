@@ -1,0 +1,37 @@
+{
+  "adapter_original_equal": true,
+  "candidate_id": "UniversalMACD",
+  "content_hash": "2a578deef849bd862ddc34d007e622e4092e1283b19329e7e590bea2a638bb34",
+  "entry_signals": 909,
+  "exit_signals": 0,
+  "fixture_manifest_hash": "e122fbea4f29546bc1b35f2438fbcce99b053f4cd6756527262bd0967f6fa6e5",
+  "market_or_oos_rows": 0,
+  "normal_reverse_shuffled_equal": true,
+  "profile": "UniversalMACD",
+  "profile_identity": {
+    "price_scale": 3.0,
+    "timeframes": {
+      "15m": {
+        "rows": 6000,
+        "sha256": "acc2fc53b04b0184c2dcf4d8b1c08c67adcbc300d97a104fee8d2abba0e56a16"
+      },
+      "1h": {
+        "rows": 1500,
+        "sha256": "a4f8d33ff674fe3afd043475c5faca22bd66032d4f4934afa803ec3711580459"
+      },
+      "4h": {
+        "rows": 375,
+        "sha256": "5a4592ed41346bb2e68ea0fa321255b60b61b504029051b3ae3731a0f128c916"
+      },
+      "5m": {
+        "rows": 18000,
+        "sha256": "be4a871911a2ee29b0ddcda9c1f997999265d12abbbf82898cf99e7b21a26d20"
+      }
+    },
+    "trend_per_bar": 0.0
+  },
+  "schema_version": "external-strategy-golden-fixture-v1",
+  "signal_hash": "3015653ce69c39c9de42a6600086808394b64ed9e6c6d45cbce521eb543a0d8f",
+  "source_is_synthetic": true,
+  "timeframe": "5m"
+}
