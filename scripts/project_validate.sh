@@ -52,6 +52,7 @@ run_check "strategy trial ledger check" "$PY_CMD" scripts/strategy_trial_ledger_
 run_check "external strategy trial accounting" "$PY_CMD" scripts/external_strategy_trial_accounting_check.py
 run_check "external strategy runtime boundary status" "$PY_CMD" scripts/external_strategy_is_boundary_qualification.py
 run_check "external strategy boundary authority source status" bash scripts/external_strategy_boundary_authority_validate.sh
+run_check "ADR-0018 scheduled cessation contract" bash scripts/adr0018_scheduled_market_cessation_validate.sh
 run_check "M0 validation" bash scripts/m0_validate.sh
 run_check "M1A validation" bash scripts/m1a_validate.sh
 run_check "M1F validation" bash scripts/m1f_validate.sh

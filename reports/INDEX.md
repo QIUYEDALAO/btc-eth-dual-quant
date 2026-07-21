@@ -2,6 +2,10 @@
 
 | Artifact | Purpose | Status | Key evidence | Trading authority |
 |---|---|---|---|---|
+| `docs/decisions/ADR-0018-scheduled-market-cessation-forced-exit.md` | Result-blind scheduled market-cessation holding/lifecycle contract | frozen pending exact-head review | canonical `8761faba...46e9`; RNDR 02:55 candidate only; RENDER provenance-only; no archive acquisition | no |
+| `config/adr0018_scheduled_market_cessation_forced_exit_v1.json` | Machine ADR-0018 contract | design and post-merge RNDR preflight only | one-for-one 92-boundary revision; true three-order construction required; IS/OOS/live false | no |
+| `reports/expert/PR116_EXACT_HEAD_REVIEW.md` | PR #116 blocked-evidence exact-head review | approve / merged after Gate | head `edf753f2...a2adc`; review `b873227e...b10d`; run `29829112223`; merge `d2c54d5d...e6440` | no |
+| `reports/expert/evidence/pr116_exact_head_review_v1.json` | Machine PR #116 review | approve pending Gate satisfied | 0 critical/high; NB-01 freezes genuine independent three-order requirement for completed authority | no |
 | `reports/m1/EXTERNAL_STRATEGY_BOUNDARY_AUTHORITY_SOURCE_PREFLIGHT_STOP.md` | Result-blind official boundary-source preflight | hard stop / no acquisition | 91/92 available; required RNDRUSDT 2024-08-01 official daily ZIP HTTP 404; evidence `5746b982...537e`; zero market/OOS rows | no |
 | `reports/m1/evidence/external_strategy_boundary_authority/source_preflight.json` | Machine official-source availability evidence | deterministic blocked-valid | fixed 92 identities; normal/reverse/shuffled equal; archives downloaded 0; IS/OOS zero | no |
 | `reports/expert/PR115_EXACT_HEAD_REVIEW.md` | External-strategy runtime/boundary exact-head review | approve / merged unchanged | PR #115 head `60e49ee7...b3b4b5`; 0 critical/high; merge `e19962f5...9cc37`; boundary construction only | no |

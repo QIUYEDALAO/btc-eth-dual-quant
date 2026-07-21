@@ -9,7 +9,26 @@ change. A context-only synchronization uses a skip-CI commit and does not need a
 new PR or CI run. It must not change any research, runtime, OOS or trading
 authorization.
 
-## Current Hard Stop: Official RNDRUSDT Boundary Source Missing
+## Current Stage: ADR-0018 Exact-Head Review
+
+PR #116 exact head `edf753f2...a2adc` passed GitHub run `29829112223` and
+merged as immutable blocked evidence under `d2c54d5d...e6440`. ADR-0018
+scheduled-market-cessation contract `8761faba...46e9` is now frozen on a
+separate branch. The only next action is its independent exact-head review and
+merge.
+
+Do not acquire any boundary archive in the ADR PR. After ADR-0018 review and
+merge, preflight only official original-symbol archive
+`RNDRUSDT-5m-2024-07-22.zip` and exact row `2024-07-22T02:55:00Z`. Only if that
+passes may a later authority stage download the other 91 archives. RENDER stays
+provenance-only; genuine independent normal/reverse/shuffled construction is
+mandatory.
+
+Original IS/selection trials remain zero. OOS remains false/false/0/0, and
+dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 are
+still prohibited.
+
+## Historical Hard Stop: Official RNDRUSDT Boundary Source Missing
 
 The authorized result-blind source preflight reached only 91/92 official daily
 archives. The required official Binance URL for `RNDRUSDT` at

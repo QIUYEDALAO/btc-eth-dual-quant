@@ -2,8 +2,8 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-21T00:00:00Z"
-current_phase: "External-strategy boundary authority blocked: official exact RNDRUSDT source unavailable"
-current_status: external_strategy_boundary_authority_blocked_official_rndr_source_missing_zero_is_zero_oos_no_trading_no_m2
+current_phase: "ADR-0018 scheduled market-cessation contract frozen pending exact-head review"
+current_status: adr0018_contract_frozen_pending_exact_head_review_no_boundary_acquisition_zero_is_zero_oos_no_trading_no_m2
 context_sync_policy:
   update_on_every_user_instruction: true
   required_files:
@@ -20,6 +20,38 @@ context_sync_policy:
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: PR #116 exact-head review, GitHub Gate and blocked-evidence merge
+    status: approve_zero_critical_high_exact_head_gate_pass_merged_blocked_evidence_only
+    review: reports/expert/PR116_EXACT_HEAD_REVIEW.md
+    machine_review: reports/expert/evidence/pr116_exact_head_review_v1.json
+    review_content_hash: b873227e3777db6a867294c35986a021fdff12dee4353a7c40312e0a1bc4b10d
+    reviewed_head: edf753f28f26f6a168798fa40b49bcbd121a2adc
+    github_gate_run: 29829112223
+    github_gate_conclusion: success
+    merge_commit: d2c54d5d81e1e323d9581904df015afe368e6440
+    boundary_authority_frozen: false
+    original_is_authorized: false
+    selection_trial_count: 0
+    oos_rows_decoded: 0
+  - phase: ADR-0018 scheduled market-cessation forced-exit contract
+    status: frozen_pending_exact_head_independent_review_no_archive_acquisition
+    decision: docs/decisions/ADR-0018-scheduled-market-cessation-forced-exit.md
+    machine_contract: config/adr0018_scheduled_market_cessation_forced_exit_v1.json
+    content_hash: 8761fabac1f32d518d6c75c08dcf0a37288262059fe3192b87fb44de836b46e9
+    predecessor_symbol: RNDRUSDT
+    cessation_utc: 2024-07-22T03:00:00Z
+    candidate_forced_exit_open_utc: 2024-07-22T02:55:00Z
+    successor_symbol: RENDERUSDT
+    successor_authority: provenance_only
+    archive_and_row_validated: false
+    boundary_authority_frozen: false
+    original_is_authorized: false
+    is_trials: 0
+    selection_trial_count: 0
+    oos_authorized: false
+    oos_opened: false
+    oos_runs: 0
+    oos_rows_decoded: 0
   - phase: Membership-exit boundary authority official-source preflight
     status: blocked_official_source_missing_91_of_92_available_no_acquisition
     report: reports/m1/EXTERNAL_STRATEGY_BOUNDARY_AUTHORITY_SOURCE_PREFLIGHT_STOP.md
@@ -2856,9 +2888,21 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: EXTERNAL-STRATEGY-ADR0018
+    phase: scheduled market-cessation forced-exit holding/lifecycle contract
+    status: frozen_pending_exact_head_review_and_merge_no_source_preflight_yet
+    content_hash: 8761fabac1f32d518d6c75c08dcf0a37288262059fe3192b87fb44de836b46e9
+    reviewed_pr116_head: edf753f28f26f6a168798fa40b49bcbd121a2adc
+    pr116_merge_commit: d2c54d5d81e1e323d9581904df015afe368e6440
+    original_symbol_preflight_after_merge_only: true
+    boundary_archive_acquisition_authorized_now: false
+    original_is_authorized: false
+    oos_authorized: false
+    trading_authorized: false
+    m2_authorized: false
   - id: EXTERNAL-STRATEGY-IS-DATA-BOUNDARY
     phase: point-in-time membership exit execution authority
-    status: blocked_official_rndr_daily_archive_missing_91_of_92_no_acquisition_no_is
+    status: blocked_pending_adr0018_review_merge_then_rndr_original_symbol_preflight_no_is
     evidence_hash: e9844902eaa7234a5476a080e937cfbf51f70913cb9ff1b903b907cad08280fa
     authorization_hash: 82acac46ce4e81cdab071635d986b17dfe1996091e4aa55cba3de5007b49cea4
     reviewed_pr115_head: 60e49ee7cb6812593098c2f13049b921e5b3b4b5
