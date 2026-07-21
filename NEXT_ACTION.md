@@ -14,8 +14,8 @@ authorization.
 PR #116 exact head `edf753f2...a2adc` passed GitHub run `29829112223` and
 merged as immutable blocked evidence under `d2c54d5d...e6440`. ADR-0018
 scheduled-market-cessation contract `8761faba...46e9` is now frozen on a
-separate branch. The only next action is its independent exact-head review and
-merge.
+separate branch in Draft PR #117. The only next action is its independent
+exact-head review, GitHub Gate and merge.
 
 Do not acquire any boundary archive in the ADR PR. After ADR-0018 review and
 merge, preflight only official original-symbol archive

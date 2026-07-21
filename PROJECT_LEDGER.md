@@ -2902,3 +2902,4 @@ private exchange responses here.
 - ADR-0018 `8761fabac1f32d518d6c75c08dcf0a37288262059fe3192b87fb44de836b46e9` freezes a generic pre-announced market-cessation forced-exit contract. RNDR exits at the candidate original-symbol 02:55 open before 03:00 cessation; RENDER is provenance-only and cannot supply price, position, history or rank.
 - No archive or market row was acquired in the ADR stage. The RNDR archive/row remains explicitly unvalidated. IS/selection trials remain 0/0, OOS false/false/0/0 and all trading/M2 permissions false.
 - NB-01 is carried forward: a completed authority must perform three genuinely independent normal/reverse/deterministic-shuffled constructions before canonical comparison.
+- Draft PR #117 publishes the frozen ADR-0018 contract for independent exact-head review. It remains Draft and is not authorized to merge before that review and GitHub Gate.

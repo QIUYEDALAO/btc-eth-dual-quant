@@ -52,6 +52,9 @@ completed_milestones:
     oos_opened: false
     oos_runs: 0
     oos_rows_decoded: 0
+    branch: codex/adr-0018-scheduled-market-cessation
+    draft_pr: 117
+    merge_authorized_before_exact_head_review: false
   - phase: Membership-exit boundary authority official-source preflight
     status: blocked_official_source_missing_91_of_92_available_no_acquisition
     report: reports/m1/EXTERNAL_STRATEGY_BOUNDARY_AUTHORITY_SOURCE_PREFLIGHT_STOP.md
@@ -2900,6 +2903,8 @@ open_work:
     oos_authorized: false
     trading_authorized: false
     m2_authorized: false
+    branch: codex/adr-0018-scheduled-market-cessation
+    draft_pr: 117
   - id: EXTERNAL-STRATEGY-IS-DATA-BOUNDARY
     phase: point-in-time membership exit execution authority
     status: blocked_pending_adr0018_review_merge_then_rndr_original_symbol_preflight_no_is

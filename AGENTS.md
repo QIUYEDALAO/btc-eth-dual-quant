@@ -46,6 +46,8 @@ After any task, the agent must update:
 
 - ADR-0018 scheduled-market-cessation forced-exit contract `8761faba...46e9` is frozen pending separate exact-head review and merge. It retains official original-symbol sourcing, derives the RNDR candidate forced-exit open as `2024-07-22T02:55:00Z`, and treats RENDER as provenance-only. No archive or row has been acquired or validated in this stage.
 
+- Draft PR #117 is the ADR-0018 review target. Keep it Draft until an independent exact-head verdict and matching GitHub Gate exist; do not merge it as boundary authority or IS authorization.
+
 - Until ADR-0018 is reviewed and merged, do not preflight or download the RNDR archive. After merge, preflight only the official RNDR 2024-07-22 daily ZIP and exact 02:55 row before downloading any of the other 91 archives. Completed authority construction must run genuinely independent normal/reverse/shuffled passes; repeating one canonical hash does not satisfy NB-01.
 
 - The authorized result-blind boundary source preflight is hard-blocked. Exactly 91/92 official Binance daily ZIP URLs exist; the required `RNDRUSDT-5m-2024-08-01.zip` returns HTTP 404. Evidence `5746b982...537e` records zero archive downloads, zero market/result/OOS rows and no IS trials. Do not substitute a renamed symbol, REST response, earlier/later row, synthetic/last price or unfrozen source.
