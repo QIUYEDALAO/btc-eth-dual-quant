@@ -2876,3 +2876,11 @@ private exchange responses here.
 - IS-only materialization `628bec95...9def` verified 855 frozen archives, produced 224 files for 56 symbols, decoded 7,393,658 IS 5m rows and decoded zero OOS rows.
 - Pre-performance boundary qualification `e9844902...80fa` found 92 point-in-time active-to-inactive membership transitions and zero frozen next-boundary 5m archives. Exact membership exits cannot be priced without an unfrozen/synthetic/forward-searched/lookahead remedy, so the route stops under the authorized data-authority hard-stop condition.
 - Original IS, modified IS, selection trials, final DSR and final candidate selection were not run. Counts remain 0/0/0; OOS is false/false/0/0 and dry-run bot/API/live/M2 remain false.
+
+## 2026-07-21 - PR #115 Approved/Merged; Boundary Authority Authorized
+
+- Independent review approved exact head `60e49ee7cb6812593098c2f13049b921e5b3b4b5` with 0 critical/high; its GitHub Gate was successful and the unchanged reviewed head was merged as `e19962f50b091b5c1fea363d20ee078fcd69cc37`.
+- Reviewer decision `82acac46ce4e81cdab071635d986b17dfe1996091e4aa55cba3de5007b49cea4` authorizes design, official-public-source acquisition, validation and freeze for exactly the 92 membership-exit boundaries bound by qualification `e9844902...80fa`.
+- The authority is IS-only and result blind. It may not inspect signals, trades, equity, metrics, DSR or selection output; it must decode zero OOS rows and keep boundary prices out of strategy OHLCV and indicator history.
+- Pass requires 92/92 exact open/close rows, official provenance, finite OHLCV, lifecycle/mask validity, normal/reverse/shuffled identity, tamper negatives, full command text and exit/stdout/stderr hashes, plus reset/rewarm semantics across inactive intervals.
+- Original IS remains unauthorized until the frozen authority receives a separate exact-head review and merge. IS/selection trials remain 0/0; OOS remains false/false/0/0; dry-run/API/live/M2 remain false.

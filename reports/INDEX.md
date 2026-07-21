@@ -2,6 +2,8 @@
 
 | Artifact | Purpose | Status | Key evidence | Trading authority |
 |---|---|---|---|---|
+| `reports/expert/PR115_EXACT_HEAD_REVIEW.md` | External-strategy runtime/boundary exact-head review | approve / merged unchanged | PR #115 head `60e49ee7...b3b4b5`; 0 critical/high; merge `e19962f5...9cc37`; boundary construction only | no |
+| `config/membership_exit_boundary_authorization_v1.json` | Membership-exit boundary authority decision | design/acquisition/validation/freeze only | qualification `e9844902...80fa`; reviewer decision `82acac46...9cea4`; separate review required before IS | no |
 | `reports/m1/EXTERNAL_STRATEGY_RUNTIME_AND_IS_BOUNDARY_STOP.md` | Pinned runtime, six-candidate causal result and pre-IS hard stop | blocked data authority | runtime `a88f0c59...eed1`; causal 6/6 `473dd739...a107`; membership exits missing 92/92 under `e9844902...80fa`; IS/OOS zero | no |
 | `reports/m1/evidence/external_strategy_runtime/is_boundary_qualification.json` | Machine membership-exit boundary qualification | deterministic blocked-valid | binds all 92 transitions, 0 frozen boundary archives, IS materialization `628bec95...9def`, OOS rows 0 | no |
 | `reports/m1/evidence/external_strategy_runtime/causal_summary.json` | Six-candidate Freqtrade causal summary | pass 6/6 | golden/order/lookahead/recursive results; minimum 5 satisfied; market/OOS fixture rows zero | no |
