@@ -2,6 +2,11 @@
 
 | Artifact | Purpose | Status | Key evidence | Trading authority |
 |---|---|---|---|---|
+| `reports/m1/EXTERNAL_STRATEGY_COMPLETED_BOUNDARY_AUTHORITY.md` | Completed result-blind 92-row membership-exit authority | frozen pending separate exact-head review and merge | 92/92; authority `9829e22b...b96ada`; three-pass result `5b05fbf6...40ebec`; OOS/IS zero | no |
+| `reports/m1/evidence/external_strategy_boundary_authority/completed_boundary_authority.json` | Machine completed boundary authority | deterministic frozen | 91 new official archives + frozen RNDR; 92 exact rows; NB-01 true; forced-exit-only isolation | no |
+| `reports/m1/evidence/external_strategy_boundary_authority/completed_boundary_authority_command.json` | Completed-authority command evidence | pass | exact command, runtime, exit/stdout/stderr hashes; authority `9829e22b...b96ada` | no |
+| `reports/expert/PR118_EXACT_HEAD_REVIEW.md` | RNDR preflight exact-head independent review | approve / merged after Gate | head `89965820...d32622`; review `6f57e1da...e3a94c`; run `29877334519`; merge `02673d1b...172b5` | no |
+| `reports/expert/evidence/pr118_exact_head_review_v1.json` | Machine PR #118 review | approve | 0 critical/high; full result-blind authority construction only; IS false | no |
 | `reports/m1/EXTERNAL_STRATEGY_RNDR_ORIGINAL_SYMBOL_PREFLIGHT.md` | RNDR-only official archive and exact-row preflight | pass / completed authority still pending | evidence `eceafea1...9b38be`; archive `e2da006e...91587`; row `89be4f17...e4f50`; other-91/OOS zero | no |
 | `reports/m1/evidence/external_strategy_boundary_authority/rndr_original_symbol_preflight.json` | Machine RNDR preflight evidence | deterministic pass | one archive/checksum request, one exact row, three distinct traversal traces, full authority and IS false | no |
 | `reports/expert/PR117_EXACT_HEAD_REVIEW.md` | ADR-0018 exact-head independent review | approve / merged after Gate | head `bb22a08c...a1e2`; review `41f43609...780f`; run `29871317869`; merge `336563c6...048b` | no |
