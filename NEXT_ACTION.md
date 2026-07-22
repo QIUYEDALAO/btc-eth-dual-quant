@@ -45,12 +45,14 @@ or indicator history, and requires reset/rewarm across inactive intervals. It
 read zero strategy-result rows, materialized zero IS/selection trials and
 decoded zero OOS rows.
 
-The next task is a separate exact-head independent review of branch
-`codex/external-strategy-boundary-authority`, followed by the exact-head GitHub
-Gate and merge only if the verdict is approve with critical/high 0/0. Do not run
-original IS before that review and merge. OOS remains false/false/0/0, and
-dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 are
-still prohibited.
+Draft PR #119 now publishes the completed authority. Its functional commit is
+`5adc1101e4485fff0f312c352e04ad5fe9dcc12d`; the local selective PR Gate against
+PR #118 merge `02673d1...172b5` passed, including 1,358/1,358 tests and project
+Gate 14/14. The next task is a separate independent review of PR #119's final
+exact head, followed by an exact-head GitHub Gate and merge only if the verdict
+is approve with critical/high 0/0. Do not run original IS before that review and
+merge. OOS remains false/false/0/0, and dry-run, API/private endpoints,
+paper/live, orders, `execution/live` and M2 are still prohibited.
 
 ## Historical Hard Stop: Official RNDRUSDT Boundary Source Missing
 

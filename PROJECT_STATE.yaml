@@ -33,6 +33,9 @@ completed_milestones:
   - phase: Completed result-blind membership-exit boundary authority
     status: pass_frozen_pending_separate_exact_head_review_and_merge
     branch: codex/external-strategy-boundary-authority
+    draft_pr: 119
+    functional_head_sha: 5adc1101e4485fff0f312c352e04ad5fe9dcc12d
+    pr_state: draft_pending_independent_exact_head_review
     report: reports/m1/EXTERNAL_STRATEGY_COMPLETED_BOUNDARY_AUTHORITY.md
     machine_evidence: reports/m1/evidence/external_strategy_boundary_authority/completed_boundary_authority.json
     command_evidence: reports/m1/evidence/external_strategy_boundary_authority/completed_boundary_authority_command.json
@@ -3497,7 +3500,7 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Publish the frozen completed 92-boundary authority as a separate Draft PR and obtain an independent exact-head review; do not run IS."
+  - "Independently review Draft PR #119 at its final exact head; do not run IS."
   - "Review must verify authority `9829e22b...b96ada`, all 92 exact source/member/row identities, genuinely independent normal/reverse/shuffled construction and forced-exit-only reset/rewarm isolation."
   - "Original IS remains blocked until the completed authority is independently approved with 0 critical/high, passes its exact-head Gate and merges."
   - "Result-free diagnostic inspection of frozen contract hashes and synthetic fixtures is allowed; performance, OOS and trading access remain unauthorized."

@@ -2933,3 +2933,9 @@ private exchange responses here.
 - Completed authority evidence is frozen as `9829e22b0c0b21bf69dac2d8d84de845650e2da31e13f239578e6a43dba96ada`; command evidence is `2674853239a7c185d35a0e751bf71e31cc89c5556e8c573a95415e42006771a7`.
 - Boundary rows are forced-exit lookup only and may not enter strategy OHLCV/indicator history. State must reset and rewarm across inactive intervals.
 - Strategy result rows, IS trials, selection trials and OOS rows remain zero. Original IS remains unauthorized until this completed authority receives a separate exact-head review, successful Gate and merge; dry-run/API/live/orders/M2 remain false.
+
+## 2026-07-22 - Completed Boundary Authority Published as Draft PR #119
+
+- Functional commit `5adc1101e4485fff0f312c352e04ad5fe9dcc12d` freezes the 92/92 result-blind authority under canonical hash `9829e22b...b96ada` and three-construction result `5b05fbf6...40ebec`.
+- Local selective validation against PR #118 merge `02673d1...172b5` passed: 1,358/1,358 unit tests, project Gate 14/14, completed-authority tests 6/6, compile, secret/no-trading/`execution/live`, read-only and diff checks.
+- Draft PR #119 is open for a separate final exact-head review. It is not merged and does not authorize original IS, selection trials, OOS, dry-run, API/private endpoints, paper/live, orders, `execution/live` or M2.

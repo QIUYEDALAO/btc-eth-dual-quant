@@ -42,6 +42,8 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- Draft PR #119 publishes the completed 92-boundary authority from functional commit `5adc1101...dcc12d`. Local selective validation against `main@02673d1...172b5` passed with 1,358/1,358 tests and project Gate 14/14. Keep it Draft for a separate final exact-head review; the PR grants no IS authority.
+
 - PR #118 exact head `89965820...d32622` is independently approved with 0 critical/high under review `6f57e1da...e3a94c`, passed exact-head GitHub run `29877334519`, and ordinary-merged as `02673d1b...172b5`. This authorized completed result-blind boundary construction but did not authorize IS.
 
 - The completed revised authority is frozen at 92/92 under `9829e22b...b96ada`. It uses 91 newly acquired official daily archives plus the frozen RNDR replacement, contains 1,116,059 archive bytes and 92 exact boundary rows, reads zero strategy-result/OOS rows and materializes zero IS/selection trials.
