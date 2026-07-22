@@ -42,7 +42,9 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- Draft PR #119 publishes the completed 92-boundary authority from functional commit `5adc1101...dcc12d`. Local selective validation against `main@02673d1...172b5` passed with 1,358/1,358 tests and project Gate 14/14. Keep it Draft for a separate final exact-head review; the PR grants no IS authority.
+- PR #119 exact head `380b5039...22666` is independently approved with 0 critical/high under review `203ff848...e3c1f`, passed exact-head GitHub run `29881020014`, and ordinary-merged as `7b6a0601...a18f3`. The completed 92-boundary data Gate is closed.
+
+- Original IS is now authorized only under the existing ADR-0017 and frozen unified protocol. It must run uniformly for the six frozen candidates, use the completed authority strictly as forced-exit lookup, reset/rewarm across inactive intervals, materialize append-only trials, and decode zero OOS rows. No result has yet materialized.
 
 - PR #118 exact head `89965820...d32622` is independently approved with 0 critical/high under review `6f57e1da...e3a94c`, passed exact-head GitHub run `29877334519`, and ordinary-merged as `02673d1b...172b5`. This authorized completed result-blind boundary construction but did not authorize IS.
 
@@ -50,9 +52,9 @@ After any task, the agent must update:
 
 - Normal, reverse and deterministic-shuffled passes independently reopen all 92 archives and agree on result identity `5b05fbf6...40ebec`; their trace hashes are `e94ad0ed...6290b`, `91e50449...0836` and `699133bf...f49`. NB-01 is satisfied.
 
-- Boundary rows remain execution-side forced-exit lookup only. They cannot enter candidate OHLCV/indicator history; indicator state cannot cross inactive membership intervals and must reset/rewarm from the current active interval. The authority now requires a separate exact-head review, successful Gate and merge before original IS.
+- Boundary rows remain execution-side forced-exit lookup only. They cannot enter candidate OHLCV/indicator history; indicator state cannot cross inactive membership intervals and must reset/rewarm from the current active interval.
 
-- Original IS remains unauthorized. No selection trial may materialize; OOS, dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 remain false.
+- Original IS is authorized but not yet run. Selection trial count remains zero; OOS, dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 remain false.
 
 - The 2026-07-22 `HKUDS/AI-Trader` request is a completed read-only external-project assessment at exact head `d03ff6c...c8df`. Do not install its remote skills, register an agent, call its APIs, import its source, or interpret the assessment as strategy/runtime/data/IS/OOS/trading authority. Static inspection completed; tests did not start because isolated PyPI dependency installation timed out.
 
@@ -66,7 +68,7 @@ After any task, the agent must update:
 
 - Historical preflight evidence `5746b982...537e` recorded the original 91/92 hard stop because `RNDRUSDT-5m-2024-08-01.zip` returned HTTP 404. ADR-0018 and its independently reviewed RNDR preflight replaced that single boundary without a renamed-symbol, REST, forward-search, synthetic/last-price or unfrozen-source substitution.
 
-- That historical source blocker is resolved only for authority construction. The completed authority is frozen, but original IS remains unauthorized pending its separate exact-head review and merge. The materializer's explicit `eligibility_status == qualified` guard grants no additional authority.
+- That historical source blocker is resolved by the reviewed and merged completed authority. The materializer's explicit `eligibility_status == qualified` guard remains mandatory.
 
 - PR #116 merged only as terminal source-preflight evidence and a defensive guard; it is not runtime/IS authority.
 

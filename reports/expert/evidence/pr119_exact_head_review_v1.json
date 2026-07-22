@@ -1,0 +1,98 @@
+{
+  "base": "02673d1bebfb7a9efa5370a8025f1ea185c172b5",
+  "bindings": {
+    "command_byte_sha256": "3f438735cc2c3a423b646ea2354bc46927e7bf5ea3529a0bf64dce3f544a2737",
+    "command_content_hash": "2674853239a7c185d35a0e751bf71e31cc89c5556e8c573a95415e42006771a7",
+    "completed_authority_byte_sha256": "056a31f07c3548480a26dc4f9bdb997e2d2c5ec18e2e78778965d500a9b4b56b",
+    "completed_authority_content_hash": "9829e22b0c0b21bf69dac2d8d84de845650e2da31e13f239578e6a43dba96ada",
+    "construction_result_hash": "5b05fbf68b46bcb5bb5a80d86e53edb8383252d371495308424b35bfc140ebec",
+    "deterministic_shuffled_trace_hash": "699133bf497088805b9df0e769fcd50741fa95ea4b1f54840601710345f00f49",
+    "normal_trace_hash": "e94ad0ed41e8878724d8b9d2290479861ae744cbe951444881fcb29c0316290b",
+    "pr118_merge_commit": "02673d1bebfb7a9efa5370a8025f1ea185c172b5",
+    "reverse_trace_hash": "91e50449aaf91cea41340a246a093a8b0158ba7f63d2c2a2054367dd8ceb0836"
+  },
+  "ci_state": {
+    "current_exact_head_workflow_runs_observed": 0,
+    "current_pr_is_draft": true,
+    "functional_head_run": 29879564234,
+    "functional_head_run_conclusion": "success",
+    "functional_head_run_name": "PR Selective Validate",
+    "functional_head_run_status": "completed"
+  },
+  "confirmed_state": {
+    "completed_authority_frozen": true,
+    "completed_authority_merged": false,
+    "completed_authority_review_complete": false,
+    "full_construction_row_decodes": 276,
+    "is_trials": 0,
+    "market_rows_outside_fixed_boundaries": 0,
+    "new_official_archives": 91,
+    "oos_authorized": false,
+    "oos_opened": false,
+    "oos_rows_decoded": 0,
+    "oos_runs": 0,
+    "original_is_authorized_before_review_gate_merge": false,
+    "preexisting_frozen_rndr_archives": 1,
+    "revised_boundary_count": 92,
+    "selection_trial_count": 0,
+    "strategy_result_rows_read": 0,
+    "total_archive_bytes": 1116059,
+    "unchanged_boundaries": 91,
+    "unique_boundary_rows": 92
+  },
+  "content_hash": "203ff8488e5e8c44019a09653f4189ef6ff780185469ef77323a60672a7e3c1f",
+  "critical_findings": 0,
+  "functional_head": "5adc1101e4485fff0f312c352e04ad5fe9dcc12d",
+  "github_write_status": {
+    "formal_approve_review_posted": false,
+    "ready_transition_completed": false,
+    "write_error": "Resource not accessible by integration"
+  },
+  "high_findings": 0,
+  "independent_recomputation": {
+    "all_92_official_zip_binaries_freshly_redownloaded": false,
+    "command_canonical_hash_recomputed": true,
+    "command_stdout_hash_recomputed": true,
+    "construction_and_trace_algorithms_independently_inspected": true,
+    "limitation": "The raw ZIP snapshot is deliberately untracked and no CI artifact exposes it. The reviewer environment could not perform a second full network acquisition. Approval therefore attests to the pinned official-checksum manifest, fail-closed acquisition/validation code, committed evidence, sample recomputation, tamper tests and successful functional-head CI; it is not a fresh 92-object byte-download attestation.",
+    "sample_exact_row_hashes_recomputed": true
+  },
+  "merge_authority": {
+    "allowed_after_current_exact_head_gate_success": true,
+    "expected_head_must_equal": "380b50392b3a225bbaf7f0ff4f24041b8fb22666",
+    "head_change_invalidates_review": true,
+    "merge_closes_completed_boundary_authority_review_gate": true,
+    "original_is_after_merge_is_governed_by_existing_adr0017_protocol": true,
+    "this_review_directly_authorizes_dry_run_api_live_orders_or_m2": false,
+    "this_review_directly_authorizes_oos": false
+  },
+  "non_blocking_notes": [
+    {
+      "disposition": "This does not invalidate the frozen authority because every object is pinned to an official checksum and local read-only snapshot, but long-term auditability would improve with an immutable external evidence bundle or retention policy.",
+      "id": "NB-119-01",
+      "summary": "Raw archive bytes are repository-external and no durable GitHub Actions artifact was published."
+    },
+    {
+      "disposition": "Mark the PR Ready and require a successful Gate on the exact reviewed head before merge.",
+      "id": "NB-119-02",
+      "summary": "The current exact head has no workflow run because the final commit is marked skip-ci."
+    }
+  ],
+  "pull_request": 119,
+  "repository": "QIUYEDALAO/btc-eth-dual-quant",
+  "review_dimensions": {
+    "archive_crc_member_and_exact_row_contract": "pass",
+    "authorization_chain_and_exact_revision": "pass",
+    "forced_exit_only_data_isolation": "pass",
+    "functional_to_exact_head_context_only_diff": "pass",
+    "membership_lifecycle_and_invalid_interval_binding": "pass",
+    "normal_reverse_shuffled_full_set_constructions": "pass",
+    "official_source_checksum_and_url_contract": "pass",
+    "reset_rewarm_and_active_interval_segmentation": "pass",
+    "tamper_and_optimized_python_validation": "pass",
+    "trial_oos_and_trading_permission_guards": "pass"
+  },
+  "reviewed_head": "380b50392b3a225bbaf7f0ff4f24041b8fb22666",
+  "schema_version": "pr119-exact-head-review-v1",
+  "verdict": "approve"
+}

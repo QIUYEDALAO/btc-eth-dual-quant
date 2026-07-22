@@ -2,7 +2,9 @@
 
 | Artifact | Purpose | Status | Key evidence | Trading authority |
 |---|---|---|---|---|
-| `reports/m1/EXTERNAL_STRATEGY_COMPLETED_BOUNDARY_AUTHORITY.md` | Completed result-blind 92-row membership-exit authority | frozen pending separate exact-head review and merge | 92/92; authority `9829e22b...b96ada`; three-pass result `5b05fbf6...40ebec`; OOS/IS zero | no |
+| `reports/expert/PR119_EXACT_HEAD_REVIEW.md` | Completed authority exact-head independent review | approve / merged after Gate | head `380b5039...22666`; review `203ff848...e3c1f`; run `29881020014`; merge `7b6a0601...a18f3` | no |
+| `reports/expert/evidence/pr119_exact_head_review_v1.json` | Machine PR #119 review | approve | 0 critical/high; exact merge conditions; original IS only under existing ADR-0017 | no |
+| `reports/m1/EXTERNAL_STRATEGY_COMPLETED_BOUNDARY_AUTHORITY.md` | Completed result-blind 92-row membership-exit authority | reviewed, Gate passed and merged | 92/92; authority `9829e22b...b96ada`; three-pass result `5b05fbf6...40ebec`; OOS/IS zero | no |
 | `reports/m1/evidence/external_strategy_boundary_authority/completed_boundary_authority.json` | Machine completed boundary authority | deterministic frozen | 91 new official archives + frozen RNDR; 92 exact rows; NB-01 true; forced-exit-only isolation | no |
 | `reports/m1/evidence/external_strategy_boundary_authority/completed_boundary_authority_command.json` | Completed-authority command evidence | pass | exact command, runtime, exit/stdout/stderr hashes; authority `9829e22b...b96ada` | no |
 | `reports/expert/PR118_EXACT_HEAD_REVIEW.md` | RNDR preflight exact-head independent review | approve / merged after Gate | head `89965820...d32622`; review `6f57e1da...e3a94c`; run `29877334519`; merge `02673d1b...172b5` | no |

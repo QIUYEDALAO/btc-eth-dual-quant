@@ -24,7 +24,7 @@ passed exact-head review and Gate and merged; the RNDR-only preflight below is
 the current authority boundary. The assessment grants no runtime, data,
 IS/OOS, API, paper/live, order-placement, `execution/live` or M2 authority.
 
-## Current Stage: Completed 92-Boundary Authority Pending Exact-Head Review
+## Current Stage: Original IS Authorized, Not Yet Run
 
 PR #118 exact head `89965820...d32622` was independently approved with zero
 critical/high findings under review `6f57e1da...e3a94c`. Exact-head GitHub run
@@ -45,14 +45,19 @@ or indicator history, and requires reset/rewarm across inactive intervals. It
 read zero strategy-result rows, materialized zero IS/selection trials and
 decoded zero OOS rows.
 
-Draft PR #119 now publishes the completed authority. Its functional commit is
-`5adc1101e4485fff0f312c352e04ad5fe9dcc12d`; the local selective PR Gate against
-PR #118 merge `02673d1...172b5` passed, including 1,358/1,358 tests and project
-Gate 14/14. The next task is a separate independent review of PR #119's final
-exact head, followed by an exact-head GitHub Gate and merge only if the verdict
-is approve with critical/high 0/0. Do not run original IS before that review and
-merge. OOS remains false/false/0/0, and dry-run, API/private endpoints,
-paper/live, orders, `execution/live` and M2 are still prohibited.
+PR #119 exact head `380b5039...22666` was independently approved with zero
+critical/high under review `203ff848...e3c1f`. Main Regression run
+`29881020014` succeeded on that exact head, which was then ordinary-merged as
+`7b6a0601...a18f3`. The completed boundary-data Gate is closed.
+
+The next task is the single uniform original-IS stage for all six frozen
+candidates under ADR-0017 and `external_strategy_unified_is_protocol_v1.json`.
+Before first result materialization, revalidate exact runtime, candidate, data,
+boundary, benchmark and DSR identities; enforce active-interval reset/rewarm,
+the four frozen costs, append-only result envelopes and zero OOS access. No
+candidate, parameter, source, timeframe or ordering may change. OOS remains
+false/false/0/0, and dry-run, API/private endpoints, paper/live, orders,
+`execution/live` and M2 remain prohibited.
 
 ## Historical Hard Stop: Official RNDRUSDT Boundary Source Missing
 
