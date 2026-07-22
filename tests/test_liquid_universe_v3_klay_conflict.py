@@ -394,6 +394,7 @@ class KlaySourceConflictTests(unittest.TestCase):
         self.assertTrue(
             re.match(r"^U-\d{2} ", phase)
             or phase == "External-strategy 92-boundary authority frozen pending exact-head review"
+            or phase == "External-strategy original IS pre-execution safety Gate complete; VPS environment hard-blocked before performance"
             or phase == "External-strategy original IS authorized after completed boundary-authority merge; execution pending"
             or phase == "External-strategy RNDR original-symbol boundary preflight passed; full 92-boundary authority pending"
             or phase == "ADR-0018 scheduled market-cessation contract frozen pending exact-head review"
@@ -407,6 +408,7 @@ class KlaySourceConflictTests(unittest.TestCase):
             re.match(r"^u\d{2}_", status)
             or status == "external_strategy_boundary_authority_frozen_pending_exact_head_review_zero_is_zero_oos_no_trading_no_m2"
             or status == "external_strategy_original_is_authorized_pending_execution_zero_is_zero_oos_no_trading_no_m2"
+            or status == "external_strategy_original_is_environment_blocked_vps_host_and_identity_missing_zero_is_zero_oos_no_trading_no_m2"
             or status == "external_strategy_rndr_preflight_pass_full_boundary_authority_pending_zero_is_zero_oos_no_trading_no_m2"
             or status == "adr0018_contract_frozen_pending_exact_head_review_no_boundary_acquisition_zero_is_zero_oos_no_trading_no_m2"
             or status == "external_strategy_boundary_authority_blocked_official_rndr_source_missing_zero_is_zero_oos_no_trading_no_m2"

@@ -2946,3 +2946,10 @@ private exchange responses here.
 - PR discussion records the review at `issuecomment-5040545474`. Main Regression run `29881020014` succeeded on the unchanged exact head in 8m34s.
 - PR #119 was ordinary-merged as `7b6a0601588f4387f8816cf6b49bdf5bf94a18f3`, closing the completed 92-boundary authority Gate.
 - Existing ADR-0017 authority now permits the uniform original-IS stage. No IS result or selection trial has yet materialized; OOS remains false/false/0/0 and dry-run/API/private endpoints/paper/live/orders/`execution/live`/M2 remain false.
+
+## 2026-07-22 - Original-IS Pre-execution Gate Completed; Environment Hard Stop
+
+- Added immutable post-runtime authority `32922386a3984ef96e24ed64e96771e81860b2fbf269c3baf5a46739775bf2ae`, binding ADR-0017/0018, unchanged pre-runtime contracts, all six exact runtime/causal identities, PR #119 review/Gate/merge and the completed 92/92 boundary authority.
+- Added result-free active-interval reset/rewarm and exact forced-exit lookup, plus atomic Base/CostX2/StressA/StressB × trades/equity/metrics bundle publication and crash recovery that cannot rerun performance.
+- Added a runtime trial/DSR overlay so immutable pre-runtime files remain byte-exact. Base and CostX2 selection sequences are derived from hash-bound equity; StressA/B are excluded and final DSR is generated only at one-time final selection.
+- Focused validation passes 22/22. Offline execution readiness exits 2 with stdout hash `09abdc57...33073`: `VPS_HOST` is unset and no explicit SSH identity was supplied. Boundary snapshot count is 92; SSH attempts, Docker/Freqtrade starts, IS/selection trials and result/OOS rows remain zero.

@@ -12,6 +12,10 @@ import yaml
 
 ALLOWED = {
     (
+        "External-strategy original IS pre-execution safety Gate complete; VPS environment hard-blocked before performance",
+        "external_strategy_original_is_environment_blocked_vps_host_and_identity_missing_zero_is_zero_oos_no_trading_no_m2",
+    ): "EXTERNAL-STRATEGY-ORIGINAL-IS",
+    (
         "External-strategy original IS authorized after completed boundary-authority merge; execution pending",
         "external_strategy_original_is_authorized_pending_execution_zero_is_zero_oos_no_trading_no_m2",
     ): "EXTERNAL-STRATEGY-ORIGINAL-IS",

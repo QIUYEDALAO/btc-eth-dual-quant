@@ -50,6 +50,9 @@ run_check "project context check" "$PY_CMD" scripts/project_context_check.py
 run_check "context summary" "$PY_CMD" scripts/context_summary.py
 run_check "strategy trial ledger check" "$PY_CMD" scripts/strategy_trial_ledger_check.py
 run_check "external strategy trial accounting" "$PY_CMD" scripts/external_strategy_trial_accounting_check.py
+run_check "external strategy original-IS authority" "$PY_CMD" scripts/external_strategy_original_is_authority_check.py
+run_check "external strategy original-IS trial accounting" "$PY_CMD" scripts/external_strategy_original_is_trial_check.py
+run_check "external strategy original-IS offline preflight" "$PY_CMD" scripts/external_strategy_original_is_preflight.py
 run_check "external strategy runtime boundary status" "$PY_CMD" scripts/external_strategy_is_boundary_qualification.py
 run_check "external strategy boundary authority source status" bash scripts/external_strategy_boundary_authority_validate.sh
 run_check "ADR-0018 scheduled cessation contract" bash scripts/adr0018_scheduled_market_cessation_validate.sh

@@ -24,7 +24,28 @@ passed exact-head review and Gate and merged; the RNDR-only preflight below is
 the current authority boundary. The assessment grants no runtime, data,
 IS/OOS, API, paper/live, order-placement, `execution/live` or M2 authority.
 
-## Current Stage: Original IS Authorized, Not Yet Run
+## Current Stage: Original IS Authorized but Environment-Blocked
+
+The post-runtime safety layer is complete under authority
+`32922386...bf2ae`. It preserves every ADR-0016 pre-runtime byte while
+binding the six runtime identities, six causal PASS results, PR #119 review,
+exact-head Gate/merge and the 92/92 boundary authority. Active membership
+intervals now reset and rewarm independently; boundary rows are exact-key
+forced-exit lookup only; four-cost evidence materializes as one atomic 12-file
+bundle; Base/CostX2 trial Sharpe sequences live in an append-only runtime
+overlay and final DSR is not rewritten into historical results.
+
+The focused Gate passes 22/22. Offline readiness then stops before any SSH
+connection because `VPS_HOST` is unset and no explicit SSH identity path was
+supplied. The local boundary snapshot contains all 92 ZIPs. Freqtrade, Docker,
+IS, result reading and OOS decoding remain zero.
+
+Next action: configure `VPS_HOST` and provide the explicit SSH identity path
+for the existing pinned VPS. Then re-run the offline `--require-environment`
+preflight and complete the remote original-IS runner against Freqtrade 2026.6
+without changing candidates, parameters, sources, ordering or the sealed OOS
+boundary. Until those environment inputs exist, do not create a partial trial
+or substitute a local/unpinned runtime.
 
 PR #118 exact head `89965820...d32622` was independently approved with zero
 critical/high findings under review `6f57e1da...e3a94c`. Exact-head GitHub run

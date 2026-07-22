@@ -2,6 +2,9 @@
 
 | Artifact | Purpose | Status | Key evidence | Trading authority |
 |---|---|---|---|---|
+| `reports/m1/EXTERNAL_STRATEGY_ORIGINAL_IS_PREEXECUTION_GATE.md` | Original-IS post-runtime authority, safety implementation and offline environment preflight | contract PASS / environment hard stop | authority `32922386...bf2ae`; 22/22 focused tests; 92 snapshot ZIPs; `VPS_HOST`/identity missing; zero SSH/Freqtrade/IS/OOS | no |
+| `config/external_strategy_original_is_authority_v1.json` | Immutable post-runtime original-IS authority overlay | authorized / execution blocked by environment | exact six runtime/causal identities, PR #119 merge, 92/92 boundary, unchanged pre-runtime hashes | no |
+| `reports/m1/evidence/external_strategy_is_state/selection_state_v1.json` | Append-only current-route trial/DSR state | zero trials | count `0`; Base/CostX2 sequences empty; OOS `false/false/0/0` | no |
 | `reports/expert/PR119_EXACT_HEAD_REVIEW.md` | Completed authority exact-head independent review | approve / merged after Gate | head `380b5039...22666`; review `203ff848...e3c1f`; run `29881020014`; merge `7b6a0601...a18f3` | no |
 | `reports/expert/evidence/pr119_exact_head_review_v1.json` | Machine PR #119 review | approve | 0 critical/high; exact merge conditions; original IS only under existing ADR-0017 | no |
 | `reports/m1/EXTERNAL_STRATEGY_COMPLETED_BOUNDARY_AUTHORITY.md` | Completed result-blind 92-row membership-exit authority | reviewed, Gate passed and merged | 92/92; authority `9829e22b...b96ada`; three-pass result `5b05fbf6...40ebec`; OOS/IS zero | no |

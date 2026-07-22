@@ -42,9 +42,15 @@ After any task, the agent must update:
 
 ## Current Stage
 
+- The original-IS pre-execution safety Gate is complete under post-runtime authority `32922386...bf2ae`. It leaves the ADR-0016 pre-runtime root/candidate/protocol/DSR/ledger bytes unchanged and adds active-interval reset/rewarm, exact execution-side boundary lookup, atomic four-cost trial bundles and an append-only runtime selection overlay.
+
+- Focused validation passes 22/22 plus normal and optimized-Python checkers. No performance result exists: IS trials and selection trials remain zero; OOS remains `false/false/0/0`.
+
+- Actual execution is hard-blocked before SSH because `VPS_HOST` is unset and no explicit SSH identity path was supplied. The local read-only boundary snapshot is complete at 92 ZIPs. Do not start an unpinned/local substitute runtime or create a partial trial. Resume only after both environment inputs are explicitly available.
+
 - PR #119 exact head `380b5039...22666` is independently approved with 0 critical/high under review `203ff848...e3c1f`, passed exact-head GitHub run `29881020014`, and ordinary-merged as `7b6a0601...a18f3`. The completed 92-boundary data Gate is closed.
 
-- Original IS is now authorized only under the existing ADR-0017 and frozen unified protocol. It must run uniformly for the six frozen candidates, use the completed authority strictly as forced-exit lookup, reset/rewarm across inactive intervals, materialize append-only trials, and decode zero OOS rows. No result has yet materialized.
+- Original IS is authorized only under the existing ADR-0017 and frozen unified protocol, but is currently environment-blocked. It must run uniformly for the six frozen candidates, use the completed authority strictly as forced-exit lookup, reset/rewarm across inactive intervals, materialize append-only trials, and decode zero OOS rows. No result has yet materialized.
 
 - PR #118 exact head `89965820...d32622` is independently approved with 0 critical/high under review `6f57e1da...e3a94c`, passed exact-head GitHub run `29877334519`, and ordinary-merged as `02673d1b...172b5`. This authorized completed result-blind boundary construction but did not authorize IS.
 
