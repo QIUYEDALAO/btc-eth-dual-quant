@@ -2923,3 +2923,19 @@ private exchange responses here.
 - The completed 92-boundary authority is not frozen and NB-01 is not yet satisfied for the full set. The next stage may build the full revised authority from the unchanged 91 official sources plus the RNDR replacement, but original IS remains prohibited until a separate exact-head review and merge.
 - OOS remains false/false/0/0. Dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 remain false.
 - Draft PR #118 publishes the preflight from functional commit `e799111af04469ebfcf28c7cc6e16228065ff37b`; it remains Draft and carries no completed-authority or IS authorization.
+
+## 2026-07-22 - PR #118 Approved/Merged; Completed 92-Boundary Authority Frozen
+
+- Independent review approved PR #118 exact head `89965820c3281caf4f759a055ace271151d32622` with 0 critical/high under review `6f57e1da0efa6f233308809d9d5bd33a6a591737c032b5d73206379713e3a94c`.
+- Exact-head Main Regression run `29877334519` succeeded and the reviewed head was ordinary-merged as `02673d1bebfb7a9efa5370a8025f1ea185c172b5`.
+- The single authorized result-blind acquisition then requested 91 official daily archives and checksums and reused the frozen RNDR archive. The ADR-0018 revised set is exact at 92/92, 47 symbols and 1,116,059 archive bytes.
+- All 92 exact rows pass archive/checksum/member/raw-line identity, timestamp, OHLCV, qualified-membership, lifecycle and invalid-interval checks. Normal/reverse/deterministic-shuffled full constructions agree on result `5b05fbf6...40ebec` with three distinct trace hashes, satisfying NB-01.
+- Completed authority evidence is frozen as `9829e22b0c0b21bf69dac2d8d84de845650e2da31e13f239578e6a43dba96ada`; command evidence is `2674853239a7c185d35a0e751bf71e31cc89c5556e8c573a95415e42006771a7`.
+- Boundary rows are forced-exit lookup only and may not enter strategy OHLCV/indicator history. State must reset and rewarm across inactive intervals.
+- Strategy result rows, IS trials, selection trials and OOS rows remain zero. Original IS remains unauthorized until this completed authority receives a separate exact-head review, successful Gate and merge; dry-run/API/live/orders/M2 remain false.
+
+## 2026-07-22 - Completed Boundary Authority Published as Draft PR #119
+
+- Functional commit `5adc1101e4485fff0f312c352e04ad5fe9dcc12d` freezes the 92/92 result-blind authority under canonical hash `9829e22b...b96ada` and three-construction result `5b05fbf6...40ebec`.
+- Local selective validation against PR #118 merge `02673d1...172b5` passed: 1,358/1,358 unit tests, project Gate 14/14, completed-authority tests 6/6, compile, secret/no-trading/`execution/live`, read-only and diff checks.
+- Draft PR #119 is open for a separate final exact-head review. It is not merged and does not authorize original IS, selection trials, OOS, dry-run, API/private endpoints, paper/live, orders, `execution/live` or M2.

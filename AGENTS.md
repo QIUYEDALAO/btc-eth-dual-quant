@@ -42,13 +42,17 @@ After any task, the agent must update:
 
 ## Current Stage
 
-- PR #117 exact head `bb22a08c...a1e2` is independently approved with 0 critical/high under review `41f43609...780f`, passed exact-head GitHub run `29871317869`, and ordinary-merged as `336563c6...048b`. ADR-0018 `8761faba...46e9` is adopted only as the scheduled-market-cessation contract; the merge did not authorize IS or a completed boundary authority.
+- Draft PR #119 publishes the completed 92-boundary authority from functional commit `5adc1101...dcc12d`. Local selective validation against `main@02673d1...172b5` passed with 1,358/1,358 tests and project Gate 14/14. Keep it Draft for a separate final exact-head review; the PR grants no IS authority.
 
-- The RNDR original-symbol one-item preflight passed under `eceafea1...9b38be`. The official `RNDRUSDT-5m-2024-07-22.zip` is 1,720 bytes with SHA-256 `e2da006e...91587`; exact row `2024-07-22T02:55:00Z` / `02:59:59.999Z` has raw-line hash `89be4f17...e4f50`. Only this archive and checksum were requested, one market row and zero OOS rows were decoded, and the other 91 archives were not requested or downloaded.
+- PR #118 exact head `89965820...d32622` is independently approved with 0 critical/high under review `6f57e1da...e3a94c`, passed exact-head GitHub run `29877334519`, and ordinary-merged as `02673d1b...172b5`. This authorized completed result-blind boundary construction but did not authorize IS.
 
-- Draft PR #118 publishes this one-item preflight from functional commit `e799111a...f37b`. Keep it Draft for review; it is not the completed 92-boundary authority and grants no IS authority.
+- The completed revised authority is frozen at 92/92 under `9829e22b...b96ada`. It uses 91 newly acquired official daily archives plus the frozen RNDR replacement, contains 1,116,059 archive bytes and 92 exact boundary rows, reads zero strategy-result/OOS rows and materializes zero IS/selection trials.
 
-- The completed 92-boundary authority is not frozen. The next authorized stage may acquire and validate the unchanged 91 official daily sources plus the frozen RNDR replacement, but must perform genuinely independent normal/reverse/deterministic-shuffled full constructions, keep boundary rows out of strategy OHLCV/indicator history, preserve reset/rewarm semantics, and receive a separate exact-head review and merge before original IS.
+- Normal, reverse and deterministic-shuffled passes independently reopen all 92 archives and agree on result identity `5b05fbf6...40ebec`; their trace hashes are `e94ad0ed...6290b`, `91e50449...0836` and `699133bf...f49`. NB-01 is satisfied.
+
+- Boundary rows remain execution-side forced-exit lookup only. They cannot enter candidate OHLCV/indicator history; indicator state cannot cross inactive membership intervals and must reset/rewarm from the current active interval. The authority now requires a separate exact-head review, successful Gate and merge before original IS.
+
+- Original IS remains unauthorized. No selection trial may materialize; OOS, dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 remain false.
 
 - The 2026-07-22 `HKUDS/AI-Trader` request is a completed read-only external-project assessment at exact head `d03ff6c...c8df`. Do not install its remote skills, register an agent, call its APIs, import its source, or interpret the assessment as strategy/runtime/data/IS/OOS/trading authority. Static inspection completed; tests did not start because isolated PyPI dependency installation timed out.
 
@@ -58,13 +62,13 @@ After any task, the agent must update:
 
 - PR #117 is merged contract evidence, not boundary-authority or IS authorization.
 
-- The RNDR-only preflight prerequisite is complete. Completed authority construction must still run genuinely independent normal/reverse/shuffled passes; repeating one canonical hash does not satisfy NB-01.
+- The RNDR-only preflight prerequisite is complete. The later completed authority satisfied NB-01 through genuinely independent normal/reverse/shuffled passes; repeating one canonical hash would not have satisfied it.
 
-- The authorized result-blind boundary source preflight is hard-blocked. Exactly 91/92 official Binance daily ZIP URLs exist; the required `RNDRUSDT-5m-2024-08-01.zip` returns HTTP 404. Evidence `5746b982...537e` records zero archive downloads, zero market/result/OOS rows and no IS trials. Do not substitute a renamed symbol, REST response, earlier/later row, synthetic/last price or unfrozen source.
+- Historical preflight evidence `5746b982...537e` recorded the original 91/92 hard stop because `RNDRUSDT-5m-2024-08-01.zip` returned HTTP 404. ADR-0018 and its independently reviewed RNDR preflight replaced that single boundary without a renamed-symbol, REST, forward-search, synthetic/last-price or unfrozen-source substitution.
 
-- The boundary authority is not frozen and original IS remains unauthorized. Resuming now requires a separate explicit decision changing the source or holding/universe contract. The materializer has an explicit `eligibility_status == qualified` guard; this hardening grants no additional authority.
+- That historical source blocker is resolved only for authority construction. The completed authority is frozen, but original IS remains unauthorized pending its separate exact-head review and merge. The materializer's explicit `eligibility_status == qualified` guard grants no additional authority.
 
-- Draft PR #116 publishes only the terminal source-preflight evidence and defensive guard. Keep it Draft pending exact-head review; do not merge it as runtime/IS authority.
+- PR #116 merged only as terminal source-preflight evidence and a defensive guard; it is not runtime/IS authority.
 
 - PR #115 exact head `60e49ee7...b3b4b5` is independently approved with 0 critical/high and merged unchanged as `e19962f5...9cc37`. The review and machine authorization are recorded in `reports/expert/PR115_EXACT_HEAD_REVIEW.md` and `config/membership_exit_boundary_authorization_v1.json`; the reviewer-provided decision identity is `82acac46...9cea4`.
 

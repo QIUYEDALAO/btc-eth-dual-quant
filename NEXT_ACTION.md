@@ -24,35 +24,35 @@ passed exact-head review and Gate and merged; the RNDR-only preflight below is
 the current authority boundary. The assessment grants no runtime, data,
 IS/OOS, API, paper/live, order-placement, `execution/live` or M2 authority.
 
-## Current Stage: RNDR Preflight Passed; Complete Boundary Authority Pending
+## Current Stage: Completed 92-Boundary Authority Pending Exact-Head Review
 
-PR #117 exact head `bb22a08c...a1e2` is independently approved with zero
-critical/high findings under review `41f43609...780f`. Exact-head GitHub run
-`29871317869` succeeded, and the reviewed head was ordinary-merged as
-`336563c6...048b`.
+PR #118 exact head `89965820...d32622` was independently approved with zero
+critical/high findings under review `6f57e1da...e3a94c`. Exact-head GitHub run
+`29877334519` succeeded and the reviewed head was ordinary-merged as
+`02673d1b...172b5`.
 
-The authorized one-item original-symbol preflight passed under evidence
-`eceafea1...9b38be`. The official RNDR daily archive is 1,720 bytes with SHA-256
-`e2da006e...91587`; its exact 02:55 row closes at 02:59:59.999 and has raw-line
-hash `89be4f17...e4f50`. Only this archive and its checksum were requested. The
-other 91 archive request/download counts remain zero, market rows decoded are
-one, and OOS rows decoded are zero.
+Only after that merge, the authorized result-blind construction acquired the
+unchanged 91 official daily archives and reused the frozen RNDR original-symbol
+archive. The revised set is exact at 92/92. All source/checksum/member/raw-line
+hashes, timestamps, OHLCV, prior qualified membership, lifecycle and
+invalid-interval status pass. Normal, reverse and deterministic-shuffled passes
+independently reopened all 92 archives and agree on result identity
+`5b05fbf6...40ebec` while retaining three distinct trace hashes.
 
-Draft PR #118 publishes the preflight from functional commit
-`e799111af04469ebfcf28c7cc6e16228065ff37b`. It is review evidence only and
-does not freeze the complete boundary authority or authorize IS.
+The completed authority is frozen under `9829e22b...b96ada`; command evidence is
+`26748532...671a7`. It is forced-exit lookup only, cannot enter candidate OHLCV
+or indicator history, and requires reset/rewarm across inactive intervals. It
+read zero strategy-result rows, materialized zero IS/selection trials and
+decoded zero OOS rows.
 
-The next task is the complete revised 92-boundary authority stage. It must use
-the fixed RNDR replacement plus the unchanged 91 official daily sources,
-perform genuinely independent normal/reverse/deterministic-shuffled full
-constructions, validate exact archive/member/row hashes and lifecycle/mask
-status, and keep every boundary row out of strategy OHLCV and indicator
-history. The completed authority must then receive a separate exact-head review
-and merge before original IS.
-
-Original IS/selection trials remain zero. OOS remains false/false/0/0, and
-dry-run, API/private endpoints, paper/live, orders, `execution/live` and M2 are
-still prohibited.
+Draft PR #119 now publishes the completed authority. Its functional commit is
+`5adc1101e4485fff0f312c352e04ad5fe9dcc12d`; the local selective PR Gate against
+PR #118 merge `02673d1...172b5` passed, including 1,358/1,358 tests and project
+Gate 14/14. The next task is a separate independent review of PR #119's final
+exact head, followed by an exact-head GitHub Gate and merge only if the verdict
+is approve with critical/high 0/0. Do not run original IS before that review and
+merge. OOS remains false/false/0/0, and dry-run, API/private endpoints,
+paper/live, orders, `execution/live` and M2 are still prohibited.
 
 ## Historical Hard Stop: Official RNDRUSDT Boundary Source Missing
 
@@ -61,15 +61,16 @@ archives. The required official Binance URL for `RNDRUSDT` at
 `2024-08-01T00:00:00Z` returns HTTP 404. Evidence `5746b982...537e` records zero
 archive downloads, zero market/result/OOS rows and zero IS/selection trials.
 
-Do not acquire the other 91 archives, substitute RENDER or another symbol, use
-REST, search forward/backward, synthesize a price or modify the fixed boundary
-set. The boundary authority is not frozen and original IS remains prohibited.
-The only possible next research action is a separate explicit decision changing
-the official-source requirement or the holding/universe contract.
+At that historical point, acquiring the other 91 archives, substituting RENDER,
+using REST, searching forward/backward or synthesizing a price was prohibited.
+ADR-0018 later supplied the required explicit one-for-one holding/source
+decision, and PR #118 validated the original-symbol replacement before the
+completed authority was built. The historical preflight itself remains an
+immutable failed result and grants no authority.
 
-Draft PR #116 contains the terminal evidence and defensive qualified-membership
-guard. It may receive exact-head review but must not be interpreted as authority
-to run IS or as permission to substitute the missing source.
+PR #116 contains the terminal evidence and defensive qualified-membership
+guard. Its later review and merge did not authorize IS or permission to
+substitute the missing source.
 
 ## Historical Authorization: IS-Only Membership-Exit Boundary Authority
 

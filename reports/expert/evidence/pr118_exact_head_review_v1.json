@@ -1,0 +1,88 @@
+{
+  "base": "336563c67a6b23cc9ebbf91c7abd007db0df048b",
+  "bindings": {
+    "archive_sha256": "e2da006ea431071e7eb1796dddaa72da8646f57ba1ecf75e0127c6e769491587",
+    "command_evidence_hash": "cf3d7f83730ca93b5df679806cf87f47ee3b3b485f38073779854632d4e72d1f",
+    "functional_head_gate_conclusion": "success",
+    "functional_head_gate_run": 29873767299,
+    "member_sha256": "b321e6a21cc704ca8535e35f964f693c7b380482115448692dbffc0386e5f72c",
+    "preflight_content_hash": "eceafea174381268c22df88b3262a3702a828a3aac079b8e060000686c9b38be",
+    "raw_row_sha256": "89be4f1712abbe2ffe08277e6ac6cafbe28666513734be5595afc0a10dfe4f50",
+    "target_close_utc": "2024-07-22T02:59:59.999Z",
+    "target_open_utc": "2024-07-22T02:55:00Z"
+  },
+  "confirmed_state": {
+    "archive_requests": 1,
+    "checksum_requests": 1,
+    "completed_boundary_authority_frozen": false,
+    "is_trials": 0,
+    "market_rows_decoded": 1,
+    "market_rows_outside_fixed_boundary": 0,
+    "oos_authorized": false,
+    "oos_opened": false,
+    "oos_rows_decoded": 0,
+    "oos_runs": 0,
+    "original_is_authorized": false,
+    "other_91_archives_downloaded": 0,
+    "other_91_archives_requested": 0,
+    "selection_trial_count": 0,
+    "strategy_result_rows_read": 0
+  },
+  "content_hash": "6f57e1da0efa6f233308809d9d5bd33a6a591737c032b5d73206379713e3a94c",
+  "critical_findings": 0,
+  "functional_head": "e799111af04469ebfcf28c7cc6e16228065ff37b",
+  "high_findings": 0,
+  "independent_recomputation": {
+    "command_document_hash_recomputed": true,
+    "command_stdout_hash_recomputed": true,
+    "construction_result_hash_recomputed": true,
+    "fresh_official_archive_redownload_completed": false,
+    "raw_row_hash_recomputed_from_frozen_fields": true,
+    "redownload_note": "The review environment could not directly fetch the binary object; archive-byte identity is assessed from exact official-checksum evidence, frozen hashes, fail-closed code, tests, and successful functional-head CI.",
+    "row_timestamp_conversion_recomputed": true
+  },
+  "merge_authority": {
+    "allowed_after_exact_head_gate_success": true,
+    "expected_head_must_equal": "89965820c3281caf4f759a055ace271151d32622",
+    "head_change_invalidates_review": true,
+    "merge_authorizes_completed_authority_freeze": false,
+    "merge_authorizes_oos_or_trading": false,
+    "merge_authorizes_original_or_modified_is": false,
+    "merge_authorizes_remaining_91_source_authority_construction": true
+  },
+  "non_blocking_notes": [
+    {
+      "disposition": "Run the GitHub Gate on the current exact head before merge; do not create another commit.",
+      "id": "NB-118-01",
+      "summary": "The functional head passed CI, while the current exact head adds only the mandatory five-file context synchronization commit."
+    },
+    {
+      "disposition": "The later 92-source authority must execute independent full-set normal, reverse, and deterministic-shuffled constructions and receive a separate exact-head review.",
+      "id": "NB-118-02",
+      "summary": "The single-archive preflight correctly leaves completed-authority NB-01 unsatisfied."
+    }
+  ],
+  "procedural_blocker": {
+    "draft": true,
+    "exact_head_workflow_runs_observed": 0,
+    "formal_review_write_succeeded": false,
+    "ready_transition_succeeded": false,
+    "write_blocker": "Resource not accessible by integration"
+  },
+  "pull_request": 118,
+  "repository": "QIUYEDALAO/btc-eth-dual-quant",
+  "review_dimensions": {
+    "exact_timestamp_and_ohlcv_validation": "pass",
+    "functional_to_exact_head_context_only_diff": "pass",
+    "membership_lifecycle_invalid_interval_binding": "pass",
+    "official_archive_and_checksum_binding": "pass",
+    "other_91_request_isolation": "pass",
+    "permission_and_trial_guards": "pass",
+    "strategy_result_and_oos_isolation": "pass",
+    "three_independent_single_archive_traversals": "pass",
+    "zip_crc_and_single_member_identity": "pass"
+  },
+  "reviewed_head": "89965820c3281caf4f759a055ace271151d32622",
+  "schema_version": "pr118-exact-head-review-v1",
+  "verdict": "approve"
+}
