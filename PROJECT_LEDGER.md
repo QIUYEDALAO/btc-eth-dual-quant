@@ -2939,3 +2939,17 @@ private exchange responses here.
 - Functional commit `5adc1101e4485fff0f312c352e04ad5fe9dcc12d` freezes the 92/92 result-blind authority under canonical hash `9829e22b...b96ada` and three-construction result `5b05fbf6...40ebec`.
 - Local selective validation against PR #118 merge `02673d1...172b5` passed: 1,358/1,358 unit tests, project Gate 14/14, completed-authority tests 6/6, compile, secret/no-trading/`execution/live`, read-only and diff checks.
 - Draft PR #119 is open for a separate final exact-head review. It is not merged and does not authorize original IS, selection trials, OOS, dry-run, API/private endpoints, paper/live, orders, `execution/live` or M2.
+
+## 2026-07-22 - PR #119 Approved, Exact-Head Gate Passed and Merged
+
+- Independent review approved exact head `380b50392b3a225bbaf7f0ff4f24041b8fb22666` with 0 critical/high under review identity `203ff8488e5e8c44019a09653f4189ef6ff780185469ef77323a60672a7e3c1f`.
+- PR discussion records the review at `issuecomment-5040545474`. Main Regression run `29881020014` succeeded on the unchanged exact head in 8m34s.
+- PR #119 was ordinary-merged as `7b6a0601588f4387f8816cf6b49bdf5bf94a18f3`, closing the completed 92-boundary authority Gate.
+- Existing ADR-0017 authority now permits the uniform original-IS stage. No IS result or selection trial has yet materialized; OOS remains false/false/0/0 and dry-run/API/private endpoints/paper/live/orders/`execution/live`/M2 remain false.
+
+## 2026-07-22 - Original-IS Pre-execution Gate Completed; Environment Hard Stop
+
+- Added immutable post-runtime authority `32922386a3984ef96e24ed64e96771e81860b2fbf269c3baf5a46739775bf2ae`, binding ADR-0017/0018, unchanged pre-runtime contracts, all six exact runtime/causal identities, PR #119 review/Gate/merge and the completed 92/92 boundary authority.
+- Added result-free active-interval reset/rewarm and exact forced-exit lookup, plus atomic Base/CostX2/StressA/StressB × trades/equity/metrics bundle publication and crash recovery that cannot rerun performance.
+- Added a runtime trial/DSR overlay so immutable pre-runtime files remain byte-exact. Base and CostX2 selection sequences are derived from hash-bound equity; StressA/B are excluded and final DSR is generated only at one-time final selection.
+- Focused validation passes 22/22. Offline execution readiness exits 2 with stdout hash `09abdc57...33073`: `VPS_HOST` is unset and no explicit SSH identity was supplied. Boundary snapshot count is 92; SSH attempts, Docker/Freqtrade starts, IS/selection trials and result/OOS rows remain zero.

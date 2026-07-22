@@ -2,8 +2,8 @@ project:
   name: btc-eth-dual-quant
   repository: QIUYEDALAO/btc-eth-dual-quant
 last_updated_utc: "2026-07-22T00:00:00Z"
-current_phase: "External-strategy 92-boundary authority frozen pending exact-head review"
-current_status: external_strategy_boundary_authority_frozen_pending_exact_head_review_zero_is_zero_oos_no_trading_no_m2
+current_phase: "External-strategy original IS pre-execution safety Gate complete; VPS environment hard-blocked before performance"
+current_status: external_strategy_original_is_environment_blocked_vps_host_and_identity_missing_zero_is_zero_oos_no_trading_no_m2
 context_sync_policy:
   update_on_every_user_instruction: true
   required_files:
@@ -30,6 +30,39 @@ external_project_review:
 # Frozen marker required by the exact reviewed implementation checker:
 # current_phase: ADR-0015 generic invalid-interval policy implementation pending exact-head review
 completed_milestones:
+  - phase: External-strategy original-IS pre-execution authority and safety Gate
+    status: pass_contracts_environment_hard_block_before_ssh_or_performance
+    branch: codex/external-strategy-original-is
+    authority: config/external_strategy_original_is_authority_v1.json
+    authority_content_hash: 32922386a3984ef96e24ed64e96771e81860b2fbf269c3baf5a46739775bf2ae
+    report: reports/m1/EXTERNAL_STRATEGY_ORIGINAL_IS_PREEXECUTION_GATE.md
+    focused_tests: 22
+    focused_tests_passed: 22
+    boundary_snapshot_archives: 92
+    vps_host_configured: false
+    explicit_ssh_identity_supplied: false
+    ssh_connections_attempted: 0
+    docker_or_freqtrade_started: 0
+    market_rows_decoded: 0
+    result_rows_read: 0
+    is_trials: 0
+    selection_trial_count: 0
+    oos_authorized: false
+    oos_opened: false
+    oos_runs: 0
+    oos_rows_decoded: 0
+  - phase: PR #119 exact-head review, GitHub Gate and completed-authority merge
+    status: approve_zero_critical_high_exact_head_gate_pass_merged_boundary_gate_closed
+    review: reports/expert/PR119_EXACT_HEAD_REVIEW.md
+    machine_review: reports/expert/evidence/pr119_exact_head_review_v1.json
+    review_content_hash: 203ff8488e5e8c44019a09653f4189ef6ff780185469ef77323a60672a7e3c1f
+    reviewed_head: 380b50392b3a225bbaf7f0ff4f24041b8fb22666
+    github_gate_run: 29881020014
+    github_gate_conclusion: success
+    merge_commit: 7b6a0601588f4387f8816cf6b49bdf5bf94a18f3
+    original_is_authorized_under_existing_adr0017: true
+    selection_trial_count: 0
+    oos_rows_decoded: 0
   - phase: Completed result-blind membership-exit boundary authority
     status: pass_frozen_pending_separate_exact_head_review_and_merge
     branch: codex/external-strategy-boundary-authority
@@ -58,9 +91,12 @@ completed_milestones:
     completed_authority_nb01_satisfied: true
     boundary_rows_append_to_strategy_ohlcv: false
     indicator_state_crosses_inactive_interval: false
-    exact_head_review_complete: false
-    merged: false
-    original_is_authorized: false
+    exact_head_review_complete: true
+    exact_head_review_hash: 203ff8488e5e8c44019a09653f4189ef6ff780185469ef77323a60672a7e3c1f
+    exact_head_gate_run: 29881020014
+    merged: true
+    merge_commit: 7b6a0601588f4387f8816cf6b49bdf5bf94a18f3
+    original_is_authorized: true
     is_trials: 0
     selection_trial_count: 0
     oos_authorized: false
@@ -2991,6 +3027,30 @@ completed_milestones:
     evidence: reports/m1/T5_M1D_SAMPLE_BUDGET_PRECHECK.md
     merged_pr: 29
 open_work:
+  - id: EXTERNAL-STRATEGY-ORIGINAL-IS
+    phase: uniform original IS for six frozen candidates
+    status: blocked_execution_environment_vps_host_and_explicit_identity_missing
+    branch: codex/external-strategy-original-is
+    dependency_boundary_review_hash: 203ff8488e5e8c44019a09653f4189ef6ff780185469ef77323a60672a7e3c1f
+    dependency_boundary_merge_commit: 7b6a0601588f4387f8816cf6b49bdf5bf94a18f3
+    candidate_count: 6
+    post_runtime_authority_hash: 32922386a3984ef96e24ed64e96771e81860b2fbf269c3baf5a46739775bf2ae
+    active_interval_reset_rewarm_fixture_pass: true
+    exact_boundary_lookup_fixture_pass: true
+    atomic_four_scenario_bundle_fixture_pass: true
+    runtime_trial_overlay_fixture_pass: true
+    vps_host_configured: false
+    explicit_ssh_identity_supplied: false
+    ssh_connections_attempted: 0
+    docker_or_freqtrade_started: 0
+    is_trials: 0
+    selection_trial_count: 0
+    oos_authorized: false
+    oos_opened: false
+    oos_runs: 0
+    oos_rows_decoded: 0
+    trading_authorized: false
+    m2_authorized: false
   - id: EXTERNAL-STRATEGY-ADR0018
     phase: scheduled market-cessation forced-exit holding/lifecycle contract
     status: reviewed_approved_gate_pass_merged_rndr_original_symbol_preflight_pass
@@ -3013,7 +3073,7 @@ open_work:
     merged_pr: 117
   - id: EXTERNAL-STRATEGY-IS-DATA-BOUNDARY
     phase: point-in-time membership exit execution authority
-    status: completed_frozen_pending_exact_head_review_and_merge_no_is
+    status: completed_reviewed_approved_gate_pass_merged
     evidence_hash: e9844902eaa7234a5476a080e937cfbf51f70913cb9ff1b903b907cad08280fa
     authorization_hash: 82acac46ce4e81cdab071635d986b17dfe1996091e4aa55cba3de5007b49cea4
     reviewed_pr115_head: 60e49ee7cb6812593098c2f13049b921e5b3b4b5
@@ -3035,8 +3095,12 @@ open_work:
     market_rows_decoded: 92
     market_rows_outside_fixed_boundary: 0
     boundary_authority_frozen: true
-    exact_head_review_complete: false
-    merged: false
+    exact_head_review_complete: true
+    review_content_hash: 203ff8488e5e8c44019a09653f4189ef6ff780185469ef77323a60672a7e3c1f
+    reviewed_head: 380b50392b3a225bbaf7f0ff4f24041b8fb22666
+    exact_head_gate_run: 29881020014
+    merged: true
+    merge_commit: 7b6a0601588f4387f8816cf6b49bdf5bf94a18f3
     branch: codex/external-strategy-boundary-authority
     boundary_authority_design_authorized: true
     official_public_data_acquisition_authorized: false
@@ -3500,9 +3564,9 @@ active_decisions:
     status: accepted_for_requalification_only
     evidence: docs/decisions/ADR-0009-m1e-canonical-5m-data-authority.md
 allowed_next_work:
-  - "Independently review Draft PR #119 at its final exact head; do not run IS."
-  - "Review must verify authority `9829e22b...b96ada`, all 92 exact source/member/row identities, genuinely independent normal/reverse/shuffled construction and forced-exit-only reset/rewarm isolation."
-  - "Original IS remains blocked until the completed authority is independently approved with 0 critical/high, passes its exact-head Gate and merges."
+  - "Implement and execute the single uniform original-IS stage for all six frozen candidates under ADR-0017 and the frozen unified protocol; no parameter changes or candidate substitutions."
+  - "Before first result materialization, revalidate runtime/data/boundary identities, forced-exit-only lookup, reset/rewarm segmentation, four fixed costs, result envelopes and zero OOS access."
+  - "Each first materialized original trial increments append-only selection_trial_count; failures remain recorded and cannot be rescued by a modified variant."
   - "Result-free diagnostic inspection of frozen contract hashes and synthetic fixtures is allowed; performance, OOS and trading access remain unauthorized."
   - "U-04 through U-24 outcomes, signs, Gates, concentrations, censor patterns, defects and failures may not select U-25; U-24 inversion or repair is prohibited."
   - "U-24 is permanently closed after six frozen Paper Gates failed; no tuning, inversion, second observation, review, fixed rules, strategy, backtest or OOS step is authorized."
@@ -3575,6 +3639,10 @@ prohibited:
   - rewriting failed_validation to pass without evidence
   - merging PRs unless checks and ledger are updated
 latest_reports:
+  - path: reports/expert/PR119_EXACT_HEAD_REVIEW.md
+    phase: PR #119 exact-head independent review
+    status: approve_merged_after_exact_head_gate
+    status_marker: '**APPROVE**'
   - path: reports/m1/EXTERNAL_STRATEGY_COMPLETED_BOUNDARY_AUTHORITY.md
     phase: Completed result-blind membership-exit boundary authority
     status: pass_frozen_pending_separate_exact_head_review_and_merge
